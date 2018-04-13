@@ -1,0 +1,25 @@
+F:\работа\Evo_20_commands\Evo_20_commands\obj\Release\ResolveAssemblyReference.cache
+F:\работа\Evo_20_commands\Evo_20_commands\bin\Release\Evo_20_commands.dll
+F:\работа\Evo_20_commands\Evo_20_commands\bin\Release\Evo_20_commands.pdb
+F:\работа\Evo_20_commands\Evo_20_commands\obj\Release\Evo_20_commands.dll
+F:\работа\Evo_20_commands\Evo_20_commands\obj\Release\Evo_20_commands.pdb
+C:\Users\Азат\Desktop\Evo_20_commands\Evo_20_commands\bin\Release\Evo_20_commands.dll
+C:\Users\Азат\Desktop\Evo_20_commands\Evo_20_commands\bin\Release\Evo_20_commands.pdb
+C:\Users\Азат\Desktop\Evo_20_commands\Evo_20_commands\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Азат\Desktop\Evo_20_commands\Evo_20_commands\obj\Release\Evo_20_commands.dll
+C:\Users\Азат\Desktop\Evo_20_commands\Evo_20_commands\obj\Release\Evo_20_commands.pdb
+F:\самый полсед работа\Evo-20form\Evo-20form\Evo_20_commands\Evo_20_commands\bin\Release\Evo_20_commands.dll
+F:\самый полсед работа\Evo-20form\Evo-20form\Evo_20_commands\Evo_20_commands\bin\Release\Evo_20_commands.pdb
+F:\самый полсед работа\Evo-20form\Evo-20form\Evo_20_commands\Evo_20_commands\obj\Release\ResolveAssemblyReference.cache
+F:\самый полсед работа\Evo-20form\Evo-20form\Evo_20_commands\Evo_20_commands\obj\Release\Evo_20_commands.dll
+F:\самый полсед работа\Evo-20form\Evo-20form\Evo_20_commands\Evo_20_commands\obj\Release\Evo_20_commands.pdb
+C:\Users\Азат\Desktop\работа 26.10\Evo-20form\Evo-20form\Evo_20_commands\Evo_20_commands\bin\Release\Evo_20_commands.dll
+C:\Users\Азат\Desktop\работа 26.10\Evo-20form\Evo-20form\Evo_20_commands\Evo_20_commands\bin\Release\Evo_20_commands.pdb
+C:\Users\Азат\Desktop\работа 26.10\Evo-20form\Evo-20form\Evo_20_commands\Evo_20_commands\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Азат\Desktop\работа 26.10\Evo-20form\Evo-20form\Evo_20_commands\Evo_20_commands\obj\Release\Evo_20_commands.dll
+C:\Users\Азат\Desktop\работа 26.10\Evo-20form\Evo-20form\Evo_20_commands\Evo_20_commands\obj\Release\Evo_20_commands.pdb
+F:\evo\Evo-20form\Evo-20form\Evo_20_commands\Evo_20_commands\bin\Release\Evo_20_commands.dll
+F:\evo\Evo-20form\Evo-20form\Evo_20_commands\Evo_20_commands\bin\Release\Evo_20_commands.pdb
+F:\evo\Evo-20form\Evo-20form\Evo_20_commands\Evo_20_commands\obj\Release\ResolveAssemblyReference.cache
+F:\evo\Evo-20form\Evo-20form\Evo_20_commands\Evo_20_commands\obj\Release\Evo_20_commands.dll
+F:\evo\Evo-20form\Evo-20form\Evo_20_commands\Evo_20_commands\obj\Release\Evo_20_commands.pdb

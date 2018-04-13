@@ -1,0 +1,4309 @@
+Не верна строка файла настроек:81
+Соединение c Evo 20 установлено
+Отправлена команда AXE.TELL.STA  в 22:40
+Отправлена команда CLIM.ETAT True в 22:40
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлено сообщение Evo 20 CLIM.ETAT True
+Отправлена команда AXE.PWR 1 0 в 22:40
+Отправлено сообщение Evo 20 AXE.PWR 1 0
+Отправлена команда AXE.UPLD.STA  в 22:40
+Отправлена команда AXE.CONS.VIT 20 0 в 22:40
+Отправлено сообщение Evo 20 AXE.CONS.VIT 20 0
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.ZERO 0 в 22:40
+Отправлена команда AXE.TELL.TJT 1 в 22:40
+Отправлено сообщение Evo 20 AXE.ZERO 0
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:40
+Отправлена команда AXE.CONS.MOD0 0 в 22:40
+Отправлено сообщение Evo 20 AXE.CONS.MOD0 0
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.STOP 0 в 22:40
+Отправлено сообщение Evo 20 AXE.STOP 0
+Отправлена команда AXE.CONS.VIT 20 0 в 22:40
+Отправлено сообщение Evo 20 AXE.CONS.VIT 20 0
+Отправлена команда AXE.CONS.POS 0 0 в 22:40
+Отправлено сообщение Evo 20 AXE.CONS.POS 0 0
+Отправлена команда AXE.STRT 0 в 22:40
+Отправлено сообщение Evo 20 AXE.STRT 0
+Отправлена команда CLIM.RAMP 2 в 22:40
+Отправлено сообщение Evo 20 CLIM.RAMP 2
+Отправлена команда CLIM.CONS -40 в 22:40
+Отправлено сообщение Evo 20 CLIM.CONS -40
+Отправлена команда CLIM.ETAT True в 22:40
+Отправлено сообщение Evo 20 CLIM.ETAT True
+Установлена температура камеры -40скорость набора температtуры2
+Отправлена команда AXE.TELL.STA  в 22:40
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:40
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:40
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:40
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:40
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:40
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:40
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:40
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:40
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:40
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:40
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:40
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:40
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:40
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:40
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:40
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:40
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:40
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:40
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:40
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:40
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:40
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:40
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:40
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:41
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:41
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:42
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:42
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:43
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:43
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Не верна строка файла настроек:81
+Соединение c Evo 20 установлено
+Отправлена команда AXE.TELL.STA  в 0:59
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:59
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:59
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:59
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 0:59
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:59
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:59
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:59
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 0:59
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:59
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:59
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:59
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:00
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:00
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Не верна строка файла настроек:81
+Соединение c Evo 20 установлено
+Отправлена команда AXE.TELL.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:02
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:02
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:03
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:03
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:04
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:04
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:05
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:05
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:06
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:06
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:06
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:06
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:06
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:06
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:06
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:06
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:06
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:06
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:06
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:06
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:06
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:06
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 1:06
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 1:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Не верна строка файла настроек:81
+Соединение c Evo 20 установлено
+Отправлена команда AXE.TELL.STA  в 10:52
+Сообщение AXE.TELL.STA  Evo 20 не доставлено Возникло исключениеSystem.Net.Sockets.SocketException: Сделана попытка выполнить операцию на сокете при отключенной сети
+   в System.Net.Sockets.Socket.SendTo(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags, EndPoint remoteEP)
+   в System.Net.Sockets.UdpClient.Send(Byte[] dgram, Int32 bytes, IPEndPoint endPoint)
+   в Evo_20form.ConnectionSocket.SendMessage(String message) в C:\Users\Азат\Desktop\работа 26.10\Evo-20form\Evo-20form\ConnectionSocket.cs:строка 136
+Отправлена команда AXE.UPLD.STA  в 10:52
+Отправлена команда AXE.TELL.TJT 1 в 10:52
+Отправлена команда AXE.TELL.TJT 2 в 10:52
+Не верна строка файла настроек:81
+Соединение c Evo 20 установлено
+Отправлена команда AXE.TELL.STA  в 10:53
+Сообщение AXE.TELL.STA  Evo 20 не доставлено Возникло исключениеSystem.Net.Sockets.SocketException: Сделана попытка выполнить операцию на сокете при отключенной сети
+   в System.Net.Sockets.Socket.SendTo(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags, EndPoint remoteEP)
+   в System.Net.Sockets.UdpClient.Send(Byte[] dgram, Int32 bytes, IPEndPoint endPoint)
+   в Evo_20form.ConnectionSocket.SendMessage(String message) в C:\Users\Азат\Desktop\работа 26.10\Evo-20form\Evo-20form\ConnectionSocket.cs:строка 136
+Отправлена команда AXE.UPLD.STA  в 10:53
+Отправлена команда AXE.TELL.TJT 1 в 10:53
+Отправлена команда AXE.TELL.TJT 2 в 10:53
+Не верна строка файла настроек:81
+Соединение c Evo 20 установлено
+Отправлена команда AXE.TELL.STA  в 21:53
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:53
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:53
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:53
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 21:53
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:53
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:53
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:53
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 21:53
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:53
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:53
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:53
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Соединение c Evo 20 прервано
+Не верна строка файла настроек:81
+Соединение c Evo 20 установлено
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда CLIM.ETAT True в 22:44
+Отправлено сообщение Evo 20 CLIM.ETAT True
+Отправлена команда AXE.PWR 1 0 в 22:44
+Отправлено сообщение Evo 20 AXE.PWR 1 0
+Отправлена команда AXE.CONS.VIT 20 0 в 22:44
+Отправлено сообщение Evo 20 AXE.CONS.VIT 20 0
+Отправлена команда AXE.ZERO 0 в 22:44
+Отправлено сообщение Evo 20 AXE.ZERO 0
+Отправлена команда AXE.CONS.MOD0 0 в 22:44
+Отправлено сообщение Evo 20 AXE.CONS.MOD0 0
+Отправлена команда AXE.STOP 0 в 22:44
+Отправлено сообщение Evo 20 AXE.STOP 0
+Отправлена команда AXE.CONS.VIT 20 0 в 22:44
+Отправлено сообщение Evo 20 AXE.CONS.VIT 20 0
+Отправлена команда AXE.CONS.POS 0 0 в 22:44
+Отправлено сообщение Evo 20 AXE.CONS.POS 0 0
+Отправлена команда AXE.STRT 0 в 22:44
+Отправлено сообщение Evo 20 AXE.STRT 0
+Отправлена команда CLIM.RAMP 2 в 22:44
+Отправлено сообщение Evo 20 CLIM.RAMP 2
+Отправлена команда CLIM.CONS -40 в 22:44
+Отправлено сообщение Evo 20 CLIM.CONS -40
+Отправлена команда CLIM.ETAT True в 22:44
+Отправлено сообщение Evo 20 CLIM.ETAT True
+Установлена температура камеры -40 скорость набора температtуры 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 22:44
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 22:44
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Не верна строка файла настроек:81
+Соединение c Evo 20 установлено
+Отправлена команда AXE.TELL.STA  в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:30
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда CLIM.ETAT True в 0:30
+Отправлено сообщение Evo 20 CLIM.ETAT True
+Отправлена команда AXE.PWR 1 0 в 0:30
+Отправлено сообщение Evo 20 AXE.PWR 1 0
+Отправлена команда AXE.CONS.VIT 20 0 в 0:30
+Отправлено сообщение Evo 20 AXE.CONS.VIT 20 0
+Отправлена команда AXE.ZERO 0 в 0:30
+Отправлено сообщение Evo 20 AXE.ZERO 0
+Отправлена команда AXE.CONS.MOD0 0 в 0:30
+Отправлено сообщение Evo 20 AXE.CONS.MOD0 0
+Отправлена команда AXE.STOP 0 в 0:30
+Отправлено сообщение Evo 20 AXE.STOP 0
+Отправлена команда AXE.CONS.VIT 20 0 в 0:30
+Отправлено сообщение Evo 20 AXE.CONS.VIT 20 0
+Отправлена команда AXE.CONS.POS 0 0 в 0:30
+Отправлено сообщение Evo 20 AXE.CONS.POS 0 0
+Отправлена команда AXE.STRT 0 в 0:30
+Отправлено сообщение Evo 20 AXE.STRT 0
+Отправлена команда CLIM.RAMP 2 в 0:30
+Отправлено сообщение Evo 20 CLIM.RAMP 2
+Отправлена команда CLIM.CONS -40 в 0:30
+Отправлено сообщение Evo 20 CLIM.CONS -40
+Отправлена команда CLIM.ETAT True в 0:30
+Отправлено сообщение Evo 20 CLIM.ETAT True
+Установлена температура камеры -40 скорость набора температtуры 2
+Отправлена команда AXE.TELL.STA  в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:30
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:30
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:30
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:30
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:30
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:30
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:30
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:30
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:30
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:30
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:30
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Не верна строка файла настроек:81
+Соединение c Evo 20 установлено
+Отправлена команда AXE.TELL.STA  в 16:13
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 16:13
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 16:13
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 16:13
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда CLIM.ETAT True в 16:13
+Отправлено сообщение Evo 20 CLIM.ETAT True
+Отправлена команда AXE.PWR 1 0 в 16:13
+Отправлено сообщение Evo 20 AXE.PWR 1 0
+Отправлена команда AXE.CONS.VIT 20 0 в 16:13
+Отправлено сообщение Evo 20 AXE.CONS.VIT 20 0
+Отправлена команда AXE.ZERO 0 в 16:13
+Отправлено сообщение Evo 20 AXE.ZERO 0
+Отправлена команда AXE.CONS.MOD0 0 в 16:13
+Отправлено сообщение Evo 20 AXE.CONS.MOD0 0
+Отправлена команда AXE.STOP 0 в 16:13
+Отправлено сообщение Evo 20 AXE.STOP 0
+Отправлена команда AXE.CONS.VIT 20 0 в 16:13
+Отправлено сообщение Evo 20 AXE.CONS.VIT 20 0
+Отправлена команда AXE.CONS.POS 0 0 в 16:13
+Отправлено сообщение Evo 20 AXE.CONS.POS 0 0
+Отправлена команда AXE.STRT 0 в 16:13
+Отправлено сообщение Evo 20 AXE.STRT 0
+Отправлена команда CLIM.RAMP 2 в 16:13
+Отправлено сообщение Evo 20 CLIM.RAMP 2
+Отправлена команда CLIM.CONS -40 в 16:13
+Отправлено сообщение Evo 20 CLIM.CONS -40
+Отправлена команда CLIM.ETAT True в 16:13
+Отправлено сообщение Evo 20 CLIM.ETAT True
+Установлена температура камеры -40 скорость набора температtуры 2
+Отправлена команда AXE.TELL.STA  в 16:13
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 16:13
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 16:13
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 16:13
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 16:13
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 16:13
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 16:13
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 16:13
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 16:13
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 16:13
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 16:13
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 16:13
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 16:13
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 16:13
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 16:13
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 16:13
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 16:13
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 16:13
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 16:13
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 16:13
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Не верна строка файла настроек:81
+Соединение c Evo 20 установлено
+Отправлена команда AXE.TELL.STA  в 18:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 18:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 18:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 18:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда CLIM.ETAT True в 18:01
+Отправлено сообщение Evo 20 CLIM.ETAT True
+Отправлена команда AXE.PWR 1 0 в 18:01
+Отправлено сообщение Evo 20 AXE.PWR 1 0
+Отправлена команда AXE.CONS.VIT 20 0 в 18:01
+Отправлено сообщение Evo 20 AXE.CONS.VIT 20 0
+Отправлена команда AXE.ZERO 0 в 18:01
+Отправлено сообщение Evo 20 AXE.ZERO 0
+Отправлена команда AXE.CONS.MOD0 0 в 18:01
+Отправлено сообщение Evo 20 AXE.CONS.MOD0 0
+Отправлена команда AXE.STOP 0 в 18:01
+Отправлено сообщение Evo 20 AXE.STOP 0
+Отправлена команда AXE.CONS.VIT 20 0 в 18:01
+Отправлено сообщение Evo 20 AXE.CONS.VIT 20 0
+Отправлена команда AXE.CONS.POS 0 0 в 18:01
+Отправлено сообщение Evo 20 AXE.CONS.POS 0 0
+Отправлена команда AXE.STRT 0 в 18:01
+Отправлено сообщение Evo 20 AXE.STRT 0
+Отправлена команда CLIM.RAMP 2 в 18:01
+Отправлено сообщение Evo 20 CLIM.RAMP 2
+Отправлена команда CLIM.CONS -40 в 18:01
+Отправлено сообщение Evo 20 CLIM.CONS -40
+Отправлена команда CLIM.ETAT True в 18:01
+Отправлено сообщение Evo 20 CLIM.ETAT True
+Установлена температура камеры -40 скорость набора температtуры 2
+Отправлена команда AXE.TELL.STA  в 18:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 18:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 18:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 18:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 18:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 18:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 18:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 18:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 18:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 18:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 18:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 18:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.STA  в 18:01
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 18:01
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 18:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 18:01
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Не верна строка файла настроек:81
+Соединение c Evo 20 установлено
+Отправлена команда AXE.TELL.STA  в 0:07
+Отправлена команда CLIM.ETAT True в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:07
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлено сообщение Evo 20 CLIM.ETAT True
+Отправлена команда AXE.PWR 1 0 в 0:07
+Отправлено сообщение Evo 20 AXE.PWR 1 0
+Отправлена команда AXE.CONS.VIT 20 0 в 0:07
+Отправлено сообщение Evo 20 AXE.CONS.VIT 20 0
+Отправлена команда AXE.ZERO 0 в 0:07
+Отправлено сообщение Evo 20 AXE.ZERO 0
+Отправлена команда AXE.CONS.MOD0 0 в 0:07
+Отправлено сообщение Evo 20 AXE.CONS.MOD0 0
+Отправлена команда AXE.TELL.STA  в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:07
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:07
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:07
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:07
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:07
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 0:07
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Не верна строка файла настроек:81
+Соединение c Evo 20 установлено
+Отправлена команда AXE.TELL.STA  в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:22
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда CLIM.ETAT True в 0:22
+Отправлено сообщение Evo 20 CLIM.ETAT True
+Отправлена команда AXE.PWR 1 0 в 0:22
+Отправлено сообщение Evo 20 AXE.PWR 1 0
+Отправлена команда AXE.CONS.VIT 20 0 в 0:22
+Отправлено сообщение Evo 20 AXE.CONS.VIT 20 0
+Отправлена команда AXE.ZERO 0 в 0:22
+Отправлено сообщение Evo 20 AXE.ZERO 0
+Отправлена команда AXE.CONS.MOD0 0 в 0:22
+Отправлено сообщение Evo 20 AXE.CONS.MOD0 0
+Отправлена команда AXE.TELL.STA  в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:22
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:22
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:22
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:22
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:22
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:22
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:22
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 0:22
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Не верна строка файла настроек:81
+Соединение c Evo 20 установлено
+Отправлена команда AXE.TELL.STA  в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:40
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда CLIM.ETAT True в 0:40
+Отправлено сообщение Evo 20 CLIM.ETAT True
+Отправлена команда AXE.PWR 1 0 в 0:40
+Отправлено сообщение Evo 20 AXE.PWR 1 0
+Отправлена команда AXE.CONS.VIT 20 0 в 0:40
+Отправлено сообщение Evo 20 AXE.CONS.VIT 20 0
+Отправлена команда AXE.ZERO 0 в 0:40
+Отправлено сообщение Evo 20 AXE.ZERO 0
+Отправлена команда AXE.CONS.MOD0 0 в 0:40
+Отправлено сообщение Evo 20 AXE.CONS.MOD0 0
+Отправлена команда AXE.TELL.STA  в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:40
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:40
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:40
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:40
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 0:40
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 0:40
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Не верна строка файла настроек:81
+Соединение c Evo 20 установлено
+Отправлена команда AXE.TELL.STA  в 21:06
+Отправлена команда CLIM.ETAT True в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:06
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлено сообщение Evo 20 CLIM.ETAT True
+Отправлена команда AXE.PWR 1 0 в 21:06
+Отправлено сообщение Evo 20 AXE.PWR 1 0
+Отправлена команда AXE.CONS.VIT 20 0 в 21:06
+Отправлено сообщение Evo 20 AXE.CONS.VIT 20 0
+Отправлена команда AXE.ZERO 0 в 21:06
+Отправлено сообщение Evo 20 AXE.ZERO 0
+Отправлена команда AXE.CONS.MOD0 0 в 21:06
+Отправлено сообщение Evo 20 AXE.CONS.MOD0 0
+Отправлена команда AXE.TELL.STA  в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:06
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:06
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:06
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:06
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:06
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:06
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:06
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Не верна строка файла настроек:81
+Соединение c Evo 20 установлено
+Отправлена команда AXE.TELL.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:07
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:07
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Отправлена команда AXE.TELL.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POA 
+Не верна строка файла настроек:81
+Отправлена команда AXE.TELL.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.STA 
+Отправлена команда AXE.UPLD.STA  в 21:08
+Отправлено сообщение Evo 20 AXE.UPLD.STA 
+Отправлена команда AXE.TELL.TJT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 1
+Отправлена команда AXE.TELL.TJT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.TJT 2
+Отправлена команда AXE.TELL.POS 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 1
+Отправлена команда AXE.TELL.POS 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POS 2
+Отправлена команда AXE.TELL.VIT 1 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 1
+Отправлена команда AXE.TELL.VIT 2 в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.VIT 2
+Отправлена команда AXE.TELL.POA  в 21:08
+Отправлено сообщение Evo 20 AXE.TELL.POA 

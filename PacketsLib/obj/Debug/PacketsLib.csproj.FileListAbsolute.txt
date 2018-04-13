@@ -1,0 +1,10 @@
+C:\Users\Азат\Desktop\evo\Evo-20form\PacketsLib\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Азат\Desktop\evo\Evo-20form\PacketsLib\bin\Debug\PacketsLib.dll
+C:\Users\Азат\Desktop\evo\Evo-20form\PacketsLib\bin\Debug\PacketsLib.pdb
+C:\Users\Азат\Desktop\evo\Evo-20form\PacketsLib\obj\Debug\PacketsLib.dll
+C:\Users\Азат\Desktop\evo\Evo-20form\PacketsLib\obj\Debug\PacketsLib.pdb
+C:\Users\Азат\Desktop\Новая папка (3)\evo\Evo-20form\PacketsLib\bin\Debug\PacketsLib.dll
+C:\Users\Азат\Desktop\Новая папка (3)\evo\Evo-20form\PacketsLib\bin\Debug\PacketsLib.pdb
+C:\Users\Азат\Desktop\Новая папка (3)\evo\Evo-20form\PacketsLib\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Азат\Desktop\Новая папка (3)\evo\Evo-20form\PacketsLib\obj\Debug\PacketsLib.dll
+C:\Users\Азат\Desktop\Новая папка (3)\evo\Evo-20form\PacketsLib\obj\Debug\PacketsLib.pdb

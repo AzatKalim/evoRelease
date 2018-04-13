@@ -1,0 +1,107 @@
+C:\Users\Азат\Desktop\Evo-20form\Evo-20form\bin\Debug\Evo-20form.exe
+C:\Users\Азат\Desktop\Evo-20form\Evo-20form\bin\Debug\Evo-20form.pdb
+C:\Users\Азат\Desktop\Evo-20form\Evo-20form\bin\Debug\Evo_20_commands.dll
+C:\Users\Азат\Desktop\Evo-20form\Evo-20form\bin\Debug\Evo_20_commands.pdb
+C:\Users\Азат\Desktop\Evo-20form\Evo-20form\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Азат\Desktop\Evo-20form\Evo-20form\obj\Debug\Evo_20form.Properties.Resources.resources
+C:\Users\Азат\Desktop\Evo-20form\Evo-20form\obj\Debug\Evo-20form.csproj.GenerateResource.Cache
+C:\Users\Азат\Desktop\Evo-20form\Evo-20form\obj\Debug\Evo-20form.exe
+C:\Users\Азат\Desktop\Evo-20form\Evo-20form\obj\Debug\Evo-20form.pdb
+C:\Users\Азат\Desktop\Evo-20form\Evo-20form\obj\Debug\Evo_20form.MainForm.resources
+C:\Documents and Settings\user\Рабочий стол\Evo-20form\Evo-20form\obj\Debug\Evo-20form.exe
+C:\Documents and Settings\user\Рабочий стол\Evo-20form\Evo-20form\obj\Debug\Evo-20form.pdb
+C:\Documents and Settings\user\Рабочий стол\Evo-20form\Evo-20form\bin\Debug\Evo-20form.exe
+C:\Documents and Settings\user\Рабочий стол\Evo-20form\Evo-20form\bin\Debug\Evo-20form.pdb
+C:\Documents and Settings\user\Рабочий стол\Evo-20form\Evo-20form\bin\Debug\Evo_20_commands.dll
+C:\Documents and Settings\user\Рабочий стол\Evo-20form\Evo-20form\bin\Debug\Evo_20_commands.pdb
+C:\Documents and Settings\user\Рабочий стол\Evo-20form\Evo-20form\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\user\Рабочий стол\Evo-20form\Evo-20form\obj\Debug\Evo_20form.MainForm.resources
+C:\Documents and Settings\user\Рабочий стол\Evo-20form\Evo-20form\obj\Debug\Evo_20form.Properties.Resources.resources
+C:\Documents and Settings\user\Рабочий стол\Evo-20form\Evo-20form\obj\Debug\Evo-20form.csproj.GenerateResource.Cache
+H:\самый полсед работа\Evo-20form\Evo-20form\obj\Debug\Evo-20form.exe
+H:\самый полсед работа\Evo-20form\Evo-20form\obj\Debug\Evo-20form.pdb
+H:\самый полсед работа\Evo-20form\Evo-20form\bin\Debug\Evo-20form.exe
+H:\самый полсед работа\Evo-20form\Evo-20form\bin\Debug\Evo-20form.pdb
+H:\самый полсед работа\Evo-20form\Evo-20form\bin\Debug\Evo_20_commands.dll
+H:\самый полсед работа\Evo-20form\Evo-20form\bin\Debug\Evo_20_commands.pdb
+H:\самый полсед работа\Evo-20form\Evo-20form\obj\Debug\ResolveAssemblyReference.cache
+H:\самый полсед работа\Evo-20form\Evo-20form\obj\Debug\Evo_20form.MainForm.resources
+H:\самый полсед работа\Evo-20form\Evo-20form\obj\Debug\Evo_20form.Properties.Resources.resources
+H:\самый полсед работа\Evo-20form\Evo-20form\obj\Debug\Evo-20form.csproj.GenerateResource.Cache
+F:\самый полсед работа\Evo-20form\Evo-20form\obj\Debug\ResolveAssemblyReference.cache
+F:\самый полсед работа\Evo-20form\Evo-20form\obj\Debug\Evo_20form.MainForm.resources
+F:\самый полсед работа\Evo-20form\Evo-20form\obj\Debug\Evo_20form.Properties.Resources.resources
+F:\самый полсед работа\Evo-20form\Evo-20form\obj\Debug\Evo-20form.csproj.GenerateResource.Cache
+F:\самый полсед работа\Evo-20form\Evo-20form\obj\Debug\Evo-20form.exe
+F:\самый полсед работа\Evo-20form\Evo-20form\obj\Debug\Evo-20form.pdb
+F:\самый полсед работа\Evo-20form\Evo-20form\bin\Debug\Evo-20form.exe
+F:\самый полсед работа\Evo-20form\Evo-20form\bin\Debug\Evo-20form.pdb
+F:\самый полсед работа\Evo-20form\Evo-20form\bin\Debug\Evo_20_commands.dll
+F:\самый полсед работа\Evo-20form\Evo-20form\bin\Debug\Evo_20_commands.pdb
+C:\Users\Азат\Desktop\работа 26.10\Evo-20form\Evo-20form\obj\Debug\Evo-20form.exe
+C:\Users\Азат\Desktop\работа 26.10\Evo-20form\Evo-20form\obj\Debug\Evo-20form.pdb
+C:\Users\Азат\Desktop\работа 26.10\Evo-20form\Evo-20form\bin\Debug\Evo-20form.exe
+C:\Users\Азат\Desktop\работа 26.10\Evo-20form\Evo-20form\bin\Debug\Evo-20form.pdb
+C:\Users\Азат\Desktop\работа 26.10\Evo-20form\Evo-20form\bin\Debug\Evo_20_commands.dll
+C:\Users\Азат\Desktop\работа 26.10\Evo-20form\Evo-20form\bin\Debug\Evo_20_commands.pdb
+C:\Users\Азат\Desktop\работа 26.10\Evo-20form\Evo-20form\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Азат\Desktop\работа 26.10\Evo-20form\Evo-20form\obj\Debug\Evo_20form.MainForm.resources
+C:\Users\Азат\Desktop\работа 26.10\Evo-20form\Evo-20form\obj\Debug\Evo_20form.Properties.Resources.resources
+C:\Users\Азат\Desktop\работа 26.10\Evo-20form\Evo-20form\obj\Debug\Evo-20form.csproj.GenerateResource.Cache
+C:\Users\Азат\Desktop\работа 26.10\Evo-20form\Evo-20form\bin\Debug\ZedGraph.dll
+F:\evo\Evo-20form\Evo-20form\obj\Debug\Evo-20form.exe
+F:\evo\Evo-20form\Evo-20form\obj\Debug\Evo-20form.pdb
+F:\evo\Evo-20form\Evo-20form\bin\Debug\Evo-20form.exe
+F:\evo\Evo-20form\Evo-20form\bin\Debug\Evo-20form.pdb
+F:\evo\Evo-20form\Evo-20form\bin\Debug\Evo_20_commands.dll
+F:\evo\Evo-20form\Evo-20form\bin\Debug\ZedGraph.dll
+F:\evo\Evo-20form\Evo-20form\bin\Debug\Evo_20_commands.pdb
+F:\evo\Evo-20form\Evo-20form\obj\Debug\ResolveAssemblyReference.cache
+F:\evo\Evo-20form\Evo-20form\obj\Debug\Evo_20form.MainForm.resources
+F:\evo\Evo-20form\Evo-20form\obj\Debug\Evo_20form.Properties.Resources.resources
+F:\evo\Evo-20form\Evo-20form\obj\Debug\Evo-20form.csproj.GenerateResource.Cache
+C:\Users\Азат\Desktop\evo\Evo-20form\Evo-20form\obj\Debug\Evo-20form.exe
+C:\Users\Азат\Desktop\evo\Evo-20form\Evo-20form\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Азат\Desktop\evo\Evo-20form\Evo-20form\obj\Debug\Evo_20form.MainForm.resources
+C:\Users\Азат\Desktop\evo\Evo-20form\Evo-20form\obj\Debug\Evo_20form.Properties.Resources.resources
+C:\Users\Азат\Desktop\evo\Evo-20form\Evo-20form\obj\Debug\Evo-20form.csproj.GenerateResource.Cache
+C:\Users\Азат\Desktop\evo\Evo-20form\Evo-20form\bin\Debug\Evo-20form.exe
+C:\Users\Азат\Desktop\evo\Evo-20form\Evo-20form\bin\Debug\Evo-20form.pdb
+C:\Users\Азат\Desktop\evo\Evo-20form\Evo-20form\bin\Debug\Evo_20_commands.dll
+C:\Users\Азат\Desktop\evo\Evo-20form\Evo-20form\bin\Debug\PacketsLib.dll
+C:\Users\Азат\Desktop\evo\Evo-20form\Evo-20form\bin\Debug\ZedGraph.dll
+C:\Users\Азат\Desktop\evo\Evo-20form\Evo-20form\bin\Debug\Evo_20_commands.pdb
+C:\Users\Азат\Desktop\evo\Evo-20form\Evo-20form\bin\Debug\PacketsLib.pdb
+C:\Users\Азат\Desktop\evo\Evo-20form\Evo-20form\obj\Debug\Evo-20form.pdb
+C:\Users\Азат\Desktop\evo\Evo-20form\Evo-20form\bin\Debug\ComputeCoefficients.dll
+C:\Users\Азат\Desktop\evo\Evo-20form\Evo-20form\bin\Debug\ComputeCoefficients.pdb
+F:\азат\работа на телефон\evo\Evo-20form\Evo-20form\bin\Debug\Evo-20form.exe
+F:\азат\работа на телефон\evo\Evo-20form\Evo-20form\bin\Debug\Evo-20form.pdb
+F:\азат\работа на телефон\evo\Evo-20form\Evo-20form\bin\Debug\ComputeCoefficients.dll
+F:\азат\работа на телефон\evo\Evo-20form\Evo-20form\bin\Debug\Evo_20_commands.dll
+F:\азат\работа на телефон\evo\Evo-20form\Evo-20form\bin\Debug\PacketsLib.dll
+F:\азат\работа на телефон\evo\Evo-20form\Evo-20form\bin\Debug\ZedGraph.dll
+F:\азат\работа на телефон\evo\Evo-20form\Evo-20form\bin\Debug\ComputeCoefficients.pdb
+F:\азат\работа на телефон\evo\Evo-20form\Evo-20form\bin\Debug\Evo_20_commands.pdb
+F:\азат\работа на телефон\evo\Evo-20form\Evo-20form\bin\Debug\PacketsLib.pdb
+F:\азат\работа на телефон\evo\Evo-20form\Evo-20form\obj\Debug\ResolveAssemblyReference.cache
+F:\азат\работа на телефон\evo\Evo-20form\Evo-20form\obj\Debug\Evo_20form.MainForm.resources
+F:\азат\работа на телефон\evo\Evo-20form\Evo-20form\obj\Debug\Evo_20form.Properties.Resources.resources
+F:\азат\работа на телефон\evo\Evo-20form\Evo-20form\obj\Debug\Evo-20form.csproj.GenerateResource.Cache
+F:\азат\работа на телефон\evo\Evo-20form\Evo-20form\obj\Debug\Evo-20form.exe
+F:\азат\работа на телефон\evo\Evo-20form\Evo-20form\obj\Debug\Evo-20form.pdb
+C:\Users\Азат\Desktop\Новая папка (3)\evo\Evo-20form\Evo-20form\obj\Debug\Evo-20form.exe
+C:\Users\Азат\Desktop\Новая папка (3)\evo\Evo-20form\Evo-20form\obj\Debug\Evo-20form.pdb
+C:\Users\Азат\Desktop\Новая папка (3)\evo\Evo-20form\Evo-20form\bin\Debug\Evo-20form.exe
+C:\Users\Азат\Desktop\Новая папка (3)\evo\Evo-20form\Evo-20form\bin\Debug\Evo-20form.pdb
+C:\Users\Азат\Desktop\Новая папка (3)\evo\Evo-20form\Evo-20form\bin\Debug\ComputeCoefficients.dll
+C:\Users\Азат\Desktop\Новая папка (3)\evo\Evo-20form\Evo-20form\bin\Debug\Evo_20_commands.dll
+C:\Users\Азат\Desktop\Новая папка (3)\evo\Evo-20form\Evo-20form\bin\Debug\PacketsLib.dll
+C:\Users\Азат\Desktop\Новая папка (3)\evo\Evo-20form\Evo-20form\bin\Debug\ZedGraph.dll
+C:\Users\Азат\Desktop\Новая папка (3)\evo\Evo-20form\Evo-20form\bin\Debug\ComputeCoefficients.pdb
+C:\Users\Азат\Desktop\Новая папка (3)\evo\Evo-20form\Evo-20form\bin\Debug\Evo_20_commands.pdb
+C:\Users\Азат\Desktop\Новая папка (3)\evo\Evo-20form\Evo-20form\bin\Debug\PacketsLib.pdb
+C:\Users\Азат\Desktop\Новая папка (3)\evo\Evo-20form\Evo-20form\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Азат\Desktop\Новая папка (3)\evo\Evo-20form\Evo-20form\obj\Debug\Evo_20form.MainForm.resources
+C:\Users\Азат\Desktop\Новая папка (3)\evo\Evo-20form\Evo-20form\obj\Debug\Evo_20form.Properties.Resources.resources
+C:\Users\Азат\Desktop\Новая папка (3)\evo\Evo-20form\Evo-20form\obj\Debug\Evo-20form.csproj.GenerateResource.Cache

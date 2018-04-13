@@ -1,0 +1,40 @@
+Соединение c Evo 20 установлено
+Соединение c датчиком установленно
+Отправлена команда AXE.TELL.STA  в 14:17
+Отправлена команда CLIM.ETAT True в 14:17
+Сообщение AXE.TELL.STA  Evo 20 не доставлено Возникло исключениеSystem.Net.Sockets.SocketException: Сделана попытка выполнить операцию на сокете для недоступного хоста
+   в System.Net.Sockets.Socket.SendTo(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags, EndPoint remoteEP)
+   в System.Net.Sockets.UdpClient.Send(Byte[] dgram, Int32 bytes, IPEndPoint endPoint)
+   в Evo_20form.ConnectionSocket.SendMessage(String message) в C:\Users\Азат\Desktop\Новая папка (3)\evo\Evo-20form\Evo-20form\EvoConnections\ConnectionSocket.cs:строка 156
+Сообщение CLIM.ETAT True Evo 20 не доставлено Возникло исключениеSystem.Net.Sockets.SocketException: Сделана попытка выполнить операцию на сокете для недоступного хоста
+   в System.Net.Sockets.Socket.SendTo(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags, EndPoint remoteEP)
+   в System.Net.Sockets.UdpClient.Send(Byte[] dgram, Int32 bytes, IPEndPoint endPoint)
+   в Evo_20form.ConnectionSocket.SendMessage(String message) в C:\Users\Азат\Desktop\Новая папка (3)\evo\Evo-20form\Evo-20form\EvoConnections\ConnectionSocket.cs:строка 156
+Отправлена команда AXE.PWR 1 0 в 14:17
+Отправлена команда AXE.ZERO 0 в 14:17
+Отправлена команда AXE.STOP 0 в 14:17
+Отправлена команда AXE.CONS.VIT 20 0 в 14:17
+Отправлена команда AXE.CONS.POS 0 0 в 14:17
+Отправлена команда AXE.STRT 0 в 14:17
+Отправлена команда CLIM.RAMP 2 в 14:17
+Отправлена команда AXE.UPLD.STA  в 14:17
+Отправлена команда CLIM.CONS 15 в 14:17
+Установлена температура камеры 15 скорость набора температtуры 2
+Отправлена команда AXE.TELL.TJT 1 в 14:17
+Отправлена команда AXE.TELL.TJT 2 в 14:17
+Отправлена команда CLIM.TEMP в 14:17
+Отправлена команда AXE.TELL.POS 1 в 14:17
+Отправлена команда AXE.TELL.POS 2 в 14:17
+Отправлена команда AXE.TELL.VIT 1 в 14:17
+Отправлена команда AXE.TELL.VIT 2 в 14:17
+Отправлена команда AXE.TELL.POA в 14:17
+Соединение c датчиком прервано
+Поток чтения Com порта закрыт
+Соединение c Evo 20 прервано
+Соединение c Evo 20 установлено
+Соединение c датчиком прервано
+Соединение c Evo 20 прервано
+Соединение c датчиком прервано
+Соединение c Evo 20 прервано
+Соединение c датчиком прервано
+Соединение c Evo 20 прервано
