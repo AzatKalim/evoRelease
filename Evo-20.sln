@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.EvoCommandsLib", "Evo20.EvoCommandsLib\Evo20.EvoCommandsLib.csproj", "{DB0F53A2-4DD6-4833-8F2C-E0D9224887A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.Form", "Evo20.GUI\Evo20.Form.csproj", "{55BFDA6F-6B07-48EC-901B-464A7B32E3E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.GUI", "Evo20.GUI\Evo20.GUI.csproj", "{55BFDA6F-6B07-48EC-901B-464A7B32E3E6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.Controllers", "Evo20.Controllers\Evo20.Controllers.csproj", "{D1EC6D86-D463-40A7-AA7F-0496527E73A7}"
 EndProject

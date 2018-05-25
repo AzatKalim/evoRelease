@@ -104,6 +104,7 @@
             this.stopButton = new System.Windows.Forms.Button();
             this.pauseButton = new System.Windows.Forms.Button();
             this.startButton = new System.Windows.Forms.Button();
+            this.cycleSettingsButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.Evo_control_page.SuspendLayout();
             this.EvoParamsGroupBox.SuspendLayout();
@@ -868,12 +869,23 @@
             this.startButton.UseVisualStyleBackColor = true;
             this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
+            // cycleSettingsButton
+            // 
+            this.cycleSettingsButton.Location = new System.Drawing.Point(595, 47);
+            this.cycleSettingsButton.Name = "cycleSettingsButton";
+            this.cycleSettingsButton.Size = new System.Drawing.Size(254, 32);
+            this.cycleSettingsButton.TabIndex = 12;
+            this.cycleSettingsButton.Text = "Настройки температур проверки";
+            this.cycleSettingsButton.UseVisualStyleBackColor = true;
+            this.cycleSettingsButton.Click += new System.EventHandler(this.cycleSettingsButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1218, 703);
+            this.Controls.Add(this.cycleSettingsButton);
             this.Controls.Add(this.readDatabutton);
             this.Controls.Add(this.settingsButton);
             this.Controls.Add(this.parameGroupBox);
@@ -990,6 +1002,7 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label temperatureStabLabel;
+        private System.Windows.Forms.Button cycleSettingsButton;
     }
 }
 

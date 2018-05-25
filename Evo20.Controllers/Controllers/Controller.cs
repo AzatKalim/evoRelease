@@ -91,7 +91,7 @@ namespace Evo20.Controllers
         public CycleData cycleData
         {
             get;
-            private set;
+            set;
         }
 
         public SensorData sensorData

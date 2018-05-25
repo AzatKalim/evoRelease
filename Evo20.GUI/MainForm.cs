@@ -554,5 +554,13 @@ namespace Evo_20form
         }
     
         #endregion
+
+        private void cycleSettingsButton_Click(object sender, EventArgs e)
+        {
+            if (controller.cycleData == null)
+                ReadSettings();
+            var cycleForm = new CycleSettingsForm(controller.cycleData);
+            cycleForm.ShowDialog();
+        }
     }
 }
