@@ -1,0 +1,4 @@
+C:\Users\Азат\Desktop\Evo-20form\Evo_20_commands\Evo_20_commands\bin\Release\Evo_20_commands.dll
+C:\Users\Азат\Desktop\Evo-20form\Evo_20_commands\Evo_20_commands\bin\Release\Evo_20_commands.pdb
+C:\Users\Азат\Desktop\Evo-20form\Evo_20_commands\Evo_20_commands\obj\Release\Evo_20_commands.dll
+C:\Users\Азат\Desktop\Evo-20form\Evo_20_commands\Evo_20_commands\obj\Release\Evo_20_commands.pdb

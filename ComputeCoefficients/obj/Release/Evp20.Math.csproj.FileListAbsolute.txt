@@ -1,0 +1,7 @@
+C:\Users\Азат\Desktop\Evo-20form\ComputeCoefficients\bin\Release\ComputeCoefficients.dll
+C:\Users\Азат\Desktop\Evo-20form\ComputeCoefficients\bin\Release\ComputeCoefficients.pdb
+C:\Users\Азат\Desktop\Evo-20form\ComputeCoefficients\bin\Release\CSML.dll
+C:\Users\Азат\Desktop\Evo-20form\ComputeCoefficients\bin\Release\PacketsLib.dll
+C:\Users\Азат\Desktop\Evo-20form\ComputeCoefficients\bin\Release\PacketsLib.pdb
+C:\Users\Азат\Desktop\Evo-20form\ComputeCoefficients\obj\Release\ComputeCoefficients.dll
+C:\Users\Азат\Desktop\Evo-20form\ComputeCoefficients\obj\Release\ComputeCoefficients.pdb

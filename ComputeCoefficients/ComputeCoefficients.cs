@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
 // my libs
 using PacketsLib;
 //lib for matrix 
-using CSML;
 
 namespace ComputeCoefficients
 {
@@ -373,11 +369,7 @@ namespace ComputeCoefficients
             return true;
         }
 
-
         #region Secondary functions
-
-
-    
 
         private static void WriteMatrix(double [,] matrix, ref StreamWriter file)
         {
@@ -406,6 +398,7 @@ namespace ComputeCoefficients
                 }
             }
         }
+
         #endregion
     }
 }

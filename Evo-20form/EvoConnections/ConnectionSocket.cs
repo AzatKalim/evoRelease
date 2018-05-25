@@ -3,69 +3,122 @@ using System.Text;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using Evo_20form.Utils;
+using System.Configuration;
+using System.Collections.Specialized;
 
-namespace Evo_20form
-{
+namespace Evo_20form.EvoConnections
+{ 
     /// <summary>
-    /// Состояния соединения 
-    /// </summary>
-    public enum ConnectionState
-    {
-        CONNECTED,
-        DISCONNECTED,
-        PAUSE,
-        ERROR
-    }
-
-    /// <summary>
-    /// Класс для работы с Evo-20 через udp 
+    /// Класс для работы с Evo-20 через udp протокол
     /// </summary>
     class ConnectionSocket
     {
-        //делегат для события 
-        public delegate void ConnectionHandler();
-
-        /// <summary>
-        /// События прихода нового сообщения 
-        /// </summary>
-        protected event ConnectionHandler EventHandlersListForCommand;
+        #region Constants
 
         //номер порта приходящих сообщений 
-        const int LOCAL_PORT_NUMBER = 1068;
+        static int LOCAL_PORT_NUMBER = Convert.ToInt32(ConfigurationManager.AppSettings.Get("LocalPortNumber"));
+
         //номер удаленного порта 
-        const int REMOTE_PORT_NUMBER = 531;
-    
+        static int REMOTE_PORT_NUMBER = Convert.ToInt32(ConfigurationManager.AppSettings.Get("RemotePortNumber"));
+
+        //ip адресс удаленного компьютера 
+        static string REMOTE_IP_ADRESS = ConfigurationManager.AppSettings.Get("RemoteIPAdress");
+
+        #endregion
+
+        #region Delegates and events
+        //делегат для события 
+        public delegate void ConnectionSocketHandler();
+
+        //делегат для события изменения состояния
+        public delegate void ConnectionSocketStateHandler(ConnectionStatus state);
+        //делегат для события возникновения ошибки
+        public delegate void ConnectionSocketExceptionHandler(Exception exeption);
+
+        // События прихода нового сообщения 
+        protected event ConnectionSocketHandler EventHandlersListForCommand;
+        // Событие изменения состояния 
+        public event ConnectionSocketStateHandler EventHandlerListForStateChanged; 
+
+        //Событие ошибки выполнения
+        public event ConnectionSocketExceptionHandler EventHandlerListForException;
+
+        #endregion
+
+        #region Private Fields
+
+        //ip адресс удаленного компьютера 
+        private static IPAddress remoteIPAddress = IPAddress.Parse(REMOTE_IP_ADRESS);
+          
+        IPEndPoint endPoint;
+
+        UdpClient receivingUdpClient;
+
+        //Состояние соединения 
+        private ConnectionStatus connectionState;
+
+        #endregion
+
+        #region Protected Fields
+
         protected byte[] buffer;
 
         protected Thread work_thread;
 
-        public ConnectionState connectionState;
-
         protected UdpClient sender;
 
-        IPEndPoint endPoint;
+        #endregion
 
-        //ip адресс удаленного компьютера 
-        private static IPAddress remoteIPAddress = IPAddress.Parse("192.168.0.1");
+        //Свойство соятояния соединения
+        public ConnectionStatus ConnectionStatus
+        {
+            get
+            {
+                return connectionState;
+            }
+            protected set
+            {
+                // изменяем сотояние системы
+                connectionState = value;
+                // вызываем событие изменения состояния 
+                if(EventHandlerListForStateChanged!=null)                
+                    EventHandlerListForStateChanged(value);
+            }
+        }
 
+ 
         public ConnectionSocket()
         {
             buffer = new byte[2048];
             work_thread = new Thread(ReadMessage);
             work_thread.IsBackground = true;
-            connectionState = ConnectionState.DISCONNECTED;
+            connectionState = ConnectionStatus.DISCONNECTED;
+            receivingUdpClient = null;
         }
+
+        //Деструктор класса
+        ~ConnectionSocket()
+        {
+            if (connectionState != ConnectionStatus.CONNECTED)
+            {
+                work_thread.Abort();
+            }
+        }
+
+        #region Start, stop and pause methods
         /// <summary>
         /// Запуск соединения 
         /// </summary>
         /// <returns> результат запуска </returns>
         public bool StartConnection()
         {
-            if (connectionState == ConnectionState.DISCONNECTED)
+            if (connectionState == ConnectionStatus.DISCONNECTED)
             {                                
-                connectionState = ConnectionState.CONNECTED;
+                connectionState = ConnectionStatus.CONNECTED;
                 if (!work_thread.IsAlive)
                 {
+                    work_thread= new Thread(ReadMessage);
                     work_thread.Start();
                 }
                 Log.WriteLog("Соединение c Evo 20 установлено");
@@ -83,10 +136,10 @@ namespace Evo_20form
         /// <returns></returns>
         public bool PauseConnection()
         {
-            if (connectionState == ConnectionState.CONNECTED)
+            if (connectionState == ConnectionStatus.CONNECTED)
             {
                 work_thread.Abort();
-                connectionState = ConnectionState.PAUSE;
+                connectionState = ConnectionStatus.PAUSE;
                 Log.WriteLog("Соединение c Evo 20 приостановлено");
                 return true;
             }
@@ -102,10 +155,11 @@ namespace Evo_20form
         /// <returns></returns>
         public bool ResumeConnection()
         {
-            if (connectionState == ConnectionState.PAUSE)
+            if (connectionState == ConnectionStatus.PAUSE)
             {
+                work_thread = new Thread(ReadMessage);
                 work_thread.Start();
-                connectionState = ConnectionState.CONNECTED;
+                connectionState = ConnectionStatus.CONNECTED;
                 Log.WriteLog("Соединение c Evo 20 востановлено");
                 return true;
             }
@@ -125,19 +179,16 @@ namespace Evo_20form
             {
                 work_thread.Abort();
             }
-            connectionState = ConnectionState.DISCONNECTED;
+            connectionState = ConnectionStatus.DISCONNECTED;
+            if(receivingUdpClient!=null)
+                receivingUdpClient.Close();
             Log.WriteLog("Соединение c Evo 20 прервано");
             return true;
         }
 
-        //Деструктор класса
-        ~ConnectionSocket()
-        {
-            if (connectionState != ConnectionState.CONNECTED)
-            {
-                work_thread.Abort();
-            }
-        }
+        #endregion
+
+        #region Read Send Functions
 
         /// <summary>
         /// Отправка сообщения по udp протоколу
@@ -150,7 +201,7 @@ namespace Evo_20form
             endPoint = new IPEndPoint(remoteIPAddress, REMOTE_PORT_NUMBER);
             try
             {
-                if (connectionState == ConnectionState.CONNECTED)
+                if (connectionState == ConnectionStatus.CONNECTED)
                 {
                     byte[] bytes = Encoding.UTF8.GetBytes(message);
                     sender.Send(bytes, bytes.Length,endPoint);
@@ -161,11 +212,13 @@ namespace Evo_20form
                     return false;
                 }
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
-                connectionState = ConnectionState.ERROR;
-                Log.WriteLog("Сообщение " + message + " Evo 20 не доставлено " + "Возникло исключение" + ex);
+                connectionState = ConnectionStatus.ERROR;
+                Log.WriteLog("Сообщение " + message + " Evo 20 не доставлено " + "Возникло исключение" + exception);
                 sender.Close();
+                if (EventHandlerListForException != null)
+                    EventHandlerListForException(exception);
                 return false;
             }
             finally
@@ -179,15 +232,16 @@ namespace Evo_20form
         /// </summary>
         protected void ReadMessage()
         {
-            UdpClient receivingUdpClient=null;
             try
             {
                 receivingUdpClient = new UdpClient(LOCAL_PORT_NUMBER);
             }
-            catch(Exception ex)
+            catch(Exception exception)
             {
-                connectionState = ConnectionState.ERROR;
-                Log.WriteLog("Невозможно открыть соединение с Evo " + "Возникло исключение" + ex);
+                connectionState = ConnectionStatus.ERROR;
+                Log.WriteLog("Невозможно открыть соединение с Evo " + "Возникло исключение" + exception.ToString());
+                if (EventHandlerListForException != null)
+                    EventHandlerListForException(exception);
                 return;
             }
 
@@ -195,7 +249,7 @@ namespace Evo_20form
 
             try
             {
-                while (connectionState == ConnectionState.CONNECTED)
+                while (connectionState == ConnectionStatus.CONNECTED)
                 {
                     byte[] receiveBytes = receivingUdpClient.Receive(
                        ref RemoteIpEndPoint);
@@ -209,11 +263,20 @@ namespace Evo_20form
                     EventHandlersListForCommand();
                 }
             }
+            catch (ThreadAbortException)
+            {
+            }
+            catch (Exception exception)
+            {
+                if (EventHandlerListForException != null)
+                    EventHandlerListForException(exception);
+            }
             finally
             {
                 receivingUdpClient.Close();
             }
         }
+
 
         /// <summary>
         /// Метод возвращает значение хранящееся в буффере 
@@ -228,6 +291,8 @@ namespace Evo_20form
                 buffer=new byte[2048];
             }
             return message.ToString();
-        }  
+        }
+
+        #endregion
     }
 }

@@ -3,30 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections;
+using System.Configuration;
 
 namespace PacketsLib
 {
     public class Packet
     {
         //позиция служебных  байт в пакете
-        public const int HEAD_BEGIN = 0;
-        public const int ID_BEGIN = 38;
-        public const int CHECK_BEGIN = 40;
+        public static int HEAD_BEGIN = Convert.ToInt32(ConfigurationManager.AppSettings.Get("HeadBegin"));
+        public static int ID_BEGIN = Convert.ToInt32(ConfigurationManager.AppSettings.Get("IdBegin"));
+        public static int CHECK_BEGIN = Convert.ToInt32(ConfigurationManager.AppSettings.Get("CheckBegin"));
         //позиция информационных байт в пакете
-        public const int W_X_BEGIN = 2;
-        public const int W_Y_BEGIN = 6;
-        public const int W_Z_BEGIN = 10;
+        public static int W_X_BEGIN = Convert.ToInt32(ConfigurationManager.AppSettings.Get("W_X_Begin"));
+        public static int W_Y_BEGIN = Convert.ToInt32(ConfigurationManager.AppSettings.Get("W_Y_Begin"));
+        public static int W_Z_BEGIN = Convert.ToInt32(ConfigurationManager.AppSettings.Get("W_Z_Begin"));
 
-        public const int A_X_BEGIN = 14;
-        public const int A_Y_BEGIN = 18;
-        public const int A_Z_BEGIN = 22;
+        public static int A_X_BEGIN = Convert.ToInt32(ConfigurationManager.AppSettings.Get("A_X_Begin"));
+        public static int A_Y_BEGIN = Convert.ToInt32(ConfigurationManager.AppSettings.Get("A_Y_Begin"));
+        public static int A_Z_BEGIN = Convert.ToInt32(ConfigurationManager.AppSettings.Get("A_Z_Begin"));
 
-        public const int U_X_BEGIN = 26;
-        public const int U_Y_BEGIN = 30;
-        public const int U_Z_BEGIN = 34;
+        public static int U_X_BEGIN = Convert.ToInt32(ConfigurationManager.AppSettings.Get("U_X_Begin"));
+        public static int U_Y_BEGIN = Convert.ToInt32(ConfigurationManager.AppSettings.Get("U_Y_Begin"));
+        public static int U_Z_BEGIN = Convert.ToInt32(ConfigurationManager.AppSettings.Get("U_Z_Begin"));
 
-        public const int PARAMS_COUNT = 3;
-        public const int PACKET_SIZE = 42;
+        public static int PARAMS_COUNT = Convert.ToInt32(ConfigurationManager.AppSettings.Get("ParamsCount"));
+        public static int PACKET_SIZE = Convert.ToInt32(ConfigurationManager.AppSettings.Get("PacketSize"));
 
         const int W_STRING_NUMBER = 1;
         const int A_STRING_NUMBER = 4;
@@ -52,7 +53,13 @@ namespace PacketsLib
             get;
             private set;
         }
-
+        /// <summary>
+        /// Конструктор класса пакет (id 1 и 2 )
+        /// </summary>
+        /// <param name="w"> массив w(гироскоп)</param>
+        /// <param name="a">массив a(акселерометр)</param>
+        /// <param name="u">массив u(термодатчик)</param>
+        /// <param name="id">идентификатор пакета </param>
         public Packet(int[] w, int[] a, int[] u, int id)
         {
             this.w = w;
@@ -61,6 +68,12 @@ namespace PacketsLib
             this.id = id;
         }
 
+        /// <summary>
+        /// Конструктор класса пакет(для id 3 и 4) 
+        /// </summary>
+        /// <param name="w"> массив w(гироскоп)</param>
+        /// <param name="a">массив a(акселерометр)</param>
+        /// <param name="id">идентификатор пакета </param>
         public Packet(int[] w, int[] a, int id)
         {
             this.id = id;
@@ -68,14 +81,20 @@ namespace PacketsLib
             this.a = a;
         }
 
+        /// <summary>
+        /// Преобразует пакет в читаемую строку 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
-            string buffer = id.ToString() + " " + w[0].ToString() + " " + w[1].ToString() + " " + w[2].ToString() + " "
-            + a[0].ToString() + " " + a[1].ToString() + " " + a[2].ToString() + " "
-            + u[0].ToString() + " " + u[1].ToString() + " " + u[2].ToString() + " ";
+            string buffer = string.Format(" id: {0}. w: {1}, {2}, {3}. a: {4}, {5}, {6}. u: {7}, {8}, {9}.",id,w[0],w[1],w[2],a[0],a[1],a[2],u[0],u[1],u[2]);
             return buffer;
         }
 
+        /// <summary>
+        /// Не работает пока 
+        /// </summary>
+        /// <param name="input"></param>
         public Packet(string input)
         {
             string[] tmp = input.Split(' ');
@@ -162,8 +181,7 @@ namespace PacketsLib
 
         private static int ConvertParam(byte[] bytes, ref bool rangeFlag, ref bool dataFlag)
         {
-            bool sign = true;
-            //byte[] reversBits = ReversBits(bytes);
+            bool sign = true;          
             int res = BitConverter.ToInt32(bytes, 0);
             if ((res & int.MinValue) == int.MinValue)
                 sign = false;
@@ -176,20 +194,6 @@ namespace PacketsLib
                 return -res;
             else
                 return res;
-        }
-
-        private static byte[] ReversBits(byte[] bytes)
-        {
-            var array = new BitArray(bytes);
-            for (int i = 0; i < array.Length / 2; i++)
-            {
-                bool temp = array[i];
-                array[i] = array[array.Length - 1 - i];
-                array[array.Length - 1 - i] = temp;
-            }
-            var result = new byte[4];
-            array.CopyTo(result, 0);
-            return result;
         }
 
          /// <summary>
