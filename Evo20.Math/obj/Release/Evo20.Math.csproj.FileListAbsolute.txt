@@ -1,0 +1,9 @@
+C:\Users\Азат\Desktop\Evo-20form\Evo20.Math\obj\Release\Evo20.Math.csprojResolveAssemblyReference.cache
+C:\Users\Азат\Desktop\Evo-20form\Evo20.Math\bin\Release\Evo20.Math.dll
+C:\Users\Азат\Desktop\Evo-20form\Evo20.Math\bin\Release\Evo20.Math.pdb
+C:\Users\Азат\Desktop\Evo-20form\Evo20.Math\bin\Release\Evo20.EvoCommandsLib.dll
+C:\Users\Азат\Desktop\Evo-20form\Evo20.Math\bin\Release\PacketsLib.dll
+C:\Users\Азат\Desktop\Evo-20form\Evo20.Math\bin\Release\Evo20.EvoCommandsLib.pdb
+C:\Users\Азат\Desktop\Evo-20form\Evo20.Math\bin\Release\PacketsLib.pdb
+C:\Users\Азат\Desktop\Evo-20form\Evo20.Math\obj\Release\Evo20.Math.dll
+C:\Users\Азат\Desktop\Evo-20form\Evo20.Math\obj\Release\Evo20.Math.pdb

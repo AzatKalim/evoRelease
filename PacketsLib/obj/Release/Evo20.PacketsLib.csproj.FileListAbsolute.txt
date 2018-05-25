@@ -1,5 +1,0 @@
-C:\Users\Азат\Desktop\Evo-20form\PacketsLib\bin\Release\PacketsLib.dll.config
-C:\Users\Азат\Desktop\Evo-20form\PacketsLib\bin\Release\PacketsLib.dll
-C:\Users\Азат\Desktop\Evo-20form\PacketsLib\bin\Release\PacketsLib.pdb
-C:\Users\Азат\Desktop\Evo-20form\PacketsLib\obj\Release\PacketsLib.dll
-C:\Users\Азат\Desktop\Evo-20form\PacketsLib\obj\Release\PacketsLib.pdb

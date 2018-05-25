@@ -1,20 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.Form", "Evo-20form\Evo20.Form.csproj", "{55BFDA6F-6B07-48EC-901B-464A7B32E3E6}"
-	ProjectSection(ProjectDependencies) = postProject
-		{95A534BD-9A78-4006-AC57-4502AE771634} = {95A534BD-9A78-4006-AC57-4502AE771634}
-		{80F403E1-9B8C-4F96-9A89-724EA9633197} = {80F403E1-9B8C-4F96-9A89-724EA9633197}
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.EvoCommandsLib", "Evo20.EvoCommandsLib\Evo20.EvoCommandsLib.csproj", "{DB0F53A2-4DD6-4833-8F2C-E0D9224887A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evp20.Math", "ComputeCoefficients\Evp20.Math.csproj", "{80F403E1-9B8C-4F96-9A89-724EA9633197}"
-	ProjectSection(ProjectDependencies) = postProject
-		{95A534BD-9A78-4006-AC57-4502AE771634} = {95A534BD-9A78-4006-AC57-4502AE771634}
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.Form", "Evo20.GUI\Evo20.Form.csproj", "{55BFDA6F-6B07-48EC-901B-464A7B32E3E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.PacketsLib", "PacketsLib\Evo20.PacketsLib.csproj", "{95A534BD-9A78-4006-AC57-4502AE771634}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.Controllers", "Evo20.Controllers\Evo20.Controllers.csproj", "{D1EC6D86-D463-40A7-AA7F-0496527E73A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.CommandsLib", "Evo_20_commands\Evo_20_commands\Evo20.CommandsLib.csproj", "{A1BB1D5C-2494-4546-A5E1-4EFE93BCF8E8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.EvoConnections", "Evo20.EvoConnections\Evo20.EvoConnections.csproj", "{88519C5A-4A66-4124-83EB-236C7A871969}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.Log", "Evo20.Log\Evo20.Log.csproj", "{F7D67C8B-CB61-4A20-90BA-ECF1006632C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.Math", "Evo20.Math\Evo20.Math.csproj", "{BA19E375-6FBE-4A3B-8F9D-234FD9208C73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.PacketsLib", "Evo20.PacketsLib\Evo20.PacketsLib.csproj", "{95A534BD-9A78-4006-AC57-4502AE771634}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.SensorsConnection", "Evo20.SensorConnection\Evo20.SensorsConnection.csproj", "{52144779-C8B6-47B1-AB89-3F1C9BD8CE0F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,22 +23,38 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB0F53A2-4DD6-4833-8F2C-E0D9224887A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB0F53A2-4DD6-4833-8F2C-E0D9224887A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB0F53A2-4DD6-4833-8F2C-E0D9224887A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB0F53A2-4DD6-4833-8F2C-E0D9224887A4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{55BFDA6F-6B07-48EC-901B-464A7B32E3E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{55BFDA6F-6B07-48EC-901B-464A7B32E3E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55BFDA6F-6B07-48EC-901B-464A7B32E3E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55BFDA6F-6B07-48EC-901B-464A7B32E3E6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{80F403E1-9B8C-4F96-9A89-724EA9633197}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{80F403E1-9B8C-4F96-9A89-724EA9633197}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{80F403E1-9B8C-4F96-9A89-724EA9633197}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{80F403E1-9B8C-4F96-9A89-724EA9633197}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1EC6D86-D463-40A7-AA7F-0496527E73A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1EC6D86-D463-40A7-AA7F-0496527E73A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1EC6D86-D463-40A7-AA7F-0496527E73A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1EC6D86-D463-40A7-AA7F-0496527E73A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88519C5A-4A66-4124-83EB-236C7A871969}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88519C5A-4A66-4124-83EB-236C7A871969}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88519C5A-4A66-4124-83EB-236C7A871969}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88519C5A-4A66-4124-83EB-236C7A871969}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7D67C8B-CB61-4A20-90BA-ECF1006632C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7D67C8B-CB61-4A20-90BA-ECF1006632C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7D67C8B-CB61-4A20-90BA-ECF1006632C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7D67C8B-CB61-4A20-90BA-ECF1006632C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA19E375-6FBE-4A3B-8F9D-234FD9208C73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA19E375-6FBE-4A3B-8F9D-234FD9208C73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA19E375-6FBE-4A3B-8F9D-234FD9208C73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA19E375-6FBE-4A3B-8F9D-234FD9208C73}.Release|Any CPU.Build.0 = Release|Any CPU
 		{95A534BD-9A78-4006-AC57-4502AE771634}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{95A534BD-9A78-4006-AC57-4502AE771634}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95A534BD-9A78-4006-AC57-4502AE771634}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95A534BD-9A78-4006-AC57-4502AE771634}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A1BB1D5C-2494-4546-A5E1-4EFE93BCF8E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A1BB1D5C-2494-4546-A5E1-4EFE93BCF8E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A1BB1D5C-2494-4546-A5E1-4EFE93BCF8E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A1BB1D5C-2494-4546-A5E1-4EFE93BCF8E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52144779-C8B6-47B1-AB89-3F1C9BD8CE0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52144779-C8B6-47B1-AB89-3F1C9BD8CE0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52144779-C8B6-47B1-AB89-3F1C9BD8CE0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52144779-C8B6-47B1-AB89-3F1C9BD8CE0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
