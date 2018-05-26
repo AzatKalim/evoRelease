@@ -32,6 +32,8 @@ namespace Evo20.Controllers
         //Время стабилизации температуры в режиме проверки
         public int checkStabTime;
 
+        public int MaxTemperatureFromSettings;
+
         public CycleData()
         {
             CalibrationTemperatures = new List<int>();

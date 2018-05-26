@@ -66,42 +66,42 @@ namespace Evo20.SensorsConnection
             }
         }
 
-        //public bool WriteAllPackets(StreamWriter file)
-        //{
-        //    if (calibrationDLYPacketsCollection == null || calibrationDLYPacketsCollection.Length == 0)
-        //    {
-        //        file.WriteLine("Нет пакетов по калибровке ДЛУ");
-        //    }
-        //    else
-        //    {
-        //        WritePackets(file, calibrationDLYPacketsCollection);
-        //    }
-        //    if (calibrationDYSPacketsCollection == null || calibrationDYSPacketsCollection.Length == 0)
-        //    {
-        //        file.WriteLine("Нет пакетов по калибровке ДУС");
-        //    }
-        //    else
-        //    {
-        //        WritePackets(file, calibrationDYSPacketsCollection);
-        //    }
-        //    if (checkDLYPacketsCollection == null || checkDLYPacketsCollection.Length == 0)
-        //    {
-        //        file.WriteLine("Нет пакетов по Проверка ДЛУ");
-        //    }
-        //    else
-        //    {
-        //        WritePackets(file, checkDLYPacketsCollection);
-        //    }
-        //    if (checkDYSPacketsCollection == null || checkDYSPacketsCollection.Length == 0)
-        //    {
-        //        file.WriteLine("Нет пакетов по Проверка ДУС");
-        //    }
-        //    else
-        //    {
-        //        WritePackets(file, checkDYSPacketsCollection);
-        //    }
-        //    return true;
-        //}
+        public bool WriteAllPackets(ISensor[] sensors,StreamWriter file)
+        {
+            if (sensors[0].CalibrationPacketsCollection == null || sensors[0].CalibrationPacketsCollection.Length == 0)
+            {
+                file.WriteLine("Нет пакетов по калибровке ДЛУ");
+            }
+            else
+            {
+                WritePackets(file, sensors[0].CalibrationPacketsCollection);
+            }
+            if (sensors[1].CalibrationPacketsCollection == null || sensors[1].CalibrationPacketsCollection.Length == 0)
+            {
+                file.WriteLine("Нет пакетов по калибровке ДУС");
+            }
+            else
+            {
+                WritePackets(file, sensors[0].CalibrationPacketsCollection);
+            }
+            if (sensors[0].CheckPacketsCollection == null || sensors[0].CheckPacketsCollection.Length == 0)
+            {
+                file.WriteLine("Нет пакетов по Проверка ДЛУ");
+            }
+            else
+            {
+                WritePackets(file, sensors[0].CheckPacketsCollection);
+            }
+            if (sensors[1].CheckPacketsCollection == null || sensors[1].CheckPacketsCollection.Length == 0)
+            {
+                file.WriteLine("Нет пакетов по Проверка ДУС");
+            }
+            else
+            {
+                WritePackets(file, sensors[1].CheckPacketsCollection);
+            }
+            return true;
+        }
 
         public bool WriteAllPackets()
         {
@@ -129,7 +129,7 @@ namespace Evo20.SensorsConnection
             return true;
         }
 
-        public bool ReadDataFromFile(List<ISensor> sensors,StreamReader file)
+        public bool ReadDataFromFile(ISensor[] sensors,StreamReader file)
         {
             if (!ReadDataFromFile(file, sensors[0].CalibrationPacketsCollection))
             {

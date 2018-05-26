@@ -22,13 +22,13 @@ namespace Evo20.PacketsLib
 
         public PacketsData(StreamReader file)
         {
-            List<Packet> packets = new List<Packet>();
+            var packets = new List<Packet>();
             try
             {
                 for (int i = 0; i < PACKETS_COUNT; i++)
                 {
-                    string packetLine = file.ReadLine();
-                    Packet packet = new Packet(packetLine);
+                    var packetLine = file.ReadLine();
+                    var packet = new Packet(packetLine);
                 }
             }
             catch (FormatException exception)
@@ -45,7 +45,10 @@ namespace Evo20.PacketsLib
             {
                 packetsList.Add(newPackets[i]);
             }
-            newPackets.RemoveRange(0, PACKETS_COUNT);
+            lock (newPackets)
+            {
+                newPackets.RemoveRange(0, PACKETS_COUNT);
+            }
             this.packets = packetsList;
             packets[2].u = packets[0].u;
             packets[3].u = packets[1].u;
@@ -64,7 +67,7 @@ namespace Evo20.PacketsLib
         {
             get
             {
-                double[] w = new double[AXIS_COUNT];
+                var w = new double[AXIS_COUNT];
                 double sum = 0;
                 for (int i = 0; i < w.Length; i++)
                 {
@@ -83,7 +86,7 @@ namespace Evo20.PacketsLib
         {
             get
             {
-                double[] a = new double[AXIS_COUNT];
+                var a = new double[AXIS_COUNT];
                 double sum = 0;
                 for (int i = 0; i < a.Length; i++)
                 {
@@ -103,7 +106,7 @@ namespace Evo20.PacketsLib
         {
             get
             {
-                double[] uw = new double[AXIS_COUNT];
+                var uw = new double[AXIS_COUNT];
                 double sum = 0;
                 for (int i = 0; i < uw.Length; i++)
                 {                   
@@ -120,7 +123,7 @@ namespace Evo20.PacketsLib
         {
             get
             {
-                double[] ua = new double[AXIS_COUNT];
+                var ua = new double[AXIS_COUNT];
                 double sum = 0;
                 for (int i = 0; i < ua.Length; i++)
                 {                    
@@ -135,7 +138,8 @@ namespace Evo20.PacketsLib
 
         public Packet this[int index]
         {
-            get {
+            get 
+            {
                 return packets[index];
             }
         }
@@ -154,7 +158,7 @@ namespace Evo20.PacketsLib
 
         public override string ToString()
         {
-            StringBuilder buffer = new StringBuilder();
+            var buffer = new StringBuilder();
             for (int i = 0; i < packets.Count; i++)
             {
                 buffer.Append(packets[i].ToString() + Environment.NewLine);
@@ -180,7 +184,10 @@ namespace Evo20.PacketsLib
                 {
                     for (int j = 0; j < i && j<packets.Count; j++)
                     {
-                        packets.RemoveAt(j);
+                        lock (packets)
+                        {
+                            packets.RemoveAt(j);
+                        }
                     }
                     i = 0;
                 }

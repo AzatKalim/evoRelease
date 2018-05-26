@@ -1,0 +1,9 @@
+C:\Users\Азат\Desktop\Evo-20form\Evo20.SensorConnection\bin\Debug\Evo20.SensorConnection.dll
+C:\Users\Азат\Desktop\Evo-20form\Evo20.SensorConnection\bin\Debug\Evo20.SensorConnection.pdb
+C:\Users\Азат\Desktop\Evo-20form\Evo20.SensorConnection\bin\Debug\Evo20.Log.dll
+C:\Users\Азат\Desktop\Evo-20form\Evo20.SensorConnection\bin\Debug\PacketsLib.dll
+C:\Users\Азат\Desktop\Evo-20form\Evo20.SensorConnection\bin\Debug\Evo20.Log.pdb
+C:\Users\Азат\Desktop\Evo-20form\Evo20.SensorConnection\bin\Debug\PacketsLib.pdb
+C:\Users\Азат\Desktop\Evo-20form\Evo20.SensorConnection\obj\Debug\Evo20.SensorsConnection.csprojResolveAssemblyReference.cache
+C:\Users\Азат\Desktop\Evo-20form\Evo20.SensorConnection\obj\Debug\Evo20.SensorConnection.dll
+C:\Users\Азат\Desktop\Evo-20form\Evo20.SensorConnection\obj\Debug\Evo20.SensorConnection.pdb

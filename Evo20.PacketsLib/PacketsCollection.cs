@@ -292,16 +292,17 @@ namespace Evo20.PacketsLib
         /// <returns>Читабельную строку </returns>
         public override string ToString()
         {
-            StringBuilder buff = new StringBuilder(temperature + " " + positionPackets.Length+Environment.NewLine);
+            var buff = new StringBuilder(temperature + " " + positionPackets.Length+Environment.NewLine);
             for (int i = 0; i < positionPackets.Length; i++)
             {
                 buff.Append(positionPackets[i].Count+Environment.NewLine);
                 for (int j = 0; j <positionPackets[i].Count; j++)
                 {
-                    buff.Append(positionPackets[i][j]);
+                    buff.Append(positionPackets[i][j]+" ");
                 }
             }
             return buff.ToString();
         }    
+
     }
 }

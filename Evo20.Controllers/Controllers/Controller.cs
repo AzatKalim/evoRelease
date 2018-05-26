@@ -392,13 +392,17 @@ namespace Evo20.Controllers
                 SetTemperature(temperatures[i]);
                 Evo20.Log.Log.WriteLog("Установлена температура камеры " + temperatures[i] + " скорость набора температtуры " + EvoData.SPEED_OF_TEMPERATURE_CHANGE);
                 //Ожидание достижения температуры
-                evoData.temperatureReachedEvent.WaitOne(1000);
+#if !DEBUG
+                evoData.temperatureReachedEvent.WaitOne();
+#endif
                 evoData.temperatureReachedEvent.Reset();
                 Evo20.Log.Log.WriteLog("Температура  " + temperatures[i] + " достигнута");
                 if (EventHandlerListForTemperatureStabilization != null)
                     EventHandlerListForTemperatureStabilization(false);
+#if !DEBUG
                 //ожидание стабилизации температуры
                 Thread.Sleep(StabilizationTime);
+#endif
           
                 temperatureOfCollect = temperatures[i];
                 if (EventHandlerListForTemperatureStabilization != null)
@@ -463,7 +467,7 @@ namespace Evo20.Controllers
                     //ожидаем пока установятся позиции
                     Thread.Sleep(THREADS_SLEEP_TIME);
                     //ожидание сбора пакетов
-                    //CurrentSensor.PacketsCollectedEvent.WaitOne();
+                    CurrentSensor.PacketsCollectedEvent.WaitOne();
                     CurrentSensor.PacketsCollectedEvent.Reset();
 
                     canCollect = false;
@@ -530,7 +534,7 @@ namespace Evo20.Controllers
         /// <returns></returns>
         public bool WritePackets(StreamWriter file)
         {
-            //return sensorData.WriteAllPackets(file);
+            return sensorData.WriteAllPackets(sensorsList.ToArray(),file);
             return true;
         }
 
@@ -541,7 +545,7 @@ namespace Evo20.Controllers
         /// <returns></returns>
         public bool ReadDataFromFile(StreamReader file )
         {
-            sensorData.ReadDataFromFile(sensorsList, file);
+            sensorData.ReadDataFromFile(sensorsList.ToArray(), file);
             return true;
         }
 

@@ -38,11 +38,11 @@ namespace Evo20.SensorsConnection
                 {
                     bufferPacket.RemoveAt(0);
                 }
-                // число пакетов меньше, чем должно быть  
-                if (bufferPacket.Count < PacketsData.PACKETS_COUNT)
-                    return null;
-                return PacketsData.CollectPackages(ref bufferPacket);
             }
+            // число пакетов меньше, чем должно быть  
+            if (bufferPacket.Count < PacketsData.PACKETS_COUNT)
+                return null;
+            return PacketsData.CollectPackages(ref bufferPacket);
         }
 
         /// <summary>
@@ -61,24 +61,25 @@ namespace Evo20.SensorsConnection
                 return;
             }
             List<byte> temp = new List<byte>();
+            // находим стартовые байты пакета 
+            bool isBeginFinded = Packet.FindPacketBegin(ref bufferMessage);
+            if (!isBeginFinded || bufferMessage.Count < Packet.PACKET_SIZE)
+            {
+                dropedPackets++;
+                return;
+            }
+            // извлекаем  байты в колличестве размера пакета в список 
+            for (int i = 0; i < Packet.PACKET_SIZE; i++)
+            {
+                temp.Add(bufferMessage[i]);
+            }
             lock (bufferMessage)
             {
-                // находим стартовые байты пакета 
-                bool isBeginFinded = Packet.FindPacketBegin(ref bufferMessage);
-                if (!isBeginFinded || bufferMessage.Count < Packet.PACKET_SIZE)
-                {
-                    dropedPackets++;
-                    return;
-                }
-                // извлекаем  байты в колличестве размера пакета в список 
-                for (int i = 0; i < Packet.PACKET_SIZE; i++)
-                {
-                    temp.Add(bufferMessage[i]);
-                }
                 bufferMessage.RemoveRange(0, Packet.PACKET_SIZE);
             }
+            
             // получаем информацию из массива байт
-            Packet recognazedPacket = Packet.PacketHandle(temp.ToArray());
+            var recognazedPacket = Packet.PacketHandle(temp.ToArray());
             if (recognazedPacket == null)
             {
                 dropedPackets++;

@@ -318,6 +318,7 @@ namespace Evo_20form
 
         private void readDataButton_Click(object sender, EventArgs e)
         {
+            return;
             SaveFileDialog dlg = new SaveFileDialog();
             dlg.Filter = "Все файлы (*.*)|*.*";
             dlg.CheckFileExists = true;
@@ -461,6 +462,7 @@ namespace Evo_20form
                     ComputeCoefficents();
                 }
             }
+            savePacketsButton_Click(null, null);
         }
 
         private void DrawGrapfic()

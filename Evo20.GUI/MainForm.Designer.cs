@@ -818,7 +818,6 @@
             // 
             // readDatabutton
             // 
-            this.readDatabutton.Enabled = false;
             this.readDatabutton.Location = new System.Drawing.Point(671, 9);
             this.readDatabutton.Name = "readDatabutton";
             this.readDatabutton.Size = new System.Drawing.Size(193, 32);

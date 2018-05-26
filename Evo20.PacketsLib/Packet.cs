@@ -218,14 +218,20 @@ namespace Evo20.PacketsLib
             }
             if (i == buffer.Count)
             {
-                buffer.RemoveRange(0, i - 1);
+                lock (buffer)
+                {
+                    buffer.RemoveRange(0, i - 1);
+                }
                 //Начало пакета не найдено
                 return false;
             }
             else
             {
                 i -= 2;
-                buffer.RemoveRange(0, i);
+                lock (buffer)
+                {
+                    buffer.RemoveRange(0, i);
+                }
                 return true;
             }
         }
