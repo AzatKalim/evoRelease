@@ -16,14 +16,14 @@ namespace Evo20.Controllers
         public List<int> CalibrationTemperatures
         {
             get;
-            private set;
+            set;
         }
 
         //Список температур проверки
         public List<int> CheckTemperatures
         {
             get;
-            private set;
+            set;
         }
 
         //Время стабилизации температуры в режиме калибровки

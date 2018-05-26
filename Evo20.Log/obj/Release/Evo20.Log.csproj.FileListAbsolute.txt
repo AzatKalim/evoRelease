@@ -2,3 +2,4 @@ C:\Users\Азат\Desktop\Evo-20form\Evo20.Log\bin\Release\Evo20.Log.dll
 C:\Users\Азат\Desktop\Evo-20form\Evo20.Log\bin\Release\Evo20.Log.pdb
 C:\Users\Азат\Desktop\Evo-20form\Evo20.Log\obj\Release\Evo20.Log.dll
 C:\Users\Азат\Desktop\Evo-20form\Evo20.Log\obj\Release\Evo20.Log.pdb
+C:\Users\Азат\Desktop\Evo-20form\Evo20.Log\obj\Release\Evo20.Log.csprojResolveAssemblyReference.cache

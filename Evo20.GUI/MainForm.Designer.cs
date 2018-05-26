@@ -821,7 +821,7 @@
             this.readDatabutton.Enabled = false;
             this.readDatabutton.Location = new System.Drawing.Point(671, 9);
             this.readDatabutton.Name = "readDatabutton";
-            this.readDatabutton.Size = new System.Drawing.Size(178, 32);
+            this.readDatabutton.Size = new System.Drawing.Size(193, 32);
             this.readDatabutton.TabIndex = 11;
             this.readDatabutton.Text = "Получить данные из файла ";
             this.readDatabutton.UseVisualStyleBackColor = true;
@@ -871,9 +871,9 @@
             // 
             // cycleSettingsButton
             // 
-            this.cycleSettingsButton.Location = new System.Drawing.Point(595, 47);
+            this.cycleSettingsButton.Location = new System.Drawing.Point(671, 47);
             this.cycleSettingsButton.Name = "cycleSettingsButton";
-            this.cycleSettingsButton.Size = new System.Drawing.Size(254, 32);
+            this.cycleSettingsButton.Size = new System.Drawing.Size(193, 32);
             this.cycleSettingsButton.TabIndex = 12;
             this.cycleSettingsButton.Text = "Настройки температур проверки";
             this.cycleSettingsButton.UseVisualStyleBackColor = true;

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.IO;
-// my libs
-using Evo20.EvoCommandsLib;
-using Evo20.PacketsLib;
+
 
 
 namespace Evo20.Math
@@ -27,35 +25,7 @@ namespace Evo20.Math
         #endregion
 
         #region DLY coefficients
-        // получить коды АЦП из коллекции пакетов
-        private static double[][,] GetADCCodesDLY(PacketsCollection[] packetsCollection)
-        {
-            double[][,] adcCodes = new double[RAW_COUNT][,];
-            for (int i = 0; i < adcCodes.Length; i++)
-			{
-			    adcCodes[i]= new double [packetsCollection.Length, packetsCollection[0].PositionCount];
-			}
-            for (int j = 0; j < packetsCollection.Length; j++)
-            {
-                for (int k = 0; k < packetsCollection[j].PositionCount; k++)
-                {
-                    double[] meanParam = packetsCollection[j].MeanA(k);
-                    for (int i = 0; i < 3; i++)
-                    {
-                        adcCodes[i][j, k] = meanParam[i];
-                    }
-
-                    meanParam = packetsCollection[j].MeanUA(k);
-                    for (int i = 3; i < RAW_COUNT; i++)
-                    {
-                        //переход за границы массива!!!
-                        adcCodes[i][j, k] = meanParam[i - 3];
-                    }
-                }
-            }
-            return adcCodes;
-        }
-
+        
         //Вычислить калибровочные коэффициенты ДЛУ по температуре
         private static double[,] ComputeTemperatureCalibrationCoefficentsDLY(double[][,] adcCodes)
         {
@@ -183,36 +153,9 @@ namespace Evo20.Math
         #endregion
          
         #region DYS coefficents
-
-        // получить коды АЦП из коллекции пакетов
-        private static double[][,] GetADCCodesDYS(PacketsCollection[] packetsCollection)
-        {
-            double[][,] adcCodes = new double[RAW_COUNT][,];
-            for (int i = 0; i < adcCodes.Length; i++)
-            {
-                adcCodes[i] = new double[packetsCollection.Length, packetsCollection[0].PositionCount];
-            }
-            for (int j = 0; j < packetsCollection.Length; j++)
-            {
-                for (int k = 0; k < packetsCollection[j].PositionCount; k++)
-                {
-                    double[] meanParam = packetsCollection[k].MeanW(k);
-                    for (int i = 0; i < RAW_COUNT / 2; i++)
-                    {
-                        adcCodes[i][j, k] = meanParam[i];
-                    }
-
-                    meanParam = packetsCollection[k].MeanUW(k);
-                    for (int i = RAW_COUNT / 2; i < RAW_COUNT; i++)
-                    {
-                        adcCodes[i][j, k] = meanParam[i - RAW_COUNT / 2];
-                    }
-                }
-            }
-            return adcCodes;
-        }
-
+   
         //Вычислить калибровочные коэффициенты ДУC по температуре
+
         private static double[,] ComputeTemperatureCalibrationCoefficentsDYS(double[][,] adcCodes)
         {
             if (adcCodes == null)
@@ -348,13 +291,11 @@ namespace Evo20.Math
         #endregion 
 
 
-        public static bool CalculateCoefficients(PacketsCollection[] packetsDLY, PacketsCollection[] packetsDYS,StreamWriter file)
+        public static bool CalculateCoefficients(double[][,] adcCodesDLY, double[][,] adcCodesDYS, StreamWriter file)
         {
-            double[][,] adcCodesDLY= GetADCCodesDLY(packetsDLY);
             double[,][,] coefficentsDLY = СomputeVectorOfCalibrationCoefficientsDLY(adcCodesDLY);
             double[,] temperatureCoefficentsDLY = ComputeTemperatureCalibrationCoefficentsDLY(adcCodesDLY);
 
-            double[][,] adcCodesDYS = GetADCCodesDYS(packetsDYS);
             double[,][,] coefficentsDYS = СomputVectorOfCalibrationCoefficientsDYS(adcCodesDYS);
             double[,] temperatureCoefficentsDYS = ComputeTemperatureCalibrationCoefficentsDYS(adcCodesDYS);
 

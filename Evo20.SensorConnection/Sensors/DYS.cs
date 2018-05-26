@@ -126,5 +126,31 @@ namespace Evo20.SensorsConnection
             return profile;
         }
 
+        public override double[][,] GetCalibrationADCCodes()
+        {
+            double[][,] adcCodes = new double[RAW_COUNT][,];
+            for (int i = 0; i < adcCodes.Length; i++)
+            {
+                adcCodes[i] = new double[CalibrationPacketsCollection.Length, CalibrationPacketsCollection[0].PositionCount];
+            }
+            for (int j = 0; j < CalibrationPacketsCollection.Length; j++)
+            {
+                for (int k = 0; k < CalibrationPacketsCollection[j].PositionCount; k++)
+                {
+                    double[] meanParam = CalibrationPacketsCollection[k].MeanW(k);
+                    for (int i = 0; i < RAW_COUNT / 2; i++)
+                    {
+                        adcCodes[i][j, k] = meanParam[i];
+                    }
+
+                    meanParam = CalibrationPacketsCollection[k].MeanUW(k);
+                    for (int i = RAW_COUNT / 2; i < RAW_COUNT; i++)
+                    {
+                        adcCodes[i][j, k] = meanParam[i - RAW_COUNT / 2];
+                    }
+                }
+            }
+            return adcCodes;
+        }
     }
 }

@@ -1,4 +1,3 @@
-C:\Users\Азат\Desktop\Evo-20form\Evo20.EvoCommandsLib\obj\Release\Evo20.EvoCommandsLib.csprojResolveAssemblyReference.cache
 C:\Users\Азат\Desktop\Evo-20form\Evo20.EvoCommandsLib\bin\Release\Evo20.EvoCommandsLib.dll.config
 C:\Users\Азат\Desktop\Evo-20form\Evo20.EvoCommandsLib\bin\Release\Evo20.EvoCommandsLib.dll
 C:\Users\Азат\Desktop\Evo-20form\Evo20.EvoCommandsLib\bin\Release\Evo20.EvoCommandsLib.pdb

@@ -4,11 +4,13 @@ using System.Drawing;
 using System.IO;
 using System.IO.Ports;
 using System.Windows.Forms;
-using ZedGraph;
+using System.Configuration;
 
+using ZedGraph;
 using Evo20.Controllers;
 using Evo20.Log;
 using Evo20.EvoConnections;
+
 
 
 namespace Evo_20form
@@ -26,6 +28,8 @@ namespace Evo_20form
 
         DateTime stabilizationStartTime;
 
+        bool isSettingsEntered= false;
+
         bool IsStabilized
         {
             set
@@ -40,7 +44,7 @@ namespace Evo_20form
             }
         }
 
-        string settingsFileName = Controller.DEFAULT_SETTINGS_FILE_NAME;
+        string settingsFileName = ConfigurationManager.AppSettings.Get("DEFAULT_SETTINGS_FILE_NAME");
 
         #region Form load-close functions
 
@@ -284,6 +288,13 @@ namespace Evo_20form
             }
 
         }
+        private void cycleSettingsButton_Click(object sender, EventArgs e)
+        {
+            if (controller.cycleData == null)
+                ReadSettings();
+            var cycleForm = new CycleSettingsForm(controller.cycleData);
+            cycleForm.ShowDialog();
+        }
 
         private void savePacketsButton_Click(object sender, EventArgs e)
         {
@@ -525,7 +536,11 @@ namespace Evo_20form
         }
 
         private bool ReadSettings()
-        {            
+        {
+            if (isSettingsEntered)
+            {
+                return true;
+            }
             //проверка нахождения этого файла в директории
             if (!File.Exists(settingsFileName))
             {
@@ -549,18 +564,14 @@ namespace Evo_20form
                         return false;
                     }
                 }
-            }
-            return controller.ReadSettings(settingsFileName);
+            }        
+            var result=controller.ReadSettings(settingsFileName);
+            if (result)
+                isSettingsEntered = true;
+            return result;
         }
     
         #endregion
-
-        private void cycleSettingsButton_Click(object sender, EventArgs e)
-        {
-            if (controller.cycleData == null)
-                ReadSettings();
-            var cycleForm = new CycleSettingsForm(controller.cycleData);
-            cycleForm.ShowDialog();
-        }
+    
     }
 }

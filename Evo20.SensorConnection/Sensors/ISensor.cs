@@ -128,5 +128,7 @@ namespace Evo20.SensorsConnection
         /// <param name="numberOfPosition">номер позиции</param>
         /// <returns>число пакетов </returns>
         int PacketsArivedCountCheck(int temperature, int numberOfPosition);
+
+        double[][,] GetCalibrationADCCodes();
     }
 }

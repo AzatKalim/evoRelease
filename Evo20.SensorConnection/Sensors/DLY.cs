@@ -83,5 +83,33 @@ namespace Evo20.SensorsConnection
             }
             return profile;
         }
+        // получить коды АЦП из коллекции пакетов
+        public override double[][,] GetCalibrationADCCodes()
+        {
+            double[][,] adcCodes = new double[RAW_COUNT][,];
+            for (int i = 0; i < adcCodes.Length; i++)
+            {
+                adcCodes[i] = new double[CalibrationPacketsCollection.Length, CalibrationPacketsCollection[0].PositionCount];
+            }
+            for (int j = 0; j < CalibrationPacketsCollection.Length; j++)
+            {
+                for (int k = 0; k < CalibrationPacketsCollection[j].PositionCount; k++)
+                {
+                    double[] meanParam = CalibrationPacketsCollection[j].MeanA(k);
+                    for (int i = 0; i < 3; i++)
+                    {
+                        adcCodes[i][j, k] = meanParam[i];
+                    }
+
+                    meanParam = CalibrationPacketsCollection[j].MeanUA(k);
+                    for (int i = 3; i < RAW_COUNT; i++)
+                    {
+                        //переход за границы массива!!!
+                        adcCodes[i][j, k] = meanParam[i - 3];
+                    }
+                }
+            }
+            return adcCodes;
+        }
     }
 }

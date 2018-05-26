@@ -42,7 +42,7 @@ namespace Evo_20form
                 box.TabIndex = i;
                 //box.AutoSize = true;
                 box.Location = new Point(10, i * 20); //vertical
-                CheckPanel.Controls.Add(box);
+                CalibrationPanel.Controls.Add(box);
                 box.CheckedChanged+=temperatureCheckedChanged;
                 calibrationCheckBoxes.Add(box);
 
@@ -54,17 +54,10 @@ namespace Evo_20form
             var box=sender as CheckBox;
             if(box==null)
                 return;
-            //if (!box.Checked)
-            //{
-            //    if(box.TabIndex==0)
-            //    {
-            //        if(calibrationCheckBoxes[1].Checked)
-            //        {
-            //            lastChecked=
-            //        }
-            //    }
-            //    if(calibrationCheckBoxes[box.TabIndex]
-            //}
+            if (!box.Checked)
+            {
+                return;
+            }
             if(lastChecked==null)
             {
                 lastChecked=box;
@@ -98,6 +91,20 @@ namespace Evo_20form
         private void CheckPanel_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void EndConfigurationButton_Click(object sender, EventArgs e)
+        {
+            var resultList=new List<int>();
+            foreach (var item in calibrationCheckBoxes)
+            {
+                if (item.Checked)
+                {
+                    resultList.Add(Convert.ToInt32(item.Text));
+                }
+            }
+            cycleData.CalibrationTemperatures = resultList;
+            cycleData.CheckTemperatures = resultList;
         }
 
     }

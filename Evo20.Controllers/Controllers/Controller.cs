@@ -17,12 +17,6 @@ namespace Evo20.Controllers
 {  
     public class Controller:ControllerEvo
     {
-        #region Constans
-
-        public static string DEFAULT_SETTINGS_FILE_NAME = ConfigurationManager.AppSettings.Get("DEFAULT_SETTINGS_FILE_NAME");
-
-        #endregion 
-
         #region Devegates and Events
 
         public delegate void TemperatureSabilizationHandler(bool result);
@@ -186,8 +180,18 @@ namespace Evo20.Controllers
         /// <returns>true-запуск прошел успешно,false-ошибка</returns>
         public bool Start(string comPortName,WorkMode mode)
         {
+
             if (cycleThread != null && cycleThread.IsAlive)
                 return false;
+            //добавляем в список датчиков ДЛУ и ДУС
+            sensorsList.Add(new DLY(cycleData.CalibrationTemperatures,
+                cycleData.CheckTemperatures,
+                sensorData.CalibrationDLYMaxPacketsCount,
+                sensorData.CheckDLYMaxPacketsCount));
+            sensorsList.Add(new DYS(cycleData.CalibrationTemperatures,
+                cycleData.CheckTemperatures,
+                sensorData.CalibrationDYSMaxPacketsCount,
+                sensorData.CheckDYSMaxPacketsCount));
             switch(mode)
             {
                 case WorkMode.CalibrationMode:              
@@ -347,12 +351,11 @@ namespace Evo20.Controllers
         private void Cycle(List<int> temperatures)
         {
             //профили датчиков
-            List<ProfilePart[]> profiles = null;
+            List<ProfilePart[]> profiles = new List<ProfilePart[]>();
             switch (Mode)
             {
                 case WorkMode.CalibrationMode:
                     {
-                        profiles = new List<ProfilePart[]>();
                         foreach (var sensor in sensorsList)
                         {
                             profiles.Add(sensor.CalibrationProfile);
@@ -360,7 +363,6 @@ namespace Evo20.Controllers
                     }
                     break;
                 case WorkMode.CheckMode:
-                    profiles = new List<ProfilePart[]>();
                     foreach (var sensor in sensorsList)
                     {
                         profiles.Add(sensor.CheckProfile);
@@ -509,8 +511,8 @@ namespace Evo20.Controllers
         /// <returns>true- выполнено успешно,false-возникла ошибка </returns>
         public bool ComputeCoefficents(StreamWriter file)
         {
-            bool result= CalculatorCoefficients.CalculateCoefficients(sensorsList[0].CalibrationPacketsCollection,
-                sensorsList[1].CalibrationPacketsCollection,
+            bool result= CalculatorCoefficients.CalculateCoefficients(sensorsList[0].GetCalibrationADCCodes(),
+                sensorsList[1].GetCalibrationADCCodes(),
                 file);
             if (!result)  
             {
@@ -552,7 +554,7 @@ namespace Evo20.Controllers
         {         
             //Попытка чтения из файла
             try
-            {             
+            {
                 Encoding enc = Encoding.GetEncoding(1251);
                 StreamReader file = new StreamReader(fileName, enc);
                 if (!cycleData.ReadSettings(ref file))
@@ -569,16 +571,7 @@ namespace Evo20.Controllers
             {
                 Evo20.Log.Log.WriteLog("Возникла ошибка чтения файла настроек" + exception.ToString());
                 throw exception;
-            }
-            //добавляем в список датчиков ДЛУ и ДУС
-            sensorsList.Add(new DLY(cycleData.CalibrationTemperatures,
-                cycleData.CheckTemperatures,
-                sensorData.CalibrationDLYMaxPacketsCount,
-                sensorData.CheckDLYMaxPacketsCount));
-            sensorsList.Add(new DYS(cycleData.CalibrationTemperatures,
-                cycleData.CheckTemperatures,
-                sensorData.CalibrationDYSMaxPacketsCount,
-                sensorData.CheckDYSMaxPacketsCount));
+            }        
             return true;
         }
 

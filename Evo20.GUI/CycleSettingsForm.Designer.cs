@@ -30,46 +30,60 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CycleSettingsForm));
             this.CalibrationPanel = new System.Windows.Forms.Panel();
-            this.CheckPanel = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.EndConfigurationButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CalibrationPanel
             // 
             this.CalibrationPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.CalibrationPanel.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.CalibrationPanel.Location = new System.Drawing.Point(2, 3);
+            this.CalibrationPanel.Location = new System.Drawing.Point(98, 30);
             this.CalibrationPanel.Name = "CalibrationPanel";
             this.CalibrationPanel.Size = new System.Drawing.Size(275, 394);
             this.CalibrationPanel.TabIndex = 0;
             // 
-            // CheckPanel
+            // label1
             // 
-            this.CheckPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.CheckPanel.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.CheckPanel.Location = new System.Drawing.Point(360, 3);
-            this.CheckPanel.Name = "CheckPanel";
-            this.CheckPanel.Size = new System.Drawing.Size(275, 394);
-            this.CheckPanel.TabIndex = 1;
-            this.CheckPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.CheckPanel_Paint);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(95, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(393, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Tag = "";
+            this.label1.Text = "Выбор температур. Если выбор не полон, потребуется загрузка из файла!!!";
+            // 
+            // EndConfigurationButton
+            // 
+            this.EndConfigurationButton.Location = new System.Drawing.Point(98, 435);
+            this.EndConfigurationButton.Name = "EndConfigurationButton";
+            this.EndConfigurationButton.Size = new System.Drawing.Size(162, 23);
+            this.EndConfigurationButton.TabIndex = 2;
+            this.EndConfigurationButton.Text = "Завершить настройку";
+            this.EndConfigurationButton.UseVisualStyleBackColor = true;
+            this.EndConfigurationButton.Click += new System.EventHandler(this.EndConfigurationButton_Click);
             // 
             // CycleSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(783, 470);
-            this.Controls.Add(this.CheckPanel);
+            this.ClientSize = new System.Drawing.Size(496, 470);
+            this.Controls.Add(this.EndConfigurationButton);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.CalibrationPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CycleSettingsForm";
             this.Text = "CycleSettingsForm";
             this.Load += new System.EventHandler(this.CycleSettingsForm_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Panel CalibrationPanel;
-        private System.Windows.Forms.Panel CheckPanel;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button EndConfigurationButton;
     }
 }

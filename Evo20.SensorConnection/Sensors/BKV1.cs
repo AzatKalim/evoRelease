@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using Evo20.PacketsLib;
 
@@ -9,6 +10,8 @@ namespace Evo20.SensorsConnection
     /// </summary>
     public abstract class BKV1 : ISensor
     {
+        protected const int RAW_COUNT = 6;
+
         #region Private Fields
 
         private ProfilePart[] calibrationProfile;
@@ -181,6 +184,11 @@ namespace Evo20.SensorsConnection
         protected abstract ProfilePart[] GetCheckProfile();
 
         protected abstract ProfilePart[] GetCalibrationProfile();
+
+        public virtual double[][,] GetCalibrationADCCodes()
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
     }
