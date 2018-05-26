@@ -66,63 +66,6 @@ namespace Evo20.SensorsConnection
             }
         }
 
-        //// получить коды АЦП из коллекции пакетов
-        //public static double[][,] GetADCCodesDLY(PacketsCollection[] packetsCollection)
-        //{
-        //    double[][,] adcCodes = new double[RAW_COUNT][,];
-        //    for (int i = 0; i < adcCodes.Length; i++)
-        //    {
-        //        adcCodes[i] = new double[packetsCollection.Length, packetsCollection[0].PositionCount];
-        //    }
-        //    for (int j = 0; j < packetsCollection.Length; j++)
-        //    {
-        //        for (int k = 0; k < packetsCollection[j].PositionCount; k++)
-        //        {
-        //            double[] meanParam = packetsCollection[j].MeanA(k);
-        //            for (int i = 0; i < 3; i++)
-        //            {
-        //                adcCodes[i][j, k] = meanParam[i];
-        //            }
-
-        //            meanParam = packetsCollection[j].MeanUA(k);
-        //            for (int i = 3; i < RAW_COUNT; i++)
-        //            {
-        //                //переход за границы массива!!!
-        //                adcCodes[i][j, k] = meanParam[i - 3];
-        //            }
-        //        }
-        //    }
-        //    return adcCodes;
-        //}
-
-        //// получить коды АЦП из коллекции пакетов
-        //public static double[][,] GetADCCodesDYS(PacketsCollection[] packetsCollection)
-        //{
-        //    double[][,] adcCodes = new double[RAW_COUNT][,];
-        //    for (int i = 0; i < adcCodes.Length; i++)
-        //    {
-        //        adcCodes[i] = new double[packetsCollection.Length, packetsCollection[0].PositionCount];
-        //    }
-        //    for (int j = 0; j < packetsCollection.Length; j++)
-        //    {
-        //        for (int k = 0; k < packetsCollection[j].PositionCount; k++)
-        //        {
-        //            double[] meanParam = packetsCollection[k].MeanW(k);
-        //            for (int i = 0; i < RAW_COUNT / 2; i++)
-        //            {
-        //                adcCodes[i][j, k] = meanParam[i];
-        //            }
-
-        //            meanParam = packetsCollection[k].MeanUW(k);
-        //            for (int i = RAW_COUNT / 2; i < RAW_COUNT; i++)
-        //            {
-        //                adcCodes[i][j, k] = meanParam[i - RAW_COUNT / 2];
-        //            }
-        //        }
-        //    }
-        //    return adcCodes;
-        //}
-
         //public bool WriteAllPackets(StreamWriter file)
         //{
         //    if (calibrationDLYPacketsCollection == null || calibrationDLYPacketsCollection.Length == 0)
@@ -186,24 +129,24 @@ namespace Evo20.SensorsConnection
             return true;
         }
 
-        public bool ReadDataFromFile(StreamReader file)
+        public bool ReadDataFromFile(List<ISensor> sensors,StreamReader file)
         {
-            //if (!ReadDataFromFile(file, calibrationDLYPacketsCollection))
-            //{
-            //    return false;
-            //}
-            //if (!ReadDataFromFile(file, calibrationDYSPacketsCollection))
-            //{
-            //    return false;
-            //}
-            //if (!ReadDataFromFile(file, checkDLYPacketsCollection))
-            //{
-            //    return false;
-            //}
-            //if (!ReadDataFromFile(file, checkDYSPacketsCollection))
-            //{
-            //    return false;
-            //}
+            if (!ReadDataFromFile(file, sensors[0].CalibrationPacketsCollection))
+            {
+                return false;
+            }
+            if (!ReadDataFromFile(file, sensors[1].CalibrationPacketsCollection))
+            {
+                return false;
+            }
+            if (!ReadDataFromFile(file, sensors[0].CheckPacketsCollection))
+            {
+                return false;
+            }
+            if (!ReadDataFromFile(file, sensors[1].CheckPacketsCollection))
+            {
+                return false;
+            }
             return true;
         }
 

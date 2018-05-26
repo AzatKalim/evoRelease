@@ -190,6 +190,11 @@ namespace Evo20.SensorsConnection
             throw new NotImplementedException();
         }
 
+        public virtual double[][,] GetCheckADCCodes()
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 }

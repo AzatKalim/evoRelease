@@ -463,7 +463,7 @@ namespace Evo20.Controllers
                     //ожидаем пока установятся позиции
                     Thread.Sleep(THREADS_SLEEP_TIME);
                     //ожидание сбора пакетов
-                    CurrentSensor.PacketsCollectedEvent.WaitOne();
+                    //CurrentSensor.PacketsCollectedEvent.WaitOne();
                     CurrentSensor.PacketsCollectedEvent.Reset();
 
                     canCollect = false;
@@ -539,10 +539,9 @@ namespace Evo20.Controllers
         /// </summary>
         /// <param name="file"></param>
         /// <returns></returns>
-        public bool ReadDataFromFile(StreamReader file)
+        public bool ReadDataFromFile(StreamReader file )
         {
-
-            //sensorData.ReadDataFromFile(file);
+            sensorData.ReadDataFromFile(sensorsList, file);
             return true;
         }
 

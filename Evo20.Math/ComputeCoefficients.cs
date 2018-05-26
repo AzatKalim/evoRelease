@@ -290,7 +290,6 @@ namespace Evo20.Math
 
         #endregion 
 
-
         public static bool CalculateCoefficients(double[][,] adcCodesDLY, double[][,] adcCodesDYS, StreamWriter file)
         {
             double[,][,] coefficentsDLY = СomputeVectorOfCalibrationCoefficientsDLY(adcCodesDLY);

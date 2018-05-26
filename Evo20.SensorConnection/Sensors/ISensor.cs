@@ -130,5 +130,9 @@ namespace Evo20.SensorsConnection
         int PacketsArivedCountCheck(int temperature, int numberOfPosition);
 
         double[][,] GetCalibrationADCCodes();
+
+        double[][,] GetCheckADCCodes();
+
+        
     }
 }
