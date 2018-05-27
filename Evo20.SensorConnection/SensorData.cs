@@ -70,7 +70,8 @@ namespace Evo20.SensorsConnection
         {
             if (sensors[0].CalibrationPacketsCollection == null || sensors[0].CalibrationPacketsCollection.Length == 0)
             {
-                file.WriteLine("Нет пакетов по калибровке ДЛУ");
+                Evo20.Log.Log.WriteLog("Нет пакетов по калибровке " + sensors[0].Name);
+                return false;
             }
             else
             {
@@ -78,28 +79,29 @@ namespace Evo20.SensorsConnection
             }
             if (sensors[1].CalibrationPacketsCollection == null || sensors[1].CalibrationPacketsCollection.Length == 0)
             {
-                file.WriteLine("Нет пакетов по калибровке ДУС");
+                Evo20.Log.Log.WriteLog("Нет пакетов по калибровке "+ sensors[1].Name);
+                return false;
             }
             else
             {
                 WritePackets(file, sensors[0].CalibrationPacketsCollection);
             }
-            if (sensors[0].CheckPacketsCollection == null || sensors[0].CheckPacketsCollection.Length == 0)
-            {
-                file.WriteLine("Нет пакетов по Проверка ДЛУ");
-            }
-            else
-            {
-                WritePackets(file, sensors[0].CheckPacketsCollection);
-            }
-            if (sensors[1].CheckPacketsCollection == null || sensors[1].CheckPacketsCollection.Length == 0)
-            {
-                file.WriteLine("Нет пакетов по Проверка ДУС");
-            }
-            else
-            {
-                WritePackets(file, sensors[1].CheckPacketsCollection);
-            }
+            //if (sensors[0].CheckPacketsCollection == null || sensors[0].CheckPacketsCollection.Length == 0)
+            //{
+            //    file.WriteLine("Нет пакетов по Проверка ДЛУ");
+            //}
+            //else
+            //{
+            //    WritePackets(file, sensors[0].CheckPacketsCollection);
+            //}
+            //if (sensors[1].CheckPacketsCollection == null || sensors[1].CheckPacketsCollection.Length == 0)
+            //{
+            //    file.WriteLine("Нет пакетов по Проверка ДУС");
+            //}
+            //else
+            //{
+            //    WritePackets(file, sensors[1].CheckPacketsCollection);
+            //}
             return true;
         }
 
@@ -139,14 +141,14 @@ namespace Evo20.SensorsConnection
             {
                 return false;
             }
-            if (!ReadDataFromFile(file, sensors[0].CheckPacketsCollection))
-            {
-                return false;
-            }
-            if (!ReadDataFromFile(file, sensors[1].CheckPacketsCollection))
-            {
-                return false;
-            }
+            //if (!ReadDataFromFile(file, sensors[0].CheckPacketsCollection))
+            //{
+            //    return false;
+            //}
+            //if (!ReadDataFromFile(file, sensors[1].CheckPacketsCollection))
+            //{
+            //    return false;
+            //}
             return true;
         }
 

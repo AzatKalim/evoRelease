@@ -44,6 +44,8 @@ namespace Evo20.Controllers
 
         int temperatureOfCollect = 0;
 
+        int startTemperatureIndex = 0;
+
         List<ISensor> sensorsList;
 
         ISensor currentSensor;
@@ -180,7 +182,6 @@ namespace Evo20.Controllers
         /// <returns>true-запуск прошел успешно,false-ошибка</returns>
         public bool Start(string comPortName,WorkMode mode)
         {
-
             if (cycleThread != null && cycleThread.IsAlive)
                 return false;
             //добавляем в список датчиков ДЛУ и ДУС
@@ -378,7 +379,7 @@ namespace Evo20.Controllers
             PowerOnAxis(Axis.ALL, true);
             FindZeroIndex(Axis.ALL);   
             //цикл по температурам
-            for (int i = 0; i < temperatures.Count; i++)
+            for (int i = startTemperatureIndex; i < temperatures.Count; i++)
             {
                 StopAxis(Axis.ALL);
                 SetAxisRate(Axis.ALL, EvoData.BASE_MOVE_SPEED);
@@ -535,7 +536,6 @@ namespace Evo20.Controllers
         public bool WritePackets(StreamWriter file)
         {
             return sensorData.WriteAllPackets(sensorsList.ToArray(),file);
-            return true;
         }
 
         /// <summary>
@@ -545,8 +545,10 @@ namespace Evo20.Controllers
         /// <returns></returns>
         public bool ReadDataFromFile(StreamReader file )
         {
-            sensorData.ReadDataFromFile(sensorsList.ToArray(), file);
-            return true;
+            var result=sensorData.ReadDataFromFile(sensorsList.ToArray(), file);
+            if (result)
+                startTemperatureIndex = sensorsList[0].CalibrationPacketsCollection.Length;
+            return result;
         }
 
         /// <summary>

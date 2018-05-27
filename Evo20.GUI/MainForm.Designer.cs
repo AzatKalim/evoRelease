@@ -549,6 +549,7 @@
             this.savePacketsButton.TabIndex = 11;
             this.savePacketsButton.Text = "Сохранить пакеты в файл";
             this.savePacketsButton.UseVisualStyleBackColor = true;
+            this.savePacketsButton.Visible = false;
             this.savePacketsButton.Click += new System.EventHandler(this.savePacketsButton_Click);
             // 
             // sensorGroupBox

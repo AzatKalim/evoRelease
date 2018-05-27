@@ -318,18 +318,18 @@ namespace Evo_20form
 
         private void readDataButton_Click(object sender, EventArgs e)
         {
-            return;
-            SaveFileDialog dlg = new SaveFileDialog();
+            //return;
+            var dlg = new OpenFileDialog();
             dlg.Filter = "Все файлы (*.*)|*.*";
             dlg.CheckFileExists = true;
-            DialogResult res = dlg.ShowDialog();
+            var res = dlg.ShowDialog();
 
             if (res != DialogResult.OK)
             {
                 return;
             }
             string FileName = dlg.FileName;
-            StreamReader file = new StreamReader(FileName);
+            var file = new StreamReader(FileName);
             if (!controller.ReadDataFromFile(file))
             {
                 MessageBox.Show("Ошибка: чтения пакетов из файла","Не удалось считать пакеты из файла",MessageBoxButtons.OK, MessageBoxIcon.Error);
