@@ -64,7 +64,7 @@ namespace Evo20.SensorsConnection
         /// <summary>
         /// Возвращает массив коллекций пакетов калибровки
         /// </summary>
-        PacketsCollection[] CalibrationPacketsCollection
+        List<PacketsCollection> CalibrationPacketsCollection
         {
             set;
             get;
@@ -73,7 +73,7 @@ namespace Evo20.SensorsConnection
         /// <summary>
         /// Возвращает массив коллекций пакетов проверки
         /// </summary>
-        PacketsCollection[] CheckPacketsCollection
+        List<PacketsCollection> CheckPacketsCollection
         {
             set;
             get;

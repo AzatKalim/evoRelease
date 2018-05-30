@@ -105,6 +105,7 @@ namespace Evo_20form
             }
             cycleData.CalibrationTemperatures = resultList;
             cycleData.CheckTemperatures = resultList;
+            this.DialogResult = DialogResult.OK;
         }
 
     }

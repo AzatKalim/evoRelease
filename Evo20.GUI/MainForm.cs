@@ -283,10 +283,10 @@ namespace Evo_20form
         {
             if(File.Exists(settingsFileName))
             {
-                System.Diagnostics.Process.Start(settingsFileName);
+                var procces = System.Diagnostics.Process.Start(settingsFileName);
+                procces.WaitForExit();
                 ReadSettings();
-            }
-
+            }         
         }
         private void cycleSettingsButton_Click(object sender, EventArgs e)
         {
@@ -298,22 +298,7 @@ namespace Evo_20form
 
         private void savePacketsButton_Click(object sender, EventArgs e)
         {
-            SaveFileDialog dlg = new SaveFileDialog();
-            dlg.Filter = "Все файлы (*.*)|*.*";
-            dlg.CheckFileExists = true;
-            DialogResult res = dlg.ShowDialog();
-            
-            if (res!=DialogResult.OK)
-            {
-                return;
-            }
-            string FileName = dlg.FileName;
-            StreamWriter file = new StreamWriter(FileName);
-            if (!controller.WritePackets(file))
-            {
-                MessageBox.Show( "Ошибка: записи файлов!","Не удалось записать информацию в файл.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            file.Close();
+            WritePackets();          
         }
 
         private void readDataButton_Click(object sender, EventArgs e)
@@ -328,14 +313,23 @@ namespace Evo_20form
             {
                 return;
             }
-            string FileName = dlg.FileName;
-            var file = new StreamReader(FileName);
-            if (!controller.ReadDataFromFile(file))
+            var file = new StreamReader(dlg.FileName);
+            bool result = true;
+            try
             {
-                MessageBox.Show("Ошибка: чтения пакетов из файла","Не удалось считать пакеты из файла",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (!controller.ReadDataFromFile(file))
+                {
+                    MessageBox.Show("Ошибка: чтения пакетов из файла", "Не удалось считать пакеты из файла", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Evo20.Log.Log.WriteLog("Ошибка: чтения пакетов из файла: Не удалось считать пакеты из файла");
+                    result = false;
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.ToString(),"Ошибка: чтения пакетов из файла", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Evo20.Log.Log.WriteLog(string.Format("Ошибка: чтения пакетов из файла: возникло исключение{0}",exception.ToString()));               
             }
             file.Close();
-
         }
 
         #endregion
@@ -423,6 +417,37 @@ namespace Evo_20form
 
         #region Other functions
 
+        public bool WritePackets()
+        {
+            var dlg = new SaveFileDialog();
+            dlg.Filter = "Все файлы (*.*)|*.*";
+            dlg.CheckFileExists = true;
+            var res = dlg.ShowDialog();
+
+            if (res != DialogResult.OK)
+            {
+                return false;
+            }
+            bool result=true;
+            using (StreamWriter file = new StreamWriter(dlg.FileName))
+            {
+                try
+                {
+                    if (!controller.WritePackets(file))
+                    {
+                        MessageBox.Show("Ошибка: записи файлов!", "Не удалось записать информацию в файл.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Evo20.Log.Log.WriteLog("Ошибка: записи файлов.Не удалось записать информацию в файл");        
+                        result = false;
+                    }
+                }
+                catch(Exception exception)
+                {
+                    result = false;
+                    Evo20.Log.Log.WriteLog(string.Format("Ошибка записи файла пакетов. Возникло исключение {0}",exception.ToString()));
+                }
+            }
+            return result;
+        }
         public void ResetForm()
         {
             startButton.Invoke(new Action(() => {startButton.Enabled= true; }));
@@ -454,15 +479,14 @@ namespace Evo_20form
             }
             else
             {
-
+                WritePackets();
                 string message = "Цикл окончен!";
                 DialogResult diaologResult = MessageBox.Show(message, "Выполнить расчет коэффицентов ?", MessageBoxButtons.YesNo,MessageBoxIcon.Information);
                 if (diaologResult == DialogResult.Yes)
                 {
                     ComputeCoefficents();
                 }
-            }
-            savePacketsButton_Click(null, null);
+            }           
         }
 
         private void DrawGrapfic()

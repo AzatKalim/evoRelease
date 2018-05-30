@@ -34,6 +34,8 @@ namespace Evo20.Controllers
 
         public int MaxTemperatureFromSettings;
 
+        public int StartTemperatureIndex = 0;
+
         public CycleData()
         {
             CalibrationTemperatures = new List<int>();
@@ -51,6 +53,7 @@ namespace Evo20.Controllers
             bool isSuccess = ReadParamFromFile(ref file, "Число температур калибровки", ref calibrationTemperatureCount);
             if(!isSuccess)
                 return false;
+            MaxTemperatureFromSettings = calibrationTemperatureCount;
             for (int i = 0; i < calibrationTemperatureCount; i++)
             {
                 int temperature=0;
@@ -117,6 +120,16 @@ namespace Evo20.Controllers
                     return i;
             }
             return -1;
+        }
+
+        public bool IsFullCycle()
+        {
+            if (MaxTemperatureFromSettings == CalibrationTemperatures.Count)
+                return true;
+            else
+            {
+                return false;
+            }
         }
     }
 }

@@ -13,11 +13,6 @@ namespace Evo20.SensorsConnection
         static int[] CHECK_SPEED = { 1, 5, 21, 43, 75, 115 };
         public const int COUNT_OF_POSITIONS = 39;
 
-
-        //private ProfilePart[] calibrationProfile;
-
-        //private ProfilePart[] checkProfile;
-
         #region Properties 
      
         public override string Name
@@ -32,15 +27,15 @@ namespace Evo20.SensorsConnection
 
         public DYS(List<int>colibrationTemperatures,List<int> checkTemperatures,int calibrationMaxPacketsCount,int checkMaxPacketsCount)
         {
-            CalibrationPacketsCollection = new PacketsCollection[colibrationTemperatures.Count];
-            CheckPacketsCollection = new PacketsCollection[checkTemperatures.Count];
+            CalibrationPacketsCollection = new List<PacketsCollection>();
+            CheckPacketsCollection = new List<PacketsCollection>();
             for (int i = 0; i < colibrationTemperatures.Count; i++)
             {
-                CalibrationPacketsCollection[i] = new PacketsCollection(colibrationTemperatures[i], COUNT_OF_POSITIONS, calibrationMaxPacketsCount);
+                CalibrationPacketsCollection.Add(new PacketsCollection(colibrationTemperatures[i], COUNT_OF_POSITIONS, calibrationMaxPacketsCount));
             }
             for (int i = 0; i < checkTemperatures.Count; i++)
             {
-                CheckPacketsCollection[i] = new PacketsCollection(checkTemperatures[i], COUNT_OF_POSITIONS, checkMaxPacketsCount);
+                CheckPacketsCollection.Add(new PacketsCollection(checkTemperatures[i], COUNT_OF_POSITIONS, checkMaxPacketsCount));
             }
             PacketsCollectedEvent = new ManualResetEvent(false);
         }
@@ -131,9 +126,9 @@ namespace Evo20.SensorsConnection
             double[][,] adcCodes = new double[RAW_COUNT][,];
             for (int i = 0; i < adcCodes.Length; i++)
             {
-                adcCodes[i] = new double[CalibrationPacketsCollection.Length, CalibrationPacketsCollection[0].PositionCount];
+                adcCodes[i] = new double[CalibrationPacketsCollection.Count, CalibrationPacketsCollection[0].PositionCount];
             }
-            for (int j = 0; j < CalibrationPacketsCollection.Length; j++)
+            for (int j = 0; j < CalibrationPacketsCollection.Count; j++)
             {
                 for (int k = 0; k < CalibrationPacketsCollection[j].PositionCount; k++)
                 {

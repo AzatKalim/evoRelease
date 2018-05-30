@@ -52,13 +52,13 @@ namespace Evo20.SensorsConnection
             }
         }
 
-        public PacketsCollection[] CalibrationPacketsCollection
+        public List<PacketsCollection> CalibrationPacketsCollection
         {
             set;
             get;
         }
 
-        public PacketsCollection[] CheckPacketsCollection
+        public List<PacketsCollection> CheckPacketsCollection
         {
             set;
             get;
@@ -111,11 +111,11 @@ namespace Evo20.SensorsConnection
             }
         }
 
-        private int FindTemperatureIndex(PacketsCollection[] array, int temperature)
+        private int FindTemperatureIndex(List<PacketsCollection> list, int temperature)
         {
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < list.Count; i++)
             {
-                if (array[i].Temperature == temperature)
+                if (list[i].Temperature == temperature)
                 {
                     return i;
                 }

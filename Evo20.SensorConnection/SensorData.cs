@@ -68,23 +68,23 @@ namespace Evo20.SensorsConnection
 
         public bool WriteAllPackets(ISensor[] sensors,StreamWriter file)
         {
-            if (sensors[0].CalibrationPacketsCollection == null || sensors[0].CalibrationPacketsCollection.Length == 0)
+            if (sensors[0].CalibrationPacketsCollection == null || sensors[0].CalibrationPacketsCollection.Count == 0)
             {
                 Evo20.Log.Log.WriteLog("Нет пакетов по калибровке " + sensors[0].Name);
                 return false;
             }
             else
             {
-                WritePackets(file, sensors[0].CalibrationPacketsCollection);
+                WritePackets(file, sensors[0].CalibrationPacketsCollection.ToArray());
             }
-            if (sensors[1].CalibrationPacketsCollection == null || sensors[1].CalibrationPacketsCollection.Length == 0)
+            if (sensors[1].CalibrationPacketsCollection == null || sensors[1].CalibrationPacketsCollection.Count == 0)
             {
                 Evo20.Log.Log.WriteLog("Нет пакетов по калибровке "+ sensors[1].Name);
                 return false;
             }
             else
             {
-                WritePackets(file, sensors[0].CalibrationPacketsCollection);
+                WritePackets(file, sensors[0].CalibrationPacketsCollection.ToArray());
             }
             //if (sensors[0].CheckPacketsCollection == null || sensors[0].CheckPacketsCollection.Length == 0)
             //{
@@ -112,10 +112,10 @@ namespace Evo20.SensorsConnection
             return true;
         }
 
-        private bool ReadDataFromFile(StreamReader file, PacketsCollection[] collection)
+        private bool ReadDataFromFile(StreamReader file, List<PacketsCollection>collection)
         {
             int temperaturesCount = Convert.ToInt32(file.ReadLine());
-            collection = new PacketsCollection[temperaturesCount];
+            collection = new List<PacketsCollection>();
             for (int i = 0; i < temperaturesCount; i++)
             {
                 try

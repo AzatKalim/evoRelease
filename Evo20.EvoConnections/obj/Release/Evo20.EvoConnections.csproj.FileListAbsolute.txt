@@ -7,4 +7,3 @@ C:\Users\Азат\Desktop\Evo-20form\Evo20.EvoConnections\bin\Release\Evo20.EvoC
 C:\Users\Азат\Desktop\Evo-20form\Evo20.EvoConnections\bin\Release\Evo20.Log.pdb
 C:\Users\Азат\Desktop\Evo-20form\Evo20.EvoConnections\obj\Release\Evo20.EvoConnections.dll
 C:\Users\Азат\Desktop\Evo-20form\Evo20.EvoConnections\obj\Release\Evo20.EvoConnections.pdb
-C:\Users\Азат\Desktop\Evo-20form\Evo20.EvoConnections\bin\Release\Evo20.EvoConnections.dll.config

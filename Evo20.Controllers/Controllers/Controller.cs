@@ -44,8 +44,6 @@ namespace Evo20.Controllers
 
         int temperatureOfCollect = 0;
 
-        int startTemperatureIndex = 0;
-
         List<ISensor> sensorsList;
 
         ISensor currentSensor;
@@ -352,7 +350,7 @@ namespace Evo20.Controllers
         private void Cycle(List<int> temperatures)
         {
             //профили датчиков
-            List<ProfilePart[]> profiles = new List<ProfilePart[]>();
+            var profiles = new List<ProfilePart[]>();
             switch (Mode)
             {
                 case WorkMode.CalibrationMode:
@@ -379,7 +377,7 @@ namespace Evo20.Controllers
             PowerOnAxis(Axis.ALL, true);
             FindZeroIndex(Axis.ALL);   
             //цикл по температурам
-            for (int i = startTemperatureIndex; i < temperatures.Count; i++)
+            for (int i = cycleData.StartTemperatureIndex; i < temperatures.Count; i++)
             {
                 StopAxis(Axis.ALL);
                 SetAxisRate(Axis.ALL, EvoData.BASE_MOVE_SPEED);
@@ -464,13 +462,12 @@ namespace Evo20.Controllers
                     }
                     StartAxis(Axis.ALL);
                     CurrentPositionNumber = j;
-                    canCollect = true;
                     //ожидаем пока установятся позиции
                     Thread.Sleep(THREADS_SLEEP_TIME);
                     //ожидание сбора пакетов
+                    canCollect = true;
                     CurrentSensor.PacketsCollectedEvent.WaitOne();
                     CurrentSensor.PacketsCollectedEvent.Reset();
-
                     canCollect = false;
                 }
 
@@ -547,7 +544,7 @@ namespace Evo20.Controllers
         {
             var result=sensorData.ReadDataFromFile(sensorsList.ToArray(), file);
             if (result)
-                startTemperatureIndex = sensorsList[0].CalibrationPacketsCollection.Length;
+                cycleData.StartTemperatureIndex = sensorsList[0].CalibrationPacketsCollection.Count;
             return result;
         }
 
