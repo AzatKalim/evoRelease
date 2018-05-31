@@ -9,6 +9,7 @@ namespace Evo20.PacketsLib
 {
     public class Packet
     {
+        #region Constants
         //позиция служебных  байт в пакете
         public static int HEAD_BEGIN = Convert.ToInt32(ConfigurationManager.AppSettings.Get("HeadBegin"));
         public static int ID_BEGIN = Convert.ToInt32(ConfigurationManager.AppSettings.Get("IdBegin"));
@@ -32,6 +33,8 @@ namespace Evo20.PacketsLib
         const int W_STRING_NUMBER = 1;
         const int A_STRING_NUMBER = 4;
         const int U_STRING_NUMBER = 7;
+
+        #endregion
 
         public int[] w
         {
@@ -210,7 +213,7 @@ namespace Evo20.PacketsLib
             byte first = buffer[0];
             byte second = buffer[1];
             int i = 2;
-            while (BitConverter.ToUInt16(new byte[] { first, second }, 0) != 0xFACE && buffer.Count > i)
+            while (first==206 && second == 250 && buffer.Count > i)
             {
                 first = second;
                 second = buffer[i];

@@ -7,3 +7,14 @@ C:\Users\Азат\Desktop\Evo-20form\Evo20.EvoConnections\bin\Release\Evo20.EvoC
 C:\Users\Азат\Desktop\Evo-20form\Evo20.EvoConnections\bin\Release\Evo20.Log.pdb
 C:\Users\Азат\Desktop\Evo-20form\Evo20.EvoConnections\obj\Release\Evo20.EvoConnections.dll
 C:\Users\Азат\Desktop\Evo-20form\Evo20.EvoConnections\obj\Release\Evo20.EvoConnections.pdb
+C:\Users\iss\Downloads\evoRelease-master\Evo20.EvoConnections\bin\Release\Evo20.EvoConnections.dll
+C:\Users\iss\Downloads\evoRelease-master\Evo20.EvoConnections\bin\Release\Evo20.EvoConnections.pdb
+C:\Users\iss\Downloads\evoRelease-master\Evo20.EvoConnections\bin\Release\Evo20.EvoCommandsLib.dll
+C:\Users\iss\Downloads\evoRelease-master\Evo20.EvoConnections\bin\Release\Evo20.Log.dll
+C:\Users\iss\Downloads\evoRelease-master\Evo20.EvoConnections\bin\Release\Evo20.EvoCommandsLib.pdb
+C:\Users\iss\Downloads\evoRelease-master\Evo20.EvoConnections\bin\Release\Evo20.EvoCommandsLib.dll.config
+C:\Users\iss\Downloads\evoRelease-master\Evo20.EvoConnections\bin\Release\Evo20.Log.pdb
+C:\Users\iss\Downloads\evoRelease-master\Evo20.EvoConnections\obj\Release\Evo20.EvoConnections.csprojResolveAssemblyReference.cache
+C:\Users\iss\Downloads\evoRelease-master\Evo20.EvoConnections\obj\Release\Evo20.EvoConnections.csproj.CoreCompileInputs.cache
+C:\Users\iss\Downloads\evoRelease-master\Evo20.EvoConnections\obj\Release\Evo20.EvoConnections.dll
+C:\Users\iss\Downloads\evoRelease-master\Evo20.EvoConnections\obj\Release\Evo20.EvoConnections.pdb

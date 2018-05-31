@@ -138,9 +138,10 @@ namespace Evo_20form
 
         private void sensorStartButton_Click(object sender, EventArgs e)
         {
+            bool result = false;
             if (comPortComboBox.SelectedItem != null)
             {
-                controller.StartComPortConnection(comPortComboBox.SelectedItem.ToString());
+                result=controller.StartComPortConnection(comPortComboBox.SelectedItem.ToString());
             }
             else
             {
@@ -148,6 +149,12 @@ namespace Evo_20form
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 string message = "Порт не выбран!";
                 MessageBox.Show(message, caption, buttons);
+                return;
+            }
+            SensorDataGridView.Rows.Clear();
+            if (!result)
+            {
+                MessageBox.Show("Проблемы с com портом","Не удалось запустить соединение!", MessageBoxButtons.OK);
                 return;
             }
             SensorDataGridView.Visible = true;
@@ -218,6 +225,7 @@ namespace Evo_20form
                 if (!isStarted)
                 {
                     MessageBox.Show("Ошибка:запуска цикла! ", "Возникла ошибка,цикл не запущен", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Evo20.Log.Log.WriteLog("Ошибка:запуска цикла! Возникла ошибка,цикл не запущен");
                     controller.Stop();
                     return;
                 }
@@ -225,17 +233,20 @@ namespace Evo_20form
             catch (Exception ex)
             {
                 MessageBox.Show("Ошибка: запуска цикла!", "Возникла ошибка " + ex.Message + " цикл не запущен! ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Evo20.Log.Log.WriteLog("Ошибка: запуска цикла!.Возникла ошибка " + ex.Message + " цикл не запущен! ");
                 controller.Stop();
                 return;
             }
-                  
+            SensorDataGridView.Rows.Clear();
             SensorDataGridView.Visible = true;
             SensorDataGridView.Rows.Add("Гироскопы", "0", "0", "0");
-            SensorDataGridView.Rows.Add("Акселерометры", "0", "0", "0");
             SensorDataGridView.Rows.Add("Температуры гироскопов", "0", "0", "0");
-            SensorDataGridView.Rows.Add("Температуры акселерометров", "0", "0", "0");            
+            SensorDataGridView.Rows.Add("Акселерометры", "0", "0", "0");
+            SensorDataGridView.Rows.Add("Температуры акселерометров", "0", "0", "0");
+
             workTimer.Start();
             timer.Start();
+            SensorTimer.Start();
 
             settingsButton.Enabled = false;
 
@@ -603,7 +614,14 @@ namespace Evo_20form
 
         private void SensorTimer_Tick(object sender, EventArgs e)
         {
-            ShowSensorParams();
+            try
+            {
+                ShowSensorParams();
+            }
+            catch(Exception ex )
+            {
+                //Evo20.Log.Log.WriteLog("Возникла ошибка показания !" + ex.ToString());
+            }
         }
     
     }

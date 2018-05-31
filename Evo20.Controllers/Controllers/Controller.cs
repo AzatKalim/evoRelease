@@ -211,6 +211,7 @@ namespace Evo20.Controllers
             if (!resultComPortStart)
                 return false;
             cycleThread.Start();
+            routineThread.Start();
             return true;
         }
         /// <summary>
@@ -498,14 +499,17 @@ namespace Evo20.Controllers
         /// <returns>Список значений</returns>
         public List<double> GetSensorData()
         {
-            switch (Mode)
+            if (currentSensor != null)
             {
-                case WorkMode.CalibrationMode:
-                    return CurrentSensor.СalculateCalibrationAverage(temperatureOfCollect,CurrentPositionNumber);
-                case WorkMode.CheckMode:
-                    return CurrentSensor.СalculateCheckAverage(temperatureOfCollect, CurrentPositionNumber);
-                default:
-                    break;
+                switch (Mode)
+                {
+                    case WorkMode.CalibrationMode:
+                        return CurrentSensor.СalculateCalibrationAverage(temperatureOfCollect, CurrentPositionNumber);
+                    case WorkMode.CheckMode:
+                        return CurrentSensor.СalculateCheckAverage(temperatureOfCollect, CurrentPositionNumber);
+                    default:
+                        break;
+                }
             }
             if (lastPacket == null)
                 return null;
@@ -513,6 +517,8 @@ namespace Evo20.Controllers
             double[] w = lastPacket.MeanW;
             double[] a = lastPacket.MeanA;
             double[] uw = lastPacket.MeanUW;
+            if (ua == null || w == null || a == null || ua == null)
+                return null;
             var result = new List<double>();
             result.AddRange(ua);
             result.AddRange(w);

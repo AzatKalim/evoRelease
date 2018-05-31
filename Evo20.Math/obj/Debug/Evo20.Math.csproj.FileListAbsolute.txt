@@ -7,3 +7,14 @@ C:\Users\Азат\Desktop\Evo-20form\Evo20.Math\bin\Debug\PacketsLib.pdb
 C:\Users\Азат\Desktop\Evo-20form\Evo20.Math\obj\Debug\Evo20.Math.csprojResolveAssemblyReference.cache
 C:\Users\Азат\Desktop\Evo-20form\Evo20.Math\obj\Debug\Evo20.Math.dll
 C:\Users\Азат\Desktop\Evo-20form\Evo20.Math\obj\Debug\Evo20.Math.pdb
+C:\Users\iss\Downloads\evoRelease-master\Evo20.Math\bin\Debug\Evo20.Math.dll
+C:\Users\iss\Downloads\evoRelease-master\Evo20.Math\bin\Debug\Evo20.Math.pdb
+C:\Users\iss\Downloads\evoRelease-master\Evo20.Math\bin\Debug\Evo20.EvoCommandsLib.dll
+C:\Users\iss\Downloads\evoRelease-master\Evo20.Math\bin\Debug\PacketsLib.dll
+C:\Users\iss\Downloads\evoRelease-master\Evo20.Math\bin\Debug\Evo20.EvoCommandsLib.pdb
+C:\Users\iss\Downloads\evoRelease-master\Evo20.Math\bin\Debug\Evo20.EvoCommandsLib.dll.config
+C:\Users\iss\Downloads\evoRelease-master\Evo20.Math\bin\Debug\PacketsLib.pdb
+C:\Users\iss\Downloads\evoRelease-master\Evo20.Math\obj\Debug\Evo20.Math.csprojResolveAssemblyReference.cache
+C:\Users\iss\Downloads\evoRelease-master\Evo20.Math\obj\Debug\Evo20.Math.csproj.CoreCompileInputs.cache
+C:\Users\iss\Downloads\evoRelease-master\Evo20.Math\obj\Debug\Evo20.Math.dll
+C:\Users\iss\Downloads\evoRelease-master\Evo20.Math\obj\Debug\Evo20.Math.pdb

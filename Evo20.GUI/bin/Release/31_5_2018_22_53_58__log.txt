@@ -1,0 +1,7 @@
+Соединение c датчиком установленно
+Указанный порт занятCOM1
+System.UnauthorizedAccessException: Доступ к порту 'COM1' закрыт.
+   в System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
+   в System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
+   в System.IO.Ports.SerialPort.Open()
+   в Evo20.SensorsConnection.SensorConnection.Read() в C:\Users\iss\Downloads\evoRelease-master\Evo20.SensorConnection\SensorConnection.cs:строка 170

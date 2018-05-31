@@ -65,6 +65,31 @@ namespace Evo20.SensorsConnection
             }
             try
             {
+                serialPort.Open();
+            }
+            catch (UnauthorizedAccessException exeption)
+            {
+                Evo20.Log.Log.WriteLog("Указанный порт занят" + serialPort.PortName);
+                Evo20.Log.Log.WriteLog(exeption.ToString());
+                ConnectionStatus = ConnectionStatus.ERROR;
+                if (EventHandlerListForExeptions != null)
+                {
+                    EventHandlerListForExeptions(exeption);
+                }
+                return false;
+            }
+            catch (ThreadAbortException exeption)
+            {
+                Evo20.Log.Log.WriteLog("Поток чтения Com порта закрыт");
+                Evo20.Log.Log.WriteLog(exeption.ToString());
+                if (EventHandlerListForExeptions != null)
+                {
+                    EventHandlerListForExeptions(exeption);
+                }
+                return false;
+            }
+            try
+            {
                 if (ConnectionStatus == ConnectionStatus.DISCONNECTED)
                 {
                     if (!readThread.IsAlive)
@@ -149,11 +174,14 @@ namespace Evo20.SensorsConnection
             readThread = new Thread(Read);
             readThread.IsBackground = true;
             serialPort = new SerialPort();
-            serialPort.ReadTimeout = 460800;
-            serialPort.WriteTimeout = 500;
-            serialPort.Parity = 0;
-            serialPort.StopBits = StopBits.One;
-            serialPort.DataBits = 8;
+            serialPort.BaudRate = 9600;
+            serialPort.ReadTimeout = 100000;
+            serialPort.WriteTimeout = 500;     
+            //serialPort.ReadTimeout = 460800;
+            //serialPort.WriteTimeout = 500;
+            ////serialPort.Parity = 0;
+            ////serialPort.StopBits = StopBits.One;
+            ////serialPort.DataBits = 8;
             ConnectionStatus = ConnectionStatus.DISCONNECTED;
             bytesBuffer = new byte[BUFFER_SIZE];
         }
@@ -164,40 +192,19 @@ namespace Evo20.SensorsConnection
         protected void Read()
         {
             byte[] receiveBytes = new byte[BUFFER_SIZE];
-            try
-            {
-                serialPort.Open();
-            }
-            catch (UnauthorizedAccessException exeption)
-            {
-                Evo20.Log.Log.WriteLog("Указанный порт занят" + serialPort.PortName);
-                Evo20.Log.Log.WriteLog(exeption.ToString());
-                ConnectionStatus = ConnectionStatus.ERROR;
-                if (EventHandlerListForExeptions != null)
-                {
-                    EventHandlerListForExeptions(exeption);
-                }
-                return;
-            }
-            catch (ThreadAbortException exeption)
-            {
-                Evo20.Log.Log.WriteLog("Поток чтения Com порта закрыт");
-                Evo20.Log.Log.WriteLog(exeption.ToString());
-                if (EventHandlerListForExeptions != null)
-                {
-                    EventHandlerListForExeptions(exeption);
-                }
-            }
+
             while (ConnectionStatus == ConnectionStatus.CONNECTED)
             {
                 try
                 {
-                    if (serialPort.BytesToRead == 0)
-                    {
-                        Thread.Sleep(THREAD_SLEEP_TIME);
-                        continue;
-                    }
+                    //if (serialPort.BytesToRead == 0)
+                    //{
+                    //    Thread.Sleep(100);
+                    //    continue;
+                    //}
                     bytesCount = serialPort.Read(receiveBytes, 0, serialPort.BytesToRead);
+                    if (bytesCount == 0)
+                        continue;
                     lock (bytesBuffer)
                     {
                         for (int i = 0; i < bytesCount; i++)
@@ -238,10 +245,13 @@ namespace Evo20.SensorsConnection
         /// <returns></returns>
         public List<byte> ReadBuffer()
         {
-            List<byte> message = null;
+            var message = new List<byte>();
             lock (bytesBuffer)
             {
-                message = new List<byte>(bytesBuffer);              
+                for (int i = 0; i < bytesCount; i++)
+                {
+                    message.Add(bytesBuffer[i]);
+                }
                 bytesCount = 0;
             }
             return message;

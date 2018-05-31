@@ -2,3 +2,8 @@ C:\Users\Азат\Desktop\Evo-20form\Evo20.Log\bin\Debug\Evo20.Log.dll
 C:\Users\Азат\Desktop\Evo-20form\Evo20.Log\bin\Debug\Evo20.Log.pdb
 C:\Users\Азат\Desktop\Evo-20form\Evo20.Log\obj\Debug\Evo20.Log.dll
 C:\Users\Азат\Desktop\Evo-20form\Evo20.Log\obj\Debug\Evo20.Log.pdb
+C:\Users\iss\Downloads\evoRelease-master\Evo20.Log\bin\Debug\Evo20.Log.dll
+C:\Users\iss\Downloads\evoRelease-master\Evo20.Log\bin\Debug\Evo20.Log.pdb
+C:\Users\iss\Downloads\evoRelease-master\Evo20.Log\obj\Debug\Evo20.Log.csproj.CoreCompileInputs.cache
+C:\Users\iss\Downloads\evoRelease-master\Evo20.Log\obj\Debug\Evo20.Log.dll
+C:\Users\iss\Downloads\evoRelease-master\Evo20.Log\obj\Debug\Evo20.Log.pdb

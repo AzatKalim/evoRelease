@@ -3,3 +3,9 @@ C:\Users\Азат\Desktop\Evo-20form\Evo20.EvoCommandsLib\bin\Debug\Evo20.EvoCom
 C:\Users\Азат\Desktop\Evo-20form\Evo20.EvoCommandsLib\bin\Debug\Evo20.EvoCommandsLib.pdb
 C:\Users\Азат\Desktop\Evo-20form\Evo20.EvoCommandsLib\obj\Debug\Evo20.EvoCommandsLib.dll
 C:\Users\Азат\Desktop\Evo-20form\Evo20.EvoCommandsLib\obj\Debug\Evo20.EvoCommandsLib.pdb
+C:\Users\iss\Downloads\evoRelease-master\Evo20.EvoCommandsLib\bin\Debug\Evo20.EvoCommandsLib.dll.config
+C:\Users\iss\Downloads\evoRelease-master\Evo20.EvoCommandsLib\bin\Debug\Evo20.EvoCommandsLib.dll
+C:\Users\iss\Downloads\evoRelease-master\Evo20.EvoCommandsLib\bin\Debug\Evo20.EvoCommandsLib.pdb
+C:\Users\iss\Downloads\evoRelease-master\Evo20.EvoCommandsLib\obj\Debug\Evo20.EvoCommandsLib.csproj.CoreCompileInputs.cache
+C:\Users\iss\Downloads\evoRelease-master\Evo20.EvoCommandsLib\obj\Debug\Evo20.EvoCommandsLib.dll
+C:\Users\iss\Downloads\evoRelease-master\Evo20.EvoCommandsLib\obj\Debug\Evo20.EvoCommandsLib.pdb

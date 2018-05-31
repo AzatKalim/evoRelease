@@ -60,7 +60,7 @@ namespace Evo20.SensorsConnection
             {
                 return;
             }
-            List<byte> temp = new List<byte>();
+            var temp = new List<byte>();
             // находим стартовые байты пакета 
             bool isBeginFinded = Packet.FindPacketBegin(ref bufferMessage);
             if (!isBeginFinded || bufferMessage.Count < Packet.PACKET_SIZE)

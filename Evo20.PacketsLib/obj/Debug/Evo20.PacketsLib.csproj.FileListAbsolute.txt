@@ -3,3 +3,9 @@ C:\Users\Азат\Desktop\Evo-20form\Evo20.PacketsLib\bin\Debug\PacketsLib.pdb
 C:\Users\Азат\Desktop\Evo-20form\Evo20.PacketsLib\obj\Debug\Evo20.PacketsLib.csprojResolveAssemblyReference.cache
 C:\Users\Азат\Desktop\Evo-20form\Evo20.PacketsLib\obj\Debug\PacketsLib.dll
 C:\Users\Азат\Desktop\Evo-20form\Evo20.PacketsLib\obj\Debug\PacketsLib.pdb
+C:\Users\iss\Downloads\evoRelease-master\Evo20.PacketsLib\bin\Debug\PacketsLib.dll
+C:\Users\iss\Downloads\evoRelease-master\Evo20.PacketsLib\bin\Debug\PacketsLib.pdb
+C:\Users\iss\Downloads\evoRelease-master\Evo20.PacketsLib\obj\Debug\Evo20.PacketsLib.csprojResolveAssemblyReference.cache
+C:\Users\iss\Downloads\evoRelease-master\Evo20.PacketsLib\obj\Debug\Evo20.PacketsLib.csproj.CoreCompileInputs.cache
+C:\Users\iss\Downloads\evoRelease-master\Evo20.PacketsLib\obj\Debug\PacketsLib.dll
+C:\Users\iss\Downloads\evoRelease-master\Evo20.PacketsLib\obj\Debug\PacketsLib.pdb

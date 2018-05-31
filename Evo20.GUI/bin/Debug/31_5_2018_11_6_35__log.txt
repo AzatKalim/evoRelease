@@ -1,0 +1,9 @@
+Соединение c Evo 20 установлено
+Соединение c датчиком установленно
+Отправлена команда CLIM.ETAT 1 в 11:06
+Возникла ошибка показания !System.NullReferenceException: Object reference not set to an instance of an object.
+   at Evo20.Controllers.Controller.GetSensorData() in C:\Users\iss\Downloads\evoRelease-master\Evo20.Controllers\Controllers\Controller.cs:line 504
+   at Evo_20form.MainForm.ShowSensorParams() in C:\Users\iss\Downloads\evoRelease-master\Evo20.GUI\MainForm.cs:line 550
+   at Evo_20form.MainForm.SensorTimer_Tick(Object sender, EventArgs e) in C:\Users\iss\Downloads\evoRelease-master\Evo20.GUI\MainForm.cs:line 607
+Отправлена команда AXE.PWR 1 0 в 11:06
+Отправлена команда AXE.ZERO 0 в 11:06
