@@ -48,6 +48,8 @@ namespace Evo20.Controllers
 
         ISensor currentSensor;
 
+        public PacketsData lastPacket;
+
         #endregion
 
         #region Properties
@@ -263,6 +265,7 @@ namespace Evo20.Controllers
             {
                 return;
             }
+            lastPacket=newPacketsData;
             //Добавляем их 
             if (Mode == WorkMode.CalibrationMode && canCollect)
             {
@@ -502,8 +505,21 @@ namespace Evo20.Controllers
                 case WorkMode.CheckMode:
                     return CurrentSensor.СalculateCheckAverage(temperatureOfCollect, CurrentPositionNumber);
                 default:
-                    return null;
-            }           
+                    break;
+            }
+            if (lastPacket == null)
+                return null;
+            double[] ua = lastPacket.MeanUA;
+            double[] w = lastPacket.MeanW;
+            double[] a = lastPacket.MeanA;
+            double[] uw = lastPacket.MeanUW;
+            var result = new List<double>();
+            result.AddRange(ua);
+            result.AddRange(w);
+            result.AddRange(a);
+            result.AddRange(uw);
+            return result;
+            
         }
 
         /// <summary>

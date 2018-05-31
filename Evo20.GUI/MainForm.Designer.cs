@@ -105,6 +105,7 @@
             this.pauseButton = new System.Windows.Forms.Button();
             this.startButton = new System.Windows.Forms.Button();
             this.cycleSettingsButton = new System.Windows.Forms.Button();
+            this.SensorTimer = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.Evo_control_page.SuspendLayout();
             this.EvoParamsGroupBox.SuspendLayout();
@@ -879,6 +880,11 @@
             this.cycleSettingsButton.UseVisualStyleBackColor = true;
             this.cycleSettingsButton.Click += new System.EventHandler(this.cycleSettingsButton_Click);
             // 
+            // SensorTimer
+            // 
+            this.SensorTimer.Interval = 1000;
+            this.SensorTimer.Tick += new System.EventHandler(this.SensorTimer_Tick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1003,6 +1009,7 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label temperatureStabLabel;
         private System.Windows.Forms.Button cycleSettingsButton;
+        private System.Windows.Forms.Timer SensorTimer;
     }
 }
 

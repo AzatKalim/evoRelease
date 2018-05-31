@@ -157,6 +157,7 @@ namespace Evo_20form
             SensorDataGridView.Rows.Add("Температуры акселерометров", "0", "0", "0");           
             sensorStopButton.Enabled = true;
             sensorPauseButton.Enabled = true;
+            SensorTimer.Start();
         }
 
         private void sensorPauseButton_Click(object sender, EventArgs e)
@@ -377,6 +378,7 @@ namespace Evo_20form
             TimeSpan difference = DateTime.Now - startTime;
             difference -= TimeSpan.FromMilliseconds(difference.Milliseconds);
             timeLeftlabel.Text = difference.Hours + ":" + difference.Minutes + ":" + difference.Seconds;
+            ShowSensorParams();
         }
 
         #endregion
@@ -533,26 +535,28 @@ namespace Evo_20form
             }
             file.Close();
         }
+        private void ShowLasPacket()
+        {
+        }
 
         private void ShowSensorParams()
         {
             packetsArrivedLabel.Text = controller.PacketsCollectedCount.ToString();
-            if (controller.CurrentSensor == null)
+            if (controller.CurrentSensor != null)
             {
-                return;
-            }
-            sensorTypeLabel.Text = controller.CurrentSensor.Name;
-            if (SensorDataGridView.Visible == false)
-            {
-                SensorDataGridView.Visible = true;
-            }
+                sensorTypeLabel.Text = controller.CurrentSensor.Name;
+                if (SensorDataGridView.Visible == false)
+                {
+                    SensorDataGridView.Visible = true;
+                }
+            }         
             List<double> data = controller.GetSensorData();
             if (data == null)
             {
                 return;
             }
             int k = 0;
-            for (int j = 0; j < SensorDataGridView.Rows.Count - 1; j++)
+            for (int j = 0; j < SensorDataGridView.Rows.Count; j++)
             {
                 for (int i = 1; i < 4; i++)
                 {
@@ -598,6 +602,11 @@ namespace Evo_20form
         }
     
         #endregion
+
+        private void SensorTimer_Tick(object sender, EventArgs e)
+        {
+            ShowSensorParams();
+        }
     
     }
 }
