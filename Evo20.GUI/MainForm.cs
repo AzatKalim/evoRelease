@@ -355,7 +355,6 @@ namespace Evo_20form
             yPositionLabel.Text = controller.evoData.y.position.ToString();
             xSpeedOfRateLabel.Text = controller.evoData.x.speedOfRate.ToString();
             ySpeedOfRateLabel.Text = controller.evoData.y.speedOfRate.ToString();
-            ShowSensorParams();
             DrawGrapfic();
 
             if (!IsStabilized)
@@ -378,7 +377,6 @@ namespace Evo_20form
             TimeSpan difference = DateTime.Now - startTime;
             difference -= TimeSpan.FromMilliseconds(difference.Milliseconds);
             timeLeftlabel.Text = difference.Hours + ":" + difference.Minutes + ":" + difference.Seconds;
-            ShowSensorParams();
         }
 
         #endregion
