@@ -20,7 +20,11 @@ namespace Evo20.EvoCommandsLib
         }
         public override string ToString()
         {
-            string buffer = "CLIM.ETAT " + turn_on;
+            string buffer = "CLIM.ETAT ";
+            if (turn_on)
+                buffer += "1";
+            else
+                buffer += "0";
             return buffer;
         }
     }
