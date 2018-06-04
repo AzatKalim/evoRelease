@@ -10,3 +10,5 @@ F:\Новая папка (6)\Evo20\Evo20.PacketsLib\obj\Release\Evo20.PacketsLib
 F:\Новая папка (6)\Evo20\Evo20.PacketsLib\obj\Release\Evo20.PacketsLib.pdb
 F:\Новая папка (6)\Evo20\Evo20.PacketsLib\bin\Release\Evo20.Log.dll
 F:\Новая папка (6)\Evo20\Evo20.PacketsLib\bin\Release\Evo20.Log.pdb
+C:\Users\Азат\Desktop\Новая папка (6)\Evo20\Evo20.PacketsLib\bin\Release\Evo20.Log.dll
+C:\Users\Азат\Desktop\Новая папка (6)\Evo20\Evo20.PacketsLib\bin\Release\Evo20.Log.pdb

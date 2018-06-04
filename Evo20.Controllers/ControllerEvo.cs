@@ -1,5 +1,6 @@
 ﻿using System.Threading;
-
+using System;
+using System.Configuration;
 using Evo20.EvoCommandsLib;
 using Evo20.Controllers;
 using Evo20.EvoConnections;
@@ -21,7 +22,7 @@ namespace Evo20.Controllers
 
         public WorkModeChangeHandler EventListForWorkModeChange;
 
-        public const int THREADS_SLEEP_TIME = 1000;
+        public static int THREADS_SLEEP_TIME = Convert.ToInt32(ConfigurationManager.AppSettings.Get("THREADS_SLEEP_TIME"));
 
         //обработчик новых команд
         protected CommandHandler commandHandler;
@@ -91,7 +92,7 @@ namespace Evo20.Controllers
                         Thread.Sleep(100);
                     }
                 }
-                Thread.Sleep(THREADS_SLEEP_TIME);
+                Thread.Sleep(5000);
             }
         }
 

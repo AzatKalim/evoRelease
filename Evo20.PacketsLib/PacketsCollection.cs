@@ -286,6 +286,19 @@ namespace Evo20.PacketsLib
             }
         }
 
+
+        public void WrieToFile(StreamWriter file)
+        {
+            file.WriteLine(temperature + " " + positionPackets.Length);
+            for (int i = 0; i < positionPackets.Length; i++)
+            {
+                file.WriteLine(positionPackets[i].Count+Environment.NewLine);
+                for (int j = 0; j <positionPackets[i].Count; j++)
+                {
+                    file.WriteLine(positionPackets[i][j]);
+                }
+            }
+        }
         /// <summary>
         /// Переопределяет метод ToString 
         /// </summary>

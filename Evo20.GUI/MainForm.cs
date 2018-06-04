@@ -51,6 +51,7 @@ namespace Evo20.GUI
         delegate void WorkModDel(WorkMode mode);
         delegate void SensorConnectionDel(Evo20.SensorsConnection.ConnectionStatus state);
         delegate void EvoConnectionDel(Evo20.EvoConnections.ConnectionStatus state);
+        delegate bool EndCycleDel();
 
         #region Form load-close functions
 
@@ -198,12 +199,26 @@ namespace Evo20.GUI
             {
                 if (!ReadSettings())
                 {
+                    DialogResult result = MessageBox.Show("Проблемы с файлом настроек", "Открыть файл настроек ?", MessageBoxButtons.YesNo);
+                    if ( result== DialogResult.Yes && File.Exists(settingsFileName))
+                    {
+                        var procces = System.Diagnostics.Process.Start(settingsFileName);
+                        procces.WaitForExit();
+                        ReadSettings();
+                    }
                     return;
                 }
             }
             catch (Exception ex)
             {
                 DialogResult result = MessageBox.Show("Проблемы с файлом: возникло исключение " + ex.Message, "Открыть файл настроек ?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes && File.Exists(settingsFileName))
+                {
+                    var procces = System.Diagnostics.Process.Start(settingsFileName);
+                    procces.WaitForExit();
+                    ReadSettings();
+                }
+                return;
             }
             if (comPortComboBox.SelectedItem == null)
             {
@@ -361,10 +376,10 @@ namespace Evo20.GUI
 
         private void workTimer_Tick(object sender, EventArgs e)
         {
-            if(controller.TemperutureIndex<0)
-                countTemperaturesReachedLabel.Text = string.Format("{0}/{1}",0 , controller.TemperaturesCount);
-            else
-                countTemperaturesReachedLabel.Text = string.Format("{0}/{1}", controller.TemperutureIndex, controller.TemperaturesCount);
+            //if(controller.TemperutureIndex<0)
+            //    countTemperaturesReachedLabel.Text = string.Format("{0}/{1}",0 , controller.TemperaturesCount);
+            //else
+                countTemperaturesReachedLabel.Text = string.Format("{0}/{1}", controller.TemperutureIndex+1, controller.TemperaturesCount);
             CurrentTemperatureLabel.Text = controller.evoData.currentTemperature.ToString();
             nextTemperatureLable.Text = controller.evoData.nextTemperature.ToString();
             CheckParam(controller.evoData.isCameraPowerOn, powerCameraIndic);
@@ -401,6 +416,18 @@ namespace Evo20.GUI
             TimeSpan difference = DateTime.Now - startTime;
             difference -= TimeSpan.FromMilliseconds(difference.Milliseconds);
             timeLeftlabel.Text = difference.Hours + ":" + difference.Minutes + ":" + difference.Seconds;
+        }
+
+        private void SensorTimer_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                ShowSensorParams();
+            }
+            catch (Exception ex)
+            {
+                //Evo20.Log.Log.WriteLog("Возникла ошибка показания !" + ex.ToString());
+            }
         }
 
         #endregion
@@ -455,15 +482,16 @@ namespace Evo20.GUI
 
         public bool WritePackets()
         {
-            //var dlg = new SaveFileDialog();
-            //dlg.Filter = "Все файлы (*.*)|*.*";
-            //dlg.CheckFileExists = true;
-            //var res = dlg.ShowDialog();
+            var dlg = new SaveFileDialog();
+            dlg.CreatePrompt = true;
+            dlg.CheckPathExists = true;
+            dlg.Filter = "Все файлы (*.*)|*.*";
+            var res = dlg.ShowDialog();
 
-            //if (res != DialogResult.OK)
-            //{
-            //    return false;
-            //}
+            if (res != DialogResult.OK)
+            {
+                return false;
+            }
             bool result = true;
             using (StreamWriter file = new StreamWriter("pack.txt"))
             {
@@ -484,6 +512,7 @@ namespace Evo20.GUI
             }
             return result;
         }
+
         public void ResetForm()
         {
             FormReseter del = Reset;
@@ -494,6 +523,7 @@ namespace Evo20.GUI
 
         private void Reset()
         {
+            startButton.Enabled = true;
             pauseButton.Enabled = false; 
             stopButton.Enabled = false; 
 
@@ -510,6 +540,7 @@ namespace Evo20.GUI
 
             settingsButton.Enabled = true; 
         }
+
         private void CycleEndedHandler(bool result)
         {
             if (!result)
@@ -519,12 +550,14 @@ namespace Evo20.GUI
             }
             else
             {
-                WritePackets();
+                EndCycleDel del = WritePackets;
+                this.Invoke(del);
                 string message = "Цикл окончен!";
                 DialogResult diaologResult = MessageBox.Show(message, "Выполнить расчет коэффицентов ?", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (diaologResult == DialogResult.Yes)
                 {
-                    ComputeCoefficents();
+                    EndCycleDel deleg = ComputeCoefficents;
+                    this.Invoke(deleg);
                 }
             }
         }
@@ -554,24 +587,27 @@ namespace Evo20.GUI
                 picture.BackColor = Color.Red;
         }
 
-        private void ComputeCoefficents()
+        private bool ComputeCoefficents()
         {
             SaveFileDialog dlg = new SaveFileDialog();
             dlg.Filter = "Все файлы (*.*)|*.*";
-            dlg.CheckFileExists = true;
+            dlg.CheckPathExists = true;
             DialogResult res = dlg.ShowDialog();
 
             if (res != DialogResult.OK)
             {
-                return;
+                return false;
             }
             string FileName = dlg.FileName;
             StreamWriter file = new StreamWriter(FileName);
             if (!controller.ComputeCoefficents(file))
             {
-                MessageBox.Show("Проблемы с файлом", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Не удалось вычислить коэффиценты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                file.Close();
+                return false;
             }
             file.Close();
+            return true;
         }
 
         private void ShowSensorParams()
@@ -637,28 +673,5 @@ namespace Evo20.GUI
         }
 
         #endregion
-
-        private void SensorTimer_Tick(object sender, EventArgs e)
-        {
-            try
-            {
-                ShowSensorParams();
-            }
-            catch (Exception ex)
-            {
-                //Evo20.Log.Log.WriteLog("Возникла ошибка показания !" + ex.ToString());
-            }
-        }
-
-        private void parameGroupBox_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void EvoParamsGroupBox_Enter(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }

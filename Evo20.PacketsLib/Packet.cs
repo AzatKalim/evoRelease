@@ -100,6 +100,8 @@ namespace Evo20.PacketsLib
         /// <param name="input"></param>
         public Packet(string input)
         {
+            while (input[0] == ' ')
+                input=input.Remove(0, 1);
             string[] tmp = input.Split(' ');
             try
             {
@@ -161,6 +163,10 @@ namespace Evo20.PacketsLib
                 int a_y = ConvertParam(new byte[] { message[A_Y_BEGIN], message[A_Y_BEGIN + 1], message[A_Y_BEGIN + 2], message[A_Y_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
                 int a_z = ConvertParam(new byte[] { message[A_Z_BEGIN], message[A_Z_BEGIN + 1], message[A_Z_BEGIN + 2], message[A_Z_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
                 int[] a = new int[] { a_x, a_y, a_z };
+                if (rangeFlag || dataFlag)
+                {
+                    return packet_inf;
+                }
                 //данные о температуре
                 if (packetId < 3)
                 {
@@ -192,6 +198,7 @@ namespace Evo20.PacketsLib
                 rangeFlag = true;
             if ((res & 3) == 3)
                 dataFlag = true;
+            res=res >> 2;
             return res;
         }
 

@@ -45,3 +45,6 @@ F:\Новая папка (6)\Evo20\Evo20.GUI\obj\Release\Evo20.GUI.Properties.Re
 F:\Новая папка (6)\Evo20\Evo20.GUI\obj\Release\Evo20.GUI.csproj.GenerateResource.Cache
 F:\Новая папка (6)\Evo20\Evo20.GUI\obj\Release\Evo20.GUI.exe
 F:\Новая папка (6)\Evo20\Evo20.GUI\obj\Release\Evo20.GUI.pdb
+C:\Users\Азат\Desktop\Новая папка (6)\Evo20\Evo20.GUI\obj\Release\Evo20.GUI.MainForm.resources
+C:\Users\Азат\Desktop\Новая папка (6)\Evo20\Evo20.GUI\obj\Release\Evo20.GUI.Properties.Resources.resources
+C:\Users\Азат\Desktop\Новая папка (6)\Evo20\Evo20.GUI\obj\Release\Evo20.GUI.csproj.GenerateResource.Cache
