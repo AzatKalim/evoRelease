@@ -13,7 +13,7 @@ using Evo20.EvoConnections;
 
 
 
-namespace Evo_20form
+namespace Evo20.GUI
 {
     public partial class MainForm : Form
     {
@@ -24,19 +24,19 @@ namespace Evo_20form
         double prevX;
         double prevY;
 
-        bool isStabilized=true;
+        bool isStabilized = true;
 
         DateTime stabilizationStartTime;
 
-        bool isSettingsEntered= false;
+        bool isSettingsEntered = false;
 
         bool IsStabilized
         {
             set
             {
-                if(value==false)
-                    stabilizationStartTime= DateTime.Now;
-                isStabilized=false;
+                if (value == false)
+                    stabilizationStartTime = DateTime.Now;
+                isStabilized = value;
             }
             get
             {
@@ -46,10 +46,16 @@ namespace Evo_20form
 
         string settingsFileName = ConfigurationManager.AppSettings.Get("DEFAULT_SETTINGS_FILE_NAME");
 
+        delegate void FormReseter();
+
+        delegate void WorkModDel(WorkMode mode);
+        delegate void SensorConnectionDel(Evo20.SensorsConnection.ConnectionStatus state);
+        delegate void EvoConnectionDel(Evo20.EvoConnections.ConnectionStatus state);
+
         #region Form load-close functions
 
         public MainForm()
-        {           
+        {
             InitializeComponent();
             prevX = 0;
             prevY = 0;
@@ -107,7 +113,7 @@ namespace Evo_20form
             }
             catch (Exception ex)
             {
-                DialogResult result = MessageBox.Show("Проблемы с файлом: возникло исключение"+ ex.ToString(), "Открыть файл настроек ?", MessageBoxButtons.YesNo);
+                DialogResult result = MessageBox.Show("Проблемы с файлом: возникло исключение" + ex.ToString(), "Открыть файл настроек ?", MessageBoxButtons.YesNo);
             }
             controller.StartEvoConnection();
             startTime = DateTime.Now;
@@ -141,7 +147,7 @@ namespace Evo_20form
             bool result = false;
             if (comPortComboBox.SelectedItem != null)
             {
-                result=controller.StartComPortConnection(comPortComboBox.SelectedItem.ToString());
+                result = controller.StartComPortConnection(comPortComboBox.SelectedItem.ToString());
             }
             else
             {
@@ -154,14 +160,14 @@ namespace Evo_20form
             SensorDataGridView.Rows.Clear();
             if (!result)
             {
-                MessageBox.Show("Проблемы с com портом","Не удалось запустить соединение!", MessageBoxButtons.OK);
+                MessageBox.Show("Проблемы с com портом", "Не удалось запустить соединение!", MessageBoxButtons.OK);
                 return;
             }
             SensorDataGridView.Visible = true;
             SensorDataGridView.Rows.Add("Гироскопы", "0", "0", "0");
             SensorDataGridView.Rows.Add("Температуры гироскопов", "0", "0", "0");
             SensorDataGridView.Rows.Add("Акселерометры", "0", "0", "0");
-            SensorDataGridView.Rows.Add("Температуры акселерометров", "0", "0", "0");           
+            SensorDataGridView.Rows.Add("Температуры акселерометров", "0", "0", "0");
             sensorStopButton.Enabled = true;
             sensorPauseButton.Enabled = true;
             SensorTimer.Start();
@@ -204,19 +210,19 @@ namespace Evo_20form
                 MessageBox.Show("Ошибка: Com порт не выбран!", "Выбирете один из портов для соединения !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if(modeComboBox.SelectedItem==null)
+            if (modeComboBox.SelectedItem == null)
             {
                 MessageBox.Show("Ошибка: не выбран режим работы ", "Небходимо выбрать режим работы перед нажатием пуск !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            WorkMode workMode= WorkMode.NoMode;
-            switch(modeComboBox.SelectedIndex)
+            WorkMode workMode = WorkMode.NoMode;
+            switch (modeComboBox.SelectedIndex)
             {
                 case 0:
-                    workMode=WorkMode.CalibrationMode;
+                    workMode = WorkMode.CalibrationMode;
                     break;
                 case 1:
-                    workMode= WorkMode.CheckMode;
+                    workMode = WorkMode.CheckMode;
                     break;
             }
             try
@@ -268,17 +274,17 @@ namespace Evo_20form
             controller.Pause();
 
             startButton.Enabled = true;
-            pauseButton.Enabled = false;          
+            pauseButton.Enabled = false;
             stopButton.Enabled = true;
 
             evoStartButton.Enabled = true;
             evoPauseButton.Enabled = false;
             evoStopButton.Enabled = true;
 
-            sensorStartButton.Enabled = true;         
+            sensorStartButton.Enabled = true;
             sensorPauseButton.Enabled = false;
             sensorStopButton.Enabled = true;
-          
+
         }
 
         private void stopButton_Click(object sender, EventArgs e)
@@ -289,28 +295,31 @@ namespace Evo_20form
 
         #endregion
 
-        #region Other buttons 
+        #region Other buttons
 
         private void settingsButton_Click(object sender, EventArgs e)
         {
-            if(File.Exists(settingsFileName))
+            if (File.Exists(settingsFileName))
             {
                 var procces = System.Diagnostics.Process.Start(settingsFileName);
                 procces.WaitForExit();
                 ReadSettings();
-            }         
+            }
         }
         private void cycleSettingsButton_Click(object sender, EventArgs e)
         {
-            if (controller.cycleData == null)
+            if (!isSettingsEntered)
+            {
                 ReadSettings();
+                isSettingsEntered = true;
+            }
             var cycleForm = new CycleSettingsForm(controller.cycleData);
             cycleForm.ShowDialog();
         }
 
         private void savePacketsButton_Click(object sender, EventArgs e)
         {
-            WritePackets();          
+            WritePackets();
         }
 
         private void readDataButton_Click(object sender, EventArgs e)
@@ -338,8 +347,8 @@ namespace Evo_20form
             }
             catch (Exception exception)
             {
-                MessageBox.Show(exception.ToString(),"Ошибка: чтения пакетов из файла", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Evo20.Log.Log.WriteLog(string.Format("Ошибка: чтения пакетов из файла: возникло исключение{0}",exception.ToString()));               
+                MessageBox.Show(exception.ToString(), "Ошибка: чтения пакетов из файла", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Evo20.Log.Log.WriteLog(string.Format("Ошибка: чтения пакетов из файла: возникло исключение{0}", exception.ToString()));
             }
             file.Close();
         }
@@ -352,6 +361,10 @@ namespace Evo_20form
 
         private void workTimer_Tick(object sender, EventArgs e)
         {
+            if(controller.TemperutureIndex<0)
+                countTemperaturesReachedLabel.Text = string.Format("{0}/{1}",0 , controller.TemperaturesCount);
+            else
+                countTemperaturesReachedLabel.Text = string.Format("{0}/{1}", controller.TemperutureIndex, controller.TemperaturesCount);
             CurrentTemperatureLabel.Text = controller.evoData.currentTemperature.ToString();
             nextTemperatureLable.Text = controller.evoData.nextTemperature.ToString();
             CheckParam(controller.evoData.isCameraPowerOn, powerCameraIndic);
@@ -394,22 +407,34 @@ namespace Evo_20form
 
         #region Controller's events handlers
 
-        private void EvoConnectionChangeHandler(Evo20.EvoConnections.ConnectionStatus state)
+        private void EvoConnectionChange(Evo20.EvoConnections.ConnectionStatus state)
         {
-            connectionStateLabel.Invoke(new Action(() => { connectionStateLabel.Text = state.ToString(); }));
+            connectionStateLabel.Text = state.ToString();
+        }
+        private void EvoConnectionChangeHandler(Evo20.EvoConnections.ConnectionStatus state)
+        {           
+            EvoConnectionDel del = EvoConnectionChange;
+            connectionStateLabel.Invoke(del,state);
         }
 
+        private void SensorConnectionChange(Evo20.SensorsConnection.ConnectionStatus state)
+        {
+            sensorConnectionStateLabel.Text = state.ToString();
+        }
         private void SensorConnectionChangeHandler(Evo20.SensorsConnection.ConnectionStatus state)
         {
-            sensorConnectionStateLabel.Invoke(new Action(() =>
-            {
-                sensorConnectionStateLabel.Text = state.ToString();
-            }));
+            SensorConnectionDel del = SensorConnectionChange;
+            sensorConnectionStateLabel.Invoke(del,state);
         }
 
+        private void EvoWorkModeChange(WorkMode mode)
+        {
+            controllerWokModeLabel.Text = mode.ToString();
+        }
         private void EvoWorkModeChangeHandler(WorkMode mode)
         {
-            controllerWokModeLabel.Invoke(new Action(() => { controllerWokModeLabel.Text = mode.ToString(); }));
+            WorkModDel del = EvoWorkModeChange;
+            controllerWokModeLabel.Invoke(del,mode);
         }
 
         private void ControllerExсeptoinsHandler(Exception exception)
@@ -421,7 +446,7 @@ namespace Evo_20form
 
         private void TemperatureStabilizationHandler(bool result)
         {
-            IsStabilized=result;
+            IsStabilized = result;
         }
 
         #endregion
@@ -430,74 +455,78 @@ namespace Evo_20form
 
         public bool WritePackets()
         {
-            var dlg = new SaveFileDialog();
-            dlg.Filter = "Все файлы (*.*)|*.*";
-            dlg.CheckFileExists = true;
-            var res = dlg.ShowDialog();
+            //var dlg = new SaveFileDialog();
+            //dlg.Filter = "Все файлы (*.*)|*.*";
+            //dlg.CheckFileExists = true;
+            //var res = dlg.ShowDialog();
 
-            if (res != DialogResult.OK)
-            {
-                return false;
-            }
-            bool result=true;
-            using (StreamWriter file = new StreamWriter(dlg.FileName))
+            //if (res != DialogResult.OK)
+            //{
+            //    return false;
+            //}
+            bool result = true;
+            using (StreamWriter file = new StreamWriter("pack.txt"))
             {
                 try
                 {
                     if (!controller.WritePackets(file))
                     {
                         MessageBox.Show("Ошибка: записи файлов!", "Не удалось записать информацию в файл.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Evo20.Log.Log.WriteLog("Ошибка: записи файлов.Не удалось записать информацию в файл");        
+                        Evo20.Log.Log.WriteLog("Ошибка: записи файлов.Не удалось записать информацию в файл");
                         result = false;
                     }
                 }
-                catch(Exception exception)
+                catch (Exception exception)
                 {
                     result = false;
-                    Evo20.Log.Log.WriteLog(string.Format("Ошибка записи файла пакетов. Возникло исключение {0}",exception.ToString()));
+                    Evo20.Log.Log.WriteLog(string.Format("Ошибка записи файла пакетов. Возникло исключение {0}", exception.ToString()));
                 }
             }
             return result;
         }
         public void ResetForm()
         {
-            startButton.Invoke(new Action(() => {startButton.Enabled= true; }));
-            pauseButton.Invoke(new Action(() => {pauseButton.Enabled = false; }));
-            stopButton.Invoke(new Action(() => {stopButton.Enabled = false; }));
-
-            evoStartButton.Invoke(new Action(() => { evoStartButton.Enabled = true; }));
-            evoPauseButton.Invoke(new Action(() => { evoPauseButton.Enabled = false; }));
-            evoStopButton.Invoke(new Action(() => { evoStopButton.Enabled = false; }));
-
-            sensorStartButton.Invoke(new Action(() => { sensorStartButton.Enabled = true; }));
-            sensorPauseButton.Invoke(new Action(() => { sensorPauseButton.Enabled = false; }));
-            sensorStopButton.Invoke(new Action(() => { sensorStopButton.Enabled = false; }));
-
-            SensorDataGridView.Invoke(new Action(() => { SensorDataGridView.Rows.Clear(); }));
-            SensorDataGridView.Invoke(new Action(() => { SensorDataGridView.Visible=false; }));
-
-            settingsButton.Invoke(new Action(() => {settingsButton.Enabled=true;}));
+            FormReseter del = Reset;
+            startButton.Invoke(del);
             workTimer.Stop();
             timer.Stop();
         }
 
+        private void Reset()
+        {
+            pauseButton.Enabled = false; 
+            stopButton.Enabled = false; 
+
+            evoStartButton.Enabled = true;
+            evoPauseButton.Enabled = false; 
+            evoStopButton.Enabled = false; 
+
+            sensorStartButton.Enabled = true; 
+            sensorPauseButton.Enabled = false; 
+            sensorStopButton.Enabled = false; 
+
+            //SensorDataGridView.Rows.Clear(); 
+            SensorDataGridView.Visible = false; 
+
+            settingsButton.Enabled = true; 
+        }
         private void CycleEndedHandler(bool result)
         {
             if (!result)
             {
                 string message = " Возникла ошибка смотрите log файл";
-                MessageBox.Show("Ошибка: цикл завершился неуспешно !" ,message,MessageBoxButtons.OK);
+                MessageBox.Show("Ошибка: цикл завершился неуспешно !", message, MessageBoxButtons.OK);
             }
             else
             {
                 WritePackets();
                 string message = "Цикл окончен!";
-                DialogResult diaologResult = MessageBox.Show(message, "Выполнить расчет коэффицентов ?", MessageBoxButtons.YesNo,MessageBoxIcon.Information);
+                DialogResult diaologResult = MessageBox.Show(message, "Выполнить расчет коэффицентов ?", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (diaologResult == DialogResult.Yes)
                 {
                     ComputeCoefficents();
                 }
-            }           
+            }
         }
 
         private void DrawGrapfic()
@@ -515,7 +544,7 @@ namespace Evo_20form
             }
             prevX = x;
             prevY = y;
-        }       
+        }
 
         private void CheckParam(bool param, PictureBox picture)
         {
@@ -544,9 +573,6 @@ namespace Evo_20form
             }
             file.Close();
         }
-        private void ShowLasPacket()
-        {
-        }
 
         private void ShowSensorParams()
         {
@@ -558,7 +584,7 @@ namespace Evo_20form
                 {
                     SensorDataGridView.Visible = true;
                 }
-            }         
+            }
             List<double> data = controller.GetSensorData();
             if (data == null)
             {
@@ -569,7 +595,7 @@ namespace Evo_20form
             {
                 for (int i = 1; i < 4; i++)
                 {
-                    SensorDataGridView.Rows[j].Cells[i].Value = Math.Round(data[k++],3);
+                    SensorDataGridView.Rows[j].Cells[i].Value = System.Math.Round(data[k++], 5);
                 }
             }
         }
@@ -603,13 +629,13 @@ namespace Evo_20form
                         return false;
                     }
                 }
-            }        
-            var result=controller.ReadSettings(settingsFileName);
+            }
+            var result = controller.ReadSettings(settingsFileName);
             if (result)
                 isSettingsEntered = true;
             return result;
         }
-    
+
         #endregion
 
         private void SensorTimer_Tick(object sender, EventArgs e)
@@ -618,11 +644,21 @@ namespace Evo_20form
             {
                 ShowSensorParams();
             }
-            catch(Exception ex )
+            catch (Exception ex)
             {
                 //Evo20.Log.Log.WriteLog("Возникла ошибка показания !" + ex.ToString());
             }
         }
-    
+
+        private void parameGroupBox_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EvoParamsGroupBox_Enter(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

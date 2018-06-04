@@ -1,17 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D1EC6D86-D463-40A7-AA7F-0496527E73A7}</ProjectGuid>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3AC3249C-145D-4EEA-8B3F-E82CE09A85DB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Evo20.Controllers</RootNamespace>
     <AssemblyName>Evo20.Controllers</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <StartupObject>
+    </StartupObject>
+    <TargetFrameworkSubset>
+    </TargetFrameworkSubset>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,51 +34,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Controllers\Controller.cs" />
-    <Compile Include="Controllers\ControllerEvo.cs" />
-    <Compile Include="Data\AbstractData.cs" />
-    <Compile Include="Data\CycleData.cs" />
-    <Compile Include="Data\EvoData.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Controllers\WorkModeOperations.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Evo20.EvoCommandsLib\Evo20.EvoCommandsLib.csproj">
-      <Project>{db0f53a2-4dd6-4833-8f2c-e0d9224887a4}</Project>
-      <Name>Evo20.EvoCommandsLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Evo20.EvoConnections\Evo20.EvoConnections.csproj">
-      <Project>{88519c5a-4a66-4124-83eb-236c7a871969}</Project>
-      <Name>Evo20.EvoConnections</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Evo20.Log\Evo20.Log.csproj">
-      <Project>{f7d67c8b-cb61-4a20-90ba-ecf1006632c1}</Project>
-      <Name>Evo20.Log</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Evo20.Math\Evo20.Math.csproj">
-      <Project>{ba19e375-6fbe-4a3b-8f9d-234fd9208c73}</Project>
-      <Name>Evo20.Math</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Evo20.PacketsLib\Evo20.PacketsLib.csproj">
-      <Project>{95a534bd-9a78-4006-ac57-4502ae771634}</Project>
-      <Name>Evo20.PacketsLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Evo20.SensorConnection\Evo20.SensorsConnection.csproj">
-      <Project>{52144779-c8b6-47b1-ab89-3f1c9bd8ce0f}</Project>
-      <Name>Evo20.SensorsConnection</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -83,4 +42,50 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <Compile Include="AbstractData.cs" />
+    <Compile Include="Controller.cs" />
+    <Compile Include="ControllerEvo.cs" />
+    <Compile Include="CycleData.cs" />
+    <Compile Include="EvoData.cs" />
+    <Compile Include="WorkModeOperations.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Evo20.Log, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Evo20.GUI\bin\Debug\Evo20.Log.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Evo20.EvoCommandsLib\Evo20.EvoCommandsLib.csproj">
+      <Project>{8C91504C-7D1B-4385-A276-6848E1A3396E}</Project>
+      <Name>Evo20.EvoCommandsLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Evo20.EvoConnections\Evo20.EvoConnections.csproj">
+      <Project>{32CCC6CA-A913-4920-A83F-F7442D2107B9}</Project>
+      <Name>Evo20.EvoConnections</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Evo20.Math\Evo20.Math.csproj">
+      <Project>{290D2C14-4B1F-4110-970A-8572E5C905B8}</Project>
+      <Name>Evo20.Math</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Evo20.PacketsLib\Evo20.PacketsLib.csproj">
+      <Project>{38D34933-EA5E-4C43-AEE0-752676BC5FD0}</Project>
+      <Name>Evo20.PacketsLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Evo20.SensorsConnection\Evo20.SensorsConnection.csproj">
+      <Project>{86F18502-E4FB-4FDB-9AEE-E1EA1F1FF4BC}</Project>
+      <Name>Evo20.SensorsConnection</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

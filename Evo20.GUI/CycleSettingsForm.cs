@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Evo20.Controllers;
 
-namespace Evo_20form
+namespace Evo20.GUI
 {
     public partial class CycleSettingsForm : Form
     {
@@ -43,7 +41,7 @@ namespace Evo_20form
                 //box.AutoSize = true;
                 box.Location = new Point(10, i * 20); //vertical
                 CalibrationPanel.Controls.Add(box);
-                box.CheckedChanged+=temperatureCheckedChanged;
+                box.CheckedChanged += temperatureCheckedChanged;
                 calibrationCheckBoxes.Add(box);
 
             }
@@ -51,20 +49,20 @@ namespace Evo_20form
 
         private void temperatureCheckedChanged(object sender, EventArgs e)
         {
-            var box=sender as CheckBox;
-            if(box==null)
+            var box = sender as CheckBox;
+            if (box == null)
                 return;
             if (!box.Checked)
             {
                 return;
             }
-            if(lastChecked==null)
+            if (lastChecked == null)
             {
-                lastChecked=box;
+                lastChecked = box;
                 return;
             }
-            int startIndex=0;
-            int stopIndex=0;
+            int startIndex = 0;
+            int stopIndex = 0;
             if (lastChecked.TabIndex < box.TabIndex)
             {
                 startIndex = lastChecked.TabIndex;
@@ -83,7 +81,7 @@ namespace Evo_20form
             for (int i = startIndex; i < stopIndex; i++)
             {
                 calibrationCheckBoxes[i].Checked = true;
-                
+
             }
             lastChecked = box;
         }
@@ -95,7 +93,7 @@ namespace Evo_20form
 
         private void EndConfigurationButton_Click(object sender, EventArgs e)
         {
-            var resultList=new List<int>();
+            var resultList = new List<int>();
             foreach (var item in calibrationCheckBoxes)
             {
                 if (item.Checked)

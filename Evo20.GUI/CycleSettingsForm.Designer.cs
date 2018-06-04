@@ -1,4 +1,4 @@
-﻿namespace Evo_20form
+﻿namespace Evo20.GUI
 {
     partial class CycleSettingsForm
     {
@@ -71,7 +71,6 @@
             this.Controls.Add(this.EndConfigurationButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CalibrationPanel);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CycleSettingsForm";
             this.Text = "CycleSettingsForm";
             this.Load += new System.EventHandler(this.CycleSettingsForm_Load);

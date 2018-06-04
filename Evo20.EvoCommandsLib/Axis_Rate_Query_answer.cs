@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace Evo20.EvoCommandsLib
@@ -25,6 +24,7 @@ namespace Evo20.EvoCommandsLib
         }
         public Axis_Rate_Query_answer(String speedOfRate, Axis axis)
         {
+            speedOfRate = speedOfRate.Replace(',', '.');
             this.axis = axis;
             this.speedOfRate = Convert.ToDouble(speedOfRate);
             is_answer = true;

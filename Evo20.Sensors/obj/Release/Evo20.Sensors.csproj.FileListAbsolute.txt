@@ -1,4 +1,0 @@
-C:\Users\Азат\Desktop\Evo-20form\Evo20.Sensors\bin\Release\Evo20.Sensors.dll
-C:\Users\Азат\Desktop\Evo-20form\Evo20.Sensors\bin\Release\Evo20.Sensors.pdb
-C:\Users\Азат\Desktop\Evo-20form\Evo20.Sensors\obj\Release\Evo20.Sensors.dll
-C:\Users\Азат\Desktop\Evo-20form\Evo20.Sensors\obj\Release\Evo20.Sensors.pdb

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace Evo20.EvoCommandsLib
@@ -16,7 +15,8 @@ namespace Evo20.EvoCommandsLib
         }
         public Actual_temperature_query_answer(String temperature)
         {
-            this.temperature= Convert.ToDouble(temperature);
+            temperature = temperature.Replace(',', '.');
+            this.temperature = Convert.ToDouble(temperature);        
             is_answer = true;
             have_answer = false;
             can_send = false;

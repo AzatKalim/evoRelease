@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 
-namespace Evo_20form
+namespace Evo20.GUI
 {
     static class Program
     {

@@ -90,7 +90,7 @@ namespace Evo20.PacketsLib
         /// <returns></returns>
         public override string ToString()
         {
-            string buffer = string.Format(" id: {0}. w: {1}, {2}, {3}. a: {4}, {5}, {6}. u: {7}, {8}, {9}.",id,w[0],w[1],w[2],a[0],a[1],a[2],u[0],u[1],u[2]);
+            string buffer = string.Format("{0} {1} {2} {3} {4} {5} {6} {7} {8} {9}",id,w[0],w[1],w[2],a[0],a[1],a[2],u[0],u[1],u[2]);
             return buffer;
         }
 
@@ -192,11 +192,7 @@ namespace Evo20.PacketsLib
                 rangeFlag = true;
             if ((res & 3) == 3)
                 dataFlag = true;
-            res = res >> 3;
-            if (sign)
-                return -res;
-            else
-                return res;
+            return res;
         }
 
          /// <summary>
@@ -213,7 +209,7 @@ namespace Evo20.PacketsLib
             byte first = buffer[0];
             byte second = buffer[1];
             int i = 2;
-            while (first==206 && second == 250 && buffer.Count > i)
+            while ((first!=206 || second != 250) && buffer.Count > i)
             {
                 first = second;
                 second = buffer[i];

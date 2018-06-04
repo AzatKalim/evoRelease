@@ -1,11 +1,12 @@
-C:\Users\Азат\Desktop\Evo-20form\Evo20.PacketsLib\bin\Debug\PacketsLib.dll
-C:\Users\Азат\Desktop\Evo-20form\Evo20.PacketsLib\bin\Debug\PacketsLib.pdb
-C:\Users\Азат\Desktop\Evo-20form\Evo20.PacketsLib\obj\Debug\Evo20.PacketsLib.csprojResolveAssemblyReference.cache
-C:\Users\Азат\Desktop\Evo-20form\Evo20.PacketsLib\obj\Debug\PacketsLib.dll
-C:\Users\Азат\Desktop\Evo-20form\Evo20.PacketsLib\obj\Debug\PacketsLib.pdb
-C:\Users\iss\Downloads\evoRelease-master\Evo20.PacketsLib\bin\Debug\PacketsLib.dll
-C:\Users\iss\Downloads\evoRelease-master\Evo20.PacketsLib\bin\Debug\PacketsLib.pdb
-C:\Users\iss\Downloads\evoRelease-master\Evo20.PacketsLib\obj\Debug\Evo20.PacketsLib.csprojResolveAssemblyReference.cache
-C:\Users\iss\Downloads\evoRelease-master\Evo20.PacketsLib\obj\Debug\Evo20.PacketsLib.csproj.CoreCompileInputs.cache
-C:\Users\iss\Downloads\evoRelease-master\Evo20.PacketsLib\obj\Debug\PacketsLib.dll
-C:\Users\iss\Downloads\evoRelease-master\Evo20.PacketsLib\obj\Debug\PacketsLib.pdb
+C:\Users\Азат\Desktop\Новая папка (6)\Evo20\Evo20.PacketsLib\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Азат\Desktop\Новая папка (6)\Evo20\Evo20.PacketsLib\bin\Debug\Evo20.PacketsLib.dll
+C:\Users\Азат\Desktop\Новая папка (6)\Evo20\Evo20.PacketsLib\bin\Debug\Evo20.PacketsLib.pdb
+C:\Users\Азат\Desktop\Новая папка (6)\Evo20\Evo20.PacketsLib\obj\Debug\Evo20.PacketsLib.dll
+C:\Users\Азат\Desktop\Новая папка (6)\Evo20\Evo20.PacketsLib\obj\Debug\Evo20.PacketsLib.pdb
+F:\Новая папка (6)\Evo20\Evo20.PacketsLib\bin\Debug\Evo20.PacketsLib.dll
+F:\Новая папка (6)\Evo20\Evo20.PacketsLib\bin\Debug\Evo20.PacketsLib.pdb
+F:\Новая папка (6)\Evo20\Evo20.PacketsLib\obj\Debug\ResolveAssemblyReference.cache
+F:\Новая папка (6)\Evo20\Evo20.PacketsLib\obj\Debug\Evo20.PacketsLib.dll
+F:\Новая папка (6)\Evo20\Evo20.PacketsLib\obj\Debug\Evo20.PacketsLib.pdb
+F:\Новая папка (6)\Evo20\Evo20.PacketsLib\bin\Debug\Evo20.Log.dll
+F:\Новая папка (6)\Evo20\Evo20.PacketsLib\bin\Debug\Evo20.Log.pdb

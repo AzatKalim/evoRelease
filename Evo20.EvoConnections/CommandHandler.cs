@@ -12,7 +12,18 @@ namespace Evo20.EvoConnections
     /// Класс обертка над ConnectionSocket для работы с коммандами
     /// </summary>
     public class CommandHandler : ConnectionSocket
-    {     
+    {
+
+        string AXIS_STATUS = new Axis_Status().ToString();
+        string TEMPERATURE_STATUS = new Temperature_status().ToString();
+        string ROTARY_JOINT_TEMPERATURE_QUERY_X = new Rotary_joint_temperature_Query(Axis.X).ToString();
+        string ROTARY_JOINT_TEMPERATURE_QUERY_Y = new Rotary_joint_temperature_Query(Axis.Y).ToString();
+        string AXIS_POSITION_QUERY_X = new Axis_Position_Query(Axis.X).ToString();
+        string AXIS_POSITION_QUERY_Y = new Axis_Position_Query(Axis.Y).ToString();
+        string AXIS_RATE_QUERY_X = new Axis_Rate_Query(Axis.X).ToString();
+        string AXIS_RATE_QUERY_Y = new Axis_Rate_Query(Axis.Y).ToString();
+        string REQUESTED_AXIS_POSITION_REACHED = new Requested_axis_position_reached().ToString();
+        string ACTUAL_TEMPERATURE_QUERY = new Actual_temperature_query().ToString();
         // очередь обработанных комманд
         Queue<Command> bufferCommand;
 
@@ -99,7 +110,6 @@ namespace Evo20.EvoConnections
             string newMessage = command.ToString();
             return SendMessage(newMessage);
         }
-
         /// <summary>
         /// Извлечение комманды из строки 
         /// </summary>
@@ -107,6 +117,7 @@ namespace Evo20.EvoConnections
         /// <returns>комманда Evo_20_commands</returns>
         Command RecognizeCommand(String cmd)
         {
+
             if (cmd.Length == 0)
             {
                 return null;
@@ -128,63 +139,63 @@ namespace Evo20.EvoConnections
                 i++;
             }
             //Пришла команда Axis_Status
-            if (command_parts[0]+ ' ' == (new Axis_Status()).ToString())
+            if (command_parts[0] + ' ' == AXIS_STATUS)
             {
                 Evo20.Log.Log.WriteLog("Сообщение:статус осей " + DateTime.Now.ToString());            
                 return new Axis_Status_answer (temp.ToString());
             }
             //Пришла команда Temperature_status
-            if (command_parts[0] + ' ' == (new Temperature_status()).ToString())
+            if (command_parts[0] + ' ' == TEMPERATURE_STATUS)
             {
                 Evo20.Log.Log.WriteLog("Сообщение:статус термокамеры принято " + DateTime.Now.ToString());
                 return new Temperature_status_answer(temp.ToString());
             }
 
             //Пришла команда температура оси x
-            if (command_parts[0] == new Rotary_joint_temperature_Query(Axis.X).ToString())
+            if (command_parts[0] == ROTARY_JOINT_TEMPERATURE_QUERY_X)
             {
                Evo20.Log.Log.WriteLog("Сообщение:температура оси x принято " + DateTime.Now.ToString());
                 return new Rotary_joint_temperature_Query_answer(temp.ToString(),Axis.X);
             }
             //Пришла команда температура оси y
-            if (command_parts[0] == new Rotary_joint_temperature_Query(Axis.Y).ToString())
+            if (command_parts[0] == ROTARY_JOINT_TEMPERATURE_QUERY_Y)
             {
                 Evo20.Log.Log.WriteLog("Сообщение:температура оси y принято  " + DateTime.Now.ToString());
                 return new Rotary_joint_temperature_Query_answer(temp.ToString(), Axis.Y);
             }
 
             //Пришла команда положение оси x
-            if (command_parts[0] == new Axis_Position_Query(Axis.X).ToString())
+            if (command_parts[0] == AXIS_POSITION_QUERY_X)
             {
                 Evo20.Log.Log.WriteLog("Сообщение:положение оси x принято  " + DateTime.Now.ToString());
                 return new Axis_Position_Query_answer(temp.ToString(), Axis.X);
             }
             //Пришла команда положение оси y
-            if (command_parts[0] == new Axis_Position_Query(Axis.Y).ToString())
+            if (command_parts[0] == AXIS_POSITION_QUERY_Y)
             {
                 Evo20.Log.Log.WriteLog("Сообщение:положение оси y принято  " + DateTime.Now.ToString());
                 return new Axis_Position_Query_answer(temp.ToString(), Axis.Y);
             }
 
             //Пришла команда скорость оси x
-            if (command_parts[0] == new Axis_Rate_Query(Axis.X).ToString())
+            if (command_parts[0] == AXIS_RATE_QUERY_X)
             {
                 Evo20.Log.Log.WriteLog("Сообщение:скорость оси x принято  " + DateTime.Now.ToString());
                 return new Axis_Rate_Query_answer(temp.ToString(), Axis.X);
             }
             //Пришла команда скорость оси y
-            if (command_parts[0] == new Axis_Rate_Query(Axis.Y).ToString())
+            if (command_parts[0] == AXIS_RATE_QUERY_Y)
             {
                 Evo20.Log.Log.WriteLog("Сообщение:скорость оси y принято   " + DateTime.Now.ToString());
                 return new Axis_Rate_Query_answer(temp.ToString(), Axis.Y);
             }
             //Пришла команда о достигнутом положении осей
-            if (command_parts[0] == new Requested_axis_position_reached ().ToString())
+            if (command_parts[0] == REQUESTED_AXIS_POSITION_REACHED)
             {
                 Evo20.Log.Log.WriteLog("Сообщение:достигнутые положение осей   " + DateTime.Now.ToString());
                 return new Requested_axis_position_reached_answer(temp.ToString());
             }
-            if (command_parts[0] == (new Actual_temperature_query()).ToString())
+            if (command_parts[0] == ACTUAL_TEMPERATURE_QUERY)
             {
                 Evo20.Log.Log.WriteLog("Сообщение:достигнутые положение осей   " + DateTime.Now.ToString());
                 return new Actual_temperature_query_answer(temp.ToString());

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace Evo20.EvoCommandsLib
@@ -105,11 +104,16 @@ namespace Evo20.EvoCommandsLib
 
         public Axis_Status_answer(String value)
         {
-            StringBuilder data = new StringBuilder(Convert.ToString(Convert.ToInt32(value, 16), 2));
-            while (data.Length < 22)
+            var tmp = Convert.ToString(Convert.ToInt32(value, 16), 2);
+            StringBuilder data= new StringBuilder();
+            for (int i = tmp.Length-1; i >=0; i--)
             {
-                data.Append('0');
+                data.Append(tmp[i]);
             }
+            //while (data.Length < 24)
+            //{
+            //    data.Append('0');
+            //}            
             is_answer = true;
             have_answer = false;
             can_send = false;

@@ -95,6 +95,7 @@ namespace Evo20.EvoConnections
             work_thread.IsBackground = true;
             connectionState = ConnectionStatus.DISCONNECTED;
             receivingUdpClient = null;
+            sender = new UdpClient(3306);
         }
 
         //Деструктор класса
@@ -114,8 +115,8 @@ namespace Evo20.EvoConnections
         public bool StartConnection()
         {
             if (connectionState == ConnectionStatus.DISCONNECTED)
-            {                                
-                connectionState = ConnectionStatus.CONNECTED;
+            {
+                ConnectionStatus = ConnectionStatus.CONNECTED;
                 if (!work_thread.IsAlive)
                 {
                     work_thread= new Thread(ReadMessage);
@@ -139,7 +140,7 @@ namespace Evo20.EvoConnections
             if (connectionState == ConnectionStatus.CONNECTED)
             {
                 work_thread.Abort();
-                connectionState = ConnectionStatus.PAUSE;
+                ConnectionStatus = ConnectionStatus.PAUSE;
                 Evo20.Log.Log.WriteLog("Соединение c Evo 20 приостановлено");
                 return true;
             }
@@ -159,7 +160,7 @@ namespace Evo20.EvoConnections
             {
                 work_thread = new Thread(ReadMessage);
                 work_thread.Start();
-                connectionState = ConnectionStatus.CONNECTED;
+                ConnectionStatus = ConnectionStatus.CONNECTED;
                 Evo20.Log.Log.WriteLog("Соединение c Evo 20 востановлено");
                 return true;
             }
@@ -179,7 +180,7 @@ namespace Evo20.EvoConnections
             {
                 work_thread.Abort();
             }
-            connectionState = ConnectionStatus.DISCONNECTED;
+            ConnectionStatus = ConnectionStatus.DISCONNECTED;
             if(receivingUdpClient!=null)
                 receivingUdpClient.Close();
             Evo20.Log.Log.WriteLog("Соединение c Evo 20 прервано");
@@ -197,14 +198,13 @@ namespace Evo20.EvoConnections
         /// <returns>результат </returns>
         public bool SendMessage(string message)
         {
-            sender = new UdpClient();
             endPoint = new IPEndPoint(remoteIPAddress, REMOTE_PORT_NUMBER);
             try
             {
                 if (connectionState == ConnectionStatus.CONNECTED)
                 {
                     byte[] bytes = Encoding.UTF8.GetBytes(message);
-                    sender.Send(bytes, bytes.Length,endPoint);
+                    sender.Send(bytes, bytes.Length, endPoint);
                     return true;
                 }
                 else
@@ -221,10 +221,6 @@ namespace Evo20.EvoConnections
                     EventHandlerListForException(exception);
                 return false;
             }
-            finally
-            {
-                sender.Close();
-            }
         }
 
         /// <summary>
@@ -232,18 +228,18 @@ namespace Evo20.EvoConnections
         /// </summary>
         protected void ReadMessage()
         {
-            try
-            {
-                receivingUdpClient = new UdpClient(LOCAL_PORT_NUMBER);
-            }
-            catch(Exception exception)
-            {
-                connectionState = ConnectionStatus.ERROR;
-                Evo20.Log.Log.WriteLog("Невозможно открыть соединение с Evo " + "Возникло исключение" + exception.ToString());
-                if (EventHandlerListForException != null)
-                    EventHandlerListForException(exception);
-                return;
-            }
+            //try
+            //{
+            //    receivingUdpClient = new UdpClient(LOCAL_PORT_NUMBER);
+            //}
+            //catch(Exception exception)
+            //{
+            //    connectionState = ConnectionStatus.ERROR;
+            //    Evo20.Log.Log.WriteLog("Невозможно открыть соединение с Evo " + "Возникло исключение" + exception.ToString());
+            //    if (EventHandlerListForException != null)
+            //        EventHandlerListForException(exception);
+            //    return;
+            //}
 
             IPEndPoint RemoteIpEndPoint = null;
 
@@ -251,29 +247,27 @@ namespace Evo20.EvoConnections
             {
                 while (connectionState == ConnectionStatus.CONNECTED)
                 {
-                    byte[] receiveBytes = receivingUdpClient.Receive(
+                    byte[] receiveBytes = sender.Receive(
                        ref RemoteIpEndPoint);
 
                     lock (buffer)
                     {
                         receiveBytes.CopyTo(buffer, 0);
                     }
-                    string message = Encoding.UTF8.GetString(buffer);
-                    Evo20.Log.Log.WriteLog("Получено сообщение " + message.ToString());
                     EventHandlersListForCommand();
+
                 }
-            }
-            catch (ThreadAbortException)
-            {
             }
             catch (Exception exception)
             {
+                connectionState = ConnectionStatus.ERROR;
+                Evo20.Log.Log.WriteLog("Невозможно открыть соединение с Evo " + "Возникло исключение" + exception.ToString());
                 if (EventHandlerListForException != null)
                     EventHandlerListForException(exception);
             }
             finally
             {
-                receivingUdpClient.Close();
+                sender.Close();
             }
         }
 
@@ -284,13 +278,20 @@ namespace Evo20.EvoConnections
         /// <returns></returns>
         public string ReadBuffer()
         {
-            StringBuilder message = new StringBuilder();
-            lock (buffer)
+            var message= string.Empty;
+            try
             {
-                message.Append(Encoding.UTF8.GetString(buffer, 0, buffer.Length));
-                buffer=new byte[2048];
+                lock (buffer)
+                {
+                    message = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
+                    buffer = new byte[2048];
+                }
             }
-            return message.ToString();
+            catch (FormatException ex)
+            {
+                message = String.Empty;
+            }
+            return message;
         }
 
         #endregion

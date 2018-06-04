@@ -1,4 +1,4 @@
-﻿namespace Evo_20form
+﻿namespace Evo20.GUI
 {
     partial class MainForm
     {
@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Evo_control_page = new System.Windows.Forms.TabPage();
             this.EvoParamsGroupBox = new System.Windows.Forms.GroupBox();
@@ -103,9 +102,9 @@
             this.settingsButton = new System.Windows.Forms.Button();
             this.stopButton = new System.Windows.Forms.Button();
             this.pauseButton = new System.Windows.Forms.Button();
-            this.startButton = new System.Windows.Forms.Button();
             this.cycleSettingsButton = new System.Windows.Forms.Button();
             this.SensorTimer = new System.Windows.Forms.Timer(this.components);
+            this.startButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.Evo_control_page.SuspendLayout();
             this.EvoParamsGroupBox.SuspendLayout();
@@ -176,6 +175,7 @@
             this.EvoParamsGroupBox.TabIndex = 11;
             this.EvoParamsGroupBox.TabStop = false;
             this.EvoParamsGroupBox.Text = "Параметры";
+            this.EvoParamsGroupBox.Enter += new System.EventHandler(this.EvoParamsGroupBox_Enter);
             // 
             // temperatureStabLabel
             // 
@@ -200,9 +200,8 @@
             this.connectionStateLabel.AutoSize = true;
             this.connectionStateLabel.Location = new System.Drawing.Point(204, 57);
             this.connectionStateLabel.Name = "connectionStateLabel";
-            this.connectionStateLabel.Size = new System.Drawing.Size(64, 13);
+            this.connectionStateLabel.Size = new System.Drawing.Size(0, 13);
             this.connectionStateLabel.TabIndex = 12;
-            this.connectionStateLabel.Text = "нет данных";
             // 
             // label20
             // 
@@ -492,7 +491,7 @@
             // evoStopButton
             // 
             this.evoStopButton.Enabled = false;
-            this.evoStopButton.Image = global::Evo_20form.Properties.Resources.stop;
+            this.evoStopButton.Image = global::Evo20.GUI.Properties.Resources.stop;
             this.evoStopButton.Location = new System.Drawing.Point(95, 7);
             this.evoStopButton.Name = "evoStopButton";
             this.evoStopButton.Size = new System.Drawing.Size(44, 41);
@@ -503,7 +502,7 @@
             // evoStartButton
             // 
             this.evoStartButton.Cursor = System.Windows.Forms.Cursors.AppStarting;
-            this.evoStartButton.Image = ((System.Drawing.Image)(resources.GetObject("evoStartButton.Image")));
+            this.evoStartButton.Image = global::Evo20.GUI.Properties.Resources.play;
             this.evoStartButton.Location = new System.Drawing.Point(18, 7);
             this.evoStartButton.Name = "evoStartButton";
             this.evoStartButton.Size = new System.Drawing.Size(44, 41);
@@ -515,7 +514,7 @@
             // 
             this.evoPauseButton.Cursor = System.Windows.Forms.Cursors.No;
             this.evoPauseButton.Enabled = false;
-            this.evoPauseButton.Image = ((System.Drawing.Image)(resources.GetObject("evoPauseButton.Image")));
+            this.evoPauseButton.Image = global::Evo20.GUI.Properties.Resources.pause_;
             this.evoPauseButton.Location = new System.Drawing.Point(56, 7);
             this.evoPauseButton.Name = "evoPauseButton";
             this.evoPauseButton.Size = new System.Drawing.Size(44, 41);
@@ -689,7 +688,7 @@
             // sensorStopButton
             // 
             this.sensorStopButton.Enabled = false;
-            this.sensorStopButton.Image = global::Evo_20form.Properties.Resources.stop;
+            this.sensorStopButton.Image = global::Evo20.GUI.Properties.Resources.stop;
             this.sensorStopButton.Location = new System.Drawing.Point(325, 10);
             this.sensorStopButton.Name = "sensorStopButton";
             this.sensorStopButton.Size = new System.Drawing.Size(42, 39);
@@ -700,7 +699,7 @@
             // sensorPauseButton
             // 
             this.sensorPauseButton.Enabled = false;
-            this.sensorPauseButton.Image = ((System.Drawing.Image)(resources.GetObject("sensorPauseButton.Image")));
+            this.sensorPauseButton.Image = global::Evo20.GUI.Properties.Resources.pause_;
             this.sensorPauseButton.Location = new System.Drawing.Point(288, 9);
             this.sensorPauseButton.Name = "sensorPauseButton";
             this.sensorPauseButton.Size = new System.Drawing.Size(40, 40);
@@ -710,7 +709,7 @@
             // 
             // sensorStartButton
             // 
-            this.sensorStartButton.Image = global::Evo_20form.Properties.Resources.play;
+            this.sensorStartButton.Image = global::Evo20.GUI.Properties.Resources.play;
             this.sensorStartButton.Location = new System.Drawing.Point(248, 8);
             this.sensorStartButton.Name = "sensorStartButton";
             this.sensorStartButton.Size = new System.Drawing.Size(44, 41);
@@ -762,6 +761,7 @@
             this.parameGroupBox.TabIndex = 9;
             this.parameGroupBox.TabStop = false;
             this.parameGroupBox.Text = "Текущие параметры";
+            this.parameGroupBox.Enter += new System.EventHandler(this.parameGroupBox_Enter);
             // 
             // controllerWokModeLabel
             // 
@@ -830,7 +830,7 @@
             // 
             // settingsButton
             // 
-            this.settingsButton.Image = ((System.Drawing.Image)(resources.GetObject("settingsButton.Image")));
+            this.settingsButton.Image = global::Evo20.GUI.Properties.Resources.settings;
             this.settingsButton.Location = new System.Drawing.Point(18, 3);
             this.settingsButton.Name = "settingsButton";
             this.settingsButton.Size = new System.Drawing.Size(39, 38);
@@ -841,7 +841,7 @@
             // stopButton
             // 
             this.stopButton.Enabled = false;
-            this.stopButton.Image = global::Evo_20form.Properties.Resources.stop;
+            this.stopButton.Image = global::Evo20.GUI.Properties.Resources.stop;
             this.stopButton.Location = new System.Drawing.Point(497, 5);
             this.stopButton.Name = "stopButton";
             this.stopButton.Size = new System.Drawing.Size(44, 41);
@@ -852,23 +852,13 @@
             // pauseButton
             // 
             this.pauseButton.Enabled = false;
-            this.pauseButton.Image = ((System.Drawing.Image)(resources.GetObject("pauseButton.Image")));
+            this.pauseButton.Image = global::Evo20.GUI.Properties.Resources.pause_;
             this.pauseButton.Location = new System.Drawing.Point(456, 5);
             this.pauseButton.Name = "pauseButton";
             this.pauseButton.Size = new System.Drawing.Size(44, 41);
             this.pauseButton.TabIndex = 7;
             this.pauseButton.UseVisualStyleBackColor = true;
             this.pauseButton.Click += new System.EventHandler(this.pauseButton_Click);
-            // 
-            // startButton
-            // 
-            this.startButton.Image = ((System.Drawing.Image)(resources.GetObject("startButton.Image")));
-            this.startButton.Location = new System.Drawing.Point(415, 5);
-            this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(44, 41);
-            this.startButton.TabIndex = 3;
-            this.startButton.UseVisualStyleBackColor = true;
-            this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
             // cycleSettingsButton
             // 
@@ -884,6 +874,16 @@
             // 
             this.SensorTimer.Interval = 1000;
             this.SensorTimer.Tick += new System.EventHandler(this.SensorTimer_Tick);
+            // 
+            // startButton
+            // 
+            this.startButton.Image = global::Evo20.GUI.Properties.Resources.play;
+            this.startButton.Location = new System.Drawing.Point(415, 5);
+            this.startButton.Name = "startButton";
+            this.startButton.Size = new System.Drawing.Size(44, 41);
+            this.startButton.TabIndex = 3;
+            this.startButton.UseVisualStyleBackColor = true;
+            this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
             // MainForm
             // 
@@ -901,11 +901,10 @@
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.modeComboBox);
             this.Controls.Add(this.tabControl1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "Evo20";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.tabControl1.ResumeLayout(false);
             this.Evo_control_page.ResumeLayout(false);
             this.EvoParamsGroupBox.ResumeLayout(false);

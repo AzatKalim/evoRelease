@@ -1,8 +1,0 @@
-Указанный порт занятCOM1
-System.UnauthorizedAccessException: Доступ к порту 'COM1' закрыт.
-   в System.IO.Ports.InternalResources.WinIOError(Int32 errorCode, String str)
-   в System.IO.Ports.SerialStream..ctor(String portName, Int32 baudRate, Parity parity, Int32 dataBits, StopBits stopBits, Int32 readTimeout, Int32 writeTimeout, Handshake handshake, Boolean dtrEnable, Boolean rtsEnable, Boolean discardNull, Byte parityReplace)
-   в System.IO.Ports.SerialPort.Open()
-   в Evo20.SensorsConnection.SensorConnection.StartConnection(String portName) в c:\Users\Азат\Desktop\Отчеты_Азат\Evo-20form\Evo20.SensorConnection\SensorConnection.cs:строка 68
-Соединение c датчиком прервано
-Соединение c Evo 20 прервано
