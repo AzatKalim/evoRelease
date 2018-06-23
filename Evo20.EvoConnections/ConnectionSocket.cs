@@ -206,6 +206,7 @@ namespace Evo20.EvoConnections
                 }
                 else
                 {
+                    Evo20.Log.Log.WriteLog("Сообщение " + message + " Evo 20 не доставлено, клиент не подключен");
                     return false;
                 }
             }

@@ -48,3 +48,28 @@ F:\Новая папка (6)\Evo20\Evo20.GUI\obj\Debug\ResolveAssemblyReference.
 F:\Новая папка (6)\Evo20\Evo20.GUI\obj\Debug\Evo20.GUI.MainForm.resources
 F:\Новая папка (6)\Evo20\Evo20.GUI\obj\Debug\Evo20.GUI.Properties.Resources.resources
 F:\Новая папка (6)\Evo20\Evo20.GUI\obj\Debug\Evo20.GUI.csproj.GenerateResource.Cache
+C:\Users\Азат\Desktop\evoRelease-master\Evo20.GUI\bin\Debug\app.config
+C:\Users\Азат\Desktop\evoRelease-master\Evo20.GUI\bin\Debug\Evo20.GUI.exe.config
+C:\Users\Азат\Desktop\evoRelease-master\Evo20.GUI\bin\Debug\Evo20.GUI.exe
+C:\Users\Азат\Desktop\evoRelease-master\Evo20.GUI\bin\Debug\Evo20.GUI.pdb
+C:\Users\Азат\Desktop\evoRelease-master\Evo20.GUI\bin\Debug\Evo20.Controllers.dll
+C:\Users\Азат\Desktop\evoRelease-master\Evo20.GUI\bin\Debug\Evo20.EvoCommandsLib.dll
+C:\Users\Азат\Desktop\evoRelease-master\Evo20.GUI\bin\Debug\Evo20.EvoConnections.dll
+C:\Users\Азат\Desktop\evoRelease-master\Evo20.GUI\bin\Debug\Evo20.Log.dll
+C:\Users\Азат\Desktop\evoRelease-master\Evo20.GUI\bin\Debug\Evo20.Math.dll
+C:\Users\Азат\Desktop\evoRelease-master\Evo20.GUI\bin\Debug\Evo20.PacketsLib.dll
+C:\Users\Азат\Desktop\evoRelease-master\Evo20.GUI\bin\Debug\Evo20.SensorsConnection.dll
+C:\Users\Азат\Desktop\evoRelease-master\Evo20.GUI\bin\Debug\ZedGraph.dll
+C:\Users\Азат\Desktop\evoRelease-master\Evo20.GUI\bin\Debug\Evo20.Log.pdb
+C:\Users\Азат\Desktop\evoRelease-master\Evo20.GUI\bin\Debug\Evo20.Controllers.pdb
+C:\Users\Азат\Desktop\evoRelease-master\Evo20.GUI\bin\Debug\Evo20.PacketsLib.pdb
+C:\Users\Азат\Desktop\evoRelease-master\Evo20.GUI\bin\Debug\Evo20.EvoConnections.pdb
+C:\Users\Азат\Desktop\evoRelease-master\Evo20.GUI\bin\Debug\Evo20.SensorsConnection.pdb
+C:\Users\Азат\Desktop\evoRelease-master\Evo20.GUI\bin\Debug\Evo20.Math.pdb
+C:\Users\Азат\Desktop\evoRelease-master\Evo20.GUI\bin\Debug\Evo20.EvoCommandsLib.pdb
+C:\Users\Азат\Desktop\evoRelease-master\Evo20.GUI\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Азат\Desktop\evoRelease-master\Evo20.GUI\obj\Debug\Evo20.GUI.MainForm.resources
+C:\Users\Азат\Desktop\evoRelease-master\Evo20.GUI\obj\Debug\Evo20.GUI.Properties.Resources.resources
+C:\Users\Азат\Desktop\evoRelease-master\Evo20.GUI\obj\Debug\Evo20.GUI.csproj.GenerateResource.Cache
+C:\Users\Азат\Desktop\evoRelease-master\Evo20.GUI\obj\Debug\Evo20.GUI.exe
+C:\Users\Азат\Desktop\evoRelease-master\Evo20.GUI\obj\Debug\Evo20.GUI.pdb

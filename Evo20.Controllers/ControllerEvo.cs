@@ -208,9 +208,9 @@ namespace Evo20.Controllers
         /// Запуск температурной камеры 
         /// </summary>
         /// <param name="value">true-запуск,false-отключить</param>
-        protected void PowerOnCamera(bool value)
+        protected bool PowerOnCamera(bool value)
         {
-            commandHandler.SendCommand(new PowerOnTemperatureCamera(value));
+            return commandHandler.SendCommand(new PowerOnTemperatureCamera(value));
         }
 
         /// <summary>
@@ -218,9 +218,9 @@ namespace Evo20.Controllers
         /// </summary>
         /// <param name="axis">ось</param>
         /// <param name="value"></param>
-        protected void PowerOnAxis(Axis axis, bool value)
+        protected bool PowerOnAxis(Axis axis, bool value)
         {
-            commandHandler.SendCommand(new Axis_Power(axis, value));
+            return commandHandler.SendCommand(new Axis_Power(axis, value));
         }
 
         /// <summary>
@@ -228,18 +228,18 @@ namespace Evo20.Controllers
         /// </summary>
         /// <param name="axis">ось</param>
         /// <param name="speedOfRate">скорость</param>
-        protected void SetAxisRate(Axis axis, double speedOfRate)
+        protected bool SetAxisRate(Axis axis, double speedOfRate)
         {
-            commandHandler.SendCommand(new Axis_Rate(axis, speedOfRate));
+            return commandHandler.SendCommand(new Axis_Rate(axis, speedOfRate));
         }
 
         /// <summary>
         /// Поиск нуля
         /// </summary>
         /// <param name="axis">ось</param>
-        protected void FindZeroIndex(Axis axis)
+        protected bool FindZeroIndex(Axis axis)
         {
-            commandHandler.SendCommand(new Zero_Index_Search(axis));
+            return commandHandler.SendCommand(new Zero_Index_Search(axis));
         }
 
         /// <summary>
@@ -247,34 +247,34 @@ namespace Evo20.Controllers
         /// </summary>
         /// <param name="param">режим</param>
         /// <param name="axis">ось</param>
-        protected void SetAxisMode(ModeParam param,Axis axis)
+        protected bool SetAxisMode(ModeParam param, Axis axis)
         {
-            commandHandler.SendCommand(new Mode(param, axis));
+            return commandHandler.SendCommand(new Mode(param, axis));
         }
 
-        protected void StopAxis(Axis axis)
+        protected bool StopAxis(Axis axis)
         {
-            commandHandler.SendCommand(new Stop_axis(axis));
-        }
-       
-        protected void SetAxisPosition(Axis axis,double degree)
-        {
-            commandHandler.SendCommand(new Axis_Position(axis, degree));
+            return commandHandler.SendCommand(new Stop_axis(axis));
         }
 
-        protected void StartAxis(Axis axis)
+        protected bool SetAxisPosition(Axis axis, double degree)
         {
-            commandHandler.SendCommand(new Start_axis(axis));    
+            return commandHandler.SendCommand(new Axis_Position(axis, degree));
         }
 
-        protected void SetTemperatureChangeSpeed(double slope)
+        protected bool StartAxis(Axis axis)
         {
-            commandHandler.SendCommand(new Temperature_slope_set_point(slope));
+            return commandHandler.SendCommand(new Start_axis(axis));    
         }
 
-        protected void SetTemperature(double temperature)
+        protected bool SetTemperatureChangeSpeed(double slope)
         {
-            commandHandler.SendCommand(new Temperature_Set_point(temperature));
+            return commandHandler.SendCommand(new Temperature_slope_set_point(slope));
+        }
+
+        protected bool SetTemperature(double temperature)
+        {
+            return commandHandler.SendCommand(new Temperature_Set_point(temperature));
         }
 
         #endregion

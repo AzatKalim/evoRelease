@@ -378,12 +378,28 @@ namespace Evo20.Controllers
                     Evo20.Log.Log.WriteLog("Ошибка:перед запуском цикла. Режим работы не установлен!");
                     return false;
             }
-
-            PowerOnCamera(true);
-            PowerOnAxis(Axis.ALL, true);
-            FindZeroIndex(Axis.ALL);
+            bool isSended = false;
+            isSended=PowerOnCamera(true);
+            if (!isSended)
+            {
+                Evo20.Log.Log.WriteLog("Ошибка:перед запуском цикла. Не удалось отправить команду запуск камеры!");
+                return false;
+            }
+            isSended=PowerOnAxis(Axis.ALL, true);
+            if (!isSended)
+            {
+                Evo20.Log.Log.WriteLog("Ошибка:перед запуском цикла. Не удалось отправить команду подать питание на оси!");
+                return false;
+            }
+            isSended=FindZeroIndex(Axis.ALL);
+            if (!isSended)
+            {
+                Evo20.Log.Log.WriteLog("Ошибка:перед запуском цикла. Не удалось отправить команду найти нули !");
+                return false;
+            }
+            
             if (cycleData.StartTemperatureIndex > 0)
-                temperatureOfCollect = temperatures[cycleData.StartTemperatureIndex-1];
+            temperatureOfCollect = temperatures[cycleData.StartTemperatureIndex-1];
             //цикл по температурам
             for (int i = cycleData.StartTemperatureIndex; i < temperatures.Count; i++)
             {
@@ -437,11 +453,13 @@ namespace Evo20.Controllers
         /// <returns>результат</returns>
         private bool SensorCyclePart(ProfilePart[] profile)
         {
+            Evo20.Log.Log.WriteLog("Запуск подцикла для датчика " + CurrentSensor.Name + " профиль имеет " + profile.Length + " положений.");
             int j = 0;
             try
             {
                 for (; j < profile.Length; j++)
                 {
+                    Evo20.Log.Log.WriteLog("Положение для датичка " + CurrentSensor.Name + " номер позиции " + j + "описание положения " + profile[j].ToString());
                     StopAxis(Axis.ALL);
                     evoData.movementEndedEvent.WaitOne(THREADS_SLEEP_TIME);
                     evoData.movementEndedEvent.Reset();
@@ -469,13 +487,18 @@ namespace Evo20.Controllers
                     }
                     StartAxis(Axis.ALL);
                     CurrentPositionNumber = j;
+                    Evo20.Log.Log.WriteLog("Ожидание установки позиции");
                     //ожидаем пока установятся позиции
                     Thread.Sleep(THREADS_SLEEP_TIME);
                     //ожидание сбора пакетов
+                    Evo20.Log.Log.WriteLog("Ожидание установки позиции завершено");
+                    CurrentSensor.PacketsCollectedEvent.Reset();
+                    Evo20.Log.Log.WriteLog("Начало сбора пакетов.Номер позиции " + j);
                     canCollect = true;
                     CurrentSensor.PacketsCollectedEvent.WaitOne();
-                    CurrentSensor.PacketsCollectedEvent.Reset();
                     canCollect = false;
+                    CurrentSensor.PacketsCollectedEvent.Reset();                 
+                    Evo20.Log.Log.WriteLog("Сборка завершена");
                 }
 
             }

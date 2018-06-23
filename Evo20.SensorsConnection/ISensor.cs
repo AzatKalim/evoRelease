@@ -20,6 +20,11 @@ namespace Evo20.SensorsConnection
         }
         public ProfilePart(int x, int y)
             : this(x, y, 0, 0){ }
+
+        public override string ToString()
+        {
+            return string.Format("x :{0}, y :{1} , speedX: {2} , speedY: {3}",axisX,axisY,speedX,speedY);
+        }
     }
 
 
