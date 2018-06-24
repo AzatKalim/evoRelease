@@ -467,7 +467,7 @@ namespace Evo20.Controllers
                     //задание положений и скоростей
                     if (profile[j].speedX != 0)
                     {
-                        SetAxisRate(Axis.X, profile[j].speedX);
+                        SetAxisRate(Axis.X, profile[j].speedX); 
                         SetAxisMode(ModeParam.Speed, Axis.X);
                     }
                     else

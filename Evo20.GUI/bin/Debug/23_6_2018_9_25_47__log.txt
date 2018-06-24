@@ -1,8 +1,0 @@
-Ошибка: чтения пакетов из файла: возникло исключениеSystem.FormatException: Входная строка имела неверный формат.
-   в System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-   в System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   в System.Convert.ToInt32(String value)
-   в Evo20.SensorsConnection.SensorData.ReadDataFromFile(StreamReader file, ISensor sensor) в C:\Users\Азат\Desktop\evoRelease-master\Evo20.SensorsConnection\SensorData.cs:строка 117
-   в Evo20.SensorsConnection.SensorData.ReadDataFromFile(List`1& sensors, StreamReader file) в C:\Users\Азат\Desktop\evoRelease-master\Evo20.SensorsConnection\SensorData.cs:строка 140
-   в Evo20.Controllers.Controller.ReadDataFromFile(StreamReader file) в C:\Users\Азат\Desktop\evoRelease-master\Evo20.Controllers\Controller.cs:строка 586
-   в Evo20.GUI.MainForm.readDataButton_Click(Object sender, EventArgs e) в C:\Users\Азат\Desktop\evoRelease-master\Evo20.GUI\MainForm.cs:строка 356
