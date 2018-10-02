@@ -36,7 +36,6 @@ F:\Новая папка (6)\Evo20\Evo20.Controllers\obj\Release\Evo20.Controlle
 F:\Новая папка (6)\Evo20\Evo20.Controllers\obj\Release\Evo20.Controllers.pdb
 C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\obj\Release\ResolveAssemblyReference.cache
 C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\obj\Release\Evo20.Controllers.dll
-C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\bin\Release\Evo20.Controllers.dll.config
 C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\bin\Release\Evo20.Controllers.dll
 C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\bin\Release\Evo20.Controllers.pdb
 C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\bin\Release\Evo20.EvoCommandsLib.dll
@@ -52,3 +51,5 @@ C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\bin\Release\Evo20.EvoConnectio
 C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\bin\Release\Evo20.EvoCommandsLib.pdb
 C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\bin\Release\Evo20.Math.pdb
 C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\obj\Release\Evo20.Controllers.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\bin\Release\Evo20.Config.dll
+C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\bin\Release\Evo20.Config.pdb

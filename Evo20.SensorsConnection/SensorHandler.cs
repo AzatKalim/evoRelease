@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using Evo20.PacketsLib;
+using Evo20.Config;
+
 namespace Evo20.SensorsConnection
 {
     public delegate void DataHandler();
@@ -62,17 +64,17 @@ namespace Evo20.SensorsConnection
             }
             // находим стартовые байты пакета 
             bool isBeginFinded = Packet.FindPacketBegin(ref bufferMessage);
-            if (!isBeginFinded || bufferMessage.Count < Packet.PACKET_SIZE)
+            if (!isBeginFinded || bufferMessage.Count < Config.Config.PACKET_SIZE)
             {
                 dropedPackets++;
                 return;
             }
-            var temp = new byte[Packet.PACKET_SIZE];
+            var temp = new byte[Config.Config.PACKET_SIZE];
             lock (bufferMessage)
             {
                 // извлекаем  байты в колличестве размера пакета в список 
-                bufferMessage.CopyTo(0, temp, 0, Packet.PACKET_SIZE);
-                bufferMessage.RemoveRange(0, Packet.PACKET_SIZE);
+                bufferMessage.CopyTo(0, temp, 0, Config.Config.PACKET_SIZE);
+                bufferMessage.RemoveRange(0, Config.Config.PACKET_SIZE);
             }
             
             // получаем информацию из массива байт

@@ -188,7 +188,6 @@ namespace Evo20.SensorsConnection
 
         public bool WriteRedPackets()
         {
-            BinaryFormatter formater = new BinaryFormatter();
 
             return true;
         }

@@ -59,6 +59,10 @@
     <Compile Include="SensorHandler.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Evo20.Config\Evo20.Config.csproj">
+      <Project>{99D800D1-0D39-49B9-9311-003759CA741B}</Project>
+      <Name>Evo20.Config</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Evo20.PacketsLib\Evo20.PacketsLib.csproj">
       <Project>{38D34933-EA5E-4C43-AEE0-752676BC5FD0}</Project>
       <Name>Evo20.PacketsLib</Name>

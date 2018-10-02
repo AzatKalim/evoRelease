@@ -56,7 +56,6 @@
       <HintPath>..\Evo20.GUI\bin\Debug\Evo20.Log.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -64,9 +63,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\Evo20.Config\Evo20.Config.csproj">
+      <Project>{99D800D1-0D39-49B9-9311-003759CA741B}</Project>
+      <Name>Evo20.Config</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Evo20.EvoCommandsLib\Evo20.EvoCommandsLib.csproj">
       <Project>{8C91504C-7D1B-4385-A276-6848E1A3396E}</Project>
       <Name>Evo20.EvoCommandsLib</Name>

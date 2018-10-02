@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using Evo20.Log;
+using Evo20.Config;
 using System.Configuration;
 using System.Collections.Specialized;
 
@@ -14,19 +15,6 @@ namespace Evo20.EvoConnections
     /// </summary>
     public class ConnectionSocket
     {
-        #region Constants
-
-        //номер порта приходящих сообщений 
-        static int LOCAL_PORT_NUMBER = Convert.ToInt32(ConfigurationManager.AppSettings.Get("LocalPortNumber"));
-
-        //номер удаленного порта 
-        static int REMOTE_PORT_NUMBER = Convert.ToInt32(ConfigurationManager.AppSettings.Get("RemotePortNumber"));
-
-        //ip адресс удаленного компьютера 
-        static string REMOTE_IP_ADRESS = ConfigurationManager.AppSettings.Get("RemoteIPAdress");
-
-        #endregion
-
         #region Delegates and events
         //делегат для события 
         public delegate void ConnectionSocketHandler();
@@ -49,7 +37,7 @@ namespace Evo20.EvoConnections
         #region Private Fields
 
         //ip адресс удаленного компьютера 
-        private static IPAddress remoteIPAddress = IPAddress.Parse(REMOTE_IP_ADRESS);
+        private static IPAddress remoteIPAddress = IPAddress.Parse(Config.Config.REMOTE_IP_ADRESS);
           
         IPEndPoint endPoint;
 
@@ -198,7 +186,7 @@ namespace Evo20.EvoConnections
         /// <returns>результат </returns>
         public bool SendMessage(string message)
         {
-            endPoint = new IPEndPoint(remoteIPAddress, REMOTE_PORT_NUMBER);
+            endPoint = new IPEndPoint(remoteIPAddress, Config.Config.REMOTE_PORT_NUMBER);
             try
             {
                 if (connectionState == ConnectionStatus.CONNECTED)

@@ -4,7 +4,7 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using System.Configuration;
-
+using Evo20.Config;
 using Evo20.EvoCommandsLib;
 using Evo20.Controllers;
 using Evo20.Log;
@@ -385,16 +385,16 @@ namespace Evo20.Controllers
             for (int i = CycleData.Current.StartTemperatureIndex; i < temperatures.Count; i++)
             {
                 StopAxis(Axis.ALL);
-                SetAxisRate(Axis.ALL, EvoData.BASE_MOVE_SPEED);
+                SetAxisRate(Axis.ALL, Config.Config.BASE_MOVE_SPEED);
                 SetAxisPosition(Axis.ALL, 0);
                 StartAxis(Axis.ALL);
-                SetTemperatureChangeSpeed(EvoData.SPEED_OF_TEMPERATURE_CHANGE);
+                SetTemperatureChangeSpeed(Config.Config.SPEED_OF_TEMPERATURE_CHANGE);
                 lock (EvoData.Current)
                 {
                     EvoData.Current.NextTemperature = temperatures[i];
                 }
                 SetTemperature(temperatures[i]);
-                Evo20.Log.Log.WriteLog("Установлена температура камеры " + temperatures[i] + " скорость набора температtуры " + EvoData.SPEED_OF_TEMPERATURE_CHANGE);
+                Evo20.Log.Log.WriteLog("Установлена температура камеры " + temperatures[i] + " скорость набора температtуры " + Config.Config.SPEED_OF_TEMPERATURE_CHANGE);
                 //Ожидание достижения температуры
 //#if !DEBUG
                 EvoData.Current.TemperatureReachedEvent.WaitOne();
@@ -616,6 +616,7 @@ namespace Evo20.Controllers
             }
             return true;
         }
+
         #endregion
     }
 }

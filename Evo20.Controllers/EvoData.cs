@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.IO;
-using System.Configuration;
 using Evo20.EvoCommandsLib;
 
 namespace Evo20.Controllers
@@ -40,9 +39,6 @@ namespace Evo20.Controllers
                 this.correction = correction;
             }
         }
-
-        public static int SPEED_OF_TEMPERATURE_CHANGE = Convert.ToInt32(ConfigurationManager.AppSettings.Get("SPEED_OF_TEMPERATURE_CHANGE"));
-        public static int BASE_MOVE_SPEED = Convert.ToInt32(ConfigurationManager.AppSettings.Get("BASE_MOVE_SPEED"));
 
         public AxisData x;
         public AxisData y;

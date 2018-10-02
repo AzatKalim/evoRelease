@@ -21,3 +21,5 @@ C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\bin\Release\Evo20.Packet
 C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\obj\Release\ResolveAssemblyReference.cache
 C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\obj\Release\Evo20.SensorsConnection.dll
 C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\obj\Release\Evo20.SensorsConnection.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\bin\Release\Evo20.Config.dll
+C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\bin\Release\Evo20.Config.pdb
