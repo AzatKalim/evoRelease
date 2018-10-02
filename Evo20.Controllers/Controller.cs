@@ -20,6 +20,7 @@ namespace Evo20.Controllers
         #region Devegates and Events
 
         public delegate void TemperatureSabilizationHandler(bool result);
+
         public delegate void CycleEndedHandler(bool result);
 
         public delegate void ControllerExceptions(Exception exception);
@@ -60,11 +61,11 @@ namespace Evo20.Controllers
             {
                 if (Mode == WorkMode.CalibrationMode)
                 {
-                    return cycleData.calibrationStabTime;
+                    return CycleData.Current.calibrationStabTime;
                 }
                 if (Mode ==WorkMode.CheckMode)
                 {
-                    return cycleData.checkStabTime;
+                    return CycleData.Current.checkStabTime;
                 }
                 return 0;
             }
@@ -84,12 +85,6 @@ namespace Evo20.Controllers
             }
         }
 
-        public CycleData cycleData
-        {
-            get;
-            set;
-        }
-
         public SensorData sensorData
         {
             get;
@@ -100,7 +95,7 @@ namespace Evo20.Controllers
         {
             get
             {
-                return evoData.currentTemperature;
+                return temperatureOfCollect;
             }
         }
      
@@ -108,10 +103,11 @@ namespace Evo20.Controllers
         {
             get
             {
-                if (Mode == WorkMode.CalibrationMode)
-                    return cycleData.CalibrationTemperatures.Count;
-                else
-                    return cycleData.CheckTemperatures.Count;
+                if(Mode == WorkMode.CalibrationMode)
+                    return CycleData.Current.CalibrationTemperatures.Count;
+                if(Mode == WorkMode.CheckMode)
+                    return CycleData.Current.CheckTemperatures.Count;
+                return 0;
             }
         }
 
@@ -120,9 +116,10 @@ namespace Evo20.Controllers
             get
             {
                 if (Mode == WorkMode.CalibrationMode)
-                    return cycleData.FindCalibrationTemperatureIndex(temperatureOfCollect);
-                else
-                    return cycleData.FindCheckTemperatureIndex(temperatureOfCollect);
+                    return CycleData.Current.FindCalibrationTemperatureIndex((int)EvoData.Current.currentTemperature);
+                if (Mode == WorkMode.CheckMode)
+                    return CycleData.Current.FindCheckTemperatureIndex((int)EvoData.Current.currentTemperature);
+                return 0;
             }
            
         }
@@ -131,18 +128,12 @@ namespace Evo20.Controllers
         {
             get
             {
-                if (currentSensor == null)
-                {
+                if (CurrentSensor == null)
                     return 0;
-                }
-                if (Mode == WorkMode.CalibrationMode)
-                {                    
+                if (Mode == WorkMode.CalibrationMode)                   
                     return CurrentSensor.PacketsArivedCountCalibration(temperatureOfCollect,CurrentPositionNumber);
-                }
                 if( Mode==WorkMode.CheckMode)
-                {
                     return CurrentSensor.PacketsArivedCountCheck(temperatureOfCollect, CurrentPositionNumber);
-                }
                 return 0;
             }
         }
@@ -157,7 +148,19 @@ namespace Evo20.Controllers
 
         #region Constructors
 
-        public Controller():base()
+        private static Controller controller;
+
+        public static Controller Current
+        {
+            get
+            {
+                if (controller == null)
+                    controller = new Controller();
+                return controller;
+            }
+        }
+
+        private Controller():base()
         {
             sensorHandler = new SensorHandler();
             //подписка на события датчика
@@ -165,7 +168,6 @@ namespace Evo20.Controllers
             sensorHandler.EventHandlerListForStateChange += SensorHandlerStatusChanged;
             sensorHandler.EventHandlerListForExeptions += SensorExeptionHandler;
             sensorData = new SensorData();
-            cycleData= new CycleData();
             Mode = WorkMode.NoMode;
             sensorsList = new List<ISensor>();
         }
@@ -184,17 +186,15 @@ namespace Evo20.Controllers
         {
             if (cycleThread != null && cycleThread.IsAlive)
                 return false;
-            if (sensorsList.Count == 0)
-            {//добавляем в список датчиков ДЛУ и ДУС
-                sensorsList.Add(new DLY(cycleData.CalibrationTemperatures,
-                    cycleData.CheckTemperatures,
-                    sensorData.CalibrationDLYMaxPacketsCount,
-                    sensorData.CheckDLYMaxPacketsCount));
-                sensorsList.Add(new DYS(cycleData.CalibrationTemperatures,
-                    cycleData.CheckTemperatures,
-                    sensorData.CalibrationDYSMaxPacketsCount,
-                    sensorData.CheckDYSMaxPacketsCount));
-            }
+            //добавляем в список датчиков ДЛУ и ДУС
+            sensorsList.Add(new DLY(CycleData.Current.CalibrationTemperatures,
+                CycleData.Current.CheckTemperatures,
+                sensorData.CalibrationDLYMaxPacketsCount,
+                sensorData.CheckDLYMaxPacketsCount));
+            sensorsList.Add(new DYS(CycleData.Current.CalibrationTemperatures,
+                CycleData.Current.CheckTemperatures,
+                sensorData.CalibrationDYSMaxPacketsCount,
+                sensorData.CheckDYSMaxPacketsCount));
             switch(mode)
             {
                 case WorkMode.CalibrationMode:              
@@ -334,9 +334,8 @@ namespace Evo20.Controllers
         public void CalibrationCycle()
         {
             Mode = WorkMode.CalibrationMode;
-            bool result=Cycle(cycleData.CalibrationTemperatures);
+            Cycle(CycleData.Current.CalibrationTemperatures);
             Mode = WorkMode.NoMode;
-            EventHandlersListCycleEnded(result);
         }
 
         /// <summary>
@@ -345,16 +344,15 @@ namespace Evo20.Controllers
         public void CheckCycle()
         {
             Mode = WorkMode.CheckMode;
-            bool result=Cycle(cycleData.CheckTemperatures);
+            Cycle(CycleData.Current.CheckTemperatures);
             Mode = WorkMode.NoMode;
-            EventHandlersListCycleEnded(result);
         }
 
         /// <summary>
         /// ОСновной метод цикла
         /// </summary>
         /// <param name="temperatures">Список температур</param>
-        private bool Cycle(List<int> temperatures)
+        private void Cycle(List<int> temperatures)
         {
             //профили датчиков
             var profiles = new List<ProfilePart[]>();
@@ -376,51 +374,33 @@ namespace Evo20.Controllers
                     break;
                 default:
                     Evo20.Log.Log.WriteLog("Ошибка:перед запуском цикла. Режим работы не установлен!");
-                    return false;
+                    EventHandlersListCycleEnded(false);
+                    return;
             }
-            bool isSended = false;
-            isSended=PowerOnCamera(true);
-            if (!isSended)
-            {
-                Evo20.Log.Log.WriteLog("Ошибка:перед запуском цикла. Не удалось отправить команду запуск камеры!");
-                return false;
-            }
-            isSended=PowerOnAxis(Axis.ALL, true);
-            if (!isSended)
-            {
-                Evo20.Log.Log.WriteLog("Ошибка:перед запуском цикла. Не удалось отправить команду подать питание на оси!");
-                return false;
-            }
-            isSended=FindZeroIndex(Axis.ALL);
-            if (!isSended)
-            {
-                Evo20.Log.Log.WriteLog("Ошибка:перед запуском цикла. Не удалось отправить команду найти нули !");
-                return false;
-            }
-            
-            if (cycleData.StartTemperatureIndex > 0)
-            temperatureOfCollect = temperatures[cycleData.StartTemperatureIndex-1];
+
+            PowerOnCamera(true);
+            PowerOnAxis(Axis.ALL, true);
+            FindZeroIndex(Axis.ALL);   
             //цикл по температурам
-            for (int i = cycleData.StartTemperatureIndex; i < temperatures.Count; i++)
+            for (int i = CycleData.Current.StartTemperatureIndex; i < temperatures.Count; i++)
             {
                 StopAxis(Axis.ALL);
                 SetAxisRate(Axis.ALL, EvoData.BASE_MOVE_SPEED);
                 SetAxisPosition(Axis.ALL, 0);
                 StartAxis(Axis.ALL);
                 SetTemperatureChangeSpeed(EvoData.SPEED_OF_TEMPERATURE_CHANGE);
-                lock (evoData)
+                lock (EvoData.Current)
                 {
-                    evoData.nextTemperature = temperatures[i];
+                    EvoData.Current.nextTemperature = temperatures[i];
                 }
                 SetTemperature(temperatures[i]);
                 Evo20.Log.Log.WriteLog("Установлена температура камеры " + temperatures[i] + " скорость набора температtуры " + EvoData.SPEED_OF_TEMPERATURE_CHANGE);
                 //Ожидание достижения температуры
 //#if !DEBUG
-                evoData.temperatureReachedEvent.WaitOne();
+                EvoData.Current.temperatureReachedEvent.WaitOne();
 //#endif
-                evoData.temperatureReachedEvent.Reset();
+                EvoData.Current.temperatureReachedEvent.Reset();
                 Evo20.Log.Log.WriteLog("Температура  " + temperatures[i] + " достигнута");
-                temperatureOfCollect = temperatures[i];
                 if (EventHandlerListForTemperatureStabilization != null)
                     EventHandlerListForTemperatureStabilization(false);
 //#if !DEBUG
@@ -428,7 +408,7 @@ namespace Evo20.Controllers
                 Thread.Sleep(StabilizationTime);
 //#endif
           
-
+                temperatureOfCollect = temperatures[i];
                 if (EventHandlerListForTemperatureStabilization != null)
                     EventHandlerListForTemperatureStabilization(true);
                 //для каждого датчика
@@ -440,11 +420,13 @@ namespace Evo20.Controllers
                     if (!isCyclePartSuccess)
                     {
                         Evo20.Log.Log.WriteLog("Ошибка:Не выполнена часть цикла для датчика :" + sensorsList[j].Name + " при температуре" + temperatures[i]);
-                        return false;
+                        EventHandlersListCycleEnded(false);
+                        return;
                     }     
                 }                                            
             }
-            return true;
+            EventHandlersListCycleEnded(true);
+
         }
         /// <summary>
         /// Часть цикла для конкретного датчика
@@ -453,21 +435,19 @@ namespace Evo20.Controllers
         /// <returns>результат</returns>
         private bool SensorCyclePart(ProfilePart[] profile)
         {
-            Evo20.Log.Log.WriteLog("Запуск подцикла для датчика " + CurrentSensor.Name + " профиль имеет " + profile.Length + " положений.");
             int j = 0;
             try
             {
                 for (; j < profile.Length; j++)
                 {
-                    Evo20.Log.Log.WriteLog("Положение для датичка " + CurrentSensor.Name + " номер позиции " + j + "описание положения " + profile[j].ToString());
                     StopAxis(Axis.ALL);
-                    evoData.movementEndedEvent.WaitOne(THREADS_SLEEP_TIME);
-                    evoData.movementEndedEvent.Reset();
+                    EvoData.Current.movementEndedEvent.WaitOne(THREADS_SLEEP_TIME);
+                    EvoData.Current.movementEndedEvent.Reset();
                     CurrentPositionNumber = j;
                     //задание положений и скоростей
                     if (profile[j].speedX != 0)
                     {
-                        SetAxisRate(Axis.X, profile[j].speedX); 
+                        SetAxisRate(Axis.X, profile[j].speedX);
                         SetAxisMode(ModeParam.Speed, Axis.X);
                     }
                     else
@@ -487,18 +467,13 @@ namespace Evo20.Controllers
                     }
                     StartAxis(Axis.ALL);
                     CurrentPositionNumber = j;
-                    Evo20.Log.Log.WriteLog("Ожидание установки позиции");
                     //ожидаем пока установятся позиции
                     Thread.Sleep(THREADS_SLEEP_TIME);
                     //ожидание сбора пакетов
-                    Evo20.Log.Log.WriteLog("Ожидание установки позиции завершено");
-                    CurrentSensor.PacketsCollectedEvent.Reset();
-                    Evo20.Log.Log.WriteLog("Начало сбора пакетов.Номер позиции " + j);
                     canCollect = true;
                     CurrentSensor.PacketsCollectedEvent.WaitOne();
+                    CurrentSensor.PacketsCollectedEvent.Reset();
                     canCollect = false;
-                    CurrentSensor.PacketsCollectedEvent.Reset();                 
-                    Evo20.Log.Log.WriteLog("Сборка завершена");
                 }
 
             }
@@ -595,20 +570,9 @@ namespace Evo20.Controllers
         /// <returns></returns>
         public bool ReadDataFromFile(StreamReader file )
         {
-            if (sensorsList.Count == 0)
-            {//добавляем в список датчиков ДЛУ и ДУС
-                sensorsList.Add(new DLY(cycleData.CalibrationTemperatures,
-                    cycleData.CheckTemperatures,
-                    sensorData.CalibrationDLYMaxPacketsCount,
-                    sensorData.CheckDLYMaxPacketsCount));
-                sensorsList.Add(new DYS(cycleData.CalibrationTemperatures,
-                    cycleData.CheckTemperatures,
-                    sensorData.CalibrationDYSMaxPacketsCount,
-                    sensorData.CheckDYSMaxPacketsCount));
-            }
-            var result=sensorData.ReadDataFromFile(ref sensorsList, file);
+            var result=sensorData.ReadDataFromFile(sensorsList.ToArray(), file);
             if (result)
-                cycleData.StartTemperatureIndex = sensorsList[0].CalibrationPacketsCollection.Count;
+                CycleData.Current.StartTemperatureIndex = sensorsList[0].CalibrationPacketsCollection.Count;
             return result;
         }
 
@@ -621,16 +585,11 @@ namespace Evo20.Controllers
             //Попытка чтения из файла
             try
             {
-                Encoding enc = Encoding.GetEncoding(1251);
-                StreamReader file = new StreamReader(fileName, enc);
-                if (!cycleData.ReadSettings(ref file))
-                {
+                var file = new StreamReader(fileName, Encoding.GetEncoding(1251));
+                if (!CycleData.Current.ReadSettings(ref file))
                     return false;
-                }
                 if (!sensorData.ReadSettings(ref file))
-                {
                     return false;
-                }
                 file.Close();
             }
             catch (Exception exception)

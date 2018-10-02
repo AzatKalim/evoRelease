@@ -62,7 +62,7 @@ namespace Evo20.SensorsConnection
 
             for (int j = 0; j < data.Length; j++)
             {
-                data[j].WrieToFile(file);
+                file.WriteLine(data[j].ToString());
             }
         }
 
@@ -112,15 +112,15 @@ namespace Evo20.SensorsConnection
             return true;
         }
 
-        private bool ReadDataFromFile(StreamReader file,ISensor sensor)
+        private bool ReadDataFromFile(StreamReader file, List<PacketsCollection>collection)
         {
             int temperaturesCount = Convert.ToInt32(file.ReadLine());
-            sensor.CalibrationPacketsCollection = new List<PacketsCollection>();
+            collection = new List<PacketsCollection>();
             for (int i = 0; i < temperaturesCount; i++)
             {
                 try
                 {
-                    sensor.CalibrationPacketsCollection.Add(new PacketsCollection(file));
+                    collection[i] = new PacketsCollection(file);
                 }
                 catch (Exception exception)
                 {
@@ -131,13 +131,13 @@ namespace Evo20.SensorsConnection
             return true;
         }
 
-        public bool ReadDataFromFile(ref List<ISensor> sensors,StreamReader file)
+        public bool ReadDataFromFile(ISensor[] sensors,StreamReader file)
         {
-            if (!ReadDataFromFile(file, sensors[0]))
+            if (!ReadDataFromFile(file, sensors[0].CalibrationPacketsCollection))
             {
                 return false;
             }
-            if (!ReadDataFromFile(file,sensors[1]))
+            if (!ReadDataFromFile(file, sensors[1].CalibrationPacketsCollection))
             {
                 return false;
             }

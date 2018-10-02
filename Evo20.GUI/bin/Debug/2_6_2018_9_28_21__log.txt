@@ -1,0 +1,15 @@
+Соединение c Evo 20 установлено
+Отправлена команда AXE.TELL.STA  в 9:28
+Отправлена команда AXE.UPLD.STA  в 9:28
+Сообщение AXE.UPLD.STA  Evo 20 не доставлено Возникло исключениеSystem.ObjectDisposedException: Доступ к ликвидированному объекту невозможен.
+Имя объекта: "System.Net.Sockets.UdpClient".
+   в System.Net.Sockets.UdpClient.Send(Byte[] dgram, Int32 bytes, IPEndPoint endPoint)
+   в Evo20.EvoConnections.ConnectionSocket.SendMessage(String message) в F:\Новая папка (6)\Evo20\Evo20.EvoConnections\ConnectionSocket.cs:строка 207
+Отправлена команда AXE.TELL.TJT 1 в 9:28
+Отправлена команда AXE.TELL.TJT 2 в 9:28
+Отправлена команда CLIM.TEMP в 9:28
+Отправлена команда AXE.TELL.POS 1 в 9:28
+Отправлена команда AXE.TELL.POS 2 в 9:28
+Отправлена команда AXE.TELL.VIT 1 в 9:28
+Отправлена команда AXE.TELL.VIT 2 в 9:28
+Отправлена команда AXE.TELL.POA в 9:28

@@ -16,12 +16,21 @@ F:\Новая папка (6)\Evo20\Evo20.EvoConnections\bin\Debug\Evo20.EvoComma
 F:\Новая папка (6)\Evo20\Evo20.EvoConnections\obj\Debug\ResolveAssemblyReference.cache
 F:\Новая папка (6)\Evo20\Evo20.EvoConnections\obj\Debug\Evo20.EvoConnections.dll
 F:\Новая папка (6)\Evo20\Evo20.EvoConnections\obj\Debug\Evo20.EvoConnections.pdb
-C:\Users\Азат\Desktop\evoRelease-master\Evo20.EvoConnections\bin\Debug\Evo20.EvoConnections.dll
-C:\Users\Азат\Desktop\evoRelease-master\Evo20.EvoConnections\bin\Debug\Evo20.EvoConnections.pdb
-C:\Users\Азат\Desktop\evoRelease-master\Evo20.EvoConnections\bin\Debug\Evo20.EvoCommandsLib.dll
-C:\Users\Азат\Desktop\evoRelease-master\Evo20.EvoConnections\bin\Debug\Evo20.Log.dll
-C:\Users\Азат\Desktop\evoRelease-master\Evo20.EvoConnections\bin\Debug\Evo20.Log.pdb
-C:\Users\Азат\Desktop\evoRelease-master\Evo20.EvoConnections\bin\Debug\Evo20.EvoCommandsLib.pdb
-C:\Users\Азат\Desktop\evoRelease-master\Evo20.EvoConnections\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\Азат\Desktop\evoRelease-master\Evo20.EvoConnections\obj\Debug\Evo20.EvoConnections.dll
-C:\Users\Азат\Desktop\evoRelease-master\Evo20.EvoConnections\obj\Debug\Evo20.EvoConnections.pdb
+F:\тесты на работе 2.06.2018 прием пакетов и связь с евой раб\Evo20\Evo20.EvoConnections\bin\Debug\Evo20.EvoConnections.dll
+F:\тесты на работе 2.06.2018 прием пакетов и связь с евой раб\Evo20\Evo20.EvoConnections\bin\Debug\Evo20.EvoConnections.pdb
+F:\тесты на работе 2.06.2018 прием пакетов и связь с евой раб\Evo20\Evo20.EvoConnections\bin\Debug\Evo20.EvoCommandsLib.dll
+F:\тесты на работе 2.06.2018 прием пакетов и связь с евой раб\Evo20\Evo20.EvoConnections\bin\Debug\Evo20.Log.dll
+F:\тесты на работе 2.06.2018 прием пакетов и связь с евой раб\Evo20\Evo20.EvoConnections\bin\Debug\Evo20.Log.pdb
+F:\тесты на работе 2.06.2018 прием пакетов и связь с евой раб\Evo20\Evo20.EvoConnections\bin\Debug\Evo20.EvoCommandsLib.pdb
+F:\тесты на работе 2.06.2018 прием пакетов и связь с евой раб\Evo20\Evo20.EvoConnections\obj\Debug\ResolveAssemblyReference.cache
+F:\тесты на работе 2.06.2018 прием пакетов и связь с евой раб\Evo20\Evo20.EvoConnections\obj\Debug\Evo20.EvoConnections.dll
+F:\тесты на работе 2.06.2018 прием пакетов и связь с евой раб\Evo20\Evo20.EvoConnections\obj\Debug\Evo20.EvoConnections.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.EvoConnections\bin\Debug\Evo20.EvoConnections.dll
+C:\Users\Азат\Desktop\Evo20\Evo20.EvoConnections\bin\Debug\Evo20.EvoConnections.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.EvoConnections\bin\Debug\Evo20.EvoCommandsLib.dll
+C:\Users\Азат\Desktop\Evo20\Evo20.EvoConnections\bin\Debug\Evo20.Log.dll
+C:\Users\Азат\Desktop\Evo20\Evo20.EvoConnections\bin\Debug\Evo20.Log.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.EvoConnections\bin\Debug\Evo20.EvoCommandsLib.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.EvoConnections\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Азат\Desktop\Evo20\Evo20.EvoConnections\obj\Debug\Evo20.EvoConnections.dll
+C:\Users\Азат\Desktop\Evo20\Evo20.EvoConnections\obj\Debug\Evo20.EvoConnections.pdb

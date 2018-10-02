@@ -6,9 +6,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.Log", "Evo20.Log\Evo20.Log.csproj", "{4E75F741-7DCD-4896-A0CA-638D96B1EC0F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.Controllers", "Evo20.Controllers\Evo20.Controllers.csproj", "{3AC3249C-145D-4EEA-8B3F-E82CE09A85DB}"
-	ProjectSection(ProjectDependencies) = postProject
-		{4E75F741-7DCD-4896-A0CA-638D96B1EC0F} = {4E75F741-7DCD-4896-A0CA-638D96B1EC0F}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.EvoCommandsLib", "Evo20.EvoCommandsLib\Evo20.EvoCommandsLib.csproj", "{8C91504C-7D1B-4385-A276-6848E1A3396E}"
 EndProject
@@ -19,9 +16,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.PacketsLib", "Evo20.PacketsLib\Evo20.PacketsLib.csproj", "{38D34933-EA5E-4C43-AEE0-752676BC5FD0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.SensorsConnection", "Evo20.SensorsConnection\Evo20.SensorsConnection.csproj", "{86F18502-E4FB-4FDB-9AEE-E1EA1F1FF4BC}"
-	ProjectSection(ProjectDependencies) = postProject
-		{4E75F741-7DCD-4896-A0CA-638D96B1EC0F} = {4E75F741-7DCD-4896-A0CA-638D96B1EC0F}
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

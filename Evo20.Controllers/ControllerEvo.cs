@@ -1,6 +1,5 @@
 ﻿using System.Threading;
-using System;
-using System.Configuration;
+
 using Evo20.EvoCommandsLib;
 using Evo20.Controllers;
 using Evo20.EvoConnections;
@@ -22,13 +21,10 @@ namespace Evo20.Controllers
 
         public WorkModeChangeHandler EventListForWorkModeChange;
 
-        public static int THREADS_SLEEP_TIME = Convert.ToInt32(ConfigurationManager.AppSettings.Get("THREADS_SLEEP_TIME"));
+        public const int THREADS_SLEEP_TIME = 1000;
 
         //обработчик новых команд
         protected CommandHandler commandHandler;
-
-        //класс, хронящий состояние evo 
-        public EvoData evoData;
 
         // поток, который проверяет состояние системы отправляя команды опроса
         protected Thread routineThread;
@@ -57,7 +53,6 @@ namespace Evo20.Controllers
             routineThread = new Thread(ControllerRoutine);
             routineThread.Priority = ThreadPriority.BelowNormal;
             routineThread.IsBackground = true;
-            evoData = new EvoData();
         }
         //команды опроса системы
         protected Command[] GetRoutineCommands()
@@ -92,7 +87,7 @@ namespace Evo20.Controllers
                         Thread.Sleep(100);
                     }
                 }
-                Thread.Sleep(5000);
+                Thread.Sleep(THREADS_SLEEP_TIME);
             }
         }
 
@@ -111,33 +106,19 @@ namespace Evo20.Controllers
             for (int i = 0; i < commands.Length; i++)
             {
                 if (commands[i] is Axis_Status_answer)
-                {
-                    evoData.GetCommandInfo(commands[i] as Axis_Status_answer);
-                }
+                    EvoData.Current.GetCommandInfo(commands[i] as Axis_Status_answer);
                 if (commands[i] is Temperature_status_answer)
-                {
-                    evoData.GetCommandInfo(commands[i] as Temperature_status_answer);
-                }
+                    EvoData.Current.GetCommandInfo(commands[i] as Temperature_status_answer);
                 if (commands[i] is Rotary_joint_temperature_Query_answer)
-                {
-                    evoData.GetCommandInfo(commands[i] as Rotary_joint_temperature_Query_answer);
-                }
+                    EvoData.Current.GetCommandInfo(commands[i] as Rotary_joint_temperature_Query_answer);
                 if (commands[i] is Axis_Position_Query_answer)
-                {
-                    evoData.GetCommandInfo(commands[i] as Axis_Position_Query_answer);
-                }
+                    EvoData.Current.GetCommandInfo(commands[i] as Axis_Position_Query_answer);
                 if (commands[i] is Axis_Rate_Query_answer)
-                {
-                    evoData.GetCommandInfo(commands[i] as Axis_Rate_Query_answer);
-                }
+                    EvoData.Current.GetCommandInfo(commands[i] as Axis_Rate_Query_answer);
                 if (commands[i] is Actual_temperature_query_answer)
-                {
-                    evoData.GetCommandInfo(commands[i] as Actual_temperature_query_answer);
-                }
+                    EvoData.Current.GetCommandInfo(commands[i] as Actual_temperature_query_answer);
                 if (commands[i] is Requested_axis_position_reached_answer)
-                {
-                    evoData.GetCommandInfo(commands[i] as Requested_axis_position_reached_answer);
-                }
+                    EvoData.Current.GetCommandInfo(commands[i] as Requested_axis_position_reached_answer);
             }
         }
 
@@ -145,9 +126,7 @@ namespace Evo20.Controllers
         {
             bool result = commandHandler.StartConnection();
             if (!result)
-            {
                 return result;
-            }
             if (!routineThread.IsAlive)
             {
                 routineThread = new Thread(ControllerRoutine);
@@ -208,9 +187,9 @@ namespace Evo20.Controllers
         /// Запуск температурной камеры 
         /// </summary>
         /// <param name="value">true-запуск,false-отключить</param>
-        protected bool PowerOnCamera(bool value)
+        protected void PowerOnCamera(bool value)
         {
-            return commandHandler.SendCommand(new PowerOnTemperatureCamera(value));
+            commandHandler.SendCommand(new PowerOnTemperatureCamera(value));
         }
 
         /// <summary>
@@ -218,9 +197,9 @@ namespace Evo20.Controllers
         /// </summary>
         /// <param name="axis">ось</param>
         /// <param name="value"></param>
-        protected bool PowerOnAxis(Axis axis, bool value)
+        protected void PowerOnAxis(Axis axis, bool value)
         {
-            return commandHandler.SendCommand(new Axis_Power(axis, value));
+            commandHandler.SendCommand(new Axis_Power(axis, value));
         }
 
         /// <summary>
@@ -228,18 +207,18 @@ namespace Evo20.Controllers
         /// </summary>
         /// <param name="axis">ось</param>
         /// <param name="speedOfRate">скорость</param>
-        protected bool SetAxisRate(Axis axis, double speedOfRate)
+        protected void SetAxisRate(Axis axis, double speedOfRate)
         {
-            return commandHandler.SendCommand(new Axis_Rate(axis, speedOfRate));
+            commandHandler.SendCommand(new Axis_Rate(axis, speedOfRate));
         }
 
         /// <summary>
         /// Поиск нуля
         /// </summary>
         /// <param name="axis">ось</param>
-        protected bool FindZeroIndex(Axis axis)
+        protected void FindZeroIndex(Axis axis)
         {
-            return commandHandler.SendCommand(new Zero_Index_Search(axis));
+            commandHandler.SendCommand(new Zero_Index_Search(axis));
         }
 
         /// <summary>
@@ -247,34 +226,34 @@ namespace Evo20.Controllers
         /// </summary>
         /// <param name="param">режим</param>
         /// <param name="axis">ось</param>
-        protected bool SetAxisMode(ModeParam param, Axis axis)
+        protected void SetAxisMode(ModeParam param,Axis axis)
         {
-            return commandHandler.SendCommand(new Mode(param, axis));
+            commandHandler.SendCommand(new Mode(param, axis));
         }
 
-        protected bool StopAxis(Axis axis)
+        protected void StopAxis(Axis axis)
         {
-            return commandHandler.SendCommand(new Stop_axis(axis));
+            commandHandler.SendCommand(new Stop_axis(axis));
+        }
+       
+        protected void SetAxisPosition(Axis axis,double degree)
+        {
+            commandHandler.SendCommand(new Axis_Position(axis, degree));
         }
 
-        protected bool SetAxisPosition(Axis axis, double degree)
+        protected void StartAxis(Axis axis)
         {
-            return commandHandler.SendCommand(new Axis_Position(axis, degree));
+            commandHandler.SendCommand(new Start_axis(axis));    
         }
 
-        protected bool StartAxis(Axis axis)
+        protected void SetTemperatureChangeSpeed(double slope)
         {
-            return commandHandler.SendCommand(new Start_axis(axis));    
+            commandHandler.SendCommand(new Temperature_slope_set_point(slope));
         }
 
-        protected bool SetTemperatureChangeSpeed(double slope)
+        protected void SetTemperature(double temperature)
         {
-            return commandHandler.SendCommand(new Temperature_slope_set_point(slope));
-        }
-
-        protected bool SetTemperature(double temperature)
-        {
-            return commandHandler.SendCommand(new Temperature_Set_point(temperature));
+            commandHandler.SendCommand(new Temperature_Set_point(temperature));
         }
 
         #endregion

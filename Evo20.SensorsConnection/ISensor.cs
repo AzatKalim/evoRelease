@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using Evo20.PacketsLib;
-using Evo20;
+using Evo20.Log;
 
 namespace Evo20.SensorsConnection
 {
@@ -20,11 +20,6 @@ namespace Evo20.SensorsConnection
         }
         public ProfilePart(int x, int y)
             : this(x, y, 0, 0){ }
-
-        public override string ToString()
-        {
-            return string.Format("x :{0}, y :{1} , speedX: {2} , speedY: {3}",axisX,axisY,speedX,speedY);
-        }
     }
 
 

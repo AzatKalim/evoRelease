@@ -29,7 +29,6 @@ namespace Evo20.PacketsLib
                 {
                     var packetLine = file.ReadLine();
                     var packet = new Packet(packetLine);
-                    packets.Add(packet);
                 }
             }
             catch (FormatException exception)

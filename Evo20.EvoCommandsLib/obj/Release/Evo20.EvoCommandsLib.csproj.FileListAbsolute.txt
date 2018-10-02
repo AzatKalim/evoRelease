@@ -6,7 +6,7 @@ F:\Новая папка (6)\Evo20\Evo20.EvoCommandsLib\bin\Release\Evo20.EvoCom
 F:\Новая папка (6)\Evo20\Evo20.EvoCommandsLib\bin\Release\Evo20.EvoCommandsLib.pdb
 F:\Новая папка (6)\Evo20\Evo20.EvoCommandsLib\obj\Release\Evo20.EvoCommandsLib.dll
 F:\Новая папка (6)\Evo20\Evo20.EvoCommandsLib\obj\Release\Evo20.EvoCommandsLib.pdb
-C:\Users\Азат\Desktop\evoRelease-master\Evo20.EvoCommandsLib\bin\Release\Evo20.EvoCommandsLib.dll
-C:\Users\Азат\Desktop\evoRelease-master\Evo20.EvoCommandsLib\bin\Release\Evo20.EvoCommandsLib.pdb
-C:\Users\Азат\Desktop\evoRelease-master\Evo20.EvoCommandsLib\obj\Release\Evo20.EvoCommandsLib.dll
-C:\Users\Азат\Desktop\evoRelease-master\Evo20.EvoCommandsLib\obj\Release\Evo20.EvoCommandsLib.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.EvoCommandsLib\bin\Release\Evo20.EvoCommandsLib.dll
+C:\Users\Азат\Desktop\Evo20\Evo20.EvoCommandsLib\bin\Release\Evo20.EvoCommandsLib.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.EvoCommandsLib\obj\Release\Evo20.EvoCommandsLib.dll
+C:\Users\Азат\Desktop\Evo20\Evo20.EvoCommandsLib\obj\Release\Evo20.EvoCommandsLib.pdb

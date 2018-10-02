@@ -6,6 +6,8 @@ namespace Evo20.EvoCommandsLib
 {
     public class Requested_axis_position_reached:Command
     {
+        public static string Command = "AXE.TELL.POA";
+
         public Requested_axis_position_reached()
         {
             is_answer = false;

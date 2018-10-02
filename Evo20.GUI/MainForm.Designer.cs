@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Evo_control_page = new System.Windows.Forms.TabPage();
             this.EvoParamsGroupBox = new System.Windows.Forms.GroupBox();
@@ -176,6 +175,7 @@
             this.EvoParamsGroupBox.TabIndex = 11;
             this.EvoParamsGroupBox.TabStop = false;
             this.EvoParamsGroupBox.Text = "Параметры";
+            this.EvoParamsGroupBox.Enter += new System.EventHandler(this.EvoParamsGroupBox_Enter);
             // 
             // temperatureStabLabel
             // 
@@ -761,6 +761,7 @@
             this.parameGroupBox.TabIndex = 9;
             this.parameGroupBox.TabStop = false;
             this.parameGroupBox.Text = "Текущие параметры";
+            this.parameGroupBox.Enter += new System.EventHandler(this.parameGroupBox_Enter);
             // 
             // controllerWokModeLabel
             // 
@@ -900,7 +901,6 @@
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.modeComboBox);
             this.Controls.Add(this.tabControl1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "Evo20";
             this.Load += new System.EventHandler(this.MainForm_Load);

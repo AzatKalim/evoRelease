@@ -22,9 +22,9 @@ namespace Evo20.EvoCommandsLib
             switch (axis)
             {
                 case Axis.X:
-                    return 2;
-                case Axis.Y:
                     return 1;
+                case Axis.Y:
+                    return 2;
                 case Axis.Z:
                     return 3;
                 case Axis.ALL:

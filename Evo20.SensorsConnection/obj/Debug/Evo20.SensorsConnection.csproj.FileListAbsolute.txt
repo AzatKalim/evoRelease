@@ -1,6 +1,7 @@
 C:\Users\Азат\Desktop\Новая папка (6)\Evo20\Evo20.SensorsConnection\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Азат\Desktop\Новая папка (6)\Evo20\Evo20.SensorsConnection\bin\Debug\Evo20.SensorsConnection.dll
 C:\Users\Азат\Desktop\Новая папка (6)\Evo20\Evo20.SensorsConnection\bin\Debug\Evo20.SensorsConnection.pdb
+C:\Users\Азат\Desktop\Новая папка (6)\Evo20\Evo20.SensorsConnection\bin\Debug\Evo20.Log.dll
 C:\Users\Азат\Desktop\Новая папка (6)\Evo20\Evo20.SensorsConnection\bin\Debug\Evo20.PacketsLib.dll
 C:\Users\Азат\Desktop\Новая папка (6)\Evo20\Evo20.SensorsConnection\bin\Debug\Evo20.Log.pdb
 C:\Users\Азат\Desktop\Новая папка (6)\Evo20\Evo20.SensorsConnection\bin\Debug\Evo20.PacketsLib.pdb
@@ -14,13 +15,19 @@ F:\Новая папка (6)\Evo20\Evo20.SensorsConnection\bin\Debug\Evo20.Packe
 F:\Новая папка (6)\Evo20\Evo20.SensorsConnection\obj\Debug\ResolveAssemblyReference.cache
 F:\Новая папка (6)\Evo20\Evo20.SensorsConnection\obj\Debug\Evo20.SensorsConnection.dll
 F:\Новая папка (6)\Evo20\Evo20.SensorsConnection\obj\Debug\Evo20.SensorsConnection.pdb
-C:\Users\Азат\Desktop\Новая папка (6)\Evo20\Evo20.SensorsConnection\bin\Debug\Evo20.Log.dll
-C:\Users\Азат\Desktop\evoRelease-master\Evo20.SensorsConnection\bin\Debug\Evo20.SensorsConnection.dll
-C:\Users\Азат\Desktop\evoRelease-master\Evo20.SensorsConnection\bin\Debug\Evo20.SensorsConnection.pdb
-C:\Users\Азат\Desktop\evoRelease-master\Evo20.SensorsConnection\bin\Debug\Evo20.Log.dll
-C:\Users\Азат\Desktop\evoRelease-master\Evo20.SensorsConnection\bin\Debug\Evo20.PacketsLib.dll
-C:\Users\Азат\Desktop\evoRelease-master\Evo20.SensorsConnection\bin\Debug\Evo20.Log.pdb
-C:\Users\Азат\Desktop\evoRelease-master\Evo20.SensorsConnection\bin\Debug\Evo20.PacketsLib.pdb
-C:\Users\Азат\Desktop\evoRelease-master\Evo20.SensorsConnection\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\Азат\Desktop\evoRelease-master\Evo20.SensorsConnection\obj\Debug\Evo20.SensorsConnection.dll
-C:\Users\Азат\Desktop\evoRelease-master\Evo20.SensorsConnection\obj\Debug\Evo20.SensorsConnection.pdb
+F:\тесты на работе 2.06.2018 прием пакетов и связь с евой раб\Evo20\Evo20.SensorsConnection\bin\Debug\Evo20.SensorsConnection.dll
+F:\тесты на работе 2.06.2018 прием пакетов и связь с евой раб\Evo20\Evo20.SensorsConnection\bin\Debug\Evo20.SensorsConnection.pdb
+F:\тесты на работе 2.06.2018 прием пакетов и связь с евой раб\Evo20\Evo20.SensorsConnection\bin\Debug\Evo20.PacketsLib.dll
+F:\тесты на работе 2.06.2018 прием пакетов и связь с евой раб\Evo20\Evo20.SensorsConnection\bin\Debug\Evo20.Log.pdb
+F:\тесты на работе 2.06.2018 прием пакетов и связь с евой раб\Evo20\Evo20.SensorsConnection\bin\Debug\Evo20.PacketsLib.pdb
+F:\тесты на работе 2.06.2018 прием пакетов и связь с евой раб\Evo20\Evo20.SensorsConnection\obj\Debug\ResolveAssemblyReference.cache
+F:\тесты на работе 2.06.2018 прием пакетов и связь с евой раб\Evo20\Evo20.SensorsConnection\obj\Debug\Evo20.SensorsConnection.dll
+F:\тесты на работе 2.06.2018 прием пакетов и связь с евой раб\Evo20\Evo20.SensorsConnection\obj\Debug\Evo20.SensorsConnection.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\bin\Debug\Evo20.SensorsConnection.dll
+C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\bin\Debug\Evo20.SensorsConnection.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\bin\Debug\Evo20.PacketsLib.dll
+C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\bin\Debug\Evo20.Log.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\bin\Debug\Evo20.PacketsLib.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\obj\Debug\Evo20.SensorsConnection.dll
+C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\obj\Debug\Evo20.SensorsConnection.pdb

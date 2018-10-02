@@ -43,16 +43,8 @@ namespace Evo20.Controllers
                 }
                 catch (Exception)
                 {
-                    temp[1]=temp[1].Replace('.',',');
-                    try
-                    {
-                        param = Convert.ToDouble(temp[1]);
-                    }
-                    catch (Exception)
-                    {
-                        Evo20.Log.Log.WriteLog("Не верна строка файла настроек:" + checkString);
-                        return false;
-                    }
+                    Evo20.Log.Log.WriteLog("Не верна строка файла настроек:" + checkString);
+                    return false;
                 }
             }
             return true;

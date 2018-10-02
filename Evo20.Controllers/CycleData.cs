@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.IO;
-using Evo20.EvoCommandsLib;
 
 namespace Evo20.Controllers
 {
@@ -35,7 +32,19 @@ namespace Evo20.Controllers
 
         public int StartTemperatureIndex = 0;
 
-        public CycleData()
+        private static CycleData cycleData;
+
+        public static CycleData Current
+        {
+            get
+            {
+                if(cycleData==null)
+                    cycleData=new CycleData();
+               return cycleData;
+            }
+        }
+
+        private CycleData()
         {
             CalibrationTemperatures = new List<int>();
             CheckTemperatures = new List<int>(); 
@@ -129,6 +138,12 @@ namespace Evo20.Controllers
             {
                 return false;
             }
+        }
+
+        public void SetTemperatures(List<int> list)
+        {
+            CalibrationTemperatures = list;
+            CheckTemperatures = list;
         }
     }
 }

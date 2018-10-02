@@ -70,8 +70,19 @@ namespace Evo20.Controllers
         public ManualResetEvent temperatureReachedEvent;
         public ManualResetEvent movementEndedEvent;
 
+        private static EvoData current;
 
-        public EvoData()
+        public static EvoData Current
+        {
+            get
+            {
+                if (current == null)
+                    current = new EvoData();
+                return current;
+            }
+        }
+
+        private EvoData()
         {
             x = new AxisData(false, false, false, false, 0, 0, 0, 0);
             y = new AxisData(false, false, false, false, 0, 0, 0, 0);
@@ -93,9 +104,7 @@ namespace Evo20.Controllers
             y.isMove = cmd.is_axis_2_move;
 
             if (!cmd.is_axis_1_move && !cmd.is_axis_2_move)
-            {
                 movementEndedEvent.Set();
-            }
         }
 
         public void GetCommandInfo(Temperature_status_answer cmd)
@@ -105,45 +114,33 @@ namespace Evo20.Controllers
                 isTemperatureReached = true;
                 temperatureReachedEvent.Set();
             }
-
             isCameraPowerOn = cmd.is_power_on;
         }
 
         public void GetCommandInfo(Rotary_joint_temperature_Query_answer cmd)
         {
             if (cmd.axis == Axis.X)
-            {
                 x.axisTemperature = cmd.temperture;
-            }
             if (cmd.axis == Axis.Y)
-            {
                 y.axisTemperature = cmd.temperture;
-            }
+
             currentTemperature = x.axisTemperature;
         }
 
         public void GetCommandInfo(Axis_Position_Query_answer cmd)
         {
             if (cmd.axis == Axis.X)
-            {
                 x.position = cmd.position;
-            }
             if (cmd.axis == Axis.Y)
-            {
                 y.position = cmd.position;
-            }
         }
 
         public void GetCommandInfo(Axis_Rate_Query_answer cmd)
         {
             if (cmd.axis == Axis.X)
-            {
                 x.speedOfRate = cmd.speedOfRate;
-            }
             if (cmd.axis == Axis.Y)
-            {
                 y.speedOfRate = cmd.speedOfRate;
-            }
         }
 
         public void GetCommandInfo(Requested_axis_position_reached_answer cmd)
@@ -160,7 +157,6 @@ namespace Evo20.Controllers
                 temperatureReachedEvent.Set();
                 isTemperatureReached = true;
             }
-
         }
 
         #endregion

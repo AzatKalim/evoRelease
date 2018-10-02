@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.IO;
 using Evo20.Log;
+using System.IO;
 
 namespace Evo20.SensorsConnection
 {

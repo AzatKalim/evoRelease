@@ -34,7 +34,7 @@ namespace Evo20.Controllers
                 case (WorkMode.Error):
                         return "Ошибка!";
             }
-            return null;
+            return string.Empty;
         }
     }
 }

@@ -11,8 +11,6 @@ namespace Evo20.GUI
 {
     public partial class CycleSettingsForm : Form
     {
-        CycleData cycleData;
-
         List<CheckBox> calibrationCheckBoxes;
 
         CheckBox lastChecked;
@@ -20,30 +18,23 @@ namespace Evo20.GUI
         public CycleSettingsForm()
         {
             InitializeComponent();
-        }
-
-        public CycleSettingsForm(CycleData data)
-        {
-            InitializeComponent();
-            this.cycleData = data;
             calibrationCheckBoxes = new List<CheckBox>();
         }
 
 
         private void CycleSettingsForm_Load(object sender, EventArgs e)
         {
-            for (int i = 0; i < cycleData.CalibrationTemperatures.Count; i++)
+            for (int i = 0; i < CycleData.Current.CalibrationTemperatures.Count; i++)
             {
                 var box = new CheckBox();
                 //box.Tag = i.ToString();
-                box.Text = cycleData.CalibrationTemperatures[i].ToString();
+                box.Text = CycleData.Current.CalibrationTemperatures[i].ToString();
                 box.TabIndex = i;
                 //box.AutoSize = true;
                 box.Location = new Point(10, i * 20); //vertical
                 CalibrationPanel.Controls.Add(box);
                 box.CheckedChanged += temperatureCheckedChanged;
                 calibrationCheckBoxes.Add(box);
-
             }
         }
 
@@ -101,8 +92,7 @@ namespace Evo20.GUI
                     resultList.Add(Convert.ToInt32(item.Text));
                 }
             }
-            cycleData.CalibrationTemperatures = resultList;
-            cycleData.CheckTemperatures = resultList;
+            CycleData.Current.SetTemperatures(resultList);
             this.DialogResult = DialogResult.OK;
         }
 

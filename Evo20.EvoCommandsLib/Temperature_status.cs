@@ -6,6 +6,8 @@ namespace Evo20.EvoCommandsLib
 {
     public class Temperature_status : Command
     {
+        public static string Command = "AXE.UPLD.STA ";
+
         public Temperature_status()
         {
             is_answer = false;

@@ -13,17 +13,22 @@ namespace Evo20.EvoConnections
     /// </summary>
     public class CommandHandler : ConnectionSocket
     {
+        #region Commands 
 
-        string AXIS_STATUS = new Axis_Status().ToString();
-        string TEMPERATURE_STATUS = new Temperature_status().ToString();
+        string AXIS_STATUS = Axis_Status.Command;
+        string TEMPERATURE_STATUS = Temperature_status.Command;
+        string REQUESTED_AXIS_POSITION_REACHED = Requested_axis_position_reached.Command;
+        string ACTUAL_TEMPERATURE_QUERY = Actual_temperature_query.Command;
+
         string ROTARY_JOINT_TEMPERATURE_QUERY_X = new Rotary_joint_temperature_Query(Axis.X).ToString();
         string ROTARY_JOINT_TEMPERATURE_QUERY_Y = new Rotary_joint_temperature_Query(Axis.Y).ToString();
         string AXIS_POSITION_QUERY_X = new Axis_Position_Query(Axis.X).ToString();
         string AXIS_POSITION_QUERY_Y = new Axis_Position_Query(Axis.Y).ToString();
         string AXIS_RATE_QUERY_X = new Axis_Rate_Query(Axis.X).ToString();
         string AXIS_RATE_QUERY_Y = new Axis_Rate_Query(Axis.Y).ToString();
-        string REQUESTED_AXIS_POSITION_REACHED = new Requested_axis_position_reached().ToString();
-        string ACTUAL_TEMPERATURE_QUERY = new Actual_temperature_query().ToString();
+
+        #endregion
+
         // очередь обработанных комманд
         Queue<Command> bufferCommand;
 

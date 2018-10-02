@@ -7,6 +7,8 @@ namespace Evo20.EvoCommandsLib
 {
     public class Axis_Status:Command
     {
+        public static string Command = "AXE.TELL.STA ";
+
         public Axis_Status()
         {
             is_answer = false;

@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
     <Compile Include="CRC16.cs" />
     <Compile Include="IPacketData.cs" />
     <Compile Include="Packet.cs" />

@@ -53,6 +53,8 @@ namespace Evo20.EvoConnections
           
         IPEndPoint endPoint;
 
+        UdpClient receivingUdpClient;
+
         //Состояние соединения 
         private ConnectionStatus connectionState;
 
@@ -64,7 +66,7 @@ namespace Evo20.EvoConnections
 
         protected Thread work_thread;
 
-        protected UdpClient udpClient;
+        protected UdpClient sender;
 
         #endregion
 
@@ -92,7 +94,8 @@ namespace Evo20.EvoConnections
             work_thread = new Thread(ReadMessage);
             work_thread.IsBackground = true;
             connectionState = ConnectionStatus.DISCONNECTED;
-            udpClient = new UdpClient(3306);
+            receivingUdpClient = null;
+            sender = new UdpClient(3306);
         }
 
         //Деструктор класса
@@ -178,8 +181,8 @@ namespace Evo20.EvoConnections
                 work_thread.Abort();
             }
             ConnectionStatus = ConnectionStatus.DISCONNECTED;
-            if(udpClient!=null)
-                udpClient.Close();
+            if(receivingUdpClient!=null)
+                receivingUdpClient.Close();
             Evo20.Log.Log.WriteLog("Соединение c Evo 20 прервано");
             return true;
         }
@@ -201,12 +204,11 @@ namespace Evo20.EvoConnections
                 if (connectionState == ConnectionStatus.CONNECTED)
                 {
                     byte[] bytes = Encoding.UTF8.GetBytes(message);
-                    udpClient.Send(bytes, bytes.Length, endPoint);
+                    sender.Send(bytes, bytes.Length, endPoint);
                     return true;
                 }
                 else
                 {
-                    Evo20.Log.Log.WriteLog("Сообщение " + message + " Evo 20 не доставлено, клиент не подключен");
                     return false;
                 }
             }
@@ -214,7 +216,7 @@ namespace Evo20.EvoConnections
             {
                 connectionState = ConnectionStatus.ERROR;
                 Evo20.Log.Log.WriteLog("Сообщение " + message + " Evo 20 не доставлено " + "Возникло исключение" + exception);
-                udpClient.Close();
+                sender.Close();
                 if (EventHandlerListForException != null)
                     EventHandlerListForException(exception);
                 return false;
@@ -245,7 +247,7 @@ namespace Evo20.EvoConnections
             {
                 while (connectionState == ConnectionStatus.CONNECTED)
                 {
-                    byte[] receiveBytes = udpClient.Receive(
+                    byte[] receiveBytes = sender.Receive(
                        ref RemoteIpEndPoint);
 
                     lock (buffer)
@@ -258,12 +260,14 @@ namespace Evo20.EvoConnections
             }
             catch (Exception exception)
             {
+                connectionState = ConnectionStatus.ERROR;
+                Evo20.Log.Log.WriteLog("Невозможно открыть соединение с Evo " + "Возникло исключение" + exception.ToString());
                 if (EventHandlerListForException != null)
                     EventHandlerListForException(exception);
             }
             finally
             {
-                udpClient.Close();
+                sender.Close();
             }
         }
 

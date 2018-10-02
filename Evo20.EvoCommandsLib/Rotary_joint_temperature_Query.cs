@@ -9,6 +9,7 @@ namespace Evo20.EvoCommandsLib
     /// </summary>
     public class Rotary_joint_temperature_Query:Command
     {
+
         Axis axis;
         public Rotary_joint_temperature_Query(Axis axis)
         {
