@@ -31,3 +31,5 @@ C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\bin\Debug\Evo20.PacketsL
 C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\obj\Debug\Evo20.SensorsConnection.dll
 C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\obj\Debug\Evo20.SensorsConnection.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\bin\Debug\Evo20.Config.dll
+C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\bin\Debug\Evo20.Config.pdb

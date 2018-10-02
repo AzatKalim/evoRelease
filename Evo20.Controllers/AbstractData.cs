@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using Evo20.EvoCommandsLib;
-using Evo20.Log;
 
 namespace Evo20.Controllers
 {
@@ -32,7 +31,7 @@ namespace Evo20.Controllers
             string[] temp = templine.Split(':');
             if (temp[0] != checkString)
             {
-                Evo20.Log.Log.WriteLog("Не верна строка файла настроек:" + checkString);
+                Evo20.Log.WriteLog("Не верна строка файла настроек:" + checkString);
                 return false;
             }
             else
@@ -43,7 +42,7 @@ namespace Evo20.Controllers
                 }
                 catch (Exception)
                 {
-                    Evo20.Log.Log.WriteLog("Не верна строка файла настроек:" + checkString);
+                    Evo20.Log.WriteLog("Не верна строка файла настроек:" + checkString);
                     return false;
                 }
             }
@@ -63,7 +62,7 @@ namespace Evo20.Controllers
             string[] temp = templine.Split(':');
             if (temp[0] != checkString)
             {
-                Evo20.Log.Log.WriteLog("Не верна строка файла настроек:" + checkString);
+                Evo20.Log.WriteLog("Не верна строка файла настроек:" + checkString);
                 return false;
             }
             else
@@ -74,7 +73,7 @@ namespace Evo20.Controllers
                 }
                 catch (Exception)
                 {
-                    Evo20.Log.Log.WriteLog("Не верна строка файла настроек:" + checkString);
+                    Evo20.Log.WriteLog("Не верна строка файла настроек:" + checkString);
                     return false;
                 }
             }

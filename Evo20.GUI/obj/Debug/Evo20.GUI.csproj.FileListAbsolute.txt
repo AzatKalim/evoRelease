@@ -98,3 +98,5 @@ C:\Users\Азат\Desktop\Evo20\Evo20.GUI\obj\Debug\ResolveAssemblyReference.cac
 C:\Users\Азат\Desktop\Evo20\Evo20.GUI\obj\Debug\Evo20.GUI.MainForm.resources
 C:\Users\Азат\Desktop\Evo20\Evo20.GUI\obj\Debug\Evo20.GUI.Properties.Resources.resources
 C:\Users\Азат\Desktop\Evo20\Evo20.GUI\obj\Debug\Evo20.GUI.csproj.GenerateResource.Cache
+C:\Users\Азат\Desktop\Evo20\Evo20.GUI\bin\Debug\Evo20.Config.dll
+C:\Users\Азат\Desktop\Evo20\Evo20.GUI\bin\Debug\Evo20.Config.pdb

@@ -2,3 +2,7 @@ C:\Users\Азат\Desktop\Новая папка (6)\Evo20\Evo20.Log\bin\Debug\Ev
 C:\Users\Азат\Desktop\Новая папка (6)\Evo20\Evo20.Log\bin\Debug\Evo20.Log.pdb
 C:\Users\Азат\Desktop\Новая папка (6)\Evo20\Evo20.Log\obj\Debug\Evo20.Log.dll
 C:\Users\Азат\Desktop\Новая папка (6)\Evo20\Evo20.Log\obj\Debug\Evo20.Log.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.Log\bin\Debug\Evo20.Log.dll
+C:\Users\Азат\Desktop\Evo20\Evo20.Log\bin\Debug\Evo20.Log.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.Log\obj\Debug\Evo20.Log.dll
+C:\Users\Азат\Desktop\Evo20\Evo20.Log\obj\Debug\Evo20.Log.pdb

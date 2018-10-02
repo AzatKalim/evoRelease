@@ -8,3 +8,8 @@ F:\тесты на работе 2.06.2018 прием пакетов и связ�
 F:\тесты на работе 2.06.2018 прием пакетов и связь с евой раб\Evo20\Evo20.Math\obj\Debug\ResolveAssemblyReference.cache
 F:\тесты на работе 2.06.2018 прием пакетов и связь с евой раб\Evo20\Evo20.Math\obj\Debug\Evo20.Math.dll
 F:\тесты на работе 2.06.2018 прием пакетов и связь с евой раб\Evo20\Evo20.Math\obj\Debug\Evo20.Math.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.Math\bin\Debug\Evo20.Math.dll
+C:\Users\Азат\Desktop\Evo20\Evo20.Math\bin\Debug\Evo20.Math.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.Math\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Азат\Desktop\Evo20\Evo20.Math\obj\Debug\Evo20.Math.dll
+C:\Users\Азат\Desktop\Evo20\Evo20.Math\obj\Debug\Evo20.Math.pdb

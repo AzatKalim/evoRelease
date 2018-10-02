@@ -3,7 +3,6 @@ using System.Text;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-using Evo20.Log;
 using Evo20.Config;
 using System.Configuration;
 using System.Collections.Specialized;
@@ -83,7 +82,7 @@ namespace Evo20.EvoConnections
             work_thread.IsBackground = true;
             connectionState = ConnectionStatus.DISCONNECTED;
             receivingUdpClient = null;
-            sender = new UdpClient(3306);
+            sender = new UdpClient(Config.Config.LOCAL_PORT_NUMBER);
         }
 
         //Деструктор класса
@@ -110,7 +109,7 @@ namespace Evo20.EvoConnections
                     work_thread= new Thread(ReadMessage);
                     work_thread.Start();
                 }
-                Evo20.Log.Log.WriteLog("Соединение c Evo 20 установлено");
+                Evo20.Log.WriteLog("Соединение c Evo 20 установлено");
                 return true;
             }
             else
@@ -129,7 +128,7 @@ namespace Evo20.EvoConnections
             {
                 work_thread.Abort();
                 ConnectionStatus = ConnectionStatus.PAUSE;
-                Evo20.Log.Log.WriteLog("Соединение c Evo 20 приостановлено");
+                Evo20.Log.WriteLog("Соединение c Evo 20 приостановлено");
                 return true;
             }
             else
@@ -149,7 +148,7 @@ namespace Evo20.EvoConnections
                 work_thread = new Thread(ReadMessage);
                 work_thread.Start();
                 ConnectionStatus = ConnectionStatus.CONNECTED;
-                Evo20.Log.Log.WriteLog("Соединение c Evo 20 востановлено");
+                Evo20.Log.WriteLog("Соединение c Evo 20 востановлено");
                 return true;
             }
             else
@@ -171,7 +170,7 @@ namespace Evo20.EvoConnections
             ConnectionStatus = ConnectionStatus.DISCONNECTED;
             if(receivingUdpClient!=null)
                 receivingUdpClient.Close();
-            Evo20.Log.Log.WriteLog("Соединение c Evo 20 прервано");
+            Evo20.Log.WriteLog("Соединение c Evo 20 прервано");
             return true;
         }
 
@@ -203,7 +202,7 @@ namespace Evo20.EvoConnections
             catch (Exception exception)
             {
                 connectionState = ConnectionStatus.ERROR;
-                Evo20.Log.Log.WriteLog("Сообщение " + message + " Evo 20 не доставлено " + "Возникло исключение" + exception);
+                Evo20.Log.WriteLog("Сообщение " + message + " Evo 20 не доставлено " + "Возникло исключение" + exception);
                 sender.Close();
                 if (EventHandlerListForException != null)
                     EventHandlerListForException(exception);
@@ -249,7 +248,7 @@ namespace Evo20.EvoConnections
             catch (Exception exception)
             {
                 connectionState = ConnectionStatus.ERROR;
-                Evo20.Log.Log.WriteLog("Невозможно открыть соединение с Evo " + "Возникло исключение" + exception.ToString());
+                Evo20.Log.WriteLog("Невозможно открыть соединение с Evo " + "Возникло исключение" + exception.ToString());
                 if (EventHandlerListForException != null)
                     EventHandlerListForException(exception);
             }
@@ -277,7 +276,7 @@ namespace Evo20.EvoConnections
             }
             catch (FormatException exception)
             {
-                Evo20.Log.Log.WriteLog(string.Format("ConnectionSocket: Ошибка чтения из буфера {0}!", exception.ToString()));
+                Evo20.Log.WriteLog(string.Format("ConnectionSocket: Ошибка чтения из буфера {0}!", exception.ToString()));
                 message = String.Empty;
             }
             return message;

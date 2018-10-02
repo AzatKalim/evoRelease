@@ -7,7 +7,6 @@ using System.Configuration;
 using Evo20.Config;
 using Evo20.EvoCommandsLib;
 using Evo20.Controllers;
-using Evo20.Log;
 using Evo20.SensorsConnection;
 using Evo20.PacketsLib;
 using Evo20.Math;
@@ -373,7 +372,7 @@ namespace Evo20.Controllers
                     }
                     break;
                 default:
-                    Evo20.Log.Log.WriteLog("Ошибка:перед запуском цикла. Режим работы не установлен!");
+                    Evo20.Log.WriteLog("Ошибка:перед запуском цикла. Режим работы не установлен!");
                     EventHandlersListCycleEnded(false);
                     return;
             }
@@ -394,13 +393,13 @@ namespace Evo20.Controllers
                     EvoData.Current.NextTemperature = temperatures[i];
                 }
                 SetTemperature(temperatures[i]);
-                Evo20.Log.Log.WriteLog("Установлена температура камеры " + temperatures[i] + " скорость набора температtуры " + Config.Config.SPEED_OF_TEMPERATURE_CHANGE);
+                Evo20.Log.WriteLog("Установлена температура камеры " + temperatures[i] + " скорость набора температtуры " + Config.Config.SPEED_OF_TEMPERATURE_CHANGE);
                 //Ожидание достижения температуры
 //#if !DEBUG
                 EvoData.Current.TemperatureReachedEvent.WaitOne();
 //#endif
                 EvoData.Current.TemperatureReachedEvent.Reset();
-                Evo20.Log.Log.WriteLog("Температура  " + temperatures[i] + " достигнута");
+                Evo20.Log.WriteLog("Температура  " + temperatures[i] + " достигнута");
                 if (EventHandlerListForTemperatureStabilization != null)
                     EventHandlerListForTemperatureStabilization(false);
 //#if !DEBUG
@@ -419,7 +418,7 @@ namespace Evo20.Controllers
                     bool isCyclePartSuccess = SensorCyclePart(profiles[j]);
                     if (!isCyclePartSuccess)
                     {
-                        Evo20.Log.Log.WriteLog("Ошибка:Не выполнена часть цикла для датчика :" + sensorsList[j].Name + " при температуре" + temperatures[i]);
+                        Evo20.Log.WriteLog("Ошибка:Не выполнена часть цикла для датчика :" + sensorsList[j].Name + " при температуре" + temperatures[i]);
                         EventHandlersListCycleEnded(false);
                         return;
                     }     
@@ -480,8 +479,8 @@ namespace Evo20.Controllers
             }
             catch (Exception exception)
             {
-                Evo20.Log.Log.WriteLog(string.Format("Возникло исключение цикла при датчике:{0} ,при шаге {1}", CurrentSensor.Name, j));
-                Evo20.Log.Log.WriteLog(exception.ToString());
+                Evo20.Log.WriteLog(string.Format("Возникло исключение цикла при датчике:{0} ,при шаге {1}", CurrentSensor.Name, j));
+                Evo20.Log.WriteLog(exception.ToString());
                 if (EventHandlerListForControllerExceptions != null)
                 {
                     EventHandlerListForControllerExceptions(exception);
@@ -547,10 +546,10 @@ namespace Evo20.Controllers
                 file);
             if (!result)  
             {
-                Evo20.Log.Log.WriteLog("Вычисление коэфицентов не выполнено!");
+                Evo20.Log.WriteLog("Вычисление коэфицентов не выполнено!");
                 return result;
             }
-            Evo20.Log.Log.WriteLog("Вычисление коэфицентов выполнено!");
+            Evo20.Log.WriteLog("Вычисление коэфицентов выполнено!");
             return result;
         }
 
@@ -595,7 +594,7 @@ namespace Evo20.Controllers
             }
             catch (Exception exception)
             {
-                Evo20.Log.Log.WriteLog("Возникла ошибка чтения файла настроек" + exception.ToString());
+                Evo20.Log.WriteLog("Возникла ошибка чтения файла настроек" + exception.ToString());
                 throw exception;
             }        
             return true;
@@ -603,14 +602,14 @@ namespace Evo20.Controllers
 
         private bool WriteRedPackets()
         {
-            Evo20.Log.Log.WriteLog("Запись уже считанных пакетов в файл");
+            Evo20.Log.WriteLog("Запись уже считанных пакетов в файл");
 
             foreach (var sensor in sensorsList)
             {
                 
                 if (!sensor.WriteRedPackets())
                 {
-                    Log.Log.WriteLog(string.Format("Запись прервана на датчике {0}", sensor.Name));
+                    Log.WriteLog(string.Format("Запись прервана на датчике {0}", sensor.Name));
                     return false;
                 }
             }

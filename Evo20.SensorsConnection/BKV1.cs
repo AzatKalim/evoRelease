@@ -188,7 +188,6 @@ namespace Evo20.SensorsConnection
 
         public bool WriteRedPackets()
         {
-
             return true;
         }
         #endregion

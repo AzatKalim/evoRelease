@@ -52,7 +52,6 @@ F:\тесты на работе 2.06.2018 прием пакетов и связ�
 F:\тесты на работе 2.06.2018 прием пакетов и связь с евой раб\Evo20\Evo20.Controllers\obj\Debug\ResolveAssemblyReference.cache
 F:\тесты на работе 2.06.2018 прием пакетов и связь с евой раб\Evo20\Evo20.Controllers\obj\Debug\Evo20.Controllers.dll
 F:\тесты на работе 2.06.2018 прием пакетов и связь с евой раб\Evo20\Evo20.Controllers\obj\Debug\Evo20.Controllers.pdb
-C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\bin\Debug\Evo20.Controllers.dll.config
 C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\bin\Debug\Evo20.Controllers.dll
 C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\bin\Debug\Evo20.Controllers.pdb
 C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\bin\Debug\Evo20.EvoCommandsLib.dll
@@ -70,3 +69,5 @@ C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\bin\Debug\Evo20.Math.pdb
 C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\obj\Debug\Evo20.Controllers.dll
 C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\obj\Debug\Evo20.Controllers.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\bin\Debug\Evo20.Config.dll
+C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\bin\Debug\Evo20.Config.pdb
