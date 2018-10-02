@@ -2,24 +2,28 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Evo20.PacketsLib
 {
     /// <summary>
     /// Структура данных, которая хранит в себе список PacketData(4 пакета)и  тепературу с позициями, когда они были собраны 
     /// </summary>
+    [Serializable]
     public class PacketsCollection
     {
         #region Private Fields
         /// <summary>
         /// Максимальное число пакетов
         /// </summary>
-        readonly int maxPacketsCount;
+        [NonSerialized]
+        readonly int MAX_PACKETS_COUNT;
 
         /// <summary>
         /// температура сбора пакетов 
         /// </summary>
-        readonly int temperature;
+        readonly int TEMPERATURE;
 
         /// <summary>
         /// Массив, где индекс- номер позиции, а значение -список собраных PacketData в этой позиции
@@ -32,13 +36,14 @@ namespace Evo20.PacketsLib
 
         public PacketsCollection(int temperature, int positionCount, int packetsCount)
         {
-            this.temperature = temperature;
+            this.TEMPERATURE = temperature;
             positionPackets = new List<PacketsData>[positionCount];
             for (int i = 0; i < positionCount; i++)
             {
                 positionPackets[i] = new List<PacketsData>();
             }
-            maxPacketsCount = packetsCount;
+            MAX_PACKETS_COUNT = packetsCount;
+            IsCollected = false;
         }
 
         public PacketsCollection(StreamReader file)
@@ -48,12 +53,12 @@ namespace Evo20.PacketsLib
             try
             {
                 string[] temp = tmp.Split(' ');
-                temperature = Convert.ToInt32(temp[0]);
+                TEMPERATURE = Convert.ToInt32(temp[0]);
                 positionCount = Convert.ToInt32(temp[1]);
             }
             catch (Exception ex)
             {
-                temperature = 0;
+                TEMPERATURE = 0;
                 positionCount = 0;
                 throw ex;
             }
@@ -72,11 +77,13 @@ namespace Evo20.PacketsLib
             }
             catch (Exception exception)
             {
-                temperature = 0;
-                maxPacketsCount = 0;
+                TEMPERATURE = 0;
+                MAX_PACKETS_COUNT = 0;
                 positionPackets = null;
+                IsCollected = false;
                 throw exception;
             }
+            IsCollected = true;
         }
 
         #endregion 
@@ -90,7 +97,7 @@ namespace Evo20.PacketsLib
         {
             get
             {
-                return  temperature;
+                return  TEMPERATURE;
             }
         }
 
@@ -109,6 +116,12 @@ namespace Evo20.PacketsLib
         {
             get { return positionPackets[index]; }
         }
+
+        public bool IsCollected
+        {
+            get;
+            private set;
+        } 
 
         #endregion 
 
@@ -275,13 +288,14 @@ namespace Evo20.PacketsLib
         /// <returns>true- пакет добавлен, false- необходимое число пакетов собрано</returns>
         public bool AddPacketData(int positionNumber,PacketsData packetData)
         {
-            if (positionPackets[positionNumber].Count < maxPacketsCount)
+            if (positionPackets[positionNumber].Count < MAX_PACKETS_COUNT)
             {
                 positionPackets[positionNumber].Add(packetData);
                 return true;
             }
             else
             {
+                IsCollected = true;
                 return false;
             }
         }
@@ -292,7 +306,7 @@ namespace Evo20.PacketsLib
         /// <returns>Читабельную строку </returns>
         public override string ToString()
         {
-            var buff = new StringBuilder(temperature + " " + positionPackets.Length+Environment.NewLine);
+            var buff = new StringBuilder(TEMPERATURE + " " + positionPackets.Length+Environment.NewLine);
             for (int i = 0; i < positionPackets.Length; i++)
             {
                 buff.Append(positionPackets[i].Count+Environment.NewLine);

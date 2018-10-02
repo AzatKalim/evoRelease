@@ -37,7 +37,7 @@ namespace Evo20.SensorsConnection
             {
                 CheckPacketsCollection.Add(new PacketsCollection(checkTemperatures[i], COUNT_OF_POSITIONS, checkMaxPacketsCount));
             }
-            PacketsCollectedEvent = new ManualResetEvent(false);
+            PacketsCollectedEvent = new AutoResetEvent(false);
         }
 
         /// <summary>

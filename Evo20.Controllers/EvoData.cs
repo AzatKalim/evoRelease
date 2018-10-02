@@ -47,14 +47,15 @@ namespace Evo20.Controllers
         public AxisData x;
         public AxisData y;
 
-        public double nextTemperature;
+        private double nextTemperature;
+
         public double NextTemperature
         {
             set
             {
-                if (temperatureReachedEvent != null && nextTemperature != currentTemperature)
+                if (TemperatureReachedEvent != null && nextTemperature != currentTemperature)
                 {
-                    temperatureReachedEvent.Reset();
+                    TemperatureReachedEvent.Reset();
                 }
                 nextTemperature = value;
             }
@@ -63,11 +64,27 @@ namespace Evo20.Controllers
                 return nextTemperature;
             }
         }
-        public double currentTemperature;
+        private double currentTemperature;
+
+        public double CurrentTemperature
+        {
+            set
+            {            
+                currentTemperature = value;
+            }
+            get
+            {
+                return currentTemperature;
+            }
+        }
+
+
+
         public bool isCameraPowerOn;
         public bool isTemperatureReached;
 
-        public ManualResetEvent temperatureReachedEvent;
+        public ManualResetEvent TemperatureReachedEvent;
+
         public ManualResetEvent movementEndedEvent;
 
         private static EvoData current;
@@ -89,7 +106,7 @@ namespace Evo20.Controllers
             currentTemperature = 0;
             isCameraPowerOn = false;
             nextTemperature = 0;
-            temperatureReachedEvent = new ManualResetEvent(false);
+            TemperatureReachedEvent = new ManualResetEvent(false);
             movementEndedEvent = new ManualResetEvent(false);
         }
 
@@ -112,7 +129,7 @@ namespace Evo20.Controllers
             if (cmd.is_temperature_reached)
             {
                 isTemperatureReached = true;
-                temperatureReachedEvent.Set();
+                TemperatureReachedEvent.Set();
             }
             isCameraPowerOn = cmd.is_power_on;
         }
@@ -154,7 +171,7 @@ namespace Evo20.Controllers
             currentTemperature = cmd.temperature;
             if ((currentTemperature - nextTemperature) < 0.5 && (currentTemperature - nextTemperature) > -0.5)
             {
-                temperatureReachedEvent.Set();
+                TemperatureReachedEvent.Set();
                 isTemperatureReached = true;
             }
         }

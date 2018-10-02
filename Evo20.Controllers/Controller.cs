@@ -116,9 +116,9 @@ namespace Evo20.Controllers
             get
             {
                 if (Mode == WorkMode.CalibrationMode)
-                    return CycleData.Current.FindCalibrationTemperatureIndex((int)EvoData.Current.currentTemperature);
+                    return CycleData.Current.FindCalibrationTemperatureIndex((int)EvoData.Current.CurrentTemperature);
                 if (Mode == WorkMode.CheckMode)
-                    return CycleData.Current.FindCheckTemperatureIndex((int)EvoData.Current.currentTemperature);
+                    return CycleData.Current.FindCheckTemperatureIndex((int)EvoData.Current.CurrentTemperature);
                 return 0;
             }
            
@@ -391,15 +391,15 @@ namespace Evo20.Controllers
                 SetTemperatureChangeSpeed(EvoData.SPEED_OF_TEMPERATURE_CHANGE);
                 lock (EvoData.Current)
                 {
-                    EvoData.Current.nextTemperature = temperatures[i];
+                    EvoData.Current.NextTemperature = temperatures[i];
                 }
                 SetTemperature(temperatures[i]);
                 Evo20.Log.Log.WriteLog("Установлена температура камеры " + temperatures[i] + " скорость набора температtуры " + EvoData.SPEED_OF_TEMPERATURE_CHANGE);
                 //Ожидание достижения температуры
 //#if !DEBUG
-                EvoData.Current.temperatureReachedEvent.WaitOne();
+                EvoData.Current.TemperatureReachedEvent.WaitOne();
 //#endif
-                EvoData.Current.temperatureReachedEvent.Reset();
+                EvoData.Current.TemperatureReachedEvent.Reset();
                 Evo20.Log.Log.WriteLog("Температура  " + temperatures[i] + " достигнута");
                 if (EventHandlerListForTemperatureStabilization != null)
                     EventHandlerListForTemperatureStabilization(false);
@@ -423,7 +423,9 @@ namespace Evo20.Controllers
                         EventHandlersListCycleEnded(false);
                         return;
                     }     
-                }                                            
+                }
+                //записываем пакеты
+                WriteRedPackets();                            
             }
             EventHandlersListCycleEnded(true);
 
@@ -472,7 +474,6 @@ namespace Evo20.Controllers
                     //ожидание сбора пакетов
                     canCollect = true;
                     CurrentSensor.PacketsCollectedEvent.WaitOne();
-                    CurrentSensor.PacketsCollectedEvent.Reset();
                     canCollect = false;
                 }
 
@@ -600,7 +601,21 @@ namespace Evo20.Controllers
             return true;
         }
 
+        private bool WriteRedPackets()
+        {
+            Evo20.Log.Log.WriteLog("Запись уже считанных пакетов в файл");
 
+            foreach (var sensor in sensorsList)
+            {
+                
+                if (!sensor.WriteRedPackets())
+                {
+                    Log.Log.WriteLog(string.Format("Запись прервана на датчике {0}", sensor.Name));
+                    return false;
+                }
+            }
+            return true;
+        }
         #endregion
     }
 }

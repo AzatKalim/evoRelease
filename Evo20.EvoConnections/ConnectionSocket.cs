@@ -287,8 +287,9 @@ namespace Evo20.EvoConnections
                     buffer = new byte[2048];
                 }
             }
-            catch (FormatException ex)
+            catch (FormatException exception)
             {
+                Evo20.Log.Log.WriteLog(string.Format("ConnectionSocket: Ошибка чтения из буфера {0}!", exception.ToString()));
                 message = String.Empty;
             }
             return message;

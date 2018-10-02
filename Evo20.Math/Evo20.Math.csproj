@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="ComputeCoefficients.cs" />
     <Compile Include="ComputeErrors.cs" />
     <Compile Include="Matrix.cs" />

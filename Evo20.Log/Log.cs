@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 
-namespace Evo20.Log
+namespace Evo20
 {
     /// <summary>
     /// Статический класс, записываюжий логи
@@ -11,13 +11,12 @@ namespace Evo20.Log
     public static class Log
     {
         //Имя файла=День_месяц_год_время
-        static string file_name = DateTime.Now.Day.ToString() + "_"
-            + DateTime.Now.Month.ToString() + "_"
+        static string file_name = DateTime.Now.Day.ToString()
+            + DateTime.Now.Month.ToString()
             + DateTime.Now.Year.ToString() + "_"
-            + DateTime.Now.Hour.ToString() + "_"
-            + DateTime.Now.Minute.ToString() + "_"
-            + DateTime.Now.Second.ToString() + "_"
-            + "_" + "log.txt";
+            + DateTime.Now.Hour.ToString()
+            + DateTime.Now.Minute.ToString()
+            + DateTime.Now.Second.ToString()+ "log.txt";
 
         /// <summary>
         /// Запись сообщения в лог файл

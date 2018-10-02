@@ -49,7 +49,6 @@
   <ItemGroup>
     <Compile Include="AbstractData.cs" />
     <Compile Include="BKV1.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="ConnectionStateOperations.cs" />
     <Compile Include="DLY.cs" />
     <Compile Include="DYS.cs" />

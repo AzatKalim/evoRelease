@@ -60,7 +60,6 @@ namespace Evo20.SensorsConnection
             {
                 return;
             }
-            var temp = new List<byte>();
             // находим стартовые байты пакета 
             bool isBeginFinded = Packet.FindPacketBegin(ref bufferMessage);
             if (!isBeginFinded || bufferMessage.Count < Packet.PACKET_SIZE)
@@ -68,18 +67,16 @@ namespace Evo20.SensorsConnection
                 dropedPackets++;
                 return;
             }
-            // извлекаем  байты в колличестве размера пакета в список 
-            for (int i = 0; i < Packet.PACKET_SIZE; i++)
-            {
-                temp.Add(bufferMessage[i]);
-            }
+            var temp = new byte[Packet.PACKET_SIZE];
             lock (bufferMessage)
             {
+                // извлекаем  байты в колличестве размера пакета в список 
+                bufferMessage.CopyTo(0, temp, 0, Packet.PACKET_SIZE);
                 bufferMessage.RemoveRange(0, Packet.PACKET_SIZE);
             }
             
             // получаем информацию из массива байт
-            var recognazedPacket = Packet.PacketHandle(temp.ToArray());
+            var recognazedPacket = Packet.FirstPacketHandle(temp);
             if (recognazedPacket == null)
             {
                 dropedPackets++;

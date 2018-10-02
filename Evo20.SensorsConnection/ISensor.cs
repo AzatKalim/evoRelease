@@ -39,7 +39,7 @@ namespace Evo20.SensorsConnection
         /// <summary>
         /// Событие сбора необходимого числа пакетов
         /// </summary>
-        ManualResetEvent PacketsCollectedEvent
+        AutoResetEvent PacketsCollectedEvent
         {
             set;
             get;
@@ -133,6 +133,6 @@ namespace Evo20.SensorsConnection
 
         double[][,] GetCheckADCCodes();
 
-        
+        bool WriteRedPackets();
     }
 }

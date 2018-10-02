@@ -43,6 +43,20 @@ namespace Evo20.PacketsLib
             }
             sum ^= 0xFFFF;
             return sum;
-        }       
+        }
+        public static int ComputeChecksum(byte[] buf,int length)
+        {
+            ushort sum = 0xFFFF;
+            ushort num = 0;
+            ushort index;
+            while (num < length-2)
+            {
+                index = (ushort)(((sum >> 8) ^ buf[num]) & 0xFF);
+                sum = (ushort)(crc16tab[index] ^ (sum << 8));
+                num++;
+            }
+            sum ^= 0xFFFF;
+            return sum;
+        } 
     }
 }

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Collections;
 using System.Configuration;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Evo20.PacketsLib
 {
@@ -35,22 +37,51 @@ namespace Evo20.PacketsLib
         const int U_STRING_NUMBER = 7;
 
         #endregion
+        public byte[] data;
 
-        public int[] w
+        private static byte[] inf_part = new byte[40];
+
+        private int[] w;
+        private int[] a;
+        private int[] u;
+        public int[] W
         {
-            get;
-            private set;
+            get
+            {
+                if (w == null)
+                    PacketHandle();
+                return w;
+            }
+            private set
+            {
+                w = value;
+            }
         }
-        public int[] a
+        public int[] A
         {
-            get;
-            private set;
+            get
+            {
+                if (a == null)
+                    PacketHandle();
+                return a;
+            }
+            private set
+            {
+                a = value;
+            }
         }
-        public int[] u
+        public int[] U
         {
-            get;
-            internal set;
+            get
+            {
+                return u;
+            }
+            internal set
+            {
+                u = value;
+            }
         }
+        public byte[] array;
         public int id
         {
             get;
@@ -65,9 +96,9 @@ namespace Evo20.PacketsLib
         /// <param name="id">идентификатор пакета </param>
         public Packet(int[] w, int[] a, int[] u, int id)
         {
-            this.w = w;
-            this.a = a;
-            this.u = u;
+            this.W = w;
+            this.A = a;
+            this.U = u;
             this.id = id;
         }
 
@@ -80,8 +111,14 @@ namespace Evo20.PacketsLib
         public Packet(int[] w, int[] a, int id)
         {
             this.id = id;
-            this.w = w;
-            this.a = a;
+            this.W = w;
+            this.A = a;
+        }
+
+        public Packet(int id,byte[] array)
+        {
+            this.id = id;
+            this.data = array;
         }
 
         /// <summary>
@@ -90,7 +127,7 @@ namespace Evo20.PacketsLib
         /// <returns></returns>
         public override string ToString()
         {
-            string buffer = string.Format("{0} {1} {2} {3} {4} {5} {6} {7} {8} {9}",id,w[0],w[1],w[2],a[0],a[1],a[2],u[0],u[1],u[2]);
+            string buffer = string.Format("{0} {1} {2} {3} {4} {5} {6} {7} {8} {9}",id,W[0],W[1],W[2],A[0],A[1],A[2],U[0],U[1],U[2]);
             return buffer;
         }
 
@@ -103,22 +140,22 @@ namespace Evo20.PacketsLib
             string[] tmp = input.Split(' ');
             try
             {
-                a = new int[PARAMS_COUNT];
-                w = new int[PARAMS_COUNT];
-                u = new int[PARAMS_COUNT];
+                A = new int[PARAMS_COUNT];
+                W = new int[PARAMS_COUNT];
+                U = new int[PARAMS_COUNT];
                 id = Convert.ToInt32(tmp[0]);
                 for (int i = 0; i < PARAMS_COUNT; i++)
                 {
-                    w[i] = Convert.ToInt32(tmp[W_STRING_NUMBER + i]);
-                    a[i] = Convert.ToInt32(tmp[A_STRING_NUMBER + i]);
-                    u[i] = Convert.ToInt32(tmp[U_STRING_NUMBER + i]);
+                    W[i] = Convert.ToInt32(tmp[W_STRING_NUMBER + i]);
+                    A[i] = Convert.ToInt32(tmp[A_STRING_NUMBER + i]);
+                    U[i] = Convert.ToInt32(tmp[U_STRING_NUMBER + i]);
                 }
             }
             catch (FormatException exception)
             {
-                a = null;
-                w = null;
-                u = null;
+                A = null;
+                W = null;
+                U = null;
                 throw exception;
             }
         }
@@ -128,58 +165,58 @@ namespace Evo20.PacketsLib
         /// </summary>
         /// <param name="message"> массив байт</param>
         /// <returns>пакет</returns>
-        public static Packet PacketHandle(byte[] message)
+        private void PacketHandle()
         {
             try
             {
-                Packet packet_inf = null;
-                //проверка заголовка пакета
-                ushort head = BitConverter.ToUInt16(new byte[] { message[Packet.HEAD_BEGIN], message[HEAD_BEGIN + 1] }, 0);
-                if (head != 0xFACE)
-                {
-                    return packet_inf;
-                }
-                Byte[] inf_part = new byte[40];
-                Array.Copy(message, 0, inf_part, 0, Packet.PACKET_SIZE - 2);
-                int checkSum = CRC16.ComputeChecksum(inf_part);
-                //проверка контрольной суммы
-                if (BitConverter.ToUInt16(new byte[2] { message[CHECK_BEGIN], message[CHECK_BEGIN + 1] }, 0) != checkSum)
-                {
-                    return packet_inf;
-                }
-                //номер пакета 
-                int packetId = BitConverter.ToUInt16(new byte[] { message[ID_BEGIN], message[ID_BEGIN + 1] }, 0);
+                //проверка заголовка пакета        
                 //данные с гироскопов
                 bool rangeFlag = false;
                 bool dataFlag = false;
-                int w_x = ConvertParam(new byte[] { message[W_X_BEGIN], message[W_X_BEGIN + 1], message[W_X_BEGIN + 2], message[W_X_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
-                int w_y = ConvertParam(new byte[] { message[W_Y_BEGIN], message[W_Y_BEGIN + 1], message[W_Y_BEGIN + 2], message[W_Y_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
-                int w_z = ConvertParam(new byte[] { message[W_Z_BEGIN], message[W_Z_BEGIN + 1], message[W_Z_BEGIN + 2], message[W_Z_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
-                int[] w = new int[] { w_x, w_y, w_z };
+                int w_x = ConvertParam(new byte[] { data[W_X_BEGIN], data[W_X_BEGIN + 1], data[W_X_BEGIN + 2], data[W_X_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
+                int w_y = ConvertParam(new byte[] { data[W_Y_BEGIN], data[W_Y_BEGIN + 1], data[W_Y_BEGIN + 2], data[W_Y_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
+                int w_z = ConvertParam(new byte[] { data[W_Z_BEGIN], data[W_Z_BEGIN + 1], data[W_Z_BEGIN + 2], data[W_Z_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
+                this.W = new int[] { w_x, w_y, w_z };
                 // данные с акселерометров
-                int a_x = ConvertParam(new byte[] { message[A_X_BEGIN], message[A_X_BEGIN + 1], message[A_X_BEGIN + 2], message[A_X_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
-                int a_y = ConvertParam(new byte[] { message[A_Y_BEGIN], message[A_Y_BEGIN + 1], message[A_Y_BEGIN + 2], message[A_Y_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
-                int a_z = ConvertParam(new byte[] { message[A_Z_BEGIN], message[A_Z_BEGIN + 1], message[A_Z_BEGIN + 2], message[A_Z_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
-                int[] a = new int[] { a_x, a_y, a_z };
+                int a_x = ConvertParam(new byte[] { data[A_X_BEGIN], data[A_X_BEGIN + 1], data[A_X_BEGIN + 2], data[A_X_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
+                int a_y = ConvertParam(new byte[] { data[A_Y_BEGIN], data[A_Y_BEGIN + 1], data[A_Y_BEGIN + 2], data[A_Y_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
+                int a_z = ConvertParam(new byte[] { data[A_Z_BEGIN], data[A_Z_BEGIN + 1], data[A_Z_BEGIN + 2], data[A_Z_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
+                this.A = new int[] { a_x, a_y, a_z };
                 //данные о температуре
-                if (packetId < 3)
+                if (id < 3)
                 {
-                    int u_x = ConvertParam(new byte[] { message[U_X_BEGIN], message[U_X_BEGIN + 1], message[U_X_BEGIN + 2], message[U_X_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
-                    int u_y = ConvertParam(new byte[] { message[U_Y_BEGIN], message[U_Y_BEGIN + 1], message[U_Y_BEGIN + 2], message[U_Y_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
-                    int u_z = ConvertParam(new byte[] { message[U_Z_BEGIN], message[U_Z_BEGIN + 1], message[U_Z_BEGIN + 2], message[U_Z_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
-                    int[] u = new int[] { u_x, u_y, u_z };
-                    packet_inf = new Packet(w, a, u, packetId);
+                    int u_x = ConvertParam(new byte[] { data[U_X_BEGIN], data[U_X_BEGIN + 1], data[U_X_BEGIN + 2], data[U_X_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
+                    int u_y = ConvertParam(new byte[] { data[U_Y_BEGIN], data[U_Y_BEGIN + 1], data[U_Y_BEGIN + 2], data[U_Y_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
+                    int u_z = ConvertParam(new byte[] { data[U_Z_BEGIN], data[U_Z_BEGIN + 1], data[U_Z_BEGIN + 2], data[U_Z_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
+                    this.U = new int[] { u_x, u_y, u_z };
                 }
-                else
-                {
-                    packet_inf = new Packet(w, a, packetId);
-                }
-                return packet_inf;
             }
             catch (Exception)
             {                
             }
-            return null;
+        }
+
+        public static Packet FirstPacketHandle(byte[] message)
+        {
+            try
+            {
+                //проверка заголовка пакета
+                ushort head = BitConverter.ToUInt16(new byte[] { message[Packet.HEAD_BEGIN], message[HEAD_BEGIN + 1] }, 0);
+                if (head != 0xFACE)
+                    return null;
+                int checkSum = CRC16.ComputeChecksum(message, Packet.PACKET_SIZE);
+                //проверка контрольной суммы
+                if (BitConverter.ToUInt16(new byte[2] { message[CHECK_BEGIN], message[CHECK_BEGIN + 1] }, 0) != checkSum)
+                    return null;
+                //номер пакета 
+                int packetId = BitConverter.ToUInt16(new byte[] { message[ID_BEGIN], message[ID_BEGIN + 1] }, 0);
+                return new Packet(packetId, message);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
         }
 
         private static int ConvertParam(byte[] bytes, ref bool rangeFlag, ref bool dataFlag)

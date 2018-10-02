@@ -2,18 +2,23 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Evo20.PacketsLib
 {
     /// <summary>
     /// Класс хранящий 4 пакета
     /// </summary>
+    [Serializable]
     public class PacketsData
     {
         #region Constants
         //число осей 
+        [NonSerialized]
         const int AXIS_COUNT=3;
-        //число пакетов 
+        //число пакетов
+        [NonSerialized]
         public const int PACKETS_COUNT = 4;
 
         #endregion
@@ -50,8 +55,8 @@ namespace Evo20.PacketsLib
                 newPackets.RemoveRange(0, PACKETS_COUNT);
             }
             this.packets = packetsList;
-            packets[2].u = packets[0].u;
-            packets[3].u = packets[1].u;
+            packets[2].U = packets[0].U;
+            packets[3].U = packets[1].U;
         }
         #endregion
 
@@ -73,7 +78,7 @@ namespace Evo20.PacketsLib
                 {
                     for (int j = 0; j < packets.Count; j++)
                     {
-                        sum += packets[j].w[i];
+                        sum += packets[j].W[i];
                     }                    
                     w[i] += sum / packets.Count;
                     sum = 0;
@@ -82,6 +87,7 @@ namespace Evo20.PacketsLib
             }
         }
         //среднее значение по аксерометрам
+
         public double[] MeanA
         {
             get
@@ -93,7 +99,7 @@ namespace Evo20.PacketsLib
                     
                     for (int j = 0; j < packets.Count; j++)
                     {
-                        sum += packets[j].a[i];
+                        sum += packets[j].A[i];
                     }
                     a[i] += sum / packets.Count;
                     sum = 0;
@@ -110,8 +116,8 @@ namespace Evo20.PacketsLib
                 double sum = 0;
                 for (int i = 0; i < uw.Length; i++)
                 {                   
-                    sum += packets[0].u[i];
-                    sum += packets[2].u[i];
+                    sum += packets[0].U[i];
+                    sum += packets[2].U[i];
                     uw[i] += sum / 2;
                     sum = 0;
                 }
@@ -127,8 +133,8 @@ namespace Evo20.PacketsLib
                 double sum = 0;
                 for (int i = 0; i < ua.Length; i++)
                 {                    
-                    sum += packets[1].u[i];
-                    sum += packets[3].u[i];
+                    sum += packets[1].U[i];
+                    sum += packets[3].U[i];
                     ua[i] += sum / 2;
                     sum = 0;
                 }
@@ -152,9 +158,7 @@ namespace Evo20.PacketsLib
             }
         }
 
-        #endregion 
-
-     
+        #endregion  
 
         public override string ToString()
         {
@@ -174,9 +178,7 @@ namespace Evo20.PacketsLib
         public static PacketsData CollectPackages(ref List<Packet> packets)
         {
             if (packets == null || packets.Count == 0)
-            {
                 return null;
-            }
             // проверка id пакетов 
             for (int i = 0; i < PACKETS_COUNT && packets.Count > i; i++)
             {
@@ -193,9 +195,7 @@ namespace Evo20.PacketsLib
                 }
             }
             if (packets.Count < PacketsData.PACKETS_COUNT)
-            {
                 return null;
-            }
 
             return new PacketsData(ref packets);
         }

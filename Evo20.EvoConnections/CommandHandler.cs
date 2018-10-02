@@ -41,7 +41,7 @@ namespace Evo20.EvoConnections
         public delegate void NewCommandHandler();
         // событие, уведомляющее о приходе новой команды 
         public event NewCommandHandler CommandHandlersListForController;
-
+  
         public CommandHandler()
         {
             buffer = new byte[2048];

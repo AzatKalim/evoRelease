@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using Evo20.PacketsLib;
 
 namespace Evo20.SensorsConnection
@@ -22,7 +24,7 @@ namespace Evo20.SensorsConnection
 
         #region Properties
 
-        public ManualResetEvent PacketsCollectedEvent
+        public AutoResetEvent PacketsCollectedEvent
         {
             set;
             get;
@@ -126,9 +128,7 @@ namespace Evo20.SensorsConnection
             for (int i = 0; i < list.Count; i++)
             {
                 if (list[i].Temperature == temperature)
-                {
                     return i;
-                }
             }
             return -1;
         }
@@ -139,12 +139,11 @@ namespace Evo20.SensorsConnection
         {
             int index = FindTemperatureIndex(CalibrationPacketsCollection, temperatureOfCollect);
             if (index == -1)
-            {
                 return false;
-            }
-            bool isSuccess = CalibrationPacketsCollection[index].AddPacketData(currentPositionNumber, packetData);
-            if (!isSuccess)
+            if (!CalibrationPacketsCollection[index].AddPacketData(currentPositionNumber, packetData))
+            {
                 PacketsCollectedEvent.Set();
+            }
             return true;
         }
 
@@ -187,6 +186,12 @@ namespace Evo20.SensorsConnection
             return CheckPacketsCollection[temperature][numberOfPosition].Count;
         }
 
+        public bool WriteRedPackets()
+        {
+            BinaryFormatter formater = new BinaryFormatter();
+
+            return true;
+        }
         #endregion
 
         #region Abstract Methods

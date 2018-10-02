@@ -8,7 +8,7 @@ using System.Configuration;
 
 using ZedGraph;
 using Evo20.Controllers;
-using Evo20.Log;
+using Evo20;
 using Evo20.EvoConnections;
 
 
@@ -228,7 +228,7 @@ namespace Evo20.GUI
                 if (!isStarted)
                 {
                     MessageBox.Show("Ошибка:запуска цикла! ", "Возникла ошибка,цикл не запущен", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Evo20.Log.Log.WriteLog("Ошибка:запуска цикла! Возникла ошибка,цикл не запущен");
+                    Log.WriteLog("Ошибка:запуска цикла! Возникла ошибка,цикл не запущен");
                     Controller.Current.Stop();
                     return;
                 }
@@ -236,7 +236,7 @@ namespace Evo20.GUI
             catch (Exception ex)
             {
                 MessageBox.Show("Ошибка: запуска цикла!", "Возникла ошибка " + ex.Message + " цикл не запущен! ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Evo20.Log.Log.WriteLog("Ошибка: запуска цикла!.Возникла ошибка " + ex.Message + " цикл не запущен! ");
+                Log.WriteLog("Ошибка: запуска цикла!.Возникла ошибка " + ex.Message + " цикл не запущен! ");
                 Controller.Current.Stop();
                 return;
             }
@@ -332,20 +332,18 @@ namespace Evo20.GUI
                 return;
             }
             var file = new StreamReader(dlg.FileName);
-            bool result = true;
             try
             {
                 if (!Controller.Current.ReadDataFromFile(file))
                 {
                     MessageBox.Show("Ошибка: чтения пакетов из файла", "Не удалось считать пакеты из файла", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Evo20.Log.Log.WriteLog("Ошибка: чтения пакетов из файла: Не удалось считать пакеты из файла");
-                    result = false;
+                    Log.WriteLog("Ошибка: чтения пакетов из файла: Не удалось считать пакеты из файла");                   
                 }
             }
             catch (Exception exception)
             {
                 MessageBox.Show(exception.ToString(), "Ошибка: чтения пакетов из файла", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Evo20.Log.Log.WriteLog(string.Format("Ошибка: чтения пакетов из файла: возникло исключение{0}", exception.ToString()));
+                Log.WriteLog(string.Format("Ошибка: чтения пакетов из файла: возникло исключение{0}", exception.ToString()));
             }
             file.Close();
         }
@@ -362,8 +360,8 @@ namespace Evo20.GUI
                 countTemperaturesReachedLabel.Text = string.Format("{0}/{1}", 0, Controller.Current.TemperaturesCount);
             else
                 countTemperaturesReachedLabel.Text = string.Format("{0}/{1}", Controller.Current.TemperutureIndex, Controller.Current.TemperaturesCount);
-            CurrentTemperatureLabel.Text = EvoData.Current.currentTemperature.ToString();
-            nextTemperatureLable.Text = EvoData.Current.nextTemperature.ToString();
+            CurrentTemperatureLabel.Text = EvoData.Current.CurrentTemperature.ToString();
+            nextTemperatureLable.Text = EvoData.Current.NextTemperature.ToString();
             CheckParam(EvoData.Current.isCameraPowerOn, powerCameraIndic);
             CheckParam(EvoData.Current.isTemperatureReached, temperatureReachedIndic);
             CheckParam(EvoData.Current.x.isZeroFound, xZeroFindedIndic);
@@ -469,14 +467,14 @@ namespace Evo20.GUI
                     if (!Controller.Current.WritePackets(file))
                     {
                         MessageBox.Show("Ошибка: записи файлов!", "Не удалось записать информацию в файл.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Evo20.Log.Log.WriteLog("Ошибка: записи файлов.Не удалось записать информацию в файл");
+                        Log.WriteLog("Ошибка: записи файлов.Не удалось записать информацию в файл");
                         result = false;
                     }
                 }
                 catch (Exception exception)
                 {
                     result = false;
-                    Evo20.Log.Log.WriteLog(string.Format("Ошибка записи файла пакетов. Возникло исключение {0}", exception.ToString()));
+                    Log.WriteLog(string.Format("Ошибка записи файла пакетов. Возникло исключение {0}", exception.ToString()));
                 }
             }
             return result;
@@ -632,14 +630,7 @@ namespace Evo20.GUI
 
         private void SensorTimer_Tick(object sender, EventArgs e)
         {
-            try
-            {
-                ShowSensorParams();
-            }
-            catch (Exception ex)
-            {
-                //Evo20.Log.Log.WriteLog("Возникла ошибка показания !" + ex.ToString());
-            }
+            ShowSensorParams();         
         }
 
         private void parameGroupBox_Enter(object sender, EventArgs e)
