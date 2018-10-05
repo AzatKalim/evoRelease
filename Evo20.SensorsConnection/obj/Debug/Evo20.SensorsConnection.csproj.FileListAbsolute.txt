@@ -26,7 +26,6 @@ F:\тесты на работе 2.06.2018 прием пакетов и связ�
 C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\bin\Debug\Evo20.SensorsConnection.dll
 C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\bin\Debug\Evo20.SensorsConnection.pdb
 C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\bin\Debug\Evo20.PacketsLib.dll
-C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\bin\Debug\Evo20.Log.pdb
 C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\bin\Debug\Evo20.PacketsLib.pdb
 C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\obj\Debug\Evo20.SensorsConnection.dll

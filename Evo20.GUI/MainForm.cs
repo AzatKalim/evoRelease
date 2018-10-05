@@ -47,8 +47,8 @@ namespace Evo20.GUI
         delegate void FormReseter();
 
         delegate void WorkModDel(WorkMode mode);
-        delegate void SensorConnectionDel(Evo20.SensorsConnection.ConnectionStatus state);
-        delegate void EvoConnectionDel(Evo20.EvoConnections.ConnectionStatus state);
+        delegate void SensorConnectionDel(ConnectionStatus state);
+        delegate void EvoConnectionDel(ConnectionStatus state);
 
         #region Form load-close functions
 
@@ -402,21 +402,21 @@ namespace Evo20.GUI
 
         #region Controller's events handlers
 
-        private void EvoConnectionChange(Evo20.EvoConnections.ConnectionStatus state)
+        private void EvoConnectionChange(ConnectionStatus state)
         {
-            connectionStateLabel.Text = state.ToString();
+            connectionStateLabel.Text = state.ToText();
         }
-        private void EvoConnectionChangeHandler(Evo20.EvoConnections.ConnectionStatus state)
+        private void EvoConnectionChangeHandler(ConnectionStatus state)
         {           
             EvoConnectionDel del = EvoConnectionChange;
             connectionStateLabel.Invoke(del,state);
         }
 
-        private void SensorConnectionChange(Evo20.SensorsConnection.ConnectionStatus state)
+        private void SensorConnectionChange(ConnectionStatus state)
         {
-            sensorConnectionStateLabel.Text = state.ToString();
+            sensorConnectionStateLabel.Text = state.ToText();
         }
-        private void SensorConnectionChangeHandler(Evo20.SensorsConnection.ConnectionStatus state)
+        private void SensorConnectionChangeHandler(ConnectionStatus state)
         {
             SensorConnectionDel del = SensorConnectionChange;
             sensorConnectionStateLabel.Invoke(del,state);
@@ -622,7 +622,11 @@ namespace Evo20.GUI
             }
             var result = Controller.Current.ReadSettings(settingsFileName);
             if (result)
+            {
                 isSettingsEntered = true;
+            }
+            else
+                MessageBox.Show("Проблемы чтения файла настроек", "Проблемы чтения из файла!", MessageBoxButtons.OK);
             return result;
         }
 

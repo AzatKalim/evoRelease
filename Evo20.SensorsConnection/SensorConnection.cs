@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Threading;
-using Evo20.Log;
+using Evo20;
 
 namespace Evo20.SensorsConnection
 {
@@ -69,8 +69,8 @@ namespace Evo20.SensorsConnection
             }
             catch (UnauthorizedAccessException exeption)
             {
-                Evo20.Log.Log.WriteLog("Указанный порт занят" + serialPort.PortName);
-                Evo20.Log.Log.WriteLog(exeption.ToString());
+                Evo20.Log.WriteLog("Указанный порт занят" + serialPort.PortName);
+                Evo20.Log.WriteLog(exeption.ToString());
                 ConnectionStatus = ConnectionStatus.ERROR;
                 if (EventHandlerListForExeptions != null)
                 {
@@ -80,8 +80,18 @@ namespace Evo20.SensorsConnection
             }
             catch (ThreadAbortException exeption)
             {
-                Evo20.Log.Log.WriteLog("Поток чтения Com порта закрыт");
-                Evo20.Log.Log.WriteLog(exeption.ToString());
+                Evo20.Log.WriteLog("Поток чтения Com порта закрыт");
+                Evo20.Log.WriteLog(exeption.ToString());
+                if (EventHandlerListForExeptions != null)
+                {
+                    EventHandlerListForExeptions(exeption);
+                }
+                return false;
+            }
+            catch (InvalidOperationException exeption)
+            {
+                Evo20.Log.WriteLog("Порт уже открыт");
+                Evo20.Log.WriteLog(exeption.ToString());
                 if (EventHandlerListForExeptions != null)
                 {
                     EventHandlerListForExeptions(exeption);
@@ -98,7 +108,7 @@ namespace Evo20.SensorsConnection
                         readThread.Start();
                     }
                     ConnectionStatus = ConnectionStatus.CONNECTED;
-                    Evo20.Log.Log.WriteLog("Соединение c датчиком установленно");
+                    Evo20.Log.WriteLog("Соединение c датчиком установленно");
                     return true;
                 }
                 else
@@ -121,7 +131,7 @@ namespace Evo20.SensorsConnection
                     readThread.Abort();
                 }
                 ConnectionStatus = ConnectionStatus.PAUSE;
-                Evo20.Log.Log.WriteLog("Соединение c датчиком приостановленно");
+                Evo20.Log.WriteLog("Соединение c датчиком приостановленно");
                 return true;
             }
             else
@@ -136,7 +146,7 @@ namespace Evo20.SensorsConnection
             {
                 readThread.Start();
                 ConnectionStatus = ConnectionStatus.CONNECTED;
-                Evo20.Log.Log.WriteLog("Соединение c датчиком востановлено");
+                Evo20.Log.WriteLog("Соединение c датчиком востановлено");
                 return true;
             }
             else
@@ -156,7 +166,7 @@ namespace Evo20.SensorsConnection
                 serialPort.Close();
             }
             ConnectionStatus = ConnectionStatus.DISCONNECTED;
-            Evo20.Log.Log.WriteLog("Соединение c датчиком прервано");
+            Evo20.Log.WriteLog("Соединение c датчиком прервано");
             return true;
         }
 
@@ -216,8 +226,8 @@ namespace Evo20.SensorsConnection
                 }
                 catch (TimeoutException exeption)
                 {
-                    Evo20.Log.Log.WriteLog("Байты не были доступны для чтения");
-                    Evo20.Log.Log.WriteLog(exeption.ToString());
+                    Evo20.Log.WriteLog("Байты не были доступны для чтения");
+                    Evo20.Log.WriteLog(exeption.ToString());
                     ConnectionStatus = ConnectionStatus.ERROR;
                     if (EventHandlerListForExeptions != null)
                     {
@@ -227,8 +237,8 @@ namespace Evo20.SensorsConnection
                 }
                 catch (InvalidOperationException exeption)
                 {
-                    Evo20.Log.Log.WriteLog("Указанный порт не открыт " + serialPort.PortName);
-                    Evo20.Log.Log.WriteLog(exeption.ToString());
+                    Evo20.Log.WriteLog("Указанный порт не открыт " + serialPort.PortName);
+                    Evo20.Log.WriteLog(exeption.ToString());
                     ConnectionStatus = ConnectionStatus.ERROR;
                     if (EventHandlerListForExeptions != null)
                     {

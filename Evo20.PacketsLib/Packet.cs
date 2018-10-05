@@ -53,6 +53,8 @@ namespace Evo20.PacketsLib
         {
             get
             {
+                if (u == null)
+                    PacketHandle();
                 return u;
             }
             internal set

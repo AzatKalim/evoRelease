@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Evo20.Log;
+using Evo20;
 using System.IO;
 
-namespace Evo20.SensorsConnection
+namespace Evo20
 {
     public abstract class AbstractData
     {
@@ -29,7 +29,7 @@ namespace Evo20.SensorsConnection
             string[] temp = templine.Split(':');
             if (temp[0] != checkString)
             {
-                Evo20.Log.Log.WriteLog("Не верна строка файла настроек:" + checkString);
+                Evo20.Log.WriteLog("Не верна строка файла настроек:" + checkString);
                 return false;
             }
             else
@@ -40,8 +40,19 @@ namespace Evo20.SensorsConnection
                 }
                 catch (Exception)
                 {
-                    Evo20.Log.Log.WriteLog("Не верна строка файла настроек:" + checkString);
-                    return false;
+                    if (temp[1].Contains(','))
+                        temp[1]=temp[1].Replace(',', '.');
+                    else
+                        temp[1]=temp[1].Replace('.', ',');
+                    try
+                    {
+                        param = Convert.ToDouble(temp[1]);
+                    }
+                    catch
+                    {
+                        Evo20.Log.WriteLog("Не верна строка файла настроек:" + checkString);
+                        return false;
+                    }                 
                 }
             }
             return true;
@@ -60,7 +71,7 @@ namespace Evo20.SensorsConnection
             string[] temp = templine.Split(':');
             if (temp[0] != checkString)
             {
-                Evo20.Log.Log.WriteLog("Не верна строка файла настроек:" + checkString);
+                Evo20.Log.WriteLog("Не верна строка файла настроек:" + checkString);
                 return false;
             }
             else
@@ -71,7 +82,7 @@ namespace Evo20.SensorsConnection
                 }
                 catch (Exception)
                 {
-                    Evo20.Log.Log.WriteLog("Не верна строка файла настроек:" + checkString);
+                    Evo20.Log.WriteLog("Не верна строка файла настроек:" + checkString);
                     return false;
                 }
             }

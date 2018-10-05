@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using Evo20.PacketsLib;
-using Evo20.Log;
+using Evo20;
 
 namespace Evo20.SensorsConnection
 {

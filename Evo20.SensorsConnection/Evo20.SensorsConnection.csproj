@@ -32,7 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Evo20.Log, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -47,9 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractData.cs" />
     <Compile Include="BKV1.cs" />
-    <Compile Include="ConnectionStateOperations.cs" />
     <Compile Include="DLY.cs" />
     <Compile Include="DYS.cs" />
     <Compile Include="ISensor.cs" />

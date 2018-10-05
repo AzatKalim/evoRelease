@@ -8,6 +8,8 @@ namespace Evo20.Config
 {
     public static class Config
     {
+        public static int EvoType = Convert.ToInt32(ConfigurationManager.AppSettings.Get("EvoType"));
+            
         //номер порта приходящих сообщений 
         public static int LOCAL_PORT_NUMBER = Convert.ToInt32(ConfigurationManager.AppSettings.Get("LocalPortNumber"));
 

@@ -289,7 +289,7 @@ namespace Evo20.Controllers
         ///Обработка изменения статуса соединения с датчиком
         /// </summary>
         /// <param name="newState">новое состояние</param>
-        private void SensorHandlerStatusChanged(Evo20.SensorsConnection.ConnectionStatus newState)
+        private void SensorHandlerStatusChanged(ConnectionStatus newState)
         {
             if (EventHandlerListForSensorConnectionChange != null)
             {

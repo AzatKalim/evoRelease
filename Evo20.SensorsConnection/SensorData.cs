@@ -70,7 +70,7 @@ namespace Evo20.SensorsConnection
         {
             if (sensors[0].CalibrationPacketsCollection == null || sensors[0].CalibrationPacketsCollection.Count == 0)
             {
-                Evo20.Log.Log.WriteLog("Нет пакетов по калибровке " + sensors[0].Name);
+                Evo20.Log.WriteLog("Нет пакетов по калибровке " + sensors[0].Name);
                 return false;
             }
             else
@@ -79,7 +79,7 @@ namespace Evo20.SensorsConnection
             }
             if (sensors[1].CalibrationPacketsCollection == null || sensors[1].CalibrationPacketsCollection.Count == 0)
             {
-                Evo20.Log.Log.WriteLog("Нет пакетов по калибровке "+ sensors[1].Name);
+                Evo20.Log.WriteLog("Нет пакетов по калибровке "+ sensors[1].Name);
                 return false;
             }
             else
@@ -124,7 +124,7 @@ namespace Evo20.SensorsConnection
                 }
                 catch (Exception exception)
                 {
-                    Evo20.Log.Log.WriteLog("Ошибка: Чтение файла данных пакетов при температуре" + i + " " + exception);
+                    Evo20.Log.WriteLog("Ошибка: Чтение файла данных пакетов при температуре" + i + " " + exception);
                     return false;
                 }
             }

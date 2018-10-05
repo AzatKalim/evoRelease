@@ -43,7 +43,6 @@
   </Target>
   -->
   <ItemGroup>
-    <Compile Include="AbstractData.cs" />
     <Compile Include="Controller.cs" />
     <Compile Include="ControllerEvo.cs" />
     <Compile Include="CycleData.cs" />
@@ -51,10 +50,6 @@
     <Compile Include="WorkModeOperations.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Evo20.Log, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Evo20.GUI\bin\Debug\Evo20.Log.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>

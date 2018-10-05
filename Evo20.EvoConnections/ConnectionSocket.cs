@@ -40,8 +40,6 @@ namespace Evo20.EvoConnections
           
         IPEndPoint endPoint;
 
-        UdpClient receivingUdpClient;
-
         //Состояние соединения 
         private ConnectionStatus connectionState;
 
@@ -53,7 +51,9 @@ namespace Evo20.EvoConnections
 
         protected Thread work_thread;
 
-        protected UdpClient sender;
+        protected UdpClient Sender;
+
+        protected UdpClient ReceivingUdpClient;
 
         #endregion
 
@@ -81,8 +81,31 @@ namespace Evo20.EvoConnections
             work_thread = new Thread(ReadMessage);
             work_thread.IsBackground = true;
             connectionState = ConnectionStatus.DISCONNECTED;
-            receivingUdpClient = null;
-            sender = new UdpClient(Config.Config.LOCAL_PORT_NUMBER);
+            ReceivingUdpClient = null;
+            endPoint = new IPEndPoint(remoteIPAddress, Config.Config.REMOTE_PORT_NUMBER);
+            Sender = new UdpClient(Config.Config.REMOTE_PORT_NUMBER);
+            switch (Config.Config.EvoType)
+            {
+                case 1:
+                    {
+                        ReceivingUdpClient = Sender;
+                        break;
+                    }
+                case 0:
+                    {
+                        ReceivingUdpClient = new UdpClient(Config.Config.LOCAL_PORT_NUMBER);
+                        break;
+                    }
+            }
+           
+            if (Config.Config.EvoType == 1)
+            {
+                ReceivingUdpClient = Sender;
+            }
+            if (Config.Config.EvoType == 0)
+            {
+
+            }
         }
 
         //Деструктор класса
@@ -168,8 +191,8 @@ namespace Evo20.EvoConnections
                 work_thread.Abort();
             }
             ConnectionStatus = ConnectionStatus.DISCONNECTED;
-            if(receivingUdpClient!=null)
-                receivingUdpClient.Close();
+            if(ReceivingUdpClient!=null)
+                ReceivingUdpClient.Close();
             Evo20.Log.WriteLog("Соединение c Evo 20 прервано");
             return true;
         }
@@ -185,13 +208,12 @@ namespace Evo20.EvoConnections
         /// <returns>результат </returns>
         public bool SendMessage(string message)
         {
-            endPoint = new IPEndPoint(remoteIPAddress, Config.Config.REMOTE_PORT_NUMBER);
             try
             {
                 if (connectionState == ConnectionStatus.CONNECTED)
                 {
                     byte[] bytes = Encoding.UTF8.GetBytes(message);
-                    sender.Send(bytes, bytes.Length, endPoint);
+                    Sender.Send(bytes, bytes.Length, endPoint);
                     return true;
                 }
                 else
@@ -203,7 +225,7 @@ namespace Evo20.EvoConnections
             {
                 connectionState = ConnectionStatus.ERROR;
                 Evo20.Log.WriteLog("Сообщение " + message + " Evo 20 не доставлено " + "Возникло исключение" + exception);
-                sender.Close();
+                Sender.Close();
                 if (EventHandlerListForException != null)
                     EventHandlerListForException(exception);
                 return false;
@@ -234,7 +256,7 @@ namespace Evo20.EvoConnections
             {
                 while (connectionState == ConnectionStatus.CONNECTED)
                 {
-                    byte[] receiveBytes = sender.Receive(
+                    byte[] receiveBytes = ReceivingUdpClient.Receive(
                        ref RemoteIpEndPoint);
 
                     lock (buffer)
@@ -254,7 +276,7 @@ namespace Evo20.EvoConnections
             }
             finally
             {
-                sender.Close();
+                Sender.Close();
             }
         }
 

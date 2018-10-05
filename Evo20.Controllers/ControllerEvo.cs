@@ -3,6 +3,7 @@
 using Evo20.EvoCommandsLib;
 using Evo20.Controllers;
 using Evo20.EvoConnections;
+using Evo20;
 
 namespace Evo20.Controllers
 {
@@ -11,9 +12,9 @@ namespace Evo20.Controllers
     /// </summary>
     public abstract class ControllerEvo
     {
-        public delegate void ConnectionChangeHandler(Evo20.SensorsConnection.ConnectionStatus state);
+        public delegate void ConnectionChangeHandler(ConnectionStatus state);
 
-        public delegate void EvoConnectionChangeHandler(Evo20.EvoConnections.ConnectionStatus state);
+        public delegate void EvoConnectionChangeHandler(ConnectionStatus state);
 
         public delegate void WorkModeChangeHandler(WorkMode mode);
 

@@ -1,5 +1,5 @@
 ﻿
-namespace Evo20.EvoConnections
+namespace Evo20
 {
     /// <summary>
     /// Состояния соединения 

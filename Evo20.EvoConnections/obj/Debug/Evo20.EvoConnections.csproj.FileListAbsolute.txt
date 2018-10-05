@@ -28,8 +28,6 @@ F:\тесты на работе 2.06.2018 прием пакетов и связ�
 C:\Users\Азат\Desktop\Evo20\Evo20.EvoConnections\bin\Debug\Evo20.EvoConnections.dll
 C:\Users\Азат\Desktop\Evo20\Evo20.EvoConnections\bin\Debug\Evo20.EvoConnections.pdb
 C:\Users\Азат\Desktop\Evo20\Evo20.EvoConnections\bin\Debug\Evo20.EvoCommandsLib.dll
-C:\Users\Азат\Desktop\Evo20\Evo20.EvoConnections\bin\Debug\Evo20.Log.dll
-C:\Users\Азат\Desktop\Evo20\Evo20.EvoConnections\bin\Debug\Evo20.Log.pdb
 C:\Users\Азат\Desktop\Evo20\Evo20.EvoConnections\bin\Debug\Evo20.EvoCommandsLib.pdb
 C:\Users\Азат\Desktop\Evo20\Evo20.EvoConnections\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Азат\Desktop\Evo20\Evo20.EvoConnections\obj\Debug\Evo20.EvoConnections.dll

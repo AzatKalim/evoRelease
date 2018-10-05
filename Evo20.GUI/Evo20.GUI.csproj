@@ -95,6 +95,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Evo20.Config\Evo20.Config.csproj">
+      <Project>{99D800D1-0D39-49B9-9311-003759CA741B}</Project>
+      <Name>Evo20.Config</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Evo20.Controllers\Evo20.Controllers.csproj">
       <Project>{3AC3249C-145D-4EEA-8B3F-E82CE09A85DB}</Project>
       <Name>Evo20.Controllers</Name>
@@ -106,10 +110,6 @@
     <ProjectReference Include="..\Evo20.EvoConnections\Evo20.EvoConnections.csproj">
       <Project>{32CCC6CA-A913-4920-A83F-F7442D2107B9}</Project>
       <Name>Evo20.EvoConnections</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Evo20.Log\Evo20.Log.csproj">
-      <Project>{4E75F741-7DCD-4896-A0CA-638D96B1EC0F}</Project>
-      <Name>Evo20.Log</Name>
     </ProjectReference>
     <ProjectReference Include="..\Evo20.Math\Evo20.Math.csproj">
       <Project>{290D2C14-4B1F-4110-970A-8572E5C905B8}</Project>

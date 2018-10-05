@@ -56,11 +56,9 @@ C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\bin\Debug\Evo20.Controllers.dl
 C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\bin\Debug\Evo20.Controllers.pdb
 C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\bin\Debug\Evo20.EvoCommandsLib.dll
 C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\bin\Debug\Evo20.EvoConnections.dll
-C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\bin\Debug\Evo20.Log.dll
 C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\bin\Debug\Evo20.Math.dll
 C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\bin\Debug\Evo20.PacketsLib.dll
 C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\bin\Debug\Evo20.SensorsConnection.dll
-C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\bin\Debug\Evo20.Log.pdb
 C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\bin\Debug\Evo20.PacketsLib.pdb
 C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\bin\Debug\Evo20.EvoCommandsLib.pdb
 C:\Users\Азат\Desktop\Evo20\Evo20.Controllers\bin\Debug\Evo20.EvoConnections.pdb
