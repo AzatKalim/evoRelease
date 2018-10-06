@@ -48,6 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="plane.ico" />
+    <Content Include="settings.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\stop.png" />
     <None Include="Resources\settings.png" />
     <None Include="Resources\play.png" />

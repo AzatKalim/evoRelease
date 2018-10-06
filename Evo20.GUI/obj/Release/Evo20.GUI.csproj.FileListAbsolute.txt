@@ -68,4 +68,5 @@ C:\Users\Азат\Desktop\Evo20\Evo20.GUI\obj\Release\Evo20.GUI.Properties.Resou
 C:\Users\Азат\Desktop\Evo20\Evo20.GUI\obj\Release\Evo20.GUI.csproj.GenerateResource.Cache
 C:\Users\Азат\Desktop\Evo20\Evo20.GUI\obj\Release\Evo20.GUI.exe
 C:\Users\Азат\Desktop\Evo20\Evo20.GUI\obj\Release\Evo20.GUI.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.GUI\bin\Release\settings.txt
 C:\Users\Азат\Desktop\Evo20\Evo20.GUI\bin\Release\Evo20.Config.pdb

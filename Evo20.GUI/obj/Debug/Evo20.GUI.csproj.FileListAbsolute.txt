@@ -98,3 +98,4 @@ C:\Users\Азат\Desktop\Evo20\Evo20.GUI\obj\Debug\Evo20.GUI.Properties.Resourc
 C:\Users\Азат\Desktop\Evo20\Evo20.GUI\obj\Debug\Evo20.GUI.csproj.GenerateResource.Cache
 C:\Users\Азат\Desktop\Evo20\Evo20.GUI\bin\Debug\Evo20.Config.dll
 C:\Users\Азат\Desktop\Evo20\Evo20.GUI\bin\Debug\Evo20.Config.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.GUI\bin\Debug\settings.txt
