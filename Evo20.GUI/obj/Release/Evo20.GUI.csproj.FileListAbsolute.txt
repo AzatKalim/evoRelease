@@ -69,7 +69,6 @@ C:\Users\Азат\Desktop\Evo20\Evo20.GUI\obj\Release\Evo20.GUI.csproj.GenerateR
 C:\Users\Азат\Desktop\Evo20\Evo20.GUI\obj\Release\Evo20.GUI.exe
 C:\Users\Азат\Desktop\Evo20\Evo20.GUI\obj\Release\Evo20.GUI.pdb
 C:\Users\Азат\Desktop\Evo20\Evo20.GUI\bin\Release\settings.txt
-C:\Users\Азат\Desktop\Evo20\Evo20.GUI\bin\Release\Evo20.Config.pdb
 C:\Users\iss\Desktop\evoRelease-master\Evo20.GUI\bin\Release\Evo20.GUI.exe.config
 C:\Users\iss\Desktop\evoRelease-master\Evo20.GUI\obj\Release\Evo20.GUI.exe
 C:\Users\iss\Desktop\evoRelease-master\Evo20.GUI\obj\Release\Evo20.GUI.pdb
@@ -95,3 +94,4 @@ C:\Users\iss\Desktop\evoRelease-master\Evo20.GUI\obj\Release\Evo20.GUI.MainForm.
 C:\Users\iss\Desktop\evoRelease-master\Evo20.GUI\obj\Release\Evo20.GUI.Properties.Resources.resources
 C:\Users\iss\Desktop\evoRelease-master\Evo20.GUI\obj\Release\Evo20.GUI.csproj.GenerateResource.Cache
 C:\Users\iss\Desktop\evoRelease-master\Evo20.GUI\bin\Release\Evo20.Config.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.GUI\bin\Release\Evo20.Config.pdb

@@ -84,6 +84,7 @@ namespace Evo20.EvoConnections
             ReceivingUdpClient = null;
             endPoint = new IPEndPoint(remoteIPAddress, Config.Config.REMOTE_PORT_NUMBER);
             Sender = new UdpClient(Config.Config.REMOTE_PORT_NUMBER);
+            Sender.Connect(endPoint);
             switch (Config.Config.EvoType)
             {
                 case 1:
@@ -204,11 +205,19 @@ namespace Evo20.EvoConnections
                 if (connectionState == ConnectionStatus.CONNECTED)
                 {
                     byte[] bytes = Encoding.UTF8.GetBytes(message);
-                    Sender.Send(bytes, bytes.Length, endPoint);
-                    return true;
+                    if (bytes.Length == Sender.Send(bytes, bytes.Length))
+                        return true;
+                    else
+                    {
+                        Evo20.Log.WriteLog("Сообщение " + message + " Evo 20 не было отправлено,число байт не совпало");
+                        return false;
+                    }
                 }
                 else
                 {
+                    Evo20.Log.WriteLog("Сообщение " + message + " Evo 20 не было отправлено, соединение активно?" + Sender.Client.Connected);
+                    if (this.ConnectionStatus == ConnectionStatus.CONNECTED)
+                        this.ConnectionStatus = ConnectionStatus.DISCONNECTED;
                     return false;
                 }
             }
@@ -255,8 +264,15 @@ namespace Evo20.EvoConnections
                         receiveBytes.CopyTo(buffer, 0);
                     }
                     EventHandlersListForCommand();
-
                 }
+            }
+            catch (ThreadAbortException)
+            {
+                Evo20.Log.WriteLog("Поток чтения данных evo прерван");
+            }
+            catch (ObjectDisposedException)
+            {
+                Evo20.Log.WriteLog("Сокет закрыт");
             }
             catch (Exception exception)
             {

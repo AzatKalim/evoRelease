@@ -402,11 +402,12 @@ namespace Evo20.Controllers
                 Evo20.Log.WriteLog("Температура  " + temperatures[i] + " достигнута");
                 if (EventHandlerListForTemperatureStabilization != null)
                     EventHandlerListForTemperatureStabilization(false);
+                Evo20.Log.WriteLog(string.Format("{0}:Начало стабилизации температуры.Время стабилизации {1}", DateTime.Now.TimeOfDay, StabilizationTime));
 //#if !DEBUG
 //                //ожидание стабилизации температуры
                 Thread.Sleep(StabilizationTime);
 //#endif
-          
+                Evo20.Log.WriteLog(string.Format("{0}:Стабилизация температуры завершена",DateTime.Now.TimeOfDay));
                 temperatureOfCollect = temperatures[i];
                 if (EventHandlerListForTemperatureStabilization != null)
                     EventHandlerListForTemperatureStabilization(true);
@@ -414,6 +415,7 @@ namespace Evo20.Controllers
                 for (int j = 0; j < sensorsList.Count; j++)
 			    {
                     CurrentSensor = sensorsList[j];
+                    Evo20.Log.WriteLog(string.Format("{0}:Запуск подцикла датчика {1}", DateTime.Now.TimeOfDay,CurrentSensor.Name));
                     //запуск подцикла датчика
                     bool isCyclePartSuccess = SensorCyclePart(profiles[j]);
                     if (!isCyclePartSuccess)
@@ -421,7 +423,8 @@ namespace Evo20.Controllers
                         Evo20.Log.WriteLog("Ошибка:Не выполнена часть цикла для датчика :" + sensorsList[j].Name + " при температуре" + temperatures[i]);
                         EventHandlersListCycleEnded(false);
                         return;
-                    }     
+                    }
+                    Evo20.Log.WriteLog(string.Format("{0}:Подцикл датчика завершен {1}", DateTime.Now.TimeOfDay, CurrentSensor.Name));
                 }
                 //записываем пакеты
                 WriteRedPackets();                            
@@ -441,10 +444,12 @@ namespace Evo20.Controllers
             {
                 for (; j < profile.Length; j++)
                 {
+                    Evo20.Log.WriteLog(string.Format("{0} Новое положение для датчика {1}",DateTime.Now.TimeOfDay,j));
                     StopAxis(Axis.ALL);
                     EvoData.Current.movementEndedEvent.WaitOne(THREADS_SLEEP_TIME);
                     EvoData.Current.movementEndedEvent.Reset();
                     CurrentPositionNumber = j;
+                    Evo20.Log.WriteLog(string.Format("Задание положения осей: X {0}:{1}. Y {2}:{3}", profile[j].axisX,profile[j].speedX,profile[j].axisY,profile[j].speedY));
                     //задание положений и скоростей
                     if (profile[j].speedX != 0)
                     {
@@ -474,6 +479,7 @@ namespace Evo20.Controllers
                     canCollect = true;
                     CurrentSensor.PacketsCollectedEvent.WaitOne();
                     canCollect = false;
+                    Evo20.Log.WriteLog(string.Format("{0}: Пакеты в положении {1} собраны",DateTime.Now.TimeOfDay,CurrentPositionNumber));
                 }
 
             }
