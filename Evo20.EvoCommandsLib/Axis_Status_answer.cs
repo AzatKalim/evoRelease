@@ -110,10 +110,10 @@ namespace Evo20.EvoCommandsLib
             {
                 data.Append(tmp[i]);
             }
-            //while (data.Length < 24)
-            //{
-            //    data.Append('0');
-            //}            
+            while (data.Length < 24)
+            {
+                data.Append('0');
+            }            
             is_answer = true;
             have_answer = false;
             can_send = false;

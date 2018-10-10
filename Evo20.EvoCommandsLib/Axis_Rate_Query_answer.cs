@@ -6,11 +6,7 @@ namespace Evo20.EvoCommandsLib
 {
     public class Axis_Rate_Query_answer : Command
     {
-        public double speedOfRate
-        {
-            get;
-            private set;
-        }
+        public double speedOfRate;
         public Axis axis
         {
             get;
@@ -24,9 +20,13 @@ namespace Evo20.EvoCommandsLib
         }
         public Axis_Rate_Query_answer(String speedOfRate, Axis axis)
         {
-            speedOfRate = speedOfRate.Replace(',', '.');
             this.axis = axis;
-            this.speedOfRate = Convert.ToDouble(speedOfRate);
+            speedOfRate = speedOfRate.Replace(',', '.');
+            if (!double.TryParse(speedOfRate, out this.speedOfRate))
+            {
+                speedOfRate = speedOfRate.Replace('.', ',');
+                double.TryParse(speedOfRate, out this.speedOfRate);
+            }    
             is_answer = true;
             have_answer = false;
             can_send = false;

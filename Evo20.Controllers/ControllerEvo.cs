@@ -22,7 +22,7 @@ namespace Evo20.Controllers
 
         public WorkModeChangeHandler EventListForWorkModeChange;
 
-        public const int THREADS_SLEEP_TIME = 1000;
+        public const int THREADS_SLEEP_TIME = 100;
 
         //обработчик новых команд
         protected CommandHandler commandHandler;
@@ -84,7 +84,13 @@ namespace Evo20.Controllers
                 {
                     lock (commandHandler)
                     {
-                        commandHandler.SendCommand(item);
+                        if (!commandHandler.SendCommand(item))
+                        {
+                            Log.WriteLog("Не удалось отправить сообщение evo" + item.ToString());
+                            EventListForEvoConnectionChange(commandHandler.ConnectionStatus);
+                            return;
+                        }
+
                         Thread.Sleep(100);
                     }
                 }

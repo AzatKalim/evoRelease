@@ -34,3 +34,12 @@ C:\Users\Азат\Desktop\Evo20\Evo20.EvoConnections\obj\Debug\Evo20.EvoConnecti
 C:\Users\Азат\Desktop\Evo20\Evo20.EvoConnections\obj\Debug\Evo20.EvoConnections.pdb
 C:\Users\Азат\Desktop\Evo20\Evo20.EvoConnections\bin\Debug\Evo20.Config.dll
 C:\Users\Азат\Desktop\Evo20\Evo20.EvoConnections\bin\Debug\Evo20.Config.pdb
+C:\Users\iss\Desktop\evoRelease-master\Evo20.EvoConnections\bin\Debug\Evo20.EvoConnections.dll
+C:\Users\iss\Desktop\evoRelease-master\Evo20.EvoConnections\bin\Debug\Evo20.EvoConnections.pdb
+C:\Users\iss\Desktop\evoRelease-master\Evo20.EvoConnections\bin\Debug\Evo20.Config.dll
+C:\Users\iss\Desktop\evoRelease-master\Evo20.EvoConnections\bin\Debug\Evo20.EvoCommandsLib.dll
+C:\Users\iss\Desktop\evoRelease-master\Evo20.EvoConnections\bin\Debug\Evo20.Config.pdb
+C:\Users\iss\Desktop\evoRelease-master\Evo20.EvoConnections\bin\Debug\Evo20.EvoCommandsLib.pdb
+C:\Users\iss\Desktop\evoRelease-master\Evo20.EvoConnections\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\iss\Desktop\evoRelease-master\Evo20.EvoConnections\obj\Debug\Evo20.EvoConnections.dll
+C:\Users\iss\Desktop\evoRelease-master\Evo20.EvoConnections\obj\Debug\Evo20.EvoConnections.pdb

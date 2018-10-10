@@ -3,3 +3,8 @@ C:\Users\Азат\Desktop\Evo20\Evo20.Config\bin\Debug\Evo20.Config.pdb
 C:\Users\Азат\Desktop\Evo20\Evo20.Config\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Азат\Desktop\Evo20\Evo20.Config\obj\Debug\Evo20.Config.dll
 C:\Users\Азат\Desktop\Evo20\Evo20.Config\obj\Debug\Evo20.Config.pdb
+C:\Users\iss\Desktop\evoRelease-master\Evo20.Config\bin\Debug\Evo20.Config.dll
+C:\Users\iss\Desktop\evoRelease-master\Evo20.Config\bin\Debug\Evo20.Config.pdb
+C:\Users\iss\Desktop\evoRelease-master\Evo20.Config\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\iss\Desktop\evoRelease-master\Evo20.Config\obj\Debug\Evo20.Config.dll
+C:\Users\iss\Desktop\evoRelease-master\Evo20.Config\obj\Debug\Evo20.Config.pdb

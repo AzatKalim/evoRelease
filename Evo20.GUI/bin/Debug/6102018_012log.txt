@@ -1,0 +1,11 @@
+Соединение c Evo 20 установлено
+Отправлена команда AXE.TELL.STA  в 0:01
+Отправлена команда AXE.UPLD.STA  в 0:01
+Отправлена команда AXE.TELL.TJT 1 в 0:01
+Отправлена команда AXE.TELL.TJT 2 в 0:01
+Отправлена команда CLIM.TEMP в 0:01
+Невозможно открыть соединение с Evo Возникло исключениеSystem.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at Evo20.EvoConnections.CommandHandler.RecognizeCommand(String cmd) in C:\Users\iss\Desktop\evoRelease-master\Evo20.EvoConnections\CommandHandler.cs:line 131
+   at Evo20.EvoConnections.CommandHandler.NewMessageHandler() in C:\Users\iss\Desktop\evoRelease-master\Evo20.EvoConnections\CommandHandler.cs:line 66
+   at Evo20.EvoConnections.ConnectionSocket.ReadMessage() in C:\Users\iss\Desktop\evoRelease-master\Evo20.EvoConnections\ConnectionSocket.cs:line 257
+Отправлена команда AXE.TELL.POS 1 в 0:01

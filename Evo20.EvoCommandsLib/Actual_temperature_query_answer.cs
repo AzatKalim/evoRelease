@@ -16,7 +16,11 @@ namespace Evo20.EvoCommandsLib
         public Actual_temperature_query_answer(String temperature)
         {
             temperature = temperature.Replace(',', '.');
-            this.temperature = Convert.ToDouble(temperature);        
+            if (!double.TryParse(temperature,out this.temperature))
+            {
+                temperature = temperature.Replace('.', ',');
+                double.TryParse(temperature, out this.temperature);
+            }         
             is_answer = true;
             have_answer = false;
             can_send = false;

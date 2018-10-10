@@ -6,11 +6,8 @@ namespace Evo20.EvoCommandsLib
 {
     public class Axis_Position_Query_answer:Command
     {
-        public double position
-        {
-            get;
-            private set;
-        }
+        public double position;
+
         public Axis axis
         {
             get;
@@ -24,8 +21,13 @@ namespace Evo20.EvoCommandsLib
         }
         public Axis_Position_Query_answer(String position,Axis axis)
         {
-            position = position.Replace(',', '.');
-           this.position= Convert.ToDouble(position);
+           position = position.Replace(',', '.');
+
+           if (!double.TryParse(position, out this.position))
+           {
+               position = position.Replace('.', ',');
+               double.TryParse(position, out this.position);
+           }    
            this.axis= axis;
            is_answer = true;
            have_answer = false;

@@ -115,7 +115,7 @@ namespace Evo20.EvoConnections
         /// <returns> результат запуска </returns>
         public bool StartConnection()
         {
-            if (connectionState == ConnectionStatus.DISCONNECTED)
+            if (ConnectionStatus == ConnectionStatus.DISCONNECTED)
             {
                 ConnectionStatus = ConnectionStatus.CONNECTED;
                 if (!work_thread.IsAlive)
@@ -138,7 +138,7 @@ namespace Evo20.EvoConnections
         /// <returns></returns>
         public bool PauseConnection()
         {
-            if (connectionState == ConnectionStatus.CONNECTED)
+            if (ConnectionStatus == ConnectionStatus.CONNECTED)
             {
                 work_thread.Abort();
                 ConnectionStatus = ConnectionStatus.PAUSE;
@@ -157,7 +157,7 @@ namespace Evo20.EvoConnections
         /// <returns></returns>
         public bool ResumeConnection()
         {
-            if (connectionState == ConnectionStatus.PAUSE)
+            if (ConnectionStatus == ConnectionStatus.PAUSE)
             {
                 work_thread = new Thread(ReadMessage);
                 work_thread.Start();
@@ -192,86 +192,6 @@ namespace Evo20.EvoConnections
 
         #region Read Send Functions
 
-        ///// <summary>
-        ///// Отправка сообщения по udp протоколу
-        ///// </summary>
-        ///// <param name="message"> сообщение </param>
-        ///// <returns>результат </returns>
-        //public bool SendMessage(string message)
-        //{
-        //    try
-        //    {
-        //        if (connectionState == ConnectionStatus.CONNECTED)
-        //        {
-        //            byte[] bytes = Encoding.UTF8.GetBytes(message);
-        //            Sender.Send(bytes, bytes.Length, endPoint);
-        //            return true;
-        //        }
-        //        else
-        //        {
-        //            return false;
-        //        }
-        //    }
-        //    catch (Exception exception)
-        //    {
-        //        connectionState = ConnectionStatus.ERROR;
-        //        Evo20.Log.WriteLog("Сообщение " + message + " Evo 20 не доставлено " + "Возникло исключение" + exception);
-        //        Sender.Close();
-        //        if (EventHandlerListForException != null)
-        //            EventHandlerListForException(exception);
-        //        return false;
-        //    }
-        //}
-
-        ///// <summary>
-        ///// Бесконечное считывание приходящих сообщений изапись их в буффер ( выполняется в обдельном потоке)
-        ///// </summary>
-        //protected void ReadMessage()
-        //{
-        //    //try
-        //    //{
-        //    //    receivingUdpClient = new UdpClient(LOCAL_PORT_NUMBER);
-        //    //}
-        //    //catch(Exception exception)
-        //    //{
-        //    //    connectionState = ConnectionStatus.ERROR;
-        //    //    Evo20.Log.Log.WriteLog("Невозможно открыть соединение с Evo " + "Возникло исключение" + exception.ToString());
-        //    //    if (EventHandlerListForException != null)
-        //    //        EventHandlerListForException(exception);
-        //    //    return;
-        //    //}
-
-        //    IPEndPoint RemoteIpEndPoint = null;
-
-        //    try
-        //    {
-        //        while (connectionState == ConnectionStatus.CONNECTED)
-        //        {
-        //            byte[] receiveBytes = ReceivingUdpClient.Receive(
-        //               ref RemoteIpEndPoint);
-
-        //            lock (buffer)
-        //            {
-        //                receiveBytes.CopyTo(buffer, 0);
-        //            }
-        //            EventHandlersListForCommand();
-
-        //        }
-        //    }
-        //    catch (Exception exception)
-        //    {
-        //        connectionState = ConnectionStatus.ERROR;
-        //        Evo20.Log.WriteLog("Невозможно открыть соединение с Evo " + "Возникло исключение" + exception.ToString());
-        //        if (EventHandlerListForException != null)
-        //            EventHandlerListForException(exception);
-        //    }
-        //    finally
-        //    {
-        //        Sender.Close();
-        //    }
-        //}
-
-
         /// <summary>
         /// Отправка сообщения по udp протоколу
         /// </summary>
@@ -279,32 +199,28 @@ namespace Evo20.EvoConnections
         /// <returns>результат </returns>
         public bool SendMessage(string message)
         {
-            var sender = new UdpClient();
-            endPoint = new IPEndPoint(remoteIPAddress, Config.Config.REMOTE_PORT_NUMBER);
             try
             {
                 if (connectionState == ConnectionStatus.CONNECTED)
                 {
                     byte[] bytes = Encoding.UTF8.GetBytes(message);
-                    sender.Send(bytes, bytes.Length, endPoint);
+                    Sender.Send(bytes, bytes.Length, endPoint);
+                    return true;
                 }
                 else
                 {
                     return false;
                 }
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
-                connectionState = ConnectionStatus.ERROR;
-                Log.WriteLog("Сообщение " + message + " Evo 20 не доставлено " + "Возникло исключение" + ex);
-                sender.Close();
+                ConnectionStatus = ConnectionStatus.ERROR;
+                Evo20.Log.WriteLog("Сообщение " + message + " Evo 20 не доставлено " + "Возникло исключение" + exception);
+                Sender.Close();
+                if (EventHandlerListForException != null)
+                    EventHandlerListForException(exception);
                 return false;
             }
-            finally
-            {
-                sender.Close();
-            }
-            return true;
         }
 
         /// <summary>
@@ -312,17 +228,18 @@ namespace Evo20.EvoConnections
         /// </summary>
         protected void ReadMessage()
         {
-            UdpClient receivingUdpClient = null;
-            try
-            {
-                receivingUdpClient = new UdpClient(Config.Config.LOCAL_PORT_NUMBER);
-            }
-            catch (Exception ex)
-            {
-                connectionState = ConnectionStatus.ERROR;
-                Log.WriteLog("Невозможно открыть соединение с Evo " + "Возникло исключение" + ex);
-                return;
-            }
+            //try
+            //{
+            //    receivingUdpClient = new UdpClient(LOCAL_PORT_NUMBER);
+            //}
+            //catch(Exception exception)
+            //{
+            //    connectionState = ConnectionStatus.ERROR;
+            //    Evo20.Log.Log.WriteLog("Невозможно открыть соединение с Evo " + "Возникло исключение" + exception.ToString());
+            //    if (EventHandlerListForException != null)
+            //        EventHandlerListForException(exception);
+            //    return;
+            //}
 
             IPEndPoint RemoteIpEndPoint = null;
 
@@ -330,23 +247,106 @@ namespace Evo20.EvoConnections
             {
                 while (connectionState == ConnectionStatus.CONNECTED)
                 {
-                    byte[] receiveBytes = receivingUdpClient.Receive(
+                    byte[] receiveBytes = ReceivingUdpClient.Receive(
                        ref RemoteIpEndPoint);
 
                     lock (buffer)
                     {
                         receiveBytes.CopyTo(buffer, 0);
                     }
-                    string message = Encoding.UTF8.GetString(buffer);
-                    Log.WriteLog("Получено сообщение " + message.ToString());
                     EventHandlersListForCommand();
+
                 }
             }
-            finally
+            catch (Exception exception)
             {
-                receivingUdpClient.Close();
+                ConnectionStatus = ConnectionStatus.ERROR;
+                Evo20.Log.WriteLog("Невозможно открыть соединение с Evo " + "Возникло исключение" + exception.ToString());
+                if (EventHandlerListForException != null)
+                    EventHandlerListForException(exception);
             }
         }
+
+
+        ///// <summary>
+        ///// Отправка сообщения по udp протоколу
+        ///// </summary>
+        ///// <param name="message"> сообщение </param>
+        ///// <returns>результат </returns>
+        //public bool SendMessage(string message)
+        //{
+        //    var sender = new UdpClient();
+        //    endPoint = new IPEndPoint(remoteIPAddress, Config.Config.REMOTE_PORT_NUMBER);
+        //    try
+        //    {
+        //        if (connectionState == ConnectionStatus.CONNECTED)
+        //        {
+        //            byte[] bytes = Encoding.UTF8.GetBytes(message);
+        //            sender.Send(bytes, bytes.Length, endPoint);
+        //        }
+        //        else
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        connectionState = ConnectionStatus.ERROR;
+        //        Log.WriteLog("Сообщение " + message + " Evo 20 не доставлено " + "Возникло исключение" + ex);
+        //        sender.Close();
+        //        return false;
+        //    }
+        //    finally
+        //    {
+        //        sender.Close();
+        //    }
+        //    return true;
+        //}
+
+        ///// <summary>
+        ///// Бесконечное считывание приходящих сообщений изапись их в буффер ( выполняется в обдельном потоке)
+        ///// </summary>
+        //protected void ReadMessage()
+        //{
+        //    UdpClient receivingUdpClient = null;
+        //    try
+        //    {
+        //        receivingUdpClient = new UdpClient(Config.Config.LOCAL_PORT_NUMBER);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        connectionState = ConnectionStatus.ERROR;
+        //        Log.WriteLog("Невозможно открыть соединение с Evo " + "Возникло исключение" + ex);
+        //        return;
+        //    }
+
+        //    IPEndPoint RemoteIpEndPoint = null;
+
+        //    try
+        //    {
+        //        while (connectionState == ConnectionStatus.CONNECTED)
+        //        {
+        //            byte[] receiveBytes = receivingUdpClient.Receive(
+        //               ref RemoteIpEndPoint);
+
+        //            lock (buffer)
+        //            {
+        //                receiveBytes.CopyTo(buffer, 0);
+        //            }
+        //            string message = Encoding.UTF8.GetString(buffer);
+        //            Log.WriteLog("Получено сообщение " + message.ToString());
+        //            EventHandlersListForCommand();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Log.WriteLog("Ошибка запуска цикла " + ex.ToString());
+        //    }
+        //    finally
+        //    {
+        //        receivingUdpClient.Close();
+        //    }
+        //}
 
 
         /// <summary>

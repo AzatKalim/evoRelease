@@ -32,3 +32,12 @@ C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\obj\Debug\Evo20.SensorsC
 C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\obj\Debug\Evo20.SensorsConnection.pdb
 C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\bin\Debug\Evo20.Config.dll
 C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\bin\Debug\Evo20.Config.pdb
+C:\Users\iss\Desktop\evoRelease-master\Evo20.SensorsConnection\bin\Debug\Evo20.SensorsConnection.dll
+C:\Users\iss\Desktop\evoRelease-master\Evo20.SensorsConnection\bin\Debug\Evo20.SensorsConnection.pdb
+C:\Users\iss\Desktop\evoRelease-master\Evo20.SensorsConnection\bin\Debug\Evo20.Config.dll
+C:\Users\iss\Desktop\evoRelease-master\Evo20.SensorsConnection\bin\Debug\Evo20.PacketsLib.dll
+C:\Users\iss\Desktop\evoRelease-master\Evo20.SensorsConnection\bin\Debug\Evo20.PacketsLib.pdb
+C:\Users\iss\Desktop\evoRelease-master\Evo20.SensorsConnection\bin\Debug\Evo20.Config.pdb
+C:\Users\iss\Desktop\evoRelease-master\Evo20.SensorsConnection\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\iss\Desktop\evoRelease-master\Evo20.SensorsConnection\obj\Debug\Evo20.SensorsConnection.dll
+C:\Users\iss\Desktop\evoRelease-master\Evo20.SensorsConnection\obj\Debug\Evo20.SensorsConnection.pdb

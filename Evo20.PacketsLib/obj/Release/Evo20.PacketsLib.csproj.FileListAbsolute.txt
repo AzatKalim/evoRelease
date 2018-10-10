@@ -17,3 +17,10 @@ C:\Users\Азат\Desktop\Evo20\Evo20.PacketsLib\obj\Release\Evo20.PacketsLib.dl
 C:\Users\Азат\Desktop\Evo20\Evo20.PacketsLib\obj\Release\Evo20.PacketsLib.pdb
 C:\Users\Азат\Desktop\Evo20\Evo20.PacketsLib\bin\Release\Evo20.Config.dll
 C:\Users\Азат\Desktop\Evo20\Evo20.PacketsLib\bin\Release\Evo20.Config.pdb
+C:\Users\iss\Desktop\evoRelease-master\Evo20.PacketsLib\bin\Release\Evo20.PacketsLib.dll
+C:\Users\iss\Desktop\evoRelease-master\Evo20.PacketsLib\bin\Release\Evo20.PacketsLib.pdb
+C:\Users\iss\Desktop\evoRelease-master\Evo20.PacketsLib\bin\Release\Evo20.Config.dll
+C:\Users\iss\Desktop\evoRelease-master\Evo20.PacketsLib\bin\Release\Evo20.Config.pdb
+C:\Users\iss\Desktop\evoRelease-master\Evo20.PacketsLib\obj\Release\ResolveAssemblyReference.cache
+C:\Users\iss\Desktop\evoRelease-master\Evo20.PacketsLib\obj\Release\Evo20.PacketsLib.dll
+C:\Users\iss\Desktop\evoRelease-master\Evo20.PacketsLib\obj\Release\Evo20.PacketsLib.pdb
