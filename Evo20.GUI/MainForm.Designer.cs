@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Evo_control_page = new System.Windows.Forms.TabPage();
             this.EvoParamsGroupBox = new System.Windows.Forms.GroupBox();
@@ -71,6 +72,8 @@
             this.Sensor_control_page = new System.Windows.Forms.TabPage();
             this.savePacketsButton = new System.Windows.Forms.Button();
             this.sensorGroupBox = new System.Windows.Forms.GroupBox();
+            this.currentPositionNumberLable = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
             this.sensorConnectionStateLabel = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.SensorDataGridView = new System.Windows.Forms.DataGridView();
@@ -175,7 +178,6 @@
             this.EvoParamsGroupBox.TabIndex = 11;
             this.EvoParamsGroupBox.TabStop = false;
             this.EvoParamsGroupBox.Text = "Параметры";
-            this.EvoParamsGroupBox.Enter += new System.EventHandler(this.EvoParamsGroupBox_Enter);
             // 
             // temperatureStabLabel
             // 
@@ -554,6 +556,8 @@
             // 
             // sensorGroupBox
             // 
+            this.sensorGroupBox.Controls.Add(this.currentPositionNumberLable);
+            this.sensorGroupBox.Controls.Add(this.label25);
             this.sensorGroupBox.Controls.Add(this.sensorConnectionStateLabel);
             this.sensorGroupBox.Controls.Add(this.label22);
             this.sensorGroupBox.Controls.Add(this.SensorDataGridView);
@@ -568,10 +572,28 @@
             this.sensorGroupBox.TabStop = false;
             this.sensorGroupBox.Text = "Данные с датчика";
             // 
+            // currentPositionNumberLable
+            // 
+            this.currentPositionNumberLable.AutoSize = true;
+            this.currentPositionNumberLable.Location = new System.Drawing.Point(205, 43);
+            this.currentPositionNumberLable.Name = "currentPositionNumberLable";
+            this.currentPositionNumberLable.Size = new System.Drawing.Size(64, 13);
+            this.currentPositionNumberLable.TabIndex = 8;
+            this.currentPositionNumberLable.Text = "нет данных";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(36, 43);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(132, 13);
+            this.label25.TabIndex = 7;
+            this.label25.Text = "Номер текущей позиции";
+            // 
             // sensorConnectionStateLabel
             // 
             this.sensorConnectionStateLabel.AutoSize = true;
-            this.sensorConnectionStateLabel.Location = new System.Drawing.Point(203, 27);
+            this.sensorConnectionStateLabel.Location = new System.Drawing.Point(205, 72);
             this.sensorConnectionStateLabel.Name = "sensorConnectionStateLabel";
             this.sensorConnectionStateLabel.Size = new System.Drawing.Size(64, 13);
             this.sensorConnectionStateLabel.TabIndex = 6;
@@ -580,7 +602,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(34, 27);
+            this.label22.Location = new System.Drawing.Point(36, 72);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(128, 13);
             this.label22.TabIndex = 5;
@@ -600,7 +622,7 @@
             this.yColumn,
             this.zColumn});
             this.SensorDataGridView.GridColor = System.Drawing.SystemColors.Desktop;
-            this.SensorDataGridView.Location = new System.Drawing.Point(26, 112);
+            this.SensorDataGridView.Location = new System.Drawing.Point(37, 157);
             this.SensorDataGridView.Name = "SensorDataGridView";
             this.SensorDataGridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
             this.SensorDataGridView.Size = new System.Drawing.Size(491, 145);
@@ -635,7 +657,7 @@
             // sensorTypeLabel
             // 
             this.sensorTypeLabel.AutoSize = true;
-            this.sensorTypeLabel.Location = new System.Drawing.Point(203, 83);
+            this.sensorTypeLabel.Location = new System.Drawing.Point(205, 128);
             this.sensorTypeLabel.Name = "sensorTypeLabel";
             this.sensorTypeLabel.Size = new System.Drawing.Size(64, 13);
             this.sensorTypeLabel.TabIndex = 3;
@@ -644,7 +666,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(34, 83);
+            this.label18.Location = new System.Drawing.Point(36, 128);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(69, 13);
             this.label18.TabIndex = 2;
@@ -653,7 +675,7 @@
             // packetsArrivedLabel
             // 
             this.packetsArrivedLabel.AutoSize = true;
-            this.packetsArrivedLabel.Location = new System.Drawing.Point(203, 56);
+            this.packetsArrivedLabel.Location = new System.Drawing.Point(205, 101);
             this.packetsArrivedLabel.Name = "packetsArrivedLabel";
             this.packetsArrivedLabel.Size = new System.Drawing.Size(64, 13);
             this.packetsArrivedLabel.TabIndex = 1;
@@ -662,7 +684,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(34, 56);
+            this.label6.Location = new System.Drawing.Point(36, 101);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(102, 13);
             this.label6.TabIndex = 0;
@@ -733,7 +755,7 @@
             this.modeComboBox.Items.AddRange(new object[] {
             "калибровка",
             "проверка"});
-            this.modeComboBox.Location = new System.Drawing.Point(233, 14);
+            this.modeComboBox.Location = new System.Drawing.Point(233, 13);
             this.modeComboBox.Name = "modeComboBox";
             this.modeComboBox.Size = new System.Drawing.Size(92, 21);
             this.modeComboBox.TabIndex = 2;
@@ -741,7 +763,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(79, 16);
+            this.label5.Location = new System.Drawing.Point(71, 16);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(134, 13);
             this.label5.TabIndex = 9;
@@ -755,13 +777,12 @@
             this.parameGroupBox.Controls.Add(this.label19);
             this.parameGroupBox.Controls.Add(this.timeLeftlabel);
             this.parameGroupBox.Controls.Add(this.label3);
-            this.parameGroupBox.Location = new System.Drawing.Point(18, 47);
+            this.parameGroupBox.Location = new System.Drawing.Point(66, 47);
             this.parameGroupBox.Name = "parameGroupBox";
-            this.parameGroupBox.Size = new System.Drawing.Size(396, 123);
+            this.parameGroupBox.Size = new System.Drawing.Size(266, 123);
             this.parameGroupBox.TabIndex = 9;
             this.parameGroupBox.TabStop = false;
             this.parameGroupBox.Text = "Текущие параметры";
-            this.parameGroupBox.Enter += new System.EventHandler(this.parameGroupBox_Enter);
             // 
             // controllerWokModeLabel
             // 
@@ -901,6 +922,7 @@
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.modeComboBox);
             this.Controls.Add(this.tabControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "Evo20";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -1009,6 +1031,8 @@
         private System.Windows.Forms.Label temperatureStabLabel;
         private System.Windows.Forms.Button cycleSettingsButton;
         private System.Windows.Forms.Timer SensorTimer;
+        private System.Windows.Forms.Label currentPositionNumberLable;
+        private System.Windows.Forms.Label label25;
     }
 }
 

@@ -84,6 +84,7 @@ namespace Evo20.EvoConnections
             ReceivingUdpClient = null;
             endPoint = new IPEndPoint(remoteIPAddress, Config.Config.REMOTE_PORT_NUMBER);
             Sender = new UdpClient(Config.Config.REMOTE_PORT_NUMBER);
+            //убрать
             Sender.Connect(endPoint);
             switch (Config.Config.EvoType)
             {
@@ -200,6 +201,8 @@ namespace Evo20.EvoConnections
         /// <returns>результат </returns>
         public bool SendMessage(string message)
         {
+            //убрать
+            //return true;
             try
             {
                 if (connectionState == ConnectionStatus.CONNECTED)

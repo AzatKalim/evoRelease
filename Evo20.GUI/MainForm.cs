@@ -360,6 +360,10 @@ namespace Evo20.GUI
                 countTemperaturesReachedLabel.Text = string.Format("{0}/{1}", 0, Controller.Current.TemperaturesCount);
             else
                 countTemperaturesReachedLabel.Text = string.Format("{0}/{1}", Controller.Current.TemperutureIndex, Controller.Current.TemperaturesCount);
+            if (Controller.Current.CurrentPositionNumber < 0)
+                currentPositionNumberLable.Text = string.Format("{0}/{1}", 0, Controller.Current.CurrentPositionCount);
+            else
+                currentPositionNumberLable.Text = string.Format("{0}/{1}", Controller.Current.CurrentPositionNumber, Controller.Current.CurrentPositionCount);
             CurrentTemperatureLabel.Text = EvoData.Current.CurrentTemperature.ToString();
             nextTemperatureLable.Text = EvoData.Current.NextTemperature.ToString();
             CheckParam(EvoData.Current.isCameraPowerOn, powerCameraIndic);
@@ -395,7 +399,7 @@ namespace Evo20.GUI
         {
             TimeSpan difference = DateTime.Now - startTime;
             difference -= TimeSpan.FromMilliseconds(difference.Milliseconds);
-            timeLeftlabel.Text = difference.Hours + ":" + difference.Minutes + ":" + difference.Seconds;
+            timeLeftlabel.Text = string.Format("{0,2}:{1,2}:{2,2}",difference.Hours,difference.Minutes,difference.Seconds);
         }
 
         #endregion
@@ -636,16 +640,5 @@ namespace Evo20.GUI
         {
             ShowSensorParams();         
         }
-
-        private void parameGroupBox_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void EvoParamsGroupBox_Enter(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }

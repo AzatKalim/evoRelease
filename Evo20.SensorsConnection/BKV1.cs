@@ -93,6 +93,8 @@ namespace Evo20.SensorsConnection
             lock (CalibrationPacketsCollection)
             {
                 result = CalibrationPacketsCollection[index].MeanParams(numberOfPosition);
+                if (result == null)
+                    return null;
             }
             double mul = 0.5/System.Math.Pow(2,28);
             for (int i = 0; i < result.Count; i++)
@@ -172,7 +174,7 @@ namespace Evo20.SensorsConnection
             {
                 return 0;
             }
-            return CalibrationPacketsCollection[index][numberOfPosition].Count;
+            return CalibrationPacketsCollection[index].PositionCount > numberOfPosition ? CalibrationPacketsCollection[index][numberOfPosition].Count: 0;
           
         }
 
@@ -183,7 +185,7 @@ namespace Evo20.SensorsConnection
             {
                 return 0;
             }
-            return CheckPacketsCollection[temperature][numberOfPosition].Count;
+            return CheckPacketsCollection[index].PositionCount > numberOfPosition ? CheckPacketsCollection[index][numberOfPosition].Count : 0;
         }
 
         public bool WriteRedPackets()

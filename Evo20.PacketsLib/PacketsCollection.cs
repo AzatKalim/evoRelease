@@ -238,6 +238,8 @@ namespace Evo20.PacketsLib
         /// <returns></returns>
         public List<double> MeanParams(int positionNumber)
         {
+            if (positionPackets.Length < positionNumber)
+                return null;
             List<PacketsData> packetsList = positionPackets[positionNumber];
             if (packetsList.Count == 0)
             {

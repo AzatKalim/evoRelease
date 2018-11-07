@@ -11,7 +11,6 @@ using Evo20.SensorsConnection;
 using Evo20.PacketsLib;
 using Evo20.Math;
 
-
 namespace Evo20.Controllers
 {  
     public class Controller:ControllerEvo
@@ -112,15 +111,8 @@ namespace Evo20.Controllers
 
         public int TemperutureIndex
         {
-            get
-            {
-                if (Mode == WorkMode.CalibrationMode)
-                    return CycleData.Current.FindCalibrationTemperatureIndex((int)EvoData.Current.CurrentTemperature);
-                if (Mode == WorkMode.CheckMode)
-                    return CycleData.Current.FindCheckTemperatureIndex((int)EvoData.Current.CurrentTemperature);
-                return 0;
-            }
-           
+            get;
+            private set;
         }
 
         public int PacketsCollectedCount
@@ -141,6 +133,20 @@ namespace Evo20.Controllers
         {
             get;
             private set;
+        }
+
+        public int CurrentPositionCount
+        {
+            get
+            {
+                if (CurrentSensor == null)
+                    return 0;
+                if (Mode == WorkMode.CalibrationMode)
+                    return CurrentSensor.CalibrationProfile.Length;
+                if (Mode == WorkMode.CheckMode)
+                    return CurrentSensor.CheckProfile.Length;
+                return 0;
+            }
         }
 
         #endregion
@@ -185,15 +191,19 @@ namespace Evo20.Controllers
         {
             if (cycleThread != null && cycleThread.IsAlive)
                 return false;
-            //добавляем в список датчиков ДЛУ и ДУС
-            sensorsList.Add(new DLY(CycleData.Current.CalibrationTemperatures,
-                CycleData.Current.CheckTemperatures,
-                sensorData.CalibrationDLYMaxPacketsCount,
-                sensorData.CheckDLYMaxPacketsCount));
-            sensorsList.Add(new DYS(CycleData.Current.CalibrationTemperatures,
-                CycleData.Current.CheckTemperatures,
-                sensorData.CalibrationDYSMaxPacketsCount,
-                sensorData.CheckDYSMaxPacketsCount));
+            if (sensorsList == null || sensorsList.Count==0)
+            {
+                sensorsList = new List<ISensor>();
+                //добавляем в список датчиков ДЛУ и ДУС
+                sensorsList.Add(new DLY(CycleData.Current.CalibrationTemperatures,
+                    CycleData.Current.CheckTemperatures,
+                    sensorData.CalibrationDLYMaxPacketsCount,
+                    sensorData.CheckDLYMaxPacketsCount));
+                sensorsList.Add(new DYS(CycleData.Current.CalibrationTemperatures,
+                    CycleData.Current.CheckTemperatures,
+                    sensorData.CalibrationDYSMaxPacketsCount,
+                    sensorData.CheckDYSMaxPacketsCount));
+            }
             switch(mode)
             {
                 case WorkMode.CalibrationMode:              
@@ -394,6 +404,7 @@ namespace Evo20.Controllers
                 }
                 SetTemperature(temperatures[i]);
                 Evo20.Log.WriteLog("Установлена температура камеры " + temperatures[i] + " скорость набора температtуры " + Config.Config.SPEED_OF_TEMPERATURE_CHANGE);
+                //убрать
                 //Ожидание достижения температуры
 //#if !DEBUG
                 EvoData.Current.TemperatureReachedEvent.WaitOne();
@@ -405,6 +416,7 @@ namespace Evo20.Controllers
                 Evo20.Log.WriteLog(string.Format("{0}:Начало стабилизации температуры.Время стабилизации {1}", DateTime.Now.TimeOfDay, StabilizationTime));
 //#if !DEBUG
 //                //ожидание стабилизации температуры
+                //убрать
                 Thread.Sleep(StabilizationTime);
 //#endif
                 Evo20.Log.WriteLog(string.Format("{0}:Стабилизация температуры завершена",DateTime.Now.TimeOfDay));
@@ -426,6 +438,7 @@ namespace Evo20.Controllers
                     }
                     Evo20.Log.WriteLog(string.Format("{0}:Подцикл датчика завершен {1}", DateTime.Now.TimeOfDay, CurrentSensor.Name));
                 }
+                TemperutureIndex = i+1;
                 //записываем пакеты
                 WriteRedPackets();                            
             }
@@ -444,12 +457,13 @@ namespace Evo20.Controllers
             {
                 for (; j < profile.Length; j++)
                 {
-                    Evo20.Log.WriteLog(string.Format("{0} Новое положение для датчика {1}",DateTime.Now.TimeOfDay,j));
+                    Evo20.Log.WriteLog(string.Format("{0} Новое положение для датчика {1}", DateTime.Now.TimeOfDay, j));
                     StopAxis(Axis.ALL);
+                    //убрать
                     EvoData.Current.movementEndedEvent.WaitOne(THREADS_SLEEP_TIME);
                     EvoData.Current.movementEndedEvent.Reset();
                     CurrentPositionNumber = j;
-                    Evo20.Log.WriteLog(string.Format("Задание положения осей: X {0}:{1}. Y {2}:{3}", profile[j].axisX,profile[j].speedX,profile[j].axisY,profile[j].speedY));
+                    Evo20.Log.WriteLog(string.Format("Задание положения осей: X {0}:{1}. Y {2}:{3}", profile[j].axisX, profile[j].speedX, profile[j].axisY, profile[j].speedY));
                     //задание положений и скоростей
                     if (profile[j].speedX != 0)
                     {
@@ -473,15 +487,21 @@ namespace Evo20.Controllers
                     }
                     StartAxis(Axis.ALL);
                     CurrentPositionNumber = j;
+                    //убрать
                     //ожидаем пока установятся позиции
                     Thread.Sleep(THREADS_SLEEP_TIME);
                     //ожидание сбора пакетов
                     canCollect = true;
                     CurrentSensor.PacketsCollectedEvent.WaitOne();
                     canCollect = false;
-                    Evo20.Log.WriteLog(string.Format("{0}: Пакеты в положении {1} собраны",DateTime.Now.TimeOfDay,CurrentPositionNumber));
+                    Evo20.Log.WriteLog(string.Format("{0}: Пакеты в положении {1} собраны", DateTime.Now.TimeOfDay, CurrentPositionNumber));
                 }
 
+            }
+            catch (ThreadAbortException)
+            {
+                Evo20.Log.WriteLog(string.Format("Поток цикла был прерван при датчике:{0} ,при шаге {1}", CurrentSensor.Name, j));
+                return false;
             }
             catch (Exception exception)
             {
@@ -493,6 +513,8 @@ namespace Evo20.Controllers
                 }
                 return false;
             }
+            CurrentSensor = null;
+            CurrentPositionNumber = 0;
             return true;
         }
 
@@ -576,6 +598,19 @@ namespace Evo20.Controllers
         /// <returns></returns>
         public bool ReadDataFromFile(StreamReader file )
         {
+            if (sensorsList == null || sensorsList.Count == 0)
+            {
+                sensorsList = new List<ISensor>();
+                //добавляем в список датчиков ДЛУ и ДУС
+                sensorsList.Add(new DLY(CycleData.Current.CalibrationTemperatures,
+                    CycleData.Current.CheckTemperatures,
+                    sensorData.CalibrationDLYMaxPacketsCount,
+                    sensorData.CheckDLYMaxPacketsCount));
+                sensorsList.Add(new DYS(CycleData.Current.CalibrationTemperatures,
+                    CycleData.Current.CheckTemperatures,
+                    sensorData.CalibrationDYSMaxPacketsCount,
+                    sensorData.CheckDYSMaxPacketsCount));
+            }
             var result=sensorData.ReadDataFromFile(sensorsList.ToArray(), file);
             if (result)
                 CycleData.Current.StartTemperatureIndex = sensorsList[0].CalibrationPacketsCollection.Count;
