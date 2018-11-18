@@ -30,4 +30,26 @@ namespace Evo20
             }
         }
     }
+
+     //var allocationThread = new System.Threading.Thread(new System.Threading.ThreadStart(() =>
+     //       {
+     //           try
+     //           {
+     //               lock (controller)
+     //                   terminal = controller.AllocateTerminal();
+     //           }
+     //           catch (Exception ex)
+     //           {
+     //               log.Error(string.Format("Allocate terminal error: ", ex.Message));
+     //           }
+     //       }))
+     //       { IsBackground = true };
+
+     //       allocationThread.Start();
+     //       if (!allocationThread.Join(new TimeSpan(0, 0, 0, 0, AllocationTimeout)))
+     //       {
+     //           allocationThread.Abort();
+     //           log.Error("Allocation terminal timeout");
+     //           terminalID= -1;
+     //       }
 }

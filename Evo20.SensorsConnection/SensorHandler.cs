@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Evo20.PacketsLib;
+using Evo20.Evo20.Packets;
 using Evo20.Config;
 
 namespace Evo20.SensorsConnection

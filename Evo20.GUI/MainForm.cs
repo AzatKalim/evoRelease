@@ -56,7 +56,7 @@ namespace Evo20.GUI
         {
             InitializeComponent();
             prevX = 0;
-            prevY = 0;
+            prevY = 0;          
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -64,10 +64,10 @@ namespace Evo20.GUI
             string[] comPorts = SerialPort.GetPortNames();
             comPortComboBox.DataSource = comPorts;
             Controller.Current.EventHandlersListCycleEnded += CycleEndedHandler;
-            Controller.Current.EventListForEvoConnectionChange += EvoConnectionChangeHandler;
+            ControllerEvo.Current.EventListForEvoConnectionChange += EvoConnectionChangeHandler;
             Controller.Current.EventListForWorkModeChange += EvoWorkModeChangeHandler;
-            Controller.Current.EventHandlerListForControllerExceptions += ControllerExсeptoinsHandler;
-            Controller.Current.EventHandlerListForSensorConnectionChange += SensorConnectionChangeHandler;
+            SensorController.Current.EventHandlerListForControllerExceptions += ControllerExсeptoinsHandler;
+            SensorController.Current.EventHandlerListForSensorConnectionChange += SensorConnectionChangeHandler;
             Controller.Current.EventHandlerListForTemperatureStabilization += TemperatureStabilizationHandler;
             startTime = DateTime.Now;
             graph.GraphPane.XAxis.Title = "Время";
@@ -79,8 +79,8 @@ namespace Evo20.GUI
         {
             workTimer.Stop();
             timer.Stop();
-            Controller.Current.StopComPortConnection();
-            Controller.Current.StopEvoConnection();
+            SensorController.Current.StopComPortConnection();
+            ControllerEvo.Current.StopEvoConnection();
             Controller.Current.Stop();
         }
 
@@ -88,8 +88,8 @@ namespace Evo20.GUI
         {
             workTimer.Stop();
             timer.Stop();
-            Controller.Current.StopComPortConnection();
-            Controller.Current.StopEvoConnection();
+            SensorController.Current.StopComPortConnection();
+            ControllerEvo.Current.StopEvoConnection();
             Controller.Current.Stop();
         }
 
@@ -112,7 +112,7 @@ namespace Evo20.GUI
             {
                 DialogResult result = MessageBox.Show("Проблемы с файлом: возникло исключение" + ex.ToString(), "Открыть файл настроек ?", MessageBoxButtons.YesNo);
             }
-            Controller.Current.StartEvoConnection();
+            ControllerEvo.Current.StartEvoConnection();
             startTime = DateTime.Now;
             workTimer.Start();
             timer.Start();
@@ -122,14 +122,14 @@ namespace Evo20.GUI
 
         private void evoPauseButton_Click(object sender, EventArgs e)
         {
-            Controller.Current.PauseEvoConnection();
+            ControllerEvo.Current.PauseEvoConnection();
             evoPauseButton.Enabled = false;
             evoStartButton.Enabled = true;
         }
 
         private void evoStopButton_Click(object sender, EventArgs e)
         {
-            Controller.Current.StopEvoConnection();
+            ControllerEvo.Current.StopEvoConnection();
             evoStopButton.Enabled = false;
             evoPauseButton.Enabled = false;
             evoStartButton.Enabled = true;
@@ -144,7 +144,7 @@ namespace Evo20.GUI
             bool result = false;
             if (comPortComboBox.SelectedItem != null)
             {
-                result = Controller.Current.StartComPortConnection(comPortComboBox.SelectedItem.ToString());
+                result = SensorController.Current.StartComPortConnection(comPortComboBox.SelectedItem.ToString());
             }
             else
             {
@@ -172,14 +172,14 @@ namespace Evo20.GUI
 
         private void sensorPauseButton_Click(object sender, EventArgs e)
         {
-            Controller.Current.PauseComPortConnection();
+            SensorController.Current.PauseComPortConnection();
             sensorStartButton.Enabled = true;
             sensorPauseButton.Enabled = false;
         }
 
         private void sensorStopButton_Click(object sender, EventArgs e)
         {
-            Controller.Current.StopComPortConnection();
+            SensorController.Current.StopComPortConnection();
             sensorStopButton.Enabled = false;
             sensorPauseButton.Enabled = false;
             sensorStartButton.Enabled = true;
@@ -251,8 +251,8 @@ namespace Evo20.GUI
             timer.Start();
             SensorTimer.Start();
 
-            settingsButton.Enabled = false;
-
+            SettingsToolStripMenuItem.Enabled = false;
+            FileToolStripMenuItem.Enabled = false;
             startButton.Enabled = false;
             pauseButton.Enabled = true;
             stopButton.Enabled = true;
@@ -266,23 +266,23 @@ namespace Evo20.GUI
             sensorStopButton.Enabled = true;
         }
 
-        private void pauseButton_Click(object sender, EventArgs e)
-        {
-            Controller.Current.Pause();
+        //private void pauseButton_Click(object sender, EventArgs e)
+        //{
+        //    Controller.Current.Pause();
 
-            startButton.Enabled = true;
-            pauseButton.Enabled = false;
-            stopButton.Enabled = true;
+        //    startButton.Enabled = true;
+        //    pauseButton.Enabled = false;
+        //    stopButton.Enabled = true;
 
-            evoStartButton.Enabled = true;
-            evoPauseButton.Enabled = false;
-            evoStopButton.Enabled = true;
+        //    evoStartButton.Enabled = true;
+        //    evoPauseButton.Enabled = false;
+        //    evoStopButton.Enabled = true;
 
-            sensorStartButton.Enabled = true;
-            sensorPauseButton.Enabled = false;
-            sensorStopButton.Enabled = true;
+        //    sensorStartButton.Enabled = true;
+        //    sensorPauseButton.Enabled = false;
+        //    sensorStopButton.Enabled = true;
 
-        }
+        //}
 
         private void stopButton_Click(object sender, EventArgs e)
         {
@@ -292,28 +292,8 @@ namespace Evo20.GUI
 
         #endregion
 
-        #region Other buttons
-
-        private void settingsButton_Click(object sender, EventArgs e)
-        {
-            if (File.Exists(settingsFileName))
-            {
-                var procces = System.Diagnostics.Process.Start(settingsFileName);
-                procces.WaitForExit();
-                ReadSettings();
-            }
-        }
-        private void cycleSettingsButton_Click(object sender, EventArgs e)
-        {
-            if (!isSettingsEntered)
-            {
-                ReadSettings();
-                isSettingsEntered = true;
-            }
-            var cycleForm = new CycleSettingsForm();
-            cycleForm.ShowDialog();
-        }
-
+        #region Other buttons       
+     
         private void savePacketsButton_Click(object sender, EventArgs e)
         {
             WritePackets();
@@ -360,24 +340,24 @@ namespace Evo20.GUI
                 countTemperaturesReachedLabel.Text = string.Format("{0}/{1}", 0, Controller.Current.TemperaturesCount);
             else
                 countTemperaturesReachedLabel.Text = string.Format("{0}/{1}", Controller.Current.TemperutureIndex, Controller.Current.TemperaturesCount);
-            if (Controller.Current.CurrentPositionNumber < 0)
-                currentPositionNumberLable.Text = string.Format("{0}/{1}", 0, Controller.Current.CurrentPositionCount);
+            if (SensorController.Current.CurrentPositionNumber < 0)
+                currentPositionNumberLable.Text = string.Format("{0}/{1}", 0, SensorController.Current.CurrentPositionCount);
             else
-                currentPositionNumberLable.Text = string.Format("{0}/{1}", Controller.Current.CurrentPositionNumber, Controller.Current.CurrentPositionCount);
+                currentPositionNumberLable.Text = string.Format("{0}/{1}", SensorController.Current.CurrentPositionNumber, SensorController.Current.CurrentPositionCount);
             CurrentTemperatureLabel.Text = EvoData.Current.CurrentTemperature.ToString();
             nextTemperatureLable.Text = EvoData.Current.NextTemperature.ToString();
             CheckParam(EvoData.Current.isCameraPowerOn, powerCameraIndic);
             CheckParam(EvoData.Current.isTemperatureReached, temperatureReachedIndic);
-            CheckParam(EvoData.Current.x.isZeroFound, xZeroFindedIndic);
-            CheckParam(EvoData.Current.y.isZeroFound, yZeroFindedIndic);
-            CheckParam(EvoData.Current.x.isPowerOn, xPowerIndic);
-            CheckParam(EvoData.Current.y.isPowerOn, yPowerIndic);
-            CheckParam(EvoData.Current.x.isMove, xMoveIndic);
-            CheckParam(EvoData.Current.y.isMove, yMoveIndic);
-            xPositionLabel.Text = EvoData.Current.x.position.ToString();
-            yPositionLabel.Text = EvoData.Current.y.position.ToString();
-            xSpeedOfRateLabel.Text = EvoData.Current.x.speedOfRate.ToString();
-            ySpeedOfRateLabel.Text = EvoData.Current.y.speedOfRate.ToString();
+            CheckParam(EvoData.Current.X.isZeroFound, xZeroFindedIndic);
+            CheckParam(EvoData.Current.Y.isZeroFound, yZeroFindedIndic);
+            CheckParam(EvoData.Current.X.isPowerOn, xPowerIndic);
+            CheckParam(EvoData.Current.Y.isPowerOn, yPowerIndic);
+            CheckParam(EvoData.Current.X.isMove, xMoveIndic);
+            CheckParam(EvoData.Current.Y.isMove, yMoveIndic);
+            xPositionLabel.Text = EvoData.Current.X.position.ToString();
+            yPositionLabel.Text = EvoData.Current.Y.position.ToString();
+            xSpeedOfRateLabel.Text = EvoData.Current.X.speedOfRate.ToString();
+            ySpeedOfRateLabel.Text = EvoData.Current.Y.speedOfRate.ToString();
             DrawGrapfic();
 
             if (!IsStabilized)
@@ -402,6 +382,11 @@ namespace Evo20.GUI
             timeLeftlabel.Text = string.Format("{0,2}:{1,2}:{2,2}",difference.Hours,difference.Minutes,difference.Seconds);
         }
 
+        private void SensorTimer_Tick(object sender, EventArgs e)
+        {
+            ShowSensorParams();
+        }
+
         #endregion
 
         #region Controller's events handlers
@@ -410,6 +395,7 @@ namespace Evo20.GUI
         {
             connectionStateLabel.Text = state.ToText();
         }
+
         private void EvoConnectionChangeHandler(ConnectionStatus state)
         {           
             EvoConnectionDel del = EvoConnectionChange;
@@ -420,6 +406,7 @@ namespace Evo20.GUI
         {
             sensorConnectionStateLabel.Text = state.ToText();
         }
+
         private void SensorConnectionChangeHandler(ConnectionStatus state)
         {
             SensorConnectionDel del = SensorConnectionChange;
@@ -430,6 +417,7 @@ namespace Evo20.GUI
         {
             controllerWokModeLabel.Text = mode.ToString();
         }
+
         private void EvoWorkModeChangeHandler(WorkMode mode)
         {
             WorkModDel del = EvoWorkModeChange;
@@ -450,21 +438,51 @@ namespace Evo20.GUI
 
         #endregion
 
+        #region ToolStripMenu handlers
+
+        private void cycleSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!isSettingsEntered)
+            {
+                ReadSettings();
+                isSettingsEntered = true;
+            }
+            var cycleForm = new CycleSettingsForm();
+            cycleForm.ShowDialog();
+        }
+
+        private void CommonSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(settingsFileName))
+            {
+                var procces = System.Diagnostics.Process.Start(settingsFileName);
+                procces.WaitForExit();
+                ReadSettings();
+            }
+        }
+
+        private void savePacketsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            WritePackets();
+        }
+
+        #endregion
+
         #region Other functions
 
         public bool WritePackets()
         {
-            //var dlg = new SaveFileDialog();
-            //dlg.Filter = "Все файлы (*.*)|*.*";
-            //dlg.CheckFileExists = true;
-            //var res = dlg.ShowDialog();
+            var dlg = new SaveFileDialog();
+            dlg.Filter = "Все файлы (*.*)|*.*";
+            dlg.CheckFileExists = false;
+            var res = dlg.ShowDialog();
 
-            //if (res != DialogResult.OK)
-            //{
-            //    return false;
-            //}
+            if (res != DialogResult.OK)
+            {
+                return false;
+            }
             bool result = true;
-            using (StreamWriter file = new StreamWriter("pack.txt"))
+            using (StreamWriter file = new StreamWriter(dlg.FileName))
             {
                 try
                 {
@@ -483,6 +501,7 @@ namespace Evo20.GUI
             }
             return result;
         }
+
         public void ResetForm()
         {
             FormReseter del = Reset;
@@ -505,9 +524,9 @@ namespace Evo20.GUI
             sensorStopButton.Enabled = false; 
 
             //SensorDataGridView.Rows.Clear(); 
-            SensorDataGridView.Visible = false; 
-
-            settingsButton.Enabled = true; 
+            SensorDataGridView.Visible = false;
+            FileToolStripMenuItem.Enabled = true;
+            SettingsToolStripMenuItem.Enabled = true; 
         }
         private void CycleEndedHandler(bool result)
         {
@@ -531,7 +550,7 @@ namespace Evo20.GUI
         private void DrawGrapfic()
         {
             double x = (DateTime.Now - startTime).TotalMinutes;
-            double y = Controller.Current.CurrentTemperature;
+            double y = ControllerEvo.Current.CurrentTemperature;
             double[] tempX = new double[] { prevX, x };
             double[] tempY = new double[] { prevY, y };
             graph.GraphPane.AddCurve("", tempX, tempY, Color.Red, SymbolType.None);
@@ -575,13 +594,13 @@ namespace Evo20.GUI
 
         private void ShowSensorParams()
         {
-            packetsArrivedLabel.Text = Controller.Current.PacketsCollectedCount.ToString();
-            if (Controller.Current.CurrentSensor != null)
+            packetsArrivedLabel.Text = SensorController.Current.PacketsCollectedCount.ToString();
+            if (SensorController.Current.CurrentSensor != null)
             {
-                sensorTypeLabel.Text = Controller.Current.CurrentSensor.Name;
+                sensorTypeLabel.Text = SensorController.Current.CurrentSensor.Name;
                 SensorDataGridView.Visible = true;
             }
-            var data = Controller.Current.GetSensorData();
+            var data = SensorController.Current.GetSensorData();
             if (data == null)
                 return;
             int k = 0;
@@ -624,7 +643,7 @@ namespace Evo20.GUI
                     }
                 }
             }
-            var result = Controller.Current.ReadSettings(settingsFileName);
+            var result = FileController.Current.ReadSettings(settingsFileName);
             if (result)
             {
                 isSettingsEntered = true;
@@ -635,10 +654,5 @@ namespace Evo20.GUI
         }
 
         #endregion
-
-        private void SensorTimer_Tick(object sender, EventArgs e)
-        {
-            ShowSensorParams();         
-        }
     }
 }

@@ -1,0 +1,11 @@
+C:\Users\Азат\Desktop\Evo20\Evo20.Sensors.Tests\bin\Debug\Evo20.Sensors.Tests.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.Sensors.Tests\bin\Debug\Evo20.Sensors.dll
+C:\Users\Азат\Desktop\Evo20\Evo20.Sensors.Tests\bin\Debug\Evo20.Config.dll
+C:\Users\Азат\Desktop\Evo20\Evo20.Sensors.Tests\bin\Debug\Evo20.Sensors.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.Sensors.Tests\bin\Debug\Evo20.Config.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.Sensors.Tests\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Азат\Desktop\Evo20\Evo20.Sensors.Tests\obj\Debug\Evo20.Sensors.Tests.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.Sensors.Tests\bin\Debug\Evo20.Sensors.Tests.exe
+C:\Users\Азат\Desktop\Evo20\Evo20.Sensors.Tests\obj\Debug\Evo20.Sensors.Tests.exe
+C:\Users\Азат\Desktop\Evo20\Evo20.Sensors.Tests\bin\Debug\Evo20.Packets.dll
+C:\Users\Азат\Desktop\Evo20\Evo20.Sensors.Tests\bin\Debug\Evo20.Packets.pdb

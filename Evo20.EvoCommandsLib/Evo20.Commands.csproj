@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8C91504C-7D1B-4385-A276-6848E1A3396E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Evo20.Commands</RootNamespace>
+    <AssemblyName>Evo20.EvoCommands</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <StartupObject>
+    </StartupObject>
+    <TargetFrameworkSubset>Client</TargetFrameworkSubset>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ItemGroup>
+    <Compile Include="Actual_humidity_query.cs" />
+    <Compile Include="Actual_temperature_query.cs" />
+    <Compile Include="Actual_temperature_query_answer.cs" />
+    <Compile Include="Amplitude.cs" />
+    <Compile Include="Axis_Acceleration.cs" />
+    <Compile Include="Axis_Deceleration.cs" />
+    <Compile Include="Axis_Position.cs" />
+    <Compile Include="Axis_Position_Query.cs" />
+    <Compile Include="Axis_Position_Query_answer.cs" />
+    <Compile Include="Axis_Power.cs" />
+    <Compile Include="Axis_Rate.cs" />
+    <Compile Include="Axis_Rate_g.cs" />
+    <Compile Include="Axis_Rate_Query.cs" />
+    <Compile Include="Axis_Rate_Query_answer.cs" />
+    <Compile Include="Axis_Rate_Query_g.cs" />
+    <Compile Include="Axis_Rate_Query_g_answer.cs" />
+    <Compile Include="Axis_Status.cs" />
+    <Compile Include="Axis_Status_answer.cs" />
+    <Compile Include="Brakes_lock.cs" />
+    <Compile Include="Command.cs" />
+    <Compile Include="Command_Information.cs" />
+    <Compile Include="Emergency_stop.cs" />
+    <Compile Include="Emergency_stop_сhamber.cs" />
+    <Compile Include="Frequency.cs" />
+    <Compile Include="Light_command.cs" />
+    <Compile Include="Mode.cs" />
+    <Compile Include="Motor_torque_Query.cs" />
+    <Compile Include="Motor_torque_Query_answer.cs" />
+    <Compile Include="Offset.cs" />
+    <Compile Include="Payload_query.cs" />
+    <Compile Include="Phase.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Requested_axis_position_reached.cs" />
+    <Compile Include="Requested_axis_position_reached_answer.cs" />
+    <Compile Include="Rotary_joint_temperature_Query.cs" />
+    <Compile Include="Rotary_joint_temperature_Query_Answer.cs" />
+    <Compile Include="Select_payload.cs" />
+    <Compile Include="Start_axis.cs" />
+    <Compile Include="Start_axis_in_relative_mode.cs" />
+    <Compile Include="Start_Cycle.cs" />
+    <Compile Include="Start_Stop.cs" />
+    <Compile Include="Stop_axis.cs" />
+    <Compile Include="Temperature_Set_point.cs" />
+    <Compile Include="Temperature_slope_set_point.cs" />
+    <Compile Include="Temperature_status.cs" />
+    <Compile Include="Temperature_status_answer.cs" />
+    <Compile Include="Ventilation_command.cs" />
+    <Compile Include="Zero_Index_Search.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Evo20.Config\Evo20.Config.csproj">
+      <Project>{99D800D1-0D39-49B9-9311-003759CA741B}</Project>
+      <Name>Evo20.Config</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

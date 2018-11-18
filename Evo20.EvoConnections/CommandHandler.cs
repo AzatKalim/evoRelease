@@ -2,7 +2,7 @@
 using System;
 using System.Text;
 using System.Threading;
-using Evo20.EvoCommandsLib;
+using Evo20.Commands;
 
 namespace Evo20.EvoConnections
 {

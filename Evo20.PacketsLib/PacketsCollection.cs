@@ -5,7 +5,7 @@ using System.Text;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace Evo20.PacketsLib
+namespace Evo20.Evo20.Packets
 {
     /// <summary>
     /// Структура данных, которая хранит в себе список PacketData(4 пакета)и  тепературу с позициями, когда они были собраны 

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Evo20.Config;
 
-namespace Evo20.EvoCommandsLib
+namespace Evo20.Commands
 {
     public enum Axis
     {
@@ -22,13 +23,13 @@ namespace Evo20.EvoCommandsLib
             switch (axis)
             {
                 case Axis.X:
-                    return 1;
+                    return Config.Config.X_AXIS_NUMBER;
                 case Axis.Y:
-                    return 2;
+                    return Config.Config.Y_AXIS_NUMBER;
                 case Axis.Z:
-                    return 3;
+                    return Config.Config.Z_AXIS_NUMBER;
                 case Axis.ALL:
-                    return 0;
+                    return Config.Config.ALL_AXIS_NUMBER;
                 default:
                     return 0;
             }

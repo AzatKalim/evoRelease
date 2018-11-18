@@ -44,10 +44,15 @@
   -->
   <ItemGroup>
     <Compile Include="Controller.cs" />
-    <Compile Include="ControllerEvo.cs" />
-    <Compile Include="CycleData.cs" />
-    <Compile Include="EvoData.cs" />
-    <Compile Include="WorkModeOperations.cs" />
+    <Compile Include="EvoControllers\ControllerEvo.cs" />
+    <Compile Include="EvoControllers\CycleData.cs" />
+    <Compile Include="EvoControllers\EvoData.cs" />
+    <Compile Include="FileWork\FileController.cs" />
+    <Compile Include="FileWork\IFileController.cs" />
+    <Compile Include="MathController\MathController.cs" />
+    <Compile Include="SensorController\SensorController.cs" />
+    <Compile Include="SensorData.cs" />
+    <Compile Include="Utils\WorkModeOperations.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -62,9 +67,9 @@
       <Project>{99D800D1-0D39-49B9-9311-003759CA741B}</Project>
       <Name>Evo20.Config</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Evo20.EvoCommandsLib\Evo20.EvoCommandsLib.csproj">
+    <ProjectReference Include="..\Evo20.EvoCommandsLib\Evo20.Commands.csproj">
       <Project>{8C91504C-7D1B-4385-A276-6848E1A3396E}</Project>
-      <Name>Evo20.EvoCommandsLib</Name>
+      <Name>Evo20.Commands</Name>
     </ProjectReference>
     <ProjectReference Include="..\Evo20.EvoConnections\Evo20.EvoConnections.csproj">
       <Project>{32CCC6CA-A913-4920-A83F-F7442D2107B9}</Project>
@@ -74,13 +79,17 @@
       <Project>{290D2C14-4B1F-4110-970A-8572E5C905B8}</Project>
       <Name>Evo20.Math</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Evo20.PacketsLib\Evo20.PacketsLib.csproj">
+    <ProjectReference Include="..\Evo20.PacketsLib\Evo20.Packets.csproj">
       <Project>{38D34933-EA5E-4C43-AEE0-752676BC5FD0}</Project>
-      <Name>Evo20.PacketsLib</Name>
+      <Name>Evo20.Packets</Name>
     </ProjectReference>
     <ProjectReference Include="..\Evo20.SensorsConnection\Evo20.SensorsConnection.csproj">
       <Project>{86F18502-E4FB-4FDB-9AEE-E1EA1F1FF4BC}</Project>
       <Name>Evo20.SensorsConnection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Evo20.Sensors\Evo20.Sensors.csproj">
+      <Project>{4E9C9D86-5565-4A04-8490-85EBED2E8886}</Project>
+      <Name>Evo20.Sensors</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

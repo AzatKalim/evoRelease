@@ -1,0 +1,9 @@
+C:\Users\Азат\Desktop\Evo20\Evo20.Sensors\bin\Release\Evo20.Sensors.dll
+C:\Users\Азат\Desktop\Evo20\Evo20.Sensors\bin\Release\Evo20.Sensors.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.Sensors\bin\Release\Evo20.Config.dll
+C:\Users\Азат\Desktop\Evo20\Evo20.Sensors\bin\Release\Evo20.Config.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.Sensors\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Азат\Desktop\Evo20\Evo20.Sensors\obj\Release\Evo20.Sensors.dll
+C:\Users\Азат\Desktop\Evo20\Evo20.Sensors\obj\Release\Evo20.Sensors.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.Sensors\bin\Release\Evo20.Packets.dll
+C:\Users\Азат\Desktop\Evo20\Evo20.Sensors\bin\Release\Evo20.Packets.pdb

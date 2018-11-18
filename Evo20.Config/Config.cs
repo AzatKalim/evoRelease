@@ -44,5 +44,10 @@ namespace Evo20.Config
 
         public static int PARAMS_COUNT = Convert.ToInt32(ConfigurationManager.AppSettings.Get("ParamsCount"));
         public static int PACKET_SIZE = Convert.ToInt32(ConfigurationManager.AppSettings.Get("PacketSize"));
+
+        public static int X_AXIS_NUMBER = Convert.ToInt32(ConfigurationManager.AppSettings.Get("X_AXIS_NUMBER"));
+        public static int Y_AXIS_NUMBER = Convert.ToInt32(ConfigurationManager.AppSettings.Get("Y_AXIS_NUMBER"));
+        public static int Z_AXIS_NUMBER = Convert.ToInt32(ConfigurationManager.AppSettings.Get("Z_AXIS_NUMBER"));
+        public static int ALL_AXIS_NUMBER = Convert.ToInt32(ConfigurationManager.AppSettings.Get("ALL_AXIS_NUMBER"));
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Evo20.EvoCommandsLib
+namespace Evo20.Commands
 {
     public class Axis_Acceleration:Command
     {

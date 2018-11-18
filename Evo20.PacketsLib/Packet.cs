@@ -6,7 +6,7 @@ using System.Collections;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace Evo20.PacketsLib
+namespace Evo20.Evo20.Packets
 {
     public class Packet
     {

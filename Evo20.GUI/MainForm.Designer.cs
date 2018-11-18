@@ -70,7 +70,6 @@
             this.evoStartButton = new System.Windows.Forms.Button();
             this.evoPauseButton = new System.Windows.Forms.Button();
             this.Sensor_control_page = new System.Windows.Forms.TabPage();
-            this.savePacketsButton = new System.Windows.Forms.Button();
             this.sensorGroupBox = new System.Windows.Forms.GroupBox();
             this.currentPositionNumberLable = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
@@ -101,13 +100,17 @@
             this.timeLeftlabel = new System.Windows.Forms.Label();
             this.workTimer = new System.Windows.Forms.Timer(this.components);
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.readDatabutton = new System.Windows.Forms.Button();
-            this.settingsButton = new System.Windows.Forms.Button();
             this.stopButton = new System.Windows.Forms.Button();
             this.pauseButton = new System.Windows.Forms.Button();
-            this.cycleSettingsButton = new System.Windows.Forms.Button();
             this.SensorTimer = new System.Windows.Forms.Timer(this.components);
             this.startButton = new System.Windows.Forms.Button();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.получитьДанныеИзФайлаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.savePacketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cycleSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CommonSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.Evo_control_page.SuspendLayout();
             this.EvoParamsGroupBox.SuspendLayout();
@@ -124,17 +127,18 @@
             this.sensorGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SensorDataGridView)).BeginInit();
             this.parameGroupBox.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.Evo_control_page);
             this.tabControl1.Controls.Add(this.Sensor_control_page);
-            this.tabControl1.Location = new System.Drawing.Point(14, 173);
+            this.tabControl1.Location = new System.Drawing.Point(14, 180);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(5);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1180, 532);
+            this.tabControl1.Size = new System.Drawing.Size(1180, 525);
             this.tabControl1.TabIndex = 1;
             // 
             // Evo_control_page
@@ -149,7 +153,7 @@
             this.Evo_control_page.Location = new System.Drawing.Point(4, 22);
             this.Evo_control_page.Name = "Evo_control_page";
             this.Evo_control_page.Padding = new System.Windows.Forms.Padding(3);
-            this.Evo_control_page.Size = new System.Drawing.Size(1172, 506);
+            this.Evo_control_page.Size = new System.Drawing.Size(1172, 499);
             this.Evo_control_page.TabIndex = 0;
             this.Evo_control_page.Text = "Состояние  Evo 20";
             // 
@@ -527,7 +531,6 @@
             // Sensor_control_page
             // 
             this.Sensor_control_page.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.Sensor_control_page.Controls.Add(this.savePacketsButton);
             this.Sensor_control_page.Controls.Add(this.sensorGroupBox);
             this.Sensor_control_page.Controls.Add(this.label4);
             this.Sensor_control_page.Controls.Add(this.comPortComboBox);
@@ -538,21 +541,9 @@
             this.Sensor_control_page.Margin = new System.Windows.Forms.Padding(5);
             this.Sensor_control_page.Name = "Sensor_control_page";
             this.Sensor_control_page.Padding = new System.Windows.Forms.Padding(3);
-            this.Sensor_control_page.Size = new System.Drawing.Size(1172, 506);
+            this.Sensor_control_page.Size = new System.Drawing.Size(1172, 499);
             this.Sensor_control_page.TabIndex = 1;
             this.Sensor_control_page.Text = "Состояние блока";
-            // 
-            // savePacketsButton
-            // 
-            this.savePacketsButton.Enabled = false;
-            this.savePacketsButton.Location = new System.Drawing.Point(426, 10);
-            this.savePacketsButton.Name = "savePacketsButton";
-            this.savePacketsButton.Size = new System.Drawing.Size(179, 27);
-            this.savePacketsButton.TabIndex = 11;
-            this.savePacketsButton.Text = "Сохранить пакеты в файл";
-            this.savePacketsButton.UseVisualStyleBackColor = true;
-            this.savePacketsButton.Visible = false;
-            this.savePacketsButton.Click += new System.EventHandler(this.savePacketsButton_Click);
             // 
             // sensorGroupBox
             // 
@@ -755,7 +746,7 @@
             this.modeComboBox.Items.AddRange(new object[] {
             "калибровка",
             "проверка"});
-            this.modeComboBox.Location = new System.Drawing.Point(233, 13);
+            this.modeComboBox.Location = new System.Drawing.Point(174, 26);
             this.modeComboBox.Name = "modeComboBox";
             this.modeComboBox.Size = new System.Drawing.Size(92, 21);
             this.modeComboBox.TabIndex = 2;
@@ -763,7 +754,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(71, 16);
+            this.label5.Location = new System.Drawing.Point(13, 29);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(134, 13);
             this.label5.TabIndex = 9;
@@ -777,7 +768,7 @@
             this.parameGroupBox.Controls.Add(this.label19);
             this.parameGroupBox.Controls.Add(this.timeLeftlabel);
             this.parameGroupBox.Controls.Add(this.label3);
-            this.parameGroupBox.Location = new System.Drawing.Point(66, 47);
+            this.parameGroupBox.Location = new System.Drawing.Point(4, 53);
             this.parameGroupBox.Name = "parameGroupBox";
             this.parameGroupBox.Size = new System.Drawing.Size(266, 123);
             this.parameGroupBox.TabIndex = 9;
@@ -839,31 +830,11 @@
             this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // readDatabutton
-            // 
-            this.readDatabutton.Location = new System.Drawing.Point(671, 9);
-            this.readDatabutton.Name = "readDatabutton";
-            this.readDatabutton.Size = new System.Drawing.Size(193, 32);
-            this.readDatabutton.TabIndex = 11;
-            this.readDatabutton.Text = "Получить данные из файла ";
-            this.readDatabutton.UseVisualStyleBackColor = true;
-            this.readDatabutton.Click += new System.EventHandler(this.readDataButton_Click);
-            // 
-            // settingsButton
-            // 
-            this.settingsButton.Image = global::Evo20.GUI.Properties.Resources.settings;
-            this.settingsButton.Location = new System.Drawing.Point(18, 3);
-            this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(39, 38);
-            this.settingsButton.TabIndex = 10;
-            this.settingsButton.UseVisualStyleBackColor = true;
-            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
-            // 
             // stopButton
             // 
             this.stopButton.Enabled = false;
             this.stopButton.Image = global::Evo20.GUI.Properties.Resources.stop;
-            this.stopButton.Location = new System.Drawing.Point(497, 5);
+            this.stopButton.Location = new System.Drawing.Point(342, 24);
             this.stopButton.Name = "stopButton";
             this.stopButton.Size = new System.Drawing.Size(44, 41);
             this.stopButton.TabIndex = 8;
@@ -874,22 +845,12 @@
             // 
             this.pauseButton.Enabled = false;
             this.pauseButton.Image = global::Evo20.GUI.Properties.Resources.pause_;
-            this.pauseButton.Location = new System.Drawing.Point(456, 5);
+            this.pauseButton.Location = new System.Drawing.Point(414, 26);
             this.pauseButton.Name = "pauseButton";
             this.pauseButton.Size = new System.Drawing.Size(44, 41);
             this.pauseButton.TabIndex = 7;
             this.pauseButton.UseVisualStyleBackColor = true;
-            this.pauseButton.Click += new System.EventHandler(this.pauseButton_Click);
-            // 
-            // cycleSettingsButton
-            // 
-            this.cycleSettingsButton.Location = new System.Drawing.Point(671, 47);
-            this.cycleSettingsButton.Name = "cycleSettingsButton";
-            this.cycleSettingsButton.Size = new System.Drawing.Size(193, 32);
-            this.cycleSettingsButton.TabIndex = 12;
-            this.cycleSettingsButton.Text = "Настройки температур проверки";
-            this.cycleSettingsButton.UseVisualStyleBackColor = true;
-            this.cycleSettingsButton.Click += new System.EventHandler(this.cycleSettingsButton_Click);
+            this.pauseButton.Visible = false;
             // 
             // SensorTimer
             // 
@@ -899,12 +860,70 @@
             // startButton
             // 
             this.startButton.Image = global::Evo20.GUI.Properties.Resources.play;
-            this.startButton.Location = new System.Drawing.Point(415, 5);
+            this.startButton.Location = new System.Drawing.Point(302, 24);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(44, 41);
             this.startButton.TabIndex = 3;
             this.startButton.UseVisualStyleBackColor = true;
             this.startButton.Click += new System.EventHandler(this.startButton_Click);
+            // 
+            // menuStrip
+            // 
+            this.menuStrip.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.FileToolStripMenuItem,
+            this.SettingsToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(1218, 24);
+            this.menuStrip.TabIndex = 13;
+            this.menuStrip.Text = "menuStrip1";
+            // 
+            // FileToolStripMenuItem
+            // 
+            this.FileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.получитьДанныеИзФайлаToolStripMenuItem,
+            this.savePacketsToolStripMenuItem});
+            this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
+            this.FileToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.FileToolStripMenuItem.Text = "Файл";
+            // 
+            // получитьДанныеИзФайлаToolStripMenuItem
+            // 
+            this.получитьДанныеИзФайлаToolStripMenuItem.Name = "получитьДанныеИзФайлаToolStripMenuItem";
+            this.получитьДанныеИзФайлаToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.получитьДанныеИзФайлаToolStripMenuItem.Text = "Получить данные из файла ";
+            this.получитьДанныеИзФайлаToolStripMenuItem.Click += new System.EventHandler(this.readDataButton_Click);
+            // 
+            // savePacketsToolStripMenuItem
+            // 
+            this.savePacketsToolStripMenuItem.Name = "savePacketsToolStripMenuItem";
+            this.savePacketsToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.savePacketsToolStripMenuItem.Text = "Сохранить пакеты в файл";
+            this.savePacketsToolStripMenuItem.Click += new System.EventHandler(this.savePacketsToolStripMenuItem_Click);
+            // 
+            // SettingsToolStripMenuItem
+            // 
+            this.SettingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cycleSettingsToolStripMenuItem,
+            this.CommonSettingsToolStripMenuItem});
+            this.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem";
+            this.SettingsToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
+            this.SettingsToolStripMenuItem.Text = "Настройки";
+            // 
+            // cycleSettingsToolStripMenuItem
+            // 
+            this.cycleSettingsToolStripMenuItem.Name = "cycleSettingsToolStripMenuItem";
+            this.cycleSettingsToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
+            this.cycleSettingsToolStripMenuItem.Text = "Настройки температур проверки";
+            this.cycleSettingsToolStripMenuItem.Click += new System.EventHandler(this.cycleSettingsToolStripMenuItem_Click);
+            // 
+            // CommonSettingsToolStripMenuItem
+            // 
+            this.CommonSettingsToolStripMenuItem.Name = "CommonSettingsToolStripMenuItem";
+            this.CommonSettingsToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
+            this.CommonSettingsToolStripMenuItem.Text = "Общие настройки";
+            this.CommonSettingsToolStripMenuItem.Click += new System.EventHandler(this.CommonSettingsToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -912,9 +931,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1218, 703);
-            this.Controls.Add(this.cycleSettingsButton);
-            this.Controls.Add(this.readDatabutton);
-            this.Controls.Add(this.settingsButton);
             this.Controls.Add(this.parameGroupBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.stopButton);
@@ -922,7 +938,9 @@
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.modeComboBox);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.menuStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
             this.Text = "Evo20";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -948,6 +966,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.SensorDataGridView)).EndInit();
             this.parameGroupBox.ResumeLayout(false);
             this.parameGroupBox.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1017,10 +1037,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn zColumn;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label countTemperaturesReachedLabel;
-        private System.Windows.Forms.Button settingsButton;
-        private System.Windows.Forms.Button savePacketsButton;
         private System.Windows.Forms.Timer timer;
-        private System.Windows.Forms.Button readDatabutton;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label connectionStateLabel;
         private System.Windows.Forms.Label controllerWokModeLabel;
@@ -1029,10 +1046,16 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label temperatureStabLabel;
-        private System.Windows.Forms.Button cycleSettingsButton;
         private System.Windows.Forms.Timer SensorTimer;
         private System.Windows.Forms.Label currentPositionNumberLable;
         private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.ToolStripMenuItem FileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem получитьДанныеИзФайлаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SettingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cycleSettingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem CommonSettingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem savePacketsToolStripMenuItem;
     }
 }
 

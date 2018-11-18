@@ -69,8 +69,8 @@ namespace Evo20.SensorsConnection
             }
             catch (UnauthorizedAccessException exeption)
             {
-                Evo20.Log.WriteLog("Указанный порт занят" + serialPort.PortName);
-                Evo20.Log.WriteLog(exeption.ToString());
+                Log.WriteLog("Указанный порт занят" + serialPort.PortName);
+                Log.WriteLog(exeption.ToString());
                 ConnectionStatus = ConnectionStatus.ERROR;
                 if (EventHandlerListForExeptions != null)
                 {
@@ -80,8 +80,8 @@ namespace Evo20.SensorsConnection
             }
             catch (ThreadAbortException exeption)
             {
-                Evo20.Log.WriteLog("Поток чтения Com порта закрыт");
-                Evo20.Log.WriteLog(exeption.ToString());
+                Log.WriteLog("Поток чтения Com порта закрыт");
+                Log.WriteLog(exeption.ToString());
                 if (EventHandlerListForExeptions != null)
                 {
                     EventHandlerListForExeptions(exeption);
@@ -90,8 +90,8 @@ namespace Evo20.SensorsConnection
             }
             catch (InvalidOperationException exeption)
             {
-                Evo20.Log.WriteLog("Порт уже открыт");
-                Evo20.Log.WriteLog(exeption.ToString());
+                Log.WriteLog("Порт уже открыт");
+                Log.WriteLog(exeption.ToString());
                 if (EventHandlerListForExeptions != null)
                 {
                     EventHandlerListForExeptions(exeption);
@@ -108,7 +108,7 @@ namespace Evo20.SensorsConnection
                         readThread.Start();
                     }
                     ConnectionStatus = ConnectionStatus.CONNECTED;
-                    Evo20.Log.WriteLog("Соединение c датчиком установленно");
+                    Log.WriteLog("Соединение c датчиком установленно");
                     return true;
                 }
                 else
@@ -131,7 +131,7 @@ namespace Evo20.SensorsConnection
                     readThread.Abort();
                 }
                 ConnectionStatus = ConnectionStatus.PAUSE;
-                Evo20.Log.WriteLog("Соединение c датчиком приостановленно");
+                Log.WriteLog("Соединение c датчиком приостановленно");
                 return true;
             }
             else
@@ -146,7 +146,7 @@ namespace Evo20.SensorsConnection
             {
                 readThread.Start();
                 ConnectionStatus = ConnectionStatus.CONNECTED;
-                Evo20.Log.WriteLog("Соединение c датчиком востановлено");
+                Log.WriteLog("Соединение c датчиком востановлено");
                 return true;
             }
             else
@@ -166,7 +166,7 @@ namespace Evo20.SensorsConnection
                 serialPort.Close();
             }
             ConnectionStatus = ConnectionStatus.DISCONNECTED;
-            Evo20.Log.WriteLog("Соединение c датчиком прервано");
+            Log.WriteLog("Соединение c датчиком прервано");
             return true;
         }
 
@@ -226,8 +226,8 @@ namespace Evo20.SensorsConnection
                 }
                 catch (TimeoutException exeption)
                 {
-                    Evo20.Log.WriteLog("Байты не были доступны для чтения");
-                    Evo20.Log.WriteLog(exeption.ToString());
+                    Log.WriteLog("Байты не были доступны для чтения");
+                    Log.WriteLog(exeption.ToString());
                     ConnectionStatus = ConnectionStatus.ERROR;
                     if (EventHandlerListForExeptions != null)
                     {
@@ -237,8 +237,8 @@ namespace Evo20.SensorsConnection
                 }
                 catch (InvalidOperationException exeption)
                 {
-                    Evo20.Log.WriteLog("Указанный порт не открыт " + serialPort.PortName);
-                    Evo20.Log.WriteLog(exeption.ToString());
+                    Log.WriteLog("Указанный порт не открыт " + serialPort.PortName);
+                    Log.WriteLog(exeption.ToString());
                     ConnectionStatus = ConnectionStatus.ERROR;
                     if (EventHandlerListForExeptions != null)
                     {

@@ -38,15 +38,15 @@
             // 
             this.CalibrationPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.CalibrationPanel.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.CalibrationPanel.Location = new System.Drawing.Point(98, 30);
+            this.CalibrationPanel.Location = new System.Drawing.Point(98, 48);
             this.CalibrationPanel.Name = "CalibrationPanel";
-            this.CalibrationPanel.Size = new System.Drawing.Size(275, 394);
+            this.CalibrationPanel.Size = new System.Drawing.Size(275, 376);
             this.CalibrationPanel.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(95, 9);
+            this.label1.Location = new System.Drawing.Point(57, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(393, 13);
             this.label1.TabIndex = 1;
@@ -71,8 +71,9 @@
             this.Controls.Add(this.EndConfigurationButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CalibrationPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CycleSettingsForm";
-            this.Text = "CycleSettingsForm";
+            this.Text = "Настройки температур проверки";
             this.Load += new System.EventHandler(this.CycleSettingsForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

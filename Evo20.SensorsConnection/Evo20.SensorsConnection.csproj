@@ -46,13 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BKV1.cs" />
-    <Compile Include="DLY.cs" />
-    <Compile Include="DYS.cs" />
-    <Compile Include="ISensor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SensorConnection.cs" />
-    <Compile Include="SensorData.cs" />
     <Compile Include="SensorHandler.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,9 +55,13 @@
       <Project>{99D800D1-0D39-49B9-9311-003759CA741B}</Project>
       <Name>Evo20.Config</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Evo20.PacketsLib\Evo20.PacketsLib.csproj">
+    <ProjectReference Include="..\Evo20.PacketsLib\Evo20.Packets.csproj">
       <Project>{38D34933-EA5E-4C43-AEE0-752676BC5FD0}</Project>
-      <Name>Evo20.PacketsLib</Name>
+      <Name>Evo20.Packets</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Evo20.Sensors\Evo20.Sensors.csproj">
+      <Project>{4E9C9D86-5565-4A04-8490-85EBED2E8886}</Project>
+      <Name>Evo20.Sensors</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

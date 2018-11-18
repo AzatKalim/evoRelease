@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Collections;
 
-namespace Evo20.EvoCommandsLib
+namespace Evo20.Commands
 {
     public class Axis_Status:Command
     {

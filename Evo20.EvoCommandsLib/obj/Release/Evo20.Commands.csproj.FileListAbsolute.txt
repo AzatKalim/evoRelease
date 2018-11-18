@@ -1,0 +1,7 @@
+C:\Users\Азат\Desktop\Evo20\Evo20.EvoCommandsLib\bin\Release\Evo20.Config.dll
+C:\Users\Азат\Desktop\Evo20\Evo20.EvoCommandsLib\bin\Release\Evo20.Config.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.EvoCommandsLib\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Азат\Desktop\Evo20\Evo20.EvoCommandsLib\bin\Release\Evo20.EvoCommands.dll
+C:\Users\Азат\Desktop\Evo20\Evo20.EvoCommandsLib\bin\Release\Evo20.EvoCommands.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.EvoCommandsLib\obj\Release\Evo20.EvoCommands.dll
+C:\Users\Азат\Desktop\Evo20\Evo20.EvoCommandsLib\obj\Release\Evo20.EvoCommands.pdb

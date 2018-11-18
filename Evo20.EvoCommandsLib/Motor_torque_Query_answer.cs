@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Evo20.EvoCommandsLib
+namespace Evo20.Commands
 {
     class Motor_torque_Query_answer:Command
     {

@@ -56,9 +56,9 @@
       <Project>{99D800D1-0D39-49B9-9311-003759CA741B}</Project>
       <Name>Evo20.Config</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Evo20.EvoCommandsLib\Evo20.EvoCommandsLib.csproj">
+    <ProjectReference Include="..\Evo20.EvoCommandsLib\Evo20.Commands.csproj">
       <Project>{8C91504C-7D1B-4385-A276-6848E1A3396E}</Project>
-      <Name>Evo20.EvoCommandsLib</Name>
+      <Name>Evo20.Commands</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
