@@ -69,8 +69,8 @@ namespace Evo20.SensorsConnection
             }
             catch (UnauthorizedAccessException exeption)
             {
-                Log.WriteLog("Указанный порт занят" + serialPort.PortName);
-                Log.WriteLog(exeption.ToString());
+                Log.Instance.Error("Указанный порт занят {0}",serialPort.PortName);
+                Log.Instance.Exception(exeption);
                 ConnectionStatus = ConnectionStatus.ERROR;
                 if (EventHandlerListForExeptions != null)
                 {
@@ -80,8 +80,7 @@ namespace Evo20.SensorsConnection
             }
             catch (ThreadAbortException exeption)
             {
-                Log.WriteLog("Поток чтения Com порта закрыт");
-                Log.WriteLog(exeption.ToString());
+                Log.Instance.Warning("Поток чтения Com порта закрыт");
                 if (EventHandlerListForExeptions != null)
                 {
                     EventHandlerListForExeptions(exeption);
@@ -90,8 +89,8 @@ namespace Evo20.SensorsConnection
             }
             catch (InvalidOperationException exeption)
             {
-                Log.WriteLog("Порт уже открыт");
-                Log.WriteLog(exeption.ToString());
+                Log.Instance.Error("Порт уже открыт");
+                Log.Instance.Exception(exeption);
                 if (EventHandlerListForExeptions != null)
                 {
                     EventHandlerListForExeptions(exeption);
@@ -108,7 +107,7 @@ namespace Evo20.SensorsConnection
                         readThread.Start();
                     }
                     ConnectionStatus = ConnectionStatus.CONNECTED;
-                    Log.WriteLog("Соединение c датчиком установленно");
+                    Log.Instance.Info("Соединение c датчиком установленно");
                     return true;
                 }
                 else
@@ -131,7 +130,7 @@ namespace Evo20.SensorsConnection
                     readThread.Abort();
                 }
                 ConnectionStatus = ConnectionStatus.PAUSE;
-                Log.WriteLog("Соединение c датчиком приостановленно");
+                Log.Instance.Info("Соединение c датчиком приостановленно");
                 return true;
             }
             else
@@ -146,7 +145,7 @@ namespace Evo20.SensorsConnection
             {
                 readThread.Start();
                 ConnectionStatus = ConnectionStatus.CONNECTED;
-                Log.WriteLog("Соединение c датчиком востановлено");
+                Log.Instance.Info("Соединение c датчиком востановлено");
                 return true;
             }
             else
@@ -166,7 +165,7 @@ namespace Evo20.SensorsConnection
                 serialPort.Close();
             }
             ConnectionStatus = ConnectionStatus.DISCONNECTED;
-            Log.WriteLog("Соединение c датчиком прервано");
+            Log.Instance.Info("Соединение c датчиком прервано");
             return true;
         }
 
@@ -226,8 +225,8 @@ namespace Evo20.SensorsConnection
                 }
                 catch (TimeoutException exeption)
                 {
-                    Log.WriteLog("Байты не были доступны для чтения");
-                    Log.WriteLog(exeption.ToString());
+                    Log.Instance.Error("Байты не были доступны для чтения");
+                    Log.Instance.Exception(exeption);
                     ConnectionStatus = ConnectionStatus.ERROR;
                     if (EventHandlerListForExeptions != null)
                     {
@@ -237,8 +236,8 @@ namespace Evo20.SensorsConnection
                 }
                 catch (InvalidOperationException exeption)
                 {
-                    Log.WriteLog("Указанный порт не открыт " + serialPort.PortName);
-                    Log.WriteLog(exeption.ToString());
+                    Log.Instance.Error("Указанный порт не открыт {0}",serialPort.PortName);
+                    Log.Instance.Exception(exeption);
                     ConnectionStatus = ConnectionStatus.ERROR;
                     if (EventHandlerListForExeptions != null)
                     {

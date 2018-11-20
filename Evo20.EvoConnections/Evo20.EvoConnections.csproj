@@ -52,9 +52,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Evo20.Config\Evo20.Config.csproj">
+    <ProjectReference Include="..\Evo20.Config\Evo20.Utils.csproj">
       <Project>{99D800D1-0D39-49B9-9311-003759CA741B}</Project>
-      <Name>Evo20.Config</Name>
+      <Name>Evo20.Utils</Name>
     </ProjectReference>
     <ProjectReference Include="..\Evo20.EvoCommandsLib\Evo20.Commands.csproj">
       <Project>{8C91504C-7D1B-4385-A276-6848E1A3396E}</Project>

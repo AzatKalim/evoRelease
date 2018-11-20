@@ -24,11 +24,11 @@ namespace Evo20.GUI
 
         private void CycleSettingsForm_Load(object sender, EventArgs e)
         {
-            for (int i = 0; i < CycleData.Current.CalibrationTemperatures.Count; i++)
+            for (int i = 0; i < CycleData.Instance.CalibrationTemperatures.Count; i++)
             {
                 var box = new CheckBox();
                 //box.Tag = i.ToString();
-                box.Text = CycleData.Current.CalibrationTemperatures[i].ToString();
+                box.Text = CycleData.Instance.CalibrationTemperatures[i].ToString();
                 box.TabIndex = i;
                 //box.AutoSize = true;
                 box.Location = new Point(10, i * 20); //vertical
@@ -92,7 +92,7 @@ namespace Evo20.GUI
                     resultList.Add(Convert.ToInt32(item.Text));
                 }
             }
-            CycleData.Current.SetTemperatures(resultList);
+            CycleData.Instance.SetTemperatures(resultList);
             this.DialogResult = DialogResult.OK;
         }
 

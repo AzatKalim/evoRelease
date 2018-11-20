@@ -25,7 +25,7 @@ namespace Evo20.Controllers
 
         private static SensorData sensorData;
 
-        public static SensorData Current
+        public static SensorData Instance
         {
             get
             {
@@ -79,11 +79,22 @@ namespace Evo20.Controllers
             }
         }
 
-        public bool WriteAllPackets(ISensor[] sensors,StreamWriter file)
+        public void WritePacketsForCurrentTemperature(StreamWriter file, PacketsCollection[] data,int temperatureIndex)
+        {
+            Log.Instance.Info("Запись данных в файл {0} для температуры", temperatureIndex);
+            if(data!=null && data.Length>temperatureIndex && data[temperatureIndex]!=null)
+            {
+                file.WriteLine(data.Length);
+                file.WriteLine(data.ToString());
+                Log.Instance.Info("Запись данных в файл {0} для температуры завершена", temperatureIndex);
+            }
+            Log.Instance.Error("Запись данных в файл {0} для температуры невыполнена", temperatureIndex);
+        }
+        public bool WritePacketsForCurrentTemperture(ISensor[] sensors, StreamWriter file, int temperatureIndex)
         {
             if (sensors[0].CalibrationPacketsCollection == null || sensors[0].CalibrationPacketsCollection.Count == 0)
             {
-                Log.WriteLog("Нет пакетов по калибровке " + sensors[0].Name);
+                Log.Instance.Error("Нет пакетов по калибровке: {0}", sensors[0].Name);
                 return false;
             }
             else
@@ -92,7 +103,30 @@ namespace Evo20.Controllers
             }
             if (sensors[1].CalibrationPacketsCollection == null || sensors[1].CalibrationPacketsCollection.Count == 0)
             {
-                Log.WriteLog("Нет пакетов по калибровке "+ sensors[1].Name);
+                Log.Instance.Error("Нет пакетов по калибровке: {0}", sensors[1].Name);
+                return false;
+            }
+            else
+            {
+                WritePackets(file, sensors[1].CalibrationPacketsCollection.ToArray());
+            }
+            return true;
+        }
+
+        public bool WriteAllPackets(ISensor[] sensors,StreamWriter file)
+        {
+            if (sensors[0].CalibrationPacketsCollection == null || sensors[0].CalibrationPacketsCollection.Count == 0)
+            {
+                Log.Instance.Error("Нет пакетов по калибровке: {0}",sensors[0].Name);
+                return false;
+            }
+            else
+            {
+                WritePackets(file, sensors[0].CalibrationPacketsCollection.ToArray());
+            }
+            if (sensors[1].CalibrationPacketsCollection == null || sensors[1].CalibrationPacketsCollection.Count == 0)
+            {
+                Log.Instance.Error("Нет пакетов по калибровке: {0}", sensors[1].Name);
                 return false;
             }
             else
@@ -118,13 +152,6 @@ namespace Evo20.Controllers
             return true;
         }
 
-        public bool WriteAllPackets()
-        {
-            //StreamWriter file = new StreamWriter("allpackets.txt");
-            //return WriteAllPackets(file);
-            return true;
-        }
-
         private bool ReadDataFromFile(StreamReader file, List<PacketsCollection>collection)
         {
             var temp = file.ReadLine();
@@ -138,7 +165,8 @@ namespace Evo20.Controllers
                 }
                 catch (Exception exception)
                 {
-                    Log.WriteLog("Ошибка: Чтение файла данных пакетов при температуре" + i + " " + exception);
+                    Log.Instance.Error("Ошибка: Чтение файла данных пакетов при температуре {0}",i);
+                    Log.Instance.Exception(exception);
                     return false;
                 }
             }
@@ -172,14 +200,14 @@ namespace Evo20.Controllers
         {
             var sensorsList = new List<ISensor>();
             //добавляем в список датчиков ДЛУ и ДУС
-            sensorsList.Add(new DLY(CycleData.Current.CalibrationTemperatures,
-                CycleData.Current.CheckTemperatures,
-                SensorData.Current.CalibrationDLYMaxPacketsCount,
-                SensorData.Current.CheckDLYMaxPacketsCount));
-            sensorsList.Add(new DYS(CycleData.Current.CalibrationTemperatures,
-                CycleData.Current.CheckTemperatures,
-                SensorData.Current.CalibrationDYSMaxPacketsCount,
-                SensorData.Current.CheckDYSMaxPacketsCount));
+            sensorsList.Add(new DLY(CycleData.Instance.CalibrationTemperatures,
+                CycleData.Instance.CheckTemperatures,
+                SensorData.Instance.CalibrationDLYMaxPacketsCount,
+                SensorData.Instance.CheckDLYMaxPacketsCount));
+            sensorsList.Add(new DYS(CycleData.Instance.CalibrationTemperatures,
+                CycleData.Instance.CheckTemperatures,
+                SensorData.Instance.CalibrationDYSMaxPacketsCount,
+                SensorData.Instance.CheckDYSMaxPacketsCount));
             return sensorsList;
         }
     }

@@ -85,7 +85,9 @@ namespace Evo20.EvoConnections
             endPoint = new IPEndPoint(remoteIPAddress, Config.Config.REMOTE_PORT_NUMBER);
             Sender = new UdpClient(Config.Config.REMOTE_PORT_NUMBER);
             //убрать
+#if !DEBUG
             Sender.Connect(endPoint);
+#endif
             switch (Config.Config.EvoType)
             {
                 case 1:
@@ -125,7 +127,7 @@ namespace Evo20.EvoConnections
                     work_thread= new Thread(ReadMessage);
                     work_thread.Start();
                 }
-                Evo20.Log.WriteLog("Соединение c Evo 20 установлено");
+                Log.Instance.Info("Соединение c Evo 20 установлено");
                 return true;
             }
             else
@@ -144,7 +146,7 @@ namespace Evo20.EvoConnections
             {
                 work_thread.Abort();
                 ConnectionStatus = ConnectionStatus.PAUSE;
-                Evo20.Log.WriteLog("Соединение c Evo 20 приостановлено");
+                Log.Instance.Info("Соединение c Evo 20 приостановлено");
                 return true;
             }
             else
@@ -164,7 +166,7 @@ namespace Evo20.EvoConnections
                 work_thread = new Thread(ReadMessage);
                 work_thread.Start();
                 ConnectionStatus = ConnectionStatus.CONNECTED;
-                Evo20.Log.WriteLog("Соединение c Evo 20 востановлено");
+                Log.Instance.Info("Соединение c Evo 20 востановлено");
                 return true;
             }
             else
@@ -186,7 +188,7 @@ namespace Evo20.EvoConnections
             ConnectionStatus = ConnectionStatus.DISCONNECTED;
             if(ReceivingUdpClient!=null)
                 ReceivingUdpClient.Close();
-            Evo20.Log.WriteLog("Соединение c Evo 20 прервано");
+            Log.Instance.Info("Соединение c Evo 20 прервано");
             return true;
         }
 
@@ -202,7 +204,9 @@ namespace Evo20.EvoConnections
         public bool SendMessage(string message)
         {
             //убрать
-            //return true;
+#if DEBUG
+            return true;
+#endif
             try
             {
                 if (connectionState == ConnectionStatus.CONNECTED)
@@ -212,13 +216,13 @@ namespace Evo20.EvoConnections
                         return true;
                     else
                     {
-                        Evo20.Log.WriteLog("Сообщение " + message + " Evo 20 не было отправлено,число байт не совпало");
+                        Log.Instance.Error("Сообщение {0} Evo 20 не было отправлено,число байт не совпало",message);
                         return false;
                     }
                 }
                 else
                 {
-                    Evo20.Log.WriteLog("Сообщение " + message + " Evo 20 не было отправлено, соединение активно?" + Sender.Client.Connected);
+                    Log.Instance.Error("Сообщение {0} Evo 20 не было отправлено, соединение активно? {1}",message,Sender.Client.Connected);
                     if (this.ConnectionStatus == ConnectionStatus.CONNECTED)
                         this.ConnectionStatus = ConnectionStatus.DISCONNECTED;
                     return false;
@@ -227,7 +231,8 @@ namespace Evo20.EvoConnections
             catch (Exception exception)
             {
                 ConnectionStatus = ConnectionStatus.ERROR;
-                Evo20.Log.WriteLog("Сообщение " + message + " Evo 20 не доставлено " + "Возникло исключение" + exception);
+                Log.Instance.Error("Сообщение {0} Evo 20 не доставлено Возникло исключение",message);
+                Log.Instance.Exception(exception);
                 Sender.Close();
                 if (EventHandlerListForException != null)
                     EventHandlerListForException(exception);
@@ -271,16 +276,17 @@ namespace Evo20.EvoConnections
             }
             catch (ThreadAbortException)
             {
-                Evo20.Log.WriteLog("Поток чтения данных evo прерван");
+                Log.Instance.Warning("Поток чтения данных evo прерван");
             }
             catch (ObjectDisposedException)
             {
-                Evo20.Log.WriteLog("Сокет закрыт");
+                Log.Instance.Warning("Сокет закрыт");
             }
             catch (Exception exception)
             {
                 ConnectionStatus = ConnectionStatus.ERROR;
-                Evo20.Log.WriteLog("Невозможно открыть соединение с Evo " + "Возникло исключение" + exception.ToString());
+                Log.Instance.Error("Невозможно открыть соединение с Evo Возникло исключение");
+                Log.Instance.Exception(exception);
                 if (EventHandlerListForException != null)
                     EventHandlerListForException(exception);
             }
@@ -385,7 +391,8 @@ namespace Evo20.EvoConnections
             }
             catch (FormatException exception)
             {
-                Evo20.Log.WriteLog(string.Format("ConnectionSocket: Ошибка чтения из буфера {0}!", exception.ToString()));
+                Log.Instance.Error("ConnectionSocket: Ошибка чтения из буфера!");
+                Log.Instance.Exception(exception);
                 message = String.Empty;
             }
             return message;

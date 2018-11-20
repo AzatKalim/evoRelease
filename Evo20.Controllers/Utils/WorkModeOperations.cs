@@ -15,9 +15,9 @@ namespace Evo20.Controllers
         Pause,
         Error
     }
-    static class WorkModeOperations
+    public static class WorkModeOperations
     {
-        public static string ToView(WorkMode mode)
+        public static string ToView(this WorkMode mode)
         {
             switch (mode)
             {

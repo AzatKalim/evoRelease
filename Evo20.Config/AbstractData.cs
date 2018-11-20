@@ -29,7 +29,7 @@ namespace Evo20
             string[] temp = templine.Split(':');
             if (temp[0] != checkString)
             {
-                Evo20.Log.WriteLog("Не верна строка файла настроек:" + checkString);
+                Log.Instance.Error("Не верна строка файла настроек:{0}",checkString);
                 return false;
             }
             else
@@ -48,9 +48,10 @@ namespace Evo20
                     {
                         param = Convert.ToDouble(temp[1]);
                     }
-                    catch
+                    catch(Exception ex)
                     {
-                        Evo20.Log.WriteLog("Не верна строка файла настроек:" + checkString);
+                        Log.Instance.Error("Не верна строка файла настроек:{0}",checkString);
+                        Log.Instance.Exception(ex);
                         return false;
                     }                 
                 }
@@ -71,7 +72,7 @@ namespace Evo20
             string[] temp = templine.Split(':');
             if (temp[0] != checkString)
             {
-                Evo20.Log.WriteLog("Не верна строка файла настроек:" + checkString);
+                Log.Instance.Error("Не верна строка файла настроек:" + checkString);
                 return false;
             }
             else
@@ -80,9 +81,10 @@ namespace Evo20
                 {
                     param = Convert.ToInt32(temp[1]);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    Evo20.Log.WriteLog("Не верна строка файла настроек:" + checkString);
+                    Log.Instance.Error("Не верна строка файла настроек:{0}",checkString);
+                    Log.Instance.Exception(ex);
                     return false;
                 }
             }

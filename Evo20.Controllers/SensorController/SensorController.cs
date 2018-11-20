@@ -21,7 +21,7 @@ namespace Evo20.Controllers
 
         private static SensorController sensorController;
 
-        public static SensorController Current
+        public static SensorController Instance
         {
             get
             {
@@ -47,13 +47,11 @@ namespace Evo20.Controllers
             }
         }
 
-        List<ISensor> sensorsList;
-
         ISensor currentSensor;
 
         public PacketsData lastPacket;
 
-        int temperatureOfCollect = 0;
+        public int TemperatureOfCollect = 0;
 
         public int CurrentPositionNumber
         {
@@ -81,9 +79,9 @@ namespace Evo20.Controllers
             {
                 if (CurrentSensor == null)
                     return 0;
-                if (Controller.Current.Mode == WorkMode.CalibrationMode)
+                if (Controller.Instance.Mode == WorkMode.CalibrationMode)
                     return CurrentSensor.CalibrationProfile.Length;
-                if (Controller.Current.Mode == WorkMode.CheckMode)
+                if (Controller.Instance.Mode == WorkMode.CheckMode)
                     return CurrentSensor.CheckProfile.Length;
                 return 0;
             }
@@ -101,10 +99,10 @@ namespace Evo20.Controllers
             {
                 if (CurrentSensor == null)
                     return 0;
-                if (Controller.Current.Mode == WorkMode.CalibrationMode)
-                    return CurrentSensor.PacketsArivedCountCalibration(temperatureOfCollect, CurrentPositionNumber);
-                if (Controller.Current.Mode == WorkMode.CheckMode)
-                    return CurrentSensor.PacketsArivedCountCheck(temperatureOfCollect,CurrentPositionNumber);
+                if (Controller.Instance.Mode == WorkMode.CalibrationMode)
+                    return CurrentSensor.PacketsArivedCountCalibration(TemperatureOfCollect, CurrentPositionNumber);
+                if (Controller.Instance.Mode == WorkMode.CheckMode)
+                    return CurrentSensor.PacketsArivedCountCheck(TemperatureOfCollect,CurrentPositionNumber);
                 return 0;
             }
         }
@@ -121,18 +119,18 @@ namespace Evo20.Controllers
             }
             lastPacket = newPacketsData;
             //Добавляем их 
-            if (Controller.Current.Mode == WorkMode.CalibrationMode && canCollect)
+            if (Controller.Instance.Mode == WorkMode.CalibrationMode && canCollect)
             {
                 currentSensor.AddCalibrationPacketData(newPacketsData,
-                    temperatureOfCollect,
+                    TemperatureOfCollect,
                     CurrentPositionNumber);
             }
             else
             {
-                if (Controller.Current.Mode == WorkMode.CheckMode && canCollect)
+                if (Controller.Instance.Mode == WorkMode.CheckMode && canCollect)
                 {
                     currentSensor.AddCheckPacketData(newPacketsData,
-                        temperatureOfCollect,
+                        TemperatureOfCollect,
                         CurrentPositionNumber);
                 }
             }
@@ -156,7 +154,7 @@ namespace Evo20.Controllers
         /// <param name="sensorExeption">Ошибка</param>
         private void SensorExeptionHandler(Exception sensorExeption)
         {
-            Controller.Current.Stop();
+            Controller.Instance.Stop();
             if (EventHandlerListForControllerExceptions != null)
             {
                 EventHandlerListForControllerExceptions(sensorExeption);
@@ -167,12 +165,12 @@ namespace Evo20.Controllers
         {
             if (currentSensor != null)
             {
-                switch (Controller.Current.Mode)
+                switch (Controller.Instance.Mode)
                 {
                     case WorkMode.CalibrationMode:
-                        return CurrentSensor.СalculateCalibrationAverage(temperatureOfCollect, CurrentPositionNumber);
+                        return CurrentSensor.СalculateCalibrationAverage(TemperatureOfCollect, CurrentPositionNumber);
                     case WorkMode.CheckMode:
-                        return CurrentSensor.СalculateCheckAverage(temperatureOfCollect, CurrentPositionNumber);
+                        return CurrentSensor.СalculateCheckAverage(TemperatureOfCollect, CurrentPositionNumber);
                     default:
                         break;
                 }

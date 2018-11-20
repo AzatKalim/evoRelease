@@ -86,7 +86,7 @@ namespace Evo20.Controllers
 
         private static EvoData current;
 
-        public static EvoData Current
+        public static EvoData Instance
         {
             get
             {

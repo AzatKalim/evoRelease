@@ -12,7 +12,7 @@ namespace Evo20.Controllers
     {
         private static MathController mathController;
 
-        public static MathController Current
+        public static MathController Instance
         {
             get
             {
@@ -34,10 +34,10 @@ namespace Evo20.Controllers
                 file);
             if (!result)
             {
-                Log.WriteLog("Вычисление коэфицентов не выполнено!");
+                Log.Instance.Error("Вычисление коэфицентов не выполнено!");
                 return result;
             }
-            Log.WriteLog("Вычисление коэфицентов выполнено!");
+            Log.Instance.Info("Вычисление коэфицентов выполнено!");
             return result;
         }
     }

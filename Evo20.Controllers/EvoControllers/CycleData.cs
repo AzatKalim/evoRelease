@@ -34,7 +34,7 @@ namespace Evo20.Controllers
 
         private static CycleData cycleData;
 
-        public static CycleData Current
+        public static CycleData Instance
         {
             get
             {

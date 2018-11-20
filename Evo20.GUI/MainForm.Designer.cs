@@ -106,7 +106,7 @@
             this.startButton = new System.Windows.Forms.Button();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.получитьДанныеИзФайлаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.getDataFromFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.savePacketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cycleSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -461,7 +461,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(288, 145);
+            this.label16.Location = new System.Drawing.Point(276, 145);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(14, 13);
             this.label16.TabIndex = 2;
@@ -470,7 +470,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(222, 145);
+            this.label15.Location = new System.Drawing.Point(204, 145);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(14, 13);
             this.label15.TabIndex = 1;
@@ -702,9 +702,9 @@
             // 
             this.sensorStopButton.Enabled = false;
             this.sensorStopButton.Image = global::Evo20.GUI.Properties.Resources.stop;
-            this.sensorStopButton.Location = new System.Drawing.Point(325, 10);
+            this.sensorStopButton.Location = new System.Drawing.Point(325, 8);
             this.sensorStopButton.Name = "sensorStopButton";
-            this.sensorStopButton.Size = new System.Drawing.Size(42, 39);
+            this.sensorStopButton.Size = new System.Drawing.Size(43, 41);
             this.sensorStopButton.TabIndex = 4;
             this.sensorStopButton.UseVisualStyleBackColor = true;
             this.sensorStopButton.Click += new System.EventHandler(this.sensorStopButton_Click);
@@ -713,9 +713,9 @@
             // 
             this.sensorPauseButton.Enabled = false;
             this.sensorPauseButton.Image = global::Evo20.GUI.Properties.Resources.pause_;
-            this.sensorPauseButton.Location = new System.Drawing.Point(288, 9);
+            this.sensorPauseButton.Location = new System.Drawing.Point(288, 8);
             this.sensorPauseButton.Name = "sensorPauseButton";
-            this.sensorPauseButton.Size = new System.Drawing.Size(40, 40);
+            this.sensorPauseButton.Size = new System.Drawing.Size(40, 41);
             this.sensorPauseButton.TabIndex = 3;
             this.sensorPauseButton.UseVisualStyleBackColor = true;
             this.sensorPauseButton.Click += new System.EventHandler(this.sensorPauseButton_Click);
@@ -746,7 +746,7 @@
             this.modeComboBox.Items.AddRange(new object[] {
             "калибровка",
             "проверка"});
-            this.modeComboBox.Location = new System.Drawing.Point(174, 26);
+            this.modeComboBox.Location = new System.Drawing.Point(174, 29);
             this.modeComboBox.Name = "modeComboBox";
             this.modeComboBox.Size = new System.Drawing.Size(92, 21);
             this.modeComboBox.TabIndex = 2;
@@ -754,7 +754,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 29);
+            this.label5.Location = new System.Drawing.Point(15, 32);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(134, 13);
             this.label5.TabIndex = 9;
@@ -770,7 +770,7 @@
             this.parameGroupBox.Controls.Add(this.label3);
             this.parameGroupBox.Location = new System.Drawing.Point(4, 53);
             this.parameGroupBox.Name = "parameGroupBox";
-            this.parameGroupBox.Size = new System.Drawing.Size(266, 123);
+            this.parameGroupBox.Size = new System.Drawing.Size(292, 123);
             this.parameGroupBox.TabIndex = 9;
             this.parameGroupBox.TabStop = false;
             this.parameGroupBox.Text = "Текущие параметры";
@@ -845,7 +845,7 @@
             // 
             this.pauseButton.Enabled = false;
             this.pauseButton.Image = global::Evo20.GUI.Properties.Resources.pause_;
-            this.pauseButton.Location = new System.Drawing.Point(414, 26);
+            this.pauseButton.Location = new System.Drawing.Point(408, 24);
             this.pauseButton.Name = "pauseButton";
             this.pauseButton.Size = new System.Drawing.Size(44, 41);
             this.pauseButton.TabIndex = 7;
@@ -882,7 +882,7 @@
             // FileToolStripMenuItem
             // 
             this.FileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.получитьДанныеИзФайлаToolStripMenuItem,
+            this.getDataFromFileToolStripMenuItem,
             this.savePacketsToolStripMenuItem});
             this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
             this.FileToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
@@ -890,10 +890,10 @@
             // 
             // получитьДанныеИзФайлаToolStripMenuItem
             // 
-            this.получитьДанныеИзФайлаToolStripMenuItem.Name = "получитьДанныеИзФайлаToolStripMenuItem";
-            this.получитьДанныеИзФайлаToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
-            this.получитьДанныеИзФайлаToolStripMenuItem.Text = "Получить данные из файла ";
-            this.получитьДанныеИзФайлаToolStripMenuItem.Click += new System.EventHandler(this.readDataButton_Click);
+            this.getDataFromFileToolStripMenuItem.Name = "получитьДанныеИзФайлаToolStripMenuItem";
+            this.getDataFromFileToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.getDataFromFileToolStripMenuItem.Text = "Получить данные из файла ";
+            this.getDataFromFileToolStripMenuItem.Click += new System.EventHandler(this.getDataFromFileToolStripMenuItem_Click);
             // 
             // savePacketsToolStripMenuItem
             // 
@@ -1051,7 +1051,7 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem FileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem получитьДанныеИзФайлаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem getDataFromFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cycleSettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem CommonSettingsToolStripMenuItem;

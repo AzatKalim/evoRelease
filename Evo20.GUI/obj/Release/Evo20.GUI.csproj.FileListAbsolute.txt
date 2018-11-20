@@ -97,4 +97,3 @@ C:\Users\Азат\Desktop\Evo20\Evo20.GUI\bin\Release\Evo20.EvoCommands.dll
 C:\Users\Азат\Desktop\Evo20\Evo20.GUI\bin\Release\Evo20.Packets.dll
 C:\Users\Азат\Desktop\Evo20\Evo20.GUI\bin\Release\Evo20.Packets.pdb
 C:\Users\Азат\Desktop\Evo20\Evo20.GUI\bin\Release\Evo20.EvoCommands.pdb
-C:\Users\Азат\Desktop\Evo20\Evo20.GUI\bin\Release\Evo20.Config.pdb

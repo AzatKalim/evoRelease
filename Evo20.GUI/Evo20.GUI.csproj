@@ -101,9 +101,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Evo20.Config\Evo20.Config.csproj">
+    <ProjectReference Include="..\Evo20.Config\Evo20.Utils.csproj">
       <Project>{99D800D1-0D39-49B9-9311-003759CA741B}</Project>
-      <Name>Evo20.Config</Name>
+      <Name>Evo20.Utils</Name>
     </ProjectReference>
     <ProjectReference Include="..\Evo20.Controllers\Evo20.Controllers.csproj">
       <Project>{3AC3249C-145D-4EEA-8B3F-E82CE09A85DB}</Project>

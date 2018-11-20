@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.Packets", "Evo20.Pack
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.SensorsConnection", "Evo20.SensorsConnection\Evo20.SensorsConnection.csproj", "{86F18502-E4FB-4FDB-9AEE-E1EA1F1FF4BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.Config", "Evo20.Config\Evo20.Config.csproj", "{99D800D1-0D39-49B9-9311-003759CA741B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.Utils", "Evo20.Config\Evo20.Utils.csproj", "{99D800D1-0D39-49B9-9311-003759CA741B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.Sensors", "Evo20.Sensors\Evo20.Sensors.csproj", "{4E9C9D86-5565-4A04-8490-85EBED2E8886}"
 EndProject

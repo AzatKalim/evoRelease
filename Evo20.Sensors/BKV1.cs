@@ -188,7 +188,7 @@ namespace Evo20.Sensors
             return CheckPacketsCollection[index].PositionCount > numberOfPosition ? CheckPacketsCollection[index][numberOfPosition].Count : 0;
         }
 
-        public bool WriteRedPackets()
+        public bool WriteRedPackets(string filesPath)
         {
             return true;
         }

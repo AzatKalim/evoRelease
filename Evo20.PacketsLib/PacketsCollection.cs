@@ -204,7 +204,6 @@ namespace Evo20.Evo20.Packets
             }
             return uw;
         }
-
         /// <summary>
         /// Возвращает среднее значение температуры аксерометра по всем PacketData в данной позиции
         /// </summary>

@@ -18,7 +18,9 @@ namespace Evo20.Controllers
         }
         private static FileController fileController;
 
-        public static FileController Current
+        public static string filesPath;
+
+        public static FileController Instance
         {
             get
             {
@@ -40,10 +42,10 @@ namespace Evo20.Controllers
                 file);
             if (!result)
             {
-                Log.WriteLog("Вычисление коэфицентов не выполнено!");
+                Log.Instance.Error("Вычисление коэфицентов не выполнено!");
                 return result;
             }
-            Log.WriteLog("Вычисление коэфицентов выполнено!");
+            Log.Instance.Error("Вычисление коэфицентов выполнено!");
             return result;
         }
 
@@ -54,7 +56,7 @@ namespace Evo20.Controllers
         /// <returns></returns>
         public bool WritePackets(List<ISensor> sensorsList, StreamWriter file)
         {
-            return SensorData.Current.WriteAllPackets(sensorsList.ToArray(), file);
+            return SensorData.Instance.WriteAllPackets(sensorsList.ToArray(), file);
         }
 
         /// <summary>
@@ -66,11 +68,11 @@ namespace Evo20.Controllers
         {
             if (sensorsList == null || sensorsList.Count == 0)
             {
-                sensorsList = SensorData.Current.GetSensors();
+                sensorsList = SensorData.Instance.GetSensors();
             }
-            var result = SensorData.Current.ReadDataFromFile(sensorsList.ToArray(), file);
+            var result = SensorData.Instance.ReadDataFromFile(sensorsList.ToArray(), file);
             if (result)
-                CycleData.Current.StartTemperatureIndex = sensorsList[0].CalibrationPacketsCollection.Count;
+                CycleData.Instance.StartTemperatureIndex = sensorsList[0].CalibrationPacketsCollection.Count;
             return result;
         }
 
@@ -84,33 +86,35 @@ namespace Evo20.Controllers
             try
             {
                 var file = new StreamReader(fileName, Encoding.GetEncoding(1251));
-                if (!CycleData.Current.ReadSettings(ref file))
+                if (!CycleData.Instance.ReadSettings(ref file))
                     return false;
-                if (!SensorData.Current.ReadSettings(ref file))
+                if (!SensorData.Instance.ReadSettings(ref file))
                     return false;
                 file.Close();
             }
             catch (Exception exception)
             {
-                Log.WriteLog("Возникла ошибка чтения файла настроек" + exception.ToString());
+                Log.Instance.Error("Возникла ошибка чтения файла настроек" + exception.ToString());
+                Log.Instance.Exception(exception);
                 throw exception;
             }
             return true;
         }
 
-        public bool WriteRedPackets(List<ISensor> sensorsList)
+        public bool WriteRedPackets(List<ISensor> sensorsList,int index)
         {
-            Log.WriteLog("Запись уже считанных пакетов в файл");
-
-            foreach (var sensor in sensorsList)
-            {
-                if (!sensor.WriteRedPackets())
-                {
-                    Log.WriteLog(string.Format("Запись прервана на датчике {0}", sensor.Name));
-                    return false;
-                }
-            }
-            return true;
+            Log.Instance.Info("Запись уже считанных пакетов в файл");
+            StreamWriter file = new StreamWriter(filesPath + index+".txt");
+            return SensorData.Instance.WritePacketsForCurrentTemperture(sensorsList.ToArray(), file,index);
+            //foreach (var sensor in sensorsList)
+            //{
+            //    if (!sensor.WriteRedPackets(filesPath))
+            //    {
+            //        Log.Instance.Error("Запись прервана на датчике {0}", sensor.Name);
+            //        return false;
+            //    }
+            //}
+            //return true;
         }
     }
 }

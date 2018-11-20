@@ -120,6 +120,6 @@ namespace Evo20.Sensors
 
         double[][,] GetCheckADCCodes();
 
-        bool WriteRedPackets();
+        bool WriteRedPackets(string path);
     }
 }

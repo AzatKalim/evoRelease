@@ -27,7 +27,7 @@ namespace Evo20.Controllers
     
         private static ControllerEvo controllerEvo;
 
-        public static ControllerEvo Current
+        public static ControllerEvo Instance
         {
             get
             {
@@ -41,7 +41,7 @@ namespace Evo20.Controllers
         {
             get
             {
-                return EvoData.Current.CurrentTemperature;
+                return EvoData.Instance.CurrentTemperature;
             }
         }
 
@@ -86,7 +86,7 @@ namespace Evo20.Controllers
                     {
                         if (!commandHandler.SendCommand(item))
                         {
-                            Log.WriteLog("Не удалось отправить сообщение evo" + item.ToString());
+                            Log.Instance.Error("Не удалось отправить сообщение evo" + item.ToString());
                             EventListForEvoConnectionChange(commandHandler.ConnectionStatus);
                             return;
                         }
@@ -113,19 +113,19 @@ namespace Evo20.Controllers
             for (int i = 0; i < commands.Length; i++)
             {
                 if (commands[i] is Axis_Status_answer)
-                    EvoData.Current.GetCommandInfo(commands[i] as Axis_Status_answer);
+                    EvoData.Instance.GetCommandInfo(commands[i] as Axis_Status_answer);
                 if (commands[i] is Temperature_status_answer)
-                    EvoData.Current.GetCommandInfo(commands[i] as Temperature_status_answer);
+                    EvoData.Instance.GetCommandInfo(commands[i] as Temperature_status_answer);
                 if (commands[i] is Rotary_joint_temperature_Query_answer)
-                    EvoData.Current.GetCommandInfo(commands[i] as Rotary_joint_temperature_Query_answer);
+                    EvoData.Instance.GetCommandInfo(commands[i] as Rotary_joint_temperature_Query_answer);
                 if (commands[i] is Axis_Position_Query_answer)
-                    EvoData.Current.GetCommandInfo(commands[i] as Axis_Position_Query_answer);
+                    EvoData.Instance.GetCommandInfo(commands[i] as Axis_Position_Query_answer);
                 if (commands[i] is Axis_Rate_Query_answer)
-                    EvoData.Current.GetCommandInfo(commands[i] as Axis_Rate_Query_answer);
+                    EvoData.Instance.GetCommandInfo(commands[i] as Axis_Rate_Query_answer);
                 if (commands[i] is Actual_temperature_query_answer)
-                    EvoData.Current.GetCommandInfo(commands[i] as Actual_temperature_query_answer);
+                    EvoData.Instance.GetCommandInfo(commands[i] as Actual_temperature_query_answer);
                 if (commands[i] is Requested_axis_position_reached_answer)
-                    EvoData.Current.GetCommandInfo(commands[i] as Requested_axis_position_reached_answer);
+                    EvoData.Instance.GetCommandInfo(commands[i] as Requested_axis_position_reached_answer);
             }
         }
 
@@ -172,7 +172,7 @@ namespace Evo20.Controllers
                             routineThread.Abort();
                             routineThread.Join();
                         }
-                        Controller.Current.Mode = WorkMode.Stop;
+                        Controller.Instance.Mode = WorkMode.Stop;
                         break;
                     }
                 case ConnectionStatus.ERROR:
@@ -182,7 +182,7 @@ namespace Evo20.Controllers
                             routineThread.Abort();
                             routineThread.Join();
                         }
-                        Controller.Current.Mode = WorkMode.Error;
+                        Controller.Instance.Mode = WorkMode.Error;
                         break;
                     }
             }
@@ -249,11 +249,11 @@ namespace Evo20.Controllers
             StopAxis(Axis.ALL);
             if (axis == Axis.X)
             {
-                degree+=EvoData.Current.X.correction;
+                degree+=EvoData.Instance.X.correction;
             }
             else if (axis == Axis.Y)
             {
-                degree += EvoData.Current.Y.correction;
+                degree += EvoData.Instance.Y.correction;
             }
 
             commandHandler.SendCommand(new Axis_Position(axis, degree));
@@ -276,7 +276,7 @@ namespace Evo20.Controllers
 
         public void SetPosition(ProfilePart position)
         {
-            Log.WriteLog(string.Format("Задание положения осей: X {0}:{1}. Y {2}:{3}", position.AxisX, position.SpeedX,
+            Log.Instance.Info(string.Format("Задание положения осей: X {0}:{1}. Y {2}:{3}", position.AxisX, position.SpeedX,
                 position.AxisY, position.SpeedY));
             //задание положений и скоростей
             if (position.SpeedX != 0)

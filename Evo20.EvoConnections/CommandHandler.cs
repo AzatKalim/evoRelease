@@ -109,7 +109,7 @@ namespace Evo20.EvoConnections
         /// <returns>результат отправки </returns>
         public bool SendCommand(Command command)
         {
-            Evo20.Log.WriteLog("Отправлена команда " + command + " в " + DateTime.Now.ToShortTimeString());
+            Log.Instance.Info("Отправлена команда: {0}",command);
             string newMessage = command.ToString();
             return SendMessage(newMessage);
         }
@@ -144,63 +144,63 @@ namespace Evo20.EvoConnections
             //Пришла команда Axis_Status
             if (command_parts[0] + ' ' == AXIS_STATUS)
             {
-                Evo20.Log.WriteLog("Сообщение:статус осей " + DateTime.Now.ToString());            
+                Log.Instance.Info("Сообщение:статус осей ");            
                 return new Axis_Status_answer (temp.ToString());
             }
             //Пришла команда Temperature_status
             if (command_parts[0] + ' ' == TEMPERATURE_STATUS)
             {
-                Evo20.Log.WriteLog("Сообщение:статус термокамеры принято " + DateTime.Now.ToString());
+                Log.Instance.Info("Сообщение:статус термокамеры принято ");
                 return new Temperature_status_answer(temp.ToString());
             }
 
             //Пришла команда температура оси x
             if (command_parts[0] == ROTARY_JOINT_TEMPERATURE_QUERY_X)
             {
-               Evo20.Log.WriteLog("Сообщение:температура оси x принято " + DateTime.Now.ToString());
+                Log.Instance.Info("Сообщение:температура оси x принято ");
                 return new Rotary_joint_temperature_Query_answer(temp.ToString(),Axis.X);
             }
             //Пришла команда температура оси y
             if (command_parts[0] == ROTARY_JOINT_TEMPERATURE_QUERY_Y)
             {
-                Evo20.Log.WriteLog("Сообщение:температура оси y принято  " + DateTime.Now.ToString());
+                Log.Instance.Info("Сообщение:температура оси y принято");
                 return new Rotary_joint_temperature_Query_answer(temp.ToString(), Axis.Y);
             }
 
             //Пришла команда положение оси x
             if (command_parts[0] == AXIS_POSITION_QUERY_X)
             {
-                Evo20.Log.WriteLog("Сообщение:положение оси x принято  " + DateTime.Now.ToString());
+                Log.Instance.Info("Сообщение:положение оси x принято");
                 return new Axis_Position_Query_answer(temp.ToString(), Axis.X);
             }
             //Пришла команда положение оси y
             if (command_parts[0] == AXIS_POSITION_QUERY_Y)
             {
-                Evo20.Log.WriteLog("Сообщение:положение оси y принято  " + DateTime.Now.ToString());
+                Log.Instance.Info("Сообщение:положение оси y принято");
                 return new Axis_Position_Query_answer(temp.ToString(), Axis.Y);
             }
 
             //Пришла команда скорость оси x
             if (command_parts[0] == AXIS_RATE_QUERY_X)
             {
-                Evo20.Log.WriteLog("Сообщение:скорость оси x принято  " + DateTime.Now.ToString());
+                Log.Instance.Info("Сообщение:скорость оси x принято");
                 return new Axis_Rate_Query_answer(temp.ToString(), Axis.X);
             }
             //Пришла команда скорость оси y
             if (command_parts[0] == AXIS_RATE_QUERY_Y)
             {
-                Evo20.Log.WriteLog("Сообщение:скорость оси y принято   " + DateTime.Now.ToString());
+                Log.Instance.Info("Сообщение:скорость оси y принято");
                 return new Axis_Rate_Query_answer(temp.ToString(), Axis.Y);
             }
             //Пришла команда о достигнутом положении осей
             if (command_parts[0] == REQUESTED_AXIS_POSITION_REACHED)
             {
-                Evo20.Log.WriteLog("Сообщение:достигнутые положение осей   " + DateTime.Now.ToString());
+                Log.Instance.Info("Сообщение:достигнутые положение осей");
                 return new Requested_axis_position_reached_answer(temp.ToString());
             }
             if (command_parts[0] == ACTUAL_TEMPERATURE_QUERY)
             {
-                Evo20.Log.WriteLog("Сообщение:достигнутые положение осей   " + DateTime.Now.ToString());
+                Log.Instance.Info("Сообщение:достигнутые положение осей");
                 return new Actual_temperature_query_answer(temp.ToString());
             }
             return null;
