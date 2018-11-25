@@ -19,8 +19,6 @@ C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\bin\Release\Evo20.Sensor
 C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\obj\Release\ResolveAssemblyReference.cache
 C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\obj\Release\Evo20.SensorsConnection.dll
 C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\obj\Release\Evo20.SensorsConnection.pdb
-C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\bin\Release\Evo20.Config.dll
-C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\bin\Release\Evo20.Config.pdb
 C:\Users\iss\Desktop\evoRelease-master\Evo20.SensorsConnection\bin\Release\Evo20.SensorsConnection.dll
 C:\Users\iss\Desktop\evoRelease-master\Evo20.SensorsConnection\bin\Release\Evo20.SensorsConnection.pdb
 C:\Users\iss\Desktop\evoRelease-master\Evo20.SensorsConnection\bin\Release\Evo20.Config.dll
@@ -34,3 +32,8 @@ C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\bin\Release\Evo20.Sensor
 C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\bin\Release\Evo20.Sensors.pdb
 C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\bin\Release\Evo20.Packets.dll
 C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\bin\Release\Evo20.Packets.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\bin\Release\Evo20.Utils.dll
+C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\bin\Release\Evo20.Utils.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\bin\Release\Newtonsoft.Json.dll
+C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\bin\Release\Newtonsoft.Json.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.SensorsConnection\bin\Release\Newtonsoft.Json.xml

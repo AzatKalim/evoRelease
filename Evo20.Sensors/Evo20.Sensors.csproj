@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libs\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -46,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BKV1.cs" />
+    <Compile Include="Profile.cs" />
     <Compile Include="ProfilePart.cs" />
     <Compile Include="DLY.cs" />
     <Compile Include="DYS.cs" />
@@ -53,6 +58,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Evo20.Config\Evo20.Utils.csproj">
+      <Project>{99D800D1-0D39-49B9-9311-003759CA741B}</Project>
+      <Name>Evo20.Utils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Evo20.PacketsLib\Evo20.Packets.csproj">
       <Project>{38D34933-EA5E-4C43-AEE0-752676BC5FD0}</Project>
       <Name>Evo20.Packets</Name>

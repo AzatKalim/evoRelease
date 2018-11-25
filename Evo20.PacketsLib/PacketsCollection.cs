@@ -135,8 +135,8 @@ namespace Evo20.Evo20.Packets
         public double[] MeanW(int positionNumber)
         {
             List<PacketsData> packetsList = positionPackets[positionNumber];
-            double[] w = new double[Config.Config.PARAMS_COUNT];
-            double[] sum = new double[Config.Config.PARAMS_COUNT];
+            double[] w = new double[Config.PARAMS_COUNT];
+            double[] sum = new double[Config.PARAMS_COUNT];
 
             for (int j = 0; j < packetsList.Count; j++)
             {
@@ -161,8 +161,8 @@ namespace Evo20.Evo20.Packets
         public double[] MeanA(int positionNumber)
         {
             List<PacketsData> packetsList = positionPackets[positionNumber];
-            double[] a = new double[Config.Config.PARAMS_COUNT];
-            double[] sum = new double[Config.Config.PARAMS_COUNT];
+            double[] a = new double[Config.PARAMS_COUNT];
+            double[] sum = new double[Config.PARAMS_COUNT];
 
             for (int j = 0; j < packetsList.Count; j++)
             {
@@ -187,8 +187,8 @@ namespace Evo20.Evo20.Packets
         public double[] MeanUW(int positionNumber)
         {
             List<PacketsData> packetsList = positionPackets[positionNumber];
-            double[] uw = new double[Config.Config.PARAMS_COUNT];
-            double[] sum = new double[Config.Config.PARAMS_COUNT];
+            double[] uw = new double[Config.PARAMS_COUNT];
+            double[] sum = new double[Config.PARAMS_COUNT];
 
             for (int j = 0; j < packetsList.Count; j++)
             {
@@ -212,8 +212,8 @@ namespace Evo20.Evo20.Packets
         public double[] MeanUA(int positionNumber)
         {
             List<PacketsData> packetsList = positionPackets[positionNumber];
-            double[] ua = new double[Config.Config.PARAMS_COUNT];
-            double[] sum = new double[Config.Config.PARAMS_COUNT];
+            double[] ua = new double[Config.PARAMS_COUNT];
+            double[] sum = new double[Config.PARAMS_COUNT];
 
             for (int j = 0; j < packetsList.Count; j++)
             {
@@ -244,10 +244,10 @@ namespace Evo20.Evo20.Packets
             {
                 return null;
             }
-            double[] sumUa = new double[Config.Config.PARAMS_COUNT];
-            double[] sumUw = new double[Config.Config.PARAMS_COUNT];
-            double[] sumA =  new double[Config.Config.PARAMS_COUNT];
-            double[] sumW = new double[Config.Config.PARAMS_COUNT];
+            double[] sumUa = new double[Config.PARAMS_COUNT];
+            double[] sumUw = new double[Config.PARAMS_COUNT];
+            double[] sumA =  new double[Config.PARAMS_COUNT];
+            double[] sumW = new double[Config.PARAMS_COUNT];
 
 
             for (int j = 0; j < packetsList.Count; j++)
@@ -256,7 +256,7 @@ namespace Evo20.Evo20.Packets
                 double[] w = packetsList[j].MeanW;
                 double[] a = packetsList[j].MeanA;
                 double[] uw = packetsList[j].MeanUW;
-                for (int i = 0; i < Config.Config.PARAMS_COUNT; i++)
+                for (int i = 0; i < Config.PARAMS_COUNT; i++)
                 {
                     sumUa[i] +=ua[i];
                     sumUw[i] += uw[i];
@@ -264,7 +264,7 @@ namespace Evo20.Evo20.Packets
                     sumA[i] += a[i];
                 }
             }
-            for (int i = 0; i < Config.Config.PARAMS_COUNT; i++)
+            for (int i = 0; i < Config.PARAMS_COUNT; i++)
             {
                 sumUa[i] /= packetsList.Count;
                 sumUw[i] /= packetsList.Count;

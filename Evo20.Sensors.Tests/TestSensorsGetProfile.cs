@@ -13,23 +13,15 @@ namespace Evo20.Sensors.Tests
     {
         static void Main()
         {
-            var sensors = new List<ISensor>();
-            //sensors.Add(new DLY());
+            var sensors = new List<BKV1>();
+            sensors.Add(new DLY());
             sensors.Add(new DYS());
-            StreamWriter stream = new StreamWriter("profile.txt");
 
             foreach (var sensor in sensors)
 	        {
-                var profile = sensor.CalibrationProfile;
-                Console.WriteLine(sensor.Name);
-                int number=0;
-                foreach (var profPart in profile)
-                {
-                    stream.WriteLine(profPart.SpeedY);
-                    number++;
-                }
+                sensor.WriteCalibrationProfile();
+                //sensor.GetCalibrationProfileFromFile();
 	        }
-            stream.Close();
             //Console.ReadLine();
         }
     }

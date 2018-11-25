@@ -62,13 +62,13 @@ namespace Evo20.Controllers
             {
                 new Axis_Status(),
                 new Temperature_status(),
-                new Rotary_joint_temperature_Query(Axis.X),
-                new Rotary_joint_temperature_Query(Axis.Y),
+                new Rotary_joint_temperature_Query(Axis.First),
+                new Rotary_joint_temperature_Query(Axis.Second),
                 new Actual_temperature_query(),
-                new Axis_Position_Query(Axis.X),
-                new Axis_Position_Query(Axis.Y),
-                new Axis_Rate_Query(Axis.X),
-                new Axis_Rate_Query(Axis.Y),
+                new Axis_Position_Query(Axis.First),
+                new Axis_Position_Query(Axis.Second),
+                new Axis_Rate_Query(Axis.First),
+                new Axis_Rate_Query(Axis.Second),
                 new Requested_axis_position_reached()
             };
             return commands;
@@ -247,11 +247,11 @@ namespace Evo20.Controllers
         public void SetAxisPosition(Axis axis, double degree)
         {
             StopAxis(Axis.ALL);
-            if (axis == Axis.X)
+            if (axis == Axis.First)
             {
                 degree+=EvoData.Instance.X.correction;
             }
-            else if (axis == Axis.Y)
+            else if (axis == Axis.Second)
             {
                 degree += EvoData.Instance.Y.correction;
             }
@@ -276,28 +276,28 @@ namespace Evo20.Controllers
 
         public void SetPosition(ProfilePart position)
         {
-            Log.Instance.Info(string.Format("Задание положения осей: X {0}:{1}. Y {2}:{3}", position.AxisX, position.SpeedX,
-                position.AxisY, position.SpeedY));
+            Log.Instance.Info(string.Format("Задание положения осей: X {0}:{1}. Y {2}:{3}", position.FirstPosition, position.SpeedFirst,
+                position.SecondPosition, position.SpeedSecond));
             //задание положений и скоростей
-            if (position.SpeedX != 0)
+            if (position.SpeedFirst != 0)
             {
-                SetAxisRate(Axis.X, position.SpeedX);
-                SetAxisMode(ModeParam.Speed, Axis.X);
+                SetAxisRate(Axis.First, position.SpeedFirst);
+                SetAxisMode(ModeParam.Speed, Axis.First);
             }
             else
             {
-                SetAxisPosition(Axis.X, position.AxisX);
-                SetAxisMode(ModeParam.Position, Axis.X);
+                SetAxisPosition(Axis.First, position.FirstPosition);
+                SetAxisMode(ModeParam.Position, Axis.First);
             }
-            if (position.SpeedY != 0)
+            if (position.SpeedSecond != 0)
             {
-                SetAxisRate(Axis.Y, position.SpeedY);
-                SetAxisMode(ModeParam.Speed, Axis.Y);
+                SetAxisRate(Axis.Second, position.SpeedSecond);
+                SetAxisMode(ModeParam.Speed, Axis.Second);
             }
             else
             {
-                SetAxisPosition(Axis.Y, position.AxisY);
-                SetAxisMode(ModeParam.Position, Axis.Y);
+                SetAxisPosition(Axis.Second, position.SecondPosition);
+                SetAxisMode(ModeParam.Position, Axis.Second);
             }
             StartAxis(Axis.ALL);
         }
@@ -313,10 +313,10 @@ namespace Evo20.Controllers
         public bool SetStartPosition()
         {
             StopAxis(Axis.ALL);
-            SetAxisRate(Axis.ALL, Config.Config.BASE_MOVE_SPEED);
+            SetAxisRate(Axis.ALL, Config.BASE_MOVE_SPEED);
             SetAxisPosition(Axis.ALL, 0);
             StartAxis(Axis.ALL);
-            SetTemperatureChangeSpeed(Config.Config.SPEED_OF_TEMPERATURE_CHANGE);
+            SetTemperatureChangeSpeed(Config.SPEED_OF_TEMPERATURE_CHANGE);
             return true;
         }
         #endregion

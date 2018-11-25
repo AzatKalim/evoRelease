@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Evo20.Config;
+using Evo20;
 
 namespace Evo20.Commands
 {
     public enum Axis
     {
-        X,
-        Y,
-        Z,
+        First,
+        Second,
+        Third,
         ALL
     }
     public class Command
@@ -22,14 +22,14 @@ namespace Evo20.Commands
         {
             switch (axis)
             {
-                case Axis.X:
-                    return Config.Config.X_AXIS_NUMBER;
-                case Axis.Y:
-                    return Config.Config.Y_AXIS_NUMBER;
-                case Axis.Z:
-                    return Config.Config.Z_AXIS_NUMBER;
+                case Axis.First:
+                    return Config.X_AXIS_NUMBER;
+                case Axis.Second:
+                    return Config.Y_AXIS_NUMBER;
+                case Axis.Third:
+                    return Config.Z_AXIS_NUMBER;
                 case Axis.ALL:
-                    return Config.Config.ALL_AXIS_NUMBER;
+                    return Config.ALL_AXIS_NUMBER;
                 default:
                     return 0;
             }

@@ -133,9 +133,9 @@ namespace Evo20.Controllers
 
         public void GetCommandInfo(Rotary_joint_temperature_Query_answer cmd)
         {
-            if (cmd.axis == Axis.X)
+            if (cmd.axis == Axis.First)
                 X.axisTemperature = cmd.temperture;
-            if (cmd.axis == Axis.Y)
+            if (cmd.axis == Axis.Second)
                 Y.axisTemperature = cmd.temperture;
 
             currentTemperature = X.axisTemperature;
@@ -143,17 +143,17 @@ namespace Evo20.Controllers
 
         public void GetCommandInfo(Axis_Position_Query_answer cmd)
         {
-            if (cmd.axis == Axis.X)
+            if (cmd.axis == Axis.First)
                 X.position = cmd.position;
-            if (cmd.axis == Axis.Y)
+            if (cmd.axis == Axis.Second)
                 Y.position = cmd.position;
         }
 
         public void GetCommandInfo(Axis_Rate_Query_answer cmd)
         {
-            if (cmd.axis == Axis.X)
+            if (cmd.axis == Axis.First)
                 X.speedOfRate = cmd.speedOfRate;
-            if (cmd.axis == Axis.Y)
+            if (cmd.axis == Axis.Second)
                 Y.speedOfRate = cmd.speedOfRate;
         }
 

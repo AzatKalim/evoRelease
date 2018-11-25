@@ -2,6 +2,8 @@
 using System.Threading;
 using Evo20.Evo20.Packets;
 using Evo20;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace Evo20.Sensors
 {
@@ -43,7 +45,7 @@ namespace Evo20.Sensors
             PacketsCollectedEvent = new AutoResetEvent(false);
         }
 
-        protected override ProfilePart[] GetCalibrationProfile()
+        private ProfilePart[] GetCalibrationProfileOld()
         {
             ProfilePart[] profile = new ProfilePart[INDEXES[INDEXES.Length - 1]];
 
@@ -123,7 +125,7 @@ namespace Evo20.Sensors
             }
             return profile;
         }
-
+     
         public override double[][,] GetCalibrationADCCodes()
         {
             double[][,] adcCodes = new double[RAW_COUNT][,];

@@ -8,71 +8,71 @@ namespace Evo20.Sensors
 
     public struct ProfilePart
     {
-        int axisX;
-        [XmlElement("AxisX")]
-        public int AxisX
+        int firstPosition;
+        [XmlElement("FirstPosition")]
+        public int FirstPosition
         {
             set
             {
-                axisX = value;
+                firstPosition = value;
             }
             get
             {
-                return axisX;
+                return firstPosition;
             }
         }
 
-        int axisY;
-        [XmlElement("AxisY")]
-        public int AxisY
+        int secondPosition;
+        [XmlElement("SecondPosition")]
+        public int SecondPosition
         {
             set
             {
-                axisY = value;
+                secondPosition = value;
             }
             get
             {
-                return axisY;
+                return secondPosition;
             }
         }
 
-        int speedX;
-        [XmlElement("SpeedX")]
-        public int SpeedX
+        int speedFirst;
+        [XmlElement("SpeedFirst")]
+        public int SpeedFirst
         {
             set
             {
-                speedX = value;
+                speedFirst = value;
             }
             get
             {
-                return speedX;
+                return speedFirst;
             }
         }
 
-        int speedY;
-        [XmlElement("SpeedY")]
-        public int SpeedY
+        int speedSecond;
+        [XmlElement("SpeedSecond")]
+        public int SpeedSecond
         {
             set
             {
-                speedY = value;
+                speedSecond = value;
             }
             get
             {
-                return speedY;
+                return speedSecond;
             }
         }
 
-        public ProfilePart(int x, int y, int speedX, int speedY)
+        public ProfilePart(int firstPosition, int secondPosition, int SpeedFirst, int SpeedSecond)
         {
-            axisX = x;
-            axisY = y;
-            this.speedX = speedX;
-            this.speedY = speedY;
+            this.firstPosition = firstPosition;
+            this.secondPosition = secondPosition;
+            this.speedFirst = SpeedFirst;
+            this.speedSecond = SpeedSecond;
         }
-        public ProfilePart(int x, int y)
-            : this(x, y, 0, 0) { }
+        public ProfilePart(int firstPosition, int secondPosition)
+            : this(firstPosition, secondPosition, 0, 0) { }
 
         public string Serialize()
         {

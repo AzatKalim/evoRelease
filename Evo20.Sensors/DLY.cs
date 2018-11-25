@@ -46,7 +46,7 @@ namespace Evo20.Sensors
         /// Возврашщает профиль колибровки датчика ДЛУ
         /// </summary>
         /// <returns>Профиль</returns>
-        protected override ProfilePart[] GetCalibrationProfile()
+        private ProfilePart[] GetCalibrationProfileOld()
         {
             ProfilePart[] profile = new ProfilePart[INDEXES[INDEXES.Length - 1]];
             for (int i = 0; i < INDEXES[0]; i++)

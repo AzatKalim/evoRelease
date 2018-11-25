@@ -102,13 +102,13 @@ namespace Evo20
         public void Exception(Exception ex)
         {
             Write(System.Diagnostics.EventLogEntryType.Error, GetExceptionText(ex));
-            System.Windows.Forms.MessageBox.Show(ex.Message + "\r\nSee logs for details.", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            //System.Windows.Forms.MessageBox.Show(ex.Message + "\r\nSee logs for details.", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
         }
 
         public void Exception(string message, Exception ex)
         {
             Write(System.Diagnostics.EventLogEntryType.Error, GetExceptionText(ex));
-            System.Windows.Forms.MessageBox.Show(message, "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            //System.Windows.Forms.MessageBox.Show(message, "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
         }
 
         public void Warning(string message)

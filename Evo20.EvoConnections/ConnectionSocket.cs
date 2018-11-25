@@ -3,7 +3,7 @@ using System.Text;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-using Evo20.Config;
+using Evo20;
 using System.Configuration;
 using System.Collections.Specialized;
 
@@ -36,7 +36,7 @@ namespace Evo20.EvoConnections
         #region Private Fields
 
         //ip адресс удаленного компьютера 
-        private static IPAddress remoteIPAddress = IPAddress.Parse(Config.Config.REMOTE_IP_ADRESS);
+        private static IPAddress remoteIPAddress = IPAddress.Parse(Config.REMOTE_IP_ADRESS);
           
         IPEndPoint endPoint;
 
@@ -82,13 +82,13 @@ namespace Evo20.EvoConnections
             work_thread.IsBackground = true;
             connectionState = ConnectionStatus.DISCONNECTED;
             ReceivingUdpClient = null;
-            endPoint = new IPEndPoint(remoteIPAddress, Config.Config.REMOTE_PORT_NUMBER);
-            Sender = new UdpClient(Config.Config.REMOTE_PORT_NUMBER);
+            endPoint = new IPEndPoint(remoteIPAddress, Config.REMOTE_PORT_NUMBER);
+            Sender = new UdpClient(Config.REMOTE_PORT_NUMBER);
             //убрать
 #if !DEBUG
             Sender.Connect(endPoint);
 #endif
-            switch (Config.Config.EvoType)
+            switch (Config.EvoType)
             {
                 case 1:
                     {
@@ -97,7 +97,7 @@ namespace Evo20.EvoConnections
                     }
                 case 0:
                     {
-                        ReceivingUdpClient = new UdpClient(Config.Config.LOCAL_PORT_NUMBER);
+                        ReceivingUdpClient = new UdpClient(Config.LOCAL_PORT_NUMBER);
                         break;
                     }
             }
@@ -301,7 +301,7 @@ namespace Evo20.EvoConnections
         //public bool SendMessage(string message)
         //{
         //    var sender = new UdpClient();
-        //    endPoint = new IPEndPoint(remoteIPAddress, Config.Config.REMOTE_PORT_NUMBER);
+        //    endPoint = new IPEndPoint(remoteIPAddress, Config.REMOTE_PORT_NUMBER);
         //    try
         //    {
         //        if (connectionState == ConnectionStatus.CONNECTED)
@@ -336,7 +336,7 @@ namespace Evo20.EvoConnections
         //    UdpClient receivingUdpClient = null;
         //    try
         //    {
-        //        receivingUdpClient = new UdpClient(Config.Config.LOCAL_PORT_NUMBER);
+        //        receivingUdpClient = new UdpClient(Config.LOCAL_PORT_NUMBER);
         //    }
         //    catch (Exception ex)
         //    {

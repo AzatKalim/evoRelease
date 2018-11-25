@@ -4,7 +4,7 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using System.Configuration;
-using Evo20.Config;
+using Evo20;
 using Evo20.Commands;
 using Evo20.Controllers;
 using Evo20.SensorsConnection;
@@ -259,7 +259,7 @@ namespace Evo20.Controllers
                 }
                 ControllerEvo.Instance.SetStartPosition();
                 ControllerEvo.Instance.SetTemperature(temperatures[i]);
-                Log.Instance.Info("Установлена температура камеры " + temperatures[i] + " скорость набора температtуры " + Config.Config.SPEED_OF_TEMPERATURE_CHANGE);
+                Log.Instance.Info("Установлена температура камеры " + temperatures[i] + " скорость набора температtуры " + Config.SPEED_OF_TEMPERATURE_CHANGE);
                 //Ожидание достижения температуры
 #if !DEBUG
                 EvoData.Instance.TemperatureReachedEvent.WaitOne();

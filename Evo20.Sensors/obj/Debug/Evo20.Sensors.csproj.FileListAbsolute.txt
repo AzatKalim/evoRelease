@@ -1,9 +1,12 @@
 C:\Users\Азат\Desktop\Evo20\Evo20.Sensors\bin\Debug\Evo20.Sensors.dll
 C:\Users\Азат\Desktop\Evo20\Evo20.Sensors\bin\Debug\Evo20.Sensors.pdb
-C:\Users\Азат\Desktop\Evo20\Evo20.Sensors\bin\Debug\Evo20.Config.dll
-C:\Users\Азат\Desktop\Evo20\Evo20.Sensors\bin\Debug\Evo20.Config.pdb
 C:\Users\Азат\Desktop\Evo20\Evo20.Sensors\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Азат\Desktop\Evo20\Evo20.Sensors\obj\Debug\Evo20.Sensors.dll
 C:\Users\Азат\Desktop\Evo20\Evo20.Sensors\obj\Debug\Evo20.Sensors.pdb
 C:\Users\Азат\Desktop\Evo20\Evo20.Sensors\bin\Debug\Evo20.Packets.dll
 C:\Users\Азат\Desktop\Evo20\Evo20.Sensors\bin\Debug\Evo20.Packets.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.Sensors\bin\Debug\Evo20.Utils.dll
+C:\Users\Азат\Desktop\Evo20\Evo20.Sensors\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Азат\Desktop\Evo20\Evo20.Sensors\bin\Debug\Evo20.Utils.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.Sensors\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\Азат\Desktop\Evo20\Evo20.Sensors\bin\Debug\Newtonsoft.Json.xml

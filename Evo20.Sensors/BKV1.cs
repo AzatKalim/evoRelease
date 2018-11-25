@@ -4,6 +4,8 @@ using System.Threading;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using Evo20.Evo20.Packets;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace Evo20.Sensors
 {
@@ -192,13 +194,31 @@ namespace Evo20.Sensors
         {
             return true;
         }
+
+        public ProfilePart[] GetCalibrationProfile()
+        {
+            var file = new StreamReader(string.Format("{0}{1}.txt", Config.ProfileFolder, this.Name));
+            var str = file.ReadToEnd();
+            var profile = JsonConvert.DeserializeObject<Profile>(str);
+            Log.Instance.Info(str);
+            return profile.ProfilePartArray;
+        }
+
+        public void WriteCalibrationProfile()
+        {
+            var Profile = new Profile(GetCalibrationProfile());
+            string json = JsonConvert.SerializeObject(Profile);
+            using (var file = new StreamWriter(string.Format("{0}{1}.txt", Config.ProfileFolder, this.Name+"2")))
+            {
+                file.Write(json);
+            }
+        }
+
         #endregion
 
         #region Abstract Methods
 
         protected abstract ProfilePart[] GetCheckProfile();
-
-        protected abstract ProfilePart[] GetCalibrationProfile();
 
         public virtual double[][,] GetCalibrationADCCodes()
         {

@@ -571,6 +571,7 @@
             this.currentPositionNumberLable.Size = new System.Drawing.Size(64, 13);
             this.currentPositionNumberLable.TabIndex = 8;
             this.currentPositionNumberLable.Text = "нет данных";
+            this.currentPositionNumberLable.Click += new System.EventHandler(this.currentPositionNumberLable_Click);
             // 
             // label25
             // 
@@ -888,9 +889,9 @@
             this.FileToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.FileToolStripMenuItem.Text = "Файл";
             // 
-            // получитьДанныеИзФайлаToolStripMenuItem
+            // getDataFromFileToolStripMenuItem
             // 
-            this.getDataFromFileToolStripMenuItem.Name = "получитьДанныеИзФайлаToolStripMenuItem";
+            this.getDataFromFileToolStripMenuItem.Name = "getDataFromFileToolStripMenuItem";
             this.getDataFromFileToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
             this.getDataFromFileToolStripMenuItem.Text = "Получить данные из файла ";
             this.getDataFromFileToolStripMenuItem.Click += new System.EventHandler(this.getDataFromFileToolStripMenuItem_Click);

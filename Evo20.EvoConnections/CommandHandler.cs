@@ -18,12 +18,12 @@ namespace Evo20.EvoConnections
         string REQUESTED_AXIS_POSITION_REACHED = Requested_axis_position_reached.Command;
         string ACTUAL_TEMPERATURE_QUERY = Actual_temperature_query.Command;
 
-        string ROTARY_JOINT_TEMPERATURE_QUERY_X = new Rotary_joint_temperature_Query(Axis.X).ToString();
-        string ROTARY_JOINT_TEMPERATURE_QUERY_Y = new Rotary_joint_temperature_Query(Axis.Y).ToString();
-        string AXIS_POSITION_QUERY_X = new Axis_Position_Query(Axis.X).ToString();
-        string AXIS_POSITION_QUERY_Y = new Axis_Position_Query(Axis.Y).ToString();
-        string AXIS_RATE_QUERY_X = new Axis_Rate_Query(Axis.X).ToString();
-        string AXIS_RATE_QUERY_Y = new Axis_Rate_Query(Axis.Y).ToString();
+        string ROTARY_JOINT_TEMPERATURE_QUERY_X = new Rotary_joint_temperature_Query(Axis.First).ToString();
+        string ROTARY_JOINT_TEMPERATURE_QUERY_Y = new Rotary_joint_temperature_Query(Axis.Second).ToString();
+        string AXIS_POSITION_QUERY_X = new Axis_Position_Query(Axis.First).ToString();
+        string AXIS_POSITION_QUERY_Y = new Axis_Position_Query(Axis.Second).ToString();
+        string AXIS_RATE_QUERY_X = new Axis_Rate_Query(Axis.First).ToString();
+        string AXIS_RATE_QUERY_Y = new Axis_Rate_Query(Axis.Second).ToString();
 
         #endregion
 
@@ -158,39 +158,39 @@ namespace Evo20.EvoConnections
             if (command_parts[0] == ROTARY_JOINT_TEMPERATURE_QUERY_X)
             {
                 Log.Instance.Info("Сообщение:температура оси x принято ");
-                return new Rotary_joint_temperature_Query_answer(temp.ToString(),Axis.X);
+                return new Rotary_joint_temperature_Query_answer(temp.ToString(),Axis.First);
             }
             //Пришла команда температура оси y
             if (command_parts[0] == ROTARY_JOINT_TEMPERATURE_QUERY_Y)
             {
                 Log.Instance.Info("Сообщение:температура оси y принято");
-                return new Rotary_joint_temperature_Query_answer(temp.ToString(), Axis.Y);
+                return new Rotary_joint_temperature_Query_answer(temp.ToString(), Axis.Second);
             }
 
             //Пришла команда положение оси x
             if (command_parts[0] == AXIS_POSITION_QUERY_X)
             {
                 Log.Instance.Info("Сообщение:положение оси x принято");
-                return new Axis_Position_Query_answer(temp.ToString(), Axis.X);
+                return new Axis_Position_Query_answer(temp.ToString(), Axis.First);
             }
             //Пришла команда положение оси y
             if (command_parts[0] == AXIS_POSITION_QUERY_Y)
             {
                 Log.Instance.Info("Сообщение:положение оси y принято");
-                return new Axis_Position_Query_answer(temp.ToString(), Axis.Y);
+                return new Axis_Position_Query_answer(temp.ToString(), Axis.Second);
             }
 
             //Пришла команда скорость оси x
             if (command_parts[0] == AXIS_RATE_QUERY_X)
             {
                 Log.Instance.Info("Сообщение:скорость оси x принято");
-                return new Axis_Rate_Query_answer(temp.ToString(), Axis.X);
+                return new Axis_Rate_Query_answer(temp.ToString(), Axis.First);
             }
             //Пришла команда скорость оси y
             if (command_parts[0] == AXIS_RATE_QUERY_Y)
             {
                 Log.Instance.Info("Сообщение:скорость оси y принято");
-                return new Axis_Rate_Query_answer(temp.ToString(), Axis.Y);
+                return new Axis_Rate_Query_answer(temp.ToString(), Axis.Second);
             }
             //Пришла команда о достигнутом положении осей
             if (command_parts[0] == REQUESTED_AXIS_POSITION_REACHED)

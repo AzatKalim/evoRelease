@@ -42,7 +42,7 @@ namespace Evo20.GUI
             }
         }
 
-        string settingsFileName = ConfigurationManager.AppSettings.Get("DEFAULT_SETTINGS_FILE_NAME");
+        string settingsFileName;
 
         delegate void FormReseter();
 
@@ -56,7 +56,8 @@ namespace Evo20.GUI
         {
             InitializeComponent();
             prevX = 0;
-            prevY = 0;          
+            prevY = 0;
+            settingsFileName = Config.DefaultSettingsFileName;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -670,5 +671,10 @@ namespace Evo20.GUI
         }
 
         #endregion
+
+        private void currentPositionNumberLable_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

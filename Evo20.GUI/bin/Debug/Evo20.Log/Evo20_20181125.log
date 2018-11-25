@@ -1,0 +1,360 @@
+﻿23:10:13| Information> Соединение c датчиком прервано
+23:10:13| Information> Соединение c Evo 20 прервано
+23:10:13| Information> Соединение c датчиком прервано
+23:10:13| Information> Соединение c Evo 20 прервано
+23:11:45| Information> Выбрана папка C:\Users\Азат\Desktop
+23:11:45| Information> Соединение c Evo 20 установлено
+23:11:45| Information> Отправлена команда: AXE.TELL.STA 
+23:11:48| Information> Отправлена команда: AXE.UPLD.STA 
+23:11:48| Information> Соединение c датчиком установленно
+23:11:48| Information> Отправлена команда: AXE.TELL.TJT 2
+23:12:05| Information> Отправлена команда: AXE.TELL.TJT 1
+23:12:05| Information> Отправлена команда: CLIM.TEMP
+23:12:06| Information> Отправлена команда: AXE.TELL.POS 2
+23:12:06| Information> Отправлена команда: AXE.TELL.POS 1
+23:12:06| Information> Отправлена команда: AXE.TELL.VIT 2
+23:12:06| Information> Отправлена команда: AXE.TELL.VIT 1
+23:12:06| Information> Отправлена команда: AXE.TELL.POA
+23:12:06| Information> Отправлена команда: AXE.TELL.STA 
+23:12:06| Information> Отправлена команда: AXE.UPLD.STA 
+23:12:06| Information> Отправлена команда: AXE.TELL.TJT 2
+23:12:07| Information> Отправлена команда: AXE.TELL.TJT 1
+23:12:07| Information> Отправлена команда: CLIM.TEMP
+23:12:07| Information> Отправлена команда: AXE.TELL.POS 2
+23:12:07| Information> Отправлена команда: AXE.TELL.POS 1
+23:12:07| Information> Отправлена команда: AXE.TELL.VIT 2
+23:12:07| Information> Отправлена команда: AXE.TELL.VIT 1
+23:12:07| Information> Отправлена команда: AXE.TELL.POA
+23:12:07| Information> Отправлена команда: AXE.TELL.STA 
+23:12:08| Information> Отправлена команда: AXE.UPLD.STA 
+23:12:08| Information> Отправлена команда: AXE.TELL.TJT 2
+23:12:08| Information> Отправлена команда: AXE.TELL.TJT 1
+23:12:08| Information> Отправлена команда: CLIM.TEMP
+23:12:08| Information> Отправлена команда: AXE.TELL.POS 2
+23:12:08| Information> Отправлена команда: AXE.TELL.POS 1
+23:12:08| Information> Отправлена команда: AXE.TELL.VIT 2
+23:12:08| Information> Отправлена команда: AXE.TELL.VIT 1
+23:12:09| Information> Отправлена команда: AXE.TELL.POA
+23:12:09| Information> Отправлена команда: AXE.TELL.STA 
+23:12:09| Information> Отправлена команда: AXE.UPLD.STA 
+23:12:09| Information> Отправлена команда: AXE.TELL.TJT 2
+23:12:09| Information> Отправлена команда: AXE.TELL.TJT 1
+23:12:09| Information> Отправлена команда: CLIM.TEMP
+23:12:09| Information> Отправлена команда: AXE.TELL.POS 2
+23:12:10| Information> Отправлена команда: AXE.TELL.POS 1
+23:12:10| Information> Отправлена команда: AXE.TELL.VIT 2
+23:12:10| Information> Отправлена команда: AXE.TELL.VIT 1
+23:12:10| Information> Отправлена команда: AXE.TELL.POA
+23:12:10| Information> Отправлена команда: AXE.TELL.STA 
+23:12:10| Information> Отправлена команда: AXE.UPLD.STA 
+23:12:10| Information> Отправлена команда: AXE.TELL.TJT 2
+23:12:10| Information> Отправлена команда: AXE.TELL.TJT 1
+23:12:11| Information> Отправлена команда: CLIM.TEMP
+23:12:11| Information> Отправлена команда: AXE.TELL.POS 2
+23:12:11| Information> Отправлена команда: AXE.TELL.POS 1
+23:12:11| Information> Отправлена команда: AXE.TELL.VIT 2
+23:12:11| Information> Отправлена команда: AXE.TELL.VIT 1
+23:12:11| Information> Отправлена команда: AXE.TELL.POA
+23:12:11| Information> Отправлена команда: AXE.TELL.STA 
+23:12:11| Information> Отправлена команда: AXE.UPLD.STA 
+23:12:12| Information> Отправлена команда: AXE.TELL.TJT 2
+23:12:12| Information> Отправлена команда: AXE.TELL.TJT 1
+23:12:12| Information> Отправлена команда: CLIM.TEMP
+23:12:12| Information> Отправлена команда: AXE.TELL.POS 2
+23:12:12| Information> Отправлена команда: AXE.TELL.POS 1
+23:12:12| Information> Отправлена команда: AXE.TELL.VIT 2
+23:12:12| Information> Отправлена команда: AXE.TELL.VIT 1
+23:12:12| Information> Отправлена команда: AXE.TELL.POA
+23:12:12| Information> Соединение c датчиком прервано
+23:12:12| Information> Соединение c Evo 20 прервано
+23:12:12| Information> Соединение c датчиком прервано
+23:12:12|     Warning> Поток чтения данных evo прерван
+23:12:12| Information> Соединение c Evo 20 прервано
+23:12:55| Information> Выбрана папка C:\Users\Азат\Desktop
+23:12:55| Information> Соединение c Evo 20 установлено
+23:12:55| Information> Соединение c датчиком установленно
+23:13:01| Information> Отправлена команда: AXE.TELL.STA 
+23:13:52| Information> Отправлена команда: AXE.UPLD.STA 
+23:13:52| Information> Отправлена команда: AXE.TELL.TJT 2
+23:13:52| Information> Отправлена команда: AXE.TELL.TJT 1
+23:13:52| Information> Отправлена команда: CLIM.TEMP
+23:13:53| Information> Отправлена команда: AXE.TELL.POS 2
+23:13:53| Information> Отправлена команда: AXE.TELL.POS 1
+23:14:50| Information> Выбрана папка C:\Users\Азат\Desktop
+23:14:50| Information> Соединение c Evo 20 установлено
+23:14:50| Information> Соединение c датчиком установленно
+23:14:50| Information> Отправлена команда: AXE.TELL.STA 
+23:14:56| Information> Отправлена команда: AXE.UPLD.STA 
+23:15:02| Information> Отправлена команда: AXE.TELL.TJT 2
+23:15:02| Information> Отправлена команда: AXE.TELL.TJT 1
+23:15:02| Information> Отправлена команда: CLIM.TEMP
+23:15:02| Information> Отправлена команда: AXE.TELL.POS 2
+23:15:03| Information> Отправлена команда: AXE.TELL.POS 1
+23:15:03| Information> Отправлена команда: AXE.TELL.VIT 2
+23:15:03| Information> Отправлена команда: AXE.TELL.VIT 1
+23:15:05| Information> Отправлена команда: AXE.TELL.POA
+23:15:17| Information> Отправлена команда: CLIM.ETAT 1
+23:15:17| Information> Отправлена команда: AXE.PWR 1 0
+23:15:17| Information> Отправлена команда: AXE.ZERO 0
+23:15:17| Information> Отправлена команда: AXE.STOP 0
+23:15:17| Information> Отправлена команда: AXE.CONS.VIT 20 0
+23:15:17| Information> Отправлена команда: AXE.STOP 0
+23:15:17| Information> Отправлена команда: AXE.CONS.POS 0 0
+23:15:17| Information> Отправлена команда: AXE.STRT 0
+23:15:17| Information> Отправлена команда: CLIM.RAMP 2
+23:15:17| Information> Отправлена команда: CLIM.CONS 15
+23:15:17| Information> Установлена температура камеры 15 скорость набора температtуры 2
+23:15:17| Information> Температура  15 достигнута
+23:15:17| Information> 23:15:17.2277671:Начало стабилизации температуры.Время стабилизации 60000
+23:15:17| Information> 23:15:17.2277671:Стабилизация температуры завершена
+23:15:17| Information> 23:15:17.2277671:Запуск подцикла датчика DLY
+23:15:17| Information> 23:15:17.2433016 Новое положение для датчика 0
+23:15:17| Information> Отправлена команда: AXE.STOP 0
+23:15:17| Information> Задание положения осей: X 0:0. Y 0:0
+23:15:17| Information> Отправлена команда: AXE.STOP 0
+23:15:17| Information> Отправлена команда: AXE.CONS.POS 0 2
+23:15:17| Information> Отправлена команда: AXE.CONS.MOD 0 2
+23:15:17| Information> Отправлена команда: AXE.STOP 0
+23:15:17| Information> Отправлена команда: AXE.CONS.POS 0 1
+23:15:17| Information> Отправлена команда: AXE.CONS.MOD 0 1
+23:15:18| Information> Отправлена команда: AXE.STRT 0
+23:15:18| Information> Отправлена команда: AXE.TELL.STA 
+23:15:18| Information> Отправлена команда: AXE.UPLD.STA 
+23:15:21| Information> Отправлена команда: AXE.TELL.TJT 2
+23:15:22| Information> Отправлена команда: AXE.TELL.TJT 1
+23:15:23| Information> Отправлена команда: CLIM.TEMP
+23:15:25| Information> Отправлена команда: AXE.TELL.POS 2
+23:15:25| Information> Отправлена команда: AXE.TELL.POS 1
+23:15:25| Information> Отправлена команда: AXE.TELL.VIT 2
+23:15:25| Information> Отправлена команда: AXE.TELL.VIT 1
+23:15:25| Information> Отправлена команда: AXE.TELL.POA
+23:15:26| Information> Отправлена команда: AXE.TELL.STA 
+23:15:26| Information> Отправлена команда: AXE.UPLD.STA 
+23:15:26| Information> Отправлена команда: AXE.TELL.TJT 2
+23:15:26| Information> Отправлена команда: AXE.TELL.TJT 1
+23:15:26| Information> Отправлена команда: CLIM.TEMP
+23:15:26| Information> Отправлена команда: AXE.TELL.POS 2
+23:15:26| Information> Отправлена команда: AXE.TELL.POS 1
+23:15:26| Information> Отправлена команда: AXE.TELL.VIT 2
+23:15:27| Information> Отправлена команда: AXE.TELL.VIT 1
+23:15:27| Information> Отправлена команда: AXE.TELL.POA
+23:15:27| Information> Отправлена команда: AXE.TELL.STA 
+23:15:27| Information> Отправлена команда: AXE.UPLD.STA 
+23:15:27| Information> Отправлена команда: AXE.TELL.TJT 2
+23:15:27| Information> Отправлена команда: AXE.TELL.TJT 1
+23:15:27| Information> Отправлена команда: CLIM.TEMP
+23:15:27| Information> Отправлена команда: AXE.TELL.POS 2
+23:15:28| Information> Отправлена команда: AXE.TELL.POS 1
+23:15:28| Information> Отправлена команда: AXE.TELL.VIT 2
+23:15:28| Information> Отправлена команда: AXE.TELL.VIT 1
+23:15:28| Information> Отправлена команда: AXE.TELL.POA
+23:15:28| Information> Отправлена команда: AXE.TELL.STA 
+23:15:28| Information> Отправлена команда: AXE.UPLD.STA 
+23:15:28| Information> Отправлена команда: AXE.TELL.TJT 2
+23:15:28| Information> Отправлена команда: AXE.TELL.TJT 1
+23:15:28| Information> Отправлена команда: CLIM.TEMP
+23:15:29| Information> Отправлена команда: AXE.TELL.POS 2
+23:15:29| Information> Отправлена команда: AXE.TELL.POS 1
+23:15:29| Information> 23:15:29.2680125: Пакеты в положении 0 собраны
+23:15:29| Information> 23:15:29.2680125 Новое положение для датчика 1
+23:15:29| Information> Отправлена команда: AXE.STOP 0
+23:15:29| Information> Задание положения осей: X 15:0. Y 0:0
+23:15:29| Information> Отправлена команда: AXE.STOP 0
+23:15:29| Information> Отправлена команда: AXE.CONS.POS 15 2
+23:15:29| Information> Отправлена команда: AXE.CONS.MOD 0 2
+23:15:29| Information> Отправлена команда: AXE.STOP 0
+23:15:29| Information> Отправлена команда: AXE.CONS.POS 0 1
+23:15:29| Information> Отправлена команда: AXE.CONS.MOD 0 1
+23:15:31| Information> Отправлена команда: AXE.STRT 0
+23:15:31| Information> Отправлена команда: AXE.TELL.VIT 2
+23:15:31| Information> Отправлена команда: AXE.TELL.VIT 1
+23:15:31| Information> Отправлена команда: AXE.TELL.POA
+23:15:31| Information> Отправлена команда: AXE.TELL.STA 
+23:15:32| Information> Отправлена команда: AXE.UPLD.STA 
+23:15:32| Information> Отправлена команда: AXE.TELL.TJT 2
+23:15:32| Information> Отправлена команда: AXE.TELL.TJT 1
+23:15:32| Information> Отправлена команда: CLIM.TEMP
+23:15:32| Information> Отправлена команда: AXE.TELL.POS 2
+23:15:32| Information> Отправлена команда: AXE.TELL.POS 1
+23:15:32| Information> Отправлена команда: AXE.TELL.VIT 2
+23:15:32| Information> Отправлена команда: AXE.TELL.VIT 1
+23:15:32| Information> Отправлена команда: AXE.TELL.POA
+23:15:33| Information> Отправлена команда: AXE.TELL.STA 
+23:15:33| Information> Отправлена команда: AXE.UPLD.STA 
+23:15:33| Information> Отправлена команда: AXE.TELL.TJT 2
+23:15:33| Information> Отправлена команда: AXE.TELL.TJT 1
+23:15:33| Information> Отправлена команда: CLIM.TEMP
+23:15:33| Information> Отправлена команда: AXE.TELL.POS 2
+23:15:33| Information> Отправлена команда: AXE.TELL.POS 1
+23:15:33| Information> Отправлена команда: AXE.TELL.VIT 2
+23:15:34| Information> Отправлена команда: AXE.TELL.VIT 1
+23:15:34| Information> Отправлена команда: AXE.TELL.POA
+23:15:34| Information> Отправлена команда: AXE.TELL.STA 
+23:15:34| Information> Отправлена команда: AXE.UPLD.STA 
+23:15:34| Information> Отправлена команда: AXE.TELL.TJT 2
+23:15:34| Information> Отправлена команда: AXE.TELL.TJT 1
+23:15:34| Information> Отправлена команда: CLIM.TEMP
+23:15:34| Information> Отправлена команда: AXE.TELL.POS 2
+23:15:34| Information> Отправлена команда: AXE.TELL.POS 1
+23:15:35| Information> Отправлена команда: AXE.TELL.VIT 2
+23:15:35| Information> Отправлена команда: AXE.TELL.VIT 1
+23:15:35| Information> Отправлена команда: AXE.TELL.POA
+23:15:35| Information> Отправлена команда: AXE.TELL.STA 
+23:15:35| Information> Отправлена команда: AXE.UPLD.STA 
+23:15:35| Information> Отправлена команда: AXE.TELL.TJT 2
+23:15:35| Information> Отправлена команда: AXE.TELL.TJT 1
+23:15:35| Information> Отправлена команда: CLIM.TEMP
+23:15:36| Information> Отправлена команда: AXE.TELL.POS 2
+23:15:36| Information> Отправлена команда: AXE.TELL.POS 1
+23:15:36| Information> Отправлена команда: AXE.TELL.VIT 2
+23:15:36| Information> Отправлена команда: AXE.TELL.VIT 1
+23:15:36| Information> Соединение c датчиком прервано
+23:15:36| Information> Соединение c Evo 20 прервано
+23:15:36|     Warning> Поток чтения данных evo прерван
+23:15:36| Information> Соединение c датчиком прервано
+23:15:36| Information> Соединение c Evo 20 прервано
+23:15:36| Information> Поток цикла был прерван при датчике:DLY ,при шаге 1
+23:19:26| Information> Соединение c датчиком прервано
+23:19:26| Information> Соединение c Evo 20 прервано
+23:19:26| Information> Соединение c датчиком прервано
+23:19:26| Information> Соединение c Evo 20 прервано
+23:20:37| Information> Выбрана папка C:\Users\Азат\Desktop
+23:20:37| Information> Соединение c Evo 20 установлено
+23:20:37| Information> Соединение c датчиком установленно
+23:20:37| Information> Отправлена команда: AXE.TELL.STA 
+23:20:40| Information> Отправлена команда: AXE.UPLD.STA 
+23:20:41| Information> Отправлена команда: AXE.TELL.TJT 2
+23:20:41| Information> Отправлена команда: AXE.TELL.TJT 1
+23:20:41| Information> Отправлена команда: CLIM.TEMP
+23:20:41| Information> Отправлена команда: AXE.TELL.POS 2
+23:20:41| Information> Отправлена команда: AXE.TELL.POS 1
+23:20:42| Information> Отправлена команда: AXE.TELL.VIT 2
+23:20:42| Information> Отправлена команда: CLIM.ETAT 1
+23:20:42| Information> Отправлена команда: AXE.PWR 1 0
+23:20:42| Information> Отправлена команда: AXE.ZERO 0
+23:20:42| Information> Отправлена команда: AXE.STOP 0
+23:20:42| Information> Отправлена команда: AXE.CONS.VIT 20 0
+23:20:42| Information> Отправлена команда: AXE.STOP 0
+23:20:42| Information> Отправлена команда: AXE.CONS.POS 0 0
+23:20:42| Information> Отправлена команда: AXE.STRT 0
+23:20:42| Information> Отправлена команда: CLIM.RAMP 2
+23:20:42| Information> Отправлена команда: CLIM.CONS 15
+23:20:42| Information> Установлена температура камеры 15 скорость набора температtуры 2
+23:20:42| Information> Температура  15 достигнута
+23:20:42| Information> 23:20:42.9549473:Начало стабилизации температуры.Время стабилизации 60000
+23:20:42| Information> 23:20:42.9549473:Стабилизация температуры завершена
+23:20:42| Information> 23:20:42.9549473:Запуск подцикла датчика DLY
+23:20:42| Information> 23:20:42.9549473 Новое положение для датчика 0
+23:20:42| Information> Отправлена команда: AXE.STOP 0
+23:20:42| Information> Задание положения осей: X 0:0. Y 0:0
+23:20:42| Information> Отправлена команда: AXE.STOP 0
+23:20:42| Information> Отправлена команда: AXE.CONS.POS 0 2
+23:20:42| Information> Отправлена команда: AXE.CONS.MOD 0 2
+23:20:42| Information> Отправлена команда: AXE.STOP 0
+23:20:42| Information> Отправлена команда: AXE.CONS.POS 0 1
+23:20:42| Information> Отправлена команда: AXE.CONS.MOD 0 1
+23:20:42| Information> Отправлена команда: AXE.STRT 0
+23:20:43| Information> Отправлена команда: AXE.TELL.VIT 1
+23:20:43| Information> Отправлена команда: AXE.TELL.POA
+23:20:43| Information> Отправлена команда: AXE.TELL.STA 
+23:20:43| Information> Отправлена команда: AXE.UPLD.STA 
+23:20:43| Information> Отправлена команда: AXE.TELL.TJT 2
+23:20:43| Information> Отправлена команда: AXE.TELL.TJT 1
+23:20:43| Information> Отправлена команда: CLIM.TEMP
+23:20:43| Information> Отправлена команда: AXE.TELL.POS 2
+23:20:44| Information> Отправлена команда: AXE.TELL.POS 1
+23:20:44| Information> Отправлена команда: AXE.TELL.VIT 2
+23:20:44| Information> Отправлена команда: AXE.TELL.VIT 1
+23:20:44| Information> Отправлена команда: AXE.TELL.POA
+23:20:44| Information> Отправлена команда: AXE.TELL.STA 
+23:20:44| Information> Отправлена команда: AXE.UPLD.STA 
+23:20:44| Information> Отправлена команда: AXE.TELL.TJT 2
+23:20:44| Information> Отправлена команда: AXE.TELL.TJT 1
+23:20:45| Information> Отправлена команда: CLIM.TEMP
+23:20:45| Information> Отправлена команда: AXE.TELL.POS 2
+23:20:45| Information> Отправлена команда: AXE.TELL.POS 1
+23:20:45| Information> Отправлена команда: AXE.TELL.VIT 2
+23:20:45| Information> Отправлена команда: AXE.TELL.VIT 1
+23:20:45| Information> Отправлена команда: AXE.TELL.POA
+23:20:45| Information> Отправлена команда: AXE.TELL.STA 
+23:20:45| Information> Отправлена команда: AXE.UPLD.STA 
+23:20:46| Information> Отправлена команда: AXE.TELL.TJT 2
+23:20:46| Information> Отправлена команда: AXE.TELL.TJT 1
+23:20:46| Information> Отправлена команда: CLIM.TEMP
+23:20:46| Information> Соединение c датчиком прервано
+23:20:46| Information> Соединение c Evo 20 прервано
+23:20:46|     Warning> Поток чтения данных evo прерван
+23:20:46| Information> Поток цикла был прерван при датчике:DLY ,при шаге 0
+23:20:46| Information> Соединение c датчиком прервано
+23:20:46| Information> Соединение c Evo 20 прервано
+23:25:02| Information> Выбрана папка C:\Users\Азат\Documents\ExPRO 3
+23:25:02| Information> Соединение c Evo 20 установлено
+23:25:02| Information> Отправлена команда: AXE.TELL.STA 
+23:25:02| Information> Соединение c датчиком установленно
+23:25:06| Information> Отправлена команда: AXE.UPLD.STA 
+23:25:07| Information> Отправлена команда: CLIM.ETAT 1
+23:25:07| Information> Отправлена команда: AXE.PWR 1 0
+23:25:07| Information> Отправлена команда: AXE.ZERO 0
+23:25:07| Information> Отправлена команда: AXE.STOP 0
+23:25:07| Information> Отправлена команда: AXE.CONS.VIT 20 0
+23:25:07| Information> Отправлена команда: AXE.TELL.TJT 2
+23:25:07| Information> Отправлена команда: AXE.STOP 0
+23:25:07| Information> Отправлена команда: AXE.CONS.POS 0 0
+23:25:07| Information> Отправлена команда: AXE.STRT 0
+23:25:07| Information> Отправлена команда: CLIM.RAMP 2
+23:25:07| Information> Отправлена команда: CLIM.CONS 15
+23:25:07| Information> Установлена температура камеры 15 скорость набора температtуры 2
+23:25:07| Information> Температура  15 достигнута
+23:25:07| Information> 23:25:07.1169135:Начало стабилизации температуры.Время стабилизации 60000
+23:25:07| Information> 23:25:07.1169135:Стабилизация температуры завершена
+23:25:07| Information> 23:25:07.1169135:Запуск подцикла датчика DLY
+23:25:07| Information> 23:25:07.1169135 Новое положение для датчика 0
+23:25:07| Information> Отправлена команда: AXE.STOP 0
+23:25:07| Information> Задание положения осей: X 0:0. Y 0:0
+23:25:07| Information> Отправлена команда: AXE.STOP 0
+23:25:07| Information> Отправлена команда: AXE.CONS.POS 0 2
+23:25:07| Information> Отправлена команда: AXE.CONS.MOD 0 2
+23:25:07| Information> Отправлена команда: AXE.STOP 0
+23:25:07| Information> Отправлена команда: AXE.CONS.POS 0 1
+23:25:07| Information> Отправлена команда: AXE.CONS.MOD 0 1
+23:25:07| Information> Отправлена команда: AXE.STRT 0
+23:25:07| Information> Отправлена команда: AXE.TELL.TJT 1
+23:25:07| Information> Отправлена команда: CLIM.TEMP
+23:25:07| Information> Отправлена команда: AXE.TELL.POS 2
+23:25:07| Information> Отправлена команда: AXE.TELL.POS 1
+23:25:07| Information> Отправлена команда: AXE.TELL.VIT 2
+23:25:07| Information> Отправлена команда: AXE.TELL.VIT 1
+23:25:07| Information> Отправлена команда: AXE.TELL.POA
+23:25:08| Information> Отправлена команда: AXE.TELL.STA 
+23:25:08| Information> Отправлена команда: AXE.UPLD.STA 
+23:25:08| Information> Отправлена команда: AXE.TELL.TJT 2
+23:25:08| Information> Отправлена команда: AXE.TELL.TJT 1
+23:25:08| Information> Отправлена команда: CLIM.TEMP
+23:25:08| Information> Отправлена команда: AXE.TELL.POS 2
+23:25:08| Information> Отправлена команда: AXE.TELL.POS 1
+23:25:08| Information> Отправлена команда: AXE.TELL.VIT 2
+23:25:08| Information> Отправлена команда: AXE.TELL.VIT 1
+23:25:09| Information> Отправлена команда: AXE.TELL.POA
+23:25:09| Information> Отправлена команда: AXE.TELL.STA 
+23:25:09| Information> Отправлена команда: AXE.UPLD.STA 
+23:25:09| Information> Отправлена команда: AXE.TELL.TJT 2
+23:25:09| Information> Отправлена команда: AXE.TELL.TJT 1
+23:25:09| Information> Отправлена команда: CLIM.TEMP
+23:25:09| Information> Соединение c датчиком прервано
+23:25:09| Information> Соединение c Evo 20 прервано
+23:25:09|     Warning> Поток чтения данных evo прерван
+23:25:09| Information> Поток цикла был прерван при датчике:DLY ,при шаге 0
+23:25:09| Information> Соединение c датчиком прервано
+23:25:09| Information> Соединение c Evo 20 прервано
+23:26:27| Information> Соединение c датчиком прервано
+23:26:27| Information> Соединение c Evo 20 прервано
+23:26:27| Information> Соединение c датчиком прервано
+23:26:27| Information> Соединение c Evo 20 прервано
+23:27:36| Information> Соединение c датчиком прервано
+23:27:36| Information> Соединение c Evo 20 прервано
+23:27:36| Information> Соединение c датчиком прервано
+23:27:36| Information> Соединение c Evo 20 прервано
+23:30:30| Information> Соединение c датчиком прервано
+23:30:30| Information> Соединение c Evo 20 прервано
+23:30:30| Information> Соединение c датчиком прервано
+23:30:30| Information> Соединение c Evo 20 прервано

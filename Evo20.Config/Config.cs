@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Configuration;
 
-namespace Evo20.Config
+namespace Evo20
 {
     public static class Config
     {
@@ -24,6 +24,21 @@ namespace Evo20.Config
         
         public static int BASE_MOVE_SPEED = Convert.ToInt32(ConfigurationManager.AppSettings.Get("BASE_MOVE_SPEED"));
 
+        public static string ProfileFolder = ConfigurationManager.AppSettings.Get("ProfileFolder");
+
+        private static string defaultSettingsFileName;
+
+        public static string DefaultSettingsFileName
+        {
+            get
+            {
+                if(defaultSettingsFileName==null)
+                {
+                    defaultSettingsFileName=ConfigurationManager.AppSettings.Get("DefaultSettingsFileName");
+                }
+                return defaultSettingsFileName;
+            }
+        }
 
         //позиция служебных  байт в пакете
         public static int HEAD_BEGIN = Convert.ToInt32(ConfigurationManager.AppSettings.Get("HeadBegin"));

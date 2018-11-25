@@ -8,8 +8,8 @@
     <ProjectGuid>{99D800D1-0D39-49B9-9311-003759CA741B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Evo20.Config</RootNamespace>
-    <AssemblyName>Evo20.Config</AssemblyName>
+    <RootNamespace>Evo20.Utils</RootNamespace>
+    <AssemblyName>Evo20.Utils</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
