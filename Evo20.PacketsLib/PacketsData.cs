@@ -67,78 +67,96 @@ namespace Evo20.Evo20.Packets
             get;
             private set;
         }
+        private double[] meanW;
         //среднее значение по гироскопам
         public double[] MeanW
         {
             get
             {
-                var w = new double[AXIS_COUNT];
-                double sum = 0;
-                for (int i = 0; i < w.Length; i++)
+                if (meanW == null)
                 {
-                    for (int j = 0; j < packets.Count; j++)
+                    meanW = new double[AXIS_COUNT];
+                    double sum = 0;
+                    for (int i = 0; i < meanW.Length; i++)
                     {
-                        sum += packets[j].W[i];
-                    }                    
-                    w[i] += sum / packets.Count;
-                    sum = 0;
+                        for (int j = 0; j < packets.Count; j++)
+                        {
+                            sum += packets[j].W[i];
+                        }
+                        meanW[i] += sum / packets.Count;
+                        sum = 0;
+                    }
                 }
-                return w;
+                return meanW;
             }
         }
-        //среднее значение по аксерометрам
 
+        private double[] meanA;
+        //среднее значение по аксерометрам
         public double[] MeanA
         {
             get
             {
-                var a = new double[AXIS_COUNT];
-                double sum = 0;
-                for (int i = 0; i < a.Length; i++)
+                if (meanA == null)
                 {
-                    
-                    for (int j = 0; j < packets.Count; j++)
+                    meanA = new double[AXIS_COUNT];
+                    double sum = 0;
+                    for (int i = 0; i < meanA.Length; i++)
                     {
-                        sum += packets[j].A[i];
+
+                        for (int j = 0; j < packets.Count; j++)
+                        {
+                            sum += packets[j].A[i];
+                        }
+                        meanA[i] += sum / packets.Count;
+                        sum = 0;
                     }
-                    a[i] += sum / packets.Count;
-                    sum = 0;
                 }
-                return a;
+                return meanA;
             }
         }
+
+        private double[] meanUW;
         //среднее значение 
         public double[] MeanUW
         {
             get
             {
-                var uw = new double[AXIS_COUNT];
-                double sum = 0;
-                for (int i = 0; i < uw.Length; i++)
-                {                   
-                    sum += packets[0].U[i];
-                    sum += packets[2].U[i];
-                    uw[i] += sum / 2;
-                    sum = 0;
+                if(meanUW == null)
+                {
+                    meanUW = new double[AXIS_COUNT];
+                    double sum = 0;
+                    for (int i = 0; i < meanUW.Length; i++)
+                    {                   
+                        sum += packets[0].U[i];
+                        sum += packets[2].U[i];
+                        meanUW[i] += sum / 2;
+                        sum = 0;
+                    }
                 }
-                return uw;
+                return meanUW;
             }
         }
+
+        private double [] meanUA;
 
         public double[] MeanUA
         {
             get
             {
-                var ua = new double[AXIS_COUNT];
-                double sum = 0;
-                for (int i = 0; i < ua.Length; i++)
-                {                    
-                    sum += packets[1].U[i];
-                    sum += packets[3].U[i];
-                    ua[i] += sum / 2;
-                    sum = 0;
+                if (meanUA == null)
+                {
+                    meanUA = new double[AXIS_COUNT];
+                    double sum = 0;
+                    for (int i = 0; i < meanUA.Length; i++)
+                    {
+                        sum += packets[1].U[i];
+                        sum += packets[3].U[i];
+                        meanUA[i] += sum / 2;
+                        sum = 0;
+                    }
                 }
-                return ua;
+                return meanUA;
             }
         }
 
@@ -152,10 +170,7 @@ namespace Evo20.Evo20.Packets
 
         public int Length
         {
-            get
-            {
-                return packets.Count;
-            }
+            get { return packets.Count; }
         }
 
         #endregion  

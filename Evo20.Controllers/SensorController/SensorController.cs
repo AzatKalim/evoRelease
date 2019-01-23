@@ -11,9 +11,9 @@ namespace Evo20.Controllers
     public class SensorController
     {
         //событие обработки ошибок
-        public event ControllerExceptions EventHandlerListForControllerExceptions;
+        public event ControllerExceptions SensorControllerException;
         //событие изменения состояния соединения с датчиком
-        public event ConnectionChangeHandler EventHandlerListForSensorConnectionChange;
+        public event ConnectionChangeHandler SensorConnectionChanged;
 
         public delegate void ConnectionChangeHandler(ConnectionStatus state);
 
@@ -37,14 +37,8 @@ namespace Evo20.Controllers
 
         public bool CanCollect
         {
-            get
-            {
-                return canCollect;
-            }
-            set
-            {
-                canCollect = value;
-            }
+            get { return canCollect; }
+            set { canCollect = value; }
         }
 
         ISensor currentSensor;
@@ -85,6 +79,29 @@ namespace Evo20.Controllers
                     return CurrentSensor.CheckProfile.Length;
                 return 0;
             }
+        }
+
+        public List<ISensor> sensorsList;
+
+        public List<ISensor> SensorsList
+        {
+           get
+            { 
+                if(sensorsList==null)
+                {
+                    sensorsList = new List<ISensor>();
+                    //добавляем в список датчиков ДЛУ и ДУС
+                    sensorsList.Add(new DLY(CycleData.Instance.CalibrationTemperatures,
+                        CycleData.Instance.CheckTemperatures,
+                        SensorData.Instance.CalibrationDLYMaxPacketsCount,
+                        SensorData.Instance.CheckDLYMaxPacketsCount));
+                    sensorsList.Add(new DYS(CycleData.Instance.CalibrationTemperatures,
+                        CycleData.Instance.CheckTemperatures,
+                        SensorData.Instance.CalibrationDYSMaxPacketsCount,
+                        SensorData.Instance.CheckDYSMaxPacketsCount));
+                }
+                return sensorsList;
+           }
         }
 
         public SensorData sensorData
@@ -142,9 +159,9 @@ namespace Evo20.Controllers
         /// <param name="newState">новое состояние</param>
         private void SensorHandlerStatusChanged(ConnectionStatus newState)
         {
-            if (EventHandlerListForSensorConnectionChange != null)
+            if (SensorConnectionChanged != null)
             {
-                EventHandlerListForSensorConnectionChange(newState);
+                SensorConnectionChanged(newState);
             }
         }
 
@@ -155,9 +172,9 @@ namespace Evo20.Controllers
         private void SensorExeptionHandler(Exception sensorExeption)
         {
             Controller.Instance.Stop();
-            if (EventHandlerListForControllerExceptions != null)
+            if (SensorControllerException != null)
             {
-                EventHandlerListForControllerExceptions(sensorExeption);
+                SensorControllerException(sensorExeption);
             }
         }
 
@@ -222,5 +239,12 @@ namespace Evo20.Controllers
             sensorHandler.StopConnection();
         }
 
+        public void ClearWritedData()
+        {
+            //foreach (var sensor in Se)
+            //{
+                
+            //}
+        }
     }
 }

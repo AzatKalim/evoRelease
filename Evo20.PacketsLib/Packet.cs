@@ -171,6 +171,7 @@ namespace Evo20.Evo20.Packets
                     int u_z = ConvertParam(new byte[] { data[Config.U_Z_BEGIN], data[Config.U_Z_BEGIN + 1], data[Config.U_Z_BEGIN + 2], data[Config.U_Z_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
                     this.U = new int[] { u_x, u_y, u_z };
                 }
+                data = null;
             }
             catch (Exception)
             {                
@@ -202,10 +203,10 @@ namespace Evo20.Evo20.Packets
 
         private static int ConvertParam(byte[] bytes, ref bool rangeFlag, ref bool dataFlag)
         {
-            bool sign = true;          
+            //bool sign = true;          
             int res = BitConverter.ToInt32(bytes, 0);
-            if ((res & int.MinValue) == int.MinValue)
-                sign = false;
+            //if ((res & int.MinValue) == int.MinValue)
+            //    sign = false;
             if ((res & 3) == 2 || (res & 3) == 1)
                 rangeFlag = true;
             if ((res & 3) == 3)

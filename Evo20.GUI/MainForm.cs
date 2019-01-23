@@ -67,8 +67,8 @@ namespace Evo20.GUI
             Controller.Instance.EventHandlersListCycleEnded += CycleEndedHandler;
             ControllerEvo.Instance.EventListForEvoConnectionChange += EvoConnectionChangeHandler;
             Controller.Instance.EventListForWorkModeChange += EvoWorkModeChangeHandler;
-            SensorController.Instance.EventHandlerListForControllerExceptions += ControllerExсeptoinsHandler;
-            SensorController.Instance.EventHandlerListForSensorConnectionChange += SensorConnectionChangeHandler;
+            SensorController.Instance.SensorControllerException += ControllerExсeptoinsHandler;
+            SensorController.Instance.SensorConnectionChanged += SensorConnectionChangeHandler;
             Controller.Instance.EventHandlerListForTemperatureStabilization += TemperatureStabilizationHandler;
             startTime = DateTime.Now;
             graph.GraphPane.XAxis.Title = "Время";

@@ -13,6 +13,14 @@ namespace Evo20.Evo20.Packets
     [Serializable]
     public class PacketsCollection
     {
+        private sealed class MeanParametres
+        {
+            public double[] MeanW;
+            public double[] MeanA;
+            public double[] MeanUA;
+            public double[] MeanUW;
+            public int packetsCount;
+        }
         #region Private Fields
         /// <summary>
         /// Максимальное число пакетов
@@ -21,14 +29,23 @@ namespace Evo20.Evo20.Packets
         readonly int MAX_PACKETS_COUNT;
 
         /// <summary>
-        /// температура сбора пакетов 
-        /// </summary>
-        readonly int TEMPERATURE;
-
-        /// <summary>
         /// Массив, где индекс- номер позиции, а значение -список собраных PacketData в этой позиции
         /// </summary>
         List<PacketsData>[] positionPackets;
+
+        MeanParametres[] meanParams;
+
+        private MeanParametres[] ComputedMeanParams
+        {
+            get
+            {
+                if (meanParams == null)
+                {
+                    meanParams = new MeanParametres[PositionCount];
+                }
+                return meanParams;
+            }
+        }
 
         #endregion 
 
@@ -36,12 +53,11 @@ namespace Evo20.Evo20.Packets
 
         public PacketsCollection(int temperature, int positionCount, int packetsCount)
         {
-            this.TEMPERATURE = temperature;
+            this.Temperature = temperature;
             positionPackets = new List<PacketsData>[positionCount];
             for (int i = 0; i < positionCount; i++)
-            {
                 positionPackets[i] = new List<PacketsData>();
-            }
+
             MAX_PACKETS_COUNT = packetsCount;
             IsCollected = false;
         }
@@ -53,12 +69,12 @@ namespace Evo20.Evo20.Packets
             try
             {
                 string[] temp = tmp.Split(' ');
-                TEMPERATURE = Convert.ToInt32(temp[0]);
+                Temperature = Convert.ToInt32(temp[0]);
                 positionCount = Convert.ToInt32(temp[1]);
             }
             catch (Exception ex)
             {
-                TEMPERATURE = 0;
+                Temperature = 0;
                 positionCount = 0;
                 throw ex;
             }
@@ -77,7 +93,7 @@ namespace Evo20.Evo20.Packets
             }
             catch (Exception exception)
             {
-                TEMPERATURE = 0;
+                Temperature = 0;
                 MAX_PACKETS_COUNT = 0;
                 positionPackets = null;
                 IsCollected = false;
@@ -93,23 +109,14 @@ namespace Evo20.Evo20.Packets
         /// <summary>
         /// Возвращает температуру 
         /// </summary>
-        public int  Temperature
-        {
-            get
-            {
-                return  TEMPERATURE;
-            }
-        }
+        public int Temperature{ get; set; }
 
         /// <summary>
         /// Возвращает число позиций 
         /// </summary>
         public int PositionCount
         {
-            get
-            {
-                return positionPackets.Length;
-            }
+            get { return positionPackets.Length;}
         }
 
         public List<PacketsData> this[int index]
@@ -134,22 +141,26 @@ namespace Evo20.Evo20.Packets
         /// <returns> массив средних значений </returns>
         public double[] MeanW(int positionNumber)
         {
-            List<PacketsData> packetsList = positionPackets[positionNumber];
-            double[] w = new double[Config.PARAMS_COUNT];
-            double[] sum = new double[Config.PARAMS_COUNT];
+            if (ComputedMeanParams[positionNumber] != null &&
+                 ComputedMeanParams[positionNumber].MeanW != null && ComputedMeanParams[positionNumber].packetsCount != positionPackets[positionNumber].Count)
+                return ComputedMeanParams[positionNumber].MeanW;
+            if (ComputedMeanParams[positionNumber] == null)
+                ComputedMeanParams[positionNumber] = new MeanParametres();
+
+            var packetsList = positionPackets[positionNumber];
+            var w = new double[Config.PARAMS_COUNT];
+            var sum = new double[Config.PARAMS_COUNT];
 
             for (int j = 0; j < packetsList.Count; j++)
             {
-                double[] tmp = packetsList[j].MeanW;
+                var tmp = packetsList[j].MeanW;
                 for (int i = 0; i < sum.Length; i++)
-                {
                     sum[i]+= tmp[i];
-                }
             }
             for (int i = 0; i < w.Length; i++)
-            {
                 w[i] = sum[i] / packetsList.Count;
-            }
+            ComputedMeanParams[positionNumber].MeanW = w;
+            ComputedMeanParams[positionNumber].packetsCount = packetsList.Count;
             return w;
         }
 
@@ -160,22 +171,27 @@ namespace Evo20.Evo20.Packets
         /// <returns> массив средних значений </returns>
         public double[] MeanA(int positionNumber)
         {
-            List<PacketsData> packetsList = positionPackets[positionNumber];
-            double[] a = new double[Config.PARAMS_COUNT];
-            double[] sum = new double[Config.PARAMS_COUNT];
+            if (ComputedMeanParams[positionNumber] != null &&
+                 ComputedMeanParams[positionNumber].MeanA != null && ComputedMeanParams[positionNumber].packetsCount != positionPackets[positionNumber].Count)
+                return ComputedMeanParams[positionNumber].MeanA;
+            if (ComputedMeanParams[positionNumber] == null)
+                ComputedMeanParams[positionNumber] = new MeanParametres();
+
+            var packetsList = positionPackets[positionNumber];
+            var a = new double[Config.PARAMS_COUNT];
+            var sum = new double[Config.PARAMS_COUNT];
 
             for (int j = 0; j < packetsList.Count; j++)
             {
-                double[] tmp = packetsList[j].MeanA;
+                var tmp = packetsList[j].MeanA;
                 for (int i = 0; i < sum.Length; i++)
-                {
                     sum[i]+= tmp[i];
-                }
             }
             for (int i = 0; i < a.Length; i++)
-            {
                 a[i] = sum[i] / packetsList.Count;
-            }
+
+            ComputedMeanParams[positionNumber].MeanA = a;
+            ComputedMeanParams[positionNumber].packetsCount = packetsList.Count;
             return a;
         }
 
@@ -186,22 +202,26 @@ namespace Evo20.Evo20.Packets
         /// <returns> массив средних значений </returns>
         public double[] MeanUW(int positionNumber)
         {
-            List<PacketsData> packetsList = positionPackets[positionNumber];
-            double[] uw = new double[Config.PARAMS_COUNT];
-            double[] sum = new double[Config.PARAMS_COUNT];
+            if (ComputedMeanParams[positionNumber] != null &&
+                 ComputedMeanParams[positionNumber].MeanUW != null && ComputedMeanParams[positionNumber].packetsCount != positionPackets[positionNumber].Count)
+                return ComputedMeanParams[positionNumber].MeanUW;
+            if (ComputedMeanParams[positionNumber] == null)
+                ComputedMeanParams[positionNumber] = new MeanParametres();
+
+            var packetsList = positionPackets[positionNumber];
+            var uw = new double[Config.PARAMS_COUNT];
+            var sum = new double[Config.PARAMS_COUNT];
 
             for (int j = 0; j < packetsList.Count; j++)
             {
-                double[] tmp = packetsList[j].MeanUW;
+                var tmp = packetsList[j].MeanUW;
                 for (int i = 0; i < sum.Length; i++)
-                {
                     sum[i]+= tmp[i];
-                }
             }
             for (int i = 0; i < uw.Length; i++)
-            {
                 uw[i] = sum[i] / packetsList.Count;
-            }
+            ComputedMeanParams[positionNumber].MeanUA = uw;
+            ComputedMeanParams[positionNumber].packetsCount = packetsList.Count;
             return uw;
         }
         /// <summary>
@@ -211,22 +231,25 @@ namespace Evo20.Evo20.Packets
         /// <returns> массив средних значений </returns>
         public double[] MeanUA(int positionNumber)
         {
-            List<PacketsData> packetsList = positionPackets[positionNumber];
-            double[] ua = new double[Config.PARAMS_COUNT];
-            double[] sum = new double[Config.PARAMS_COUNT];
+            if (ComputedMeanParams[positionNumber] != null &&
+                 ComputedMeanParams[positionNumber].MeanUA != null && ComputedMeanParams[positionNumber].packetsCount != positionPackets[positionNumber].Count)
+                return ComputedMeanParams[positionNumber].MeanUA;
+            if (ComputedMeanParams[positionNumber] == null)
+                ComputedMeanParams[positionNumber] = new MeanParametres();
+            var packetsList = positionPackets[positionNumber];
+            var ua = new double[Config.PARAMS_COUNT];
+            var sum = new double[Config.PARAMS_COUNT];
 
             for (int j = 0; j < packetsList.Count; j++)
             {
-                double[] tmp = packetsList[j].MeanUA;
+                var tmp = packetsList[j].MeanUA;
                 for (int i = 0; i < sum.Length; i++)
-                {
                     sum[i]+= tmp[i];
-                }
             }
             for (int i = 0; i < ua.Length; i++)
-            {
                 ua[i] = sum[i] / packetsList.Count;
-            }
+            ComputedMeanParams[positionNumber].MeanUA = ua;
+            ComputedMeanParams[positionNumber].packetsCount = packetsList.Count;
             return ua;
         }
 
@@ -239,23 +262,20 @@ namespace Evo20.Evo20.Packets
         {
             if (positionPackets.Length < positionNumber)
                 return null;
-            List<PacketsData> packetsList = positionPackets[positionNumber];
+            var packetsList = positionPackets[positionNumber];
             if (packetsList.Count == 0)
-            {
                 return null;
-            }
-            double[] sumUa = new double[Config.PARAMS_COUNT];
-            double[] sumUw = new double[Config.PARAMS_COUNT];
-            double[] sumA =  new double[Config.PARAMS_COUNT];
-            double[] sumW = new double[Config.PARAMS_COUNT];
-
+            var sumUa = new double[Config.PARAMS_COUNT];
+            var sumUw = new double[Config.PARAMS_COUNT];
+            var sumA = new double[Config.PARAMS_COUNT];
+            var sumW = new double[Config.PARAMS_COUNT];
 
             for (int j = 0; j < packetsList.Count; j++)
             {
-                double[] ua = packetsList[j].MeanUA;
-                double[] w = packetsList[j].MeanW;
-                double[] a = packetsList[j].MeanA;
-                double[] uw = packetsList[j].MeanUW;
+                var ua = packetsList[j].MeanUA;
+                var w = packetsList[j].MeanW;
+                var a = packetsList[j].MeanA;
+                var uw = packetsList[j].MeanUW;
                 for (int i = 0; i < Config.PARAMS_COUNT; i++)
                 {
                     sumUa[i] +=ua[i];
@@ -271,7 +291,7 @@ namespace Evo20.Evo20.Packets
                 sumA[i] /= packetsList.Count;
                 sumW[i] /= packetsList.Count;
             }
-            List<double> result = new List<double>();
+            var result = new List<double>();
             result.AddRange(sumA);
             result.AddRange(sumW);
             result.AddRange(sumUa);
@@ -307,7 +327,7 @@ namespace Evo20.Evo20.Packets
         /// <returns>Читабельную строку </returns>
         public override string ToString()
         {
-            var buff = new StringBuilder(TEMPERATURE + " " + positionPackets.Length+Environment.NewLine);
+            var buff = new StringBuilder(Temperature + " " + positionPackets.Length + Environment.NewLine);
             for (int i = 0; i < positionPackets.Length; i++)
             {
                 buff.Append(positionPackets[i].Count+Environment.NewLine);
@@ -317,7 +337,19 @@ namespace Evo20.Evo20.Packets
                 }
             }
             return buff.ToString();
-        }    
+        }
+
+        //public void ClearUnneedInfo()
+        //{
+        //    for (int i = 0; i < positionPackets.Length; i++)
+        //    {
+                
+        //    }
+        //}
+        //private bool MeanComputed()
+        //{
+
+        //}
 
     }
 }

@@ -40,6 +40,8 @@ namespace Evo20
             }
         }
 
+        public static bool IsFakeEvo = Convert.ToBoolean(ConfigurationManager.AppSettings.Get("FakeEvo"));
+ 
         //позиция служебных  байт в пакете
         public static int HEAD_BEGIN = Convert.ToInt32(ConfigurationManager.AppSettings.Get("HeadBegin"));
         public static int ID_BEGIN = Convert.ToInt32(ConfigurationManager.AppSettings.Get("IdBegin"));
@@ -64,5 +66,7 @@ namespace Evo20
         public static int Y_AXIS_NUMBER = Convert.ToInt32(ConfigurationManager.AppSettings.Get("Y_AXIS_NUMBER"));
         public static int Z_AXIS_NUMBER = Convert.ToInt32(ConfigurationManager.AppSettings.Get("Z_AXIS_NUMBER"));
         public static int ALL_AXIS_NUMBER = Convert.ToInt32(ConfigurationManager.AppSettings.Get("ALL_AXIS_NUMBER"));
+
+
     }
 }

@@ -173,7 +173,7 @@ namespace Evo20.Controllers
             return true;
         }
 
-        public bool ReadDataFromFile(ISensor[] sensors,StreamReader file)
+        public bool ReadDataFromFile(List<ISensor> sensors,StreamReader file)
         {
             if (!ReadDataFromFile(file, sensors[0].CalibrationPacketsCollection))
             {
@@ -194,21 +194,6 @@ namespace Evo20.Controllers
             return true;
         }
 
-        #endregion
-
-        public List<ISensor> GetSensors()
-        {
-            var sensorsList = new List<ISensor>();
-            //добавляем в список датчиков ДЛУ и ДУС
-            sensorsList.Add(new DLY(CycleData.Instance.CalibrationTemperatures,
-                CycleData.Instance.CheckTemperatures,
-                SensorData.Instance.CalibrationDLYMaxPacketsCount,
-                SensorData.Instance.CheckDLYMaxPacketsCount));
-            sensorsList.Add(new DYS(CycleData.Instance.CalibrationTemperatures,
-                CycleData.Instance.CheckTemperatures,
-                SensorData.Instance.CalibrationDYSMaxPacketsCount,
-                SensorData.Instance.CheckDYSMaxPacketsCount));
-            return sensorsList;
-        }
+        #endregion      
     }
 }

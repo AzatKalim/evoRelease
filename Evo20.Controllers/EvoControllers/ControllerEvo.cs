@@ -56,28 +56,29 @@ namespace Evo20.Controllers
         }
 
         //команды опроса системы
-        protected Command[] GetRoutineCommands()
+        protected Command[] RoutineCommands
         {
-            Command[] commands = new Command[] 
+            get
             {
-                new Axis_Status(),
-                new Temperature_status(),
-                new Rotary_joint_temperature_Query(Axis.First),
-                new Rotary_joint_temperature_Query(Axis.Second),
-                new Actual_temperature_query(),
-                new Axis_Position_Query(Axis.First),
-                new Axis_Position_Query(Axis.Second),
-                new Axis_Rate_Query(Axis.First),
-                new Axis_Rate_Query(Axis.Second),
-                new Requested_axis_position_reached()
-            };
-            return commands;
+                return new Command[] 
+                    {
+                        new Axis_Status(),
+                        new Temperature_status(),
+                        new Rotary_joint_temperature_Query(Axis.First),
+                        new Rotary_joint_temperature_Query(Axis.Second),
+                        new Actual_temperature_query(),
+                        new Axis_Position_Query(Axis.First),
+                        new Axis_Position_Query(Axis.Second),
+                        new Axis_Rate_Query(Axis.First),
+                        new Axis_Rate_Query(Axis.Second),
+                        new Requested_axis_position_reached()
+                    };
+            }
         }
-
 
         public void ControllerRoutine()
         {
-            Command[] commands = GetRoutineCommands();
+            var commands = RoutineCommands;
             while (commandHandler.ConnectionStatus == ConnectionStatus.CONNECTED)
             {
                 foreach (var item in commands)

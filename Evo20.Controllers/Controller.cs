@@ -136,27 +136,25 @@ namespace Evo20.Controllers
         {
             if (cycleThread != null && cycleThread.IsAlive)
                 return false;
-            if (sensorsList == null || sensorsList.Count==0)
-            {
-                sensorsList = SensorData.Instance.GetSensors();
-            }
-            switch(mode)
-            {
-                case WorkMode.CalibrationMode:              
-                    cycleThread = new Thread(CalibrationCycle);
-                    break;
-                case WorkMode.CheckMode:
-                    cycleThread= new Thread(CheckCycle);
-                    break;
-                default:
-                    return false;
-            }
+            sensorsList = SensorController.Instance.SensorsList;
+           
             bool resultEvoStart= ControllerEvo.Instance.StartEvoConnection();
             if (!resultEvoStart)
                 return false;
             bool resultComPortStart =SensorController.Instance.StartComPortConnection(comPortName);
             if (!resultComPortStart)
                 return false;
+            switch (mode)
+            {
+                case WorkMode.CalibrationMode:
+                    cycleThread = new Thread(CalibrationCycle);
+                    break;
+                case WorkMode.CheckMode:
+                    cycleThread = new Thread(CheckCycle);
+                    break;
+                default:
+                    return false;
+            }
             cycleThread.Start();
             return true;
         }
@@ -295,7 +293,8 @@ namespace Evo20.Controllers
                 }
                 TemperutureIndex = i+1;
                 //записываем пакеты
-                //FileController.Instance.WriteRedPackets(sensorsList, CycleData.Instance.FindCalibrationTemperatureIndex(SensorController.Instance.TemperatureOfCollect));                            
+                FileController.Instance.WriteRedPackets(sensorsList, CycleData.Instance.FindCalibrationTemperatureIndex(SensorController.Instance.TemperatureOfCollect)); 
+                //SensorData.Instance           
             }
             EventHandlersListCycleEnded(true);
 

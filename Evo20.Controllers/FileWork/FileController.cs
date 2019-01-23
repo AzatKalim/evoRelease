@@ -66,11 +66,7 @@ namespace Evo20.Controllers
         /// <returns></returns>
         public bool ReadDataFromFile(ref List<ISensor> sensorsList, StreamReader file)
         {
-            if (sensorsList == null || sensorsList.Count == 0)
-            {
-                sensorsList = SensorData.Instance.GetSensors();
-            }
-            var result = SensorData.Instance.ReadDataFromFile(sensorsList.ToArray(), file);
+            var result = SensorData.Instance.ReadDataFromFile(SensorController.Instance.SensorsList, file);
             if (result)
                 CycleData.Instance.StartTemperatureIndex = sensorsList[0].CalibrationPacketsCollection.Count;
             return result;
