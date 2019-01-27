@@ -86,7 +86,8 @@ namespace Evo20.EvoConnections
             Sender = new UdpClient(Config.REMOTE_PORT_NUMBER);
             //убрать
 #if !DEBUG
-            Sender.Connect(endPoint);
+            if(!Config.IsFakeEvo)
+                Sender.Connect(endPoint);
 #endif
             switch (Config.EvoType)
             {
@@ -204,9 +205,8 @@ namespace Evo20.EvoConnections
         public bool SendMessage(string message)
         {
             //убрать
-#if DEBUG
-            return true;
-#endif
+            if(Config.IsFakeEvo)
+                return true;
             try
             {
                 if (connectionState == ConnectionStatus.CONNECTED)

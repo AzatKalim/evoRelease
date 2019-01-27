@@ -43,16 +43,6 @@ namespace Evo20.Controllers
 
         ISensor currentSensor;
 
-        public PacketsData lastPacket;
-
-        public int TemperatureOfCollect = 0;
-
-        public int CurrentPositionNumber
-        {
-            get;
-            set;
-        }
-
         public ISensor CurrentSensor
         {
             set
@@ -65,6 +55,16 @@ namespace Evo20.Controllers
             {
                 return currentSensor;
             }
+        }
+
+        public PacketsData lastPacket;
+
+        public int TemperatureOfCollect = 0;
+
+        public int CurrentPositionNumber
+        {
+            get;
+            set;
         }
 
         public int CurrentPositionCount
@@ -239,12 +239,16 @@ namespace Evo20.Controllers
             sensorHandler.StopConnection();
         }
 
-        public void ClearWritedData()
+        public void ClearWritedData(int temperatureIndex,WorkMode mode)
         {
-            //foreach (var sensor in Se)
-            //{
-                
-            //}
+            Log.Instance.Debug("ClearWritedData:temperatureIndex:{0},mode:{1}", temperatureIndex, mode);
+            foreach (var sensor in sensorsList)
+            {
+                if(mode==WorkMode.CalibrationMode)
+                    sensor.CalibrationPacketsCollection[temperatureIndex].ClearUnneedInfo();
+                else
+                    sensor.CheckPacketsCollection[temperatureIndex].ClearUnneedInfo();
+            }
         }
     }
 }

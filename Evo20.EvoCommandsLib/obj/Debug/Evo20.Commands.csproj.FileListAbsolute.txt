@@ -5,3 +5,10 @@ C:\Users\Азат\Desktop\Evo20\Evo20.EvoCommandsLib\obj\Debug\Evo20.EvoCommands
 C:\Users\Азат\Desktop\Evo20\Evo20.EvoCommandsLib\obj\Debug\Evo20.EvoCommands.pdb
 C:\Users\Азат\Desktop\Evo20\Evo20.EvoCommandsLib\bin\Debug\Evo20.Utils.dll
 C:\Users\Азат\Desktop\Evo20\Evo20.EvoCommandsLib\bin\Debug\Evo20.Utils.pdb
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.EvoCommandsLib\bin\Debug\Evo20.EvoCommands.dll
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.EvoCommandsLib\bin\Debug\Evo20.EvoCommands.pdb
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.EvoCommandsLib\bin\Debug\Evo20.Utils.dll
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.EvoCommandsLib\bin\Debug\Evo20.Utils.pdb
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.EvoCommandsLib\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.EvoCommandsLib\obj\Debug\Evo20.EvoCommands.dll
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.EvoCommandsLib\obj\Debug\Evo20.EvoCommands.pdb

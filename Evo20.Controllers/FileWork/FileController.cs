@@ -97,11 +97,14 @@ namespace Evo20.Controllers
             return true;
         }
 
-        public bool WriteRedPackets(List<ISensor> sensorsList,int index)
+        public bool WriteRedPackets(List<ISensor> sensorsList,int temperatureNumber)
         {
             Log.Instance.Info("Запись уже считанных пакетов в файл");
-            StreamWriter file = new StreamWriter(filesPath + index+".txt");
-            return SensorData.Instance.WritePacketsForCurrentTemperture(sensorsList.ToArray(), file,index);
+            StreamWriter file = new StreamWriter(filesPath + temperatureNumber+".txt");
+            bool result= SensorData.Instance.WritePacketsForCurrentTemperture(sensorsList.ToArray(), file,temperatureNumber);
+
+            file.Close();
+            return result;
             //foreach (var sensor in sensorsList)
             //{
             //    if (!sensor.WriteRedPackets(filesPath))

@@ -12,3 +12,17 @@ C:\Users\Азат\Desktop\Evo20\Evo20.Sensors.Tests\bin\Debug\Newtonsoft.Json.dl
 C:\Users\Азат\Desktop\Evo20\Evo20.Sensors.Tests\bin\Debug\Evo20.Utils.pdb
 C:\Users\Азат\Desktop\Evo20\Evo20.Sensors.Tests\bin\Debug\Newtonsoft.Json.pdb
 C:\Users\Азат\Desktop\Evo20\Evo20.Sensors.Tests\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors.Tests\bin\Debug\Evo20.Sensors.Tests.exe
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors.Tests\bin\Debug\Evo20.Sensors.Tests.pdb
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors.Tests\bin\Debug\Evo20.Sensors.dll
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors.Tests\bin\Debug\Evo20.Packets.dll
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors.Tests\bin\Debug\Evo20.Utils.dll
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors.Tests\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors.Tests\bin\Debug\Evo20.Packets.pdb
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors.Tests\bin\Debug\Evo20.Utils.pdb
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors.Tests\bin\Debug\Evo20.Sensors.pdb
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors.Tests\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors.Tests\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors.Tests\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors.Tests\obj\Debug\Evo20.Sensors.Tests.exe
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors.Tests\obj\Debug\Evo20.Sensors.Tests.pdb

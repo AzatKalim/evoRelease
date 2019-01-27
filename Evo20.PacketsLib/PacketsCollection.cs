@@ -338,18 +338,32 @@ namespace Evo20.Evo20.Packets
             }
             return buff.ToString();
         }
-
-        //public void ClearUnneedInfo()
-        //{
-        //    for (int i = 0; i < positionPackets.Length; i++)
-        //    {
-                
-        //    }
-        //}
-        //private bool MeanComputed()
-        //{
-
-        //}
+        
+        public void ClearUnneedInfo()
+        {
+            Log.Instance.Debug("ClearUnneedInfo");
+            for (int i = 0; i < positionPackets.Length; i++)
+            {
+                bool FindAll = false;
+                if (ComputedMeanParams[i] == null)
+                    FindAll = true;
+                if (FindAll||ComputedMeanParams[i].MeanA==null )
+                    MeanA(i);
+                if (FindAll || ComputedMeanParams[i].MeanW == null)
+                    MeanW(i);
+                if (FindAll || ComputedMeanParams[i].MeanUA == null)
+                    MeanUA(i);
+                if (FindAll || ComputedMeanParams[i].MeanUW == null)
+                    MeanUW(i);
+                positionPackets[i] = null;
+            }
+            positionPackets = null;
+            GC.Collect();
+        }
+        private bool MeanComputed()
+        {
+            return true;
+        }
 
     }
 }

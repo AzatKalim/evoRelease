@@ -5,3 +5,10 @@ C:\Users\Азат\Desktop\Evo20\Evo20.PacketsLib\obj\Debug\Evo20.Packets.dll
 C:\Users\Азат\Desktop\Evo20\Evo20.PacketsLib\obj\Debug\Evo20.Packets.pdb
 C:\Users\Азат\Desktop\Evo20\Evo20.PacketsLib\bin\Debug\Evo20.Utils.dll
 C:\Users\Азат\Desktop\Evo20\Evo20.PacketsLib\bin\Debug\Evo20.Utils.pdb
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.PacketsLib\bin\Debug\Evo20.Packets.dll
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.PacketsLib\bin\Debug\Evo20.Packets.pdb
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.PacketsLib\bin\Debug\Evo20.Utils.dll
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.PacketsLib\bin\Debug\Evo20.Utils.pdb
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.PacketsLib\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.PacketsLib\obj\Debug\Evo20.Packets.dll
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.PacketsLib\obj\Debug\Evo20.Packets.pdb

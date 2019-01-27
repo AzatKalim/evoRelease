@@ -231,16 +231,12 @@ namespace Evo20.Controllers
                 case WorkMode.CalibrationMode:
                     {
                         foreach (var sensor in sensorsList)
-                        {
                             profiles.Add(sensor.CalibrationProfile);
-                        }
                     }
                     break;
                 case WorkMode.CheckMode:
                     foreach (var sensor in sensorsList)
-                    {
                         profiles.Add(sensor.CheckProfile);
-                    }
                     break;
                 default:
                     Log.Instance.Error("Ошибка:перед запуском цикла. Режим работы не установлен!");
@@ -252,15 +248,14 @@ namespace Evo20.Controllers
             for (int i = CycleData.Instance.StartTemperatureIndex; i < temperatures.Count; i++)
             {
                 lock (EvoData.Instance)
-                {
                     EvoData.Instance.NextTemperature = temperatures[i];
-                }
                 ControllerEvo.Instance.SetStartPosition();
                 ControllerEvo.Instance.SetTemperature(temperatures[i]);
                 Log.Instance.Info("Установлена температура камеры " + temperatures[i] + " скорость набора температtуры " + Config.SPEED_OF_TEMPERATURE_CHANGE);
                 //Ожидание достижения температуры
 #if !DEBUG
-                EvoData.Instance.TemperatureReachedEvent.WaitOne();
+                if (!Config.IsFakeEvo)
+                    EvoData.Instance.TemperatureReachedEvent.WaitOne();
 #endif
                 EvoData.Instance.TemperatureReachedEvent.Reset();
                 Log.Instance.Info("Температура  " + temperatures[i] + " достигнута");
@@ -268,8 +263,9 @@ namespace Evo20.Controllers
                     EventHandlerListForTemperatureStabilization(false);
                 Log.Instance.Info("{0}:Начало стабилизации температуры.Время стабилизации {1}", DateTime.Now.TimeOfDay, StabilizationTime);
 #if !DEBUG
-               //ожидание стабилизации температуры
-                Thread.Sleep(StabilizationTime);
+                if (!Config.IsFakeEvo)
+                    //ожидание стабилизации температуры
+                    Thread.Sleep(StabilizationTime);
 #endif
                 Log.Instance.Info("{0}:Стабилизация температуры завершена", DateTime.Now.TimeOfDay);
                 SensorController.Instance.TemperatureOfCollect = temperatures[i];
@@ -293,8 +289,9 @@ namespace Evo20.Controllers
                 }
                 TemperutureIndex = i+1;
                 //записываем пакеты
-                FileController.Instance.WriteRedPackets(sensorsList, CycleData.Instance.FindCalibrationTemperatureIndex(SensorController.Instance.TemperatureOfCollect)); 
-                //SensorData.Instance           
+                FileController.Instance.WriteRedPackets(sensorsList, CycleData.Instance.FindCalibrationTemperatureIndex(SensorController.Instance.TemperatureOfCollect));
+                SensorController.Instance.ClearWritedData(CycleData.Instance.FindCalibrationTemperatureIndex(SensorController.Instance.TemperatureOfCollect),
+                    mode);       
             }
             EventHandlersListCycleEnded(true);
 
@@ -315,15 +312,19 @@ namespace Evo20.Controllers
                     ControllerEvo.Instance.StopAxis(Axis.ALL);
                     //убрат
 #if !DEBUG
-                    EvoData.Instance.movementEndedEvent.WaitOne(THREADS_SLEEP_TIME);
-                    EvoData.Instance.movementEndedEvent.Reset();
+                    if(!Config.IsFakeEvo)
+                    {
+                        EvoData.Instance.movementEndedEvent.WaitOne(THREADS_SLEEP_TIME);
+                        EvoData.Instance.movementEndedEvent.Reset();
+                    }
 #endif
                     SensorController.Instance.CurrentPositionNumber = j;
                     ControllerEvo.Instance.SetPosition(profile[j]);                  
                     //убрать
 #if !DEBUG
-                    //ожидаем пока установятся позиции
-                    Thread.Sleep(THREADS_SLEEP_TIME);
+                    if (!Config.IsFakeEvo)
+                        //ожидаем пока установятся позиции
+                        Thread.Sleep(THREADS_SLEEP_TIME);
 #endif
                     //ожидание сбора пакетов
                     SensorController.Instance.CanCollect = true;
