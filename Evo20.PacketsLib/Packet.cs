@@ -137,7 +137,7 @@ namespace Evo20.Evo20.Packets
                 A = null;
                 W = null;
                 U = null;
-                throw exception;
+                throw;
             }
         }
 

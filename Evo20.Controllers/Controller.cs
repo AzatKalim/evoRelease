@@ -1,15 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Threading;
-using System.Configuration;
-using Evo20;
+using System.Threading.Tasks;
 using Evo20.Commands;
-using Evo20.Controllers;
-using Evo20.SensorsConnection;
-using Evo20.Evo20.Packets;
-using Evo20.Math;
 using Evo20.Sensors;
 
 namespace Evo20.Controllers
@@ -243,7 +237,8 @@ namespace Evo20.Controllers
                     EventHandlersListCycleEnded(false);
                     return;
             }
-            ControllerEvo.Instance.InitEvo();   
+            ControllerEvo.Instance.InitEvo();
+            var writePacketsTask = new Task(CycleTemperatureEnd);
             //цикл по температурам
             for (int i = CycleData.Instance.StartTemperatureIndex; i < temperatures.Count; i++)
             {
@@ -263,9 +258,12 @@ namespace Evo20.Controllers
                     EventHandlerListForTemperatureStabilization(false);
                 Log.Instance.Info("{0}:Начало стабилизации температуры.Время стабилизации {1}", DateTime.Now.TimeOfDay, StabilizationTime);
 #if !DEBUG
+                var waitingStartTime = DateTime.Now;
+                writePacketsTask.Wait();
+                
                 if (!Config.IsFakeEvo)
                     //ожидание стабилизации температуры
-                    Thread.Sleep(StabilizationTime);
+                    Thread.Sleep(StabilizationTime -(DateTime.Now- waitingStartTime).Milliseconds);
 #endif
                 Log.Instance.Info("{0}:Стабилизация температуры завершена", DateTime.Now.TimeOfDay);
                 SensorController.Instance.TemperatureOfCollect = temperatures[i];
@@ -287,11 +285,8 @@ namespace Evo20.Controllers
                     }
                     Log.Instance.Info("{0}:Подцикл датчика завершен {1}", DateTime.Now.TimeOfDay, SensorController.Instance.CurrentSensor.Name);
                 }
+                writePacketsTask.Start();
                 TemperutureIndex = i+1;
-                //записываем пакеты
-                FileController.Instance.WriteRedPackets(sensorsList, CycleData.Instance.FindCalibrationTemperatureIndex(SensorController.Instance.TemperatureOfCollect));
-                SensorController.Instance.ClearWritedData(CycleData.Instance.FindCalibrationTemperatureIndex(SensorController.Instance.TemperatureOfCollect),
-                    mode);       
             }
             EventHandlersListCycleEnded(true);
 
@@ -358,9 +353,10 @@ namespace Evo20.Controllers
 
         #region Secondary functions
 
-        public bool ReadDataFromFile(StreamReader reader)
+        public bool ReadDataFromFile()
         {
-            return FileController.Instance.ReadDataFromFile(ref sensorsList, reader);
+            sensorsList = SensorController.Instance.SensorsList;
+            return FileController.Instance.ReadDataFromFile(ref sensorsList);
         }
         public bool ComputeCoefficents(StreamWriter file)
         {
@@ -375,6 +371,19 @@ namespace Evo20.Controllers
         /// </summary>
         /// <returns>Список значений</returns>      
         #endregion
+
+        public void CycleTemperatureEnd()
+        {
+            Log.Instance.Info("Начало запичи пакетов");
+            //записываем пакеты
+            FileController.Instance.WriteRedPackets(sensorsList, CycleData.Instance.FindCalibrationTemperatureIndex(SensorController.Instance.TemperatureOfCollect));
+            lock (SensorController.Instance)
+            {
+                SensorController.Instance.ClearWritedData(CycleData.Instance.FindCalibrationTemperatureIndex(SensorController.Instance.TemperatureOfCollect),
+                    mode);
+            }
+        }
+
 
         //var allocationThread = new System.Threading.Thread(new System.Threading.ThreadStart(() =>
         //       {

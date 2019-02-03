@@ -97,27 +97,21 @@ namespace Evo20.SensorsConnection
                 }
                 return false;
             }
-            try
+
+            if (ConnectionStatus == ConnectionStatus.DISCONNECTED)
             {
-                if (ConnectionStatus == ConnectionStatus.DISCONNECTED)
+                if (!readThread.IsAlive)
                 {
-                    if (!readThread.IsAlive)
-                    {
-                        readThread = new Thread(Read);
-                        readThread.Start();
-                    }
-                    ConnectionStatus = ConnectionStatus.CONNECTED;
-                    Log.Instance.Info("Соединение c датчиком установленно");
-                    return true;
+                    readThread = new Thread(Read);
+                    readThread.Start();
                 }
-                else
-                {
-                    return false;
-                }
+                ConnectionStatus = ConnectionStatus.CONNECTED;
+                Log.Instance.Info("Соединение c датчиком установленно");
+                return true;
             }
-            catch (Exception exception)
+            else
             {
-                throw exception;
+                return false;
             }
         }
 

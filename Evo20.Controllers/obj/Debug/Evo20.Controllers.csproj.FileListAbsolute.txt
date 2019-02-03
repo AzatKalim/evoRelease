@@ -110,6 +110,8 @@ C:\Users\Азат\Desktop\работа\Evo20\Evo20.Controllers\bin\Debug\Evo20.E
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Controllers\bin\Debug\Evo20.Math.pdb
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Controllers\bin\Debug\Newtonsoft.Json.pdb
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Controllers\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Азат\Desktop\работа\Evo20\Evo20.Controllers\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Controllers\obj\Debug\Evo20.Controllers.dll
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Controllers\obj\Debug\Evo20.Controllers.pdb
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Controllers\obj\Debug\Evo20.Controllers.csprojResolveAssemblyReference.cache
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Controllers\bin\Debug\Evo20.Controllers.dll.CodeAnalysisLog.xml
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Controllers\bin\Debug\Evo20.Controllers.dll.lastcodeanalysissucceeded

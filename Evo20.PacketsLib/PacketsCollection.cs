@@ -10,7 +10,6 @@ namespace Evo20.Evo20.Packets
     /// <summary>
     /// Структура данных, которая хранит в себе список PacketData(4 пакета)и  тепературу с позициями, когда они были собраны 
     /// </summary>
-    [Serializable]
     public class PacketsCollection
     {
         private sealed class MeanParametres
@@ -62,7 +61,7 @@ namespace Evo20.Evo20.Packets
             IsCollected = false;
         }
 
-        public PacketsCollection(StreamReader file)
+        public PacketsCollection(StreamReader file,int temperature)
         {
             string tmp = file.ReadLine();
             int positionCount = 0;
@@ -76,7 +75,7 @@ namespace Evo20.Evo20.Packets
             {
                 Temperature = 0;
                 positionCount = 0;
-                throw ex;
+                throw;
             }
             positionPackets = new List<PacketsData>[positionCount];
             try
@@ -220,7 +219,7 @@ namespace Evo20.Evo20.Packets
             }
             for (int i = 0; i < uw.Length; i++)
                 uw[i] = sum[i] / packetsList.Count;
-            ComputedMeanParams[positionNumber].MeanUA = uw;
+            ComputedMeanParams[positionNumber].MeanUW = uw;
             ComputedMeanParams[positionNumber].packetsCount = packetsList.Count;
             return uw;
         }

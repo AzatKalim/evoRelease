@@ -92,8 +92,8 @@ C:\Users\Азат\Desktop\работа\Evo20\Evo20.Controllers\bin\Release\Evo20
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Controllers\bin\Release\Evo20.Math.pdb
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Controllers\bin\Release\Newtonsoft.Json.pdb
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Controllers\bin\Release\Newtonsoft.Json.xml
-C:\Users\Азат\Desktop\работа\Evo20\Evo20.Controllers\obj\Release\ResolveAssemblyReference.cache
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Controllers\obj\Release\Evo20.Controllers.dll
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Controllers\obj\Release\Evo20.Controllers.pdb
 C:\Users\Азат\Desktop\работа\Evo20\bin\Release\Evo20.Controllers.dll
 C:\Users\Азат\Desktop\работа\Evo20\bin\Release\Evo20.Controllers.pdb
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Controllers\obj\Release\Evo20.Controllers.csprojResolveAssemblyReference.cache

@@ -64,12 +64,26 @@ namespace Evo20.Controllers
         /// </summary>
         /// <param name="file"></param>
         /// <returns></returns>
-        public bool ReadDataFromFile(ref List<ISensor> sensorsList, StreamReader file)
+        public bool ReadDataFromFile(ref List<ISensor> sensorsList)
         {
-            var result = SensorData.Instance.ReadDataFromFile(SensorController.Instance.SensorsList, file);
-            if (result)
-                CycleData.Instance.StartTemperatureIndex = sensorsList[0].CalibrationPacketsCollection.Count;
-            return result;
+            for (int temperature = 0; temperature < CycleData.Instance.CalibrationTemperatures.Count; temperature++)
+            {
+                var fileName= Path.Combine(FileController.filesPath,temperature+".txt");
+                if(!File.Exists(fileName))
+                {
+                    Log.Instance.Warning(@"Файл {0} не существует!");
+                    return true;
+                }
+                using (var reader = new StreamReader(fileName))
+                {
+                    var result = SensorData.Instance.ReadDataFromFile(sensorsList,reader,temperature);
+                    if (result)
+                        CycleData.Instance.StartTemperatureIndex = sensorsList[0].CalibrationPacketsCollection.Count;
+                    else
+                        return result;
+                }
+            }
+            return true;
         }
 
         /// <summary>
@@ -92,7 +106,7 @@ namespace Evo20.Controllers
             {
                 Log.Instance.Error("Возникла ошибка чтения файла настроек" + exception.ToString());
                 Log.Instance.Exception(exception);
-                throw exception;
+                throw;
             }
             return true;
         }
@@ -100,10 +114,13 @@ namespace Evo20.Controllers
         public bool WriteRedPackets(List<ISensor> sensorsList,int temperatureNumber)
         {
             Log.Instance.Info("Запись уже считанных пакетов в файл");
-            StreamWriter file = new StreamWriter(filesPath + temperatureNumber+".txt");
-            bool result= SensorData.Instance.WritePacketsForCurrentTemperture(sensorsList.ToArray(), file,temperatureNumber);
-
-            file.Close();
+            bool result;
+            using( var file = new StreamWriter(Path.Combine(filesPath,temperatureNumber+".txt")))
+            {
+                file.WriteLine(temperatureNumber);
+                result= SensorData.Instance.WritePacketsForCurrentTemperture(sensorsList.ToArray(),
+                    file,temperatureNumber);
+            }
             return result;
             //foreach (var sensor in sensorsList)
             //{

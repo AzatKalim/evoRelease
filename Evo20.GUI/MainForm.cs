@@ -87,6 +87,7 @@ namespace Evo20.GUI
 
         ~MainForm()
         {
+            Dispose();
             workTimer.Stop();
             timer.Stop();
             SensorController.Instance.StopComPortConnection();
@@ -195,9 +196,7 @@ namespace Evo20.GUI
             try
             {
                 if (!ReadSettings())
-                {
                     return;
-                }
             }
             catch (Exception ex)
             {
@@ -226,8 +225,7 @@ namespace Evo20.GUI
 
             using (var fbd = new FolderBrowserDialog())
             {
-                DialogResult result = fbd.ShowDialog();
-
+                var result = fbd.ShowDialog();
                 if (result == DialogResult.OK && !string.IsNullOrEmpty(fbd.SelectedPath))
                 {
                      FileController.filesPath= fbd.SelectedPath;
@@ -315,20 +313,27 @@ namespace Evo20.GUI
      
         private void getDataFromFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //return;
-            var dlg = new OpenFileDialog();
-            dlg.Filter = "Все файлы (*.*)|*.*";
-            dlg.CheckFileExists = true;
-            var res = dlg.ShowDialog();
-
-            if (res != DialogResult.OK)
-            {
+            if (!ReadSettings())            
                 return;
-            }
-            var file = new StreamReader(dlg.FileName);
+            using (var fbd = new FolderBrowserDialog())
+            {
+                DialogResult result = fbd.ShowDialog();
+
+                if (result == DialogResult.OK && !string.IsNullOrEmpty(fbd.SelectedPath))
+                {
+                    FileController.filesPath = fbd.SelectedPath;
+                    Log.Instance.Info("Выбрана папка для загрузки {0}", fbd.SelectedPath);
+                }
+                else
+                {
+                    Log.Instance.Error("Папка не выбрана");
+                    MessageBox.Show("Ошибка: не выбрана папка ", "Небходимо выбрать папку для четния файлов !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }      
             try
             {
-                if (!Controller.Instance.ReadDataFromFile(file))
+                if (!Controller.Instance.ReadDataFromFile())
                 {
                     MessageBox.Show("Ошибка: чтения пакетов из файла", "Не удалось считать пакеты из файла", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Log.Instance.Error("Ошибка: чтения пакетов из файла: Не удалось считать пакеты из файла");                   
@@ -339,7 +344,6 @@ namespace Evo20.GUI
                 MessageBox.Show(exception.ToString(), "Ошибка: чтения пакетов из файла", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Log.Instance.Exception(exception);
             }
-            file.Close();
         }
 
         #endregion

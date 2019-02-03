@@ -126,7 +126,6 @@ C:\Users\Азат\Desktop\работа\Evo20\Evo20.GUI\bin\Release\Evo20.EvoComm
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.GUI\bin\Release\Evo20.Controllers.pdb
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.GUI\bin\Release\Newtonsoft.Json.pdb
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.GUI\bin\Release\Newtonsoft.Json.xml
-C:\Users\Азат\Desktop\работа\Evo20\Evo20.GUI\obj\Release\ResolveAssemblyReference.cache
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.GUI\obj\Release\Evo20.GUI.CycleSettingsForm.resources
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.GUI\obj\Release\Evo20.GUI.MainForm.resources
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.GUI\obj\Release\Evo20.GUI.Properties.Resources.resources
@@ -137,3 +136,4 @@ C:\Users\Азат\Desktop\работа\Evo20\bin\Release\app.config
 C:\Users\Азат\Desktop\работа\Evo20\bin\Release\Evo20.GUI.exe.config
 C:\Users\Азат\Desktop\работа\Evo20\bin\Release\Evo20.GUI.exe
 C:\Users\Азат\Desktop\работа\Evo20\bin\Release\Evo20.GUI.pdb
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.GUI\obj\Release\Evo20.GUI.csprojResolveAssemblyReference.cache

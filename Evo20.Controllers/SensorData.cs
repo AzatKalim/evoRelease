@@ -152,45 +152,29 @@ namespace Evo20.Controllers
             return true;
         }
 
-        private bool ReadDataFromFile(StreamReader file, List<PacketsCollection>collection)
+        private bool ReadDataFromFile(StreamReader file, List<PacketsCollection>collection,int temperature)
         {
-            var temp = file.ReadLine();
-            int temperaturesCount = Convert.ToInt32(temp);
-            collection = new List<PacketsCollection>();
-            for (int i = 0; i < temperaturesCount; i++)
+            try
             {
-                try
-                {
-                    collection.Add(new PacketsCollection(file));
-                }
-                catch (Exception exception)
-                {
-                    Log.Instance.Error("Ошибка: Чтение файла данных пакетов при температуре {0}",i);
-                    Log.Instance.Exception(exception);
-                    return false;
-                }
+                collection.Add(new PacketsCollection(file,temperature));
+            }
+            catch (Exception exception)
+            {
+                Log.Instance.Error("Ошибка: Чтение файла данных пакетов");
+                Log.Instance.Exception(exception);
+                return false;
             }
             return true;
         }
 
-        public bool ReadDataFromFile(List<ISensor> sensors,StreamReader file)
+        public bool ReadDataFromFile(List<ISensor> sensors,StreamReader file,int temperature)
         {
-            if (!ReadDataFromFile(file, sensors[0].CalibrationPacketsCollection))
-            {
-                return false;
-            }
-            if (!ReadDataFromFile(file, sensors[1].CalibrationPacketsCollection))
-            {
-                return false;
-            }
-            //if (!ReadDataFromFile(file, sensors[0].CheckPacketsCollection))
-            //{
-            //    return false;
-            //}
-            //if (!ReadDataFromFile(file, sensors[1].CheckPacketsCollection))
-            //{
-            //    return false;
-            //}
+            foreach (var sensor in sensors)
+                if (!ReadDataFromFile(file, sensor.CalibrationPacketsCollection, temperature))
+                    return false;
+            //foreach (var sensor in sensors)
+            //    if (!ReadDataFromFile(file, sensor.CheckPacketsCollection))
+            //        return false; 
             return true;
         }
 

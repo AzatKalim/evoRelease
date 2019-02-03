@@ -19,8 +19,8 @@ C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors\bin\Release\Evo20.Pac
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors\bin\Release\Evo20.Utils.pdb
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors\bin\Release\Newtonsoft.Json.pdb
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors\bin\Release\Newtonsoft.Json.xml
-C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors\obj\Release\ResolveAssemblyReference.cache
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors\obj\Release\Evo20.Sensors.dll
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors\obj\Release\Evo20.Sensors.pdb
 C:\Users\Азат\Desktop\работа\Evo20\bin\Release\Evo20.Sensors.dll
 C:\Users\Азат\Desktop\работа\Evo20\bin\Release\Evo20.Sensors.pdb
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors\obj\Release\Evo20.Sensors.csprojResolveAssemblyReference.cache
