@@ -163,5 +163,3 @@ C:\Users\Азат\Desktop\работа\Evo20\Evo20.GUI\obj\Debug\Evo20.GUI.cspro
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.GUI\obj\Debug\Evo20.GUI.exe
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.GUI\obj\Debug\Evo20.GUI.pdb
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.GUI\obj\Debug\Evo20.GUI.csprojResolveAssemblyReference.cache
-C:\Users\Азат\Desktop\работа\Evo20\Evo20.GUI\bin\Debug\Evo20.GUI.exe.CodeAnalysisLog.xml
-C:\Users\Азат\Desktop\работа\Evo20\Evo20.GUI\bin\Debug\Evo20.GUI.exe.lastcodeanalysissucceeded

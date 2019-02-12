@@ -63,9 +63,9 @@ namespace Evo20.GUI.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pause_ {
+        internal static System.Drawing.Bitmap pauseImg {
             get {
-                object obj = ResourceManager.GetObject("pause ", resourceCulture);
+                object obj = ResourceManager.GetObject("pauseImg", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -27,5 +27,3 @@ C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors.Tests\obj\Debug\Evo20
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors.Tests\obj\Debug\Evo20.Sensors.Tests.pdb
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors.Tests\bin\Debug\Evo20.Sensors.Tests.exe.config
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors.Tests\obj\Debug\Evo20.Sensors.Tests.csprojResolveAssemblyReference.cache
-C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors.Tests\bin\Debug\Evo20.Sensors.Tests.exe.CodeAnalysisLog.xml
-C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors.Tests\bin\Debug\Evo20.Sensors.Tests.exe.lastcodeanalysissucceeded

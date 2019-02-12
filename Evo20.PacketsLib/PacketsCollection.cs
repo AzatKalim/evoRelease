@@ -71,7 +71,7 @@ namespace Evo20.Evo20.Packets
                 Temperature = Convert.ToInt32(temp[0]);
                 positionCount = Convert.ToInt32(temp[1]);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Temperature = 0;
                 positionCount = 0;
@@ -90,13 +90,13 @@ namespace Evo20.Evo20.Packets
                     }
                 }
             }
-            catch (Exception exception)
+            catch (Exception )
             {
                 Temperature = 0;
                 MAX_PACKETS_COUNT = 0;
                 positionPackets = null;
                 IsCollected = false;
-                throw exception;
+                throw;
             }
             IsCollected = true;
         }

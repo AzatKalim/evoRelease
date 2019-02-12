@@ -36,10 +36,10 @@ namespace Evo20.Evo20.Packets
                     var packet = new Packet(packetLine);
                 }
             }
-            catch (FormatException exception)
+            catch (FormatException)
             {
                 packets = null;
-                throw exception;
+                throw;
             }
         }
 

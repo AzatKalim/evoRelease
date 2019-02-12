@@ -132,7 +132,7 @@ namespace Evo20.Evo20.Packets
                     U[i] = Convert.ToInt32(tmp[U_STRING_NUMBER + i]);
                 }
             }
-            catch (FormatException exception)
+            catch (FormatException)
             {
                 A = null;
                 W = null;
@@ -149,8 +149,7 @@ namespace Evo20.Evo20.Packets
         private void PacketHandle()
         {
             try
-            {
-                //проверка заголовка пакета        
+            {       
                 //данные с гироскопов
                 bool rangeFlag = false;
                 bool dataFlag = false;
@@ -188,7 +187,7 @@ namespace Evo20.Evo20.Packets
                     return null;
                 int checkSum = CRC16.ComputeChecksum(message, Config.PACKET_SIZE);
                 //проверка контрольной суммы
-                if (BitConverter.ToUInt16(new byte[2] { message[Config.CHECK_BEGIN], message[Config.CHECK_BEGIN + 1] }, 0) != checkSum)
+                if (BitConverter.ToUInt16(new byte[] { message[Config.CHECK_BEGIN], message[Config.CHECK_BEGIN + 1] }, 0) != checkSum)
                     return null;
                 //номер пакета 
                 int packetId = BitConverter.ToUInt16(new byte[] { message[Config.ID_BEGIN], message[Config.ID_BEGIN + 1] }, 0);

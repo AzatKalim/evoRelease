@@ -111,6 +111,7 @@
             this.SettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cycleSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CommonSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblVersion = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.Evo_control_page.SuspendLayout();
             this.EvoParamsGroupBox.SuspendLayout();
@@ -520,7 +521,7 @@
             // 
             this.evoPauseButton.Cursor = System.Windows.Forms.Cursors.No;
             this.evoPauseButton.Enabled = false;
-            this.evoPauseButton.Image = global::Evo20.GUI.Properties.Resources.pause_;
+            this.evoPauseButton.Image = global::Evo20.GUI.Properties.Resources.pauseImg;
             this.evoPauseButton.Location = new System.Drawing.Point(56, 7);
             this.evoPauseButton.Name = "evoPauseButton";
             this.evoPauseButton.Size = new System.Drawing.Size(44, 41);
@@ -713,7 +714,7 @@
             // sensorPauseButton
             // 
             this.sensorPauseButton.Enabled = false;
-            this.sensorPauseButton.Image = global::Evo20.GUI.Properties.Resources.pause_;
+            this.sensorPauseButton.Image = global::Evo20.GUI.Properties.Resources.pauseImg;
             this.sensorPauseButton.Location = new System.Drawing.Point(288, 8);
             this.sensorPauseButton.Name = "sensorPauseButton";
             this.sensorPauseButton.Size = new System.Drawing.Size(40, 41);
@@ -845,7 +846,7 @@
             // pauseButton
             // 
             this.pauseButton.Enabled = false;
-            this.pauseButton.Image = global::Evo20.GUI.Properties.Resources.pause_;
+            this.pauseButton.Image = global::Evo20.GUI.Properties.Resources.pauseImg;
             this.pauseButton.Location = new System.Drawing.Point(408, 24);
             this.pauseButton.Name = "pauseButton";
             this.pauseButton.Size = new System.Drawing.Size(44, 41);
@@ -926,12 +927,22 @@
             this.CommonSettingsToolStripMenuItem.Text = "Общие настройки";
             this.CommonSettingsToolStripMenuItem.Click += new System.EventHandler(this.CommonSettingsToolStripMenuItem_Click);
             // 
+            // lblVersion
+            // 
+            this.lblVersion.AutoSize = true;
+            this.lblVersion.Location = new System.Drawing.Point(1109, 29);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(47, 13);
+            this.lblVersion.TabIndex = 14;
+            this.lblVersion.Text = "Версия:";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1218, 703);
+            this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.parameGroupBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.stopButton);
@@ -944,8 +955,8 @@
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
             this.Text = "Evo20";
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.Evo_control_page.ResumeLayout(false);
             this.EvoParamsGroupBox.ResumeLayout(false);
@@ -1057,6 +1068,7 @@
         private System.Windows.Forms.ToolStripMenuItem cycleSettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem CommonSettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem savePacketsToolStripMenuItem;
+        private System.Windows.Forms.Label lblVersion;
     }
 }
 

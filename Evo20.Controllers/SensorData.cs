@@ -132,23 +132,7 @@ namespace Evo20.Controllers
             else
             {
                 WritePackets(file, sensors[1].CalibrationPacketsCollection.ToArray());
-            }
-            //if (sensors[0].CheckPacketsCollection == null || sensors[0].CheckPacketsCollection.Length == 0)
-            //{
-            //    file.WriteLine("Нет пакетов по Проверка ДЛУ");
-            //}
-            //else
-            //{
-            //    WritePackets(file, sensors[0].CheckPacketsCollection);
-            //}
-            //if (sensors[1].CheckPacketsCollection == null || sensors[1].CheckPacketsCollection.Length == 0)
-            //{
-            //    file.WriteLine("Нет пакетов по Проверка ДУС");
-            //}
-            //else
-            //{
-            //    WritePackets(file, sensors[1].CheckPacketsCollection);
-            //}
+            }        
             return true;
         }
 
