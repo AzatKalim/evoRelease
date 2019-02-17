@@ -147,8 +147,8 @@ namespace Evo20.Evo20.Packets
                 ComputedMeanParams[positionNumber] = new MeanParametres();
 
             var packetsList = positionPackets[positionNumber];
-            var w = new double[Config.PARAMS_COUNT];
-            var sum = new double[Config.PARAMS_COUNT];
+            var w = new double[Config.Instance.PARAMS_COUNT];
+            var sum = new double[Config.Instance.PARAMS_COUNT];
 
             for (int j = 0; j < packetsList.Count; j++)
             {
@@ -177,8 +177,8 @@ namespace Evo20.Evo20.Packets
                 ComputedMeanParams[positionNumber] = new MeanParametres();
 
             var packetsList = positionPackets[positionNumber];
-            var a = new double[Config.PARAMS_COUNT];
-            var sum = new double[Config.PARAMS_COUNT];
+            var a = new double[Config.Instance.PARAMS_COUNT];
+            var sum = new double[Config.Instance.PARAMS_COUNT];
 
             for (int j = 0; j < packetsList.Count; j++)
             {
@@ -208,8 +208,8 @@ namespace Evo20.Evo20.Packets
                 ComputedMeanParams[positionNumber] = new MeanParametres();
 
             var packetsList = positionPackets[positionNumber];
-            var uw = new double[Config.PARAMS_COUNT];
-            var sum = new double[Config.PARAMS_COUNT];
+            var uw = new double[Config.Instance.PARAMS_COUNT];
+            var sum = new double[Config.Instance.PARAMS_COUNT];
 
             for (int j = 0; j < packetsList.Count; j++)
             {
@@ -236,8 +236,8 @@ namespace Evo20.Evo20.Packets
             if (ComputedMeanParams[positionNumber] == null)
                 ComputedMeanParams[positionNumber] = new MeanParametres();
             var packetsList = positionPackets[positionNumber];
-            var ua = new double[Config.PARAMS_COUNT];
-            var sum = new double[Config.PARAMS_COUNT];
+            var ua = new double[Config.Instance.PARAMS_COUNT];
+            var sum = new double[Config.Instance.PARAMS_COUNT];
 
             for (int j = 0; j < packetsList.Count; j++)
             {
@@ -264,10 +264,10 @@ namespace Evo20.Evo20.Packets
             var packetsList = positionPackets[positionNumber];
             if (packetsList.Count == 0)
                 return null;
-            var sumUa = new double[Config.PARAMS_COUNT];
-            var sumUw = new double[Config.PARAMS_COUNT];
-            var sumA = new double[Config.PARAMS_COUNT];
-            var sumW = new double[Config.PARAMS_COUNT];
+            var sumUa = new double[Config.Instance.PARAMS_COUNT];
+            var sumUw = new double[Config.Instance.PARAMS_COUNT];
+            var sumA = new double[Config.Instance.PARAMS_COUNT];
+            var sumW = new double[Config.Instance.PARAMS_COUNT];
 
             for (int j = 0; j < packetsList.Count; j++)
             {
@@ -275,7 +275,7 @@ namespace Evo20.Evo20.Packets
                 var w = packetsList[j].MeanW;
                 var a = packetsList[j].MeanA;
                 var uw = packetsList[j].MeanUW;
-                for (int i = 0; i < Config.PARAMS_COUNT; i++)
+                for (int i = 0; i < Config.Instance.PARAMS_COUNT; i++)
                 {
                     sumUa[i] +=ua[i];
                     sumUw[i] += uw[i];
@@ -283,7 +283,7 @@ namespace Evo20.Evo20.Packets
                     sumA[i] += a[i];
                 }
             }
-            for (int i = 0; i < Config.PARAMS_COUNT; i++)
+            for (int i = 0; i < Config.Instance.PARAMS_COUNT; i++)
             {
                 sumUa[i] /= packetsList.Count;
                 sumUw[i] /= packetsList.Count;

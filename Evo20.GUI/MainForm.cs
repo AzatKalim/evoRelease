@@ -57,7 +57,7 @@ namespace Evo20.GUI
             InitializeComponent();
             prevX = 0;
             prevY = 0;
-            settingsFileName = Config.DefaultSettingsFileName;
+            settingsFileName = Config.Instance.DefaultSettingsFileName;
         }
 
         private void MainForm_Load(object sender, EventArgs e)

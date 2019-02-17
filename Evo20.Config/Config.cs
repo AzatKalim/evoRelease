@@ -6,29 +6,104 @@ using System.Configuration;
 
 namespace Evo20
 {
-    public static class Config
+    public partial class Config
     {
-        public static int EvoType = Convert.ToInt32(ConfigurationManager.AppSettings.Get("EvoType"));
-            
+        private static Config instance;
+
+        public static Config Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new Config();
+                return instance;
+            }
+        }
+
+        private int evoType = -1;
+        public int EvoType
+        {
+            get
+            {
+                if(evoType==-1)
+                    evoType = Convert.ToInt32(ConfigurationManager.AppSettings.Get("EvoType"));
+                return evoType;
+            }
+        }
+
+        private int localPortNumber = -1;
         //номер порта приходящих сообщений 
-        public static int LOCAL_PORT_NUMBER = Convert.ToInt32(ConfigurationManager.AppSettings.Get("LocalPortNumber"));
+        public int LocalPortNumber
+        {
+            get
+            {
+                if (localPortNumber == -1)
+                    localPortNumber = Convert.ToInt32(ConfigurationManager.AppSettings.Get("LocalPortNumber"));
+                return localPortNumber;
+            }
+        }
 
+        private int remotePortNumber = -1;
         //номер удаленного порта 
-        public static int REMOTE_PORT_NUMBER = Convert.ToInt32(ConfigurationManager.AppSettings.Get("RemotePortNumber"));
+        public int RemotePortNumber
+        {
+            get
+            {
+                if (remotePortNumber == -1)
+                    remotePortNumber = Convert.ToInt32(ConfigurationManager.AppSettings.Get("RemotePortNumber"));
+                return remotePortNumber;
+            }
+        }
 
-        //ip адресс удаленного компьютера 
-        public static string REMOTE_IP_ADRESS = ConfigurationManager.AppSettings.Get("RemoteIPAdress");
+        private string remoteIPAdress;
+        //ip адресс удаленного компьютера
+        public string RemoteIPAdress
+        {
+            get
+            {
+                if (remoteIPAdress == null)
+                    remoteIPAdress = ConfigurationManager.AppSettings.Get("RemoteIPAdress");
+                return remoteIPAdress;
+            }
+        }
 
+        private int speedOfTemperatureChange = -1;
+        //номер удаленного порта 
+        public int SpeedOfTemperatureChange
+        {
+            get
+            {
+                if (speedOfTemperatureChange == -1)
+                    speedOfTemperatureChange = Convert.ToInt32(ConfigurationManager.AppSettings.Get("SPEED_OF_TEMPERATURE_CHANGE"));
+                return speedOfTemperatureChange;
+            }
+        }
 
-        public static int SPEED_OF_TEMPERATURE_CHANGE = Convert.ToInt32(ConfigurationManager.AppSettings.Get("SPEED_OF_TEMPERATURE_CHANGE"));
-        
-        public static int BASE_MOVE_SPEED = Convert.ToInt32(ConfigurationManager.AppSettings.Get("BASE_MOVE_SPEED"));
+        private int baseMoveSpeed = -1;
+        //номер удаленного порта 
+        public int BaseMoveSpeed
+        {
+            get
+            {
+                if (baseMoveSpeed == -1)
+                    baseMoveSpeed = Convert.ToInt32(ConfigurationManager.AppSettings.Get("BASE_MOVE_SPEED"));
+                return baseMoveSpeed;
+            }
+        }
 
-        public static string ProfileFolder = ConfigurationManager.AppSettings.Get("ProfileFolder");
+        private string profileFolder;
+        public string ProfileFolder
+        {
+            get
+            {
+                if (profileFolder == null)
+                    profileFolder = ConfigurationManager.AppSettings.Get("ProfileFolder");
+                return profileFolder;
+            }
+        }
 
-        private static string defaultSettingsFileName;
-
-        public static string DefaultSettingsFileName
+        private string defaultSettingsFileName;
+        public string DefaultSettingsFileName
         {
             get
             {
@@ -41,32 +116,6 @@ namespace Evo20
         }
 
         public static bool IsFakeEvo = Convert.ToBoolean(ConfigurationManager.AppSettings.Get("FakeEvo"));
- 
-        //позиция служебных  байт в пакете
-        public static int HEAD_BEGIN = Convert.ToInt32(ConfigurationManager.AppSettings.Get("HeadBegin"));
-        public static int ID_BEGIN = Convert.ToInt32(ConfigurationManager.AppSettings.Get("IdBegin"));
-        public static int CHECK_BEGIN = Convert.ToInt32(ConfigurationManager.AppSettings.Get("CheckBegin"));
-        //позиция информационных байт в пакете
-        public static int W_X_BEGIN = Convert.ToInt32(ConfigurationManager.AppSettings.Get("W_X_Begin"));
-        public static int W_Y_BEGIN = Convert.ToInt32(ConfigurationManager.AppSettings.Get("W_Y_Begin"));
-        public static int W_Z_BEGIN = Convert.ToInt32(ConfigurationManager.AppSettings.Get("W_Z_Begin"));
-
-        public static int A_X_BEGIN = Convert.ToInt32(ConfigurationManager.AppSettings.Get("A_X_Begin"));
-        public static int A_Y_BEGIN = Convert.ToInt32(ConfigurationManager.AppSettings.Get("A_Y_Begin"));
-        public static int A_Z_BEGIN = Convert.ToInt32(ConfigurationManager.AppSettings.Get("A_Z_Begin"));
-
-        public static int U_X_BEGIN = Convert.ToInt32(ConfigurationManager.AppSettings.Get("U_X_Begin"));
-        public static int U_Y_BEGIN = Convert.ToInt32(ConfigurationManager.AppSettings.Get("U_Y_Begin"));
-        public static int U_Z_BEGIN = Convert.ToInt32(ConfigurationManager.AppSettings.Get("U_Z_Begin"));
-
-        public static int PARAMS_COUNT = Convert.ToInt32(ConfigurationManager.AppSettings.Get("ParamsCount"));
-        public static int PACKET_SIZE = Convert.ToInt32(ConfigurationManager.AppSettings.Get("PacketSize"));
-
-        public static int X_AXIS_NUMBER = Convert.ToInt32(ConfigurationManager.AppSettings.Get("X_AXIS_NUMBER"));
-        public static int Y_AXIS_NUMBER = Convert.ToInt32(ConfigurationManager.AppSettings.Get("Y_AXIS_NUMBER"));
-        public static int Z_AXIS_NUMBER = Convert.ToInt32(ConfigurationManager.AppSettings.Get("Z_AXIS_NUMBER"));
-        public static int ALL_AXIS_NUMBER = Convert.ToInt32(ConfigurationManager.AppSettings.Get("ALL_AXIS_NUMBER"));
-
 
     }
 }

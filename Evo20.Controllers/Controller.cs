@@ -246,7 +246,7 @@ namespace Evo20.Controllers
                     EvoData.Instance.NextTemperature = temperatures[i];
                 ControllerEvo.Instance.SetStartPosition();
                 ControllerEvo.Instance.SetTemperature(temperatures[i]);
-                Log.Instance.Info("Установлена температура камеры " + temperatures[i] + " скорость набора температtуры " + Config.SPEED_OF_TEMPERATURE_CHANGE);
+                Log.Instance.Info("Установлена температура камеры " + temperatures[i] + " скорость набора температtуры " + Config.Instance.SpeedOfTemperatureChange);
                 //Ожидание достижения температуры
 #if !DEBUG
                 if (!Config.IsFakeEvo)

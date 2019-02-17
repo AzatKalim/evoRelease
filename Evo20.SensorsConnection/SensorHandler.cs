@@ -64,17 +64,17 @@ namespace Evo20.SensorsConnection
             }
             // находим стартовые байты пакета 
             bool isBeginFinded = Packet.FindPacketBegin(ref bufferMessage);
-            if (!isBeginFinded || bufferMessage.Count < Config.PACKET_SIZE)
+            if (!isBeginFinded || bufferMessage.Count < Config.Instance.PACKET_SIZE)
             {
                 dropedPackets++;
                 return;
             }
-            var temp = new byte[Config.PACKET_SIZE];
+            var temp = new byte[Config.Instance.PACKET_SIZE];
             lock (bufferMessage)
             {
                 // извлекаем  байты в колличестве размера пакета в список 
-                bufferMessage.CopyTo(0, temp, 0, Config.PACKET_SIZE);
-                bufferMessage.RemoveRange(0, Config.PACKET_SIZE);
+                bufferMessage.CopyTo(0, temp, 0, Config.Instance.PACKET_SIZE);
+                bufferMessage.RemoveRange(0, Config.Instance.PACKET_SIZE);
             }
             
             // получаем информацию из массива байт

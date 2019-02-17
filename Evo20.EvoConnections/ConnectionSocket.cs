@@ -36,7 +36,7 @@ namespace Evo20.EvoConnections
         #region Private Fields
 
         //ip адресс удаленного компьютера 
-        private static IPAddress remoteIPAddress = IPAddress.Parse(Config.REMOTE_IP_ADRESS);
+        private static IPAddress remoteIPAddress = IPAddress.Parse(Config.Instance.RemoteIPAdress);
           
         IPEndPoint endPoint;
 
@@ -82,14 +82,14 @@ namespace Evo20.EvoConnections
             work_thread.IsBackground = true;
             connectionState = ConnectionStatus.DISCONNECTED;
             ReceivingUdpClient = null;
-            endPoint = new IPEndPoint(remoteIPAddress, Config.REMOTE_PORT_NUMBER);
-            Sender = new UdpClient(Config.REMOTE_PORT_NUMBER);
+            endPoint = new IPEndPoint(remoteIPAddress, Config.Instance.RemotePortNumber);
+            Sender = new UdpClient(Config.Instance.RemotePortNumber);
             //убрать
 #if !DEBUG
             if(!Config.IsFakeEvo)
                 Sender.Connect(endPoint);
 #endif
-            switch (Config.EvoType)
+            switch (Config.Instance.EvoType)
             {
                 case 1:
                     {
@@ -98,7 +98,7 @@ namespace Evo20.EvoConnections
                     }
                 case 0:
                     {
-                        ReceivingUdpClient = new UdpClient(Config.LOCAL_PORT_NUMBER);
+                        ReceivingUdpClient = new UdpClient(Config.Instance.LocalPortNumber);
                         break;
                     }
             }

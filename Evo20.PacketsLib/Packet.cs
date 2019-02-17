@@ -121,11 +121,11 @@ namespace Evo20.Evo20.Packets
             string[] tmp = input.Split(' ');
             try
             {
-                A = new int[Config.PARAMS_COUNT];
-                W = new int[Config.PARAMS_COUNT];
-                U = new int[Config.PARAMS_COUNT];
+                A = new int[Config.Instance.PARAMS_COUNT];
+                W = new int[Config.Instance.PARAMS_COUNT];
+                U = new int[Config.Instance.PARAMS_COUNT];
                 id = Convert.ToInt32(tmp[0]);
-                for (int i = 0; i < Config.PARAMS_COUNT; i++)
+                for (int i = 0; i < Config.Instance.PARAMS_COUNT; i++)
                 {
                     W[i] = Convert.ToInt32(tmp[W_STRING_NUMBER + i]);
                     A[i] = Convert.ToInt32(tmp[A_STRING_NUMBER + i]);
@@ -153,21 +153,21 @@ namespace Evo20.Evo20.Packets
                 //данные с гироскопов
                 bool rangeFlag = false;
                 bool dataFlag = false;
-                int w_x = ConvertParam(new byte[] { data[Config.W_X_BEGIN], data[Config.W_X_BEGIN + 1], data[Config.W_X_BEGIN + 2], data[Config.W_X_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
-                int w_y = ConvertParam(new byte[] { data[Config.W_Y_BEGIN], data[Config.W_Y_BEGIN + 1], data[Config.W_Y_BEGIN + 2], data[Config.W_Y_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
-                int w_z = ConvertParam(new byte[] { data[Config.W_Z_BEGIN], data[Config.W_Z_BEGIN + 1], data[Config.W_Z_BEGIN + 2], data[Config.W_Z_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
+                int w_x = ConvertParam(new byte[] { data[Config.Instance.W_X_BEGIN], data[Config.Instance.W_X_BEGIN + 1], data[Config.Instance.W_X_BEGIN + 2], data[Config.Instance.W_X_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
+                int w_y = ConvertParam(new byte[] { data[Config.Instance.W_Y_BEGIN], data[Config.Instance.W_Y_BEGIN + 1], data[Config.Instance.W_Y_BEGIN + 2], data[Config.Instance.W_Y_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
+                int w_z = ConvertParam(new byte[] { data[Config.Instance.W_Z_BEGIN], data[Config.Instance.W_Z_BEGIN + 1], data[Config.Instance.W_Z_BEGIN + 2], data[Config.Instance.W_Z_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
                 this.W = new int[] { w_x, w_y, w_z };
                 // данные с акселерометров
-                int a_x = ConvertParam(new byte[] { data[Config.A_X_BEGIN], data[Config.A_X_BEGIN + 1], data[Config.A_X_BEGIN + 2], data[Config.A_X_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
-                int a_y = ConvertParam(new byte[] { data[Config.A_Y_BEGIN], data[Config.A_Y_BEGIN + 1], data[Config.A_Y_BEGIN + 2], data[Config.A_Y_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
-                int a_z = ConvertParam(new byte[] { data[Config.A_Z_BEGIN], data[Config.A_Z_BEGIN + 1], data[Config.A_Z_BEGIN + 2], data[Config.A_Z_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
+                int a_x = ConvertParam(new byte[] { data[Config.Instance.A_X_BEGIN], data[Config.Instance.A_X_BEGIN + 1], data[Config.Instance.A_X_BEGIN + 2], data[Config.Instance.A_X_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
+                int a_y = ConvertParam(new byte[] { data[Config.Instance.A_Y_BEGIN], data[Config.Instance.A_Y_BEGIN + 1], data[Config.Instance.A_Y_BEGIN + 2], data[Config.Instance.A_Y_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
+                int a_z = ConvertParam(new byte[] { data[Config.Instance.A_Z_BEGIN], data[Config.Instance.A_Z_BEGIN + 1], data[Config.Instance.A_Z_BEGIN + 2], data[Config.Instance.A_Z_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
                 this.A = new int[] { a_x, a_y, a_z };
                 //данные о температуре
                 if (id < 3)
                 {
-                    int u_x = ConvertParam(new byte[] { data[Config.U_X_BEGIN], data[Config.U_X_BEGIN + 1], data[Config.U_X_BEGIN + 2], data[Config.U_X_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
-                    int u_y = ConvertParam(new byte[] { data[Config.U_Y_BEGIN], data[Config.U_Y_BEGIN + 1], data[Config.U_Y_BEGIN + 2], data[Config.U_Y_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
-                    int u_z = ConvertParam(new byte[] { data[Config.U_Z_BEGIN], data[Config.U_Z_BEGIN + 1], data[Config.U_Z_BEGIN + 2], data[Config.U_Z_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
+                    int u_x = ConvertParam(new byte[] { data[Config.Instance.U_X_BEGIN], data[Config.Instance.U_X_BEGIN + 1], data[Config.Instance.U_X_BEGIN + 2], data[Config.Instance.U_X_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
+                    int u_y = ConvertParam(new byte[] { data[Config.Instance.U_Y_BEGIN], data[Config.Instance.U_Y_BEGIN + 1], data[Config.Instance.U_Y_BEGIN + 2], data[Config.Instance.U_Y_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
+                    int u_z = ConvertParam(new byte[] { data[Config.Instance.U_Z_BEGIN], data[Config.Instance.U_Z_BEGIN + 1], data[Config.Instance.U_Z_BEGIN + 2], data[Config.Instance.U_Z_BEGIN + 3] }, ref rangeFlag, ref dataFlag);
                     this.U = new int[] { u_x, u_y, u_z };
                 }
                 data = null;
@@ -182,15 +182,15 @@ namespace Evo20.Evo20.Packets
             try
             {
                 //проверка заголовка пакета
-                ushort head = BitConverter.ToUInt16(new byte[] { message[Config.HEAD_BEGIN], message[Config.HEAD_BEGIN + 1] }, 0);
+                ushort head = BitConverter.ToUInt16(new byte[] { message[Config.Instance.HEAD_BEGIN], message[Config.Instance.HEAD_BEGIN + 1] }, 0);
                 if (head != 0xFACE)
                     return null;
-                int checkSum = CRC16.ComputeChecksum(message, Config.PACKET_SIZE);
+                int checkSum = CRC16.ComputeChecksum(message, Config.Instance.PACKET_SIZE);
                 //проверка контрольной суммы
-                if (BitConverter.ToUInt16(new byte[] { message[Config.CHECK_BEGIN], message[Config.CHECK_BEGIN + 1] }, 0) != checkSum)
+                if (BitConverter.ToUInt16(new byte[] { message[Config.Instance.CHECK_BEGIN], message[Config.Instance.CHECK_BEGIN + 1] }, 0) != checkSum)
                     return null;
                 //номер пакета 
-                int packetId = BitConverter.ToUInt16(new byte[] { message[Config.ID_BEGIN], message[Config.ID_BEGIN + 1] }, 0);
+                int packetId = BitConverter.ToUInt16(new byte[] { message[Config.Instance.ID_BEGIN], message[Config.Instance.ID_BEGIN + 1] }, 0);
                 return new Packet(packetId, message);
             }
             catch (Exception)

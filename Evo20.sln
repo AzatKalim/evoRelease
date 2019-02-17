@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.GUI", "Evo20.GUI\Evo20.GUI.csproj", "{0FCF9503-EBD4-4E91-9114-8F5AD4320A34}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.Controllers", "Evo20.Controllers\Evo20.Controllers.csproj", "{3AC3249C-145D-4EEA-8B3F-E82CE09A85DB}"
@@ -19,9 +21,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.Utils", "Evo20.Config
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.Sensors", "Evo20.Sensors\Evo20.Sensors.csproj", "{4E9C9D86-5565-4A04-8490-85EBED2E8886}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.Sensors.Tests", "Evo20.Sensors.Tests\Evo20.Sensors.Tests.csproj", "{10A443BE-DCAE-484B-98AD-29F4EBAFCFDF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{769D2C58-36C2-4305-9B25-358FFD45F5B7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{CEBDB753-A445-48F5-B326-81FFC18A80CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.Utils.Tests", "Evo20.Utils.Tests\Evo20.Utils.Tests.csproj", "{98FECF22-765F-4B26-A9C8-01C94027F236}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.Connections.Tests", "Evo20.Connections.Tests\Evo20.Connections.Tests.csproj", "{E0BCF641-6BBC-4835-B1B2-2DFD88430973}"
 EndProject
 Global
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -63,15 +74,21 @@ Global
 		{4E9C9D86-5565-4A04-8490-85EBED2E8886}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E9C9D86-5565-4A04-8490-85EBED2E8886}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E9C9D86-5565-4A04-8490-85EBED2E8886}.Release|Any CPU.Build.0 = Release|Any CPU
-		{10A443BE-DCAE-484B-98AD-29F4EBAFCFDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{10A443BE-DCAE-484B-98AD-29F4EBAFCFDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{10A443BE-DCAE-484B-98AD-29F4EBAFCFDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{10A443BE-DCAE-484B-98AD-29F4EBAFCFDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98FECF22-765F-4B26-A9C8-01C94027F236}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98FECF22-765F-4B26-A9C8-01C94027F236}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98FECF22-765F-4B26-A9C8-01C94027F236}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98FECF22-765F-4B26-A9C8-01C94027F236}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0BCF641-6BBC-4835-B1B2-2DFD88430973}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0BCF641-6BBC-4835-B1B2-2DFD88430973}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0BCF641-6BBC-4835-B1B2-2DFD88430973}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0BCF641-6BBC-4835-B1B2-2DFD88430973}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(Performance) = preSolution
-		HasPerformanceSessions = true
+	GlobalSection(NestedProjects) = preSolution
+		{CEBDB753-A445-48F5-B326-81FFC18A80CE} = {769D2C58-36C2-4305-9B25-358FFD45F5B7}
+		{98FECF22-765F-4B26-A9C8-01C94027F236} = {CEBDB753-A445-48F5-B326-81FFC18A80CE}
+		{E0BCF641-6BBC-4835-B1B2-2DFD88430973} = {CEBDB753-A445-48F5-B326-81FFC18A80CE}
 	EndGlobalSection
 EndGlobal

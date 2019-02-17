@@ -1,0 +1,10 @@
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Utils.Tests\bin\Debug\Evo20.Utils.Tests.dll
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Utils.Tests\bin\Debug\Evo20.Utils.Tests.pdb
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Utils.Tests\bin\Debug\Evo20.Utils.dll
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Utils.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Utils.Tests\bin\Debug\Evo20.Utils.pdb
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Utils.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Utils.Tests\bin\Debug\ru\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Utils.Tests\obj\Debug\Evo20.Utils.Tests.csprojResolveAssemblyReference.cache
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Utils.Tests\obj\Debug\Evo20.Utils.Tests.dll
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Utils.Tests\obj\Debug\Evo20.Utils.Tests.pdb

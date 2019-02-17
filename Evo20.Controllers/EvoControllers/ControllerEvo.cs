@@ -314,10 +314,10 @@ namespace Evo20.Controllers
         public bool SetStartPosition()
         {
             StopAxis(Axis.ALL);
-            SetAxisRate(Axis.ALL, Config.BASE_MOVE_SPEED);
+            SetAxisRate(Axis.ALL, Config.Instance.BaseMoveSpeed);
             SetAxisPosition(Axis.ALL, 0);
             StartAxis(Axis.ALL);
-            SetTemperatureChangeSpeed(Config.SPEED_OF_TEMPERATURE_CHANGE);
+            SetTemperatureChangeSpeed(Config.Instance.SpeedOfTemperatureChange);
             return true;
         }
         #endregion

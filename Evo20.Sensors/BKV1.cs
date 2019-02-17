@@ -197,7 +197,7 @@ namespace Evo20.Sensors
 
         public ProfilePart[] GetCalibrationProfile()
         {
-            var file = new StreamReader(string.Format("{0}{1}.txt", Config.ProfileFolder, this.Name));
+            var file = new StreamReader(string.Format("{0}{1}.txt", Config.Instance.ProfileFolder, this.Name));
             var str = file.ReadToEnd();
             var profile = JsonConvert.DeserializeObject<Profile>(str);
             Log.Instance.Info(str);
@@ -208,7 +208,7 @@ namespace Evo20.Sensors
         {
             var Profile = new Profile(GetCalibrationProfile());
             string json = JsonConvert.SerializeObject(Profile);
-            using (var file = new StreamWriter(string.Format("{0}{1}.txt", Config.ProfileFolder, this.Name+"2")))
+            using (var file = new StreamWriter(string.Format("{0}{1}.txt", Config.Instance.ProfileFolder, this.Name+"2")))
             {
                 file.Write(json);
             }
