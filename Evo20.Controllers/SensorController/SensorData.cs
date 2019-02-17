@@ -12,7 +12,6 @@ namespace Evo20.Controllers
     /// </summary>
     public class SensorData : AbstractData
     {
-
         #region Properties
 
         public int CalibrationDLYMaxPacketsCount;
@@ -79,16 +78,19 @@ namespace Evo20.Controllers
             }
         }
 
-        public void WritePacketsForCurrentTemperature(StreamWriter file, PacketsCollection[] data,int temperatureIndex)
+        public void WritePacketsForCurrentTemperature(StreamWriter file, List<PacketsCollection> data,int temperatureIndex)
         {
             Log.Instance.Info("Запись данных в файл {0} для температуры", temperatureIndex);
-            if(data!=null && data.Length>temperatureIndex && data[temperatureIndex]!=null)
+            if (data != null && data.Count > temperatureIndex && data[temperatureIndex] != null)
             {
-                file.WriteLine(data.Length);
-                file.WriteLine(data.ToString());
+                file.WriteLine(data[temperatureIndex].PositionCount);
+                file.WriteLine(data[temperatureIndex].ToString());
                 Log.Instance.Info("Запись данных в файл {0} для температуры завершена", temperatureIndex);
             }
-            Log.Instance.Error("Запись данных в файл {0} для температуры невыполнена", temperatureIndex);
+            else
+            {
+                Log.Instance.Error("Запись данных в файл {0} для температуры невыполнена", temperatureIndex);
+            }
         }
         public bool WritePacketsForCurrentTemperture(ISensor[] sensors, StreamWriter file, int temperatureIndex)
         {
@@ -99,7 +101,7 @@ namespace Evo20.Controllers
             }
             else
             {
-                WritePackets(file, sensors[0].CalibrationPacketsCollection.ToArray());
+                WritePacketsForCurrentTemperature(file, sensors[0].CalibrationPacketsCollection, temperatureIndex);
             }
             if (sensors[1].CalibrationPacketsCollection == null || sensors[1].CalibrationPacketsCollection.Count == 0)
             {
@@ -108,7 +110,7 @@ namespace Evo20.Controllers
             }
             else
             {
-                WritePackets(file, sensors[1].CalibrationPacketsCollection.ToArray());
+                WritePacketsForCurrentTemperature(file, sensors[1].CalibrationPacketsCollection, temperatureIndex);
             }
             return true;
         }

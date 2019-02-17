@@ -118,16 +118,22 @@ namespace Evo20.EvoConnections
         /// </summary>
         /// <param name="cmd"> строковое представление комманды </param>
         /// <returns>комманда Evo_20_commands</returns>
-        public static Command RecognizeCommand(String cmd)
+        public static Command RecognizeCommand(string cmd)
         {
-            if (cmd==null || cmd.Length == 0)
+            if (cmd == null || cmd.Length == 0)
+            { 
+                Log.Instance.Warning("Пустая команда");
                 return null;
+            }
             string[] command_parts = cmd.Split('=');
-            if(command_parts.Length!=2)
+            if (command_parts.Length != 2)
+            {
+                Log.Instance.Warning("Команда незвестного формата {0}", cmd);
                 return null;
+            }
             StringBuilder temp = new StringBuilder();
             int i = 0;
-            while ( i< command_parts[1].Length && command_parts[1][i] != '\0')
+            while (i< command_parts[1].Length && command_parts[1][i] != '\0')
             {
                 if (command_parts[1][i] != '.')
                 {
@@ -137,7 +143,6 @@ namespace Evo20.EvoConnections
                 {
                     temp.Append(',');
                 }
-
                 i++;
             }
             //Пришла команда Axis_Status
@@ -202,6 +207,8 @@ namespace Evo20.EvoConnections
                 Log.Instance.Info("Сообщение:достигнутые положение осей");
                 return new Actual_temperature_query_answer(temp.ToString());
             }
+            Log.Instance.Warning("Неизвестная команда {0}", cmd);
+
             return null;
         }
     }

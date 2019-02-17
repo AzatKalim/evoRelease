@@ -115,7 +115,7 @@ namespace Evo20.Evo20.Packets
         /// </summary>
         public int PositionCount
         {
-            get { return positionPackets.Length;}
+            get { return positionPackets==null ? 0 : positionPackets.Length; }
         }
 
         public List<PacketsData> this[int index]
@@ -259,10 +259,10 @@ namespace Evo20.Evo20.Packets
         /// <returns></returns>
         public List<double> MeanParams(int positionNumber)
         {
-            if (positionPackets.Length < positionNumber)
+            if (positionPackets ==null || positionPackets.Length < positionNumber)
                 return null;
             var packetsList = positionPackets[positionNumber];
-            if (packetsList.Count == 0)
+            if (packetsList==null || packetsList.Count == 0)
                 return null;
             var sumUa = new double[Config.Instance.PARAMS_COUNT];
             var sumUw = new double[Config.Instance.PARAMS_COUNT];
@@ -356,7 +356,6 @@ namespace Evo20.Evo20.Packets
                     MeanUW(i);
                 positionPackets[i] = null;
             }
-            positionPackets = null;
             GC.Collect();
         }
         private bool MeanComputed()

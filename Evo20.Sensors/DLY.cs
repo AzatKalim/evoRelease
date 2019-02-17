@@ -14,13 +14,7 @@ namespace Evo20.Sensors
 
         public const int COUNT_OF_POSITIONS = 72;
 
-        public override string Name
-        {
-            get
-            {
-                return "DLY";
-            }
-        }
+        public override string Name { get { return "DLY";} }
         public DLY()
         {
         }

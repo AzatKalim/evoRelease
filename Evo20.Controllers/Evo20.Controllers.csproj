@@ -70,7 +70,7 @@
     <Compile Include="FileWork\IFileController.cs" />
     <Compile Include="MathController\MathController.cs" />
     <Compile Include="SensorController\SensorController.cs" />
-    <Compile Include="SensorData.cs" />
+    <Compile Include="SensorController\SensorData.cs" />
     <Compile Include="Utils\WorkModeOperations.cs" />
   </ItemGroup>
   <ItemGroup>

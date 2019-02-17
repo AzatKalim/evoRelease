@@ -360,9 +360,9 @@ namespace Evo20.GUI
             else
                 countTemperaturesReachedLabel.Text = string.Format("{0}/{1}", Controller.Instance.TemperutureIndex, Controller.Instance.TemperaturesCount);
             if (SensorController.Instance.CurrentPositionNumber < 0)
-                currentPositionNumberLable.Text = string.Format("{0}/{1}", 0, SensorController.Instance.CurrentPositionCount);
+                currentPositionNumberLbl.Text = string.Format("{0}/{1}", 0, SensorController.Instance.CurrentPositionCount);
             else
-                currentPositionNumberLable.Text = string.Format("{0}/{1}", SensorController.Instance.CurrentPositionNumber, SensorController.Instance.CurrentPositionCount);
+                currentPositionNumberLbl.Text = string.Format("{0}/{1}", SensorController.Instance.CurrentPositionNumber, SensorController.Instance.CurrentPositionCount);
             CurrentTemperatureLabel.Text = EvoData.Instance.CurrentTemperature.ToString();
             nextTemperatureLable.Text = EvoData.Instance.NextTemperature.ToString();
             CheckParam(EvoData.Instance.isCameraPowerOn, powerCameraIndic);
@@ -543,8 +543,12 @@ namespace Evo20.GUI
 
             sensorStartButton.Enabled = true; 
             sensorPauseButton.Enabled = false; 
-            sensorStopButton.Enabled = false; 
+            sensorStopButton.Enabled = false;
 
+            sensorTypeLabel.Text = "нет данных";
+            currentPositionNumberLbl.Text = "нет данных";
+            packetsArrivedLbl.Text= "нет данных";
+            sensorConnectionStateLabel.Text= "нет данных";
             //SensorDataGridView.Rows.Clear(); 
             SensorDataGridView.Visible = false;
             FileToolStripMenuItem.Enabled = true;
@@ -558,14 +562,15 @@ namespace Evo20.GUI
                 MessageBox.Show("Ошибка: цикл завершился неуспешно !", message, MessageBoxButtons.OK);
             }
             else
-            {
-                WritePackets();
+            {                
                 string message = "Цикл окончен!";
-                DialogResult diaologResult = MessageBox.Show(message, "Выполнить расчет коэффицентов ?", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                if (diaologResult == DialogResult.Yes)
-                {
-                    ComputeCoefficents();
-                }
+                MessageBox.Show("Цикл завершен !", message, MessageBoxButtons.OK);
+                ResetForm();
+                //DialogResult diaologResult = MessageBox.Show(message, "Выполнить расчет коэффицентов ?", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                //if (diaologResult == DialogResult.Yes)
+                //{
+                //    ComputeCoefficents();
+                //}
             }
         }
 
@@ -616,7 +621,7 @@ namespace Evo20.GUI
 
         private void ShowSensorParams()
         {
-            packetsArrivedLabel.Text = SensorController.Instance.PacketsCollectedCount.ToString();
+            packetsArrivedLbl.Text = SensorController.Instance.PacketsCollectedCount.ToString();
             if (SensorController.Instance.CurrentSensor != null)
             {
                 sensorTypeLabel.Text = SensorController.Instance.CurrentSensor.Name;
@@ -678,6 +683,11 @@ namespace Evo20.GUI
         #endregion
 
         private void currentPositionNumberLable_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sensorTypeLabel_Click(object sender, EventArgs e)
         {
 
         }

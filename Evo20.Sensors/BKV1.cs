@@ -38,7 +38,11 @@ namespace Evo20.Sensors
             {
                 if (calibrationProfile == null)
                 {
+#if !DEBUG
                     calibrationProfile = GetCalibrationProfile();
+#else
+                    calibrationProfile = this.GetCalibrationProfileTest();
+#endif
                 }
                 return calibrationProfile;
             }
@@ -73,10 +77,19 @@ namespace Evo20.Sensors
             get;
         }
 
-        #endregion
+#endregion
 
         #region Public Methods
 
+        protected virtual ProfilePart[] GetCalibrationProfileTest()
+        {
+            var profile = new List<ProfilePart>();
+            for (int i = 0; i < 2; i++)
+            {
+                profile.Add(new ProfilePart(i * 15, 0));
+            }
+            return profile.ToArray();
+        }
         /// <summary>
         /// Вычисляет средниее значения по параметров
         /// </summary>
@@ -169,14 +182,13 @@ namespace Evo20.Sensors
         }
 
         public int PacketsArivedCountCalibration(int temperature, int numberOfPosition)
-        {
-            
+        {         
             int index = FindTemperatureIndex(CalibrationPacketsCollection, temperature);
             if (index == -1)
             {
                 return 0;
             }
-            return CalibrationPacketsCollection[index].PositionCount > numberOfPosition ? CalibrationPacketsCollection[index][numberOfPosition].Count: 0;
+            return CalibrationPacketsCollection[index].PositionCount > numberOfPosition ? CalibrationPacketsCollection[index][numberOfPosition]==null?0: CalibrationPacketsCollection[index][numberOfPosition].Count: 0;
           
         }
 
@@ -187,6 +199,9 @@ namespace Evo20.Sensors
             {
                 return 0;
             }
+            if (CheckPacketsCollection[index] == null)
+                return 0;
+
             return CheckPacketsCollection[index].PositionCount > numberOfPosition ? CheckPacketsCollection[index][numberOfPosition].Count : 0;
         }
 
@@ -214,9 +229,9 @@ namespace Evo20.Sensors
             }
         }
 
-        #endregion
+#endregion
 
-        #region Abstract Methods
+#region Abstract Methods
 
         protected abstract ProfilePart[] GetCheckProfile();
 
@@ -230,6 +245,6 @@ namespace Evo20.Sensors
             throw new NotImplementedException();
         }
 
-        #endregion
+#endregion
     }
 }

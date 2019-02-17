@@ -71,7 +71,7 @@
             this.evoPauseButton = new System.Windows.Forms.Button();
             this.Sensor_control_page = new System.Windows.Forms.TabPage();
             this.sensorGroupBox = new System.Windows.Forms.GroupBox();
-            this.currentPositionNumberLable = new System.Windows.Forms.Label();
+            this.currentPositionNumberLbl = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.sensorConnectionStateLabel = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
@@ -82,7 +82,7 @@
             this.zColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sensorTypeLabel = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.packetsArrivedLabel = new System.Windows.Forms.Label();
+            this.packetsArrivedLbl = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.comPortComboBox = new System.Windows.Forms.ComboBox();
@@ -548,14 +548,14 @@
             // 
             // sensorGroupBox
             // 
-            this.sensorGroupBox.Controls.Add(this.currentPositionNumberLable);
+            this.sensorGroupBox.Controls.Add(this.currentPositionNumberLbl);
             this.sensorGroupBox.Controls.Add(this.label25);
             this.sensorGroupBox.Controls.Add(this.sensorConnectionStateLabel);
             this.sensorGroupBox.Controls.Add(this.label22);
             this.sensorGroupBox.Controls.Add(this.SensorDataGridView);
             this.sensorGroupBox.Controls.Add(this.sensorTypeLabel);
             this.sensorGroupBox.Controls.Add(this.label18);
-            this.sensorGroupBox.Controls.Add(this.packetsArrivedLabel);
+            this.sensorGroupBox.Controls.Add(this.packetsArrivedLbl);
             this.sensorGroupBox.Controls.Add(this.label6);
             this.sensorGroupBox.Location = new System.Drawing.Point(40, 72);
             this.sensorGroupBox.Name = "sensorGroupBox";
@@ -566,13 +566,13 @@
             // 
             // currentPositionNumberLable
             // 
-            this.currentPositionNumberLable.AutoSize = true;
-            this.currentPositionNumberLable.Location = new System.Drawing.Point(205, 43);
-            this.currentPositionNumberLable.Name = "currentPositionNumberLable";
-            this.currentPositionNumberLable.Size = new System.Drawing.Size(64, 13);
-            this.currentPositionNumberLable.TabIndex = 8;
-            this.currentPositionNumberLable.Text = "нет данных";
-            this.currentPositionNumberLable.Click += new System.EventHandler(this.currentPositionNumberLable_Click);
+            this.currentPositionNumberLbl.AutoSize = true;
+            this.currentPositionNumberLbl.Location = new System.Drawing.Point(205, 43);
+            this.currentPositionNumberLbl.Name = "currentPositionNumberLable";
+            this.currentPositionNumberLbl.Size = new System.Drawing.Size(64, 13);
+            this.currentPositionNumberLbl.TabIndex = 8;
+            this.currentPositionNumberLbl.Text = "нет данных";
+            this.currentPositionNumberLbl.Click += new System.EventHandler(this.currentPositionNumberLable_Click);
             // 
             // label25
             // 
@@ -655,6 +655,7 @@
             this.sensorTypeLabel.Size = new System.Drawing.Size(64, 13);
             this.sensorTypeLabel.TabIndex = 3;
             this.sensorTypeLabel.Text = "нет данных";
+            this.sensorTypeLabel.Click += new System.EventHandler(this.sensorTypeLabel_Click);
             // 
             // label18
             // 
@@ -667,12 +668,12 @@
             // 
             // packetsArrivedLabel
             // 
-            this.packetsArrivedLabel.AutoSize = true;
-            this.packetsArrivedLabel.Location = new System.Drawing.Point(205, 101);
-            this.packetsArrivedLabel.Name = "packetsArrivedLabel";
-            this.packetsArrivedLabel.Size = new System.Drawing.Size(64, 13);
-            this.packetsArrivedLabel.TabIndex = 1;
-            this.packetsArrivedLabel.Text = "нет данных";
+            this.packetsArrivedLbl.AutoSize = true;
+            this.packetsArrivedLbl.Location = new System.Drawing.Point(205, 101);
+            this.packetsArrivedLbl.Name = "packetsArrivedLabel";
+            this.packetsArrivedLbl.Size = new System.Drawing.Size(64, 13);
+            this.packetsArrivedLbl.TabIndex = 1;
+            this.packetsArrivedLbl.Text = "нет данных";
             // 
             // label6
             // 
@@ -1014,7 +1015,7 @@
         private System.Windows.Forms.Label nextTemperatureLable;
         private System.Windows.Forms.GroupBox sensorGroupBox;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label packetsArrivedLabel;
+        private System.Windows.Forms.Label packetsArrivedLbl;
         private System.Windows.Forms.GroupBox identifieGoupBox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
@@ -1059,7 +1060,7 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label temperatureStabLabel;
         private System.Windows.Forms.Timer SensorTimer;
-        private System.Windows.Forms.Label currentPositionNumberLable;
+        private System.Windows.Forms.Label currentPositionNumberLbl;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem FileToolStripMenuItem;

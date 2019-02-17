@@ -254,12 +254,16 @@ namespace Evo20.Controllers
 #endif
                 EvoData.Instance.TemperatureReachedEvent.Reset();
                 Log.Instance.Info("Температура  " + temperatures[i] + " достигнута");
-                if (EventHandlerListForTemperatureStabilization != null)
-                    EventHandlerListForTemperatureStabilization(false);
+                EventHandlerListForTemperatureStabilization?.Invoke(false);
                 Log.Instance.Info("{0}:Начало стабилизации температуры.Время стабилизации {1}", DateTime.Now.TimeOfDay, StabilizationTime);
-#if !DEBUG
                 var waitingStartTime = DateTime.Now;
-                writePacketsTask.Wait();
+                if (i != CycleData.Instance.StartTemperatureIndex)
+                {
+                    writePacketsTask.Wait();
+                }
+                writePacketsTask = new Task(CycleTemperatureEnd);
+#if !DEBUG
+
                 
                 if (!Config.IsFakeEvo)
                     //ожидание стабилизации температуры
@@ -267,8 +271,7 @@ namespace Evo20.Controllers
 #endif
                 Log.Instance.Info("{0}:Стабилизация температуры завершена", DateTime.Now.TimeOfDay);
                 SensorController.Instance.TemperatureOfCollect = temperatures[i];
-                if (EventHandlerListForTemperatureStabilization != null)
-                    EventHandlerListForTemperatureStabilization(true);
+                EventHandlerListForTemperatureStabilization?.Invoke(true);
                 //для каждого датчика
                 for (int j = 0; j < sensorsList.Count; j++)
 			    {
@@ -288,6 +291,7 @@ namespace Evo20.Controllers
                 writePacketsTask.Start();
                 TemperutureIndex = i+1;
             }
+            writePacketsTask.Wait();
             EventHandlersListCycleEnded(true);
 
         }
@@ -338,10 +342,7 @@ namespace Evo20.Controllers
             {
                 Log.Instance.Error(string.Format("Возникло исключение цикла при датчике:{0} ,при шаге {1}", SensorController.Instance.CurrentSensor.Name, j));
                 Log.Instance.Exception(exception);
-                if (EventHandlerListForControllerExceptions != null)
-                {
-                    EventHandlerListForControllerExceptions(exception);
-                }
+                EventHandlerListForControllerExceptions?.Invoke(exception);
                 return false;
             }
             SensorController.Instance.CurrentSensor = null;
@@ -374,37 +375,14 @@ namespace Evo20.Controllers
 
         public void CycleTemperatureEnd()
         {
-            Log.Instance.Info("Начало запичи пакетов");
-            //записываем пакеты
-            FileController.Instance.WriteRedPackets(sensorsList, CycleData.Instance.FindCalibrationTemperatureIndex(SensorController.Instance.TemperatureOfCollect));
             lock (SensorController.Instance)
-            {
+            { 
+                Log.Instance.Info("Начало запичи пакетов");
+                //записываем пакеты
+                FileController.Instance.WriteRedPackets(sensorsList, CycleData.Instance.FindCalibrationTemperatureIndex(SensorController.Instance.TemperatureOfCollect));
                 SensorController.Instance.ClearWritedData(CycleData.Instance.FindCalibrationTemperatureIndex(SensorController.Instance.TemperatureOfCollect),
-                    mode);
+                        mode);  
             }
-        }
-
-
-        //var allocationThread = new System.Threading.Thread(new System.Threading.ThreadStart(() =>
-        //       {
-        //           try
-        //           {
-        //               lock (controller)
-        //                   terminal = controller.AllocateTerminal();
-        //           }
-        //           catch (Exception ex)
-        //           {
-        //               log.Error(string.Format("Allocate terminal error: ", ex.Message));
-        //           }
-        //       }))
-        //       { IsBackground = true };
-
-        //       allocationThread.Start();
-        //       if (!allocationThread.Join(new TimeSpan(0, 0, 0, 0, AllocationTimeout)))
-        //       {
-        //           allocationThread.Abort();
-        //           log.Error("Allocation terminal timeout");
-        //           terminalID= -1;
-        //       }
+        }     
     }
 }

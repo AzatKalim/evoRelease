@@ -7,7 +7,7 @@ namespace Evo20.Connections.Tests
 {
     [TestClass]
     public class CommandHandlerTests
-    {
+    { 
         [TestMethod]
         public void TestRecognazeCommandReturnsNull()
         {
