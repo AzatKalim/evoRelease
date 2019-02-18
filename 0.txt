@@ -1,5 +1,0 @@
-0
-2
-System.Collections.Generic.List`1[Evo20.Evo20.Packets.PacketsCollection]
-2
-System.Collections.Generic.List`1[Evo20.Evo20.Packets.PacketsCollection]

@@ -241,7 +241,7 @@ namespace Evo20.Controllers
 
         public void ClearWritedData(int temperatureIndex,WorkMode mode)
         {
-            Log.Instance.Debug("ClearWritedData:temperatureIndex:{0},mode:{1}", temperatureIndex, mode);
+            Log.Instance.Debug("Очистка данных :индекс температуры :{0}, режим :{1}", temperatureIndex, mode);
             foreach (var sensor in sensorsList)
             {
                 if(mode==WorkMode.CalibrationMode)

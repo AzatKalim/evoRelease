@@ -307,9 +307,8 @@ namespace Evo20.Controllers
             {
                 for (; j < profile.Length; j++)
                 {
-                    Log.Instance.Info("{0} Новое положение для датчика {1}", DateTime.Now.TimeOfDay, j);
+                    Log.Instance.Info("Новое положение {0} для датчика {1}", j, SensorController.Instance.CurrentSensor.Name);
                     ControllerEvo.Instance.StopAxis(Axis.ALL);
-                    //убрат
 #if !DEBUG
                     if(!Config.IsFakeEvo)
                     {
@@ -329,7 +328,7 @@ namespace Evo20.Controllers
                     SensorController.Instance.CanCollect = true;
                     SensorController.Instance.CurrentSensor.PacketsCollectedEvent.WaitOne();
                     SensorController.Instance.CanCollect = false;
-                    Log.Instance.Info("{0}: Пакеты в положении {1} собраны", DateTime.Now.TimeOfDay, SensorController.Instance.CurrentPositionNumber);
+                    Log.Instance.Info("Пакеты в положении {0} собраны", SensorController.Instance.CurrentPositionNumber);
                 }
 
             }

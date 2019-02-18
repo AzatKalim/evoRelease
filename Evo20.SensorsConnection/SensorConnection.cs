@@ -24,10 +24,7 @@ namespace Evo20.SensorsConnection
                 if (connectionState != value)
                 {
                     connectionState = value;
-                    if (EventHandlerListForStateChange != null)
-                    {
-                        EventHandlerListForStateChange(connectionState);
-                    }
+                    EventHandlerListForStateChange?.Invoke(connectionState);
                 }               
             }
             get
@@ -57,7 +54,7 @@ namespace Evo20.SensorsConnection
 
         protected int bytesCount;
 
-        public bool StartConnection(string portName)
+        public virtual bool StartConnection(string portName)
         {
             if (!serialPort.IsOpen)
             {
@@ -148,7 +145,7 @@ namespace Evo20.SensorsConnection
             }
         }
 
-        public bool StopConnection()
+        public virtual bool StopConnection()
         {
             if (readThread.IsAlive)
             {

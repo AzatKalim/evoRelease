@@ -5,7 +5,7 @@ C:\Users\Азат\Desktop\Evo20\Evo20.Config\obj\Release\Evo20.Utils.dll
 C:\Users\Азат\Desktop\Evo20\Evo20.Config\obj\Release\Evo20.Utils.pdb
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.GUI\bin\Release\Evo20.Utils.dll
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.GUI\bin\Release\Evo20.Utils.pdb
-C:\Users\Азат\Desktop\работа\Evo20\Evo20.Config\obj\Release\Evo20.Utils.dll
-C:\Users\Азат\Desktop\работа\Evo20\Evo20.Config\obj\Release\Evo20.Utils.pdb
 C:\Users\Азат\Desktop\работа\Evo20\bin\Release\Evo20.Utils.dll
 C:\Users\Азат\Desktop\работа\Evo20\bin\Release\Evo20.Utils.pdb
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Config\obj\Release\Evo20.Utils.dll
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Config\obj\Release\Evo20.Utils.pdb

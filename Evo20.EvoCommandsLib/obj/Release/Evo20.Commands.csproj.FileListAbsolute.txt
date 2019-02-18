@@ -9,8 +9,8 @@ C:\Users\Азат\Desktop\работа\Evo20\Evo20.EvoCommandsLib\bin\Release\Ev
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.EvoCommandsLib\bin\Release\Evo20.EvoCommands.pdb
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.EvoCommandsLib\bin\Release\Evo20.Utils.dll
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.EvoCommandsLib\bin\Release\Evo20.Utils.pdb
-C:\Users\Азат\Desktop\работа\Evo20\Evo20.EvoCommandsLib\obj\Release\Evo20.EvoCommands.dll
-C:\Users\Азат\Desktop\работа\Evo20\Evo20.EvoCommandsLib\obj\Release\Evo20.EvoCommands.pdb
 C:\Users\Азат\Desktop\работа\Evo20\bin\Release\Evo20.EvoCommands.dll
 C:\Users\Азат\Desktop\работа\Evo20\bin\Release\Evo20.EvoCommands.pdb
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.EvoCommandsLib\obj\Release\Evo20.Commands.csprojResolveAssemblyReference.cache
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.EvoCommandsLib\obj\Release\Evo20.EvoCommands.dll
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.EvoCommandsLib\obj\Release\Evo20.EvoCommands.pdb

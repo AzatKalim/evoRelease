@@ -38,11 +38,11 @@ namespace Evo20.Sensors
             {
                 if (calibrationProfile == null)
                 {
-#if !DEBUG
+//#if !DEBUG
                     calibrationProfile = GetCalibrationProfile();
-#else
-                    calibrationProfile = this.GetCalibrationProfileTest();
-#endif
+//#else
+                    //calibrationProfile = this.GetCalibrationProfileTest();
+//#endif
                 }
                 return calibrationProfile;
             }
@@ -60,22 +60,11 @@ namespace Evo20.Sensors
             }
         }
 
-        public List<PacketsCollection> CalibrationPacketsCollection
-        {
-            set;
-            get;
-        }
+        public List<PacketsCollection> CalibrationPacketsCollection {set;get;}
 
-        public List<PacketsCollection> CheckPacketsCollection
-        {
-            set;
-            get;
-        }
+        public List<PacketsCollection> CheckPacketsCollection {set;get;}
 
-        public abstract string Name
-        {
-            get;
-        }
+        public abstract string Name {get;}
 
 #endregion
 
@@ -212,6 +201,11 @@ namespace Evo20.Sensors
 
         public ProfilePart[] GetCalibrationProfile()
         {
+            var filename = string.Format("{0}{1}.txt", Config.Instance.ProfileFolder, this.Name);
+            if(!File.Exists(filename))
+            {
+                return null;
+            }
             var file = new StreamReader(string.Format("{0}{1}.txt", Config.Instance.ProfileFolder, this.Name));
             var str = file.ReadToEnd();
             var profile = JsonConvert.DeserializeObject<Profile>(str);

@@ -300,6 +300,7 @@ namespace Evo20.Evo20.Packets
 
         #endregion
 
+        public bool Cleaned { get; set; }
         /// <summary>
         /// Добавление PacketData 
         /// </summary>
@@ -340,6 +341,8 @@ namespace Evo20.Evo20.Packets
         
         public void ClearUnneedInfo()
         {
+            if (Cleaned)
+                Log.Instance.Error("Уже очищено");
             Log.Instance.Debug("ClearUnneedInfo");
             for (int i = 0; i < positionPackets.Length; i++)
             {
@@ -356,6 +359,7 @@ namespace Evo20.Evo20.Packets
                     MeanUW(i);
                 positionPackets[i] = null;
             }
+            Cleaned = true;
             GC.Collect();
         }
         private bool MeanComputed()

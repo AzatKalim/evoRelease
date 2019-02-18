@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Evo20.Evo20.Packets;
 using Evo20;
+using System.Threading;
 
 namespace Evo20.SensorsConnection
 {
@@ -19,6 +20,10 @@ namespace Evo20.SensorsConnection
         List<byte> bufferMessage;
         public event DataHandler EventHandlersListForController;
 
+        AutoResetEvent NewBytesArrived = new AutoResetEvent(false);
+
+        Thread newBytesHandler;
+
         public SensorHandler() : base()
         {
             bufferPacket = new List<Packet>();
@@ -27,6 +32,47 @@ namespace Evo20.SensorsConnection
             EventHandlersListForPacket += NewPacketHandler;
         }
 
+        public void HandleNewBytes()
+        {
+            while(true)
+            {
+                if (bufferMessage.Count == 0)
+                    NewBytesArrived.WaitOne();
+                // находим стартовые байты пакета 
+                bool isBeginFinded = Packet.FindPacketBegin(ref bufferMessage);
+                if (!isBeginFinded || bufferMessage.Count < Config.Instance.PACKET_SIZE)
+                {
+                    dropedPackets++;
+                    continue;
+                }
+                var temp = new byte[Config.Instance.PACKET_SIZE];
+                lock (bufferMessage)
+                {
+                    // извлекаем  байты в колличестве размера пакета в список 
+                    bufferMessage.CopyTo(0, temp, 0, Config.Instance.PACKET_SIZE);
+                    bufferMessage.RemoveRange(0, Config.Instance.PACKET_SIZE);
+                }
+
+                // получаем информацию из массива байт
+                var recognazedPacket = Packet.FirstPacketHandle(temp);
+                if (recognazedPacket == null)
+                {
+                    dropedPackets++;
+                    continue;
+                }
+                // добавляем пакет в очередь обработанных
+                lock (bufferPacket)
+                {
+                    goodPackets++;
+                    bufferPacket.Add(recognazedPacket);
+                }
+                // если собрали колличество равно числу в сообщении 
+                if (bufferPacket.Count == PacketsData.PACKETS_COUNT)
+                {
+                    EventHandlersListForController();
+                }
+            }
+        }
         /// <summary>
         /// Метод собирает 4 Packet в PacketsData-контейнер хранящий 4 пакета 
         /// </summary>
@@ -62,39 +108,26 @@ namespace Evo20.SensorsConnection
             {
                 return;
             }
-            // находим стартовые байты пакета 
-            bool isBeginFinded = Packet.FindPacketBegin(ref bufferMessage);
-            if (!isBeginFinded || bufferMessage.Count < Config.Instance.PACKET_SIZE)
+            NewBytesArrived.Set();
+        }
+
+        public override bool StopConnection()
+        {
+            if (newBytesHandler.IsAlive)
             {
-                dropedPackets++;
-                return;
+                newBytesHandler.Abort();
             }
-            var temp = new byte[Config.Instance.PACKET_SIZE];
-            lock (bufferMessage)
+            return base.StopConnection();
+        }
+        public override bool StartConnection(string portName)
+        {
+            var result = base.StartConnection(portName);
+            if(result)
             {
-                // извлекаем  байты в колличестве размера пакета в список 
-                bufferMessage.CopyTo(0, temp, 0, Config.Instance.PACKET_SIZE);
-                bufferMessage.RemoveRange(0, Config.Instance.PACKET_SIZE);
+                newBytesHandler = new Thread(HandleNewBytes);
+                newBytesHandler.Start();
             }
-            
-            // получаем информацию из массива байт
-            var recognazedPacket = Packet.FirstPacketHandle(temp);
-            if (recognazedPacket == null)
-            {
-                dropedPackets++;
-                return;
-            }
-            // добавляем пакет в очередь обработанных
-            lock (bufferPacket)
-            {
-                goodPackets++;
-                bufferPacket.Add(recognazedPacket);
-            }
-            // если собрали колличество равно числу в сообщении 
-            if (bufferPacket.Count == PacketsData.PACKETS_COUNT)
-            {
-                EventHandlersListForController();
-            }
+            return result;
         }
     }
 }

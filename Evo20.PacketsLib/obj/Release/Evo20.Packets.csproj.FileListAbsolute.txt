@@ -9,8 +9,8 @@ C:\Users\Азат\Desktop\работа\Evo20\Evo20.PacketsLib\bin\Release\Evo20.
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.PacketsLib\bin\Release\Evo20.Packets.pdb
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.PacketsLib\bin\Release\Evo20.Utils.dll
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.PacketsLib\bin\Release\Evo20.Utils.pdb
-C:\Users\Азат\Desktop\работа\Evo20\Evo20.PacketsLib\obj\Release\Evo20.Packets.dll
-C:\Users\Азат\Desktop\работа\Evo20\Evo20.PacketsLib\obj\Release\Evo20.Packets.pdb
 C:\Users\Азат\Desktop\работа\Evo20\bin\Release\Evo20.Packets.dll
 C:\Users\Азат\Desktop\работа\Evo20\bin\Release\Evo20.Packets.pdb
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.PacketsLib\obj\Release\Evo20.Packets.csprojResolveAssemblyReference.cache
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.PacketsLib\obj\Release\Evo20.Packets.dll
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.PacketsLib\obj\Release\Evo20.Packets.pdb

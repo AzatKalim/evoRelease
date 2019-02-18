@@ -80,7 +80,6 @@ namespace Evo20.Controllers
 
         public void WritePacketsForCurrentTemperature(StreamWriter file, List<PacketsCollection> data,int temperatureIndex)
         {
-            Log.Instance.Info("Запись данных в файл {0} для температуры", temperatureIndex);
             if (data != null && data.Count > temperatureIndex && data[temperatureIndex] != null)
             {
                 file.WriteLine(data[temperatureIndex].PositionCount);
@@ -92,26 +91,22 @@ namespace Evo20.Controllers
                 Log.Instance.Error("Запись данных в файл {0} для температуры невыполнена", temperatureIndex);
             }
         }
+
         public bool WritePacketsForCurrentTemperture(ISensor[] sensors, StreamWriter file, int temperatureIndex)
         {
-            if (sensors[0].CalibrationPacketsCollection == null || sensors[0].CalibrationPacketsCollection.Count == 0)
+            foreach (var sensor  in sensors)
             {
-                Log.Instance.Error("Нет пакетов по калибровке: {0}", sensors[0].Name);
-                return false;
-            }
-            else
-            {
-                WritePacketsForCurrentTemperature(file, sensors[0].CalibrationPacketsCollection, temperatureIndex);
-            }
-            if (sensors[1].CalibrationPacketsCollection == null || sensors[1].CalibrationPacketsCollection.Count == 0)
-            {
-                Log.Instance.Error("Нет пакетов по калибровке: {0}", sensors[1].Name);
-                return false;
-            }
-            else
-            {
-                WritePacketsForCurrentTemperature(file, sensors[1].CalibrationPacketsCollection, temperatureIndex);
-            }
+                if (sensor.CalibrationPacketsCollection == null || sensor.CalibrationPacketsCollection.Count == 0)
+                {
+                    Log.Instance.Error("Нет пакетов по калибровке: {0}", sensor.Name);
+                    return false;
+                }
+                else
+                {
+                    Log.Instance.Info("Запись данных в файл датчик {0} для температуры {1}",sensor.Name, temperatureIndex);
+                    WritePacketsForCurrentTemperature(file, sensor.CalibrationPacketsCollection, temperatureIndex);
+                }
+            }          
             return true;
         }
 

@@ -185,10 +185,12 @@ namespace Evo20.Evo20.Packets
                 ushort head = BitConverter.ToUInt16(new byte[] { message[Config.Instance.HEAD_BEGIN], message[Config.Instance.HEAD_BEGIN + 1] }, 0);
                 if (head != 0xFACE)
                     return null;
+#if !DEBUG
                 int checkSum = CRC16.ComputeChecksum(message, Config.Instance.PACKET_SIZE);
                 //проверка контрольной суммы
                 if (BitConverter.ToUInt16(new byte[] { message[Config.Instance.CHECK_BEGIN], message[Config.Instance.CHECK_BEGIN + 1] }, 0) != checkSum)
                     return null;
+#endif
                 //номер пакета 
                 int packetId = BitConverter.ToUInt16(new byte[] { message[Config.Instance.ID_BEGIN], message[Config.Instance.ID_BEGIN + 1] }, 0);
                 return new Packet(packetId, message);
