@@ -333,7 +333,8 @@ namespace Evo20.Evo20.Packets
                 buff.Append(positionPackets[i].Count+Environment.NewLine);
                 for (int j = 0; j <positionPackets[i].Count; j++)
                 {
-                    buff.Append(positionPackets[i][j]+" ");
+                    buff.Append(positionPackets[i][j]);
+                    //buff.Append(" ");
                 }
             }
             return buff.ToString();

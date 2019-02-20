@@ -109,6 +109,8 @@ namespace Evo20.EvoConnections
         /// <returns>результат отправки </returns>
         public bool SendCommand(Command command)
         {
+            if (Config.IsFakeEvo)
+                return true;
             Log.Instance.Info("Отправлена команда: {0}",command);
             string newMessage = command.ToString();
             return SendMessage(newMessage);

@@ -245,7 +245,7 @@ namespace Evo20.SensorsConnection
         /// <returns></returns>
         public List<byte> ReadBuffer()
         {
-            var message = new List<byte>();
+            var message = new List<byte>(bytesCount);
             lock (bytesBuffer)
             {
                 for (int i = 0; i < bytesCount; i++)

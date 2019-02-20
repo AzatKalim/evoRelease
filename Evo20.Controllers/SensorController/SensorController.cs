@@ -244,7 +244,7 @@ namespace Evo20.Controllers
             Log.Instance.Debug("Очистка данных :индекс температуры :{0}, режим :{1}", temperatureIndex, mode);
             foreach (var sensor in sensorsList)
             {
-                if(mode==WorkMode.CalibrationMode)
+                if( mode == WorkMode.CalibrationMode)
                     sensor.CalibrationPacketsCollection[temperatureIndex].ClearUnneedInfo();
                 else
                     sensor.CheckPacketsCollection[temperatureIndex].ClearUnneedInfo();

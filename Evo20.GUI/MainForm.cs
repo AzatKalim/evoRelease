@@ -355,10 +355,10 @@ namespace Evo20.GUI
 
         private void workTimer_Tick(object sender, EventArgs e)
         {
-            if (Controller.Instance.TemperutureIndex < 0)
+            if (CycleData.Instance.TemperutureIndex < 0)
                 countTemperaturesReachedLabel.Text = string.Format("{0}/{1}", 0, Controller.Instance.TemperaturesCount);
             else
-                countTemperaturesReachedLabel.Text = string.Format("{0}/{1}", Controller.Instance.TemperutureIndex, Controller.Instance.TemperaturesCount);
+                countTemperaturesReachedLabel.Text = string.Format("{0}/{1}", CycleData.Instance.TemperutureIndex, Controller.Instance.TemperaturesCount);
             if (SensorController.Instance.CurrentPositionNumber < 0)
                 currentPositionNumberLbl.Text = string.Format("{0}/{1}", 0, SensorController.Instance.CurrentPositionCount);
             else

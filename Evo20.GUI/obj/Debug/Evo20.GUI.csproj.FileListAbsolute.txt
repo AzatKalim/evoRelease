@@ -30,3 +30,4 @@ C:\Users\Азат\Desktop\работа\Evo20\Evo20.GUI\obj\Debug\Evo20.GUI.Cycle
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.GUI\obj\Debug\Evo20.GUI.MainForm.resources
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.GUI\obj\Debug\Evo20.GUI.Properties.Resources.resources
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.GUI\obj\Debug\Evo20.GUI.csproj.GenerateResource.Cache
+C:\Users\Азат\Desktop\работа\Evo20\bin\Evo20.GUI.exe.config

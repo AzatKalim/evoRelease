@@ -9,18 +9,12 @@ namespace Evo20.Controllers
     public class CycleData : AbstractData
     {
         //Список температур калибровки
-        public List<int> CalibrationTemperatures
-        {
-            get;
-            set;
-        }
+        public List<int> CalibrationTemperatures {get;set;}
 
         //Список температур проверки
-        public List<int> CheckTemperatures
-        {
-            get;
-            set;
-        }
+        public List<int> CheckTemperatures {get;set;}
+
+        public int TemperutureIndex { get; set; } = 0;
 
         //Время стабилизации температуры в режиме калибровки
         public int calibrationStabTime;
@@ -99,37 +93,7 @@ namespace Evo20.Controllers
             return true;
 
         }
-
-        /// <summary>
-        /// Поиск индекса текущей температуры в списке температур
-        /// </summary>
-        /// <param name="temperature">температура</param>
-        /// <returns>индекс</returns>
-        public int FindCalibrationTemperatureIndex(int temperature)
-        {
-            for (int i = 0; i < CalibrationTemperatures.Count; i++)
-            {
-                if (temperature == CalibrationTemperatures[i])
-                    return i;
-            }
-            return -1;
-        }
-
-        /// <summary>
-        /// Поиск индекса текущей температуры в списке температур
-        /// </summary>
-        /// <param name="temperature">температура</param>
-        /// <returns>индекс</returns>
-        public int FindCheckTemperatureIndex(int temperature)
-        {
-            for (int i = 0; i < CheckTemperatures.Count; i++)
-            {
-                if (temperature == CheckTemperatures[i])
-                    return i;
-            }
-            return -1;
-        }
-
+     
         public bool IsFullCycle()
         {
             if (MaxTemperatureFromSettings == CalibrationTemperatures.Count)
