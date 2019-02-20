@@ -403,9 +403,12 @@ namespace Evo20.GUI
         }
 
         private void EvoConnectionChangeHandler(object sender,EventArgs e)
-        {           
+        {
+            var args = e as ConnectionStatusEventArgs;
+            if (args == null)
+                return;
             EvoConnectionDel del = EvoConnectionChange;
-            connectionStateLabel.Invoke(del, e);
+            connectionStateLabel.Invoke(del, args.state);
         }
 
         private void SensorConnectionChange(ConnectionStatus state)
