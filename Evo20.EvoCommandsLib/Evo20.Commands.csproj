@@ -110,6 +110,7 @@
     <Compile Include="AnswerCommands\Temperature_status_answer.cs" />
     <Compile Include="ControlCommands\Ventilation_command.cs" />
     <Compile Include="ControlCommands\Zero_Index_Search.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

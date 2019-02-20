@@ -6,30 +6,32 @@ using System.Threading.Tasks;
 using Evo20.Commands;
 using Evo20.Sensors;
 using System.Windows.Forms;
+using Evo20.Utils.EventArguments;
+using Evo20.Utils;
 
 namespace Evo20.Controllers
-{  
+{     
     public class Controller
     {
         #region Devegates and Events
         //событие обработки ошибок
-        public event ControllerExceptions EventHandlerListForControllerExceptions;
+        public event ControllerExceptions ControllerExceptionEvent;
 
-        public delegate void TemperatureSabilizationHandler(bool result);
+        public delegate void TemperatureSabilizationHandler(object sender, EventArgs e);//(bool result);
 
-        public delegate void WorkModeChangeHandler(WorkMode mode);
+        public delegate void WorkModeChangeHandler(object sender, EventArgs e);
 
-        public delegate void CycleEndedHandler(bool result);
+        public delegate void CycleEndedHandler(object sender, EventArgs e);//(bool result);
 
-        public delegate void ConnectionChangeHandler(ConnectionStatus state);
+        public delegate void ConnectionChangeHandler(object sender, EventArgs e);//(ConnectionStatus state);
 
-        public WorkModeChangeHandler EventListForWorkModeChange;
+        public event WorkModeChangeHandler WorkModeChanged;
 
-        public delegate void ControllerExceptions(Exception exception);
+        public delegate void ControllerExceptions(object sender, EventArgs e);//exception
         //событие окончания работы цикла
-        public event CycleEndedHandler EventHandlersListCycleEnded;
+        public event CycleEndedHandler CycleEndedEvent;
 
-        public event TemperatureSabilizationHandler EventHandlerListForTemperatureStabilization;
+        public event TemperatureSabilizationHandler TemperatureStabilized;
 
         #endregion
 
@@ -96,8 +98,7 @@ namespace Evo20.Controllers
             set
             {
                 mode = value;
-                if (EventListForWorkModeChange != null)
-                    EventListForWorkModeChange(mode);
+                WorkModeChanged?.Invoke(this, new WorkModeEventArgs(mode));
             }
         }
 
@@ -177,10 +178,7 @@ namespace Evo20.Controllers
         private void EvoConnectionExceptionHandler(Exception evoException)
         {
             Stop();
-            if (EventHandlerListForControllerExceptions != null)
-            {
-                EventHandlerListForControllerExceptions(evoException);
-            }
+            ControllerExceptionEvent?.Invoke(this,new ExceptionEventArgs(evoException));
         }
 
         #endregion
@@ -237,7 +235,7 @@ namespace Evo20.Controllers
                     break;
                 default:
                     Log.Instance.Error("Ошибка:перед запуском цикла. Режим работы не установлен!");
-                    EventHandlersListCycleEnded(false);
+                    CycleEndedEvent(this, new BoolEventArgs(false));
                     return;
             }
             ControllerEvo.Instance.InitEvo();
@@ -257,7 +255,7 @@ namespace Evo20.Controllers
 #endif
                 EvoData.Instance.TemperatureReachedEvent.Reset();
                 Log.Instance.Info("Температура  " + temperatures[i] + " достигнута");
-                EventHandlerListForTemperatureStabilization?.Invoke(false);
+                TemperatureStabilized?.Invoke(this, new BoolEventArgs(false));
                 Log.Instance.Info("Начало стабилизации температуры.Время стабилизации {0}", StabilizationTime);
                 var waitingStartTime = DateTime.Now;
                 if (i != CycleData.Instance.StartTemperatureIndex)
@@ -275,7 +273,7 @@ namespace Evo20.Controllers
 #endif
         Log.Instance.Info("Стабилизация температуры завершена");
                 SensorController.Instance.TemperatureOfCollect = temperatures[i];
-                EventHandlerListForTemperatureStabilization?.Invoke(true);
+                TemperatureStabilized?.Invoke(this, new BoolEventArgs(true));
                 //для каждого датчика
                 for (int j = 0; j < sensorsList.Count; j++)
 			    {
@@ -286,7 +284,7 @@ namespace Evo20.Controllers
                     if (!isCyclePartSuccess)
                     {
                         Log.Instance.Error("Ошибка:Не выполнена часть цикла для датчика :{0} при температуре {1} ",sensorsList[j].Name,temperatures[i]);
-                        EventHandlersListCycleEnded(false);
+                        CycleEndedEvent(this,new BoolEventArgs(false));
                         return;
                     }
                     Log.Instance.Info("{0}:Подцикл датчика завершен {1}", DateTime.Now.TimeOfDay, SensorController.Instance.CurrentSensor.Name);
@@ -294,7 +292,7 @@ namespace Evo20.Controllers
                 writePacketsTask.Start();
             }
             writePacketsTask.Wait();
-            EventHandlersListCycleEnded(true);
+            CycleEndedEvent(this, new BoolEventArgs(true));
 
         }
         /// <summary>
@@ -343,7 +341,7 @@ namespace Evo20.Controllers
             {
                 Log.Instance.Error(string.Format("Возникло исключение цикла при датчике:{0} ,при шаге {1}", SensorController.Instance.CurrentSensor.Name, j));
                 Log.Instance.Exception(exception);
-                EventHandlerListForControllerExceptions?.Invoke(exception);
+                ControllerExceptionEvent?.Invoke(this, new ExceptionEventArgs(exception));
                 return false;
             }
             SensorController.Instance.CurrentSensor = null;

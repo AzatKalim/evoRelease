@@ -60,3 +60,5 @@ C:\Users\Азат\Desktop\работа\Evo20\Evo20.SensorsConnection\bin\Debug\N
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.SensorsConnection\obj\Debug\Evo20.SensorsConnection.dll
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.SensorsConnection\obj\Debug\Evo20.SensorsConnection.pdb
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.SensorsConnection\obj\Debug\Evo20.SensorsConnection.csprojResolveAssemblyReference.cache
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.SensorsConnection\bin\Debug\Evo20.SensorsConnection.dll.CodeAnalysisLog.xml
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.SensorsConnection\bin\Debug\Evo20.SensorsConnection.dll.lastcodeanalysissucceeded

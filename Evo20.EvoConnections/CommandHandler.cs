@@ -36,9 +36,9 @@ namespace Evo20.EvoConnections
         StringBuilder sendBuffer;
 
         // делегат
-        public delegate void NewCommandHandler();
+        public delegate void NewCommandHandler(object sender, EventArgs e);//();
         // событие, уведомляющее о приходе новой команды 
-        public event NewCommandHandler CommandHandlersListForController;
+        public event NewCommandHandler NewCommandArrived;
   
         public CommandHandler()
         {
@@ -47,7 +47,7 @@ namespace Evo20.EvoConnections
             bufferMessage = new StringBuilder();
             sendBuffer = new StringBuilder();
             //подписываемся на уведомления ConnectionSocket
-            EventHandlersListForCommand += NewMessageHandler;
+            NewMessageArrived += NewMessageHandler;
             work_thread = new Thread((ReadMessage));
             ConnectionStatus = ConnectionStatus.DISCONNECTED;   
 
@@ -57,7 +57,7 @@ namespace Evo20.EvoConnections
         /// Обработчик события прихода нового сообщения подписан на ConnectionSocket.EventHandlersListForCommand
         /// извлекает из строки команду и добавляет ее в очередь команд
         /// </summary>
-        public void NewMessageHandler()
+        public void NewMessageHandler(object sender, EventArgs e)
         {
             bufferMessage.Append(ReadBuffer());
             if (bufferMessage.Length != 0)
@@ -74,10 +74,7 @@ namespace Evo20.EvoConnections
                 }   
                 bufferMessage.Remove(0, bufferMessage.Length);
             }
-            if (CommandHandlersListForController != null)
-            {
-                CommandHandlersListForController();
-            }
+            NewCommandArrived?.Invoke(this,null);
         }
 
         /// <summary>

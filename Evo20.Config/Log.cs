@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Evo20
 {
-    public class Log
+    public class Log : IDisposable
     {
         public static Log Instance
         {
@@ -192,59 +192,44 @@ namespace Evo20
                 return ex.ToString() + "\r\nInnerException:\r\n" + GetExceptionText(ex.InnerException);
         }
 
-        private struct LogEntry
+    private struct LogEntry
         {
             public DateTime Time;
             public System.Diagnostics.EventLogEntryType Type;
             public string Message;
         }
+
+        #region IDisposable Support
+        private bool disposedValue = false; // Для определения избыточных вызовов
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    newRecords.Dispose();
+                    stopped.Dispose();
+                }
+
+                disposedValue = true;
+            }
+        }
+
+        // TODO: переопределить метод завершения, только если Dispose(bool disposing) выше включает код для освобождения неуправляемых ресурсов.
+        // ~Log() {
+        //   // Не изменяйте этот код. Разместите код очистки выше, в методе Dispose(bool disposing).
+        //   Dispose(false);
+        // }
+
+        // Этот код добавлен для правильной реализации шаблона высвобождаемого класса.
+        public void Dispose()
+        {
+            // Не изменяйте этот код. Разместите код очистки выше, в методе Dispose(bool disposing).
+            Dispose(true);
+            // TODO: раскомментировать следующую строку, если метод завершения переопределен выше.
+            // GC.SuppressFinalize(this);
+        }
+        #endregion
     }
 }
-    /// <summary>
-    /// Статический класс, записываюжий логи
-    /// </summary>
-    //public static class Log
-    //{
-    //    //Имя файла=День_месяц_год_время
-    //    static string file_name = DateTime.Now.Day.ToString()
-    //        + DateTime.Now.Month.ToString()
-    //        + DateTime.Now.Year.ToString() + "_"
-    //        + DateTime.Now.Hour.ToString()
-    //        + DateTime.Now.Minute.ToString()
-    //        + DateTime.Now.Second.ToString()+ "log.txt";
-
-    //    /// <summary>
-    //    /// Запись сообщения в лог файл
-    //    /// </summary>
-    //    /// <param name="message"> сообщение</param>
-    //    public static void WriteLog(string message)
-    //    {
-    //        lock (file_name)
-    //        {
-    //            File.AppendAllText(file_name, message + Environment.NewLine);
-    //        }
-    //    }
-    //}
-
-     //var allocationThread = new System.Threading.Thread(new System.Threading.ThreadStart(() =>
-     //       {
-     //           try
-     //           {
-     //               lock (controller)
-     //                   terminal = controller.AllocateTerminal();
-     //           }
-     //           catch (Exception ex)
-     //           {
-     //               log.Error(string.Format("Allocate terminal error: ", ex.Message));
-     //           }
-     //       }))
-     //       { IsBackground = true };
-
-     //       allocationThread.Start();
-     //       if (!allocationThread.Join(new TimeSpan(0, 0, 0, 0, AllocationTimeout)))
-     //       {
-     //           allocationThread.Abort();
-     //           log.Error("Allocation terminal timeout");
-     //           terminalID= -1;
-     //       }
-//}

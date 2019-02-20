@@ -572,7 +572,6 @@
             this.currentPositionNumberLbl.Size = new System.Drawing.Size(64, 13);
             this.currentPositionNumberLbl.TabIndex = 8;
             this.currentPositionNumberLbl.Text = "нет данных";
-            this.currentPositionNumberLbl.Click += new System.EventHandler(this.currentPositionNumberLable_Click);
             // 
             // label25
             // 
@@ -655,7 +654,6 @@
             this.sensorTypeLabel.Size = new System.Drawing.Size(64, 13);
             this.sensorTypeLabel.TabIndex = 3;
             this.sensorTypeLabel.Text = "нет данных";
-            this.sensorTypeLabel.Click += new System.EventHandler(this.sensorTypeLabel_Click);
             // 
             // label18
             // 

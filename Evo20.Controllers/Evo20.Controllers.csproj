@@ -62,16 +62,17 @@
   </Target>
   -->
   <ItemGroup>
+    <Compile Include="Data\AbstractData.cs" />
     <Compile Include="Controller.cs" />
     <Compile Include="EvoControllers\ControllerEvo.cs" />
-    <Compile Include="EvoControllers\CycleData.cs" />
-    <Compile Include="EvoControllers\EvoData.cs" />
+    <Compile Include="Data\CycleData.cs" />
+    <Compile Include="Data\EvoData.cs" />
     <Compile Include="FileWork\FileController.cs" />
     <Compile Include="FileWork\IFileController.cs" />
     <Compile Include="MathController\MathController.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SensorController\SensorController.cs" />
-    <Compile Include="SensorController\SensorData.cs" />
-    <Compile Include="Utils\WorkModeOperations.cs" />
+    <Compile Include="Data\SensorData.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -124,4 +125,5 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
 </Project>

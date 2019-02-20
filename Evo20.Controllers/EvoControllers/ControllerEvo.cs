@@ -1,21 +1,21 @@
 ﻿using System.Threading;
-
 using Evo20.Commands;
-using Evo20.Controllers;
 using Evo20.EvoConnections;
-using Evo20;
 using Evo20.Sensors;
+using System;
+using Evo20.Utils.EventArguments;
+using Evo20.Utils;
 
 namespace Evo20.Controllers
-{
+{  
     /// <summary>
     /// Класс  с evo, обрабатывающий команды и следящий за состоянием evo.
     /// </summary>
-    public class ControllerEvo
+    public class ControllerEvo : IDisposable
     {
-        public delegate void EvoConnectionChangeHandler(ConnectionStatus state);
+        public delegate void EvoConnectionChangedHandler(object sender, EventArgs e);
 
-        public EvoConnectionChangeHandler EventListForEvoConnectionChange;
+        public event EvoConnectionChangedHandler EvoConnectionChanged;
 
         public const int THREADS_SLEEP_TIME = 100;
 
@@ -48,8 +48,8 @@ namespace Evo20.Controllers
         public ControllerEvo()
         {
             commandHandler = new CommandHandler();
-            commandHandler.CommandHandlersListForController += NewCommandHandler;
-            commandHandler.EventHandlerListForStateChanged += ConnectionStateChangedHandler;
+            commandHandler.NewCommandArrived += NewCommandHandler;
+            commandHandler.StateChanged += ConnectionStateChangedHandler;
             routineThread = new Thread(ControllerRoutine);
             routineThread.Priority = ThreadPriority.BelowNormal;
             routineThread.IsBackground = true;
@@ -88,7 +88,7 @@ namespace Evo20.Controllers
                         if (!commandHandler.SendCommand(item))
                         {
                             Log.Instance.Error("Не удалось отправить сообщение evo" + item.ToString());
-                            EventListForEvoConnectionChange(commandHandler.ConnectionStatus);
+                            EvoConnectionChanged(this,new ConnectionStatusEventArgs(commandHandler.ConnectionStatus));
                             return;
                         }
 
@@ -100,7 +100,7 @@ namespace Evo20.Controllers
         }
 
         //обработчик новых команд
-        protected void NewCommandHandler()
+        protected void NewCommandHandler(object sender, EventArgs e)
         {
             Command[] commands;
             lock (commandHandler)
@@ -162,9 +162,12 @@ namespace Evo20.Controllers
         /// Обработка изменения состояния соединения
         /// </summary>
         /// <param name="state">новое состояние соединения</param>
-        public void ConnectionStateChangedHandler(ConnectionStatus state)
+        public void ConnectionStateChangedHandler(object sender, EventArgs e)
         {
-            switch (state)
+            var args = e as ConnectionStatusEventArgs;
+            if (args == null)
+                return;
+            switch (args.state)
             {
                 case ConnectionStatus.DISCONNECTED:
                     {
@@ -187,7 +190,7 @@ namespace Evo20.Controllers
                         break;
                     }
             }
-            EventListForEvoConnectionChange(state);
+            EvoConnectionChanged(this,e);
         }
 
         #region Camera commands
@@ -320,6 +323,41 @@ namespace Evo20.Controllers
             SetTemperatureChangeSpeed(Config.Instance.SpeedOfTemperatureChange);
             return true;
         }
+
+        #region IDisposable Support
+        private bool disposedValue = false; // Для определения избыточных вызовов
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    commandHandler.Dispose();
+                }
+
+                // TODO: освободить неуправляемые ресурсы (неуправляемые объекты) и переопределить ниже метод завершения.
+                // TODO: задать большим полям значение NULL.
+
+                disposedValue = true;
+            }
+        }
+
+        // TODO: переопределить метод завершения, только если Dispose(bool disposing) выше включает код для освобождения неуправляемых ресурсов.
+        // ~ControllerEvo() {
+        //   // Не изменяйте этот код. Разместите код очистки выше, в методе Dispose(bool disposing).
+        //   Dispose(false);
+        // }
+
+        // Этот код добавлен для правильной реализации шаблона высвобождаемого класса.
+        public void Dispose()
+        {
+            // Не изменяйте этот код. Разместите код очистки выше, в методе Dispose(bool disposing).
+            Dispose(true);
+            // TODO: раскомментировать следующую строку, если метод завершения переопределен выше.
+            // GC.SuppressFinalize(this);
+        }
+        #endregion
         #endregion
     }
 }

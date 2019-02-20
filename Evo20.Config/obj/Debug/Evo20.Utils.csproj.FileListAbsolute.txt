@@ -7,4 +7,5 @@ C:\Users\Азат\Desktop\работа\Evo20\Evo20.Config\bin\Debug\Evo20.Utils.
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Config\bin\Debug\Evo20.Utils.pdb
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Config\obj\Debug\Evo20.Utils.dll
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Config\obj\Debug\Evo20.Utils.pdb
-C:\Users\Азат\Desktop\работа\Evo20\Evo20.Config\obj\Debug\Evo20.Utils.csprojResolveAssemblyReference.cache
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Config\bin\Debug\Evo20.Utils.dll.CodeAnalysisLog.xml
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Config\bin\Debug\Evo20.Utils.dll.lastcodeanalysissucceeded

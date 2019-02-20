@@ -97,3 +97,5 @@ C:\Users\Азат\Desktop\работа\Evo20\bin\Release\Evo20.Controllers.pdb
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Controllers\obj\Release\Evo20.Controllers.csprojResolveAssemblyReference.cache
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Controllers\obj\Release\Evo20.Controllers.dll
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Controllers\obj\Release\Evo20.Controllers.pdb
+C:\Users\Азат\Desktop\работа\Evo20\bin\Release\Evo20.Controllers.dll.CodeAnalysisLog.xml
+C:\Users\Азат\Desktop\работа\Evo20\bin\Release\Evo20.Controllers.dll.lastcodeanalysissucceeded

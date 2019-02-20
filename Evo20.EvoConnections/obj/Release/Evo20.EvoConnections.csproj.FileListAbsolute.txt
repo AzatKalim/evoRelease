@@ -45,3 +45,5 @@ C:\Users\Азат\Desktop\работа\Evo20\bin\Release\Evo20.EvoConnections.pd
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.EvoConnections\obj\Release\Evo20.EvoConnections.csprojResolveAssemblyReference.cache
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.EvoConnections\obj\Release\Evo20.EvoConnections.dll
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.EvoConnections\obj\Release\Evo20.EvoConnections.pdb
+C:\Users\Азат\Desktop\работа\Evo20\bin\Release\Evo20.EvoConnections.dll.CodeAnalysisLog.xml
+C:\Users\Азат\Desktop\работа\Evo20\bin\Release\Evo20.EvoConnections.dll.lastcodeanalysissucceeded

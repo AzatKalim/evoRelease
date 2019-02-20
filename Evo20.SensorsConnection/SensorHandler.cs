@@ -2,10 +2,11 @@
 using Evo20.Evo20.Packets;
 using Evo20;
 using System.Threading;
+using System;
 
 namespace Evo20.SensorsConnection
 {
-    public delegate void DataHandler();
+    public delegate void DataHandler(object sender,EventArgs e);
 
     /// <summary>
     /// Класс создающий из массива байт пакеты, обертка класса SensorConnection
@@ -19,7 +20,7 @@ namespace Evo20.SensorsConnection
         List<Packet> bufferPacket;
         //буфер полученных байт
         List<byte> bufferMessage;
-        public event DataHandler EventHandlersListForController;
+        public event DataHandler PacketDataCollected;
 
         public SensorHandler() : base()
         {
@@ -52,7 +53,7 @@ namespace Evo20.SensorsConnection
         /// <summary>
         /// Обработчик прихода нового пакета 
         /// </summary>
-        public void NewPacketHandler()
+        public void NewPacketHandler(object sender, EventArgs e)
         {
             lock (bufferMessage)
             {
@@ -95,7 +96,7 @@ namespace Evo20.SensorsConnection
             // если собрали колличество равно числу в сообщении 
             if (bufferPacket.Count == PacketsData.PACKETS_COUNT)
             {
-                EventHandlersListForController();
+                PacketDataCollected(this,null);
             }
         }
     }
@@ -111,7 +112,7 @@ namespace Evo20.SensorsConnection
         List<Packet> bufferPacket;
         //буфер полученных байт
         List<byte> bufferMessage;
-        public event DataHandler EventHandlersListForController;
+        public event DataHandler PacketDataCollected;
 
         AutoResetEvent NewBytesArrived = new AutoResetEvent(false);
 
@@ -162,7 +163,7 @@ namespace Evo20.SensorsConnection
                 // если собрали колличество равно числу в сообщении 
                 if (bufferPacket.Count == PacketsData.PACKETS_COUNT)
                 {
-                    EventHandlersListForController();
+                    PacketDataCollected(this, null);
                 }
             }
         }
@@ -189,7 +190,7 @@ namespace Evo20.SensorsConnection
         /// <summary>
         /// Обработчик прихода нового пакета 
         /// </summary>
-        public void NewPacketHandler()
+        public void NewPacketHandler(object sender, EventArgs e)
         {
             lock (bufferMessage)
             {

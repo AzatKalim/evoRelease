@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-using Evo20.Controllers;
-
-namespace Evo20.Controllers
+﻿namespace Evo20.Utils
 {
     public enum WorkMode
     {

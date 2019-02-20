@@ -22,3 +22,5 @@ C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors\bin\Debug\Newtonsoft.
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors\obj\Debug\Evo20.Sensors.dll
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors\obj\Debug\Evo20.Sensors.pdb
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors\obj\Debug\Evo20.Sensors.csprojResolveAssemblyReference.cache
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors\bin\Debug\Evo20.Sensors.dll.CodeAnalysisLog.xml
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors\bin\Debug\Evo20.Sensors.dll.lastcodeanalysissucceeded

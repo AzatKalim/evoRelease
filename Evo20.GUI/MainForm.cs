@@ -4,14 +4,10 @@ using System.Drawing;
 using System.IO;
 using System.IO.Ports;
 using System.Windows.Forms;
-using System.Configuration;
-
 using ZedGraph;
 using Evo20.Controllers;
-using Evo20;
-using Evo20.EvoConnections;
-
-
+using Evo20.Utils.EventArguments;
+using Evo20.Utils;
 
 namespace Evo20.GUI
 {
@@ -64,12 +60,13 @@ namespace Evo20.GUI
         {
             string[] comPorts = SerialPort.GetPortNames();
             comPortComboBox.DataSource = comPorts;
-            Controller.Instance.EventHandlersListCycleEnded += CycleEndedHandler;
-            ControllerEvo.Instance.EventListForEvoConnectionChange += EvoConnectionChangeHandler;
-            Controller.Instance.EventListForWorkModeChange += EvoWorkModeChangeHandler;
+            Controller.Instance.CycleEndedEvent += CycleEndedHandler;
+            ControllerEvo.Instance.EvoConnectionChanged += EvoConnectionChangeHandler;
+            Controller.Instance.WorkModeChanged += EvoWorkModeChangeHandler;
+            Controller.Instance.ControllerExceptionEvent += ControllerExсeptoinsHandler;
             SensorController.Instance.SensorControllerException += ControllerExсeptoinsHandler;
             SensorController.Instance.SensorConnectionChanged += SensorConnectionChangeHandler;
-            Controller.Instance.EventHandlerListForTemperatureStabilization += TemperatureStabilizationHandler;
+            Controller.Instance.TemperatureStabilized += TemperatureStabilizationHandler;
             startTime = DateTime.Now;
             graph.GraphPane.XAxis.Title = "Время";
             graph.GraphPane.YAxis.Title = "Температура";
@@ -79,16 +76,6 @@ namespace Evo20.GUI
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            workTimer.Stop();
-            timer.Stop();
-            SensorController.Instance.StopComPortConnection();
-            ControllerEvo.Instance.StopEvoConnection();
-            Controller.Instance.Stop();
-        }
-
-        ~MainForm()
-        {
-            Dispose();
             workTimer.Stop();
             timer.Stop();
             SensorController.Instance.StopComPortConnection();
@@ -415,10 +402,10 @@ namespace Evo20.GUI
             connectionStateLabel.Text = state.ToText();
         }
 
-        private void EvoConnectionChangeHandler(ConnectionStatus state)
+        private void EvoConnectionChangeHandler(object sender,EventArgs e)
         {           
             EvoConnectionDel del = EvoConnectionChange;
-            connectionStateLabel.Invoke(del,state);
+            connectionStateLabel.Invoke(del, e);
         }
 
         private void SensorConnectionChange(ConnectionStatus state)
@@ -426,10 +413,13 @@ namespace Evo20.GUI
             sensorConnectionStateLabel.Text = state.ToText();
         }
 
-        private void SensorConnectionChangeHandler(ConnectionStatus state)
+        private void SensorConnectionChangeHandler(object sender, EventArgs e)
         {
+            var arg = e as ConnectionStatusEventArgs;
+            if (arg == null)
+                return;
             SensorConnectionDel del = SensorConnectionChange;
-            sensorConnectionStateLabel.Invoke(del,state);
+            sensorConnectionStateLabel.Invoke(del, arg.state);
         }
 
         private void EvoWorkModeChange(WorkMode mode)
@@ -437,22 +427,31 @@ namespace Evo20.GUI
             controllerWokModeLabel.Text = mode.ToView();
         }
 
-        private void EvoWorkModeChangeHandler(WorkMode mode)
+        private void EvoWorkModeChangeHandler(object sender, EventArgs e)
         {
             WorkModDel del = EvoWorkModeChange;
-            controllerWokModeLabel.Invoke(del,mode);
+            var args = e as WorkModeEventArgs;
+            if (args != null)
+                controllerWokModeLabel.Invoke(del, args.mode);
         }
 
-        private void ControllerExсeptoinsHandler(Exception exception)
+        private void ControllerExсeptoinsHandler(object sender, EventArgs e)
         {
-            string message = string.Format("Возникла ошибка во время работы !");
-            DialogResult diaologResult = MessageBox.Show(exception.Message, message, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            ResetForm();
+            var args = e as ExceptionEventArgs;
+            if (args != null)
+            {
+                string message = string.Format("Возникла ошибка во время работы !");
+                DialogResult diaologResult = MessageBox.Show(args.exception.Message, message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ResetForm();
+            }
         }
 
-        private void TemperatureStabilizationHandler(bool result)
+        private void TemperatureStabilizationHandler(object sender,EventArgs e)
         {
-            IsStabilized = result;
+            var args = e as BoolEventArgs;
+            if (args == null)
+                return;
+            IsStabilized = args.result;
         }
 
         #endregion
@@ -554,9 +553,12 @@ namespace Evo20.GUI
             FileToolStripMenuItem.Enabled = true;
             SettingsToolStripMenuItem.Enabled = true; 
         }
-        private void CycleEndedHandler(bool result)
+        private void CycleEndedHandler(object sender,EventArgs e)// bool result)
         {
-            if (!result)
+            var args = e as BoolEventArgs;
+            if (args == null)
+                return;
+            if (!args.result)
             {
                 string message = " Возникла ошибка смотрите log файл";
                 MessageBox.Show("Ошибка: цикл завершился неуспешно !", message, MessageBoxButtons.OK);
@@ -681,15 +683,5 @@ namespace Evo20.GUI
         }
 
         #endregion
-
-        private void currentPositionNumberLable_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void sensorTypeLabel_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

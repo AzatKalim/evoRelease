@@ -334,7 +334,6 @@ namespace Evo20.Evo20.Packets
                 for (int j = 0; j <positionPackets[i].Count; j++)
                 {
                     buff.Append(positionPackets[i][j]);
-                    //buff.Append(" ");
                 }
             }
             return buff.ToString();
@@ -363,10 +362,5 @@ namespace Evo20.Evo20.Packets
             Cleaned = true;
             GC.Collect();
         }
-        private bool MeanComputed()
-        {
-            return true;
-        }
-
     }
 }
