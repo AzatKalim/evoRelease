@@ -1,15 +1,12 @@
 ﻿
-namespace Evo20
+namespace Evo20.Utils
 {
-    /// <summary>
-    /// Состояния соединения 
-    /// </summary>
     public enum ConnectionStatus
     {
-        CONNECTED,
-        DISCONNECTED,
-        PAUSE,
-        ERROR
+        Connected,
+        Disconnected,
+        Pause,
+        Error
     }
 
     public static class ConnectionStateOperations
@@ -18,13 +15,13 @@ namespace Evo20
         {
             switch (state)
             {
-                case (ConnectionStatus.CONNECTED):
+                case (ConnectionStatus.Connected):
                     return "Соединен";
-                case (ConnectionStatus.DISCONNECTED):
+                case (ConnectionStatus.Disconnected):
                     return "Разьединен";
-                case (ConnectionStatus.PAUSE):
+                case (ConnectionStatus.Pause):
                     return "Пауза";
-                case (ConnectionStatus.ERROR):
+                case (ConnectionStatus.Error):
                     return "Ошибка";
             }
             return null;

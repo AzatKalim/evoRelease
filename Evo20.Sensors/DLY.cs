@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
-using Evo20.Evo20.Packets;
-using Evo20;
+using Evo20.Packets;
 
 namespace Evo20.Sensors
 {
@@ -10,14 +9,12 @@ namespace Evo20.Sensors
     /// </summary>
     public class DLY : BKV1
     {
-        static int[] INDEXES = { 24, 48, 72 };
+        static readonly int[] Indexes = { 24, 48, 72 };
 
-        public const int COUNT_OF_POSITIONS = 72;
+        private const int CountOfPositions = 72;
 
-        public override string Name { get { return "DLY";} }
-        public DLY()
-        {
-        }
+        public override string Name => "DLY";
+
         public DLY(List<int> colibrationTemperatures,
             List<int> checkTemperatures,
             int calibrationMaxPacketsCount,
@@ -25,38 +22,38 @@ namespace Evo20.Sensors
         {
             CalibrationPacketsCollection = new List<PacketsCollection>();
             CheckPacketsCollection = new List<PacketsCollection>();
-            for (int i = 0; i < colibrationTemperatures.Count; i++)
+            foreach (var temperture in colibrationTemperatures)
             {
-                CalibrationPacketsCollection.Add(new PacketsCollection(colibrationTemperatures[i], COUNT_OF_POSITIONS, calibrationMaxPacketsCount));
+                CalibrationPacketsCollection.Add(new PacketsCollection(temperture, CountOfPositions, calibrationMaxPacketsCount));
             }
-            for (int i = 0; i < checkTemperatures.Count; i++)
+            foreach (var temperture in checkTemperatures)
             {
-                CheckPacketsCollection.Add(new PacketsCollection(checkTemperatures[i], COUNT_OF_POSITIONS, checkMaxPacketsCount));
+                CheckPacketsCollection.Add(new PacketsCollection(temperture, CountOfPositions, checkMaxPacketsCount));
             }
             PacketsCollectedEvent = new AutoResetEvent(false);
         }
 
-        /// <summary>
-        /// Возврашщает профиль колибровки датчика ДЛУ
-        /// </summary>
-        /// <returns>Профиль</returns>
-        private ProfilePart[] GetCalibrationProfileOld()
-        {
-            ProfilePart[] profile = new ProfilePart[INDEXES[INDEXES.Length - 1]];
-            for (int i = 0; i < INDEXES[0]; i++)
-            {
-                profile[i] = new ProfilePart(i * 15, 0);
-            }
-            for (int i = INDEXES[0]; i < INDEXES[1]; i++)
-            {
-                profile[i] = new ProfilePart((i - 24) * 15, 90);
-            }
-            for (int i = INDEXES[1]; i < profile.Length; i++)
-            {
-                profile[i] = new ProfilePart(-90, (i - 54) * 15);
-            }
-            return profile;
-        }
+        ///// <summary>
+        ///// Возврашщает профиль колибровки датчика ДЛУ
+        ///// </summary>
+        ///// <returns>Профиль</returns>
+        //private ProfilePart[] GetCalibrationProfileOld()
+        //{
+        //    ProfilePart[] profile = new ProfilePart[INDEXES[INDEXES.Length - 1]];
+        //    for (int i = 0; i < INDEXES[0]; i++)
+        //    {
+        //        profile[i] = new ProfilePart(i * 15, 0);
+        //    }
+        //    for (int i = INDEXES[0]; i < INDEXES[1]; i++)
+        //    {
+        //        profile[i] = new ProfilePart((i - 24) * 15, 90);
+        //    }
+        //    for (int i = INDEXES[1]; i < profile.Length; i++)
+        //    {
+        //        profile[i] = new ProfilePart(-90, (i - 54) * 15);
+        //    }
+        //    return profile;
+        //}
 
         /// <summary>
         /// Возврашщает профиль проверки датчика ДЛУ
@@ -64,25 +61,25 @@ namespace Evo20.Sensors
         /// <returns>Профиль</returns>
         protected override ProfilePart[] GetCheckProfile()
         {
-            ProfilePart[] profile = new ProfilePart[INDEXES[INDEXES.Length - 1]];
-            for (int i = 0; i < INDEXES[0]; i++)
+            ProfilePart[] profile = new ProfilePart[Indexes[Indexes.Length - 1]];
+            for (int i = 0; i < Indexes[0]; i++)
             {
                 profile[i] = new ProfilePart(i * 15, 45,0,0);
             }
-            for (int i = INDEXES[0]; i < INDEXES[1]; i++)
+            for (int i = Indexes[0]; i < Indexes[1]; i++)
             {
                 profile[i] = new ProfilePart((i - 24) * 15, -45);
             }
-            for (int i = INDEXES[1]; i < profile.Length; i++)
+            for (int i = Indexes[1]; i < profile.Length; i++)
             {
                 profile[i] = new ProfilePart(-45, (i - 54) * 15);
             }
             return profile;
         }
         // получить коды АЦП из коллекции пакетов
-        public override double[][,] GetCalibrationADCCodes()
+        public override double[][,] GetCalibrationAdcCodes()
         {
-            double[][,] adcCodes = new double[RAW_COUNT][,];
+            double[][,] adcCodes = new double[RawCount][,];
             for (int i = 0; i < adcCodes.Length; i++)
             {
                 adcCodes[i] = new double[CalibrationPacketsCollection.Count, CalibrationPacketsCollection[0].PositionCount];
@@ -97,8 +94,8 @@ namespace Evo20.Sensors
                         adcCodes[i][j, k] = meanParam[i];
                     }
 
-                    meanParam = CalibrationPacketsCollection[j].MeanUA(k);
-                    for (int i = 3; i < RAW_COUNT; i++)
+                    meanParam = CalibrationPacketsCollection[j].MeanUa(k);
+                    for (int i = 3; i < RawCount; i++)
                     {
                         //переход за границы массива!!!
                         adcCodes[i][j, k] = meanParam[i - 3];
@@ -106,6 +103,11 @@ namespace Evo20.Sensors
                 }
             }
             return adcCodes;
+        }
+
+        public override double[][,] GetCheckAdcCodes()
+        {
+            return null;
         }
     }
 }

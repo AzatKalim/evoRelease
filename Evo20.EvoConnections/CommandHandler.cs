@@ -2,108 +2,91 @@
 using System;
 using System.Text;
 using System.Threading;
-using Evo20.Commands;
+using Evo20.Commands.Abstract;
+using Evo20.Commands.AnswerCommands;
+using Evo20.Commands.CommndsWithAnswer;
+using Evo20.Utils;
 
 namespace Evo20.EvoConnections
 {
-    /// <summary>
-    /// Класс обертка над ConnectionSocket для работы с коммандами
-    /// </summary>
     public class CommandHandler : ConnectionSocket
     {
         #region Commands 
 
-        static string AXIS_STATUS = Axis_Status.Command;
-        static string TEMPERATURE_STATUS = Temperature_status.Command;
-        static string REQUESTED_AXIS_POSITION_REACHED = Requested_axis_position_reached.Command;
-        static string ACTUAL_TEMPERATURE_QUERY = Actual_temperature_query.Command;
+        static readonly string AxisStatus = Commands.CommndsWithAnswer.AxisStatus.Command;
+        static readonly string TemperatureStatus = Commands.CommndsWithAnswer.TemperatureStatus.Command;
+        static readonly string RequestedAxisPositionReached = Commands.CommndsWithAnswer.RequestedAxisPositionReached.Command;
+        static readonly string ActualTemperatureQuery = Commands.CommndsWithAnswer.ActualTemperatureQuery.Command;
 
-        static string ROTARY_JOINT_TEMPERATURE_QUERY_X = new Rotary_joint_temperature_Query(Axis.First).ToString();
-        static string ROTARY_JOINT_TEMPERATURE_QUERY_Y = new Rotary_joint_temperature_Query(Axis.Second).ToString();
-        static string AXIS_POSITION_QUERY_X = new Axis_Position_Query(Axis.First).ToString();
-        static string AXIS_POSITION_QUERY_Y = new Axis_Position_Query(Axis.Second).ToString();
-        static string AXIS_RATE_QUERY_X = new Axis_Rate_Query(Axis.First).ToString();
-        static string AXIS_RATE_QUERY_Y = new Axis_Rate_Query(Axis.Second).ToString();
+        static readonly string RotaryJointTemperatureQueryX = new RotaryJointTemperatureQuery(Axis.First).ToString();
+        static readonly string RotaryJointTemperatureQueryY = new RotaryJointTemperatureQuery(Axis.Second).ToString();
+        static readonly string AxisPositionQueryX = new AxisPositionQuery(Axis.First).ToString();
+        static readonly string AxisPositionQueryY = new AxisPositionQuery(Axis.Second).ToString();
+        static readonly string AxisRateQueryX = new AxisRateQuery(Axis.First).ToString();
+        static readonly string AxisRateQueryY = new AxisRateQuery(Axis.Second).ToString();
 
         #endregion
 
-        // очередь обработанных комманд
-        Queue<Command> bufferCommand;
+        readonly Queue<Command> _bufferCommand;
 
-        //буффер входящих сообщений 
-        StringBuilder bufferMessage;
-        //буффер сообщений для отправки 
-        StringBuilder sendBuffer;
+        readonly StringBuilder _bufferMessage;
 
-        // делегат
-        public delegate void NewCommandHandler(object sender, EventArgs e);//();
-        // событие, уведомляющее о приходе новой команды 
+        public delegate void NewCommandHandler(object sender, EventArgs e);
+
         public event NewCommandHandler NewCommandArrived;
   
         public CommandHandler()
         {
-            buffer = new byte[2048];
-            bufferCommand = new Queue<Command>();
-            bufferMessage = new StringBuilder();
-            sendBuffer = new StringBuilder();
-            //подписываемся на уведомления ConnectionSocket
+            Buffer = new byte[2048];
+            _bufferCommand = new Queue<Command>();
+            _bufferMessage = new StringBuilder();
             NewMessageArrived += NewMessageHandler;
-            work_thread = new Thread((ReadMessage));
-            ConnectionStatus = ConnectionStatus.DISCONNECTED;   
+            WorkThread = new Thread((ReadMessage));
+            ConnectionStatus = ConnectionStatus.Disconnected;   
 
         }
 
-        /// <summary>
-        /// Обработчик события прихода нового сообщения подписан на ConnectionSocket.EventHandlersListForCommand
-        /// извлекает из строки команду и добавляет ее в очередь команд
-        /// </summary>
         public void NewMessageHandler(object sender, EventArgs e)
         {
-            bufferMessage.Append(ReadBuffer());
-            if (bufferMessage.Length != 0)
+            _bufferMessage.Append(ReadBuffer());
+            if (_bufferMessage.Length != 0)
             {              
-                String temp = bufferMessage.ToString();
+                String temp = _bufferMessage.ToString();
                 Command serializedCommand = RecognizeCommand(temp);
                 if (serializedCommand == null)
                 {
                     return;
                 }
-                lock (bufferCommand)
+                lock (_bufferCommand)
                 {
-                    bufferCommand.Enqueue(serializedCommand);
+                    _bufferCommand.Enqueue(serializedCommand);
                 }   
-                bufferMessage.Remove(0, bufferMessage.Length);
+                _bufferMessage.Remove(0, _bufferMessage.Length);
             }
             NewCommandArrived?.Invoke(this,null);
         }
 
-        /// <summary>
-        /// Извлечение комманд из очереди ожидающих
-        /// </summary>
-        /// <returns></returns>
         public Command[] GetCommands()
         {
-            if (bufferCommand.Count > 0)
+            lock (_bufferCommand)
             {
-                Command[] array=null;
-                lock (bufferCommand)
+                if (_bufferCommand.Count > 0)
                 {
-                    array = bufferCommand.ToArray();
-                    bufferCommand.Clear();
+                    Command[] array;
+                    lock (_bufferCommand)
+                    {
+                        array = _bufferCommand.ToArray();
+                        _bufferCommand.Clear();
+                    }
+                    return array;
                 }
-                return array;
-            }
-            else
-            {
-                return null;
+                else
+                {
+                    return null;
+                }
             }
         }
 
-        /// <summary>
-        /// Отправка комманды 
-        /// </summary>
-        /// <param name="command">комманда Evo_20_commands</param>
-        /// <returns>результат отправки </returns>
         public bool SendCommand(Command command)
         {
             if (Config.IsFakeEvo)
@@ -112,99 +95,89 @@ namespace Evo20.EvoConnections
             string newMessage = command.ToString();
             return SendMessage(newMessage);
         }
-        /// <summary>
-        /// Извлечение комманды из строки 
-        /// </summary>
-        /// <param name="cmd"> строковое представление комманды </param>
-        /// <returns>комманда Evo_20_commands</returns>
+
+
         public static Command RecognizeCommand(string cmd)
         {
-            if (cmd == null || cmd.Length == 0)
+            if (string.IsNullOrEmpty(cmd))
             { 
                 Log.Instance.Warning("Пустая команда");
                 return null;
             }
-            string[] command_parts = cmd.Split('=');
-            if (command_parts.Length != 2)
+            string[] commandParts = cmd.Split('=');
+            if (commandParts.Length != 2)
             {
                 Log.Instance.Warning("Команда незвестного формата {0}", cmd);
                 return null;
             }
             StringBuilder temp = new StringBuilder();
             int i = 0;
-            while (i< command_parts[1].Length && command_parts[1][i] != '\0')
+            while (i< commandParts[1].Length && commandParts[1][i] != '\0')
             {
-                if (command_parts[1][i] != '.')
-                {
-                    temp.Append(command_parts[1][i]);
-                }
-                else
-                {
-                    temp.Append(',');
-                }
+                temp.Append(commandParts[1][i] != '.' ? commandParts[1][i] : ',');
                 i++;
             }
-            //Пришла команда Axis_Status
-            if (command_parts[0] == AXIS_STATUS)
+
+            if (commandParts[0] == AxisStatus)
             {
                 Log.Instance.Info("Сообщение:статус осей ");            
-                return new Axis_Status_answer(temp.ToString());
+                return new AxisStatusAnswer(temp.ToString());
             }
-            //Пришла команда Temperature_status
-            if (command_parts[0] == TEMPERATURE_STATUS)
+
+            if (commandParts[0] == TemperatureStatus)
             {
                 Log.Instance.Info("Сообщение:статус термокамеры принято ");
-                return new Temperature_status_answer(temp.ToString());
+                return new TemperatureStatusAnswer(temp.ToString());
             }
 
             //Пришла команда температура оси x
-            if (command_parts[0] == ROTARY_JOINT_TEMPERATURE_QUERY_X)
+            if (commandParts[0] == RotaryJointTemperatureQueryX)
             {
                 Log.Instance.Info("Сообщение:температура оси x принято ");
-                return new Rotary_joint_temperature_Query_answer(temp.ToString(),Axis.First);
+                return new RotaryJointTemperatureQueryAnswer(temp.ToString(),Axis.First);
             }
             //Пришла команда температура оси y
-            if (command_parts[0] == ROTARY_JOINT_TEMPERATURE_QUERY_Y)
+            if (commandParts[0] == RotaryJointTemperatureQueryY)
             {
                 Log.Instance.Info("Сообщение:температура оси y принято");
-                return new Rotary_joint_temperature_Query_answer(temp.ToString(), Axis.Second);
+                return new RotaryJointTemperatureQueryAnswer(temp.ToString(), Axis.Second);
             }
 
             //Пришла команда положение оси x
-            if (command_parts[0] == AXIS_POSITION_QUERY_X)
+            if (commandParts[0] == AxisPositionQueryX)
             {
                 Log.Instance.Info("Сообщение:положение оси x принято");
-                return new Axis_Position_Query_answer(temp.ToString(), Axis.First);
+                return new AxisPositionQueryAnswer(temp.ToString(), Axis.First);
             }
             //Пришла команда положение оси y
-            if (command_parts[0] == AXIS_POSITION_QUERY_Y)
+            if (commandParts[0] == AxisPositionQueryY)
             {
                 Log.Instance.Info("Сообщение:положение оси y принято");
-                return new Axis_Position_Query_answer(temp.ToString(), Axis.Second);
+                return new AxisPositionQueryAnswer(temp.ToString(), Axis.Second);
             }
 
             //Пришла команда скорость оси x
-            if (command_parts[0] == AXIS_RATE_QUERY_X)
+            if (commandParts[0] == AxisRateQueryX)
             {
                 Log.Instance.Info("Сообщение:скорость оси x принято");
-                return new Axis_Rate_Query_answer(temp.ToString(), Axis.First);
+                return new AxisRateQueryAnswer(temp.ToString(), Axis.First);
             }
             //Пришла команда скорость оси y
-            if (command_parts[0] == AXIS_RATE_QUERY_Y)
+            if (commandParts[0] == AxisRateQueryY)
             {
                 Log.Instance.Info("Сообщение:скорость оси y принято");
-                return new Axis_Rate_Query_answer(temp.ToString(), Axis.Second);
+                return new AxisRateQueryAnswer(temp.ToString(), Axis.Second);
             }
             //Пришла команда о достигнутом положении осей
-            if (command_parts[0] == REQUESTED_AXIS_POSITION_REACHED)
+            if (commandParts[0] == RequestedAxisPositionReached)
             {
                 Log.Instance.Info("Сообщение:достигнутые положение осей");
-                return new Requested_axis_position_reached_answer(temp.ToString());
+                return new RequestedAxisPositionReachedAnswer(temp.ToString());
             }
-            if (command_parts[0] == ACTUAL_TEMPERATURE_QUERY)
+            if (commandParts[0] == ActualTemperatureQuery)
             {
                 Log.Instance.Info("Сообщение:достигнутые положение осей");
-                return new Actual_temperature_query_answer(temp.ToString());
+                return new ActualTemperatureQueryAnswer(temp.ToString());
             }
             Log.Instance.Warning("Неизвестная команда {0}", cmd);
 

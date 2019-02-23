@@ -1,42 +1,27 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 
-namespace Evo20.Controllers
+namespace Evo20.Controllers.Data
 {
-    /// <summary>
-    /// Класс хранящий информацию о цикле 
-    /// </summary>
     public class CycleData : AbstractData
     {
-        //Список температур калибровки
         public List<int> CalibrationTemperatures {get;set;}
 
-        //Список температур проверки
         public List<int> CheckTemperatures {get;set;}
 
         public int TemperutureIndex { get; set; } = 0;
 
-        //Время стабилизации температуры в режиме калибровки
-        public int calibrationStabTime;
+        public int CalibrationStabTime;
 
-        //Время стабилизации температуры в режиме проверки
-        public int checkStabTime;
+        public int CheckStabTime;
 
         public int MaxTemperatureFromSettings;
 
         public int StartTemperatureIndex = 0;
 
-        private static CycleData cycleData;
+        private static CycleData _cycleData;
 
-        public static CycleData Instance
-        {
-            get
-            {
-                if(cycleData==null)
-                    cycleData=new CycleData();
-               return cycleData;
-            }
-        }
+        public static CycleData Instance => _cycleData ?? (_cycleData = new CycleData());
 
         private CycleData()
         {
@@ -44,11 +29,6 @@ namespace Evo20.Controllers
             CheckTemperatures = new List<int>(); 
         }
 
-        /// <summary>
-        /// Чтение информации из файла настроек
-        /// </summary>
-        /// <param name="file">файл настроек</param>
-        /// <returns>true- чтение выполнно успешно, false- чтени не выполнено</returns>
         public override bool ReadSettings(ref StreamReader file)
         {            
             int calibrationTemperatureCount = 0;
@@ -64,12 +44,12 @@ namespace Evo20.Controllers
                     return false;
                 CalibrationTemperatures.Add(temperature);             
             }
-            double temp = 0; ;
+            double temp = 0;
             isSuccess = ReadParamFromFile(ref file, "Время стабилизации температуры в режиме калибровка", ref temp);
             if (!isSuccess)
                 return false;
             //Перевод минут в миллисекунды 
-            calibrationStabTime = (int)temp*60 * 1000;
+            CalibrationStabTime = (int)temp*60 * 1000;
             int checkTemperatureCount = 0;
             isSuccess = ReadParamFromFile(ref file, "Число температур проверки", ref  checkTemperatureCount);
             if (!isSuccess)
@@ -89,7 +69,7 @@ namespace Evo20.Controllers
                 return false;
 
             //Перевод минут в миллисекунды 
-            checkStabTime=(int)temp*60 * 1000;
+            CheckStabTime=(int)temp*60 * 1000;
             return true;
 
         }

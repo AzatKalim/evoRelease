@@ -1,26 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
-using Evo20.Evo20.Packets;
 using Newtonsoft.Json;
 using System.IO;
+using Evo20.Packets;
+using Evo20.Utils;
 
 namespace Evo20.Sensors
 {
-    /// <summary>
-    /// Класс, реализующий общие методы и свойства для датчиков блока БКВ-1
-    /// </summary>
     public abstract class BKV1 : ISensor
     {
-        protected const int RAW_COUNT = 6;
+        protected const int RawCount = 6;
 
         #region Private Fields
 
-        private ProfilePart[] calibrationProfile;
+        private ProfilePart[] _calibrationProfile;
 
-        private ProfilePart[] checkProfile;
+        private ProfilePart[] _checkProfile;
 
         #endregion
 
@@ -32,33 +28,9 @@ namespace Evo20.Sensors
             get;
         }
 
-        public ProfilePart[] CalibrationProfile
-        {
-            get
-            {
-                if (calibrationProfile == null)
-                {
-//#if !DEBUG
-                    calibrationProfile = GetCalibrationProfile();
-//#else
-                    //calibrationProfile = this.GetCalibrationProfileTest();
-//#endif
-                }
-                return calibrationProfile;
-            }
-        }
+        public ProfilePart[] CalibrationProfile => _calibrationProfile ?? (_calibrationProfile = GetCalibrationProfile());
 
-        public ProfilePart[] CheckProfile
-        {
-            get
-            {
-                if (checkProfile == null)
-                {
-                    checkProfile = GetCheckProfile();
-                }
-                return checkProfile;
-            }
-        }
+        public ProfilePart[] CheckProfile => _checkProfile ?? (_checkProfile = GetCheckProfile());
 
         public List<PacketsCollection> CalibrationPacketsCollection {set;get;}
 
@@ -79,15 +51,10 @@ namespace Evo20.Sensors
             }
             return profile.ToArray();
         }
-        /// <summary>
-        /// Вычисляет средниее значения по параметров
-        /// </summary>
-        /// <param name="temperature"></param>
-        /// <param name="numberOfPosition"></param>
-        /// <returns></returns>
+
         public List<double> СalculateCalibrationAverage(int temperature, int numberOfPosition)
         {
-            List<double> result = new List<double>();
+            List<double> result;
 
             int index = FindTemperatureIndex(CalibrationPacketsCollection, temperature);
             if (index == -1)
@@ -100,7 +67,7 @@ namespace Evo20.Sensors
                 if (result == null)
                     return null;
             }
-            double mul = 0.5/System.Math.Pow(2,28);
+            double mul = 0.5/Math.Pow(2,28);
             for (int i = 0; i < result.Count; i++)
             {
                 result[i] *= mul;
@@ -110,7 +77,7 @@ namespace Evo20.Sensors
 
         public List<double> СalculateCheckAverage(int temperature, int numberOfPosition)
         {
-            List<double> result = new List<double>();
+            List<double> result;
 
             int index = FindTemperatureIndex(CheckPacketsCollection, temperature);
             if (index == -1)
@@ -121,7 +88,7 @@ namespace Evo20.Sensors
             {
                 result = CheckPacketsCollection[index].MeanParams(numberOfPosition);               
             }
-            double mul = 0.5 / System.Math.Pow(2, 28);
+            double mul = 0.5 / Math.Pow(2, 28);
             for (int i = 0; i < result.Count; i++)
             {
                 result[i] *= mul;
@@ -183,7 +150,7 @@ namespace Evo20.Sensors
 
         public int PacketsArivedCountCheck(int temperature, int numberOfPosition)
         {
-            int index = FindTemperatureIndex(CheckPacketsCollection, temperature);
+            var index = FindTemperatureIndex(CheckPacketsCollection, temperature);
             if (index == -1)
             {
                 return 0;
@@ -201,26 +168,16 @@ namespace Evo20.Sensors
 
         public ProfilePart[] GetCalibrationProfile()
         {
-            var filename = string.Format("{0}{1}.txt", Config.Instance.ProfileFolder, this.Name);
+            var filename = $"{Config.Instance.ProfileFolder}{Name}.txt";
             if(!File.Exists(filename))
             {
                 return null;
             }
-            var file = new StreamReader(string.Format("{0}{1}.txt", Config.Instance.ProfileFolder, this.Name));
+            var file = new StreamReader($"{Config.Instance.ProfileFolder}{Name}.txt");
             var str = file.ReadToEnd();
             var profile = JsonConvert.DeserializeObject<Profile>(str);
             Log.Instance.Info(str);
             return profile.ProfilePartArray;
-        }
-
-        public void WriteCalibrationProfile()
-        {
-            var Profile = new Profile(GetCalibrationProfile());
-            string json = JsonConvert.SerializeObject(Profile);
-            using (var file = new StreamWriter(string.Format("{0}{1}.txt", Config.Instance.ProfileFolder, this.Name+"2")))
-            {
-                file.Write(json);
-            }
         }
 
 #endregion
@@ -229,16 +186,10 @@ namespace Evo20.Sensors
 
         protected abstract ProfilePart[] GetCheckProfile();
 
-        public virtual double[][,] GetCalibrationADCCodes()
-        {
-            throw new NotImplementedException();
-        }
+        public abstract double[][,] GetCalibrationAdcCodes();
 
-        public virtual double[][,] GetCheckADCCodes()
-        {
-            throw new NotImplementedException();
-        }
+        public abstract double[][,] GetCheckAdcCodes();
 
-#endregion
+        #endregion
     }
 }

@@ -896,13 +896,6 @@
             this.getDataFromFileToolStripMenuItem.Text = "Получить данные из файла ";
             this.getDataFromFileToolStripMenuItem.Click += new System.EventHandler(this.getDataFromFileToolStripMenuItem_Click);
             // 
-            // savePacketsToolStripMenuItem
-            // 
-            this.savePacketsToolStripMenuItem.Name = "savePacketsToolStripMenuItem";
-            this.savePacketsToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
-            this.savePacketsToolStripMenuItem.Text = "Сохранить пакеты в файл";
-            this.savePacketsToolStripMenuItem.Click += new System.EventHandler(this.savePacketsToolStripMenuItem_Click);
-            // 
             // SettingsToolStripMenuItem
             // 
             this.SettingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {

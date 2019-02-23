@@ -1,13 +1,9 @@
 ﻿
-namespace Evo20.Evo20.Packets
+namespace Evo20.Packets
 {
-    /// <summary>
-    /// класс вычисляющий контрольную сумму
-    /// </summary>
-    static class CRC16
+    static class Crc16
     {
-        // таблица значений 
-        static ushort[] crc16tab = new ushort[]{
+        static readonly ushort[] Crc16Tab = new ushort[]{
             0x0000, 0x1021, 0x2042, 0x3063, 0x4084, 0x50A5, 0x60C6, 0x70E7, 0x8108, 0x9129, 0xA14A, 0xB16B, 0xC18C, 0xD1AD, 0xE1CE, 0xF1EF,
             0x1231, 0x0210, 0x3273, 0x2252, 0x52B5, 0x4294, 0x72F7, 0x62D6, 0x9339, 0x8318, 0xB37B, 0xA35A, 0xD3BD, 0xC39C, 0xF3FF, 0xE3DE,
             0x2462, 0x3443, 0x0420, 0x1401, 0x64E6, 0x74C7, 0x44A4, 0x5485, 0xA56A, 0xB54B, 0x8528, 0x9509, 0xE5EE, 0xF5CF, 0xC5AC, 0xD58D,
@@ -25,34 +21,15 @@ namespace Evo20.Evo20.Packets
             0xFD2E, 0xED0F, 0xDD6C, 0xCD4D, 0xBDAA, 0xAD8B, 0x9DE8, 0x8DC9, 0x7C26, 0x6C07, 0x5C64, 0x4C45, 0x3CA2, 0x2C83, 0x1CE0, 0x0CC1,
             0xEF1F, 0xFF3E, 0xCF5D, 0xDF7C, 0xAF9B, 0xBFBA, 0x8FD9, 0x9FF8, 0x6E17, 0x7E36, 0x4E55, 0x5E74, 0x2E93, 0x3EB2, 0x0ED1, 0x1EF0
             };
-        /// <summary>
-        /// Вычисление контрольной суммы по алгоритму CRC16cit
-        /// </summary>
-        /// <param name="buf">массив байтов сообщения </param>
-        /// <returns>контрольную сумму </returns>
-        public static int ComputeChecksum(byte[] buf)
-        {
-            ushort sum = 0xFFFF;
-            ushort num=0;
-            ushort index;
-            while (num < buf.Length)
-            {
-                index = (ushort)(((sum >> 8) ^ buf[num]) & 0xFF);
-                sum = (ushort)(crc16tab[index] ^ (sum << 8));
-                num++;
-            }
-            sum ^= 0xFFFF;
-            return sum;
-        }
+   
         public static int ComputeChecksum(byte[] buf,int length)
         {
             ushort sum = 0xFFFF;
             ushort num = 0;
-            ushort index;
             while (num < length-2)
             {
-                index = (ushort)(((sum >> 8) ^ buf[num]) & 0xFF);
-                sum = (ushort)(crc16tab[index] ^ (sum << 8));
+                var index = (ushort)(((sum >> 8) ^ buf[num]) & 0xFF);
+                sum = (ushort)(Crc16Tab[index] ^ (sum << 8));
                 num++;
             }
             sum ^= 0xFFFF;

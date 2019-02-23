@@ -1,24 +1,23 @@
-﻿using Evo20.Commands.Abstract;
+﻿//using Evo20.Commands.Abstract;
 
-namespace Evo20.Commands
-{
-    /// <summary>
-    /// задать амплитуду
-    /// </summary>
+////namespace Evo20.Commands.ControlCommands
+////{
+/*
     public class Amplitude: ControlCommand
     {
-        Axis axis;
+        readonly Axis _axis;
         // в градусах
-        double amplitude;
+        private readonly double _amplitude;
         public Amplitude(Axis value, double amplitude)
         {
-            axis = value;
-            this.amplitude = amplitude;
+            _axis = value;
+            _amplitude = amplitude;
         }
         public override string ToString()
         {
-            string buffer = "AXE.CONS.AMP " + amplitude;
-            return buffer + ' ' + AxisToInt(axis);;
+            string buffer = "AXE.CONS.AMP " + _amplitude;
+            return buffer + ' ' + AxisToInt(_axis);
         }
     }
-}
+*/
+//}

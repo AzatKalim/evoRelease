@@ -1,29 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Evo20.Sensors
+﻿namespace Evo20.Sensors
 {
     public class Profile
     {
-        private ProfilePart[] profile;
-
-        public ProfilePart[] ProfilePartArray
-        {
-            get
-            {
-                return profile;
-            }
-            set
-            {
-                profile = value;
-            }
-        }
+        public ProfilePart[] ProfilePartArray { get; set; }
 
         public Profile(ProfilePart[] profile)
         {
-            this.profile = profile;
+            ProfilePartArray = profile;
         }
     }
 }

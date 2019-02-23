@@ -1,42 +1,35 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
 using System.IO;
-using Evo20.Commands;
+using System.Threading;
+using Evo20.Commands.Abstract;
+using Evo20.Commands.AnswerCommands;
 
-namespace Evo20.Controllers
+namespace Evo20.Controllers.Data
 {
-    /// <summary>
-    /// Класс хранящий информацию о состоянии evo
-    /// </summary>
     public class EvoData : AbstractData, IDisposable
     {
-        /// <summary>
-        /// Структура хранящая информацию об оси
-        /// </summary>
         public struct AxisData
         {
-            public bool isPositionReached;
-            public bool isPowerOn;
-            public bool isMove;
-            public bool isZeroFound;
-            public double position;
-            public double speedOfRate;
-            public double axisTemperature;
-            public double correction;
-            public AxisData(bool isZeroFinded, bool isPositionReached, bool isPowerOn,
+            public bool IsPositionReached;
+            public bool IsPowerOn;
+            public bool IsMove;
+            public bool IsZeroFound;
+            public double Position;
+            public double SpeedOfRate;
+            public double AxisTemperature;
+            public double Correction;
+            public AxisData(bool isZeroFunded, bool isPositionReached, bool isPowerOn,
                 bool isMove, double position, double speedOfRate,
                 double axisTemperature, double correction)
             {
-                this.isZeroFound = isZeroFinded;
-                this.isPositionReached = isPositionReached;
-                this.isPowerOn = isPowerOn;
-                this.isMove = isMove;
-                this.position = position;
-                this.speedOfRate = speedOfRate;
-                this.axisTemperature = axisTemperature;
-                this.correction = correction;
+                IsZeroFound = isZeroFunded;
+                IsPositionReached = isPositionReached;
+                IsPowerOn = isPowerOn;
+                IsMove = isMove;
+                Position = position;
+                SpeedOfRate = speedOfRate;
+                AxisTemperature = axisTemperature;
+                Correction = correction;
             }
         }
 
@@ -44,132 +37,124 @@ namespace Evo20.Controllers
 
         public AxisData Y;
 
-        private double nextTemperature;
+        private double _nextTemperature;
 
         public double NextTemperature
         {
             set
             {
-                if (TemperatureReachedEvent != null && nextTemperature != currentTemperature)
+                if (TemperatureReachedEvent != null && System.Math.Abs(_nextTemperature - _currentTemperature) > 0)
                 {
                     TemperatureReachedEvent.Reset();
                 }
-                nextTemperature = value;
+                _nextTemperature = value;
             }
             get
             {
-                return nextTemperature;
+                return _nextTemperature;
             }
         }
 
-        private double currentTemperature;
+        private double _currentTemperature;
 
         public double CurrentTemperature
         {
             set
             {            
-                currentTemperature = value;
+                _currentTemperature = value;
             }
             get
             {
-                return currentTemperature;
+                return _currentTemperature;
             }
         }
 
-        public bool isCameraPowerOn;
+        public bool IsCameraPowerOn;
 
-        public bool isTemperatureReached;
+        public bool IsTemperatureReached;
 
         public ManualResetEvent TemperatureReachedEvent;
 
-        public ManualResetEvent movementEndedEvent;
+        public ManualResetEvent MovementEndedEvent;
 
-        private static EvoData current;
+        private static EvoData _current;
 
-        public static EvoData Instance
-        {
-            get
-            {
-                if (current == null)
-                    current = new EvoData();
-                return current;
-            }
-        }
+        public static EvoData Instance => _current ?? (_current = new EvoData());
 
         private EvoData()
         {
             X = new AxisData(false, false, false, false, 0, 0, 0, 0);
             Y = new AxisData(false, false, false, false, 0, 0, 0, 0);
-            currentTemperature = 0;
-            isCameraPowerOn = false;
-            nextTemperature = 0;
+            _currentTemperature = 0;
+            IsCameraPowerOn = false;
+            _nextTemperature = 0;
             TemperatureReachedEvent = new ManualResetEvent(false);
-            movementEndedEvent = new ManualResetEvent(false);
+            MovementEndedEvent = new ManualResetEvent(false);
         }
 
         #region Methods gets information from evo commands
 
-        public void GetCommandInfo(Axis_Status_answer cmd)
+        public void GetCommandInfo(AxisStatusAnswer cmd)
         {
-            X.isZeroFound = cmd.is_zero_1_found;
-            Y.isZeroFound = cmd.is_zero_2_found;
+            X.IsZeroFound = cmd.IsZero1Found;
+            Y.IsZeroFound = cmd.IsZero2Found;
 
-            X.isMove = cmd.is_axis_1_move;
-            Y.isMove = cmd.is_axis_2_move;
+            X.IsMove = cmd.IsAxis1Move;
+            Y.IsMove = cmd.IsAxis2Move;
 
-            if (!cmd.is_axis_1_move && !cmd.is_axis_2_move)
-                movementEndedEvent.Set();
+            if (!cmd.IsAxis1Move && !cmd.IsAxis2Move)
+                MovementEndedEvent.Set();
         }
 
-        public void GetCommandInfo(Temperature_status_answer cmd)
+        public void GetCommandInfo(TemperatureStatusAnswer cmd)
         {
-            if (cmd.is_temperature_reached)
+            if (cmd.IsTemperatureReached)
             {
-                isTemperatureReached = true;
+                IsTemperatureReached = true;
                 TemperatureReachedEvent.Set();
             }
-            isCameraPowerOn = cmd.is_power_on;
+            IsCameraPowerOn = cmd.IsPowerOn;
         }
 
-        public void GetCommandInfo(Rotary_joint_temperature_Query_answer cmd)
+        public void GetCommandInfo(RotaryJointTemperatureQueryAnswer cmd)
         {
-            if (cmd.axis == Axis.First)
-                X.axisTemperature = cmd.temperture;
-            if (cmd.axis == Axis.Second)
-                Y.axisTemperature = cmd.temperture;
+            if (cmd.Axis == Axis.First)
+                X.AxisTemperature = cmd.Temperture;
+            if (cmd.Axis == Axis.Second)
+                Y.AxisTemperature = cmd.Temperture;
 
-            currentTemperature = X.axisTemperature;
+            _currentTemperature = X.AxisTemperature;
         }
 
-        public void GetCommandInfo(Axis_Position_Query_answer cmd)
+        public void GetCommandInfo(AxisPositionQueryAnswer cmd)
         {
-            if (cmd.axis == Axis.First)
-                X.position = cmd.position;
-            if (cmd.axis == Axis.Second)
-                Y.position = cmd.position;
+            if (cmd.Axis == Axis.First)
+                X.Position = cmd.Position;
+            if (cmd.Axis == Axis.Second)
+                Y.Position = cmd.Position;
         }
 
-        public void GetCommandInfo(Axis_Rate_Query_answer cmd)
+        public void GetCommandInfo(AxisRateQueryAnswer cmd)
         {
-            if (cmd.axis == Axis.First)
-                X.speedOfRate = cmd.speedOfRate;
-            if (cmd.axis == Axis.Second)
-                Y.speedOfRate = cmd.speedOfRate;
+            if (cmd.Axis == Axis.First)
+                X.SpeedOfRate = cmd.SpeedOfRate;
+            if (cmd.Axis == Axis.Second)
+                Y.SpeedOfRate = cmd.SpeedOfRate;
         }
 
-        public void GetCommandInfo(Requested_axis_position_reached_answer cmd)
+        public void GetCommandInfo(RequestedAxisPositionReachedAnswer cmd)
         {
-            X.isPositionReached = cmd.axisXreached;
-            Y.isPositionReached = cmd.axisYreached;
+            X.IsPositionReached = cmd.AxisXReached;
+            Y.IsPositionReached = cmd.AxisYReached;
         }
 
-        public void GetCommandInfo(Actual_temperature_query_answer cmd)
+        public void GetCommandInfo(ActualTemperatureQueryAnswer cmd)
         {
-            currentTemperature = cmd.temperature;
-            if ((currentTemperature - nextTemperature) < 0.5 && (currentTemperature - nextTemperature) > -0.5)
+            _currentTemperature = cmd.Temperature;
+            if ((_currentTemperature - _nextTemperature) < 0.5 && (_currentTemperature - _nextTemperature) > -0.5)
             {
                 TemperatureReachedEvent.Set();
-                isTemperatureReached = true;
+                IsTemperatureReached = true;
             }
         }
 
@@ -179,50 +164,36 @@ namespace Evo20.Controllers
         {
             bool isSuccess = ReadParamFromFile(ref file,
                 "Поправка по оси стола №1",
-                ref  X.correction);
+                ref  X.Correction);
             if (!isSuccess)
                 return false;
             isSuccess = ReadParamFromFile(ref file,
                 "Поправка по оси стола №2",
-                ref  Y.correction);
+                ref  Y.Correction);
             if (!isSuccess)
                 return false;
             return true;
         }
 
         #region IDisposable Support
-        private bool disposedValue = false; // Для определения избыточных вызовов
+        private bool _disposedValue;
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposedValue)
+            if (!_disposedValue)
             {
                 if (disposing)
                 {
-                    movementEndedEvent.Dispose();
+                    MovementEndedEvent.Dispose();
                     TemperatureReachedEvent.Dispose();
                 }
-
-                // TODO: освободить неуправляемые ресурсы (неуправляемые объекты) и переопределить ниже метод завершения.
-                // TODO: задать большим полям значение NULL.
-
-                disposedValue = true;
+                _disposedValue = true;
             }
         }
-
-        // TODO: переопределить метод завершения, только если Dispose(bool disposing) выше включает код для освобождения неуправляемых ресурсов.
-        // ~EvoData() {
-        //   // Не изменяйте этот код. Разместите код очистки выше, в методе Dispose(bool disposing).
-        //   Dispose(false);
-        // }
-
-        // Этот код добавлен для правильной реализации шаблона высвобождаемого класса.
+     
         public void Dispose()
         {
-            // Не изменяйте этот код. Разместите код очистки выше, в методе Dispose(bool disposing).
             Dispose(true);
-            // TODO: раскомментировать следующую строку, если метод завершения переопределен выше.
-            // GC.SuppressFinalize(this);
         }
         #endregion
     }

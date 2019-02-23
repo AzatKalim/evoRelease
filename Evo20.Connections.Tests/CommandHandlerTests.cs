@@ -1,7 +1,8 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Evo20.EvoConnections;
-using Evo20.Commands;
+using Evo20.Commands.Abstract;
+using Evo20.Commands.AnswerCommands;
+using Evo20.Commands.CommndsWithAnswer;
 
 namespace Evo20.Connections.Tests
 {
@@ -11,9 +12,8 @@ namespace Evo20.Connections.Tests
         [TestMethod]
         public void TestRecognazeCommandReturnsNull()
         {
-            string test = null;
-            Assert.IsNull(CommandHandler.RecognizeCommand(test));
-            test = string.Empty;
+            Assert.IsNull(CommandHandler.RecognizeCommand(null));
+            var test = string.Empty;
             Assert.IsNull(CommandHandler.RecognizeCommand(test));
             test = "test";
             Assert.IsNull(CommandHandler.RecognizeCommand(test));
@@ -24,42 +24,42 @@ namespace Evo20.Connections.Tests
         [TestMethod]
         public void TestRecognazeCommandReturnsAxis_Status_answer()
         {
-            string test = Axis_Status.Command + "=" + "F2C22A3B\0";
-            Assert.IsInstanceOfType(CommandHandler.RecognizeCommand(test), typeof(Axis_Status_answer));
+            string test = AxisStatus.Command + "=" + "F2C22A3B\0";
+            Assert.IsInstanceOfType(CommandHandler.RecognizeCommand(test), typeof(AxisStatusAnswer));
         }
 
         [TestMethod]
         public void TestRecognazeCommandReturnsTemperature_status_answer()
         {
-            string test = Temperature_status.Command + "=" + "F2C22A3B\0";
-            Assert.IsInstanceOfType(CommandHandler.RecognizeCommand(test), typeof(Temperature_status_answer));
+            string test = TemperatureStatus.Command + "=" + "F2C22A3B\0";
+            Assert.IsInstanceOfType(CommandHandler.RecognizeCommand(test), typeof(TemperatureStatusAnswer));
         }
 
         [TestMethod]
         public void TestRecognazeCommandReturnsRotary_joint_temperature_Query_answer()
         {
-            string test = new Rotary_joint_temperature_Query(Axis.First).ToString() + "=" + "F2C22A3B\0";
-            Assert.IsInstanceOfType(CommandHandler.RecognizeCommand(test), typeof(Rotary_joint_temperature_Query_answer));
-            test = new Rotary_joint_temperature_Query(Axis.Second).ToString() + "=" + "F2C22A3B\0";
-            Assert.IsInstanceOfType(CommandHandler.RecognizeCommand(test), typeof(Rotary_joint_temperature_Query_answer));
+            string test = new RotaryJointTemperatureQuery(Axis.First) + "=" + "F2C22A3B\0";
+            Assert.IsInstanceOfType(CommandHandler.RecognizeCommand(test), typeof(RotaryJointTemperatureQueryAnswer));
+            test = new RotaryJointTemperatureQuery(Axis.Second) + "=" + "F2C22A3B\0";
+            Assert.IsInstanceOfType(CommandHandler.RecognizeCommand(test), typeof(RotaryJointTemperatureQueryAnswer));
         }
 
         [TestMethod]
         public void TestRecognazeCommandReturnsAxis_Position_Query_answer()
         {
-            string test = new Axis_Position_Query(Axis.First).ToString() + "=" + "F2C22A3B\0";
-            Assert.IsInstanceOfType(CommandHandler.RecognizeCommand(test), typeof(Axis_Position_Query_answer));
-            test = new Axis_Position_Query(Axis.Second).ToString() + "=" + "F2C22A3B\0";
-            Assert.IsInstanceOfType(CommandHandler.RecognizeCommand(test), typeof(Axis_Position_Query_answer));
+            string test = new AxisPositionQuery(Axis.First) + "=" + "F2C22A3B\0";
+            Assert.IsInstanceOfType(CommandHandler.RecognizeCommand(test), typeof(AxisPositionQueryAnswer));
+            test = new AxisPositionQuery(Axis.Second) + "=" + "F2C22A3B\0";
+            Assert.IsInstanceOfType(CommandHandler.RecognizeCommand(test), typeof(AxisPositionQueryAnswer));
         }
 
         [TestMethod]
         public void TestRecognazeCommandReturnsAxis_Rate_Query_answer()
         {
-            string test = new Axis_Rate_Query(Axis.First).ToString() + "=" + "F2C22A3B\0";
-            Assert.IsInstanceOfType(CommandHandler.RecognizeCommand(test), typeof(Axis_Rate_Query_answer));
-            test = new Axis_Rate_Query(Axis.Second).ToString() + "=" + "F2C22A3B\0";
-            Assert.IsInstanceOfType(CommandHandler.RecognizeCommand(test), typeof(Axis_Rate_Query_answer));
+            string test = new AxisRateQuery(Axis.First) + "=" + "F2C22A3B\0";
+            Assert.IsInstanceOfType(CommandHandler.RecognizeCommand(test), typeof(AxisRateQueryAnswer));
+            test = new AxisRateQuery(Axis.Second) + "=" + "F2C22A3B\0";
+            Assert.IsInstanceOfType(CommandHandler.RecognizeCommand(test), typeof(AxisRateQueryAnswer));
         }
     }
 }

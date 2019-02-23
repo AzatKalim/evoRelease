@@ -1,77 +1,56 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Text;
+using Evo20.Controllers.Data;
 using Evo20.Math;
 using Evo20.Sensors;
+using Evo20.Utils;
 
-namespace Evo20.Controllers
+namespace Evo20.Controllers.FileWork
 {
     public class FileController
     {
-        public AutoResetEvent PacketsWritedEvent
-        {
-            set;
-            get;
-        }
-        private static FileController fileController;
+        private static FileController _fileController;
 
-        public static string filesPath;
+        public static string FilesPath;
 
-        public static FileController Instance
-        {
-            get
-            {
-                if (fileController == null)
-                    fileController = new FileController();
-                return fileController;
-            }
-        }
+        public static FileController Instance => _fileController ?? (_fileController = new FileController());
 
         /// <summary>
         /// Вычислить калибровочные коэфииценты
         /// </summary>
+        /// <param name="sensorsList"></param>
         /// <param name="file">файл для записи результатов</param>
         /// <returns>true- выполнено успешно,false-возникла ошибка </returns>
-        public bool ComputeCoefficents(List<ISensor> sensorsList, StreamWriter file)
+        [SuppressMessage("ReSharper", "UnusedMember.Global")]
+        public virtual bool ComputeCoefficent(List<ISensor> sensorsList, StreamWriter file)
         {
-            bool result = CalculatorCoefficients.CalculateCoefficients(sensorsList[0].GetCalibrationADCCodes(),
-                sensorsList[1].GetCalibrationADCCodes(),
+            bool result = CalculatorCoefficients.CalculateCoefficients(sensorsList[0].GetCalibrationAdcCodes(),
+                sensorsList[1].GetCalibrationAdcCodes(),
                 file);
             if (!result)
             {
                 Log.Instance.Error("Вычисление коэфицентов не выполнено!");
-                return result;
+                return false;
             }
             Log.Instance.Error("Вычисление коэфицентов выполнено!");
-            return result;
-        }
-
-        /// <summary>
-        /// Запись всех пакетов в файл( не работает пока)
-        /// </summary>
-        /// <param name="file">файл для записи</param>
-        /// <returns></returns>
-        public bool WritePackets(List<ISensor> sensorsList, StreamWriter file)
-        {
-            return SensorData.Instance.WriteAllPackets(sensorsList.ToArray(), file);
+            return true;
         }
 
         /// <summary>
         /// Чтение пакетов их файла
         /// </summary>
-        /// <param name="file"></param>
-        /// <returns></returns>
+        /// <returns />
         public bool ReadDataFromFile(ref List<ISensor> sensorsList)
         {
             for (int temperature = 0; temperature < CycleData.Instance.CalibrationTemperatures.Count; temperature++)
             {
-                var fileName= Path.Combine(FileController.filesPath,temperature+".txt");
+                var fileName= Path.Combine(FilesPath,temperature+".txt");
                 if(!File.Exists(fileName))
                 {
-                    Log.Instance.Warning(@"Файл {0} не существует!");
+                    Log.Instance.Warning("Файл {0} не существует!", fileName);
                     return true;
                 }
                 using (var reader = new StreamReader(fileName))
@@ -80,19 +59,14 @@ namespace Evo20.Controllers
                     if (result)
                         CycleData.Instance.StartTemperatureIndex = sensorsList[0].CalibrationPacketsCollection.Count;
                     else
-                        return result;
+                        return false;
                 }
             }
             return true;
         }
 
-        /// <summary>
-        /// Чтение настроек из файла
-        /// </summary>
-        /// <returns> результат чтения </returns>
         public bool ReadSettings(string fileName)
         {
-            //Попытка чтения из файла
             try
             {
                 var file = new StreamReader(fileName, Encoding.GetEncoding(1251));
@@ -104,7 +78,7 @@ namespace Evo20.Controllers
             }
             catch (Exception exception)
             {
-                Log.Instance.Error("Возникла ошибка чтения файла настроек" + exception.ToString());
+                Log.Instance.Error("Возникла ошибка чтения файла настроек" + exception);
                 Log.Instance.Exception(exception);
                 throw;
             }
@@ -115,14 +89,14 @@ namespace Evo20.Controllers
         {
             Log.Instance.Info("Запись уже считанных пакетов в файл");
             bool result;
-            using( var file = new StreamWriter(Path.Combine(filesPath,temperatureNumber+".txt")))
+            using( var file = new StreamWriter(Path.Combine(FilesPath,temperatureNumber+".txt")))
             {
                 file.WriteLine(temperatureNumber);
-                result= SensorData.Instance.WritePacketsForCurrentTemperture(sensorsList.ToArray(),
+                result= SensorData.Instance.WriteForCurrentTemperture(sensorsList.ToArray(),
                     file,temperatureNumber);
             }
             return result;
-            //foreach (var sensor in sensorsList)
+            //foreach (var sensor in _sensorsList)
             //{
             //    if (!sensor.WriteRedPackets(filesPath))
             //    {
@@ -131,6 +105,11 @@ namespace Evo20.Controllers
             //    }
             //}
             //return true;
+        }
+
+        public bool WritePackets(List<ISensor> sensorsList, StreamWriter file)
+        {
+            return SensorData.Instance.WriteAllPackets(sensorsList.ToArray(), file);
         }
     }
 }

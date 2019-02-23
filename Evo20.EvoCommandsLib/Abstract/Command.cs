@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Evo20;
+﻿using Evo20.Utils;
 
-namespace Evo20.Commands
+namespace Evo20.Commands.Abstract
 {
     public enum Axis
     {
         First,
         Second,
         Third,
-        ALL
+        All
     }
     public abstract class Command
     {
@@ -19,13 +16,13 @@ namespace Evo20.Commands
             switch (axis)
             {
                 case Axis.First:
-                    return Config.Instance.X_AXIS_NUMBER;
+                    return Config.Instance.XAxisNumber;
                 case Axis.Second:
-                    return Config.Instance.Y_AXIS_NUMBER;
+                    return Config.Instance.YAxisNumber;
                 case Axis.Third:
-                    return Config.Instance.Z_AXIS_NUMBER;
-                case Axis.ALL:
-                    return Config.Instance.ALL_AXIS_NUMBER;
+                    return Config.Instance.ZAxisNumber;
+                case Axis.All:
+                    return Config.Instance.AllAxisNumber;
                 default:
                     return 0;
             }

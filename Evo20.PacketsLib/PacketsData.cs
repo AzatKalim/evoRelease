@@ -2,24 +2,17 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
+// ReSharper disable InconsistentlySynchronizedField
 
-namespace Evo20.Evo20.Packets
+namespace Evo20.Packets
 {
-    /// <summary>
-    /// Класс хранящий 4 пакета
-    /// </summary>
-    [Serializable]
     public class PacketsData
     {
         #region Constants
         //число осей 
-        [NonSerialized]
-        const int AXIS_COUNT=3;
+        const int AxisCount = 3;
         //число пакетов
-        [NonSerialized]
-        public const int PACKETS_COUNT = 4;
+        public const int PacketsCount = 4;
 
         #endregion
 
@@ -27,18 +20,18 @@ namespace Evo20.Evo20.Packets
 
         public PacketsData(StreamReader file)
         {
-            var packets = new List<Packet>();
+            Packets= new List<Packet>();
             try
             {
-                for (int i = 0; i < PACKETS_COUNT; i++)
+                for (var i = 0; i < PacketsCount; i++)
                 {
                     var packetLine = file.ReadLine();
-                    var packet = new Packet(packetLine);
+                    Packets.Add(new Packet(packetLine));
                 }
             }
             catch (FormatException)
             {
-                packets = null;
+                Packets = null;
                 throw;
             }
         }
@@ -46,141 +39,123 @@ namespace Evo20.Evo20.Packets
         public PacketsData(ref List<Packet> newPackets)
         {
             var packetsList=new List<Packet>();
-            for (int i = 0; i < PACKETS_COUNT; i++)
+            for (int i = 0; i < PacketsCount; i++)
             {
                 packetsList.Add(newPackets[i]);
             }
             lock (newPackets)
             {
-                newPackets.RemoveRange(0, PACKETS_COUNT);
+                newPackets.RemoveRange(0, PacketsCount);
             }
-            this.packets = packetsList;
-            packets[2].U = packets[0].U;
-            packets[3].U = packets[1].U;
+            Packets = packetsList;
+            Packets[2].U = Packets[0].U;
+            Packets[3].U = Packets[1].U;
         }
         #endregion
 
         #region Public properties
-        //список пакетов 
-        public List<Packet> packets
+
+        public List<Packet> Packets
         {
             get;
-            private set;
         }
-        private double[] meanW;
-        //среднее значение по гироскопам
+        private double[] _meanW;
         public double[] MeanW
         {
             get
             {
-                if (meanW == null)
+                if (_meanW == null)
                 {
-                    meanW = new double[AXIS_COUNT];
+                    _meanW = new double[AxisCount];
                     double sum = 0;
-                    for (int i = 0; i < meanW.Length; i++)
+                    for (int i = 0; i < _meanW.Length; i++)
                     {
-                        for (int j = 0; j < packets.Count; j++)
+                        foreach (var packet in Packets)
                         {
-                            sum += packets[j].W[i];
+                            sum += packet.W[i];
                         }
-                        meanW[i] += sum / packets.Count;
+                        _meanW[i] += sum / Packets.Count;
                         sum = 0;
                     }
                 }
-                return meanW;
+                return _meanW;
             }
         }
 
-        private double[] meanA;
-        //среднее значение по аксерометрам
+        private double[] _meanA;
         public double[] MeanA
         {
             get
             {
-                if (meanA == null)
+                if (_meanA == null)
                 {
-                    meanA = new double[AXIS_COUNT];
+                    _meanA = new double[AxisCount];
                     double sum = 0;
-                    for (int i = 0; i < meanA.Length; i++)
+                    for (int i = 0; i < _meanA.Length; i++)
                     {
 
-                        for (int j = 0; j < packets.Count; j++)
+                        foreach (var packet in Packets)
                         {
-                            sum += packets[j].A[i];
+                            sum += packet.A[i];
                         }
-                        meanA[i] += sum / packets.Count;
+                        _meanA[i] += sum / Packets.Count;
                         sum = 0;
                     }
                 }
-                return meanA;
+                return _meanA;
             }
         }
 
-        private double[] meanUW;
-        //среднее значение 
-        public double[] MeanUW
+        private double[] _meanUw;
+
+        public double[] MeanUw
         {
             get
             {
-                if(meanUW == null)
-                {
-                    meanUW = new double[AXIS_COUNT];
-                    double sum = 0;
-                    for (int i = 0; i < meanUW.Length; i++)
-                    {                   
-                        sum += packets[0].U[i];
-                        sum += packets[2].U[i];
-                        meanUW[i] += sum / 2;
-                        sum = 0;
-                    }
+                if (_meanUw != null) return _meanUw;
+                _meanUw = new double[AxisCount];
+                double sum = 0;
+                for (var i = 0; i < _meanUw.Length; i++)
+                {                   
+                    sum += Packets[0].U[i];
+                    sum += Packets[2].U[i];
+                    _meanUw[i] += sum / 2;
+                    sum = 0;
                 }
-                return meanUW;
+                return _meanUw;
             }
         }
 
-        private double [] meanUA;
+        private double [] _meanUa;
 
-        public double[] MeanUA
+        public double[] MeanUa
         {
             get
             {
-                if (meanUA == null)
+                if (_meanUa != null) return _meanUa;
+                _meanUa = new double[AxisCount];
+                double sum = 0;
+                for (int i = 0; i < _meanUa.Length; i++)
                 {
-                    meanUA = new double[AXIS_COUNT];
-                    double sum = 0;
-                    for (int i = 0; i < meanUA.Length; i++)
-                    {
-                        sum += packets[1].U[i];
-                        sum += packets[3].U[i];
-                        meanUA[i] += sum / 2;
-                        sum = 0;
-                    }
+                    sum += Packets[1].U[i];
+                    sum += Packets[3].U[i];
+                    _meanUa[i] += sum / 2;
+                    sum = 0;
                 }
-                return meanUA;
+                return _meanUa;
             }
         }
 
-        public Packet this[int index]
-        {
-            get 
-            {
-                return packets[index];
-            }
-        }
-
-        public int Length
-        {
-            get { return packets.Count; }
-        }
+        public Packet this[int index] => Packets[index];
 
         #endregion  
 
         public override string ToString()
         {
             var buffer = new StringBuilder();
-            for (int i = 0; i < packets.Count; i++)
+            foreach (var packet in Packets)
             {
-                buffer.Append(packets[i].ToString() + Environment.NewLine);
+                buffer.Append(packet + Environment.NewLine);
             }
             return buffer.ToString();
         }
@@ -195,9 +170,9 @@ namespace Evo20.Evo20.Packets
             if (packets == null || packets.Count == 0)
                 return null;
             // проверка id пакетов 
-            for (int i = 0; i < PACKETS_COUNT && packets.Count > i; i++)
+            for (int i = 0; i < PacketsCount && packets.Count > i; i++)
             {
-                if (packets[i].id != i + 1)
+                if (packets[i].Id != i + 1)
                 {
                     for (int j = 0; j < i && j<packets.Count; j++)
                     {
@@ -209,7 +184,7 @@ namespace Evo20.Evo20.Packets
                     i = 0;
                 }
             }
-            if (packets.Count < PacketsData.PACKETS_COUNT)
+            if (packets.Count < PacketsCount)
                 return null;
 
             return new PacketsData(ref packets);

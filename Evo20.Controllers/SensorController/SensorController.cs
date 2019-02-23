@@ -1,46 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
-using Evo20.SensorsConnection;
+using Evo20.Controllers.Data;
+using Evo20.Packets;
 using Evo20.Sensors;
-using Evo20.Evo20.Packets;
+using Evo20.SensorsConnection;
 using Evo20.Utils;
 
-namespace Evo20.Controllers
+namespace Evo20.Controllers.SensorController
 { 
     public class SensorController : IDisposable
     {
-        //событие обработки ошибок
         public event ControllerExceptions SensorControllerException;
-        //событие изменения состояния соединения с датчиком
+
         public event ConnectionChangeHandler SensorConnectionChanged;
 
         public delegate void ConnectionChangeHandler(object sender, EventArgs e);
 
         public delegate void ControllerExceptions(object sender, EventArgs e);
 
-        private static SensorController sensorController;
+        private static SensorController _sensorController;
 
-        public static SensorController Instance
-        {
-            get
-            {
-                if (sensorController == null)
-                    sensorController = new SensorController();
-                return sensorController;
-            }
-        }
+        public static SensorController Instance => _sensorController ?? (_sensorController = new SensorController());
 
-        SensorHandler sensorHandler;
+        readonly SensorHandler _sensorHandler;
 
-        bool canCollect = false;
+        bool _canCollect;
 
         public bool CanCollect
         {
-            get { return canCollect; }
-            set { canCollect = value; }
+            get { return _canCollect; }
+            set { _canCollect = value; }
         }
 
-        ISensor currentSensor;
+        ISensor _currentSensor;
 
         public ISensor CurrentSensor
         {
@@ -48,15 +40,15 @@ namespace Evo20.Controllers
             {
                 if (value == null)
                     return;
-                currentSensor = value;
+                _currentSensor = value;
             }
             get
             {
-                return currentSensor;
+                return _currentSensor;
             }
         }
 
-        public PacketsData lastPacket;
+        public PacketsData LastPacket;
 
         public int TemperatureOfCollect = 0;
 
@@ -76,30 +68,19 @@ namespace Evo20.Controllers
             }
         }
 
-        public List<ISensor> sensorsList;
+        private List<ISensor> _sensorsList;
 
-        public List<ISensor> SensorsList
+        public List<ISensor> SensorsList => _sensorsList ?? (_sensorsList = new List<ISensor>
         {
-           get
-            { 
-                if(sensorsList == null)
-                {
-                    sensorsList = new List<ISensor>();
-                    //добавляем в список датчиков ДЛУ и ДУС
-                    sensorsList.Add(new DLY(CycleData.Instance.CalibrationTemperatures,
-                        CycleData.Instance.CheckTemperatures,
-                        SensorData.Instance.CalibrationDLYMaxPacketsCount,
-                        SensorData.Instance.CheckDLYMaxPacketsCount));
-                    sensorsList.Add(new DYS(CycleData.Instance.CalibrationTemperatures,
-                        CycleData.Instance.CheckTemperatures,
-                        SensorData.Instance.CalibrationDYSMaxPacketsCount,
-                        SensorData.Instance.CheckDYSMaxPacketsCount));
-                }
-                return sensorsList;
-           }
-        }
-
-        SensorData sensorData;
+            new DLY(CycleData.Instance.CalibrationTemperatures,
+                CycleData.Instance.CheckTemperatures,
+                SensorData.Instance.CalibrationDlyMaxPacketsCount,
+                SensorData.Instance.CheckDlyMaxPacketsCount),
+            new Dys(CycleData.Instance.CalibrationTemperatures,
+                CycleData.Instance.CheckTemperatures,
+                SensorData.Instance.CalibrationDysMaxPacketsCount,
+                SensorData.Instance.CheckDysMaxPacketsCount)
+        });
 
         public int PacketsCollectedCount
         {
@@ -114,49 +95,36 @@ namespace Evo20.Controllers
                 return 0;
             }
         }
-        /// <summary>
-        /// Обработка события прихода новогосообщения
-        /// </summary>
         private void NewPacketDataHandler(object sender,EventArgs e)
         {
-            //извлекаем новые пакеты 
-            var newPacketsData = sensorHandler.DataHandle();
+            var newPacketsData = _sensorHandler.DataHandle();
             if (newPacketsData == null)
             {
                 return;
             }
-            lastPacket = newPacketsData;
-            //Добавляем их 
-            if (Controller.Instance.Mode == WorkMode.CalibrationMode && canCollect)
+            LastPacket = newPacketsData;
+            if (Controller.Instance.Mode == WorkMode.CalibrationMode && _canCollect)
             {
-                currentSensor.AddCalibrationPacketData(newPacketsData,
+                _currentSensor.AddCalibrationPacketData(newPacketsData,
                     TemperatureOfCollect,
                     CurrentPositionNumber);
             }
             else
             {
-                if (Controller.Instance.Mode == WorkMode.CheckMode && canCollect)
+                if (Controller.Instance.Mode == WorkMode.CheckMode && _canCollect)
                 {
-                    currentSensor.AddCheckPacketData(newPacketsData,
+                    _currentSensor.AddCheckPacketData(newPacketsData,
                         TemperatureOfCollect,
                         CurrentPositionNumber);
                 }
             }
         }
 
-        /// <summary>
-        ///Обработка изменения статуса соединения с датчиком
-        /// </summary>
-        /// <param name="newState">новое состояние</param>
         private void SensorHandlerStatusChanged(object sender,EventArgs e)
         {
             SensorConnectionChanged?.Invoke(this,e);
         }
-
-        /// <summary>
-        /// Обработчик ошибок сенсора
-        /// </summary>
-        /// <param name="sensorExeption">Ошибка</param>
+       
         private void SensorExeptionHandler(object sender,EventArgs e)
         {
             Controller.Instance.Stop();
@@ -165,7 +133,7 @@ namespace Evo20.Controllers
 
         public List<double> GetSensorData()
         {
-            if (currentSensor != null)
+            if (_currentSensor != null)
             {
                 switch (Controller.Instance.Mode)
                 {
@@ -173,17 +141,15 @@ namespace Evo20.Controllers
                         return CurrentSensor.СalculateCalibrationAverage(TemperatureOfCollect, CurrentPositionNumber);
                     case WorkMode.CheckMode:
                         return CurrentSensor.СalculateCheckAverage(TemperatureOfCollect, CurrentPositionNumber);
-                    default:
-                        break;
                 }
             }
-            if (lastPacket == null)
+            if (LastPacket == null)
                 return null;
-            double[] ua = lastPacket.MeanUA;
-            double[] w = lastPacket.MeanW;
-            double[] a = lastPacket.MeanA;
-            double[] uw = lastPacket.MeanUW;
-            if (ua == null || w == null || a == null || ua == null)
+            double[] ua = LastPacket.MeanUa;
+            double[] w = LastPacket.MeanW;
+            double[] a = LastPacket.MeanA;
+            double[] uw = LastPacket.MeanUw;
+            if (ua == null || w == null || a == null || uw==null)
                 return null;
             var result = new List<double>();
             result.AddRange(ua);
@@ -201,65 +167,60 @@ namespace Evo20.Controllers
 
         public SensorController()
         {
-            sensorHandler = new SensorHandler();
-            //подписка на события датчика
-            sensorHandler.PacketDataCollected += NewPacketDataHandler;
-            sensorHandler.EventHandlerListForStateChange += SensorHandlerStatusChanged;
-            sensorHandler.EventHandlerListForExeptions += SensorExeptionHandler;
-            sensorData = new SensorData();
+            _sensorHandler = new SensorHandler();
+            _sensorHandler.PacketDataCollected += NewPacketDataHandler;
+            _sensorHandler.EventHandlerListForStateChange += SensorHandlerStatusChanged;
+            _sensorHandler.EventHandlerListForExeptions += SensorExeptionHandler;
         }
 
         public bool StartComPortConnection(string portName)
         {
-            return sensorHandler.StartConnection(portName);
+            return _sensorHandler.StartConnection(portName);
         }
 
         public void PauseComPortConnection()
         {
-            sensorHandler.PauseConnection();
+            _sensorHandler.PauseConnection();
         }
 
         public void StopComPortConnection()
         {
-            sensorHandler.StopConnection();
+            _sensorHandler.StopConnection();
         }
 
         public void ClearWritedData(int temperatureIndex,WorkMode mode)
         {
             Log.Instance.Debug("Очистка данных :индекс температуры :{0}, режим :{1}", temperatureIndex, mode);
-            foreach (var sensor in sensorsList)
+            foreach (var sensor in _sensorsList)
             {
                 if( mode == WorkMode.CalibrationMode)
-                    sensor.CalibrationPacketsCollection[temperatureIndex].ClearUnneedInfo();
+                    sensor.CalibrationPacketsCollection[temperatureIndex].ClearData();
                 else
-                    sensor.CheckPacketsCollection[temperatureIndex].ClearUnneedInfo();
+                    sensor.CheckPacketsCollection[temperatureIndex].ClearData();
             }
         }
 
         #region IDisposable Support
-        private bool disposedValue = false; // Для определения избыточных вызовов
+        private bool _disposedValue;
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposedValue)
+            if (!_disposedValue)
             {
                 if (disposing)
                 {
-                    sensorHandler.Dispose();
+                    _sensorHandler.Dispose();
                 }
 
-                disposedValue = true;
+                _disposedValue = true;
             }
         }
-
-        // TODO: переопределить метод завершения, только если Dispose(bool disposing) выше включает код для освобождения неуправляемых ресурсов.
+       
         ~SensorController()
-        {
-            // Не изменяйте этот код. Разместите код очистки выше, в методе Dispose(bool disposing).
+        {         
             Dispose(false);
         }
 
-        // Этот код добавлен для правильной реализации шаблона высвобождаемого класса.
         public void Dispose()
         {
             Dispose(true);

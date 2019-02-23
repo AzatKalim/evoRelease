@@ -1,24 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using Evo20.Controllers;
+using Evo20.Controllers.Data;
 
 namespace Evo20.GUI
 {
     public partial class CycleSettingsForm : Form
     {
-        List<CheckBox> calibrationCheckBoxes;
+        readonly List<CheckBox> _calibrationCheckBoxes;
 
-        CheckBox lastChecked;
+        CheckBox _lastChecked;
 
         public CycleSettingsForm()
         {
             InitializeComponent();
-            calibrationCheckBoxes = new List<CheckBox>();
+            _calibrationCheckBoxes = new List<CheckBox>();
         }
 
 
@@ -26,19 +23,22 @@ namespace Evo20.GUI
         {
             for (int i = 0; i < CycleData.Instance.CalibrationTemperatures.Count; i++)
             {
-                var box = new CheckBox();
+                var box = new CheckBox
+                {
+                    Text = CycleData.Instance.CalibrationTemperatures[i].ToString(),
+                    TabIndex = i,
+                    Location = new Point(10, i * 20)
+                };
                 //box.Tag = i.ToString();
-                box.Text = CycleData.Instance.CalibrationTemperatures[i].ToString();
-                box.TabIndex = i;
                 //box.AutoSize = true;
-                box.Location = new Point(10, i * 20); //vertical
+                //vertical
                 CalibrationPanel.Controls.Add(box);
-                box.CheckedChanged += temperatureCheckedChanged;
-                calibrationCheckBoxes.Add(box);
+                box.CheckedChanged += TemperatureCheckedChanged;
+                _calibrationCheckBoxes.Add(box);
             }
         }
 
-        private void temperatureCheckedChanged(object sender, EventArgs e)
+        private void TemperatureCheckedChanged(object sender, EventArgs e)
         {
             var box = sender as CheckBox;
             if (box == null)
@@ -47,45 +47,40 @@ namespace Evo20.GUI
             {
                 return;
             }
-            if (lastChecked == null)
+            if (_lastChecked == null)
             {
-                lastChecked = box;
+                _lastChecked = box;
                 return;
             }
-            int startIndex = 0;
-            int stopIndex = 0;
-            if (lastChecked.TabIndex < box.TabIndex)
+            int startIndex;
+            int stopIndex;
+            if (_lastChecked.TabIndex < box.TabIndex)
             {
-                startIndex = lastChecked.TabIndex;
+                startIndex = _lastChecked.TabIndex;
                 stopIndex = box.TabIndex;
             }
             else
             {
                 startIndex = box.TabIndex;
-                stopIndex = lastChecked.TabIndex;
+                stopIndex = _lastChecked.TabIndex;
             }
             if (startIndex == stopIndex)
             {
-                lastChecked = box;
+                _lastChecked = box;
                 return;
             }
             for (int i = startIndex; i < stopIndex; i++)
             {
-                calibrationCheckBoxes[i].Checked = true;
+                _calibrationCheckBoxes[i].Checked = true;
 
             }
-            lastChecked = box;
-        }
-
-        private void CheckPanel_Paint(object sender, PaintEventArgs e)
-        {
-
+            _lastChecked = box;
         }
 
         private void EndConfigurationButton_Click(object sender, EventArgs e)
         {
             var resultList = new List<int>();
-            foreach (var item in calibrationCheckBoxes)
+            foreach (var item in _calibrationCheckBoxes)
             {
                 if (item.Checked)
                 {
@@ -93,7 +88,7 @@ namespace Evo20.GUI
                 }
             }
             CycleData.Instance.SetTemperatures(resultList);
-            this.DialogResult = DialogResult.OK;
+            DialogResult = DialogResult.OK;
         }
 
     }

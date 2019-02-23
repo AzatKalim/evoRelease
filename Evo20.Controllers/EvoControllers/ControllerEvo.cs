@@ -1,288 +1,239 @@
-﻿using System.Threading;
-using Evo20.Commands;
+﻿using System;
+using System.Threading;
+using Evo20.Commands.Abstract;
+using Evo20.Commands.AnswerCommands;
+using Evo20.Commands.CommndsWithAnswer;
+using Evo20.Commands.ControlCommands;
+using Evo20.Controllers.Data;
 using Evo20.EvoConnections;
 using Evo20.Sensors;
-using System;
-using Evo20.Utils.EventArguments;
 using Evo20.Utils;
+using Evo20.Utils.EventArguments;
 
-namespace Evo20.Controllers
-{  
-    /// <summary>
-    /// Класс  с evo, обрабатывающий команды и следящий за состоянием evo.
-    /// </summary>
+namespace Evo20.Controllers.EvoControllers
+{
     public class ControllerEvo : IDisposable
     {
         public delegate void EvoConnectionChangedHandler(object sender, EventArgs e);
 
         public event EvoConnectionChangedHandler EvoConnectionChanged;
 
-        public const int THREADS_SLEEP_TIME = 100;
+        private const int ThreadsSleepTime = 100;
 
-        //обработчик новых команд
-        protected CommandHandler commandHandler;
-
-        // поток, который проверяет состояние системы отправляя команды опроса
-        protected Thread routineThread;
+        protected Thread RoutineThread;
     
-        private static ControllerEvo controllerEvo;
+        private static ControllerEvo _controllerEvo;
 
-        public static ControllerEvo Instance
-        {
-            get
-            {
-                if (controllerEvo == null)
-                    controllerEvo = new ControllerEvo();
-                return controllerEvo;
-            }
-        }
+        public static ControllerEvo Instance => _controllerEvo ?? (_controllerEvo = new ControllerEvo());
 
-        public double CurrentTemperature
-        {
-            get
-            {
-                return EvoData.Instance.CurrentTemperature;
-            }
-        }
+        public double CurrentTemperature => EvoData.Instance.CurrentTemperature;
 
         public ControllerEvo()
         {
-            commandHandler = new CommandHandler();
-            commandHandler.NewCommandArrived += NewCommandHandler;
-            commandHandler.StateChanged += ConnectionStateChangedHandler;
-            routineThread = new Thread(ControllerRoutine);
-            routineThread.Priority = ThreadPriority.BelowNormal;
-            routineThread.IsBackground = true;
+            CommandHandler = new CommandHandler();
+            CommandHandler.NewCommandArrived += NewCommandHandler;
+            CommandHandler.StateChanged += ConnectionStateChangedHandler;
+            RoutineThread = new Thread(ControllerRoutine) {Priority = ThreadPriority.BelowNormal, IsBackground = true};
         }
 
-        //команды опроса системы
-        protected Command[] RoutineCommands
+        protected Command[] RoutineCommands => new Command[] 
         {
-            get
-            {
-                return new Command[] 
-                    {
-                        new Axis_Status(),
-                        new Temperature_status(),
-                        new Rotary_joint_temperature_Query(Axis.First),
-                        new Rotary_joint_temperature_Query(Axis.Second),
-                        new Actual_temperature_query(),
-                        new Axis_Position_Query(Axis.First),
-                        new Axis_Position_Query(Axis.Second),
-                        new Axis_Rate_Query(Axis.First),
-                        new Axis_Rate_Query(Axis.Second),
-                        new Requested_axis_position_reached()
-                    };
-            }
-        }
+            new AxisStatus(),
+            new TemperatureStatus(),
+            new RotaryJointTemperatureQuery(Axis.First),
+            new RotaryJointTemperatureQuery(Axis.Second),
+            new ActualTemperatureQuery(),
+            new AxisPositionQuery(Axis.First),
+            new AxisPositionQuery(Axis.Second),
+            new AxisRateQuery(Axis.First),
+            new AxisRateQuery(Axis.Second),
+            new RequestedAxisPositionReached()
+        };
+
+        protected CommandHandler CommandHandler { get; set; }
 
         public void ControllerRoutine()
         {
             var commands = RoutineCommands;
-            while (commandHandler.ConnectionStatus == ConnectionStatus.CONNECTED)
+            while (CommandHandler.ConnectionStatus == ConnectionStatus.Connected)
             {
                 foreach (var item in commands)
                 {
-                    lock (commandHandler)
+                    lock (CommandHandler)
                     {
-                        if (!commandHandler.SendCommand(item))
+                        if (!CommandHandler.SendCommand(item))
                         {
-                            Log.Instance.Error("Не удалось отправить сообщение evo" + item.ToString());
-                            EvoConnectionChanged(this,new ConnectionStatusEventArgs(commandHandler.ConnectionStatus));
+                            Log.Instance.Error($"Не удалось отправить сообщение evo{item}");
+                            EvoConnectionChanged?.Invoke(this,new ConnectionStatusEventArgs(CommandHandler.ConnectionStatus));
                             return;
                         }
 
                         Thread.Sleep(100);
                     }
                 }
-                Thread.Sleep(THREADS_SLEEP_TIME);
+                Thread.Sleep(ThreadsSleepTime);
             }
         }
 
-        //обработчик новых команд
         protected void NewCommandHandler(object sender, EventArgs e)
         {
             Command[] commands;
-            lock (commandHandler)
+            lock (CommandHandler)
             {
-                //извлекаем получные команды
-                commands = commandHandler.GetCommands();
+                commands = CommandHandler.GetCommands();
             }
             if (commands == null)
                 return;
-            //передача evoData команд-ответов
-            for (int i = 0; i < commands.Length; i++)
+            foreach (var command in commands)
             {
-                if (commands[i] is Axis_Status_answer)
-                    EvoData.Instance.GetCommandInfo(commands[i] as Axis_Status_answer);
-                if (commands[i] is Temperature_status_answer)
-                    EvoData.Instance.GetCommandInfo(commands[i] as Temperature_status_answer);
-                if (commands[i] is Rotary_joint_temperature_Query_answer)
-                    EvoData.Instance.GetCommandInfo(commands[i] as Rotary_joint_temperature_Query_answer);
-                if (commands[i] is Axis_Position_Query_answer)
-                    EvoData.Instance.GetCommandInfo(commands[i] as Axis_Position_Query_answer);
-                if (commands[i] is Axis_Rate_Query_answer)
-                    EvoData.Instance.GetCommandInfo(commands[i] as Axis_Rate_Query_answer);
-                if (commands[i] is Actual_temperature_query_answer)
-                    EvoData.Instance.GetCommandInfo(commands[i] as Actual_temperature_query_answer);
-                if (commands[i] is Requested_axis_position_reached_answer)
-                    EvoData.Instance.GetCommandInfo(commands[i] as Requested_axis_position_reached_answer);
+                var answer = command as AxisStatusAnswer;
+                if (answer != null)
+                    EvoData.Instance.GetCommandInfo(answer);
+                var statusAnswer = command as TemperatureStatusAnswer;
+                if (statusAnswer != null)
+                    EvoData.Instance.GetCommandInfo(statusAnswer);
+                var queryAnswer = command as RotaryJointTemperatureQueryAnswer;
+                if (queryAnswer != null)
+                    EvoData.Instance.GetCommandInfo(queryAnswer);
+                var positionQueryAnswer = command as AxisPositionQueryAnswer;
+                if (positionQueryAnswer != null)
+                    EvoData.Instance.GetCommandInfo(positionQueryAnswer);
+                var rateQueryAnswer = command as AxisRateQueryAnswer;
+                if (rateQueryAnswer != null)
+                    EvoData.Instance.GetCommandInfo(rateQueryAnswer);
+                var temperatureQueryAnswer = command as ActualTemperatureQueryAnswer;
+                if (temperatureQueryAnswer != null)
+                    EvoData.Instance.GetCommandInfo(temperatureQueryAnswer);
+                var reachedAnswer = command as RequestedAxisPositionReachedAnswer;
+                if (reachedAnswer != null)
+                    EvoData.Instance.GetCommandInfo(reachedAnswer);
             }
         }
 
         public bool StartEvoConnection()
         {
-            bool result = commandHandler.StartConnection();
+            bool result = CommandHandler.StartConnection();
             if (!result)
-                return result;
-            if (!routineThread.IsAlive)
+                return false;
+            if (!RoutineThread.IsAlive)
             {
-                routineThread = new Thread(ControllerRoutine);
-                routineThread.Priority = ThreadPriority.BelowNormal;
-                routineThread.Start();
+                RoutineThread = new Thread(ControllerRoutine) {Priority = ThreadPriority.BelowNormal};
+                RoutineThread.Start();
             }
             return true;
         }
 
         public void PauseEvoConnection()
         {
-            commandHandler.PauseConnection();
-            routineThread.Abort();
+            CommandHandler.PauseConnection();
+            RoutineThread.Abort();
         }
 
         public void StopEvoConnection()
         {
-            commandHandler.StopConnection();
-            if (routineThread != null && routineThread.IsAlive)
-                routineThread.Abort();
+            CommandHandler.StopConnection();
+            if (RoutineThread != null && RoutineThread.IsAlive)
+                RoutineThread.Abort();
         }
 
-
-        /// <summary>
-        /// Обработка изменения состояния соединения
-        /// </summary>
-        /// <param name="state">новое состояние соединения</param>
         public void ConnectionStateChangedHandler(object sender, EventArgs e)
         {
             var args = e as ConnectionStatusEventArgs;
             if (args == null)
                 return;
-            switch (args.state)
+            switch (args.State)
             {
-                case ConnectionStatus.DISCONNECTED:
+                case ConnectionStatus.Disconnected:
                     {
-                        if (routineThread.IsAlive)
+                        if (RoutineThread.IsAlive)
                         {
-                            routineThread.Abort();
-                            routineThread.Join();
+                            RoutineThread.Abort();
+                            RoutineThread.Join();
                         }
                         Controller.Instance.Mode = WorkMode.Stop;
                         break;
                     }
-                case ConnectionStatus.ERROR:
+                case ConnectionStatus.Error:
                     {
-                        if (routineThread.IsAlive)
+                        if (RoutineThread.IsAlive)
                         {
-                            routineThread.Abort();
-                            routineThread.Join();
+                            RoutineThread.Abort();
+                            RoutineThread.Join();
                         }
                         Controller.Instance.Mode = WorkMode.Error;
                         break;
                     }
             }
-            EvoConnectionChanged(this,e);
+
+            EvoConnectionChanged?.Invoke(this, e);
         }
 
         #region Camera commands
 
-        /// <summary>
-        /// Запуск температурной камеры 
-        /// </summary>
-        /// <param name="value">true-запуск,false-отключить</param>
         public void PowerOnCamera(bool value)
         {
-            commandHandler.SendCommand(new PowerOnTemperatureCamera(value));
+            CommandHandler.SendCommand(new PowerOnTemperatureCamera(value));
         }
 
-        /// <summary>
-        /// Запуск питания осей
-        /// </summary>
-        /// <param name="axis">ось</param>
-        /// <param name="value"></param>
         public void PowerOnAxis(Axis axis, bool value)
         {
-            commandHandler.SendCommand(new Axis_Power(axis, value));
+            CommandHandler.SendCommand(new AxisPower(axis, value));
         }
 
-        /// <summary>
-        /// Задать скорость вращения оси
-        /// </summary>
-        /// <param name="axis">ось</param>
-        /// <param name="speedOfRate">скорость</param>
         public void SetAxisRate(Axis axis, double speedOfRate)
         {
-            commandHandler.SendCommand(new Axis_Rate(axis, speedOfRate));
+            CommandHandler.SendCommand(new AxisRate(axis, speedOfRate));
         }
 
-        /// <summary>
-        /// Поиск нуля
-        /// </summary>
-        /// <param name="axis">ось</param>
         public void FindZeroIndex(Axis axis)
         {
-            commandHandler.SendCommand(new Zero_Index_Search(axis));
+            CommandHandler.SendCommand(new ZeroIndexSearch(axis));
         }
 
-        /// <summary>
-        /// Задать режим оси
-        /// </summary>
-        /// <param name="param">режим</param>
-        /// <param name="axis">ось</param>
         public void SetAxisMode(ModeParam param, Axis axis)
         {
-            commandHandler.SendCommand(new Mode(param, axis));
+            CommandHandler.SendCommand(new Mode(param, axis));
         }
 
         public void StopAxis(Axis axis)
         {
-            commandHandler.SendCommand(new Stop_axis(axis));
+            CommandHandler.SendCommand(new StopAxis(axis));
         }
 
         public void SetAxisPosition(Axis axis, double degree)
         {
-            StopAxis(Axis.ALL);
+            StopAxis(Axis.All);
             if (axis == Axis.First)
             {
-                degree+=EvoData.Instance.X.correction;
+                degree+=EvoData.Instance.X.Correction;
             }
             else if (axis == Axis.Second)
             {
-                degree += EvoData.Instance.Y.correction;
+                degree += EvoData.Instance.Y.Correction;
             }
 
-            commandHandler.SendCommand(new Axis_Position(axis, degree));
+            CommandHandler.SendCommand(new AxisPosition(axis, degree));
         }
 
         public void StartAxis(Axis axis)
         {
-            commandHandler.SendCommand(new Start_axis(axis));    
+            CommandHandler.SendCommand(new StartAxis(axis));    
         }
 
         public void SetTemperatureChangeSpeed(double slope)
         {
-            commandHandler.SendCommand(new Temperature_slope_set_point(slope));
+            CommandHandler.SendCommand(new TemperatureSlopeSetPoint(slope));
         }
 
         public void SetTemperature(double temperature)
         {
-            commandHandler.SendCommand(new Temperature_Set_point(temperature));
+            CommandHandler.SendCommand(new TemperatureSetPoint(temperature));
         }
 
         public void SetPosition(ProfilePart position)
         {
-            Log.Instance.Info(string.Format("Задание положения осей: X {0}:{1}. Y {2}:{3}", position.FirstPosition, position.SpeedFirst,
-                position.SecondPosition, position.SpeedSecond));
-            //задание положений и скоростей
+            Log.Instance.Info(
+                $"Задание положения осей: X {position.FirstPosition}:{position.SpeedFirst}. Y {position.SecondPosition}:{position.SpeedSecond}");
             if (position.SpeedFirst != 0)
             {
                 SetAxisRate(Axis.First, position.SpeedFirst);
@@ -303,59 +254,45 @@ namespace Evo20.Controllers
                 SetAxisPosition(Axis.Second, position.SecondPosition);
                 SetAxisMode(ModeParam.Position, Axis.Second);
             }
-            StartAxis(Axis.ALL);
+            StartAxis(Axis.All);
         }
 
         public bool InitEvo()
         {
             PowerOnCamera(true);
-            PowerOnAxis(Axis.ALL, true);
-            FindZeroIndex(Axis.ALL);
+            PowerOnAxis(Axis.All, true);
+            FindZeroIndex(Axis.All);
             return true;
         }
 
         public bool SetStartPosition()
         {
-            StopAxis(Axis.ALL);
-            SetAxisRate(Axis.ALL, Config.Instance.BaseMoveSpeed);
-            SetAxisPosition(Axis.ALL, 0);
-            StartAxis(Axis.ALL);
+            StopAxis(Axis.All);
+            SetAxisRate(Axis.All, Config.Instance.BaseMoveSpeed);
+            SetAxisPosition(Axis.All, 0);
+            StartAxis(Axis.All);
             SetTemperatureChangeSpeed(Config.Instance.SpeedOfTemperatureChange);
             return true;
         }
 
         #region IDisposable Support
-        private bool disposedValue = false; // Для определения избыточных вызовов
+        private bool _disposedValue;
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposedValue)
+            if (!_disposedValue)
             {
                 if (disposing)
                 {
-                    commandHandler.Dispose();
+                    CommandHandler.Dispose();
                 }
-
-                // TODO: освободить неуправляемые ресурсы (неуправляемые объекты) и переопределить ниже метод завершения.
-                // TODO: задать большим полям значение NULL.
-
-                disposedValue = true;
+                _disposedValue = true;
             }
         }
 
-        // TODO: переопределить метод завершения, только если Dispose(bool disposing) выше включает код для освобождения неуправляемых ресурсов.
-        // ~ControllerEvo() {
-        //   // Не изменяйте этот код. Разместите код очистки выше, в методе Dispose(bool disposing).
-        //   Dispose(false);
-        // }
-
-        // Этот код добавлен для правильной реализации шаблона высвобождаемого класса.
         public void Dispose()
         {
-            // Не изменяйте этот код. Разместите код очистки выше, в методе Dispose(bool disposing).
             Dispose(true);
-            // TODO: раскомментировать следующую строку, если метод завершения переопределен выше.
-            // GC.SuppressFinalize(this);
         }
         #endregion
         #endregion

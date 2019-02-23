@@ -8,5 +8,3 @@ C:\Users\Азат\Desktop\работа\Evo20\Evo20.Utils.Tests\bin\Release\ru\Mi
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Utils.Tests\obj\Release\Evo20.Utils.Tests.csprojResolveAssemblyReference.cache
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Utils.Tests\obj\Release\Evo20.Utils.Tests.dll
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Utils.Tests\obj\Release\Evo20.Utils.Tests.pdb
-C:\Users\Азат\Desktop\работа\Evo20\Evo20.Utils.Tests\bin\Release\Evo20.Utils.Tests.dll.CodeAnalysisLog.xml
-C:\Users\Азат\Desktop\работа\Evo20\Evo20.Utils.Tests\bin\Release\Evo20.Utils.Tests.dll.lastcodeanalysissucceeded

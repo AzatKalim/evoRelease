@@ -1,68 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Threading;
-using Evo20.Evo20.Packets;
+using Evo20.Packets;
 using Evo20.Sensors;
+using Evo20.Utils;
 
-namespace Evo20.Controllers
+namespace Evo20.Controllers.Data
 {
-    /// <summary>
-    /// Класс хранящий информацию о датчиках
-    /// </summary>
     public class SensorData : AbstractData
     {
         #region Properties
 
-        public int CalibrationDLYMaxPacketsCount;
+        public int CalibrationDlyMaxPacketsCount;
 
-        public int CalibrationDYSMaxPacketsCount;
+        public int CalibrationDysMaxPacketsCount;
 
-        public int CheckDLYMaxPacketsCount;
+        public int CheckDlyMaxPacketsCount;
 
-        public int CheckDYSMaxPacketsCount;
+        public int CheckDysMaxPacketsCount;
 
-        private static SensorData sensorData;
+        private static SensorData _sensorData;
 
-        public static SensorData Instance
-        {
-            get
-            {
-                if (sensorData == null)
-                    sensorData = new SensorData();
-                return sensorData;
-            }
-        }
-    
+        public static SensorData Instance => _sensorData ?? (_sensorData = new SensorData());
+
         #endregion 
      
         #region File work
 
-        /// <summary>
-        /// Чтение настроек из файла
-        /// </summary>
-        /// <param name="file">файл</param>
-        /// <returns>true- чтени заверешено, false- возникла ошибка чтения</returns>
         public override bool ReadSettings(ref StreamReader file)
         {
             bool isSuccess = ReadParamFromFile(ref file,
                 "Количество пакетов для расчета средних кодов АЦП ДЛУ в режиме калибровка",
-                ref  CalibrationDLYMaxPacketsCount);
+                ref  CalibrationDlyMaxPacketsCount);
             if (!isSuccess)
                 return false;
             isSuccess = ReadParamFromFile(ref file,
                 "Количество пакетов для расчета средних кодов АЦП ДУС в режиме калибровка",
-                ref  CalibrationDYSMaxPacketsCount);
+                ref  CalibrationDysMaxPacketsCount);
             if (!isSuccess)
                 return false;
             isSuccess = ReadParamFromFile(ref file,
                 "Количество пакетов для расчета средних кодов АЦП ДЛУ в режиме проверка",
-                ref  CheckDLYMaxPacketsCount);
+                ref  CheckDlyMaxPacketsCount);
             if (!isSuccess)
                 return false;
             isSuccess = ReadParamFromFile(ref file,
                 "Количество пакетов для расчета средних кодов АЦП ДУС в режиме проверка",
-                ref  CheckDYSMaxPacketsCount);
+                ref  CheckDysMaxPacketsCount);
             if (!isSuccess)
                 return false;
             return true;
@@ -72,9 +56,9 @@ namespace Evo20.Controllers
         {
             file.WriteLine(data.Length);
 
-            for (int j = 0; j < data.Length; j++)
+            foreach (var packetsCollection in data)
             {
-                file.WriteLine(data[j].ToString());
+                file.WriteLine(packetsCollection.ToString());
             }
         }
 
@@ -92,7 +76,7 @@ namespace Evo20.Controllers
             }
         }
 
-        public bool WritePacketsForCurrentTemperture(ISensor[] sensors, StreamWriter file, int temperatureIndex)
+        public bool WriteForCurrentTemperture(ISensor[] sensors, StreamWriter file, int temperatureIndex)
         {
             foreach (var sensor  in sensors)
             {

@@ -4,11 +4,11 @@ namespace Evo20.Utils.EventArguments
 {
     public class ExceptionEventArgs:EventArgs
     {
-        public Exception exception;
+        public Exception Exception;
 
         public ExceptionEventArgs(Exception exception)
         {
-            this.exception = exception;
+            Exception = exception;
         }
     }
 }

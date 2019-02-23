@@ -4,10 +4,10 @@ namespace Evo20.Utils.EventArguments
 {
     public class ConnectionStatusEventArgs : EventArgs
     {
-        public ConnectionStatus state;
+        public ConnectionStatus State;
         public ConnectionStatusEventArgs(ConnectionStatus state)
         {
-            this.state = state;
+            State = state;
         }
     }  
 }

@@ -1,87 +1,83 @@
 ﻿using System;
 using System.IO;
 
-
-
 namespace Evo20.Math
 {
     public static class CalculatorCoefficients
     {
         #region Constants
 
-        const int RAW_COUNT = 6;
-        const int K_COUNT = 72;
-        const int L_COUNT = 5;
-        const int S_COUNT = 3;
-        const int MDLY_COUNT = 4;
-        const int NDLY_COUNT = 72;
-
-        const int R_COUNT = 39;
-        const int P_COUNT = 5;
-        const int MDYS_COUNT = 13;
-        const int NDYS_COUNT = 39;
-        const double FACTOR = 9.807;
+        private const int RawCount = 6;
+        private const int KCount = 72;
+        private const int LCount = 5;
+        private const int SCount = 3;
+        private const int MdlyCount = 4;
+        private const int NdlyCount = 72;
+        private const int RCount = 39;
+        private const int PCount = 5;
+        private const int MdysCount = 13;
+        private const int NdysCount = 39;
+        private const double Factor = 9.807;
 
         #endregion
 
         #region DLY coefficients
-        
-        //Вычислить калибровочные коэффициенты ДЛУ по температуре
-        private static double[,] ComputeTemperatureCalibrationCoefficentsDLY(double[][,] adcCodes)
+
+        private static double[,] ComputeTemperatureCalibrationCoefficentsDly(double[][,] adcCodes)
         {
             if (adcCodes == null)
                 return null;
-            double[,] factors = new double[L_COUNT, S_COUNT];
-            for (int s = 0; s < S_COUNT; s++)
+            double[,] factors = new double[LCount, SCount];
+            for (int s = 0; s < SCount; s++)
             {
-                for (int k = 0; k < K_COUNT; k++)
+                for (int k = 0; k < KCount; k++)
                 {
                     factors[0, s] += adcCodes[0][s + 3, k];
                     factors[4, s] += adcCodes[4][s + 3, k];
                 }
-                factors[0, s] /= K_COUNT;
-                factors[4, s] /= K_COUNT;
+                factors[0, s] /= KCount;
+                factors[4, s] /= KCount;
             }
 
-            for (int s = 0; s < S_COUNT; s++)
+            for (int s = 0; s < SCount; s++)
             {
-                for (int k = 0; k < K_COUNT; k++)
+                for (int k = 0; k < KCount; k++)
                 {
                     for (int i = 1; i < 4; i++)
                     {
                         factors[i, s] += adcCodes[i][s + 3, k];
                     }
                 }
-                for (int k = 0; k < K_COUNT; k++)
+                for (int k = 0; k < KCount; k++)
                 {
                     for (int i = 1; i < 4; i++)
                     {
-                        factors[i, s] += adcCodes[RAW_COUNT - i][s + 3, k];
+                        factors[i, s] += adcCodes[RawCount - i][s + 3, k];
                     }
                 }
                 for (int i = 1; i < 4; i++)
                 {
-                    factors[i, s] /= (K_COUNT * 2);
+                    factors[i, s] /= (KCount * 2);
                 }
             }
             return factors;
         }
 
         //Д.3 Вычислить исходные калибровочные матрицы ДЛУ 
-        private static double[][,] ComputeInitialCalibrationMatricesDLY(double[][,] adcCodes)
+        private static double[][,] ComputeInitialCalibrationMatricesDly(double[][,] adcCodes)
         {
-            double[][,] initialCalibration = new double[L_COUNT][,];
+            double[][,] initialCalibration = new double[LCount][,];
             for (int i = 0; i < initialCalibration.Length; i++)
             {
-                initialCalibration[i] = new double[K_COUNT, MDLY_COUNT];
+                initialCalibration[i] = new double[KCount, MdlyCount];
             }
 
-            for (int l = 0; l < L_COUNT; l++)
+            for (int l = 0; l < LCount; l++)
             {
-                for (int n = 0; n < K_COUNT; n++)
+                for (int n = 0; n < KCount; n++)
                 {
                     initialCalibration[l][n, 0] = 1;
-                    for (int m = 1; m < MDLY_COUNT; m++)
+                    for (int m = 1; m < MdlyCount; m++)
                     {
                         if ((l == 0 || l == 4) && m > 0)
                         {
@@ -89,7 +85,7 @@ namespace Evo20.Math
                         }
                         else
                         {
-                            initialCalibration[l][n, m] = 0.5 * (adcCodes[l][m - 1, n] + adcCodes[RAW_COUNT - l][m - 1, n]);
+                            initialCalibration[l][n, m] = 0.5 * (adcCodes[l][m - 1, n] + adcCodes[RawCount - l][m - 1, n]);
                         }
                     }
                 }
@@ -100,46 +96,46 @@ namespace Evo20.Math
         }
 
         //Д.4 вычислить вектора эталонных ускорений ДЛУ
-        private static double[][] ComputeReferenceAccelerationVectorsDLY()
+        private static double[][] ComputeReferenceAccelerationVectorsDly()
         {
-            double[][] b = new double[S_COUNT][];
+            double[][] b = new double[SCount][];
             for (int i = 0; i < b.Length; i++)
 			{
-			    b[i]= new double[NDLY_COUNT];
+			    b[i]= new double[NdlyCount];
 			}
             int n = 0;
-            int firstBorder = NDLY_COUNT / 3;
+            int firstBorder = NdlyCount / 3;
             int secondBorder = firstBorder * 2;
             for (; n < firstBorder; n++)
             {
-                b[0][n] = -FACTOR * System.Math.Sin(System.Math.PI * n / 12);
-                b[1][n] = FACTOR * System.Math.Cos(System.Math.PI * n / 12);
+                b[0][n] = -Factor * System.Math.Sin(System.Math.PI * n / 12);
+                b[1][n] = Factor * System.Math.Cos(System.Math.PI * n / 12);
                 b[2][n] = 0;
             }
             for (; n < secondBorder; n++)
             {
                 b[0][n] = 0;
-                b[1][n] = FACTOR * System.Math.Cos(System.Math.PI * (n / 12 - 2));
-                b[2][n] = -FACTOR * System.Math.Sin(System.Math.PI * (n / 12 - 2));
+                b[1][n] = Factor * System.Math.Cos(System.Math.PI * (n / 12 - 2));
+                b[2][n] = -Factor * System.Math.Sin(System.Math.PI * (n / 12 - 2));
             }
-            for (; n < NDLY_COUNT; n++)
+            for (; n < NdlyCount; n++)
             {
-                b[0][n] = FACTOR * System.Math.Cos(System.Math.PI * (n - 54) / 12);
+                b[0][n] = Factor * System.Math.Cos(System.Math.PI * (n - 54) / 12);
                 b[1][n] = 0;
-                b[2][n] = FACTOR * System.Math.Sin(System.Math.PI * (n - 54) / 12);
+                b[2][n] = Factor * System.Math.Sin(System.Math.PI * (n - 54) / 12);
             }
             return b;
         }
 
         //Д.5 вычислить вектора калибровочных коэффициентов ДЛУ по ускорениям
-        private static double[,][,] СomputeVectorOfCalibrationCoefficientsDLY(double[][,] adcCodes)
+        private static double[,][,] СomputeVectorOfCalibrationCoefficientsDly(double[][,] adcCodes)
         {
-            double[,][,] result= new double[L_COUNT,S_COUNT][,];
-            double[][,] a = ComputeInitialCalibrationMatricesDLY(adcCodes);
-            double[][] b = ComputeReferenceAccelerationVectorsDLY();
-            for (int l = 0; l < L_COUNT; l++)
+            double[,][,] result= new double[LCount,SCount][,];
+            double[][,] a = ComputeInitialCalibrationMatricesDly(adcCodes);
+            double[][] b = ComputeReferenceAccelerationVectorsDly();
+            for (int l = 0; l < LCount; l++)
             {
-                for (int s = 0; s < S_COUNT; s++)
+                for (int s = 0; s < SCount; s++)
                 {
                     var aL= a[l];
                     var aLTrans=aL.Transpose();
@@ -156,40 +152,40 @@ namespace Evo20.Math
    
         //Вычислить калибровочные коэффициенты ДУC по температуре
 
-        private static double[,] ComputeTemperatureCalibrationCoefficentsDYS(double[][,] adcCodes)
+        private static double[,] ComputeTemperatureCalibrationCoefficentsDys(double[][,] adcCodes)
         {
             if (adcCodes == null)
             {
                 return null;
             }
-            double[,] factors = new double[P_COUNT, S_COUNT];
-            for (int p = 0; p< P_COUNT; p++)
+            double[,] factors = new double[PCount, SCount];
+            for (int p = 0; p< PCount; p++)
 			{
-                for (int s = 0; s < S_COUNT; s++)
+                for (int s = 0; s < SCount; s++)
                 {
-                    for (int r = 0; r < R_COUNT; r++)
+                    for (int r = 0; r < RCount; r++)
                     {
 
                         factors[p, s] = adcCodes[p][s + 3, r];
                     }
-                    factors[p, s] /= R_COUNT;
+                    factors[p, s] /= RCount;
                 }
             }        
             return factors;
         }
 
         //Д.8 Вычислить исходные калибровочные матрицы ДУС метода МНК для температурных точек
-        private static double[][,] ComputeInitialCalibrationMatricesDYS(double[][,] adcCodes)
+        private static double[][,] ComputeInitialCalibrationMatricesDys(double[][,] adcCodes)
         {
-            double[][,] initialCalibration = new double[P_COUNT][,];
+            double[][,] initialCalibration = new double[PCount][,];
             for (int i = 0; i < initialCalibration.Length; i++)
             {
-                initialCalibration[i] = new double[NDYS_COUNT, MDYS_COUNT];
+                initialCalibration[i] = new double[NdysCount, MdysCount];
             }
 
-            for (int p= 0; p < P_COUNT; p++)
+            for (int p= 0; p < PCount; p++)
             {
-                for (int n = 0; n < NDYS_COUNT; n++)
+                for (int n = 0; n < NdysCount; n++)
                 {
                     initialCalibration[p][n, 0] = 1;
                     for (int m = 1; m < 4; m++)
@@ -216,16 +212,16 @@ namespace Evo20.Math
         }
 
         //Д.9 Вычислить вектора эталонных угловых скоростей
-        private static double[][] ComputeVectorOfStandardAngularVelocitiesDYS()
+        private static double[][] ComputeVectorOfStandardAngularVelocitiesDys()
         {
-            double [][] result= new double[S_COUNT][];
+            double [][] result= new double[SCount][];
             for (int i = 0; i < result.Length; i++)
             {
-                result[i]= new double[NDYS_COUNT];
+                result[i]= new double[NdysCount];
             }
-            for (int s = 0; s < S_COUNT; s++)
+            for (int s = 0; s < SCount; s++)
             {
-                for (int n = 0; n < NDYS_COUNT; n++)
+                for (int n = 0; n < NdysCount; n++)
                 {
                     if (n == 0 || n == 13 || n == 26)
                     {
@@ -250,7 +246,6 @@ namespace Evo20.Math
                     if ((n > 13) && s == 1)
                     {
                         result[s][n] = 0;
-                        continue;
                     }
                 }
             }
@@ -270,14 +265,14 @@ namespace Evo20.Math
         }
 
         //Д.10 Для каждой температуры и каждой оси вычисляет вектора калибровочных коэффициентов ДУС по угловым скоростям :
-        private static double[,][,] СomputVectorOfCalibrationCoefficientsDYS(double[][,] adcCodes)
+        private static double[,][,] СomputVectorOfCalibrationCoefficientsDys(double[][,] adcCodes)
         {
-            double[,][,] result = new double[P_COUNT, S_COUNT][,];
-            double[][,] a = ComputeInitialCalibrationMatricesDYS(adcCodes);
-            double[][] b = ComputeVectorOfStandardAngularVelocitiesDYS();           
-            for (int p = 0; p < P_COUNT; p++)
+            double[,][,] result = new double[PCount, SCount][,];
+            double[][,] a = ComputeInitialCalibrationMatricesDys(adcCodes);
+            double[][] b = ComputeVectorOfStandardAngularVelocitiesDys();           
+            for (int p = 0; p < PCount; p++)
             {
-                for (int s = 0; s < S_COUNT; s++)
+                for (int s = 0; s < SCount; s++)
                 {
                     var aP= a[p];
                     var aPTrans=aP.Transpose();
@@ -290,23 +285,23 @@ namespace Evo20.Math
 
         #endregion 
 
-        public static bool CalculateCoefficients(double[][,] adcCodesDLY, double[][,] adcCodesDYS, StreamWriter file)
+        public static bool CalculateCoefficients(double[][,] adcCodesDly, double[][,] adcCodesDys, StreamWriter file)
         {
-            double[,][,] coefficentsDLY = СomputeVectorOfCalibrationCoefficientsDLY(adcCodesDLY);
-            double[,] temperatureCoefficentsDLY = ComputeTemperatureCalibrationCoefficentsDLY(adcCodesDLY);
+            double[,][,] coefficentsDly = СomputeVectorOfCalibrationCoefficientsDly(adcCodesDly);
+            double[,] temperatureCoefficentsDly = ComputeTemperatureCalibrationCoefficentsDly(adcCodesDly);
 
-            double[,][,] coefficentsDYS = СomputVectorOfCalibrationCoefficientsDYS(adcCodesDYS);
-            double[,] temperatureCoefficentsDYS = ComputeTemperatureCalibrationCoefficentsDYS(adcCodesDYS);
+            double[,][,] coefficentsDys = СomputVectorOfCalibrationCoefficientsDys(adcCodesDys);
+            double[,] temperatureCoefficentsDys = ComputeTemperatureCalibrationCoefficentsDys(adcCodesDys);
 
             file.WriteLine("коэффициенты ДЛУ по ускорениям");
-            WriteMatrix(coefficentsDLY,ref file);
+            WriteMatrix(coefficentsDly,ref file);
             file.WriteLine("коэффициенты ДУС по угловым скоростям");
-            WriteMatrix(coefficentsDYS, ref file);
+            WriteMatrix(coefficentsDys, ref file);
 
             file.WriteLine("коэффициенты ДЛУ по температуре ");
-            WriteMatrix(temperatureCoefficentsDLY, ref file);
+            WriteMatrix(temperatureCoefficentsDly, ref file);
             file.WriteLine("коэффициенты ДУC по температуре ");
-            WriteMatrix(temperatureCoefficentsDYS, ref file);
+            WriteMatrix(temperatureCoefficentsDys, ref file);
             return true;
         }
 

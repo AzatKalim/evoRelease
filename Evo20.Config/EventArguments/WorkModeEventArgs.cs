@@ -4,11 +4,11 @@ namespace Evo20.Utils.EventArguments
 {
     public class WorkModeEventArgs : EventArgs
     {
-        public WorkMode mode;
+        public WorkMode Mode;
 
         public WorkModeEventArgs(WorkMode mode)
         {
-            this.mode = mode;
+            Mode = mode;
         }
     }
 }

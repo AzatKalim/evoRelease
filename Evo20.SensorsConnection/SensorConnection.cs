@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Threading;
-using Evo20;
+using Evo20.Utils;
 using Evo20.Utils.EventArguments;
 
 namespace Evo20.SensorsConnection
@@ -12,66 +12,63 @@ namespace Evo20.SensorsConnection
     /// </summary>
     public class SensorConnection : IDisposable
     {
-        public const int BUFFER_SIZE = 10000;
+        public const int BufferSize = 10000;
 
-        public const int THREAD_SLEEP_TIME = 100;
-
-        private ConnectionStatus connectionState;
+        private ConnectionStatus _connectionState;
 
         public ConnectionStatus ConnectionStatus
         {
             set
             {
-                if (connectionState != value)
+                if (_connectionState != value)
                 {
-                    connectionState = value;
-                    EventHandlerListForStateChange?.Invoke(this, new ConnectionStatusEventArgs(connectionState));
+                    _connectionState = value;
+                    EventHandlerListForStateChange?.Invoke(this, new ConnectionStatusEventArgs(_connectionState));
                 }               
             }
             get
             {
-                return connectionState;
+                return _connectionState;
             }
         }
         
-        public delegate void SensorHandler(object sender, EventArgs e);//();
+        public delegate void SensorHandler(object sender, EventArgs e);
 
-        public delegate void SensorStatusChange(object sender, EventArgs e);//(ConnectionStatus newState);
+        public delegate void SensorStatusChange(object sender, EventArgs e);
 
-        public delegate void SensorExeptionHandler(object sender, EventArgs e);//(Exception exeption);
+        public delegate void SensorExeptionHandler(object sender, EventArgs e);
 
-        // событие прихода нового уведомления 
         protected event SensorHandler EventHandlersListForPacket;
 
         public event SensorStatusChange EventHandlerListForStateChange;
 
         public event SensorExeptionHandler EventHandlerListForExeptions;
 
-        protected SerialPort serialPort;
-        //поток чтения байт с порта 
-        protected Thread readThread;
+        protected SerialPort SerialPort;
 
-        public byte[] bytesBuffer;
+        protected Thread ReadThread;
 
-        protected int bytesCount;
+        public byte[] BytesBuffer;
 
-        object bufferLocker = new object();
+        protected int BytesCount;
+
+        readonly object _bufferLocker = new object();
 
         public virtual bool StartConnection(string portName)
         {
-            if (!serialPort.IsOpen)
+            if (!SerialPort.IsOpen)
             {
-                serialPort.PortName = portName;
+                SerialPort.PortName = portName;
             }
             try
             {
-                serialPort.Open();
+                SerialPort.Open();
             }
             catch (UnauthorizedAccessException exeption)
             {
-                Log.Instance.Error("Указанный порт занят {0}",serialPort.PortName);
+                Log.Instance.Error("Указанный порт занят {0}",SerialPort.PortName);
                 Log.Instance.Exception(exeption);
-                ConnectionStatus = ConnectionStatus.ERROR;
+                ConnectionStatus = ConnectionStatus.Error;
                 EventHandlerListForExeptions?.Invoke(this, new ExceptionEventArgs(exeption));
                 return false;
             }
@@ -89,14 +86,14 @@ namespace Evo20.SensorsConnection
                 return false;
             }
 
-            if (ConnectionStatus == ConnectionStatus.DISCONNECTED)
+            if (ConnectionStatus == ConnectionStatus.Disconnected)
             {
-                if (!readThread.IsAlive)
+                if (!ReadThread.IsAlive)
                 {
-                    readThread = new Thread(Read);
-                    readThread.Start();
+                    ReadThread = new Thread(Read);
+                    ReadThread.Start();
                 }
-                ConnectionStatus = ConnectionStatus.CONNECTED;
+                ConnectionStatus = ConnectionStatus.Connected;
                 Log.Instance.Info("Соединение c датчиком установленно");
                 return true;
             }
@@ -108,13 +105,13 @@ namespace Evo20.SensorsConnection
 
         public bool PauseConnection()
         {
-            if (ConnectionStatus == ConnectionStatus.CONNECTED)
+            if (ConnectionStatus == ConnectionStatus.Connected)
             {
-                if (readThread.IsAlive)
+                if (ReadThread.IsAlive)
                 {
-                    readThread.Abort();
+                    ReadThread.Abort();
                 }
-                ConnectionStatus = ConnectionStatus.PAUSE;
+                ConnectionStatus = ConnectionStatus.Pause;
                 Log.Instance.Info("Соединение c датчиком приостановленно");
                 return true;
             }
@@ -124,70 +121,65 @@ namespace Evo20.SensorsConnection
             }
         }
 
-        public bool ResumeConnection()
-        {
-            if (ConnectionStatus == ConnectionStatus.PAUSE)
-            {
-                readThread.Start();
-                ConnectionStatus = ConnectionStatus.CONNECTED;
-                Log.Instance.Info("Соединение c датчиком востановлено");
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        //public bool ResumeConnection()
+        //{
+        //    if (ConnectionStatus == ConnectionStatus.Pause)
+        //    {
+        //        ReadThread.Start();
+        //        ConnectionStatus = ConnectionStatus.Connected;
+        //        Log.Instance.Info("Соединение c датчиком востановлено");
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
 
         public virtual bool StopConnection()
         {
-            if (readThread.IsAlive)
+            if (ReadThread.IsAlive)
             {
-                readThread.Abort();
+                ReadThread.Abort();
             }
-            if (serialPort.IsOpen)
+            if (SerialPort.IsOpen)
             {
-                serialPort.Close();
+                SerialPort.Close();
             }
-            ConnectionStatus = ConnectionStatus.DISCONNECTED;
+            ConnectionStatus = ConnectionStatus.Disconnected;
             Log.Instance.Info("Соединение c датчиком прервано");
             return true;
         }
 
-        /// <summary>
-        /// Конструктор 
-        /// </summary>
-        /// <param name="port"> Имя COM порта</param>
         public SensorConnection(String port)
         {
-            serialPort.PortName = port;          
+            SerialPort.PortName = port;          
         }
 
         public SensorConnection()
         {
-            readThread = new Thread(Read);
-            readThread.IsBackground = true;
-            serialPort = new SerialPort();
-            serialPort.BaudRate = 460800;
-            serialPort.ReadTimeout = 100000;
-            serialPort.WriteTimeout = 500;     
+            ReadThread = new Thread(Read) {IsBackground = true};
+            SerialPort = new SerialPort
+            {
+                BaudRate = 460800,
+                ReadTimeout = 100000,
+                WriteTimeout = 500,
+                Parity = 0,
+                StopBits = StopBits.One,
+                DataBits = 8
+            };
+
             //serialPort.ReadTimeout = 460800;
             //serialPort.WriteTimeout = 500;
-            serialPort.Parity = 0;
-            serialPort.StopBits = StopBits.One;
-            serialPort.DataBits = 8;
-            ConnectionStatus = ConnectionStatus.DISCONNECTED;
-            bytesBuffer = new byte[BUFFER_SIZE];
+            ConnectionStatus = ConnectionStatus.Disconnected;
+            BytesBuffer = new byte[BufferSize];
         }
 
-        /// <summary>
-        ///  чтение байт из COM порта ( выполняется в обдельном потоке )
-        /// </summary>
         protected void Read()
         {
-            byte[] receiveBytes = new byte[BUFFER_SIZE];
+            byte[] receiveBytes = new byte[BufferSize];
 
-            while (ConnectionStatus == ConnectionStatus.CONNECTED)
+            while (ConnectionStatus == ConnectionStatus.Connected)
             {
                 try
                 {
@@ -196,76 +188,78 @@ namespace Evo20.SensorsConnection
                     //    Thread.Sleep(100);
                     //    continue;
                     //}
-                    bytesCount = serialPort.Read(receiveBytes, 0, serialPort.BytesToRead);
-                    if (bytesCount == 0)
-                        continue;
-                    lock (bufferLocker)
+                    lock (_bufferLocker)
                     {
-                        for (int i = 0; i < bytesCount; i++)
+                        BytesCount = SerialPort.Read(receiveBytes, 0, SerialPort.BytesToRead);
+                    }
+                    if (BytesCount == 0)
+                        continue;
+                    lock (_bufferLocker)
+                    {
+                        for (int i = 0; i < BytesCount; i++)
                         {
-                            bytesBuffer[i] = receiveBytes[i];
+                            BytesBuffer[i] = receiveBytes[i];
                         }
                     }
-                    EventHandlersListForPacket(this,null);
+                    EventHandlersListForPacket?.Invoke(this, null);
                 }
                 catch (TimeoutException exeption)
                 {
                     Log.Instance.Error("Байты не были доступны для чтения");
                     Log.Instance.Exception(exeption);
-                    ConnectionStatus = ConnectionStatus.ERROR;
+                    ConnectionStatus = ConnectionStatus.Error;
                     EventHandlerListForExeptions?.Invoke(this, new ExceptionEventArgs(exeption));
                     return;
                 }
                 catch (InvalidOperationException exeption)
                 {
-                    Log.Instance.Error("Указанный порт не открыт {0}",serialPort.PortName);
+                    Log.Instance.Error("Указанный порт не открыт {0}",SerialPort.PortName);
                     Log.Instance.Exception(exeption);
-                    ConnectionStatus = ConnectionStatus.ERROR;
+                    ConnectionStatus = ConnectionStatus.Error;
                     EventHandlerListForExeptions?.Invoke(this, new ExceptionEventArgs(exeption));
                     return;
                 }
             }
         }
        
-        /// <summary>
-        /// Чтение  данных из буфера приннятых байт 
-        /// </summary>
-        /// <returns></returns>
         public List<byte> ReadBuffer()
         {
-            var message = new List<byte>(bytesCount);
-            lock (bufferLocker)
+            List<byte> message = new List<byte>(BytesCount);
+            lock (_bufferLocker)
             {
-                for (int i = 0; i < bytesCount; i++)
+                for (int i = 0; i < BytesCount; i++)
                 {
-                    message.Add(bytesBuffer[i]);
+                    message.Add(BytesBuffer[i]);
                 }
-                bytesCount = 0;
+                BytesCount = 0;
             }
             return message;
         }
 
         #region IDisposable Support
-        private bool disposedValue = false; // Для определения избыточных вызовов
+        private bool _disposedValue;
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposedValue)
+            if (!_disposedValue)
             {
                 if (disposing)
                 {
-                    if (readThread.IsAlive)
+                    if (ReadThread.IsAlive)
                     {
-                        readThread.Abort();
+                        ReadThread.Abort();
                     }
-                    if (serialPort.IsOpen)
+                    if (SerialPort.IsOpen)
                     {
-                        serialPort.Close();
+                        SerialPort.Close();
                     }
-                    serialPort.Dispose();
+                    SerialPort.Dispose();
                 }
-                bytesBuffer = null;
-                disposedValue = true;
+                lock (_bufferLocker)
+                {
+                    BytesBuffer = null;
+                }
+                _disposedValue = true;
             }
         }
 

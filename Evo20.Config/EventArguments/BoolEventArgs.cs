@@ -4,10 +4,10 @@ namespace Evo20.Utils.EventArguments
 {
     public class BoolEventArgs : EventArgs
     {
-        public bool result;
+        public bool Result;
         public BoolEventArgs(bool result)
         {
-            this.result = result;
+            Result = result;
         }
     }
 }

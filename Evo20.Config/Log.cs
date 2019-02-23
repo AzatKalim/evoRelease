@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Threading;
-using System;
-using System.Windows.Forms;
 
-namespace Evo20
+namespace Evo20.Utils
 {
     public class Log : IDisposable
     {
@@ -14,48 +12,44 @@ namespace Evo20
         {
             get
             {
-                if (instance == null)
+                if (_instance == null)
                 {
                     string pathToLogDir = Path.Combine(Directory.GetCurrentDirectory(), "Evo20.Log");
-                    instance = new Log("Evo20", pathToLogDir);
-                    instance.Start();
+                    _instance = new Log("Evo20", pathToLogDir);
+                    _instance.Start();
                 }
-                return instance;
+                return _instance;
             }
         }
-        private static Log instance;
+        private static Log _instance;
 
-        private string pathToLogDirectory;
-        private Queue<LogEntry> queue = new Queue<LogEntry>();
-        private object syncQueue = new object();
-        private AutoResetEvent newRecords = new AutoResetEvent(false);
-        private AutoResetEvent stopped = new AutoResetEvent(false);
+        private readonly string _pathToLogDirectory;
+        private readonly Queue<LogEntry> _queue = new Queue<LogEntry>();
+        private readonly object _syncQueue = new object();
+        private readonly AutoResetEvent _newRecords = new AutoResetEvent(false);
+        private readonly AutoResetEvent _stopped = new AutoResetEvent(false);
 
-        public string Source { get; private set; }
+        public string Source { get; }
 
         public bool Started { get; private set; }
 
-        public string PathToLogFile
-        {
-            get { return Path.Combine(pathToLogDirectory, string.Format("{0}_{1}.log", Source, DateTime.Now.ToString("yyyyMMdd"))); }
-        }
+        public string PathToLogFile => Path.Combine(_pathToLogDirectory,
+            $"{Source}_{DateTime.Now:yyyyMMdd}.log");
 
         public Log(string source, string pathToDir)
         {
             Source = source;
-            pathToLogDirectory = pathToDir;
-            if (!Directory.Exists(pathToLogDirectory))
-                Directory.CreateDirectory(pathToLogDirectory);
+            _pathToLogDirectory = pathToDir;
+            if (!Directory.Exists(_pathToLogDirectory))
+                Directory.CreateDirectory(_pathToLogDirectory);
         }
 
         public void Start()
         {
             Started = true;
-            Thread thread = new Thread(WriteToFile);
-            thread.Name = "Log writer";
-            thread.IsBackground = true;
+            Thread thread = new Thread(WriteToFile) {Name = "Log writer", IsBackground = true};
             thread.Start();
-            newRecords.Set();
+            _newRecords.Set();
         }
 
         public void Stop()
@@ -63,22 +57,22 @@ namespace Evo20
             if (Started)
             {
                 Started = false;
-                newRecords.Set();
-                stopped.WaitOne();
+                _newRecords.Set();
+                _stopped.WaitOne();
             }
         }
 
         public void Write(System.Diagnostics.EventLogEntryType type, string message)
         {
-            lock (syncQueue)
+            lock (_syncQueue)
             {
-                queue.Enqueue(new LogEntry()
+                _queue.Enqueue(new LogEntry()
                 {
                     Time = DateTime.Now,
                     Type = type,
                     Message = message
                 });
-                newRecords.Set();
+                _newRecords.Set();
             }
         }
 
@@ -116,11 +110,6 @@ namespace Evo20
             Write(System.Diagnostics.EventLogEntryType.Warning, message);
         }
 
-        public void Write(System.Diagnostics.EventLogEntryType type, string format, params object[] values)
-        {
-            Write(type, string.Format(format, values));
-        }
-
         public void Debug(string format, params object[] values)
         {
             Debug(string.Format(format, values));
@@ -143,45 +132,36 @@ namespace Evo20
 
         private void WriteToFile()
         {
-            try
+            int day = DateTime.Now.Day;
+            var writer = new StreamWriter(PathToLogFile, true, Encoding.UTF8);
+            do
             {
-                int day = DateTime.Now.Day;
-                var writer = new StreamWriter(PathToLogFile, true, Encoding.UTF8);
-                do
+                _newRecords.WaitOne();
+                LogEntry[] entries;
+                lock (_syncQueue)
                 {
-                    newRecords.WaitOne();
-                    LogEntry[] entries;
-                    lock (syncQueue)
-                    {
-                        entries = queue.ToArray();
-                        queue.Clear();
-                    }
-                    foreach (var entry in entries)
-                    {
-                        if (entry.Time.Day != day)
-                        {
-                            day = entry.Time.Day;
-                            writer.Close();
-                            writer = new StreamWriter(PathToLogFile, true, Encoding.UTF8);
-                        }
-                        string line = string.Format("{0}|{1, 12}> {2}",
-                            entry.Time.ToString("HH:mm:ss"),
-                            entry.Type == 0 ? "Debug" : entry.Type.ToString(),
-                            entry.Message);
-                        writer.WriteLine(line);                 
-                    }
-
-                    writer.Flush();
+                    entries = _queue.ToArray();
+                    _queue.Clear();
                 }
-                while (Started);
+                foreach (var entry in entries)
+                {
+                    if (entry.Time.Day != day)
+                    {
+                        day = entry.Time.Day;
+                        writer.Close();
+                        writer = new StreamWriter(PathToLogFile, true, Encoding.UTF8);
+                    }
+                    string line =
+                        $"{entry.Time:HH:mm:ss}|{(entry.Type == 0 ? "Debug" : entry.Type.ToString()),12}> {entry.Message}";
+                    writer.WriteLine(line);                 
+                }
 
-                writer.Close();
-                stopped.Set();
+                writer.Flush();
             }
-            catch (Exception)
-            {                
-                throw; //Crash application
-            }
+            while (Started);
+
+            writer.Close();
+            _stopped.Set();
         }
 
         private string GetExceptionText(Exception ex)
@@ -189,7 +169,7 @@ namespace Evo20
             if (ex.InnerException == null)
                 return ex.ToString();
             else
-                return ex.ToString() + "\r\nInnerException:\r\n" + GetExceptionText(ex.InnerException);
+                return ex + "\r\nInnerException:\r\n" + GetExceptionText(ex.InnerException);
         }
 
     private struct LogEntry
@@ -200,35 +180,24 @@ namespace Evo20
         }
 
         #region IDisposable Support
-        private bool disposedValue = false; // Для определения избыточных вызовов
+        private bool _disposedValue;
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposedValue)
+            if (!_disposedValue)
             {
                 if (disposing)
                 {
-                    newRecords.Dispose();
-                    stopped.Dispose();
+                    _newRecords.Dispose();
+                    _stopped.Dispose();
                 }
 
-                disposedValue = true;
+                _disposedValue = true;
             }
-        }
-
-        // TODO: переопределить метод завершения, только если Dispose(bool disposing) выше включает код для освобождения неуправляемых ресурсов.
-        // ~Log() {
-        //   // Не изменяйте этот код. Разместите код очистки выше, в методе Dispose(bool disposing).
-        //   Dispose(false);
-        // }
-
-        // Этот код добавлен для правильной реализации шаблона высвобождаемого класса.
+        }   
         public void Dispose()
         {
-            // Не изменяйте этот код. Разместите код очистки выше, в методе Dispose(bool disposing).
-            Dispose(true);
-            // TODO: раскомментировать следующую строку, если метод завершения переопределен выше.
-            // GC.SuppressFinalize(this);
+            Dispose(true);         
         }
         #endregion
     }

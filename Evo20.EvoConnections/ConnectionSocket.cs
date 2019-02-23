@@ -3,55 +3,44 @@ using System.Text;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using Evo20.Utils;
 using Evo20.Utils.EventArguments;
 
 namespace Evo20.EvoConnections
 {
-    /// <summary>
-    /// Класс для работы с Evo-20 через udp протокол
-    /// </summary>
     public class ConnectionSocket : IDisposable
     {
         #region Delegates and events
-        //делегат для события 
-        public delegate void ConnectionSocketHandler(object sender, EventArgs e);//();
+       
+        public delegate void ConnectionSocketHandler(object sender, EventArgs e);
 
-        //делегат для события изменения состояния
-        public delegate void StateChangeHandler(object sender, EventArgs e);//(ConnectionStatus state);
-        //делегат для события возникновения ошибки
-        public delegate void ExceptionHandler(object sender, EventArgs e);//(Exception exeption);
+        public delegate void StateChangeHandler(object sender, EventArgs e);
+        public delegate void ExceptionHandler(object sender, EventArgs e);
 
-        // События прихода нового сообщения 
         protected event ConnectionSocketHandler NewMessageArrived;
 
-        // Событие изменения состояния 
         public event StateChangeHandler StateChanged; 
 
-        //Событие ошибки выполнения
         public event ExceptionHandler ExceptionEvent;
 
         #endregion
 
         #region Private Fields
 
-        //ip адресс удаленного компьютера 
-        private static IPAddress remoteIPAddress = IPAddress.Parse(Config.Instance.RemoteIPAdress);
-          
-        IPEndPoint endPoint;
+        private static readonly IPAddress RemoteIpAddress = IPAddress.Parse(Config.Instance.RemoteIpAdress);
 
-        //Состояние соединения 
-        private ConnectionStatus connectionState;
+        private ConnectionStatus _connectionState;
 
-        private int readedBytesCount = 0;
+        private int _readedBytesCount;
 
-        object bufferLocker = new object();
+        readonly object _bufferLocker = new object();
         #endregion
 
         #region Protected Fields
 
-        protected byte[] buffer;
+        protected byte[] Buffer;
 
-        protected Thread work_thread;
+        protected Thread WorkThread;
 
         protected UdpClient Sender;
 
@@ -59,18 +48,15 @@ namespace Evo20.EvoConnections
 
         #endregion
 
-        //Свойство соятояния соединения
         public ConnectionStatus ConnectionStatus
         {
             get
             {
-                return connectionState;
+                return _connectionState;
             }
             protected set
             {
-                // изменяем сотояние системы
-                connectionState = value;
-                // вызываем событие изменения состояния 
+                _connectionState = value;
                 StateChanged?.Invoke(this, new ConnectionStatusEventArgs(value));
             }
         }
@@ -78,14 +64,12 @@ namespace Evo20.EvoConnections
  
         public ConnectionSocket()
         {
-            buffer = new byte[2048];
-            work_thread = new Thread(ReadMessage);
-            work_thread.IsBackground = true;
-            connectionState = ConnectionStatus.DISCONNECTED;
+            Buffer = new byte[2048];
+            WorkThread = new Thread(ReadMessage) {IsBackground = true};
+            _connectionState = ConnectionStatus.Disconnected;
             ReceivingUdpClient = null;
-            endPoint = new IPEndPoint(remoteIPAddress, Config.Instance.RemotePortNumber);
+            var endPoint = new IPEndPoint(RemoteIpAddress, Config.Instance.RemotePortNumber);
             Sender = new UdpClient(Config.Instance.RemotePortNumber);
-            //убрать
 #if !DEBUG
             if(!Config.IsFakeEvo)
                 Sender.Connect(endPoint);
@@ -105,7 +89,6 @@ namespace Evo20.EvoConnections
             }
         }
 
-        //Деструктор класса
         ~ConnectionSocket()
         {
             Dispose(false);
@@ -118,13 +101,13 @@ namespace Evo20.EvoConnections
         /// <returns> результат запуска </returns>
         public bool StartConnection()
         {
-            if (ConnectionStatus == ConnectionStatus.DISCONNECTED)
+            if (ConnectionStatus == ConnectionStatus.Disconnected)
             {
-                ConnectionStatus = ConnectionStatus.CONNECTED;
-                if (!work_thread.IsAlive)
+                ConnectionStatus = ConnectionStatus.Connected;
+                if (!WorkThread.IsAlive)
                 {
-                    work_thread= new Thread(ReadMessage);
-                    work_thread.Start();
+                    WorkThread= new Thread(ReadMessage);
+                    WorkThread.Start();
                 }
                 Log.Instance.Info("Соединение c Evo 20 установлено");
                 return true;
@@ -141,10 +124,10 @@ namespace Evo20.EvoConnections
         /// <returns></returns>
         public bool PauseConnection()
         {
-            if (ConnectionStatus == ConnectionStatus.CONNECTED)
+            if (ConnectionStatus == ConnectionStatus.Connected)
             {
-                work_thread.Abort();
-                ConnectionStatus = ConnectionStatus.PAUSE;
+                WorkThread.Abort();
+                ConnectionStatus = ConnectionStatus.Pause;
                 Log.Instance.Info("Соединение c Evo 20 приостановлено");
                 return true;
             }
@@ -160,11 +143,11 @@ namespace Evo20.EvoConnections
         /// <returns></returns>
         public bool ResumeConnection()
         {
-            if (ConnectionStatus == ConnectionStatus.PAUSE)
+            if (ConnectionStatus == ConnectionStatus.Pause)
             {
-                work_thread = new Thread(ReadMessage);
-                work_thread.Start();
-                ConnectionStatus = ConnectionStatus.CONNECTED;
+                WorkThread = new Thread(ReadMessage);
+                WorkThread.Start();
+                ConnectionStatus = ConnectionStatus.Connected;
                 Log.Instance.Info("Соединение c Evo 20 востановлено");
                 return true;
             }
@@ -180,13 +163,12 @@ namespace Evo20.EvoConnections
         /// <returns></returns>
         public bool StopConnection()
         {
-            if (work_thread.IsAlive)
+            if (WorkThread.IsAlive)
             {
-                work_thread.Abort();
+                WorkThread.Abort();
             }
-            ConnectionStatus = ConnectionStatus.DISCONNECTED;
-            if(ReceivingUdpClient!=null)
-                ReceivingUdpClient.Close();
+            ConnectionStatus = ConnectionStatus.Disconnected;
+            ReceivingUdpClient?.Close();
             Log.Instance.Info("Соединение c Evo 20 прервано");
             return true;
         }
@@ -202,12 +184,11 @@ namespace Evo20.EvoConnections
         /// <returns>результат </returns>
         public bool SendMessage(string message)
         {
-            //убрать
             if(Config.IsFakeEvo)
                 return true;
             try
             {
-                if (connectionState == ConnectionStatus.CONNECTED)
+                if (_connectionState == ConnectionStatus.Connected)
                 {
                     byte[] bytes = Encoding.UTF8.GetBytes(message);
                     if (bytes.Length == Sender.Send(bytes, bytes.Length))
@@ -221,14 +202,14 @@ namespace Evo20.EvoConnections
                 else
                 {
                     Log.Instance.Error("Сообщение {0} Evo 20 не было отправлено, соединение активно? {1}",message,Sender.Client.Connected);
-                    if (this.ConnectionStatus == ConnectionStatus.CONNECTED)
-                        this.ConnectionStatus = ConnectionStatus.DISCONNECTED;
+                    if (ConnectionStatus == ConnectionStatus.Connected)
+                        ConnectionStatus = ConnectionStatus.Disconnected;
                     return false;
                 }
             }
             catch (Exception exception)
             {
-                ConnectionStatus = ConnectionStatus.ERROR;
+                ConnectionStatus = ConnectionStatus.Error;
                 Log.Instance.Error("Сообщение {0} Evo 20 не доставлено Возникло исключение",message);
                 Log.Instance.Exception(exception);
                 Sender.Close();
@@ -237,26 +218,24 @@ namespace Evo20.EvoConnections
             }
         }
 
-        /// <summary>
-        /// Бесконечное считывание приходящих сообщений изапись их в буффер ( выполняется в обдельном потоке)
-        /// </summary>
         protected void ReadMessage()
         {
-            IPEndPoint RemoteIpEndPoint = null;
+            IPEndPoint remoteIpEndPoint = null;
 
             try
             {
-                while (connectionState == ConnectionStatus.CONNECTED)
+                while (_connectionState == ConnectionStatus.Connected)
                 {
                     byte[] receiveBytes = ReceivingUdpClient.Receive(
-                       ref RemoteIpEndPoint);
+                       ref remoteIpEndPoint);
 
-                    lock (bufferLocker)
+                    lock (_bufferLocker)
                     {
-                        receiveBytes.CopyTo(buffer, 0);
-                        readedBytesCount = receiveBytes.Length;
+                        receiveBytes.CopyTo(Buffer, 0);
+                        _readedBytesCount = receiveBytes.Length;
                     }
-                    NewMessageArrived(this,null);
+
+                    NewMessageArrived?.Invoke(this, null);
                 }
             }
             catch (ThreadAbortException)
@@ -269,26 +248,22 @@ namespace Evo20.EvoConnections
             }
             catch (Exception exception)
             {
-                ConnectionStatus = ConnectionStatus.ERROR;
+                ConnectionStatus = ConnectionStatus.Error;
                 Log.Instance.Error("Невозможно открыть соединение с Evo Возникло исключение");
                 Log.Instance.Exception(exception);
                 ExceptionEvent?.Invoke(this, new ExceptionEventArgs(exception));
             }
         }
 
-        /// <summary>
-        /// Метод возвращает значение хранящееся в буффере 
-        /// </summary>
-        /// <returns></returns>
         public string ReadBuffer()
         {
-            var message= string.Empty;
+            string message;
             try
             {
-                lock (bufferLocker)
+                lock (_bufferLocker)
                 {
-                    message = Encoding.UTF8.GetString(buffer, 0, readedBytesCount);
-                    readedBytesCount=0;
+                    message = Encoding.UTF8.GetString(Buffer, 0, _readedBytesCount);
+                    _readedBytesCount=0;
                 }
             }
             catch (FormatException exception)
@@ -301,28 +276,26 @@ namespace Evo20.EvoConnections
         }
 
         #region IDisposable Support
-        private bool disposedValue = false; // Для определения избыточных вызовов
+        private bool _disposedValue;
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposedValue)
+            if (!_disposedValue)
             {
                 if (disposing)
                 {
-                    if (connectionState != ConnectionStatus.CONNECTED)
+                    if (_connectionState != ConnectionStatus.Connected)
                     {
-                        work_thread.Abort();
+                        WorkThread.Abort();
                         Sender.Close();
                         ReceivingUdpClient.Close();
                     }
-                    buffer = null;
+                    Buffer = null;
                 }
-                disposedValue = true;
+                _disposedValue = true;
             }
         }
 
-
-        // Этот код добавлен для правильной реализации шаблона высвобождаемого класса.
         public void Dispose()
         {
             Dispose(true);         

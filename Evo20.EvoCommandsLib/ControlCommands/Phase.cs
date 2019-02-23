@@ -1,21 +1,21 @@
-﻿using Evo20.Commands.Abstract;
+﻿//using Evo20.Commands.Abstract;
 
-namespace Evo20.Commands
-{
-    public class Phase : ControlCommand
-    {
-        Axis axis;
-        // в градусах
-        double phase;
-        public Phase(Axis axis, double phase)
-        {
-            this.axis = axis;
-            this.phase = phase;
-        }
-        public override string ToString()
-        {
-            string buffer = "AXE.CONS.PHA " + phase;
-            return buffer + ' ' + AxisToInt(axis);
-        }
-    }
-}
+//namespace Evo20.Commands.ControlCommands
+//{
+//    public class Phase : ControlCommand
+//    {
+//        readonly Axis _axis;
+//        // в градусах
+//        readonly double _phase;
+//        public Phase(Axis axis, double phase)
+//        {
+//            _axis = axis;
+//            _phase = phase;
+//        }
+//        public override string ToString()
+//        {
+//            string buffer = "AXE.CONS.PHA " + _phase;
+//            return buffer + ' ' + AxisToInt(_axis);
+//        }
+//    }
+//}

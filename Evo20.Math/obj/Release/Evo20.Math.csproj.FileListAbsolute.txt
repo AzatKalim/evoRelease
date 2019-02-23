@@ -24,5 +24,3 @@ C:\Users\Азат\Desktop\работа\Evo20\bin\Release\Evo20.Math.dll
 C:\Users\Азат\Desktop\работа\Evo20\bin\Release\Evo20.Math.pdb
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math\obj\Release\Evo20.Math.dll
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math\obj\Release\Evo20.Math.pdb
-C:\Users\Азат\Desktop\работа\Evo20\bin\Release\Evo20.Math.dll.CodeAnalysisLog.xml
-C:\Users\Азат\Desktop\работа\Evo20\bin\Release\Evo20.Math.dll.lastcodeanalysissucceeded

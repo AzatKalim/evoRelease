@@ -12,5 +12,3 @@ C:\Users\Азат\Desktop\работа\Evo20\Evo20.Connections.Tests\bin\Debug\r
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Connections.Tests\obj\Debug\Evo20.Connections.Tests.csprojResolveAssemblyReference.cache
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Connections.Tests\obj\Debug\Evo20.Connections.Tests.dll
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Connections.Tests\obj\Debug\Evo20.Connections.Tests.pdb
-C:\Users\Азат\Desktop\работа\Evo20\Evo20.Connections.Tests\bin\Debug\Evo20.Connections.Tests.dll.CodeAnalysisLog.xml
-C:\Users\Азат\Desktop\работа\Evo20\Evo20.Connections.Tests\bin\Debug\Evo20.Connections.Tests.dll.lastcodeanalysissucceeded
