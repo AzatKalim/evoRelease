@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Evo20.Utils;
 
 namespace Evo20.Math
 {
@@ -25,6 +26,8 @@ namespace Evo20.Math
 
         private static double[,] ComputeTemperatureCalibrationCoefficentsDly(double[][,] adcCodes)
         {
+            Log.Instance.Info("ComputeTemperatureCalibrationCoefficentsDlyД.5");
+
             if (adcCodes == null)
                 return null;
             double[,] factors = new double[LCount, SCount];
@@ -66,6 +69,8 @@ namespace Evo20.Math
         //Д.3 Вычислить исходные калибровочные матрицы ДЛУ 
         private static double[][,] ComputeInitialCalibrationMatricesDly(double[][,] adcCodes)
         {
+            Log.Instance.Info("Д.3");
+
             double[][,] initialCalibration = new double[LCount][,];
             for (int i = 0; i < initialCalibration.Length; i++)
             {
@@ -98,6 +103,8 @@ namespace Evo20.Math
         //Д.4 вычислить вектора эталонных ускорений ДЛУ
         private static double[][] ComputeReferenceAccelerationVectorsDly()
         {
+            Log.Instance.Info("Д.4");
+
             double[][] b = new double[SCount][];
             for (int i = 0; i < b.Length; i++)
 			{
@@ -130,17 +137,29 @@ namespace Evo20.Math
         //Д.5 вычислить вектора калибровочных коэффициентов ДЛУ по ускорениям
         private static double[,][,] СomputeVectorOfCalibrationCoefficientsDly(double[][,] adcCodes)
         {
+            Log.Instance.Info("Д.5");
             double[,][,] result= new double[LCount,SCount][,];
             double[][,] a = ComputeInitialCalibrationMatricesDly(adcCodes);
             double[][] b = ComputeReferenceAccelerationVectorsDly();
             for (int l = 0; l < LCount; l++)
             {
+                Log.Instance.Info("l={0}",l);
                 for (int s = 0; s < SCount; s++)
                 {
                     var aL= a[l];
                     var aLTrans=aL.Transpose();
                     var bS = b[s];
-                    result[l, s] = Matrix.Mul(Matrix.Mul(aLTrans,aL).Inverse(),(Matrix.Mul(aLTrans,bS.Transpose())).Inverse());
+                    var t11 = Matrix.Multiply(aLTrans, aL);
+                    var t1 = t11.Inverse();
+                    if(t11==null)
+                    {
+                        Log.Instance.Error("Невозможно найти обратную матрицу l={0} s={1}", l,s);                 
+                        throw new ApplicationException("Невозможно найти обратную матрицу");
+                    }
+                    var t21 = bS.Transpose();
+                    var t2 = Matrix.Multiply(aLTrans, t21);
+                    //var t2 = t22.Inverse();
+                    result[l, s] = Matrix.Multiply(t1,t2).Transpose();
                 }
             }
             return result;
@@ -154,6 +173,7 @@ namespace Evo20.Math
 
         private static double[,] ComputeTemperatureCalibrationCoefficentsDys(double[][,] adcCodes)
         {
+            Log.Instance.Info("ComputeTemperatureCalibrationCoefficentsDys");
             if (adcCodes == null)
             {
                 return null;
@@ -177,6 +197,7 @@ namespace Evo20.Math
         //Д.8 Вычислить исходные калибровочные матрицы ДУС метода МНК для температурных точек
         private static double[][,] ComputeInitialCalibrationMatricesDys(double[][,] adcCodes)
         {
+            Log.Instance.Info("Д.8");
             double[][,] initialCalibration = new double[PCount][,];
             for (int i = 0; i < initialCalibration.Length; i++)
             {
@@ -214,6 +235,7 @@ namespace Evo20.Math
         //Д.9 Вычислить вектора эталонных угловых скоростей
         private static double[][] ComputeVectorOfStandardAngularVelocitiesDys()
         {
+            Log.Instance.Info("Д.9");
             double [][] result= new double[SCount][];
             for (int i = 0; i < result.Length; i++)
             {
@@ -267,6 +289,7 @@ namespace Evo20.Math
         //Д.10 Для каждой температуры и каждой оси вычисляет вектора калибровочных коэффициентов ДУС по угловым скоростям :
         private static double[,][,] СomputVectorOfCalibrationCoefficientsDys(double[][,] adcCodes)
         {
+            Log.Instance.Info("Д.10");
             double[,][,] result = new double[PCount, SCount][,];
             double[][,] a = ComputeInitialCalibrationMatricesDys(adcCodes);
             double[][] b = ComputeVectorOfStandardAngularVelocitiesDys();           
@@ -277,7 +300,15 @@ namespace Evo20.Math
                     var aP= a[p];
                     var aPTrans=aP.Transpose();
                     var bS= b[s];
-                    result[p, s] = Matrix.Mul(Matrix.Mul(aPTrans,aP).Inverse(),Matrix.Mul(aPTrans, bS.Transpose())).Inverse();
+                    var mul1 = Matrix.Multiply(aPTrans, aP).Inverse();
+                    if (mul1 == null)
+                    {
+                        Log.Instance.Error("Невозможно найти обратную матрицу p={0} s={1}", p, s);
+                        throw new ApplicationException("Невозможно найти обратную матрицу");
+                    }
+
+                    var mul2 = Matrix.Multiply(aPTrans, bS.Transpose());
+                    result[p, s] = Matrix.Multiply(mul1,mul2).Transpose();
                 }
             }
             return result;
@@ -287,6 +318,8 @@ namespace Evo20.Math
 
         public static bool CalculateCoefficients(double[][,] adcCodesDly, double[][,] adcCodesDys, StreamWriter file)
         {
+            Log.Instance.Info("CalculateCoefficients");
+
             double[,][,] coefficentsDly = СomputeVectorOfCalibrationCoefficientsDly(adcCodesDly);
             double[,] temperatureCoefficentsDly = ComputeTemperatureCalibrationCoefficentsDly(adcCodesDly);
 

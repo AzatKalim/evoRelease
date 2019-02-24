@@ -11,8 +11,8 @@ namespace Evo20.EvoConnections
     public class ConnectionSocket : IDisposable
     {
         #region Delegates and events
-       
-        public delegate void ConnectionSocketHandler(object sender, EventArgs e);
+
+        protected delegate void ConnectionSocketHandler(object sender, EventArgs e);
 
         public delegate void StateChangeHandler(object sender, EventArgs e);
         public delegate void ExceptionHandler(object sender, EventArgs e);
@@ -27,9 +27,10 @@ namespace Evo20.EvoConnections
 
         #region Private Fields
 
+#if !DEBUG
         private static readonly IPAddress RemoteIpAddress = IPAddress.Parse(Config.Instance.RemoteIpAdress);
-
-        private ConnectionStatus _connectionState;
+#endif
+        private ConnectionStatus _connectionState = ConnectionStatus.Disconnected;
 
         private int _readedBytesCount;
 
@@ -38,7 +39,7 @@ namespace Evo20.EvoConnections
 
         #region Protected Fields
 
-        protected byte[] Buffer;
+        protected byte[] Buffer = new byte[2048];
 
         protected Thread WorkThread;
 
@@ -61,16 +62,14 @@ namespace Evo20.EvoConnections
             }
         }
 
- 
-        public ConnectionSocket()
+
+        protected ConnectionSocket()
         {
-            Buffer = new byte[2048];
             WorkThread = new Thread(ReadMessage) {IsBackground = true};
-            _connectionState = ConnectionStatus.Disconnected;
-            ReceivingUdpClient = null;
-            var endPoint = new IPEndPoint(RemoteIpAddress, Config.Instance.RemotePortNumber);
+
             Sender = new UdpClient(Config.Instance.RemotePortNumber);
 #if !DEBUG
+            var endPoint = new IPEndPoint(RemoteIpAddress, Config.Instance.RemotePortNumber);
             if(!Config.IsFakeEvo)
                 Sender.Connect(endPoint);
 #endif
@@ -161,7 +160,7 @@ namespace Evo20.EvoConnections
         /// Завершение работы соединения 
         /// </summary>
         /// <returns></returns>
-        public bool StopConnection()
+        public void StopConnection()
         {
             if (WorkThread.IsAlive)
             {
@@ -170,7 +169,6 @@ namespace Evo20.EvoConnections
             ConnectionStatus = ConnectionStatus.Disconnected;
             ReceivingUdpClient?.Close();
             Log.Instance.Info("Соединение c Evo 20 прервано");
-            return true;
         }
 
         #endregion
@@ -182,7 +180,7 @@ namespace Evo20.EvoConnections
         /// </summary>
         /// <param name="message"> сообщение </param>
         /// <returns>результат </returns>
-        public bool SendMessage(string message)
+        protected bool SendMessage(string message)
         {
             if(Config.IsFakeEvo)
                 return true;
@@ -255,7 +253,7 @@ namespace Evo20.EvoConnections
             }
         }
 
-        public string ReadBuffer()
+        protected string ReadBuffer()
         {
             string message;
             try
@@ -278,7 +276,7 @@ namespace Evo20.EvoConnections
         #region IDisposable Support
         private bool _disposedValue;
 
-        protected virtual void Dispose(bool disposing)
+        protected void Dispose(bool disposing)
         {
             if (!_disposedValue)
             {

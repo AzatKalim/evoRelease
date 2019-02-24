@@ -10,7 +10,7 @@ using Evo20.Utils;
 
 namespace Evo20.Controllers.FileWork
 {
-    public class FileController
+    public sealed class FileController
     {
         private static FileController _fileController;
 
@@ -25,11 +25,19 @@ namespace Evo20.Controllers.FileWork
         /// <param name="file">файл для записи результатов</param>
         /// <returns>true- выполнено успешно,false-возникла ошибка </returns>
         [SuppressMessage("ReSharper", "UnusedMember.Global")]
-        public virtual bool ComputeCoefficent(List<ISensor> sensorsList, StreamWriter file)
+        public bool ComputeCoefficent(List<ISensor> sensorsList, StreamWriter file)
         {
-            bool result = CalculatorCoefficients.CalculateCoefficients(sensorsList[0].GetCalibrationAdcCodes(),
-                sensorsList[1].GetCalibrationAdcCodes(),
-                file);
+            bool result=false;
+            try
+            {
+                result = CalculatorCoefficients.CalculateCoefficients(sensorsList[0].GetCalibrationAdcCodes(),
+                    sensorsList[1].GetCalibrationAdcCodes(),
+                    file);
+            }
+            catch (Exception ex)
+            {
+                Log.Instance.Exception(ex);
+            }
             if (!result)
             {
                 Log.Instance.Error("Вычисление коэфицентов не выполнено!");
@@ -85,17 +93,15 @@ namespace Evo20.Controllers.FileWork
             return true;
         }
 
-        public bool WriteRedPackets(List<ISensor> sensorsList,int temperatureNumber)
+        public void WriteRedPackets(List<ISensor> sensorsList, int temperatureNumber)
         {
             Log.Instance.Info("Запись уже считанных пакетов в файл");
-            bool result;
             using( var file = new StreamWriter(Path.Combine(FilesPath,temperatureNumber+".txt")))
             {
-                file.WriteLine(temperatureNumber);
-                result= SensorData.Instance.WriteForCurrentTemperture(sensorsList.ToArray(),
+                SensorData.Instance.WriteForCurrentTemperture(sensorsList.ToArray(),
                     file,temperatureNumber);
             }
-            return result;
+
             //foreach (var sensor in _sensorsList)
             //{
             //    if (!sensor.WriteRedPackets(filesPath))

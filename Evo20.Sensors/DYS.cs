@@ -13,7 +13,7 @@ namespace Evo20.Sensors
 
         #region Properties 
      
-        public override string Name => "DYS";
+        public override string Name => "ДУС";
 
         #endregion
 
@@ -124,13 +124,13 @@ namespace Evo20.Sensors
             {
                 for (int k = 0; k < CalibrationPacketsCollection[j].PositionCount; k++)
                 {
-                    double[] meanParam = CalibrationPacketsCollection[k].MeanW(k);
+                    double[] meanParam = CalibrationPacketsCollection[j].MeanW(k);
                     for (int i = 0; i < RawCount / 2; i++)
                     {
                         adcCodes[i][j, k] = meanParam[i];
                     }
 
-                    meanParam = CalibrationPacketsCollection[k].MeanUw(k);
+                    meanParam = CalibrationPacketsCollection[j].MeanUw(k);
                     for (int i = RawCount / 2; i < RawCount; i++)
                     {
                         adcCodes[i][j, k] = meanParam[i - RawCount / 2];

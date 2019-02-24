@@ -68,7 +68,7 @@ namespace Evo20.Math
             }
 
             // See if we have a solution.
-            if (augmented[numRows - 1, numRows - 1] == 0) return null;
+            //          if (augmented[numRows - 1, numRows - 1] == 0) return null;
 
             // Extract the inverse array.
             double[,] inverse = new double[numRows, numRows];
@@ -82,26 +82,44 @@ namespace Evo20.Math
 
             return inverse;
         }
-
         // Multiply two matrices.
-        public static double[,] Mul(double[,] m1, double[,] m2)
+        //public static double[,] Mul(double[,] m1, double[,] m2)
+        //{
+        //    int numRows = m1.GetUpperBound(0) + 1;
+        //    double[,] result = new double[numRows, numRows];
+        //    for (int row = 0; row < numRows; row++)
+        //    {
+        //        for (int col = 0; col < numRows; col++)
+        //        {
+        //            double value = 0;
+        //            for (int i = 0; i < numRows; i++)
+        //                value += m1[row, i] * m2[i, col];
+        //            result[row, col] = value;
+        //        }
+        //    }
+
+        //    return result;
+        //}
+        public static double[,] Multiply(double[,] m1, double[,] m2)
         {
-            int numRows = m1.GetUpperBound(0) + 1;
-            double[,] result = new double[numRows, numRows];
-            for (int row = 0; row < numRows; row++)
+            if (m1.GetLength(1) == m2.GetLength(0))
             {
-                for (int col = 0; col < numRows; col++)
+                var multiply = new double[m1.GetLength(0), m2.GetLength(1)];
+                for (int i = 0; i < multiply.GetLength(0); i++)
                 {
-                    double value = 0;
-                    for (int i = 0; i < numRows; i++)
-                        value += m1[row, i] * m2[i, col];
-                    result[row, col] = value;
+                    for (int j = 0; j < multiply.GetLength(1); j++)
+                    {
+                        multiply[i, j] = 0;
+                        for (int k = 0; k < m1.GetLength(1); k++) // OR k<b.GetLength(0)
+                            multiply[i, j] = multiply[i, j] + m1[i, k] * m2[k, j];
+                    }
                 }
+
+                return multiply;
             }
 
-            return result;
+            return null;
         }
-
         public static double[,] Transpose( this double[,] matrix)
         {
             int w = matrix.GetLength(0);

@@ -9,7 +9,7 @@ namespace Evo20.Controllers.Data
 
         public List<int> CheckTemperatures {get;set;}
 
-        public int TemperutureIndex { get; set; } = 0;
+        public int TemperutureIndex { get; set; }
 
         public int CalibrationStabTime;
 
@@ -74,12 +74,12 @@ namespace Evo20.Controllers.Data
 
         }
      
-        public bool IsFullCycle()
+        public bool IsFullCycle
         {
-            if (MaxTemperatureFromSettings == CalibrationTemperatures.Count)
-                return true;
-            else
+            get
             {
+                if (MaxTemperatureFromSettings == CalibrationTemperatures.Count)
+                    return true;
                 return false;
             }
         }

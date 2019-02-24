@@ -41,7 +41,7 @@ namespace Evo20.GUI
             }
         }
 
-        string _settingsFileName;
+        string _settingsFileName = Config.Instance.DefaultSettingsFileName;
 
         delegate void FormReseter();
 
@@ -49,19 +49,18 @@ namespace Evo20.GUI
         delegate void SensorConnectionDel(ConnectionStatus state);
         delegate void EvoConnectionDel(ConnectionStatus state);
 
+        delegate void CompCoeff();
+
         #region Form load-close functions
 
         public MainForm()
         {
             InitializeComponent();
-            _prevX = 0;
-            _prevY = 0;
-            _settingsFileName = Config.Instance.DefaultSettingsFileName;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            string[] comPorts = SerialPort.GetPortNames();
+            var comPorts = SerialPort.GetPortNames();
             comPortComboBox.DataSource = comPorts;
             Controller.Instance.CycleEndedEvent += CycleEndedHandler;
             ControllerEvo.Instance.EvoConnectionChanged += EvoConnectionChangeHandler;
@@ -335,6 +334,7 @@ namespace Evo20.GUI
                 MessageBox.Show(exception.ToString(), @"Ошибка: чтения пакетов из файла", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Log.Instance.Exception(exception);
             }
+            MessageBox.Show(@"Чтение завершено ");
         }
 
         #endregion
@@ -482,7 +482,7 @@ namespace Evo20.GUI
 
         #region Other functions
 
-        public void ResetForm()
+        private void ResetForm()
         {
             FormReseter del = Reset;
             startButton.Invoke(del);
@@ -524,15 +524,22 @@ namespace Evo20.GUI
                 MessageBox.Show(@"Ошибка: цикл завершился неуспешно !", message, MessageBoxButtons.OK);
             }
             else
-            {                
+            {
                 string message = @"Цикл окончен!";
-                MessageBox.Show(@"Цикл завершен !", message, MessageBoxButtons.OK);
+                if (CycleData.Instance.IsFullCycle)
+                {
+                    DialogResult diaologResult = MessageBox.Show(message, "Выполнить расчет коэффицентов ?",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (diaologResult == DialogResult.Yes)
+                    {
+                        CompCoeff del = ComputeCoefficents;
+                        Invoke(del);
+                    }
+                }
+                else
+                    MessageBox.Show(@"Цикл завершен !", message, MessageBoxButtons.OK);
+
                 ResetForm();
-                //DialogResult diaologResult = MessageBox.Show(message, "Выполнить расчет коэффицентов ?", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                //if (diaologResult == DialogResult.Yes)
-                //{
-                //    ComputeCoefficent();
-                //}
             }
         }
 
@@ -558,25 +565,26 @@ namespace Evo20.GUI
             picture.BackColor = param ? Color.Green : Color.Red;
         }
 
-        //private void ComputeCoefficents()
-        //{
-        //    SaveFileDialog dlg = new SaveFileDialog();
-        //    dlg.Filter = @"Все файлы (*.*)|*.*";
-        //    dlg.CheckFileExists = true;
-        //    DialogResult res = dlg.ShowDialog();
+        private void ComputeCoefficents()
+        {
+            var dlg = new SaveFileDialog
+            {
+                Filter = @"Все файлы (*.*)|*.*"
+            };
+            DialogResult res = dlg.ShowDialog();
 
-        //    if (res != DialogResult.OK)
-        //    {
-        //        return;
-        //    }
-        //    string fileName = dlg.FileName;
-        //    StreamWriter file = new StreamWriter(fileName);
-        //    if (!Controller.Instance.ComputeCoefficents(file))
-        //    {
-        //        MessageBox.Show(@"Проблемы с файлом", @"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //    file.Close();
-        //}
+            if (res != DialogResult.OK)
+            {
+                return;
+            }
+            string fileName = dlg.FileName;
+            StreamWriter file = new StreamWriter(fileName);
+            if (!Controller.Instance.ComputeCoefficents(file))
+            {
+                MessageBox.Show(@"Проблемы с файлом", @"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            file.Close();
+        }
 
         private void ShowSensorParams()
         {

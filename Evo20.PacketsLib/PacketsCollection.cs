@@ -38,22 +38,16 @@ namespace Evo20.Packets
                 _positionPackets[i] = new List<PacketsData>();
 
             _maxPacketsCount = packetsCount;
-            IsCollected = false;
         }
 
         public PacketsCollection(StreamReader file,int temperature)
         {
             Temperature = temperature;
-            string tmp = file.ReadLine();
-            int positionCount = 0;
+            int positionCount;
             try
-            {
-                if (tmp != null)
-                {
-                    string[] temp = tmp.Split(' ');
-                    Temperature = Convert.ToInt32(temp[0]);
-                    positionCount = Convert.ToInt32(temp[1]);
-                }
+            {              
+                Temperature = Convert.ToInt32(file.ReadLine());
+                positionCount = Convert.ToInt32(file.ReadLine());
             }
             catch (Exception)
             {
@@ -78,27 +72,19 @@ namespace Evo20.Packets
                 Temperature = 0;
                 _maxPacketsCount = 0;
                 _positionPackets = null;
-                IsCollected = false;
                 throw;
             }
-            IsCollected = true;
         }
 
         #endregion 
 
         #region Properties
 
-        public int Temperature{ get; set; }
+        public int Temperature{ get; }
 
         public int PositionCount => _positionPackets?.Length ?? 0;
 
         public List<PacketsData> this[int index] => _positionPackets[index];
-
-        public bool IsCollected
-        {
-            get;
-            private set;
-        } 
 
         #endregion 
 
@@ -107,7 +93,7 @@ namespace Evo20.Packets
         public double[] MeanW(int positionNumber)
         {
             if (ComputedMeanParams[positionNumber] != null &&
-                 ComputedMeanParams[positionNumber].MeanW != null && ComputedMeanParams[positionNumber].PacketsCount != _positionPackets[positionNumber].Count)
+                ComputedMeanParams[positionNumber].MeanA != null && (_positionPackets[positionNumber] == null || ComputedMeanParams[positionNumber].PacketsCount != _positionPackets[positionNumber].Count))
                 return ComputedMeanParams[positionNumber].MeanW;
             if (ComputedMeanParams[positionNumber] == null)
                 ComputedMeanParams[positionNumber] = new MeanParametres();
@@ -132,7 +118,7 @@ namespace Evo20.Packets
         public double[] MeanA(int positionNumber)
         {
             if (ComputedMeanParams[positionNumber] != null &&
-                 ComputedMeanParams[positionNumber].MeanA != null && ComputedMeanParams[positionNumber].PacketsCount != _positionPackets[positionNumber].Count)
+                 ComputedMeanParams[positionNumber].MeanA != null && (_positionPackets[positionNumber]==null ||ComputedMeanParams[positionNumber].PacketsCount != _positionPackets[positionNumber].Count))
                 return ComputedMeanParams[positionNumber].MeanA;
             if (ComputedMeanParams[positionNumber] == null)
                 ComputedMeanParams[positionNumber] = new MeanParametres();
@@ -158,7 +144,7 @@ namespace Evo20.Packets
         public double[] MeanUw(int positionNumber)
         {
             if (ComputedMeanParams[positionNumber] != null &&
-                 ComputedMeanParams[positionNumber].MeanUw != null && ComputedMeanParams[positionNumber].PacketsCount != _positionPackets[positionNumber].Count)
+                ComputedMeanParams[positionNumber].MeanA != null && (_positionPackets[positionNumber] == null || ComputedMeanParams[positionNumber].PacketsCount != _positionPackets[positionNumber].Count))
                 return ComputedMeanParams[positionNumber].MeanUw;
             if (ComputedMeanParams[positionNumber] == null)
                 ComputedMeanParams[positionNumber] = new MeanParametres();
@@ -183,7 +169,7 @@ namespace Evo20.Packets
         public double[] MeanUa(int positionNumber)
         {
             if (ComputedMeanParams[positionNumber] != null &&
-                 ComputedMeanParams[positionNumber].MeanUa != null && ComputedMeanParams[positionNumber].PacketsCount != _positionPackets[positionNumber].Count)
+                ComputedMeanParams[positionNumber].MeanA != null && (_positionPackets[positionNumber] == null || ComputedMeanParams[positionNumber].PacketsCount != _positionPackets[positionNumber].Count))
                 return ComputedMeanParams[positionNumber].MeanUa;
             if (ComputedMeanParams[positionNumber] == null)
                 ComputedMeanParams[positionNumber] = new MeanParametres();
@@ -248,7 +234,7 @@ namespace Evo20.Packets
 
         #endregion
 
-        public bool Cleaned { get; set; }
+        private bool Cleaned { get; set; }
 
         public bool AddPacketData(int positionNumber,PacketsData packetData)
         {
@@ -259,11 +245,21 @@ namespace Evo20.Packets
             }
             else
             {
-                IsCollected = true;
                 return false;
             }
         }
 
+        public void ToFile(StreamWriter file)
+        {
+            file.WriteLine(Temperature);
+            file.WriteLine(_positionPackets.Length);
+            foreach (var positionPacket in _positionPackets)
+            {
+                file.WriteLine(positionPacket.Count);
+                foreach (var packet in positionPacket)
+                    file.WriteLine(packet);
+            }
+        }
 
         public override string ToString()
         {

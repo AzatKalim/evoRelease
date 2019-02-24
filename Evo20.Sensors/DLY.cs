@@ -13,7 +13,7 @@ namespace Evo20.Sensors
 
         private const int CountOfPositions = 72;
 
-        public override string Name => "DLY";
+        public override string Name => "ДЛУ";
 
         public DLY(List<int> colibrationTemperatures,
             List<int> checkTemperatures,

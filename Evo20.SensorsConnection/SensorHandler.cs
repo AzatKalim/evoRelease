@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System;
-using System.Threading;
+#if DEBUG
+    using System.Threading;
+#endif
 using Evo20.Packets;
 using Evo20.Utils;
 
@@ -26,7 +28,6 @@ namespace Evo20.SensorsConnection
         {
             _bufferPacket = new List<Packet>();
             _bufferMessage = new List<byte>();
-            //подписка на событие рихода нового пакета
             EventHandlersListForPacket += NewPacketHandler;
         }
 
@@ -38,7 +39,6 @@ namespace Evo20.SensorsConnection
         {
             lock (_bufferPacket)
             {
-                // извлекаем пакеты, пока id пакета  не равно 1
                 while (_bufferPacket.Count > 0 && _bufferPacket[0].Id != 1)
                 {
                     _bufferPacket.RemoveAt(0);
@@ -114,15 +114,15 @@ namespace Evo20.SensorsConnection
         List<byte> _bufferMessage;
         public event DataHandler PacketDataCollected;
 
-        AutoResetEvent NewBytesArrived = new AutoResetEvent(false);
+        readonly AutoResetEvent NewBytesArrived = new AutoResetEvent(false);
 
         Thread _newBytesHandler;
 
-        public SensorHandler():base()
+        public SensorHandler()
         {
             _bufferPacket = new List<Packet>();
             _bufferMessage = new List<byte>();
-            //подписка на событие рихода нового пакета
+            //подписка на событие прихода нового пакета
             EventHandlersListForPacket += NewPacketHandler;
         }
 
@@ -190,15 +190,15 @@ namespace Evo20.SensorsConnection
         /// </summary>
         public void NewPacketHandler(object sender, EventArgs e)
         {
-            lock (_bufferMessage)
-            {
+            //lock (_bufferMessage)
+            //{
                 // извлекаем полученные байты 
                 _bufferMessage.AddRange(ReadBuffer());
                 if (_bufferMessage.Count == 0)
                 {
                     return;
                 }
-            }           
+            //}           
             NewBytesArrived.Set();
         }
 

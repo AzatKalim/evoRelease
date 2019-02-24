@@ -8,7 +8,7 @@ using Evo20.Utils;
 
 namespace Evo20.Controllers.SensorController
 { 
-    public class SensorController : IDisposable
+    public sealed class SensorController : IDisposable
     {
         public event ControllerExceptions SensorControllerException;
 
@@ -188,7 +188,7 @@ namespace Evo20.Controllers.SensorController
             _sensorHandler.StopConnection();
         }
 
-        public void ClearWritedData(int temperatureIndex,WorkMode mode)
+        public void ClearData(int temperatureIndex,WorkMode mode)
         {
             Log.Instance.Debug("Очистка данных :индекс температуры :{0}, режим :{1}", temperatureIndex, mode);
             foreach (var sensor in _sensorsList)
@@ -203,7 +203,7 @@ namespace Evo20.Controllers.SensorController
         #region IDisposable Support
         private bool _disposedValue;
 
-        protected virtual void Dispose(bool disposing)
+        private void Dispose(bool disposing)
         {
             if (!_disposedValue)
             {

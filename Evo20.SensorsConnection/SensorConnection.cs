@@ -151,7 +151,7 @@ namespace Evo20.SensorsConnection
             return true;
         }
 
-        public SensorConnection(String port)
+        public SensorConnection(string port)
         {
             SerialPort.PortName = port;          
         }
@@ -168,9 +168,6 @@ namespace Evo20.SensorsConnection
                 StopBits = StopBits.One,
                 DataBits = 8
             };
-
-            //serialPort.ReadTimeout = 460800;
-            //serialPort.WriteTimeout = 500;
             ConnectionStatus = ConnectionStatus.Disconnected;
             BytesBuffer = new byte[BufferSize];
         }

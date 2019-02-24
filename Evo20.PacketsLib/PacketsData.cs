@@ -153,10 +153,11 @@ namespace Evo20.Packets
         public override string ToString()
         {
             var buffer = new StringBuilder();
-            foreach (var packet in Packets)
+            for (var i = 0; i < Packets.Count-1; i++)
             {
-                buffer.Append(packet + Environment.NewLine);
+                buffer.Append(Packets[i] + Environment.NewLine);
             }
+            buffer.Append(Packets[Packets.Count - 1]);           
             return buffer.ToString();
         }
 

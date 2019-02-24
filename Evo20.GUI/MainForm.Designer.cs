@@ -107,7 +107,6 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.getDataFromFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.savePacketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cycleSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CommonSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -564,11 +563,11 @@
             this.sensorGroupBox.TabStop = false;
             this.sensorGroupBox.Text = "Данные с датчика";
             // 
-            // currentPositionNumberLable
+            // currentPositionNumberLbl
             // 
             this.currentPositionNumberLbl.AutoSize = true;
             this.currentPositionNumberLbl.Location = new System.Drawing.Point(205, 43);
-            this.currentPositionNumberLbl.Name = "currentPositionNumberLable";
+            this.currentPositionNumberLbl.Name = "currentPositionNumberLbl";
             this.currentPositionNumberLbl.Size = new System.Drawing.Size(64, 13);
             this.currentPositionNumberLbl.TabIndex = 8;
             this.currentPositionNumberLbl.Text = "нет данных";
@@ -664,11 +663,11 @@
             this.label18.TabIndex = 2;
             this.label18.Text = "Тип датчика";
             // 
-            // packetsArrivedLabel
+            // packetsArrivedLbl
             // 
             this.packetsArrivedLbl.AutoSize = true;
             this.packetsArrivedLbl.Location = new System.Drawing.Point(205, 101);
-            this.packetsArrivedLbl.Name = "packetsArrivedLabel";
+            this.packetsArrivedLbl.Name = "packetsArrivedLbl";
             this.packetsArrivedLbl.Size = new System.Drawing.Size(64, 13);
             this.packetsArrivedLbl.TabIndex = 1;
             this.packetsArrivedLbl.Text = "нет данных";
@@ -883,8 +882,7 @@
             // FileToolStripMenuItem
             // 
             this.FileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.getDataFromFileToolStripMenuItem,
-            this.savePacketsToolStripMenuItem});
+            this.getDataFromFileToolStripMenuItem});
             this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
             this.FileToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.FileToolStripMenuItem.Text = "Файл";
@@ -1059,7 +1057,6 @@
         private System.Windows.Forms.ToolStripMenuItem SettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cycleSettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem CommonSettingsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem savePacketsToolStripMenuItem;
         private System.Windows.Forms.Label lblVersion;
     }
 }
