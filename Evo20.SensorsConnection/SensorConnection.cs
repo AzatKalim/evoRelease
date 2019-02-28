@@ -189,6 +189,7 @@ namespace Evo20.SensorsConnection
                     {
                         BytesCount = SerialPort.Read(receiveBytes, 0, SerialPort.BytesToRead);
                     }
+
                     if (BytesCount == 0)
                         continue;
                     lock (_bufferLocker)
@@ -198,22 +199,31 @@ namespace Evo20.SensorsConnection
                             BytesBuffer[i] = receiveBytes[i];
                         }
                     }
+
                     EventHandlersListForPacket?.Invoke(this, null);
                 }
-                catch (TimeoutException exeption)
+                catch (TimeoutException exception)
                 {
                     Log.Instance.Error("Байты не были доступны для чтения");
-                    Log.Instance.Exception(exeption);
+                    Log.Instance.Exception(exception);
                     ConnectionStatus = ConnectionStatus.Error;
-                    EventHandlerListForExeptions?.Invoke(this, new ExceptionEventArgs(exeption));
+                    EventHandlerListForExeptions?.Invoke(this, new ExceptionEventArgs(exception));
                     return;
                 }
-                catch (InvalidOperationException exeption)
+                catch (InvalidOperationException exception)
                 {
-                    Log.Instance.Error("Указанный порт не открыт {0}",SerialPort.PortName);
-                    Log.Instance.Exception(exeption);
+                    Log.Instance.Error("Указанный порт не открыт {0}", SerialPort.PortName);
+                    Log.Instance.Exception(exception);
                     ConnectionStatus = ConnectionStatus.Error;
-                    EventHandlerListForExeptions?.Invoke(this, new ExceptionEventArgs(exeption));
+                    EventHandlerListForExeptions?.Invoke(this, new ExceptionEventArgs(exception));
+                    return;
+                }
+                catch (Exception exception)
+                {
+                    Log.Instance.Warning("Неизвестная ошибка");
+                    Log.Instance.Exception(exception);
+                    ConnectionStatus = ConnectionStatus.Error;
+                    EventHandlerListForExeptions?.Invoke(this, new ExceptionEventArgs(exception));
                     return;
                 }
             }

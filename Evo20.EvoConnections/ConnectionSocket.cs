@@ -27,9 +27,9 @@ namespace Evo20.EvoConnections
 
         #region Private Fields
 
-#if !DEBUG
+//#if !DEBUG
         private static readonly IPAddress RemoteIpAddress = IPAddress.Parse(Config.Instance.RemoteIpAdress);
-#endif
+//#endif
         private ConnectionStatus _connectionState = ConnectionStatus.Disconnected;
 
         private int _readedBytesCount;
@@ -68,11 +68,11 @@ namespace Evo20.EvoConnections
             WorkThread = new Thread(ReadMessage) {IsBackground = true};
 
             Sender = new UdpClient(Config.Instance.RemotePortNumber);
-#if !DEBUG
+//#if !DEBUG
             var endPoint = new IPEndPoint(RemoteIpAddress, Config.Instance.RemotePortNumber);
             if(!Config.IsFakeEvo)
                 Sender.Connect(endPoint);
-#endif
+//#endif
             switch (Config.Instance.EvoType)
             {
                 case 1:

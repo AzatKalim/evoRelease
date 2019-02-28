@@ -68,8 +68,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DLY.txt" />
-    <Content Include="DYS.txt" />
+    <Content Include="ДЛУ.txt" />
+    <Content Include="ДУС.txt" />
     <Content Include="plane.ico" />
     <Content Include="settings.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

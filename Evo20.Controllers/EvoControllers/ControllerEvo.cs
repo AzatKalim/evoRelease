@@ -54,24 +54,34 @@ namespace Evo20.Controllers.EvoControllers
 
         public void ControllerRoutine()
         {
-            var commands = RoutineCommands;
-            while (CommandHandler.ConnectionStatus == ConnectionStatus.Connected)
+            try
             {
-                foreach (var item in commands)
+                var commands = RoutineCommands;
+                while (CommandHandler.ConnectionStatus == ConnectionStatus.Connected)
                 {
-                    lock (CommandHandler)
+                    foreach (var item in commands)
                     {
-                        if (!CommandHandler.SendCommand(item))
+                        lock (CommandHandler)
                         {
-                            Log.Instance.Error($"Не удалось отправить сообщение evo{item}");
-                            EvoConnectionChanged?.Invoke(this,new ConnectionStatusEventArgs(CommandHandler.ConnectionStatus));
-                            return;
-                        }
+                            if (!CommandHandler.SendCommand(item))
+                            {
+                                Log.Instance.Error($"Не удалось отправить сообщение evo{item}");
+                                EvoConnectionChanged?.Invoke(this,
+                                    new ConnectionStatusEventArgs(CommandHandler.ConnectionStatus));
+                                return;
+                            }
 
-                        Thread.Sleep(100);
+                            Thread.Sleep(100);
+                        }
                     }
+
+                    Thread.Sleep(ThreadsSleepTime);
                 }
-                Thread.Sleep(ThreadsSleepTime);
+            }
+            catch (Exception exception)
+            {
+                Log.Instance.Warning("Ошибка рутины");
+                Log.Instance.Exception(exception);
             }
         }
 

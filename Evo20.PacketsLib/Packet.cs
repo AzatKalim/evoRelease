@@ -135,11 +135,11 @@ namespace Evo20.Packets
                 ushort head = BitConverter.ToUInt16(new[] { message[Config.Instance.HeadBegin], message[Config.Instance.HeadBegin + 1] }, 0);
                 if (head != 0xFACE)
                     return null;
-#if !DEBUG
+//#if !DEBUG
                 int checkSum = Crc16.ComputeChecksum(message, Config.Instance.PacketSize);
                 if (BitConverter.ToUInt16(new[] { message[Config.Instance.CheckBegin], message[Config.Instance.CheckBegin + 1] }, 0) != checkSum)
                     return null;
-#endif
+//#endif
                 int packetId = BitConverter.ToUInt16(new[] { message[Config.Instance.IdBegin], message[Config.Instance.IdBegin + 1] }, 0);
                 return new Packet(packetId, message);
             }
