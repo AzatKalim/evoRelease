@@ -219,9 +219,11 @@ namespace Evo20.Controllers
         /// </summary>
         public void Stop()
         {
-            if (routineThread!=null && routineThread.IsAlive)
+            if (routineThread!=null && routineThread.IsAlive && routineThread.ThreadState!=ThreadState.Aborted
+                    && routineThread.ThreadState != ThreadState.AbortRequested)
                 routineThread.Abort();
-            if(cycleThread!=null && cycleThread.IsAlive)
+            if(cycleThread!=null && cycleThread.IsAlive && cycleThread.ThreadState!=ThreadState.Aborted
+                    && cycleThread.ThreadState != ThreadState.AbortRequested))
                 cycleThread.Abort();
             StopComPortConnection();
             StopEvoConnection();

@@ -107,7 +107,8 @@ namespace Evo20.SensorsConnection
         {
             if (ConnectionStatus == ConnectionStatus.Connected)
             {
-                if (ReadThread.IsAlive)
+				if (ReadThread.IsAlive && ReadThread.ThreadState!=ThreadState.Aborted 
+					&& ReadThread.ThreadState != ThreadState.AbortRequested)
                 {
                     ReadThread.Abort();
                 }
@@ -138,7 +139,8 @@ namespace Evo20.SensorsConnection
 
         public virtual bool StopConnection()
         {
-            if (ReadThread.IsAlive)
+            if (ReadThread.IsAlive && ReadThread.ThreadState!=ThreadState.Aborted 
+                                   && ReadThread.ThreadState != ThreadState.AbortRequested)
             {
                 ReadThread.Abort();
             }
@@ -218,6 +220,11 @@ namespace Evo20.SensorsConnection
                     EventHandlerListForExeptions?.Invoke(this, new ExceptionEventArgs(exception));
                     return;
                 }
+                catch (ThreadAbortException)
+                {
+                    Log.Instance.Warning("Поток чтения преван {0}", SerialPort.PortName);                         
+                    return;
+                }
                 catch (Exception exception)
                 {
                     Log.Instance.Warning("Неизвестная ошибка");
@@ -252,7 +259,8 @@ namespace Evo20.SensorsConnection
             {
                 if (disposing)
                 {
-                    if (ReadThread.IsAlive)
+                   if(ReadThread!=null && ReadThread.IsAlive && ReadThread.ThreadState!=ThreadState.Aborted
+                    && ReadThread.ThreadState != ThreadState.AbortRequested)
                     {
                         ReadThread.Abort();
                     }

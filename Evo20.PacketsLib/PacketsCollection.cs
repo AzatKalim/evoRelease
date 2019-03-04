@@ -202,19 +202,19 @@ namespace Evo20.Packets
             var sumUw = new double[Config.Instance.ParamsCount];
             var sumA = new double[Config.Instance.ParamsCount];
             var sumW = new double[Config.Instance.ParamsCount];
-
-            foreach (var packet in packetsList)
+            int count = packetsList.Count;
+            for (var i = 0; i < count; i++)
             {
-                var ua = packet.MeanUa;
-                var w = packet.MeanW;
-                var a = packet.MeanA;
-                var uw = packet.MeanUw;
-                for (int i = 0; i < Config.Instance.ParamsCount; i++)
+                var ua = packetsList[i].MeanUa;
+                var w = packetsList[i].MeanW;
+                var a = packetsList[i].MeanA;
+                var uw = packetsList[i].MeanUw;
+                for (var j = 0; j < Config.Instance.ParamsCount; j++)
                 {
-                    sumUa[i] +=ua[i];
-                    sumUw[i] += uw[i];
-                    sumW[i] += w[i];
-                    sumA[i] += a[i];
+                    sumUa[j] += ua[j];
+                    sumUw[j] += uw[j];
+                    sumW[j] += w[j];
+                    sumA[j] += a[j];
                 }
             }
             for (int i = 0; i < Config.Instance.ParamsCount; i++)
@@ -279,8 +279,8 @@ namespace Evo20.Packets
         {
             if (Cleaned)
                 Log.Instance.Error("Уже очищено");
-            Log.Instance.Debug("ClearData");
-            for (int i = 0; i < _positionPackets.Length; i++)
+            Log.Instance.Debug("ClearData температура {0}",Temperature);
+            for (var i = 0; i < _positionPackets.Length; i++)
             {
                 var findAll = ComputedMeanParams[i] == null;
                 if (findAll||ComputedMeanParams[i].MeanA==null )

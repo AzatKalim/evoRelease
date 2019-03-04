@@ -125,7 +125,9 @@ namespace Evo20.EvoConnections
         {
             if (ConnectionStatus == ConnectionStatus.Connected)
             {
-                WorkThread.Abort();
+				if(WorkThread!=null && WorkThread.IsAlive && WorkThread.ThreadState!=ThreadState.Aborted
+                    && WorkThread.ThreadState != ThreadState.AbortRequested)
+					WorkThread.Abort();
                 ConnectionStatus = ConnectionStatus.Pause;
                 Log.Instance.Info("Соединение c Evo 20 приостановлено");
                 return true;
@@ -162,7 +164,8 @@ namespace Evo20.EvoConnections
         /// <returns></returns>
         public void StopConnection()
         {
-            if (WorkThread.IsAlive)
+           if(WorkThread!=null && WorkThread.IsAlive && WorkThread.ThreadState!=ThreadState.Aborted
+                    && WorkThread.ThreadState != ThreadState.AbortRequested)
             {
                 WorkThread.Abort();
             }
@@ -284,7 +287,9 @@ namespace Evo20.EvoConnections
                 {
                     if (_connectionState != ConnectionStatus.Connected)
                     {
-                        WorkThread.Abort();
+						if(WorkThread!=null && WorkThread.IsAlive && WorkThread.ThreadState!=ThreadState.Aborted
+							&& WorkThread.ThreadState != ThreadState.AbortRequested)
+							WorkThread.Abort();
                         Sender.Close();
                         ReceivingUdpClient.Close();
                     }

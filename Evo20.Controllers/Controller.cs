@@ -4,7 +4,6 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using Evo20.Sensors;
-using System.Windows.Forms;
 using Evo20.Commands.Abstract;
 using Evo20.Controllers.Data;
 using Evo20.Controllers.EvoControllers;
@@ -162,7 +161,8 @@ namespace Evo20.Controllers
         {
             try
             {
-                if (_cycleThread != null && _cycleThread.IsAlive)
+                if (_cycleThread != null && _cycleThread.IsAlive && _cycleThread.ThreadState!=ThreadState.Aborted
+                    && _cycleThread.ThreadState != ThreadState.AbortRequested)
                     _cycleThread.Abort();
                 SensorController.SensorController.Instance.StopComPortConnection();
                 ControllerEvo.Instance.StopEvoConnection();
@@ -204,10 +204,13 @@ namespace Evo20.Controllers
                 Cycle(CycleData.Instance.CalibrationTemperatures);
                 Mode = WorkMode.NoMode;
             }
+            catch (ThreadAbortException)
+            {
+                Log.Instance.Warning("CalibrationCycle поток тыл прерван");
+            }
             catch(Exception ex)
             {
                 Log.Instance.Exception(ex);
-                MessageBox.Show(ex.ToString());
             }
         }
 

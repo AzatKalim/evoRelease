@@ -157,8 +157,10 @@ namespace Evo20.Controllers
 
         public void PauseEvoConnection()
         {
-            commandHandler.PauseConnection();
-            routineThread.Abort();
+            commandHandler.PauseConnection();            
+			if(routineThread!=null && routineThread.IsAlive && routineThread.ThreadState!=ThreadState.Aborted
+                    && routineThread.ThreadState != ThreadState.AbortRequested))
+				routineThread.Abort();
         }
 
         public void StopEvoConnection()
@@ -180,7 +182,9 @@ namespace Evo20.Controllers
                     {
                         if (routineThread.IsAlive)
                         {
-                            routineThread.Abort();
+							if(routineThread!=null && routineThread.IsAlive && routineThread.ThreadState!=ThreadState.Aborted
+								&& routineThread.ThreadState != ThreadState.AbortRequested))
+								routineThread.Abort();
                             routineThread.Join();
                         }
                         Mode = WorkMode.Stop;

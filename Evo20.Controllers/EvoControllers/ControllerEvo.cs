@@ -78,6 +78,10 @@ namespace Evo20.Controllers.EvoControllers
                     Thread.Sleep(ThreadsSleepTime);
                 }
             }
+            catch (ThreadAbortException)
+            {
+                Log.Instance.Warning("Опрашивающий поток был прерван");
+            }
             catch (Exception exception)
             {
                 Log.Instance.Warning("Ошибка рутины");
@@ -136,7 +140,9 @@ namespace Evo20.Controllers.EvoControllers
         public void PauseEvoConnection()
         {
             CommandHandler.PauseConnection();
-            RoutineThread.Abort();
+			if(RoutineThread!=null && RoutineThread.IsAlive && RoutineThread.ThreadState!=ThreadState.Aborted
+                    && RoutineThread.ThreadState != ThreadState.AbortRequested)
+				RoutineThread.Abort();
         }
 
         public void StopEvoConnection()

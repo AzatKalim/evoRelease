@@ -485,7 +485,12 @@ namespace Evo20.GUI
         private void ResetForm()
         {
             FormReseter del = Reset;
-            startButton.Invoke(del);
+            if(InvokeRequired)
+                startButton.Invoke(del);
+            else
+            {
+                Reset();
+            }
             workTimer.Stop();
             timer.Stop();
         }
