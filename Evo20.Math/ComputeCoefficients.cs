@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Evo20.Utils;
+using Evo20.Sensors;
 
 namespace Evo20.Math
 {
@@ -8,326 +9,252 @@ namespace Evo20.Math
     {
         #region Constants
 
-        private const int RawCount = 6;
         private const int KCount = 72;
-        private const int LCount = 5;
         private const int SCount = 3;
-        private const int MdlyCount = 4;
         private const int NdlyCount = 72;
         private const int RCount = 39;
-        private const int PCount = 5;
-        private const int MdysCount = 13;
-        private const int NdysCount = 39;
         private const double Factor = 9.807;
 
+        #region matrix
+        private static readonly int[][] DLY_MATRIX = {
+            new [] {0, 0},
+            new [] {0, 15},
+            new [] {0, 30},
+            new [] {0, 45},
+            new [] {0, 60},
+            new [] {0, 75},
+            new [] {0, 90},
+            new [] {0, 105},
+            new [] {0, 120},
+            new [] {0, 135},
+            new [] {0, 150},
+            new [] {0, 165},
+            new [] {0, 180},
+            new [] {0, 195},
+            new [] {0, 210},
+            new [] {0, 225},
+            new [] {0, 240},
+            new [] {0, 255},
+            new [] {0, 270},
+            new [] {0, 285},
+            new [] {0, 300},
+            new [] {0, 315},
+            new [] {0, 330},
+            new [] {0, 345},
+            new [] {90, 0},
+            new [] {90, 15},
+            new [] {90, 30},
+            new [] {90, 45},
+            new [] {90, 60},
+            new [] {90, 75},
+            new [] {90, 90},
+            new [] {90, 105},
+            new [] {90, 120},
+            new [] {90, 135},
+            new [] {90, 150},
+            new [] {90, 165},
+            new [] {90, 180},
+            new [] {90, 195},
+            new [] {90, 210},
+            new [] {90, 225},
+            new [] {90, 240},
+            new [] {90, 255},
+            new [] {90, 270},
+            new [] {90, 285},
+            new [] {90, 300},
+            new [] {90, 315},
+            new [] {90, 330},
+            new [] {90, 345},
+            new [] {-90, -90},
+            new [] {-75, -90},
+            new [] {-60, -90},
+            new [] {-45, -90},
+            new [] {-30, -90},
+            new [] {-15, -90},
+            new [] {0, -90},
+            new [] {15, -90},
+            new [] {30, -90},
+            new [] {45, -90},
+            new [] {60, -90},
+            new [] {75, -90},
+            new [] {90, -90},
+            new [] {105, -90},
+            new [] {120, -90},
+            new [] {135, -90},
+            new [] {150, -90},
+            new [] {165, -90},
+            new [] {180, -90},
+            new [] {195, -90},
+            new [] {210, -90},
+            new [] {225, -90},
+            new [] {240, -90},
+            new [] {255, -90}
+        };
+        #endregion
+
+        #region DYS 
+
+        private static readonly double[][] DYS_MATRIX =
+        {
+            new double [] {0, 0, 0},
+            new double [] {0, 2, 0},
+            new double [] {0, 8, 0},
+            new double [] {0, 16, 0},
+            new double [] {0, 64, 0},
+            new double [] {0, 112, 0},
+            new double [] {0, 128, 0},
+            new double [] {0, -2, 0},
+            new double [] {0, -8, 0},
+            new double [] {0, -16, 0},
+            new double [] {0, -64, 0},
+            new double [] {0, -112, 0},
+            new double [] {0, -128, 0},
+            new double [] {0, 0, 0},
+            new double [] {0, 0, -2},
+            new double [] {0, 0, -8},
+            new double [] {0, 0, -16},
+            new double [] {0, 0, -64},
+            new double [] {0, 0, -112},
+            new double [] {0, 0, -128},
+            new double [] {0, 0, 2},
+            new double [] {0, 0, 8},
+            new double [] {0, 0, 16},
+            new double [] {0, 0, 64},
+            new double [] {0, 0, 112},
+            new double [] {0, 0, 128},
+            new double [] {0, 0, 0},
+            new double [] {2, 0, 0},
+            new double [] {8, 0, 0},
+            new double [] {16, 0, 0},
+            new double [] {64, 0, 0},
+            new double [] {112, 0, 0},
+            new double [] {128, 0, 0},
+            new double [] {-2, 0, 0},
+            new double [] {-8, 0, 0},
+            new double [] {-16, 0, 0},
+            new double [] {-64, 0, 0},
+            new double [] {-112, 0, 0,},
+            new double [] {-128, 0, 0,}
+        };
+        #endregion
         #endregion
 
         #region DLY coefficients
 
-        private static double[,] ComputeTemperatureCalibrationCoefficentsDly(double[][,] adcCodes)
+        private static double[][][] ComputeCalibrationCoefficentsDLY(ISensor dly)
         {
-            Log.Instance.Info("ComputeTemperatureCalibrationCoefficentsDlyД.5");
-
-            if (adcCodes == null)
-                return null;
-            double[,] factors = new double[LCount, SCount];
-            for (int s = 0; s < SCount; s++)
+            Log.Instance.Info("Рассчет ДЛУ");
+            var a = new double[8][][];
+            for (var i = 0; i < 8; i++)
             {
-                for (int k = 0; k < KCount; k++)
+                a[i] = new double[KCount][];
+                for (var j = 0; j < KCount; j++)
                 {
-                    factors[0, s] += adcCodes[0][s + 3, k];
-                    factors[4, s] += adcCodes[4][s + 3, k];
+                    a[i][j] = new double[4];
+                    var meanA=dly.CalibrationPacketsCollection[0].MeanA(j);
+                    a[i][j][0] = 1;
+                    a[i][j][1] = meanA[0];
+                    a[i][j][2] = meanA[1];
+                    a[i][j][3] = meanA[2];
                 }
-                factors[0, s] /= KCount;
-                factors[4, s] /= KCount;
-            }
-
-            for (int s = 0; s < SCount; s++)
-            {
-                for (int k = 0; k < KCount; k++)
-                {
-                    for (int i = 1; i < 4; i++)
-                    {
-                        factors[i, s] += adcCodes[i][s + 3, k];
-                    }
-                }
-                for (int k = 0; k < KCount; k++)
-                {
-                    for (int i = 1; i < 4; i++)
-                    {
-                        factors[i, s] += adcCodes[RawCount - i][s + 3, k];
-                    }
-                }
-                for (int i = 1; i < 4; i++)
-                {
-                    factors[i, s] /= (KCount * 2);
-                }
-            }
-            return factors;
+            }      
+            var b = DLYModelVectors();
+            return ComputeCalibrationCoefficents(a, b);
         }
 
-        //Д.3 Вычислить исходные калибровочные матрицы ДЛУ 
-        private static double[][,] ComputeInitialCalibrationMatricesDly(double[][,] adcCodes)
+        //Эталонных ускорения ДЛУ
+        public static double[][] DLYModelVectors()
         {
-            Log.Instance.Info("Д.3");
+            Log.Instance.Info("Эталонные вектора ДЛУ");
 
-            double[][,] initialCalibration = new double[LCount][,];
-            for (int i = 0; i < initialCalibration.Length; i++)
-            {
-                initialCalibration[i] = new double[KCount, MdlyCount];
-            }
-
-            for (int l = 0; l < LCount; l++)
-            {
-                for (int n = 0; n < KCount; n++)
-                {
-                    initialCalibration[l][n, 0] = 1;
-                    for (int m = 1; m < MdlyCount; m++)
-                    {
-                        if ((l == 0 || l == 4) && m > 0)
-                        {
-                            initialCalibration[l][n, m] = adcCodes[l][m - 1, n];
-                        }
-                        else
-                        {
-                            initialCalibration[l][n, m] = 0.5 * (adcCodes[l][m - 1, n] + adcCodes[RawCount - l][m - 1, n]);
-                        }
-                    }
-                }
-
-            }
-            return initialCalibration;
-
-        }
-
-        //Д.4 вычислить вектора эталонных ускорений ДЛУ
-        private static double[][] ComputeReferenceAccelerationVectorsDly()
-        {
-            Log.Instance.Info("Д.4");
-
-            double[][] b = new double[SCount][];
+            double[][] b = new double[NdlyCount][];
             for (int i = 0; i < b.Length; i++)
-			{
-			    b[i]= new double[NdlyCount];
-			}
+            {
+                b[i] = new double[SCount];
+            }
+
             int n = 0;
-            int firstBorder = NdlyCount / 3;
-            int secondBorder = firstBorder * 2;
-            for (; n < firstBorder; n++)
-            {
-                b[0][n] = -Factor * System.Math.Sin(System.Math.PI * n / 12);
-                b[1][n] = Factor * System.Math.Cos(System.Math.PI * n / 12);
-                b[2][n] = 0;
-            }
-            for (; n < secondBorder; n++)
-            {
-                b[0][n] = 0;
-                b[1][n] = Factor * System.Math.Cos(System.Math.PI * (n / 12 - 2));
-                b[2][n] = -Factor * System.Math.Sin(System.Math.PI * (n / 12 - 2));
-            }
             for (; n < NdlyCount; n++)
             {
-                b[0][n] = Factor * System.Math.Cos(System.Math.PI * (n - 54) / 12);
-                b[1][n] = 0;
-                b[2][n] = Factor * System.Math.Sin(System.Math.PI * (n - 54) / 12);
+                b[n][0] = -Factor * System.Math.Sin(DLY_MATRIX[n][1] * System.Math.PI / 180) *
+                          System.Math.Cos(DLY_MATRIX[n][0] * System.Math.PI / 180);
+                b[n][1] = Factor * System.Math.Cos(DLY_MATRIX[n][1] * System.Math.PI / 180);
+                b[n][2] = -Factor * System.Math.Sin(DLY_MATRIX[n][1] * System.Math.PI / 180) *
+                          System.Math.Sin(DLY_MATRIX[n][0] * System.Math.PI / 180);
             }
+
             return b;
         }
 
-        //Д.5 вычислить вектора калибровочных коэффициентов ДЛУ по ускорениям
-        private static double[,][,] СomputeVectorOfCalibrationCoefficientsDly(double[][,] adcCodes)
+        #endregion
+
+        #region DYS coefficents
+
+        private static double[][][] ComputeCalibrationCoefficentsDYS(ISensor dys)
         {
-            Log.Instance.Info("Д.5");
-            double[,][,] result= new double[LCount,SCount][,];
-            double[][,] a = ComputeInitialCalibrationMatricesDly(adcCodes);
-            double[][] b = ComputeReferenceAccelerationVectorsDly();
-            for (int l = 0; l < LCount; l++)
+            Log.Instance.Info("Рассчет ДУС");
+            var a = ComputeAMatrix(dys);
+            var b = DYS_MATRIX;
+            return ComputeCalibrationCoefficents(a, b);
+        }
+
+        private static double[][][] ComputeCalibrationCoefficents(double[][][] a, double[][] b)
+        {
+            var result = new double[8][][];
+            for (var i = 0; i < 8; i++)
             {
-                Log.Instance.Info("l={0}",l);
-                for (int s = 0; s < SCount; s++)
-                {
-                    var aL= a[l];
-                    var aLTrans=aL.Transpose();
-                    var bS = b[s];
-                    var t11 = Matrix.Multiply(aLTrans, aL);
-                    var t1 = t11.Inverse();
-                    if(t11==null)
-                    {
-                        Log.Instance.Error("Невозможно найти обратную матрицу l={0} s={1}", l,s);                 
-                        throw new ApplicationException("Невозможно найти обратную матрицу");
-                    }
-                    var t21 = bS.Transpose();
-                    var t2 = Matrix.Multiply(aLTrans, t21);
-                    //var t2 = t22.Inverse();
-                    result[l, s] = Matrix.Multiply(t1,t2).Transpose();
-                }
+                var aTrans = a[i].Transpose();
+                var step1 = Matrix.Multiply(aTrans, a[i]);
+                var step2 = step1.Inverse();
+                var step3 = Matrix.Multiply(aTrans, b);
+                result[i] = Matrix.Multiply(step2, step3);
             }
+
             return result;
+        }
+
+        private static double[][][] ComputeAMatrix(ISensor dys)
+        {
+            Log.Instance.Info("Вычисление матрицы А ДУС");
+
+            var a = new double[8][][];
+            for (var i = 0; i < a.Length; i++)
+                a[i]= new double[RCount][];
+
+            for (var i = 0; i < a.Length; i++)
+            {
+                for (var j = 0; j < RCount;j++)
+                {
+                    a[i][j]= new double[13];
+                    var w =dys.CalibrationPacketsCollection[i].MeanW(j);
+                    a[i][j][0] = 1;
+                    var counter = 1;
+                    for (var k = 1; k < 5; k++)
+                    {
+                        a[i][j][counter] = System.Math.Pow(w[0],k);
+                        a[i][j][++counter] = System.Math.Pow(w[1],k);
+                        a[i][j][++counter] = System.Math.Pow(w[2],k);
+                    }                 
+                }              
+            }
+
+            return a;
         }
 
         #endregion
-         
-        #region DYS coefficents
-   
-        //Вычислить калибровочные коэффициенты ДУC по температуре
 
-        private static double[,] ComputeTemperatureCalibrationCoefficentsDys(double[][,] adcCodes)
-        {
-            Log.Instance.Info("ComputeTemperatureCalibrationCoefficentsDys");
-            if (adcCodes == null)
-            {
-                return null;
-            }
-            double[,] factors = new double[PCount, SCount];
-            for (int p = 0; p< PCount; p++)
-			{
-                for (int s = 0; s < SCount; s++)
-                {
-                    for (int r = 0; r < RCount; r++)
-                    {
-
-                        factors[p, s] = adcCodes[p][s + 3, r];
-                    }
-                    factors[p, s] /= RCount;
-                }
-            }        
-            return factors;
-        }
-
-        //Д.8 Вычислить исходные калибровочные матрицы ДУС метода МНК для температурных точек
-        private static double[][,] ComputeInitialCalibrationMatricesDys(double[][,] adcCodes)
-        {
-            Log.Instance.Info("Д.8");
-            double[][,] initialCalibration = new double[PCount][,];
-            for (int i = 0; i < initialCalibration.Length; i++)
-            {
-                initialCalibration[i] = new double[NdysCount, MdysCount];
-            }
-
-            for (int p= 0; p < PCount; p++)
-            {
-                for (int n = 0; n < NdysCount; n++)
-                {
-                    initialCalibration[p][n, 0] = 1;
-                    for (int m = 1; m < 4; m++)
-                    {
-                        initialCalibration[p][n, m] = adcCodes[p][m - 1, n];
-                    }
-                    for (int m = 4; m < 7; m++)
-                    {
-                        initialCalibration[p][n, m] = System.Math.Pow(adcCodes[p][m - 4, n], 2);
-                    }
-                    for (int m = 7; m < 10; m++)
-                    {
-                        initialCalibration[p][n, m] = System.Math.Pow(adcCodes[p][m - 7, n], 3);
-                    }
-                    for (int m = 10; m < 12; m++)
-                    {
-                        initialCalibration[p][n, m] = System.Math.Pow(adcCodes[p][m - 10, n], 4);
-                    }                 
-                }
-
-            }
-            return initialCalibration;
-
-        }
-
-        //Д.9 Вычислить вектора эталонных угловых скоростей
-        private static double[][] ComputeVectorOfStandardAngularVelocitiesDys()
-        {
-            Log.Instance.Info("Д.9");
-            double [][] result= new double[SCount][];
-            for (int i = 0; i < result.Length; i++)
-            {
-                result[i]= new double[NdysCount];
-            }
-            for (int s = 0; s < SCount; s++)
-            {
-                for (int n = 0; n < NdysCount; n++)
-                {
-                    if (n == 0 || n == 13 || n == 26)
-                    {
-                        result[s][n] = 0;
-                        continue;
-                    }
-                    if ((n > 0 && n < 26) && s == 0)
-                    {
-                        result[s][n] = 0;
-                        continue;
-                    }
-                    if ((n > 0 && n < 13) && s == 2)
-                    {
-                        result[s][n] = 0;
-                        continue;
-                    }
-                    if ((n > 26) && s == 2)
-                    {
-                        result[s][n] = 0;
-                        continue;
-                    }
-                    if ((n > 13) && s == 1)
-                    {
-                        result[s][n] = 0;
-                    }
-                }
-            }
-            result[1][1] = result[2][20] = result[0][27] = 2;
-            result[1][2] = result[2][21] = result[0][28] = 8;
-            result[1][3] = result[2][22] = result[0][29] = 16;
-            result[1][4] = result[2][23] = result[0][30] = 64;
-            result[1][5] = result[2][24] = result[0][31] = 112;
-            result[1][6] = result[2][25] = result[0][32] = 128;
-            result[1][7] = result[2][14] = result[0][33] = -2;
-            result[1][8] = result[2][15] = result[0][34] = -8;
-            result[1][9] = result[2][16] = result[0][35] = -16;
-            result[1][10] = result[2][17] = result[0][36] = -64;
-            result[1][11] = result[2][18] = result[0][37] = -112;
-            result[1][12] = result[2][19] = result[0][38] = -128;
-            return result;
-        }
-
-        //Д.10 Для каждой температуры и каждой оси вычисляет вектора калибровочных коэффициентов ДУС по угловым скоростям :
-        private static double[,][,] СomputVectorOfCalibrationCoefficientsDys(double[][,] adcCodes)
-        {
-            Log.Instance.Info("Д.10");
-            double[,][,] result = new double[PCount, SCount][,];
-            double[][,] a = ComputeInitialCalibrationMatricesDys(adcCodes);
-            double[][] b = ComputeVectorOfStandardAngularVelocitiesDys();           
-            for (int p = 0; p < PCount; p++)
-            {
-                for (int s = 0; s < SCount; s++)
-                {
-                    var aP= a[p];
-                    var aPTrans=aP.Transpose();
-                    var bS= b[s];
-                    var mul1 = Matrix.Multiply(aPTrans, aP).Inverse();
-                    if (mul1 == null)
-                    {
-                        Log.Instance.Error("Невозможно найти обратную матрицу p={0} s={1}", p, s);
-                        throw new ApplicationException("Невозможно найти обратную матрицу");
-                    }
-
-                    var mul2 = Matrix.Multiply(aPTrans, bS.Transpose());
-                    result[p, s] = Matrix.Multiply(mul1,mul2).Transpose();
-                }
-            }
-            return result;
-        }
-
-        #endregion 
-
-        public static bool CalculateCoefficients(double[][,] adcCodesDly, double[][,] adcCodesDys, StreamWriter file)
+        public static bool CalculateCoefficients(ISensor dly, ISensor dys, StreamWriter file)
         {
             Log.Instance.Info("CalculateCoefficients");
 
-            double[,][,] coefficentsDly = СomputeVectorOfCalibrationCoefficientsDly(adcCodesDly);
-            double[,] temperatureCoefficentsDly = ComputeTemperatureCalibrationCoefficentsDly(adcCodesDly);
+            var coefficentsDly = ComputeCalibrationCoefficentsDLY(dly);
+            var temperatureCoefficentsDly = ComputeTemperatureCalibrationCoefficents(dly,KCount);
 
-            double[,][,] coefficentsDys = СomputVectorOfCalibrationCoefficientsDys(adcCodesDys);
-            double[,] temperatureCoefficentsDys = ComputeTemperatureCalibrationCoefficentsDys(adcCodesDys);
+            var coefficentsDys = ComputeCalibrationCoefficentsDYS(dys);
+            var temperatureCoefficentsDys = ComputeTemperatureCalibrationCoefficents(dys,RCount);
 
             file.WriteLine("коэффициенты ДЛУ по ускорениям");
-            WriteMatrix(coefficentsDly,ref file);
+            WriteMatrix(coefficentsDly, ref file);
             file.WriteLine("коэффициенты ДУС по угловым скоростям");
             WriteMatrix(coefficentsDys, ref file);
 
@@ -338,30 +265,40 @@ namespace Evo20.Math
             return true;
         }
 
+        private static double[][] ComputeTemperatureCalibrationCoefficents(ISensor sensor,int posCount)
+        {
+            Log.Instance.Info("Рассчет векторов {0} по температурам",sensor.Name);
+            var mean = new double[8][];
+            for (var i = 0; i < 8; i++)
+                for (var j = 0; j < posCount; j++)
+                    mean[i] = sensor.CalibrationPacketsCollection[i].MeanUa(j);
+            return mean;
+        }
         #region Secondary functions
 
-        private static void WriteMatrix(double [,] matrix, ref StreamWriter file)
+        private static void WriteMatrix(double[][] matrix, ref StreamWriter file)
         {
             for (int i = 0; i < matrix.GetLength(0); i++)
             {
-                for (int j = 0; j < matrix.GetLength(1); j++)
+                for (int j = 0; j < matrix[i].Length; j++)
                 {
-                    file.Write(matrix[i, j] + " ");
+                    file.Write(matrix[i][j] + " ");
                 }
+
                 file.Write(Environment.NewLine);
             }
         }
 
-        private static void WriteMatrix(double[,][,] matrix, ref StreamWriter file)
+        private static void WriteMatrix(double[][][] matrix, ref StreamWriter file)
         {
-            for (int i = 0; i < matrix.GetLength(0); i++)
+            for (var i = 0; i < matrix.Length; i++)
             {
-                for (int j = 0; j < matrix.GetLength(1); j++)
+                file.WriteLine(i);
+                for (var j = 0; j < matrix[i].Length; j++)
                 {
-                    file.Write("Vector [{0},{1}] ", i, j);
-                    for (int k = 0; k < matrix[i,j].GetLength(0); k++)
+                    for (var k = 0; k < matrix[i][j].Length; k++)
                     {
-                        file.Write(matrix[i, j][k,0] + " ");
+                        file.WriteLine("Vector [{0},{1}]: {2}", i, j, matrix[i][j][k]);
                     }
                     file.Write(Environment.NewLine);
                 }

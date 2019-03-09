@@ -16,8 +16,6 @@ namespace Evo20.Packets
 
         #endregion
 
-        #region Constructors
-
         public PacketsData(StreamReader file)
         {
             Packets= new List<Packet>();
@@ -36,7 +34,7 @@ namespace Evo20.Packets
             }
         }
 
-        public PacketsData(ref List<Packet> newPackets)
+        private PacketsData(ref List<Packet> newPackets)
         {
             var packetsList=new List<Packet>();
             for (int i = 0; i < PacketsCount; i++)
@@ -51,11 +49,10 @@ namespace Evo20.Packets
             Packets[2].U = Packets[0].U;
             Packets[3].U = Packets[1].U;
         }
-        #endregion
 
         #region Public properties
 
-        public List<Packet> Packets
+        private List<Packet> Packets
         {
             get;
         }
@@ -64,19 +61,16 @@ namespace Evo20.Packets
         {
             get
             {
-                if (_meanW == null)
+                if (_meanW != null)
+                    return _meanW;
+                _meanW = new double[AxisCount];
+                double sum = 0;
+                for (int i = 0; i < _meanW.Length; i++)
                 {
-                    _meanW = new double[AxisCount];
-                    double sum = 0;
-                    for (int i = 0; i < _meanW.Length; i++)
-                    {
-                        foreach (var packet in Packets)
-                        {
-                            sum += packet.W[i];
-                        }
-                        _meanW[i] += sum / Packets.Count;
-                        sum = 0;
-                    }
+                    foreach (var packet in Packets)
+                        sum += packet.W[i];
+                    _meanW[i] += sum / Packets.Count;
+                    sum = 0;
                 }
                 return _meanW;
             }

@@ -25,3 +25,10 @@ C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math\obj\Debug\Evo20.Math.pdb
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math\obj\Debug\Evo20.Math.csprojResolveAssemblyReference.cache
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math\bin\Debug\Evo20.Utils.dll
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math\bin\Debug\Evo20.Utils.pdb
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math\bin\Debug\Evo20.Packets.dll
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math\bin\Debug\Evo20.Sensors.dll
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math\bin\Debug\Evo20.Packets.pdb
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math\bin\Debug\Evo20.Sensors.pdb
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math\bin\Debug\Newtonsoft.Json.xml

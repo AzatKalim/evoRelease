@@ -89,6 +89,14 @@
       <Project>{99D800D1-0D39-49B9-9311-003759CA741B}</Project>
       <Name>Evo20.Utils</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Evo20.PacketsLib\Evo20.Packets.csproj">
+      <Project>{38d34933-ea5e-4c43-aee0-752676bc5fd0}</Project>
+      <Name>Evo20.Packets</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Evo20.Sensors\Evo20.Sensors.csproj">
+      <Project>{4E9C9D86-5565-4A04-8490-85EBED2E8886}</Project>
+      <Name>Evo20.Sensors</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

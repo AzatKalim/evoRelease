@@ -56,7 +56,7 @@ namespace Evo20.Sensors
         {
             List<double> result;
 
-            int index = FindTemperatureIndex(CalibrationPacketsCollection, temperature);
+            var index = FindTemperatureIndex(CalibrationPacketsCollection, temperature);
             if (index == -1)
             {
                 return null;
@@ -66,12 +66,7 @@ namespace Evo20.Sensors
                 result = CalibrationPacketsCollection[index].MeanParams(numberOfPosition);
                 if (result == null)
                     return null;
-            }
-            double mul = 0.5/Math.Pow(2,28);
-            for (int i = 0; i < result.Count; i++)
-            {
-                result[i] *= mul;
-            }
+            }         
             return result;
         }
 
@@ -182,7 +177,7 @@ namespace Evo20.Sensors
 
 #endregion
 
-#region Abstract Methods
+        #region Abstract Methods
 
         protected abstract ProfilePart[] GetCheckProfile();
 

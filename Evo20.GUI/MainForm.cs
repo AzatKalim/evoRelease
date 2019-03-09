@@ -533,7 +533,7 @@ namespace Evo20.GUI
                 string message = @"Цикл окончен!";
                 if (CycleData.Instance.IsFullCycle)
                 {
-                    DialogResult diaologResult = MessageBox.Show(message, "Выполнить расчет коэффицентов ?",
+                    DialogResult diaologResult = MessageBox.Show("Выполнить расчет коэффицентов ?",message,
                         MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (diaologResult == DialogResult.Yes)
                     {

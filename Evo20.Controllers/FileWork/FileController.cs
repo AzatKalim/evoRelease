@@ -30,8 +30,8 @@ namespace Evo20.Controllers.FileWork
             bool result=false;
             try
             {
-                result = CalculatorCoefficients.CalculateCoefficients(sensorsList[0].GetCalibrationAdcCodes(),
-                    sensorsList[1].GetCalibrationAdcCodes(),
+                result = CalculatorCoefficients.CalculateCoefficients(sensorsList[0],
+                    sensorsList[1],
                     file);
             }
             catch (Exception ex)

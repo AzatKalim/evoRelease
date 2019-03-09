@@ -1,6 +1,7 @@
 ﻿using Evo20.Utils;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace Evo20.Packets
 {
@@ -11,12 +12,14 @@ namespace Evo20.Packets
         const int AStringNumber = 4;
         const int UStringNumber = 7;
 
+        static readonly double mul = 0.5 / Math.Pow(2, 28);
         #endregion
-        public byte[] Data;
-        private int[] _w;
-        private int[] _a;
-        private int[] _u;
-        public int[] W
+
+        private byte[] Data;
+        private double[] _w;
+        private double[] _a;
+        private double[] _u;
+        public double[] W
         {
             get
             {
@@ -29,7 +32,7 @@ namespace Evo20.Packets
                 _w = value;
             }
         }
-        public int[] A
+        public double[] A
         {
             get
             {
@@ -42,7 +45,7 @@ namespace Evo20.Packets
                 _a = value;
             }
         }
-        public int[] U
+        public double[] U
         {
             get
             {
@@ -60,18 +63,19 @@ namespace Evo20.Packets
         {
             get;
         }
-       
-        public Packet(int id,byte[] array)
+
+        private Packet(int id,byte[] array)
         {
            Id = id;
            Data = array;
         }
 
-
         public override string ToString()
         {
-            string buffer = $"{Id} {W[0]} {W[1]} {W[2]} {A[0]} {A[1]} {A[2]} {U[0]} {U[1]} {U[2]}";
-            return buffer;
+            return $"{Id} " +
+                $"{W[0].ToString(CultureInfo.InvariantCulture)} {W[1].ToString(CultureInfo.InvariantCulture)} {W[2].ToString(CultureInfo.InvariantCulture)} " +
+                $"{A[0].ToString(CultureInfo.InvariantCulture)} {A[1].ToString(CultureInfo.InvariantCulture)} {A[2].ToString(CultureInfo.InvariantCulture)} " +
+                $"{U[0].ToString(CultureInfo.InvariantCulture)} {U[1].ToString(CultureInfo.InvariantCulture)} {U[2].ToString(CultureInfo.InvariantCulture)}";
         }
 
         public Packet(string input)
@@ -79,15 +83,15 @@ namespace Evo20.Packets
             string[] tmp = input.Split(' ');
             try
             {
-                A = new int[Config.Instance.ParamsCount];
-                W = new int[Config.Instance.ParamsCount];
-                U = new int[Config.Instance.ParamsCount];
+                A = new double[Config.Instance.ParamsCount];
+                W = new double[Config.Instance.ParamsCount];
+                U = new double[Config.Instance.ParamsCount];
                 Id = Convert.ToInt32(tmp[0]);
-                for (int i = 0; i < Config.Instance.ParamsCount; i++)
+                for (var i = 0; i < Config.Instance.ParamsCount; i++)
                 {
-                    W[i] = Convert.ToInt32(tmp[WStringNumber + i]);
-                    A[i] = Convert.ToInt32(tmp[AStringNumber + i]);
-                    U[i] = Convert.ToInt32(tmp[UStringNumber + i]);
+                    W[i] = double.Parse(tmp[WStringNumber + i], CultureInfo.InvariantCulture);
+                    A[i] = double.Parse(tmp[AStringNumber + i], CultureInfo.InvariantCulture);
+                    U[i] = double.Parse(tmp[UStringNumber + i], CultureInfo.InvariantCulture);
                 }
             }
             catch (FormatException)
@@ -105,19 +109,19 @@ namespace Evo20.Packets
             {       
                 bool rangeFlag = false;
                 bool dataFlag = false;
-                int wX = ConvertParam(new[] { Data[Config.Instance.WxBegin], Data[Config.Instance.WxBegin + 1], Data[Config.Instance.WxBegin + 2], Data[Config.Instance.WxBegin + 3] }, ref rangeFlag, ref dataFlag);
-                int wY = ConvertParam(new[] { Data[Config.Instance.WyBegin], Data[Config.Instance.WyBegin + 1], Data[Config.Instance.WyBegin + 2], Data[Config.Instance.WyBegin + 3] }, ref rangeFlag, ref dataFlag);
-                int wZ = ConvertParam(new[] { Data[Config.Instance.WzBegin], Data[Config.Instance.WzBegin + 1], Data[Config.Instance.WzBegin + 2], Data[Config.Instance.WzBegin + 3] }, ref rangeFlag, ref dataFlag);
+                var wX = ConvertParam(new[] { Data[Config.Instance.WxBegin], Data[Config.Instance.WxBegin + 1], Data[Config.Instance.WxBegin + 2], Data[Config.Instance.WxBegin + 3] }, ref rangeFlag, ref dataFlag);
+                var wY = ConvertParam(new[] { Data[Config.Instance.WyBegin], Data[Config.Instance.WyBegin + 1], Data[Config.Instance.WyBegin + 2], Data[Config.Instance.WyBegin + 3] }, ref rangeFlag, ref dataFlag);
+                var wZ = ConvertParam(new[] { Data[Config.Instance.WzBegin], Data[Config.Instance.WzBegin + 1], Data[Config.Instance.WzBegin + 2], Data[Config.Instance.WzBegin + 3] }, ref rangeFlag, ref dataFlag);
                 W = new[] { wX, wY, wZ };
-                int aX = ConvertParam(new[] { Data[Config.Instance.AxBegin], Data[Config.Instance.AxBegin + 1], Data[Config.Instance.AxBegin + 2], Data[Config.Instance.AxBegin + 3] }, ref rangeFlag, ref dataFlag);
-                int aY = ConvertParam(new[] { Data[Config.Instance.AyBegin], Data[Config.Instance.AyBegin + 1], Data[Config.Instance.AyBegin + 2], Data[Config.Instance.AyBegin + 3] }, ref rangeFlag, ref dataFlag);
-                int aZ = ConvertParam(new[] { Data[Config.Instance.AzBegin], Data[Config.Instance.AzBegin + 1], Data[Config.Instance.AzBegin + 2], Data[Config.Instance.AzBegin + 3] }, ref rangeFlag, ref dataFlag);
+                var aX = ConvertParam(new[] { Data[Config.Instance.AxBegin], Data[Config.Instance.AxBegin + 1], Data[Config.Instance.AxBegin + 2], Data[Config.Instance.AxBegin + 3] }, ref rangeFlag, ref dataFlag);
+                var aY = ConvertParam(new[] { Data[Config.Instance.AyBegin], Data[Config.Instance.AyBegin + 1], Data[Config.Instance.AyBegin + 2], Data[Config.Instance.AyBegin + 3] }, ref rangeFlag, ref dataFlag);
+                var aZ = ConvertParam(new[] { Data[Config.Instance.AzBegin], Data[Config.Instance.AzBegin + 1], Data[Config.Instance.AzBegin + 2], Data[Config.Instance.AzBegin + 3] }, ref rangeFlag, ref dataFlag);
                 A = new[] { aX, aY, aZ };
                 if (Id < 3)
                 {
-                    int uX = ConvertParam(new[] { Data[Config.Instance.UxBegin], Data[Config.Instance.UxBegin + 1], Data[Config.Instance.UxBegin + 2], Data[Config.Instance.UxBegin + 3] }, ref rangeFlag, ref dataFlag);
-                    int uY = ConvertParam(new[] { Data[Config.Instance.UyBegin], Data[Config.Instance.UyBegin + 1], Data[Config.Instance.UyBegin + 2], Data[Config.Instance.UyBegin + 3] }, ref rangeFlag, ref dataFlag);
-                    int uZ = ConvertParam(new[] { Data[Config.Instance.UzBegin], Data[Config.Instance.UzBegin + 1], Data[Config.Instance.UzBegin + 2], Data[Config.Instance.UzBegin + 3] }, ref rangeFlag, ref dataFlag);
+                    var uX = ConvertParam(new[] { Data[Config.Instance.UxBegin], Data[Config.Instance.UxBegin + 1], Data[Config.Instance.UxBegin + 2], Data[Config.Instance.UxBegin + 3] }, ref rangeFlag, ref dataFlag);
+                    var uY = ConvertParam(new[] { Data[Config.Instance.UyBegin], Data[Config.Instance.UyBegin + 1], Data[Config.Instance.UyBegin + 2], Data[Config.Instance.UyBegin + 3] }, ref rangeFlag, ref dataFlag);
+                    var uZ = ConvertParam(new[] { Data[Config.Instance.UzBegin], Data[Config.Instance.UzBegin + 1], Data[Config.Instance.UzBegin + 2], Data[Config.Instance.UzBegin + 3] }, ref rangeFlag, ref dataFlag);
                     U = new[] { uX, uY, uZ };
                 }
                 Data = null;
@@ -150,17 +154,18 @@ namespace Evo20.Packets
 
         }
 
-        private static int ConvertParam(byte[] bytes, ref bool rangeFlag, ref bool dataFlag)
+        private static double ConvertParam(byte[] bytes, ref bool rangeFlag, ref bool dataFlag)
         {
             //bool sign = true;          
-            int res = BitConverter.ToInt32(bytes, 0);
+            var res = BitConverter.ToInt32(bytes, 0);
             //if ((res & int.MinValue) == int.MinValue)
             //    sign = false;
             if ((res & 3) == 2 || (res & 3) == 1)
                 rangeFlag = true;
             if ((res & 3) == 3)
                 dataFlag = true;
-            return res;
+
+            return res*mul;
         }
 
         public static bool FindPacketBegin(ref List<byte> buffer)

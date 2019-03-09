@@ -152,10 +152,10 @@ namespace Evo20.Controllers.SensorController
             if (ua == null || w == null || a == null || uw==null)
                 return null;
             var result = new List<double>();
-            result.AddRange(ua);
             result.AddRange(w);
-            result.AddRange(a);
             result.AddRange(uw);
+            result.AddRange(a);
+            result.AddRange(ua);
             double mul = 0.5 / System.Math.Pow(2, 28);
             for (int i = 0; i < result.Count; i++)
             {

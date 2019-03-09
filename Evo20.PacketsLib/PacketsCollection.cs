@@ -225,10 +225,10 @@ namespace Evo20.Packets
                 sumW[i] /= packetsList.Count;
             }
             var result = new List<double>();
-            result.AddRange(sumA);
             result.AddRange(sumW);
-            result.AddRange(sumUa);
             result.AddRange(sumUw);
+            result.AddRange(sumA);
+            result.AddRange(sumUa);
             return result;
         }
 
