@@ -1,4 +1,7 @@
 ﻿// ReSharper disable CompareOfFloatsByEqualityOperator
+
+using System;
+
 namespace Evo20.Math
 {
     public static class  Matrix
@@ -130,7 +133,12 @@ namespace Evo20.Math
                     // Divide the row by augmented[row, row] to make this entry 1.
                     for (int col = 0; col < numCols; col++)
                         if (col != row)
+                        {
                             augmented[row, col] /= augmented[row, row];
+                            if (augmented[row, row] == double.NaN)
+                                throw new Exception("NaN");
+                        }
+
                     augmented[row, row] = 1;
 
                     // Subtract this row from the other rows.
@@ -139,6 +147,8 @@ namespace Evo20.Math
                         if (row2 != row)
                         {
                             double factor = augmented[row2, row] / augmented[row, row];
+                            if(factor==double.NaN)
+                                throw new Exception("NaN");
                             for (int col = 0; col < numCols; col++)
                                 augmented[row2, col] -= factor * augmented[row, col];
                         }

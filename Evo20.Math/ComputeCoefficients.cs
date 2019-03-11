@@ -228,10 +228,10 @@ namespace Evo20.Math
                     a[i][j]= new double[13];
                     var w =dys.CalibrationPacketsCollection[i].MeanW(j);
                     a[i][j][0] = 1;
-                    var counter = 1;
+                    var counter = 0;
                     for (var k = 1; k < 5; k++)
                     {
-                        a[i][j][counter] = System.Math.Pow(w[0],k);
+                        a[i][j][++counter] = System.Math.Pow(w[0],k);
                         a[i][j][++counter] = System.Math.Pow(w[1],k);
                         a[i][j][++counter] = System.Math.Pow(w[2],k);
                     }                 

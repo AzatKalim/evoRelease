@@ -52,15 +52,12 @@ namespace Evo20.Sensors
             return profile.ToArray();
         }
 
-        public List<double> СalculateCalibrationAverage(int temperature, int numberOfPosition)
+        public List<double> СalculateCalibrationAverage(int index, int numberOfPosition)
         {
             List<double> result;
-
-            var index = FindTemperatureIndex(CalibrationPacketsCollection, temperature);
             if (index == -1)
-            {
                 return null;
-            }
+
             lock (CalibrationPacketsCollection)
             {
                 result = CalibrationPacketsCollection[index].MeanParams(numberOfPosition);
@@ -70,42 +67,23 @@ namespace Evo20.Sensors
             return result;
         }
 
-        public List<double> СalculateCheckAverage(int temperature, int numberOfPosition)
+        public List<double> СalculateCheckAverage(int index, int numberOfPosition)
         {
             List<double> result;
-
-            int index = FindTemperatureIndex(CheckPacketsCollection, temperature);
             if (index == -1)
-            {
                 return null;
-            }
+
             lock (CheckPacketsCollection)
             {
                 result = CheckPacketsCollection[index].MeanParams(numberOfPosition);               
             }
-            double mul = 0.5 / Math.Pow(2, 28);
-            for (int i = 0; i < result.Count; i++)
-            {
-                result[i] *= mul;
-            }
             return result;
         }
 
-        private int FindTemperatureIndex(List<PacketsCollection> list, int temperature)
-        {
-            for (int i = 0; i < list.Count; i++)
-            {
-                if (list[i].Temperature == temperature)
-                    return i;
-            }
-            return -1;
-        }
-
         public bool AddCalibrationPacketData(PacketsData packetData,
-           int temperatureOfCollect,
+           int index,
            int currentPositionNumber)
         {
-            int index = FindTemperatureIndex(CalibrationPacketsCollection, temperatureOfCollect);
             if (index == -1)
                 return false;
             if (!CalibrationPacketsCollection[index].AddPacketData(currentPositionNumber, packetData))
@@ -116,10 +94,9 @@ namespace Evo20.Sensors
         }
 
         public bool AddCheckPacketData(PacketsData packetData,
-           int temperatureOfCollect,
+           int index,
            int currentPositionNumber)
         {
-            int index = FindTemperatureIndex(CheckPacketsCollection, temperatureOfCollect);
             if (index == -1)
             {
                 return false;
@@ -132,24 +109,19 @@ namespace Evo20.Sensors
             return true;
         }
 
-        public int PacketsArivedCountCalibration(int temperature, int numberOfPosition)
+        public int PacketsArivedCountCalibration(int index, int numberOfPosition)
         {         
-            int index = FindTemperatureIndex(CalibrationPacketsCollection, temperature);
             if (index == -1)
-            {
                 return 0;
-            }
+
             return CalibrationPacketsCollection[index].PositionCount > numberOfPosition ? CalibrationPacketsCollection[index][numberOfPosition]==null?0: CalibrationPacketsCollection[index][numberOfPosition].Count: 0;
           
         }
 
-        public int PacketsArivedCountCheck(int temperature, int numberOfPosition)
+        public int PacketsArivedCountCheck(int index, int numberOfPosition)
         {
-            var index = FindTemperatureIndex(CheckPacketsCollection, temperature);
             if (index == -1)
-            {
                 return 0;
-            }
             if (CheckPacketsCollection[index] == null)
                 return 0;
 

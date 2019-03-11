@@ -75,6 +75,18 @@ namespace Evo20.Controllers.Data
             }
         }
 
+        private void WriteMeanForCurrentTemperature(StreamWriter file, List<PacketsCollection> data, int temperatureIndex)
+        {
+            if (data != null && data.Count > temperatureIndex && data[temperatureIndex] != null)
+            {
+                data[temperatureIndex].MeanToFile(file);
+                Log.Instance.Info("Запись данных в файл {0} для температуры завершена", temperatureIndex);
+            }
+            else
+            {
+                Log.Instance.Error("Запись данных в файл {0} для температуры невыполнена", temperatureIndex);
+            }
+        }
         public void WriteForCurrentTemperture(ISensor[] sensors, StreamWriter file, int temperatureIndex)
         {
             foreach (var sensor  in sensors)
@@ -87,6 +99,21 @@ namespace Evo20.Controllers.Data
 
                 Log.Instance.Info("Запись данных в файл датчик {0} для температуры {1}",sensor.Name, temperatureIndex);
                 WritePacketsForCurrentTemperature(file, sensor.CalibrationPacketsCollection, temperatureIndex);
+            }
+        }
+
+        public void WriteMeanForCurrentTemperture(ISensor[] sensors, StreamWriter file, int temperatureIndex)
+        {
+            foreach (var sensor in sensors)
+            {
+                if (sensor.CalibrationPacketsCollection == null || sensor.CalibrationPacketsCollection.Count == 0)
+                {
+                    Log.Instance.Error("Нет пакетов по калибровке: {0}", sensor.Name);
+                    return;
+                }
+
+                Log.Instance.Info("Запись данных в файл датчик {0} для температуры {1}", sensor.Name, temperatureIndex);
+                WriteMeanForCurrentTemperature(file, sensor.CalibrationPacketsCollection, temperatureIndex);
             }
         }
 
@@ -119,8 +146,7 @@ namespace Evo20.Controllers.Data
             {
                 var packetsCollection = new PacketsCollection(file, temperature);
                 packetsCollection.ClearData();
-                collection.Add(packetsCollection);
-            
+                collection.Add(packetsCollection);       
             }
             catch (Exception exception)
             {

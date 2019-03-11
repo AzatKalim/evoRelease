@@ -25,3 +25,9 @@ C:\Users\Азат\Desktop\работа\Evo20\bin\Release\Evo20.Math.pdb
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math\obj\Release\Evo20.Math.csprojResolveAssemblyReference.cache
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math\obj\Release\Evo20.Math.dll
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math\obj\Release\Evo20.Math.pdb
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\bin\Release\Evo20.Math.dll
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\bin\Release\Evo20.Math.pdb
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Math\obj\Release\Evo20.Math.csprojResolveAssemblyReference.cache
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Math\obj\Release\Evo20.Math.csproj.CoreCompileInputs.cache
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Math\obj\Release\Evo20.Math.dll
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Math\obj\Release\Evo20.Math.pdb

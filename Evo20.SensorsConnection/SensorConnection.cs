@@ -72,10 +72,9 @@ namespace Evo20.SensorsConnection
                 EventHandlerListForExeptions?.Invoke(this, new ExceptionEventArgs(exeption));
                 return false;
             }
-            catch (ThreadAbortException exeption)
+            catch (ThreadAbortException )
             {
                 Log.Instance.Warning("Поток чтения Com порта закрыт");
-                EventHandlerListForExeptions?.Invoke(this,new ExceptionEventArgs(exeption));
                 return false;
             }
             catch (InvalidOperationException exeption)
@@ -107,8 +106,8 @@ namespace Evo20.SensorsConnection
         {
             if (ConnectionStatus == ConnectionStatus.Connected)
             {
-				if (ReadThread.IsAlive && ReadThread.ThreadState!=ThreadState.Aborted 
-					&& ReadThread.ThreadState != ThreadState.AbortRequested)
+                if (ReadThread != null && ReadThread.IsAlive && ReadThread.ThreadState != ThreadState.Aborted
+                    && ReadThread.ThreadState != ThreadState.AbortRequested && ReadThread.ThreadState == ThreadState.Running)
                 {
                     ReadThread.Abort();
                 }
@@ -139,8 +138,8 @@ namespace Evo20.SensorsConnection
 
         public virtual bool StopConnection()
         {
-            if (ReadThread.IsAlive && ReadThread.ThreadState!=ThreadState.Aborted 
-                                   && ReadThread.ThreadState != ThreadState.AbortRequested)
+            if (ReadThread != null && ReadThread.IsAlive && ReadThread.ThreadState != ThreadState.Aborted
+                && ReadThread.ThreadState != ThreadState.AbortRequested && ReadThread.ThreadState == ThreadState.Running)
             {
                 ReadThread.Abort();
             }
@@ -260,7 +259,7 @@ namespace Evo20.SensorsConnection
                 if (disposing)
                 {
                    if(ReadThread!=null && ReadThread.IsAlive && ReadThread.ThreadState!=ThreadState.Aborted
-                    && ReadThread.ThreadState != ThreadState.AbortRequested)
+                    && ReadThread.ThreadState != ThreadState.AbortRequested && ReadThread.ThreadState== ThreadState.Running)
                     {
                         ReadThread.Abort();
                     }

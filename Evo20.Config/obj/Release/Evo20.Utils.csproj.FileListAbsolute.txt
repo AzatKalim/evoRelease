@@ -9,3 +9,8 @@ C:\Users\Азат\Desktop\работа\Evo20\bin\Release\Evo20.Utils.dll
 C:\Users\Азат\Desktop\работа\Evo20\bin\Release\Evo20.Utils.pdb
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Config\obj\Release\Evo20.Utils.dll
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Config\obj\Release\Evo20.Utils.pdb
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\bin\Release\Evo20.Utils.dll
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\bin\Release\Evo20.Utils.pdb
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Config\obj\Release\Evo20.Utils.csproj.CoreCompileInputs.cache
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Config\obj\Release\Evo20.Utils.dll
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Config\obj\Release\Evo20.Utils.pdb

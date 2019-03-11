@@ -8,3 +8,12 @@ C:\Users\Азат\Desktop\работа\Evo20\Evo20.Utils.Tests\bin\Release\ru\Mi
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Utils.Tests\obj\Release\Evo20.Utils.Tests.csprojResolveAssemblyReference.cache
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Utils.Tests\obj\Release\Evo20.Utils.Tests.dll
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Utils.Tests\obj\Release\Evo20.Utils.Tests.pdb
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Utils.Tests\bin\Release\Evo20.Utils.Tests.dll
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Utils.Tests\bin\Release\Evo20.Utils.Tests.pdb
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Utils.Tests\bin\Release\Evo20.Utils.dll
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Utils.Tests\bin\Release\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Utils.Tests\bin\Release\Evo20.Utils.pdb
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Utils.Tests\obj\Release\Evo20.Utils.Tests.csprojResolveAssemblyReference.cache
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Utils.Tests\obj\Release\Evo20.Utils.Tests.csproj.CoreCompileInputs.cache
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Utils.Tests\obj\Release\Evo20.Utils.Tests.dll
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Utils.Tests\obj\Release\Evo20.Utils.Tests.pdb

@@ -261,6 +261,23 @@ namespace Evo20.Packets
             }
         }
 
+        public void MeanToFile(StreamWriter file)
+        {
+            file.WriteLine(Temperature);
+            for (int i = 0; i <  _positionPackets.Length; i++)
+            {
+                file.WriteLine($"Позиция {i}");
+                var a = MeanA(i);
+                file.WriteLine($"A:{a[0]} {a[1]} {a[2]}");
+                var u = MeanUa(i);
+                file.WriteLine($"UA:{u[0]} {u[1]} {u[2]}");
+                var w = MeanW(i);
+                file.WriteLine($"W:{w[0]} {w[1]} {w[2]}");
+                u = MeanUw(i);
+                file.WriteLine($"UW:{u[0]} {u[1]} {u[2]}");
+            }
+        }
+
         public override string ToString()
         {
             var buff = new StringBuilder(Temperature + " " + _positionPackets.Length + Environment.NewLine);

@@ -53,6 +53,10 @@ namespace Evo20.Controllers.FileWork
         /// <returns />
         public bool ReadDataFromFile(ref List<ISensor> sensorsList)
         {
+            foreach (var sensor in sensorsList)
+            {
+                sensor.CalibrationPacketsCollection.Clear();
+            }
             for (int temperature = 0; temperature < CycleData.Instance.CalibrationTemperatures.Count; temperature++)
             {
                 var fileName= Path.Combine(FilesPath,temperature+".txt");
@@ -113,6 +117,25 @@ namespace Evo20.Controllers.FileWork
             //return true;
         }
 
+        public void WriteMeanParams(List<ISensor> sensorsList, int temperatureNumber)
+        {
+            Log.Instance.Info("Запись уже считанных пакетов в файл");
+            using (var file = new StreamWriter(Path.Combine(FilesPath, temperatureNumber + "mean.txt")))
+            {
+                SensorData.Instance.WriteMeanForCurrentTemperture(sensorsList.ToArray(),
+                    file, temperatureNumber);
+            }
+
+            //foreach (var sensor in _sensorsList)
+            //{
+            //    if (!sensor.WriteRedPackets(filesPath))
+            //    {
+            //        Log.Instance.Error("Запись прервана на датчике {0}", sensor.Name);
+            //        return false;
+            //    }
+            //}
+            //return true;
+        }
         public bool WritePackets(List<ISensor> sensorsList, StreamWriter file)
         {
             return SensorData.Instance.WriteAllPackets(sensorsList.ToArray(), file);

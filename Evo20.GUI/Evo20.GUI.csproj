@@ -68,8 +68,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ДЛУ.txt" />
-    <Content Include="ДУС.txt" />
+    <Content Include="Profiles\ДЛУ.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Profiles\ДУС.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="plane.ico" />
     <Content Include="settings.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

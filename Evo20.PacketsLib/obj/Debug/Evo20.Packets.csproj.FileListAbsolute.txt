@@ -12,3 +12,11 @@ C:\Users\Азат\Desktop\работа\Evo20\Evo20.PacketsLib\bin\Debug\Evo20.Ut
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.PacketsLib\obj\Debug\Evo20.Packets.dll
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.PacketsLib\obj\Debug\Evo20.Packets.pdb
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.PacketsLib\obj\Debug\Evo20.Packets.csprojResolveAssemblyReference.cache
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.PacketsLib\bin\Debug\Evo20.Packets.dll
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.PacketsLib\bin\Debug\Evo20.Packets.pdb
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.PacketsLib\bin\Debug\Evo20.Utils.dll
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.PacketsLib\bin\Debug\Evo20.Utils.pdb
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.PacketsLib\obj\Debug\Evo20.Packets.csprojResolveAssemblyReference.cache
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.PacketsLib\obj\Debug\Evo20.Packets.csproj.CoreCompileInputs.cache
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.PacketsLib\obj\Debug\Evo20.Packets.dll
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.PacketsLib\obj\Debug\Evo20.Packets.pdb

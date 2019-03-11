@@ -53,3 +53,9 @@ C:\Users\Азат\Desktop\работа\Evo20\bin\Release\Evo20.SensorsConnection
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.SensorsConnection\obj\Release\Evo20.SensorsConnection.csprojResolveAssemblyReference.cache
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.SensorsConnection\obj\Release\Evo20.SensorsConnection.dll
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.SensorsConnection\obj\Release\Evo20.SensorsConnection.pdb
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\bin\Release\Evo20.SensorsConnection.dll
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\bin\Release\Evo20.SensorsConnection.pdb
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.SensorsConnection\obj\Release\Evo20.SensorsConnection.csprojResolveAssemblyReference.cache
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.SensorsConnection\obj\Release\Evo20.SensorsConnection.csproj.CoreCompileInputs.cache
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.SensorsConnection\obj\Release\Evo20.SensorsConnection.dll
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.SensorsConnection\obj\Release\Evo20.SensorsConnection.pdb

@@ -12,3 +12,16 @@ C:\Users\Азат\Desktop\работа\Evo20\Evo20.Connections.Tests\bin\Debug\r
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Connections.Tests\obj\Debug\Evo20.Connections.Tests.csprojResolveAssemblyReference.cache
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Connections.Tests\obj\Debug\Evo20.Connections.Tests.dll
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Connections.Tests\obj\Debug\Evo20.Connections.Tests.pdb
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Connections.Tests\bin\Debug\Evo20.Connections.Tests.dll
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Connections.Tests\bin\Debug\Evo20.Connections.Tests.pdb
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Connections.Tests\bin\Debug\Evo20.EvoCommands.dll
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Connections.Tests\bin\Debug\Evo20.EvoConnections.dll
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Connections.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Connections.Tests\bin\Debug\Evo20.Utils.dll
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Connections.Tests\bin\Debug\Evo20.EvoCommands.pdb
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Connections.Tests\bin\Debug\Evo20.EvoConnections.pdb
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Connections.Tests\bin\Debug\Evo20.Utils.pdb
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Connections.Tests\obj\Debug\Evo20.Connections.Tests.csprojResolveAssemblyReference.cache
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Connections.Tests\obj\Debug\Evo20.Connections.Tests.csproj.CoreCompileInputs.cache
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Connections.Tests\obj\Debug\Evo20.Connections.Tests.dll
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Connections.Tests\obj\Debug\Evo20.Connections.Tests.pdb

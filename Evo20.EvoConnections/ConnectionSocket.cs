@@ -126,7 +126,7 @@ namespace Evo20.EvoConnections
             if (ConnectionStatus == ConnectionStatus.Connected)
             {
 				if(WorkThread!=null && WorkThread.IsAlive && WorkThread.ThreadState!=ThreadState.Aborted
-                    && WorkThread.ThreadState != ThreadState.AbortRequested)
+                    && WorkThread.ThreadState != ThreadState.AbortRequested && WorkThread.ThreadState==ThreadState.Running)
 					WorkThread.Abort();
                 ConnectionStatus = ConnectionStatus.Pause;
                 Log.Instance.Info("Соединение c Evo 20 приостановлено");
@@ -164,11 +164,10 @@ namespace Evo20.EvoConnections
         /// <returns></returns>
         public void StopConnection()
         {
-           if(WorkThread!=null && WorkThread.IsAlive && WorkThread.ThreadState!=ThreadState.Aborted
-                    && WorkThread.ThreadState != ThreadState.AbortRequested)
-            {
+            if (WorkThread != null && WorkThread.IsAlive && WorkThread.ThreadState != ThreadState.Aborted
+                      && WorkThread.ThreadState != ThreadState.AbortRequested && WorkThread.ThreadState == ThreadState.Running)
                 WorkThread.Abort();
-            }
+
             ConnectionStatus = ConnectionStatus.Disconnected;
             ReceivingUdpClient?.Close();
             Log.Instance.Info("Соединение c Evo 20 прервано");
@@ -287,9 +286,9 @@ namespace Evo20.EvoConnections
                 {
                     if (_connectionState != ConnectionStatus.Connected)
                     {
-						if(WorkThread!=null && WorkThread.IsAlive && WorkThread.ThreadState!=ThreadState.Aborted
-							&& WorkThread.ThreadState != ThreadState.AbortRequested)
-							WorkThread.Abort();
+                        if (WorkThread != null && WorkThread.IsAlive && WorkThread.ThreadState != ThreadState.Aborted
+                             && WorkThread.ThreadState != ThreadState.AbortRequested && WorkThread.ThreadState == ThreadState.Running)
+                            WorkThread.Abort();
                         Sender.Close();
                         ReceivingUdpClient.Close();
                     }

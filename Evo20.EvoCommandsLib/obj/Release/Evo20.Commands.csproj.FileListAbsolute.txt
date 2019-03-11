@@ -14,3 +14,9 @@ C:\Users\Азат\Desktop\работа\Evo20\bin\Release\Evo20.EvoCommands.pdb
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.EvoCommandsLib\obj\Release\Evo20.Commands.csprojResolveAssemblyReference.cache
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.EvoCommandsLib\obj\Release\Evo20.EvoCommands.dll
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.EvoCommandsLib\obj\Release\Evo20.EvoCommands.pdb
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\bin\Release\Evo20.EvoCommands.dll
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\bin\Release\Evo20.EvoCommands.pdb
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.EvoCommandsLib\obj\Release\Evo20.Commands.csprojResolveAssemblyReference.cache
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.EvoCommandsLib\obj\Release\Evo20.Commands.csproj.CoreCompileInputs.cache
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.EvoCommandsLib\obj\Release\Evo20.EvoCommands.dll
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.EvoCommandsLib\obj\Release\Evo20.EvoCommands.pdb

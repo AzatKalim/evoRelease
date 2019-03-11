@@ -24,3 +24,9 @@ C:\Users\Азат\Desktop\работа\Evo20\bin\Release\Evo20.Sensors.pdb
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors\obj\Release\Evo20.Sensors.csprojResolveAssemblyReference.cache
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors\obj\Release\Evo20.Sensors.dll
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Sensors\obj\Release\Evo20.Sensors.pdb
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\bin\Release\Evo20.Sensors.dll
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\bin\Release\Evo20.Sensors.pdb
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Sensors\obj\Release\Evo20.Sensors.csprojResolveAssemblyReference.cache
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Sensors\obj\Release\Evo20.Sensors.csproj.CoreCompileInputs.cache
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Sensors\obj\Release\Evo20.Sensors.dll
+C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Sensors\obj\Release\Evo20.Sensors.pdb

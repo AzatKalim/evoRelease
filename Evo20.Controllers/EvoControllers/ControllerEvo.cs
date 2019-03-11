@@ -141,14 +141,15 @@ namespace Evo20.Controllers.EvoControllers
         {
             CommandHandler.PauseConnection();
 			if(RoutineThread!=null && RoutineThread.IsAlive && RoutineThread.ThreadState!=ThreadState.Aborted
-                    && RoutineThread.ThreadState != ThreadState.AbortRequested)
+                    && RoutineThread.ThreadState != ThreadState.AbortRequested && RoutineThread.ThreadState==ThreadState.Running)
 				RoutineThread.Abort();
         }
 
         public void StopEvoConnection()
         {
             CommandHandler.StopConnection();
-            if (RoutineThread != null && RoutineThread.IsAlive)
+            if (RoutineThread != null && RoutineThread.IsAlive && RoutineThread.ThreadState != ThreadState.Aborted
+                    && RoutineThread.ThreadState != ThreadState.AbortRequested && RoutineThread.ThreadState == ThreadState.Running)
                 RoutineThread.Abort();
         }
 
@@ -161,7 +162,8 @@ namespace Evo20.Controllers.EvoControllers
             {
                 case ConnectionStatus.Disconnected:
                     {
-                        if (RoutineThread.IsAlive)
+                        if (RoutineThread != null && RoutineThread.IsAlive && RoutineThread.ThreadState != ThreadState.Aborted
+                            && RoutineThread.ThreadState != ThreadState.AbortRequested && RoutineThread.ThreadState == ThreadState.Running)
                         {
                             RoutineThread.Abort();
                             RoutineThread.Join();
@@ -171,8 +173,9 @@ namespace Evo20.Controllers.EvoControllers
                     }
                 case ConnectionStatus.Error:
                     {
-                        if (RoutineThread.IsAlive)
-                        {
+                        if (RoutineThread != null && RoutineThread.IsAlive && RoutineThread.ThreadState != ThreadState.Aborted
+                            && RoutineThread.ThreadState != ThreadState.AbortRequested && RoutineThread.ThreadState == ThreadState.Running)
+                        { 
                             RoutineThread.Abort();
                             RoutineThread.Join();
                         }

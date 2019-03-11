@@ -16,7 +16,7 @@ namespace Evo20.Controllers
     public class Controller
     {
         #region Devegates and Events
-        //событие обработки ошибок
+
         public event ControllerExceptions ControllerExceptionEvent;
 
         public delegate void TemperatureSabilizationHandler(object sender, EventArgs e);
@@ -29,7 +29,8 @@ namespace Evo20.Controllers
 
         public event WorkModeChangeHandler WorkModeChanged;
 
-        public delegate void ControllerExceptions(object sender, EventArgs e);//exception
+        public delegate void ControllerExceptions(object sender, EventArgs e);
+
         public event CycleEndedHandler CycleEndedEvent;
 
         public event TemperatureSabilizationHandler TemperatureStabilized;
@@ -45,8 +46,6 @@ namespace Evo20.Controllers
         #endregion
 
         #region Properties
-
-        private List<ISensor> _sensorsList;
 
         public int StabilizationTime
         {
@@ -94,6 +93,8 @@ namespace Evo20.Controllers
                 WorkModeChanged?.Invoke(this, new WorkModeEventArgs(_mode));
             }
         }
+
+        private List<ISensor> _sensorsList;
 
         public List<ISensor> SensorsList
         {
@@ -162,7 +163,7 @@ namespace Evo20.Controllers
             try
             {
                 if (_cycleThread != null && _cycleThread.IsAlive && _cycleThread.ThreadState!=ThreadState.Aborted
-                    && _cycleThread.ThreadState != ThreadState.AbortRequested)
+                    && _cycleThread.ThreadState != ThreadState.AbortRequested && _cycleThread.ThreadState==ThreadState.Running)
                     _cycleThread.Abort();
                 SensorController.SensorController.Instance.StopComPortConnection();
                 ControllerEvo.Instance.StopEvoConnection();
@@ -278,9 +279,10 @@ namespace Evo20.Controllers
 
                 writePacketsTask = new Task(CycleTemperatureEnd);
                 CycleData.Instance.TemperutureIndex = i;
+                SensorController.SensorController.Instance.TemperatureIndex = i;
 //#if !DEBUG
 
-                
+
                 if (!Config.IsFakeEvo)
                     //ожидание стабилизации температуры
                     Thread.Sleep(StabilizationTime -(DateTime.Now- waitingStartTime).Milliseconds);
@@ -303,6 +305,7 @@ namespace Evo20.Controllers
                     }
                     Log.Instance.Info("Подцикл датчика завершен {0}", SensorController.SensorController.Instance.CurrentSensor.Name);
                 }
+                SensorController.SensorController.Instance.TemperatureIndex = -1;
                 writePacketsTask.Start();
             }
 
@@ -366,7 +369,7 @@ namespace Evo20.Controllers
 
 #endregion
 
-#region Secondary functions
+        #region Secondary functions
 
         public bool ReadDataFromFile()
         {
@@ -391,7 +394,7 @@ namespace Evo20.Controllers
         /// Выдать среднее значеие кодов АЦП текущего датчика
         /// </summary>
         /// <returns>Список значений</returns>      
-#endregion
+        #endregion
 
         private void CycleTemperatureEnd()
         {
@@ -402,6 +405,7 @@ namespace Evo20.Controllers
                     Log.Instance.Info("Начало запиcи пакетов");
                     //записываем пакеты
                     FileController.Instance.WriteRedPackets(_sensorsList, CycleData.Instance.TemperutureIndex);
+                    FileController.Instance.WriteMeanParams(_sensorsList, CycleData.Instance.TemperutureIndex);
                     SensorController.SensorController.Instance.ClearData(CycleData.Instance.TemperutureIndex,
                             _mode);
                 }
