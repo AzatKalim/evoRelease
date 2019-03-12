@@ -165,7 +165,7 @@ namespace Evo20.Packets
             if ((res & 3) == 3)
                 dataFlag = true;
 
-            return res*mul;
+            return (res << 2) * mul;
         }
 
         public static bool FindPacketBegin(ref List<byte> buffer)
