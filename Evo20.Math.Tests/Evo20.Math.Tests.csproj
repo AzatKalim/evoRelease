@@ -51,6 +51,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ComputeCoefficentsTests.cs" />
+    <Compile Include="MatrixTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

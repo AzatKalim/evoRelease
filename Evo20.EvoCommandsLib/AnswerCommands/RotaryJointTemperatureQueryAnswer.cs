@@ -4,7 +4,7 @@ namespace Evo20.Commands.AnswerCommands
 {
     public class RotaryJointTemperatureQueryAnswer : AnswerCommand
     {
-        public double Temperture;
+        public readonly double Temperture;
         public Axis Axis
         {
             get;

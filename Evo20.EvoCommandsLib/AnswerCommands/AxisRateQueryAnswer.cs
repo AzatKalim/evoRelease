@@ -4,7 +4,7 @@ namespace Evo20.Commands.AnswerCommands
 {
     public class AxisRateQueryAnswer : AnswerCommand
     {
-        public double SpeedOfRate;
+        public readonly double SpeedOfRate;
         public Axis Axis
         {
             get;

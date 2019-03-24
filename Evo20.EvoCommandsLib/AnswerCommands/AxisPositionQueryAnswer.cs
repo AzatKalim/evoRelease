@@ -5,7 +5,7 @@ namespace Evo20.Commands.AnswerCommands
 {
     public class AxisPositionQueryAnswer : AnswerCommand
     {
-        public double Position;
+        public readonly double Position;
 
         public Axis Axis { get; }
 

@@ -4,7 +4,7 @@ namespace Evo20.Commands.AnswerCommands
 {
     public class ActualTemperatureQueryAnswer : AnswerCommand
     {
-        public double Temperature;
+        public readonly double Temperature;
               
         public ActualTemperatureQueryAnswer(string temperature)
         {
