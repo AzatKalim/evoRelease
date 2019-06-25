@@ -25,7 +25,6 @@ C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math.Tests\bin\Release\Evo20.
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math.Tests\bin\Release\Evo20.Packets.dll
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math.Tests\bin\Release\Newtonsoft.Json.dll
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math.Tests\bin\Release\Evo20.Math.pdb
-C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math.Tests\bin\Release\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math.Tests\bin\Release\Evo20.Sensors.pdb
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math.Tests\bin\Release\Evo20.Utils.pdb
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math.Tests\bin\Release\Evo20.Packets.pdb
@@ -35,3 +34,6 @@ C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math.Tests\bin\Release\ru\Mic
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math.Tests\obj\Release\Evo20.Math.Tests.csprojResolveAssemblyReference.cache
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math.Tests\obj\Release\Evo20.Math.Tests.dll
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math.Tests\obj\Release\Evo20.Math.Tests.pdb
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math.Tests\bin\Release\alglibnet2.dll
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math.Tests\bin\Release\MathNet.Numerics.dll
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math.Tests\bin\Release\MathNet.Numerics.xml

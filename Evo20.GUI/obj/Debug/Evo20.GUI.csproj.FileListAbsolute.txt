@@ -66,3 +66,6 @@ C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.GUI\obj\Debug\E
 C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.GUI\obj\Debug\Evo20.GUI.pdb
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.GUI\bin\Debug\Profiles\ДЛУ.txt
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.GUI\bin\Debug\Profiles\ДУС.txt
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.GUI\bin\Debug\alglibnet2.dll
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.GUI\bin\Debug\MathNet.Numerics.dll
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.GUI\bin\Debug\MathNet.Numerics.xml

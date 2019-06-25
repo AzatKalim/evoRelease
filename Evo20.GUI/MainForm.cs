@@ -63,7 +63,6 @@ namespace Evo20.GUI
             var comPorts = SerialPort.GetPortNames();
             comPortComboBox.DataSource = comPorts;
             Controller.Instance.CycleEndedEvent += CycleEndedHandler;
-            ControllerEvo.Instance.EvoConnectionChanged += EvoConnectionChangeHandler;
             Controller.Instance.WorkModeChanged += EvoWorkModeChangeHandler;
             Controller.Instance.ControllerExceptionEvent += ControllerExсeptoinsHandler;
             SensorController.Instance.SensorControllerException += ControllerExсeptoinsHandler;
@@ -73,7 +72,7 @@ namespace Evo20.GUI
             graph.GraphPane.XAxis.Title = @"Время";
             graph.GraphPane.YAxis.Title = @"Температура";
             graph.GraphPane.Title = @"График температуры от времени";
-            lblVersion.Text = @"Версия: " +Application.ProductVersion;
+            lblVersion.Text = @"Версия: " + Application.ProductVersion;
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -83,6 +82,7 @@ namespace Evo20.GUI
             SensorController.Instance.StopComPortConnection();
             ControllerEvo.Instance.StopEvoConnection();
             Controller.Instance.Stop();
+            Log.Instance.Stop();
         }
 
         #endregion
@@ -231,6 +231,7 @@ namespace Evo20.GUI
 
             try
             {
+                ControllerEvo.Instance.EvoConnectionChanged += EvoConnectionChangeHandler;
                 bool isStarted = Controller.Instance.Start(comPortComboBox.SelectedItem.ToString(), workMode);
                 if (!isStarted)
                 {
@@ -614,6 +615,8 @@ namespace Evo20.GUI
 
         private bool ReadSettings()
         {
+            Config.Instance.RemoteIpAdress = IPTextBox.Text;
+            Config.Instance.RemotePortNumber = Convert.ToInt32(RemotePortTextBox.Text);
             if (_isSettingsEntered)
             {
                 return true;

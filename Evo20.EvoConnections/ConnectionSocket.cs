@@ -65,27 +65,7 @@ namespace Evo20.EvoConnections
 
         protected ConnectionSocket()
         {
-            WorkThread = new Thread(ReadMessage) {IsBackground = true};
-
-            Sender = new UdpClient(Config.Instance.RemotePortNumber);
-//#if !DEBUG
-            var endPoint = new IPEndPoint(RemoteIpAddress, Config.Instance.RemotePortNumber);
-            if(!Config.IsFakeEvo)
-                Sender.Connect(endPoint);
-//#endif
-            switch (Config.Instance.EvoType)
-            {
-                case 1:
-                    {
-                        ReceivingUdpClient = Sender;
-                        break;
-                    }
-                case 0:
-                    {
-                        ReceivingUdpClient = new UdpClient(Config.Instance.LocalPortNumber);
-                        break;
-                    }
-            }
+            WorkThread = new Thread(ReadMessage) {IsBackground = true};          
         }
 
         ~ConnectionSocket()
@@ -100,6 +80,25 @@ namespace Evo20.EvoConnections
         /// <returns> результат запуска </returns>
         public bool StartConnection()
         {
+            Sender = new UdpClient(Config.Instance.RemotePortNumber);
+            //#if !DEBUG
+            var endPoint = new IPEndPoint(RemoteIpAddress, Config.Instance.RemotePortNumber);
+            if (!Config.IsFakeEvo)
+                Sender.Connect(endPoint);
+            //#endif
+            switch (Config.Instance.EvoType)
+            {
+                case 1:
+                {
+                    ReceivingUdpClient = Sender;
+                    break;
+                }
+                case 0:
+                {
+                    ReceivingUdpClient = new UdpClient(Config.Instance.LocalPortNumber);
+                    break;
+                }
+            }
             if (ConnectionStatus == ConnectionStatus.Disconnected)
             {
                 ConnectionStatus = ConnectionStatus.Connected;

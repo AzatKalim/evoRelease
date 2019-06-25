@@ -136,3 +136,6 @@ C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Controllers\obj
 C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Controllers\obj\Debug\Evo20.Controllers.csproj.CoreCompileInputs.cache
 C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Controllers\obj\Debug\Evo20.Controllers.dll
 C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Controllers\obj\Debug\Evo20.Controllers.pdb
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Controllers\bin\Debug\alglibnet2.dll
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Controllers\bin\Debug\MathNet.Numerics.dll
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Controllers\bin\Debug\MathNet.Numerics.xml

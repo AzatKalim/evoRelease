@@ -172,7 +172,7 @@ namespace Evo20.Utils
                 return ex + "\r\nInnerException:\r\n" + GetExceptionText(ex.InnerException);
         }
 
-    private struct LogEntry
+        private struct LogEntry
         {
             public DateTime Time;
             public System.Diagnostics.EventLogEntryType Type;

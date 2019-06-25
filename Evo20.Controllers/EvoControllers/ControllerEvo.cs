@@ -16,7 +16,19 @@ namespace Evo20.Controllers.EvoControllers
     {
         public delegate void EvoConnectionChangedHandler(object sender, EventArgs e);
 
-        public event EvoConnectionChangedHandler EvoConnectionChanged;
+        public event EvoConnectionChangedHandler _EvoConnectionChanged;
+        public event EvoConnectionChangedHandler EvoConnectionChanged
+        {
+            add
+            {
+                lock (this)
+                {
+                    if (_EvoConnectionChanged != null && _EvoConnectionChanged.GetInvocationList().Length < 1)
+                        _EvoConnectionChanged += value;
+                }
+            }
+            remove { _EvoConnectionChanged -= value; }
+        }
 
         private const int ThreadsSleepTime = 100;
 
@@ -66,7 +78,7 @@ namespace Evo20.Controllers.EvoControllers
                             if (!CommandHandler.SendCommand(item))
                             {
                                 Log.Instance.Error($"Не удалось отправить сообщение evo{item}");
-                                EvoConnectionChanged?.Invoke(this,
+                                _EvoConnectionChanged?.Invoke(this,
                                     new ConnectionStatusEventArgs(CommandHandler.ConnectionStatus));
                                 return;
                             }
@@ -184,7 +196,7 @@ namespace Evo20.Controllers.EvoControllers
                     }
             }
 
-            EvoConnectionChanged?.Invoke(this, e);
+            _EvoConnectionChanged?.Invoke(this, e);
         }
 
         #region Camera commands

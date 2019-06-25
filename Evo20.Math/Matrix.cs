@@ -1,26 +1,50 @@
 ﻿// ReSharper disable CompareOfFloatsByEqualityOperator
 
 using MathNet.Numerics.LinearAlgebra.Double;
-using System;
 
 namespace Evo20.Math
 {
     public static class  Matrix
     {
-        public static double[][] Inverse(this double[][] matrix)
+        public static double[][] Inverse1(this double[][] matrix)
         {
-            var temp = SparseMatrix.OfRowArrays(matrix);
+            double[,] a = matrix.ToArray();
+            int info;
+            alglib.matinvreport rep;
+            alglib.rmatrixinverse(ref a, out info, out rep);
+            //var temp = DenseMatrix.OfArray(matrix.ToArray());
             //var temp = DenseMatrix.OfRowArrays(matrix);
-             var res= temp.Inverse();
-            return res.ToRowArrays();
+             //var res= temp.Inverse();
+            return a.ToRowsArray();
         }
 
-        private static double[,] ToArray(double[][] matrix)
+        public static double[][] Inverse(this double[][] matrix)
         {
+            var temp = DenseMatrix.OfArray(matrix.ToArray());
+            //var temp = DenseMatrix.OfRowArrays(matrix);
+            var res= temp.Inverse();
+            return res.ToColumnArrays();
+        }
+
+        public static double[,] ToArray(this double[][] matrix)
+        { 
             var temp = new double[matrix.Length, matrix[0].Length];
             for (int i = 0; i < matrix.Length; i++)
                 for (int j = 0; j < matrix[0].Length; j++)
                     temp[i, j] = matrix[i][j];
+            return temp;
+        }
+
+        public static double[][] ToRowsArray(this double[,] matrix)
+        {
+            var temp = new double[matrix.GetLength(0)][];
+            for (int i = 0; i < temp.Length; i++)
+            {
+                temp[i]=new double[matrix.GetLength(1)];
+                for (int j = 0; j < temp[i].Length; j++)
+                    temp[i][j] = matrix[i,j];
+            }
+
             return temp;
         }
 

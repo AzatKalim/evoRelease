@@ -276,7 +276,7 @@ namespace Evo20.Math
         }
         #region Secondary functions
 
-        private static void WriteMatrix(double[][] matrix, ref StreamWriter file)
+        public static void WriteMatrix(double[][] matrix, ref StreamWriter file)
         {
             for (int i = 0; i < matrix.GetLength(0); i++)
             {

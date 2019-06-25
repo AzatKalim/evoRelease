@@ -6,9 +6,9 @@ namespace Evo20.Utils
     public partial class Config
     {
         //позиция служебных  байт в пакете
-        public int HeadBegin = Convert.ToInt32(ConfigurationManager.AppSettings.Get("HeadBegin"));
-        public int IdBegin = Convert.ToInt32(ConfigurationManager.AppSettings.Get("IdBegin"));
-        public int CheckBegin = Convert.ToInt32(ConfigurationManager.AppSettings.Get("CheckBegin"));
+        public readonly int HeadBegin = Convert.ToInt32(ConfigurationManager.AppSettings.Get("HeadBegin"));
+        public readonly int IdBegin = Convert.ToInt32(ConfigurationManager.AppSettings.Get("IdBegin"));
+        public readonly int CheckBegin = Convert.ToInt32(ConfigurationManager.AppSettings.Get("CheckBegin"));
         //позиция информационных байт в пакете
         public int WxBegin = Convert.ToInt32(ConfigurationManager.AppSettings.Get("W_X_Begin"));
         public int WyBegin = Convert.ToInt32(ConfigurationManager.AppSettings.Get("W_Y_Begin"));

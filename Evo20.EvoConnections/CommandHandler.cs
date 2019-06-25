@@ -42,16 +42,15 @@ namespace Evo20.EvoConnections
             _bufferMessage = new StringBuilder();
             NewMessageArrived += NewMessageHandler;
             WorkThread = new Thread((ReadMessage));
-            ConnectionStatus = ConnectionStatus.Disconnected;   
-
+            ConnectionStatus = ConnectionStatus.Disconnected;  
         }
 
-        public void NewMessageHandler(object sender, EventArgs e)
+        private void NewMessageHandler(object sender, EventArgs e)
         {
             _bufferMessage.Append(ReadBuffer());
             if (_bufferMessage.Length != 0)
             {              
-                String temp = _bufferMessage.ToString();
+                string temp = _bufferMessage.ToString();
                 Command serializedCommand = RecognizeCommand(temp);
                 if (serializedCommand == null)
                 {

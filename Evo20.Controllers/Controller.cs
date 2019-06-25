@@ -31,7 +31,18 @@ namespace Evo20.Controllers
 
         public delegate void ControllerExceptions(object sender, EventArgs e);
 
-        public event CycleEndedHandler CycleEndedEvent;
+        private event CycleEndedHandler _CycleEndedEvent;
+        public event CycleEndedHandler CycleEndedEvent
+        {
+            add {
+                lock (this)
+                {
+                    if(_CycleEndedEvent != null && _CycleEndedEvent.GetInvocationList().Length < 1)
+                        _CycleEndedEvent += value;
+                }
+            }
+            remove { _CycleEndedEvent -= value; }
+        }
 
         public event TemperatureSabilizationHandler TemperatureStabilized;
 //#if !DEBUG
@@ -163,7 +174,7 @@ namespace Evo20.Controllers
             try
             {
                 if (_cycleThread != null && _cycleThread.IsAlive && _cycleThread.ThreadState!=ThreadState.Aborted
-                    && _cycleThread.ThreadState != ThreadState.AbortRequested && _cycleThread.ThreadState==ThreadState.Running)
+                    && _cycleThread.ThreadState != ThreadState.AbortRequested && (_cycleThread.ThreadState==ThreadState.Running || _cycleThread.ThreadState == ThreadState.WaitSleepJoin))
                     _cycleThread.Abort();
                 SensorController.SensorController.Instance.StopComPortConnection();
                 ControllerEvo.Instance.StopEvoConnection();
@@ -247,7 +258,7 @@ namespace Evo20.Controllers
                     break;
                 default:
                     Log.Instance.Error("Ошибка:перед запуском цикла. Режим работы не установлен!");
-                    CycleEndedEvent?.Invoke(this, new BoolEventArgs(false));
+                    _CycleEndedEvent?.Invoke(this, new BoolEventArgs(false));
                     return;
             }
             ControllerEvo.Instance.InitEvo();
@@ -300,7 +311,7 @@ namespace Evo20.Controllers
                     if (!isCyclePartSuccess)
                     {
                         Log.Instance.Error("Ошибка:Не выполнена часть цикла для датчика :{0} при температуре {1} ",_sensorsList[j].Name,temperatures[i]);
-                        CycleEndedEvent?.Invoke(this, new BoolEventArgs(false));
+                        _CycleEndedEvent?.Invoke(this, new BoolEventArgs(false));
                         return;
                     }
                     Log.Instance.Info("Подцикл датчика завершен {0}", SensorController.SensorController.Instance.CurrentSensor.Name);
@@ -310,7 +321,7 @@ namespace Evo20.Controllers
             }
 
             writePacketsTask?.Wait();
-            CycleEndedEvent?.Invoke(this, new BoolEventArgs(true));
+            _CycleEndedEvent?.Invoke(this, new BoolEventArgs(true));
 
         }
         /// <summary>

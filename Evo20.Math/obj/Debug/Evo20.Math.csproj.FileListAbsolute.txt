@@ -47,3 +47,6 @@ C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Math\obj\Debug\
 C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Math\obj\Debug\Evo20.Math.csproj.CoreCompileInputs.cache
 C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Math\obj\Debug\Evo20.Math.dll
 C:\Users\iss\Downloads\evoRelease-master\evoRelease-master\Evo20.Math\obj\Debug\Evo20.Math.pdb
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math\bin\Debug\MathNet.Numerics.dll
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math\bin\Debug\MathNet.Numerics.xml
+C:\Users\Азат\Desktop\работа\Evo20\Evo20.Math\bin\Debug\alglibnet2.dll

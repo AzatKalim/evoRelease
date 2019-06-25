@@ -6,7 +6,6 @@ C:\Users\Азат\Desktop\работа\Evo20\Evo20.Connections.Tests\bin\Release
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Connections.Tests\bin\Release\Evo20.Utils.dll
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Connections.Tests\bin\Release\Evo20.EvoCommands.pdb
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Connections.Tests\bin\Release\Evo20.EvoConnections.pdb
-C:\Users\Азат\Desktop\работа\Evo20\Evo20.Connections.Tests\bin\Release\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Connections.Tests\bin\Release\Evo20.Utils.pdb
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Connections.Tests\bin\Release\ru\Microsoft.VisualStudio.QualityTools.UnitTestFramework.resources.dll
 C:\Users\Азат\Desktop\работа\Evo20\Evo20.Connections.Tests\obj\Release\Evo20.Connections.Tests.csprojResolveAssemblyReference.cache

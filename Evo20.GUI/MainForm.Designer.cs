@@ -32,6 +32,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Evo_control_page = new System.Windows.Forms.TabPage();
+            this.RemotePortTextBox = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.IPTextBox = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
             this.EvoParamsGroupBox = new System.Windows.Forms.GroupBox();
             this.temperatureStabLabel = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
@@ -138,12 +142,16 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(5);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1180, 525);
+            this.tabControl1.Size = new System.Drawing.Size(1180, 565);
             this.tabControl1.TabIndex = 1;
             // 
             // Evo_control_page
             // 
             this.Evo_control_page.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.Evo_control_page.Controls.Add(this.RemotePortTextBox);
+            this.Evo_control_page.Controls.Add(this.label26);
+            this.Evo_control_page.Controls.Add(this.IPTextBox);
+            this.Evo_control_page.Controls.Add(this.label24);
             this.Evo_control_page.Controls.Add(this.EvoParamsGroupBox);
             this.Evo_control_page.Controls.Add(this.graph);
             this.Evo_control_page.Controls.Add(this.evoStopButton);
@@ -153,9 +161,43 @@
             this.Evo_control_page.Location = new System.Drawing.Point(4, 22);
             this.Evo_control_page.Name = "Evo_control_page";
             this.Evo_control_page.Padding = new System.Windows.Forms.Padding(3);
-            this.Evo_control_page.Size = new System.Drawing.Size(1172, 499);
+            this.Evo_control_page.Size = new System.Drawing.Size(1172, 539);
             this.Evo_control_page.TabIndex = 0;
             this.Evo_control_page.Text = "Состояние  Evo 20";
+            // 
+            // RemotePortTextBox
+            // 
+            this.RemotePortTextBox.Location = new System.Drawing.Point(284, 52);
+            this.RemotePortTextBox.Name = "RemotePortTextBox";
+            this.RemotePortTextBox.Size = new System.Drawing.Size(74, 20);
+            this.RemotePortTextBox.TabIndex = 15;
+            this.RemotePortTextBox.Text = "531";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(218, 55);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(32, 13);
+            this.label26.TabIndex = 14;
+            this.label26.Text = "Порт";
+            // 
+            // IPTextBox
+            // 
+            this.IPTextBox.Location = new System.Drawing.Point(63, 52);
+            this.IPTextBox.Name = "IPTextBox";
+            this.IPTextBox.Size = new System.Drawing.Size(100, 20);
+            this.IPTextBox.TabIndex = 13;
+            this.IPTextBox.Text = "192.168.0.1";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(45, 55);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(17, 13);
+            this.label24.TabIndex = 12;
+            this.label24.Text = "IP";
             // 
             // EvoParamsGroupBox
             // 
@@ -176,7 +218,7 @@
             this.EvoParamsGroupBox.Controls.Add(this.label16);
             this.EvoParamsGroupBox.Controls.Add(this.label15);
             this.EvoParamsGroupBox.Controls.Add(this.label14);
-            this.EvoParamsGroupBox.Location = new System.Drawing.Point(12, 54);
+            this.EvoParamsGroupBox.Location = new System.Drawing.Point(18, 87);
             this.EvoParamsGroupBox.Name = "EvoParamsGroupBox";
             this.EvoParamsGroupBox.Size = new System.Drawing.Size(389, 456);
             this.EvoParamsGroupBox.TabIndex = 11;
@@ -541,7 +583,7 @@
             this.Sensor_control_page.Margin = new System.Windows.Forms.Padding(5);
             this.Sensor_control_page.Name = "Sensor_control_page";
             this.Sensor_control_page.Padding = new System.Windows.Forms.Padding(3);
-            this.Sensor_control_page.Size = new System.Drawing.Size(1172, 499);
+            this.Sensor_control_page.Size = new System.Drawing.Size(1172, 539);
             this.Sensor_control_page.TabIndex = 1;
             this.Sensor_control_page.Text = "Состояние блока";
             // 
@@ -931,7 +973,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1218, 703);
+            this.ClientSize = new System.Drawing.Size(1218, 735);
             this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.parameGroupBox);
             this.Controls.Add(this.label5);
@@ -949,6 +991,7 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.Evo_control_page.ResumeLayout(false);
+            this.Evo_control_page.PerformLayout();
             this.EvoParamsGroupBox.ResumeLayout(false);
             this.EvoParamsGroupBox.PerformLayout();
             this.identifieGoupBox.ResumeLayout(false);
@@ -1058,6 +1101,10 @@
         private System.Windows.Forms.ToolStripMenuItem cycleSettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem CommonSettingsToolStripMenuItem;
         private System.Windows.Forms.Label lblVersion;
+        private System.Windows.Forms.TextBox IPTextBox;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox RemotePortTextBox;
+        private System.Windows.Forms.Label label26;
     }
 }
 

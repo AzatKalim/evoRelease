@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Evo20.Math.Tests
@@ -163,7 +164,6 @@ namespace Evo20.Math.Tests
         }
 
         [TestMethod]
-        [Ignore]
         public void Invers_CorrectMatrix_Inverted2()
         {
             var testMatrix = new[]
@@ -182,6 +182,57 @@ namespace Evo20.Math.Tests
             };
 
             var testResult = testMatrix.Inverse();
+            var ts = testMatrix.Inverse1();
+            AssertEquals(testResult, etalonDoubles);
+        }
+
+        [TestMethod]
+        public void Invers_CorrectMatrix_Inverted5()
+        {
+            var testMatrix = new[]
+            {
+                new double[] {10, -9, -12},
+                new double[] {7, -12, 11},
+                new double[] {-10, 10, 3}
+            };
+            var etalonDoubles = new[]
+            {
+                new[] {1728369.755, -16867095.63, -41308095.73, 1961564.565},
+                new[] {-16867095.66, 1199804494, 363289235.3, 129239627.7},
+                new[] {-41308095.73, 363289234.5, 989071945.6, -68722669.2},
+                new[] {1961564.577, 129239627.6, -68722669.49, 972572010.3}
+            };
+
+            var testResult = testMatrix.Inverse();
+            var ts = testMatrix.Inverse1();
+            AssertEquals(testResult, etalonDoubles);
+        }
+
+        [TestMethod]
+        public void Invers_CorrectMatrix_Inverted3()
+        {
+            var testMatrix = new[]
+            {
+                 new[] {72         , 0.096611939, 2.976301051, 0.043272646 } ,
+                 new[] {0.096611939, 0.000129639, 0.003993696, 5.80643E-05 } ,
+                 new[] {2.976301051, 0.003993696, 0.123032889, 0.001788784 } ,
+                 new[] {0.043272646, 5.80643E-05, 0.001788784, 2.60077E-05 }          
+            };         
+            var etalonDoubles = new[]
+            {
+                new[] {773906.6402, -16105723.87, -18301237.68, 7292083.812},
+                new[] {-16105723.87, 642539748.3, 366636052.1, 79842260.9},
+                new[] {-18301237.69, 366636052.1, 433713536.2, -201498111.4},
+                new[] {7292083.818, 79842260.78, -201498111.6, 1490048248}
+            };
+
+            var testResult = testMatrix.Inverse();
+            var file = new StreamWriter("matr.txt");
+            CalculatorCoefficients.WriteMatrix(testMatrix, ref file);
+            CalculatorCoefficients.WriteMatrix(testResult, ref file);
+            CalculatorCoefficients.WriteMatrix(Matrix.Multiply(testMatrix, testResult), ref file);
+            CalculatorCoefficients.WriteMatrix(Matrix.Multiply(testResult, testMatrix), ref file);
+            file.Close();
             AssertEquals(testResult, etalonDoubles);
         }
 
@@ -201,8 +252,7 @@ namespace Evo20.Math.Tests
         }
 
         [TestMethod]
-        [Ignore]
-        public void Invers_OneMatrix_Inverted3()
+        public void Invers_OneMatrix_Inverted4()
         {
             var testMatrix = new []
             {
@@ -237,6 +287,7 @@ namespace Evo20.Math.Tests
                 new [] { -2.17483E+28,-3.94479E+32,6.21497E+33,-1.6831E+33,2.19378E+37,-5.31825E+38,2.48476E+38,-4.44046E+41,2.02096E+43,-1.62563E+43,3.06993E+45,-2.87758E+47,3.97684E+47 }
             };
             var testResult = testMatrix.Inverse();
+            var t2 = testResult.ToArray();
             AssertEquals(testResult, etalonDoubles);
         }
         [TestMethod]
@@ -267,6 +318,7 @@ namespace Evo20.Math.Tests
             };
 
             var testResult = Matrix.Multiply(first, second);
+            var t2 = testResult.ToArray();
             AssertEquals(testResult, etalonDoubles);
         }
 
