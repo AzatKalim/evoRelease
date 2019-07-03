@@ -600,7 +600,7 @@
             this.sensorGroupBox.Controls.Add(this.label6);
             this.sensorGroupBox.Location = new System.Drawing.Point(40, 72);
             this.sensorGroupBox.Name = "sensorGroupBox";
-            this.sensorGroupBox.Size = new System.Drawing.Size(609, 321);
+            this.sensorGroupBox.Size = new System.Drawing.Size(808, 321);
             this.sensorGroupBox.TabIndex = 5;
             this.sensorGroupBox.TabStop = false;
             this.sensorGroupBox.Text = "Данные с датчика";
@@ -648,17 +648,18 @@
             this.SensorDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.SensorDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.SensorDataGridView.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.SensorDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SensorDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.SensorDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Type,
             this.xColumn,
             this.yColumn,
             this.zColumn});
-            this.SensorDataGridView.GridColor = System.Drawing.SystemColors.Desktop;
+            this.SensorDataGridView.GridColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.SensorDataGridView.Location = new System.Drawing.Point(37, 157);
             this.SensorDataGridView.Name = "SensorDataGridView";
             this.SensorDataGridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
-            this.SensorDataGridView.Size = new System.Drawing.Size(491, 145);
+            this.SensorDataGridView.Size = new System.Drawing.Size(713, 145);
             this.SensorDataGridView.TabIndex = 4;
             this.SensorDataGridView.Visible = false;
             // 

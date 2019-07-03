@@ -608,7 +608,7 @@ namespace Evo20.GUI
             {
                 for (int i = 1; i < 4; i++)
                 {
-                    SensorDataGridView.Rows[j].Cells[i].Value = System.Math.Round(data[k++], 5);
+                    SensorDataGridView.Rows[j].Cells[i].Value = data[k++];
                 }
             }
         }
