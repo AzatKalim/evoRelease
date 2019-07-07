@@ -80,13 +80,29 @@ namespace Evo20.EvoConnections
         /// <returns> результат запуска </returns>
         public bool StartConnection()
         {
-            Sender = new UdpClient(Config.Instance.RemotePortNumber);
+            int port = Config.Instance.RemotePortNumber;
+            int type = Config.Instance.EvoType;
+            if (Config.Instance.FindEvo)
+            {
+                var finder = new ConnectionFinder();
+                Log.Instance.Info($"Поиск порта ");
+                port = finder.FindPort(out type);
+                Log.Instance.Info($"Поиск завершен порт :{port} тип {type}");
+                if (port == -1 || type == -1)
+                {
+                    port = Config.Instance.RemotePortNumber;
+                    type = Config.Instance.EvoType;
+                }
+            }
+            //Sender = new UdpClient(Config.Instance.RemotePortNumber);
+            Sender = new UdpClient(port);
             //#if !DEBUG
             var endPoint = new IPEndPoint(RemoteIpAddress, Config.Instance.RemotePortNumber);
             if (!Config.IsFakeEvo)
                 Sender.Connect(endPoint);
             //#endif
-            switch (Config.Instance.EvoType)
+            //switch (Config.Instance.EvoType)
+            switch (type)
             {
                 case 1:
                 {
@@ -95,7 +111,8 @@ namespace Evo20.EvoConnections
                 }
                 case 0:
                 {
-                    ReceivingUdpClient = new UdpClient(Config.Instance.LocalPortNumber);
+                    //ReceivingUdpClient = new UdpClient(Config.Instance.LocalPortNumber);
+                    ReceivingUdpClient = new UdpClient(port);
                     break;
                 }
             }

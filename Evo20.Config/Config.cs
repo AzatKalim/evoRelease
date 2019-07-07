@@ -79,7 +79,9 @@ namespace Evo20.Utils
         public string DefaultSettingsFileName => _defaultSettingsFileName ?? (_defaultSettingsFileName =
                                                      ConfigurationManager.AppSettings.Get("DefaultSettingsFileName"));
 
-        public static bool IsFakeEvo = Convert.ToBoolean(ConfigurationManager.AppSettings.Get("FakeEvo"));
+        public static readonly bool IsFakeEvo = Convert.ToBoolean(ConfigurationManager.AppSettings.Get("FakeEvo"));
+
+        public readonly bool FindEvo = Convert.ToBoolean(ConfigurationManager.AppSettings.Get("FindEvo"));
 
     }
 }

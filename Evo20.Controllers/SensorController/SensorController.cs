@@ -158,11 +158,6 @@ namespace Evo20.Controllers.SensorController
             result.AddRange(uw);
             result.AddRange(a);
             result.AddRange(ua);
-            double mul = 0.5 / System.Math.Pow(2, 28);
-            for (int i = 0; i < result.Count; i++)
-            {
-                result[i] *= mul;
-            }
             return result;
 
         }

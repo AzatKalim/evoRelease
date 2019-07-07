@@ -99,43 +99,28 @@ namespace Evo20.Controllers.FileWork
 
         public void WriteRedPackets(List<ISensor> sensorsList, int temperatureNumber)
         {
-            Log.Instance.Info("Запись уже считанных пакетов в файл");
-            using( var file = new StreamWriter(Path.Combine(FilesPath,temperatureNumber+".txt")))
+            var fileName = Path.Combine(FilesPath, temperatureNumber + ".txt");
+            Log.Instance.Info("Запись всех пакетов в файл {0}", fileName);
+            using( var file = new StreamWriter(fileName))
             {
                 SensorData.Instance.WriteForCurrentTemperture(sensorsList.ToArray(),
                     file,temperatureNumber);
             }
-
-            //foreach (var sensor in _sensorsList)
-            //{
-            //    if (!sensor.WriteRedPackets(filesPath))
-            //    {
-            //        Log.Instance.Error("Запись прервана на датчике {0}", sensor.Name);
-            //        return false;
-            //    }
-            //}
-            //return true;
+            Log.Instance.Info("Запись всех пакетов в файл {0} завершена", fileName);
         }
 
         public void WriteMeanParams(List<ISensor> sensorsList, int temperatureNumber)
         {
-            Log.Instance.Info("Запись уже считанных пакетов в файл");
-            using (var file = new StreamWriter(Path.Combine(FilesPath, temperatureNumber + "mean.txt")))
+            var fileName = Path.Combine(FilesPath, temperatureNumber + "mean.txt");
+            using (var file = new StreamWriter(fileName))
             {
+                Log.Instance.Info("Запись всех пакетов в файл {0}", fileName);
                 SensorData.Instance.WriteMeanForCurrentTemperture(sensorsList.ToArray(),
                     file, temperatureNumber);
             }
-
-            //foreach (var sensor in _sensorsList)
-            //{
-            //    if (!sensor.WriteRedPackets(filesPath))
-            //    {
-            //        Log.Instance.Error("Запись прервана на датчике {0}", sensor.Name);
-            //        return false;
-            //    }
-            //}
-            //return true;
+            Log.Instance.Info("Запись всех пакетов в файл {0} завершена", fileName);
         }
+
         public bool WritePackets(List<ISensor> sensorsList, StreamWriter file)
         {
             return SensorData.Instance.WriteAllPackets(sensorsList.ToArray(), file);

@@ -80,7 +80,7 @@ namespace Evo20.Controllers.Data
             if (data != null && data.Count > temperatureIndex && data[temperatureIndex] != null)
             {
                 data[temperatureIndex].MeanToFile(file);
-                Log.Instance.Info("Запись данных в файл {0} для температуры завершена", temperatureIndex);
+                Log.Instance.Info("Запись средних значений в файл для температуры {0} завершена", temperatureIndex);
             }
             else
             {
