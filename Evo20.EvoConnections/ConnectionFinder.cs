@@ -60,7 +60,7 @@ namespace Evo20.EvoConnections
                     }
                 }
             }
-            catch (SocketException ex)
+            catch (SocketException)
             {
                 return false;
             }
@@ -69,7 +69,7 @@ namespace Evo20.EvoConnections
 
         public int FindPort(out int type)
         {
-            for (int i = 500; i < 5000; i++)
+            for (int i = 500; i < 15000; i++)
             {
                 if (!TryConnect(i)) continue;
                 type = ReceivedEndPoint != null ? 1 : 0;

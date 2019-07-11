@@ -95,7 +95,7 @@ namespace Evo20.EvoConnections
                 }
             }
             //Sender = new UdpClient(Config.Instance.RemotePortNumber);
-            Sender = new UdpClient(port);
+            Sender = new UdpClient(Config.Instance.LocalPortNumber);
             //#if !DEBUG
             var endPoint = new IPEndPoint(RemoteIpAddress, Config.Instance.RemotePortNumber);
             if (!Config.IsFakeEvo)
@@ -112,7 +112,7 @@ namespace Evo20.EvoConnections
                 case 0:
                 {
                     //ReceivingUdpClient = new UdpClient(Config.Instance.LocalPortNumber);
-                    ReceivingUdpClient = new UdpClient(port);
+                    ReceivingUdpClient = new UdpClient(Config.Instance.LocalPortNumber);
                     break;
                 }
             }
