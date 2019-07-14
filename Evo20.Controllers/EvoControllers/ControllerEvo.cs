@@ -12,7 +12,7 @@ using Evo20.Utils.EventArguments;
 
 namespace Evo20.Controllers.EvoControllers
 {
-    public class ControllerEvo : IDisposable
+    public sealed class ControllerEvo : IDisposable
     {
         public delegate void EvoConnectionChangedHandler(object sender, EventArgs e);
 
@@ -32,7 +32,7 @@ namespace Evo20.Controllers.EvoControllers
 
         private const int ThreadsSleepTime = 100;
 
-        protected Thread RoutineThread;
+        private Thread RoutineThread;
     
         private static ControllerEvo _controllerEvo;
 
@@ -40,7 +40,7 @@ namespace Evo20.Controllers.EvoControllers
 
         public double CurrentTemperature => EvoData.Instance.CurrentTemperature;
 
-        public ControllerEvo()
+        private ControllerEvo()
         {
             CommandHandler = new CommandHandler();
             CommandHandler.NewCommandArrived += NewCommandHandler;
@@ -48,7 +48,7 @@ namespace Evo20.Controllers.EvoControllers
             RoutineThread = new Thread(ControllerRoutine) {Priority = ThreadPriority.BelowNormal, IsBackground = true};
         }
 
-        protected Command[] RoutineCommands => new Command[] 
+        private static Command[] RoutineCommands => new Command[] 
         {
             new AxisStatus(),
             new TemperatureStatus(),
@@ -62,16 +62,15 @@ namespace Evo20.Controllers.EvoControllers
             new RequestedAxisPositionReached()
         };
 
-        protected CommandHandler CommandHandler { get; set; }
+        private CommandHandler CommandHandler { get; }
 
-        public void ControllerRoutine()
+        private void ControllerRoutine()
         {
             try
             {
-                var commands = RoutineCommands;
                 while (CommandHandler.ConnectionStatus == ConnectionStatus.Connected)
                 {
-                    foreach (var item in commands)
+                    foreach (var item in RoutineCommands)
                     {
                         lock (CommandHandler)
                         {
@@ -86,7 +85,6 @@ namespace Evo20.Controllers.EvoControllers
                             Thread.Sleep(100);
                         }
                     }
-
                     Thread.Sleep(ThreadsSleepTime);
                 }
             }
@@ -101,12 +99,12 @@ namespace Evo20.Controllers.EvoControllers
             }
         }
 
-        protected void NewCommandHandler(object sender, EventArgs e)
+        private void NewCommandHandler(object sender, EventArgs e)
         {
             Command[] commands;
             lock (CommandHandler)
             {
-                commands = CommandHandler.GetCommands();
+                commands = CommandHandler.Commands;
             }
             if (commands == null)
                 return;
@@ -138,14 +136,12 @@ namespace Evo20.Controllers.EvoControllers
 
         public bool StartEvoConnection()
         {
-            bool result = CommandHandler.StartConnection();
+            var result = CommandHandler.StartConnection();
             if (!result)
                 return false;
-            if (!RoutineThread.IsAlive)
-            {
-                RoutineThread = new Thread(ControllerRoutine) {Priority = ThreadPriority.BelowNormal};
-                RoutineThread.Start();
-            }
+            if (RoutineThread.IsAlive) return true;
+            RoutineThread = new Thread(ControllerRoutine) {Priority = ThreadPriority.BelowNormal};
+            RoutineThread.Start();
             return true;
         }
 
@@ -165,7 +161,7 @@ namespace Evo20.Controllers.EvoControllers
                 RoutineThread.Abort();
         }
 
-        public void ConnectionStateChangedHandler(object sender, EventArgs e)
+        private void ConnectionStateChangedHandler(object sender, EventArgs e)
         {
             var args = e as ConnectionStatusEventArgs;
             if (args == null)
@@ -194,6 +190,12 @@ namespace Evo20.Controllers.EvoControllers
                         Controller.Instance.Mode = WorkMode.Error;
                         break;
                     }
+                case ConnectionStatus.Connected:
+                    break;
+                case ConnectionStatus.Pause:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
 
             _EvoConnectionChanged?.Invoke(this, e);
@@ -201,27 +203,27 @@ namespace Evo20.Controllers.EvoControllers
 
         #region Camera commands
 
-        public void PowerOnCamera(bool value)
+        private void PowerOnCamera(bool value)
         {
             CommandHandler.SendCommand(new PowerOnTemperatureCamera(value));
         }
 
-        public void PowerOnAxis(Axis axis, bool value)
+        private void PowerOnAxis(Axis axis, bool value)
         {
             CommandHandler.SendCommand(new AxisPower(axis, value));
         }
 
-        public void SetAxisRate(Axis axis, double speedOfRate)
+        private void SetAxisRate(Axis axis, double speedOfRate)
         {
             CommandHandler.SendCommand(new AxisRate(axis, speedOfRate));
         }
 
-        public void FindZeroIndex(Axis axis)
+        private void FindZeroIndex(Axis axis)
         {
             CommandHandler.SendCommand(new ZeroIndexSearch(axis));
         }
 
-        public void SetAxisMode(ModeParam param, Axis axis)
+        private void SetAxisMode(ModeParam param, Axis axis)
         {
             CommandHandler.SendCommand(new Mode(param, axis));
         }
@@ -231,27 +233,27 @@ namespace Evo20.Controllers.EvoControllers
             CommandHandler.SendCommand(new StopAxis(axis));
         }
 
-        public void SetAxisPosition(Axis axis, double degree)
+        private void SetAxisPosition(Axis axis, double degree)
         {
             StopAxis(Axis.All);
-            if (axis == Axis.First)
+            switch (axis)
             {
-                degree+=EvoData.Instance.X.Correction;
+                case Axis.First:
+                    degree += EvoData.Instance.X.Correction;
+                    break;
+                case Axis.Second:
+                    degree += EvoData.Instance.Y.Correction;
+                    break;
             }
-            else if (axis == Axis.Second)
-            {
-                degree += EvoData.Instance.Y.Correction;
-            }
-
             CommandHandler.SendCommand(new AxisPosition(axis, degree));
         }
 
-        public void StartAxis(Axis axis)
+        private void StartAxis(Axis axis)
         {
             CommandHandler.SendCommand(new StartAxis(axis));    
         }
 
-        public void SetTemperatureChangeSpeed(double slope)
+        private void SetTemperatureChangeSpeed(double slope)
         {
             CommandHandler.SendCommand(new TemperatureSlopeSetPoint(slope));
         }
@@ -288,28 +290,26 @@ namespace Evo20.Controllers.EvoControllers
             StartAxis(Axis.All);
         }
 
-        public bool InitEvo()
+        public void InitEvo()
         {
             PowerOnCamera(true);
             PowerOnAxis(Axis.All, true);
             FindZeroIndex(Axis.All);
-            return true;
         }
 
-        public bool SetStartPosition()
+        public void SetStartPosition()
         {
             StopAxis(Axis.All);
             SetAxisRate(Axis.All, Config.Instance.BaseMoveSpeed);
             SetAxisPosition(Axis.All, 0);
             StartAxis(Axis.All);
             SetTemperatureChangeSpeed(Config.Instance.SpeedOfTemperatureChange);
-            return true;
         }
 
         #region IDisposable Support
         private bool _disposedValue;
 
-        protected virtual void Dispose(bool disposing)
+        private void Dispose(bool disposing)
         {
             if (!_disposedValue)
             {

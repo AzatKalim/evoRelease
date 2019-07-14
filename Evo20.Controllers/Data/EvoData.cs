@@ -73,7 +73,7 @@ namespace Evo20.Controllers.Data
 
         public bool IsTemperatureReached;
 
-        public ManualResetEvent TemperatureReachedEvent;
+        public readonly ManualResetEvent TemperatureReachedEvent;
 
         public ManualResetEvent MovementEndedEvent;
 

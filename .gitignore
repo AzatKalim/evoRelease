@@ -3,7 +3,7 @@
 *.user
 *.userosscache
 *.sln.docstates
-
+*.exe
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -38,11 +38,11 @@ TestResult.xml
 [Rr]eleasePS/
 dlldata.cEvo20.GUI/bin/Debug
 
-/Evo20.Config/bin/
-/Evo20.Controller/bin/
-/Evo20.EvoCommandsLib/bin/
-/Evo20.EvoConnections/bin/
-/Evo20.Math/bin/
-/Evo20.PacketsLib/bin/
-/Evo20.Math.Tests/bin/
-/bin/
+Evo20.Config/bin/Debug
+Evo20.Controller/bin/Debug
+Evo20.EvoCommandsLib/bin/Debug
+Evo20.EvoConnections/bin/Debug
+Evo20.Math/bin/Debug
+Evo20.PacketsLib/bin/Debug
+Evo20.Math.Tests/bin/Debug
+bin/Release

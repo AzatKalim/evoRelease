@@ -66,23 +66,6 @@ namespace Evo20.Commands.AnswerCommands
         {
             get;
         }
-        public bool IsTrigger1Active
-        {
-            get;
-        }
-        public bool IsTrigger2Active
-        {
-            get;
-        }
-        public bool IsTrigger3Active
-        {
-            get;
-        }
-        public bool IsTriggerActive
-        {
-            get;
-        }
-
         public AxisStatusAnswer(String value)
         {
             var tmp = Convert.ToString(Convert.ToInt32(value, 16), 2);
@@ -95,7 +78,7 @@ namespace Evo20.Commands.AnswerCommands
             {
                 data.Append('0');
             }            
-            IsInitialized= data[0] == '1';
+            IsInitialized = data[0] == '1';
 
             IsZero1Found = data[1] == '1';
             IsZero2Found = data[2] == '1';
@@ -116,10 +99,6 @@ namespace Evo20.Commands.AnswerCommands
             IsAxis3Stop = data[16] == '1';
 
             IsError = data[17] == '1';
-            IsTrigger1Active = data[18] == '1';
-            IsTrigger2Active = data[19] == '1';
-            IsTrigger3Active = data[20] == '1';
-            IsTriggerActive = data[21] == '1';        
         }
     }
 }
