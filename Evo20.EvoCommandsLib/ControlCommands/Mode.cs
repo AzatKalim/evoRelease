@@ -4,8 +4,8 @@ namespace Evo20.Commands.ControlCommands
 {
     public enum ModeParam
     {
-        Position=0,
-        Speed=1,     
+        Position = 0,
+        Speed = 1,     
     }
     public class Mode : ControlCommand
     {
@@ -18,8 +18,7 @@ namespace Evo20.Commands.ControlCommands
         }       
         public override string ToString()
         {
-            string buffer = "AXE.CONS.MOD ";
-            return buffer + _parametr + " " + AxisToInt(_axis);
+            return $"AXE.CONS.MOD {(int) _parametr} {AxisToInt(_axis)}";
         }
     }
 }

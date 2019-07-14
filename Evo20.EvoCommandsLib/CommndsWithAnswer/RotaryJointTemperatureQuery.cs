@@ -11,8 +11,7 @@ namespace Evo20.Commands.CommndsWithAnswer
         }
         public override string ToString()
         {
-            string buffer = "AXE.TELL.TJT "+ AxisToInt(_axis);
-            return buffer;
+            return $"AXE.TELL.TJT {AxisToInt(_axis)}";
         }
     }
 }

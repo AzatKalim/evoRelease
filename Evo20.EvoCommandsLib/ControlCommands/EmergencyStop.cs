@@ -6,8 +6,7 @@ namespace Evo20.Commands.ControlCommands
     {
         public override string ToString()
         {
-            string buffer = "AXE.AU ";
-            return buffer;
+            return "AXE.AU ";
         }
     }
 }

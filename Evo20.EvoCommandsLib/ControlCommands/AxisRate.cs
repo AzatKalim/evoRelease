@@ -13,8 +13,7 @@ namespace Evo20.Commands.ControlCommands
         }
         public override string ToString()
         {
-            string buffer = "AXE.CONS.VIT " + _speedOfRate;         
-            return buffer + ' ' + AxisToInt(_axis);
+            return $"AXE.CONS.VIT {_speedOfRate} {AxisToInt(_axis)}";
         }
     }
 }

@@ -8,8 +8,7 @@ namespace Evo20.Commands.CommndsWithAnswer
 
         public override string ToString()
         {
-            string buffer = "AXE.TELL.STA ";
-            return buffer;
+            return "AXE.TELL.STA ";
         }
     }
 }

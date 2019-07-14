@@ -14,8 +14,7 @@ namespace Evo20.Commands.ControlCommands
 
         public override string ToString()
         {
-            string buffer = "AXE.CONS.POS "+_degree;         
-            return buffer + ' ' + AxisToInt(_axis);
+            return $"AXE.CONS.POS {_degree} {AxisToInt(_axis)}";
         }
     }
 }

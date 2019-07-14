@@ -11,8 +11,7 @@ namespace Evo20.Commands.ControlCommands
         }
         public override string ToString()
         {
-            string buffer = "CLIM.ECL" + _lightMode;
-            return buffer;
+            return $"CLIM.ECL {_lightMode}";
         }
     }
 }

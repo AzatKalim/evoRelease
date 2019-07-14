@@ -10,10 +10,6 @@ namespace Evo20.Commands.CommndsWithAnswer
             _axis = axis;
         }
 
-        public override string ToString()
-        {
-            string buffer = "AXE.TELL.POS "+ AxisToInt(_axis);
-            return buffer;
-        }
+        public override string ToString() => $"AXE.TELL.POS {AxisToInt(_axis)}";
     }
 }

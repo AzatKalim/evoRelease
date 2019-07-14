@@ -11,8 +11,7 @@ namespace Evo20.Commands.ControlCommands
         }
         public override string ToString()
         {
-            string buffer = "CLIM.RAMP " + _slope;
-            return buffer;
+            return $"CLIM.RAMP { _slope}";
         }
     }
 }

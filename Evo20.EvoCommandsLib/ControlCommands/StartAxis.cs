@@ -12,7 +12,7 @@ namespace Evo20.Commands.ControlCommands
         }
         public override string ToString()
         {
-            return "AXE.STRT " + AxisToInt(_axis);
+            return $"AXE.STRT {AxisToInt(_axis)}";
         }
     }
 }

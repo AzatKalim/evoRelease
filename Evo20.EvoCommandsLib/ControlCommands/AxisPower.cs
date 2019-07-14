@@ -13,12 +13,7 @@ namespace Evo20.Commands.ControlCommands
         }
         public override string ToString()
         {
-            string buffer = "AXE.PWR ";
-            if (_control)
-                buffer += '1';
-            else
-                buffer += '0';
-            return buffer + ' ' + AxisToInt(_axis);
+             return $"AXE.PWR {(_control ? 1 : 0)} {AxisToInt(_axis)}";
         }
     }
 }

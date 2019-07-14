@@ -13,8 +13,7 @@ namespace Evo20.Commands.ControlCommands
         }
         public override string ToString()
         {
-            string buffer = "AXE.CONS.ACC " +_speedOfAcceleration;
-            return buffer + ' ' + AxisToInt(_axis);
+            return $"AXE.CONS.ACC {_speedOfAcceleration} {AxisToInt(_axis)}";
         }
     }
 }

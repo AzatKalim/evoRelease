@@ -11,8 +11,7 @@ namespace Evo20.Commands.ControlCommands
         }
         public override string ToString()
         {
-            string buffer = "CLIM.VENT" + _ventilationMode;
-            return buffer;
+            return $"CLIM.VENT {_ventilationMode}";
         }
     }
 }

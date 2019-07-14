@@ -11,12 +11,7 @@ namespace Evo20.Commands.ControlCommands
         }
         public override string ToString()
         {
-            string buffer = "CLIM.ETAT ";
-            if (_turnOn)
-                buffer += "1";
-            else
-                buffer += "0";
-            return buffer;
+            return $"CLIM.ETAT {(_turnOn ? 1 : 0)}";
         }
     }
 }

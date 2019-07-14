@@ -11,8 +11,7 @@ namespace Evo20.Commands.ControlCommands
         }
         public override string ToString()
         {
-            string buffer = "CLIM.CONS " + _temperature;
-            return buffer;
+            return $"CLIM.CONS {_temperature}";
         }
     }
 }
