@@ -74,18 +74,11 @@ namespace Evo20.Controllers.EvoControllers
                     {
                         lock (CommandHandler)
                         {
-                            if (!CommandHandler.SendCommand(item))
-                            {
-                                Log.Instance.Error($"Не удалось отправить сообщение evo{item}");
-                                _EvoConnectionChanged?.Invoke(this,
-                                    new ConnectionStatusEventArgs(CommandHandler.ConnectionStatus));
-                                return;
-                            }
-
+                            CommandHandler.AddCommandToQueue(item);
                             Thread.Sleep(100);
                         }
                     }
-                    Thread.Sleep(ThreadsSleepTime);
+                    //Thread.Sleep(ThreadsSleepTime);
                 }
             }
             catch (ThreadAbortException)
@@ -139,6 +132,7 @@ namespace Evo20.Controllers.EvoControllers
             var result = CommandHandler.StartConnection();
             if (!result)
                 return false;
+            CommandHandler.Start();
             if (RoutineThread.IsAlive) return true;
             RoutineThread = new Thread(ControllerRoutine) {Priority = ThreadPriority.BelowNormal};
             RoutineThread.Start();
@@ -159,6 +153,7 @@ namespace Evo20.Controllers.EvoControllers
             if (RoutineThread != null && RoutineThread.IsAlive && RoutineThread.ThreadState != ThreadState.Aborted
                     && RoutineThread.ThreadState != ThreadState.AbortRequested && RoutineThread.ThreadState == ThreadState.Running)
                 RoutineThread.Abort();
+            CommandHandler.Stop();
         }
 
         private void ConnectionStateChangedHandler(object sender, EventArgs e)
@@ -205,32 +200,32 @@ namespace Evo20.Controllers.EvoControllers
 
         private void PowerOnCamera(bool value)
         {
-            CommandHandler.SendCommand(new PowerOnTemperatureCamera(value));
+            CommandHandler.AddCommandToQueue(new PowerOnTemperatureCamera(value));
         }
 
         private void PowerOnAxis(Axis axis, bool value)
         {
-            CommandHandler.SendCommand(new AxisPower(axis, value));
+            CommandHandler.AddCommandToQueue(new AxisPower(axis, value));
         }
 
         private void SetAxisRate(Axis axis, double speedOfRate)
         {
-            CommandHandler.SendCommand(new AxisRate(axis, speedOfRate));
+            CommandHandler.AddCommandToQueue(new AxisRate(axis, speedOfRate));
         }
 
         private void FindZeroIndex(Axis axis)
         {
-            CommandHandler.SendCommand(new ZeroIndexSearch(axis));
+            CommandHandler.AddCommandToQueue(new ZeroIndexSearch(axis));
         }
 
         private void SetAxisMode(ModeParam param, Axis axis)
         {
-            CommandHandler.SendCommand(new Mode(param, axis));
+            CommandHandler.AddCommandToQueue(new Mode(param, axis));
         }
 
         public void StopAxis(Axis axis)
         {
-            CommandHandler.SendCommand(new StopAxis(axis));
+            CommandHandler.AddCommandToQueue(new StopAxis(axis));
         }
 
         private void SetAxisPosition(Axis axis, double degree)
@@ -245,22 +240,22 @@ namespace Evo20.Controllers.EvoControllers
                     degree += EvoData.Instance.Y.Correction;
                     break;
             }
-            CommandHandler.SendCommand(new AxisPosition(axis, degree));
+            CommandHandler.AddCommandToQueue(new AxisPosition(axis, degree));
         }
 
         private void StartAxis(Axis axis)
         {
-            CommandHandler.SendCommand(new StartAxis(axis));    
+            CommandHandler.AddCommandToQueue(new StartAxis(axis));    
         }
 
         private void SetTemperatureChangeSpeed(double slope)
         {
-            CommandHandler.SendCommand(new TemperatureSlopeSetPoint(slope));
+            CommandHandler.AddCommandToQueue(new TemperatureSlopeSetPoint(slope));
         }
 
         public void SetTemperature(double temperature)
         {
-            CommandHandler.SendCommand(new TemperatureSetPoint(temperature));
+            CommandHandler.AddCommandToQueue(new TemperatureSetPoint(temperature));
         }
 
         public void SetPosition(ProfilePart position)

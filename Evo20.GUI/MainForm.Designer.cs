@@ -865,7 +865,6 @@
             // 
             // workTimer
             // 
-            this.workTimer.Interval = 1000;
             this.workTimer.Tick += new System.EventHandler(this.workTimer_Tick);
             // 
             // timer

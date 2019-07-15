@@ -9,7 +9,7 @@ using Evo20.Utils;
 
 namespace Evo20.EvoConnections
 {
-    public class CommandHandler : ConnectionSocket
+    public class CommandHandler : ConnectionSocket, IDisposable
     {
         #region Commands 
 
@@ -26,8 +26,12 @@ namespace Evo20.EvoConnections
 
         readonly StringBuilder _bufferMessage;
 
+        private readonly Queue<Command> _queue = new Queue<Command>();
+        private readonly object _syncQueue = new object();
+        private readonly AutoResetEvent _newRecords = new AutoResetEvent(false);
+        private bool Started { get; set; }
         public delegate void NewCommandHandler(object sender, EventArgs e);
-
+        private readonly AutoResetEvent _stopped = new AutoResetEvent(false);
         public event NewCommandHandler NewCommandArrived;
   
         public CommandHandler()
@@ -68,32 +72,24 @@ namespace Evo20.EvoConnections
                 {
                     if (_bufferCommand.Count > 0)
                     {
-                        Command[] array;
-                        lock (_bufferCommand)
-                        {
-                            array = _bufferCommand.ToArray();
-                            _bufferCommand.Clear();
-                        }
+                        var array = _bufferCommand.ToArray();
+                        _bufferCommand.Clear();
                         return array;
                     }
-                    else
-                    {
-                        return null;
-                    }
+                    return null;
                 }
             }
         }
 
-        public bool SendCommand(Command command)
+        public void AddCommandToQueue(Command command)
         {
             if (Config.IsFakeEvo)
-                return true;
-            if(command is CommandWithAnswer)
-                Log.Instance.Debug("Отправлена команда:{0}", command);
-            else
-                Log.Instance.Info("Отправлена команда: {0}", command);
-            string newMessage = command.ToString();
-            return SendMessage(newMessage);
+                return;
+            lock (_syncQueue)
+            {
+                _queue.Enqueue(command);
+                _newRecords.Set();
+            }          
         }
 
 
@@ -183,5 +179,69 @@ namespace Evo20.EvoConnections
 
             return null;
         }
+        private void SendCommand()
+        {
+            do
+            {
+                _newRecords.WaitOne();
+                Command[] commands;
+                lock (_syncQueue)
+                {
+                    commands = _queue.ToArray();
+                    _queue.Clear();
+                }
+                foreach (var command in commands)
+                {
+                    if (command is CommandWithAnswer)
+                        Log.Instance.Debug("Отправлена команда:{0}", command);
+                    else
+                        Log.Instance.Info("Отправлена команда: {0}", command);
+                    string newMessage = command.ToString();
+                    SendMessage(newMessage);
+                }
+
+            }
+            while (Started);
+
+            _stopped.Set();
+        }
+
+        public void Start()
+        {
+            Started = true;
+            Thread thread = new Thread(SendCommand) { Name = "Command sender", IsBackground = true };
+            thread.Start();
+            _newRecords.Set();
+        }
+
+        public void Stop()
+        {
+            if (Started)
+            {
+                Started = false;
+                _newRecords.Set();
+                _stopped.WaitOne();
+            }
+        }
+
+        #region IDisposable Support
+        private bool _disposedValue;
+
+        private new void Dispose(bool disposing)
+        {
+            if (_disposedValue) return;
+            if (disposing)
+            {
+                _newRecords.Dispose();
+                _stopped.Dispose();
+            }
+
+            _disposedValue = true;
+        }
+        public new void Dispose()
+        {
+            Dispose(true);
+        }
+        #endregion
     }
 }

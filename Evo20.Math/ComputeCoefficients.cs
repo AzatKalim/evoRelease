@@ -135,9 +135,9 @@ namespace Evo20.Math
             new double[] {64, 0, 0},
             new double[] {112, 0, 0},
             new double[] {128, 0, 0}
-
         };
         #endregion
+
         #endregion
 
         #region DLY coefficients
