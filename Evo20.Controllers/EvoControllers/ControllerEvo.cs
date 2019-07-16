@@ -75,10 +75,10 @@ namespace Evo20.Controllers.EvoControllers
                         lock (CommandHandler)
                         {
                             CommandHandler.AddCommandToQueue(item);
-                            Thread.Sleep(100);
+                            Thread.Sleep(1000);
                         }
                     }
-                    //Thread.Sleep(ThreadsSleepTime);
+                    Thread.Sleep(ThreadsSleepTime);
                 }
             }
             catch (ThreadAbortException)
@@ -230,7 +230,7 @@ namespace Evo20.Controllers.EvoControllers
 
         private void SetAxisPosition(Axis axis, double degree)
         {
-            StopAxis(Axis.All);
+            StopAxis(axis);
             switch (axis)
             {
                 case Axis.First:

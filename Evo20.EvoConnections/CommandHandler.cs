@@ -116,7 +116,7 @@ namespace Evo20.EvoConnections
 
             if (commandParts[0] == AxisStatus.Command)
             {
-                Log.Instance.Info("Полученна :статус осей {0}", cmd);            
+                Log.Instance.Info("Полученна:статус осей {0}", cmd);            
                 return new AxisStatusAnswer(foramtedCommand.ToString());
             }
 
@@ -172,7 +172,7 @@ namespace Evo20.EvoConnections
             }
             if (commandParts[0] == ActualTemperatureQuery.Command)
             {
-                Log.Instance.Info("Полученна:достигнутые положение осей {0}", cmd);
+                Log.Instance.Info("Полученна:текущая температура осей {0}", cmd);
                 return new ActualTemperatureQueryAnswer(foramtedCommand.ToString());
             }
             Log.Instance.Warning("Неизвестная команда {0}", cmd);

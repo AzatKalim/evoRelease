@@ -75,7 +75,7 @@ namespace Evo20.Controllers.Data
 
         public readonly ManualResetEvent TemperatureReachedEvent;
 
-        public ManualResetEvent MovementEndedEvent;
+        public readonly ManualResetEvent MovementEndedEvent;
 
         private static EvoData _current;
 

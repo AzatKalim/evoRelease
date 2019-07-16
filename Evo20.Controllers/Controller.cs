@@ -46,7 +46,7 @@ namespace Evo20.Controllers
 
         public event TemperatureSabilizationHandler TemperatureStabilized;
 //#if !DEBUG
-        private int THREADS_SLEEP_TIME = 100;
+        private int THREADS_SLEEP_TIME = 10000;
 //#endif
         #endregion
 
