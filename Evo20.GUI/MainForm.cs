@@ -432,7 +432,7 @@ namespace Evo20.GUI
             WorkModDel del = EvoWorkModeChange;
             var args = e as WorkModeEventArgs;
             if (args != null)
-                controllerWokModeLabel.Invoke(del, args.Mode);
+                controllerWokModeLabel?.Invoke(del, args.Mode);
         }
 
         private void ControllerExсeptoinsHandler(object sender, EventArgs e)

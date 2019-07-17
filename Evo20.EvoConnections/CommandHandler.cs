@@ -9,7 +9,7 @@ using Evo20.Utils;
 
 namespace Evo20.EvoConnections
 {
-    public class CommandHandler : ConnectionSocket, IDisposable
+    public class CommandHandler : ConnectionSocket
     {
         #region Commands 
 
@@ -26,14 +26,10 @@ namespace Evo20.EvoConnections
 
         readonly StringBuilder _bufferMessage;
 
-        private readonly Queue<Command> _queue = new Queue<Command>();
-        private readonly object _syncQueue = new object();
-        private readonly AutoResetEvent _newRecords = new AutoResetEvent(false);
-        private bool Started { get; set; }
         public delegate void NewCommandHandler(object sender, EventArgs e);
-        private readonly AutoResetEvent _stopped = new AutoResetEvent(false);
+
         public event NewCommandHandler NewCommandArrived;
-  
+
         public CommandHandler()
         {
             Buffer = new byte[2048];
@@ -41,14 +37,14 @@ namespace Evo20.EvoConnections
             _bufferMessage = new StringBuilder();
             NewMessageArrived += NewMessageHandler;
             WorkThread = new Thread((ReadMessage));
-            ConnectionStatus = ConnectionStatus.Disconnected;  
+            ConnectionStatus = ConnectionStatus.Disconnected;
         }
 
         private void NewMessageHandler(object sender, EventArgs e)
         {
             _bufferMessage.Append(ReadBuffer());
             if (_bufferMessage.Length != 0)
-            {              
+            {
                 string temp = _bufferMessage.ToString();
                 Command serializedCommand = RecognizeCommand(temp);
                 if (serializedCommand == null)
@@ -58,10 +54,10 @@ namespace Evo20.EvoConnections
                 lock (_bufferCommand)
                 {
                     _bufferCommand.Enqueue(serializedCommand);
-                }   
+                }
                 _bufferMessage.Remove(0, _bufferMessage.Length);
             }
-            NewCommandArrived?.Invoke(this,null);
+            NewCommandArrived?.Invoke(this, null);
         }
 
         public Command[] Commands
@@ -72,31 +68,39 @@ namespace Evo20.EvoConnections
                 {
                     if (_bufferCommand.Count > 0)
                     {
-                        var array = _bufferCommand.ToArray();
-                        _bufferCommand.Clear();
+                        Command[] array;
+                        lock (_bufferCommand)
+                        {
+                            array = _bufferCommand.ToArray();
+                            _bufferCommand.Clear();
+                        }
                         return array;
                     }
-                    return null;
+                    else
+                    {
+                        return null;
+                    }
                 }
             }
         }
 
-        public void AddCommandToQueue(Command command)
+        public bool SendCommand(Command command)
         {
             if (Config.IsFakeEvo)
-                return;
-            lock (_syncQueue)
-            {
-                _queue.Enqueue(command);
-                _newRecords.Set();
-            }          
+                return true;
+            if (command is CommandWithAnswer)
+                Log.Instance.Debug("Отправлена команда:{0}", command);
+            else
+                Log.Instance.Info("Отправлена команда: {0}", command);
+            string newMessage = command.ToString();
+            return SendMessage(newMessage);
         }
 
 
         public static Command RecognizeCommand(string cmd)
         {
             if (string.IsNullOrEmpty(cmd))
-            { 
+            {
                 Log.Instance.Warning("Полученна пустая команда");
                 return null;
             }
@@ -116,7 +120,7 @@ namespace Evo20.EvoConnections
 
             if (commandParts[0] == AxisStatus.Command)
             {
-                Log.Instance.Info("Полученна:статус осей {0}", cmd);            
+                Log.Instance.Info("Полученна:статус осей {0}", cmd);
                 return new AxisStatusAnswer(foramtedCommand.ToString());
             }
 
@@ -130,7 +134,7 @@ namespace Evo20.EvoConnections
             if (commandParts[0] == RotaryJointTemperatureQueryX)
             {
                 Log.Instance.Info("Полученна:температура оси x {0}", cmd);
-                return new RotaryJointTemperatureQueryAnswer(foramtedCommand.ToString(),Axis.First);
+                return new RotaryJointTemperatureQueryAnswer(foramtedCommand.ToString(), Axis.First);
             }
             //Пришла команда температура оси y
             if (commandParts[0] == RotaryJointTemperatureQueryY)
@@ -179,69 +183,5 @@ namespace Evo20.EvoConnections
 
             return null;
         }
-        private void SendCommand()
-        {
-            do
-            {
-                _newRecords.WaitOne();
-                Command[] commands;
-                lock (_syncQueue)
-                {
-                    commands = _queue.ToArray();
-                    _queue.Clear();
-                }
-                foreach (var command in commands)
-                {
-                    if (command is CommandWithAnswer)
-                        Log.Instance.Debug("Отправлена команда:{0}", command);
-                    else
-                        Log.Instance.Info("Отправлена команда: {0}", command);
-                    string newMessage = command.ToString();
-                    SendMessage(newMessage);
-                }
-
-            }
-            while (Started);
-
-            _stopped.Set();
-        }
-
-        public void Start()
-        {
-            Started = true;
-            Thread thread = new Thread(SendCommand) { Name = "Command sender", IsBackground = true };
-            thread.Start();
-            _newRecords.Set();
-        }
-
-        public void Stop()
-        {
-            if (Started)
-            {
-                Started = false;
-                _newRecords.Set();
-                _stopped.WaitOne();
-            }
-        }
-
-        #region IDisposable Support
-        private bool _disposedValue;
-
-        private new void Dispose(bool disposing)
-        {
-            if (_disposedValue) return;
-            if (disposing)
-            {
-                _newRecords.Dispose();
-                _stopped.Dispose();
-            }
-
-            _disposedValue = true;
-        }
-        public new void Dispose()
-        {
-            Dispose(true);
-        }
-        #endregion
     }
 }

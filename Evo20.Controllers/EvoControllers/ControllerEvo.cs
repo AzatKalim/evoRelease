@@ -33,7 +33,7 @@ namespace Evo20.Controllers.EvoControllers
         private const int ThreadsSleepTime = 100;
 
         private Thread RoutineThread;
-    
+
         private static ControllerEvo _controllerEvo;
 
         public static ControllerEvo Instance => _controllerEvo ?? (_controllerEvo = new ControllerEvo());
@@ -45,10 +45,10 @@ namespace Evo20.Controllers.EvoControllers
             CommandHandler = new CommandHandler();
             CommandHandler.NewCommandArrived += NewCommandHandler;
             CommandHandler.StateChanged += ConnectionStateChangedHandler;
-            RoutineThread = new Thread(ControllerRoutine) {Priority = ThreadPriority.BelowNormal, IsBackground = true};
+            RoutineThread = new Thread(ControllerRoutine) { Priority = ThreadPriority.BelowNormal, IsBackground = true };
         }
 
-        private static Command[] RoutineCommands => new Command[] 
+        private static Command[] RoutineCommands => new Command[]
         {
             new AxisStatus(),
             new TemperatureStatus(),
@@ -74,7 +74,14 @@ namespace Evo20.Controllers.EvoControllers
                     {
                         lock (CommandHandler)
                         {
-                            CommandHandler.AddCommandToQueue(item);
+                            if (!CommandHandler.SendCommand(item))
+                            {
+                                Log.Instance.Error($"Не удалось отправить сообщение evo{item}");
+                                _EvoConnectionChanged?.Invoke(this,
+                                    new ConnectionStatusEventArgs(CommandHandler.ConnectionStatus));
+                                return;
+                            }
+
                             Thread.Sleep(1000);
                         }
                     }
@@ -132,9 +139,8 @@ namespace Evo20.Controllers.EvoControllers
             var result = CommandHandler.StartConnection();
             if (!result)
                 return false;
-            CommandHandler.Start();
             if (RoutineThread.IsAlive) return true;
-            RoutineThread = new Thread(ControllerRoutine) {Priority = ThreadPriority.BelowNormal};
+            RoutineThread = new Thread(ControllerRoutine) { Priority = ThreadPriority.BelowNormal,IsBackground = true};
             RoutineThread.Start();
             return true;
         }
@@ -142,9 +148,9 @@ namespace Evo20.Controllers.EvoControllers
         public void PauseEvoConnection()
         {
             CommandHandler.PauseConnection();
-			if(RoutineThread!=null && RoutineThread.IsAlive && RoutineThread.ThreadState!=ThreadState.Aborted
-                    && RoutineThread.ThreadState != ThreadState.AbortRequested && RoutineThread.ThreadState==ThreadState.Running)
-				RoutineThread.Abort();
+            if (RoutineThread != null && RoutineThread.IsAlive && RoutineThread.ThreadState != ThreadState.Aborted
+                    && RoutineThread.ThreadState != ThreadState.AbortRequested && RoutineThread.ThreadState == ThreadState.Running)
+                RoutineThread.Abort();
         }
 
         public void StopEvoConnection()
@@ -153,7 +159,6 @@ namespace Evo20.Controllers.EvoControllers
             if (RoutineThread != null && RoutineThread.IsAlive && RoutineThread.ThreadState != ThreadState.Aborted
                     && RoutineThread.ThreadState != ThreadState.AbortRequested && RoutineThread.ThreadState == ThreadState.Running)
                 RoutineThread.Abort();
-            CommandHandler.Stop();
         }
 
         private void ConnectionStateChangedHandler(object sender, EventArgs e)
@@ -178,7 +183,7 @@ namespace Evo20.Controllers.EvoControllers
                     {
                         if (RoutineThread != null && RoutineThread.IsAlive && RoutineThread.ThreadState != ThreadState.Aborted
                             && RoutineThread.ThreadState != ThreadState.AbortRequested && RoutineThread.ThreadState == ThreadState.Running)
-                        { 
+                        {
                             RoutineThread.Abort();
                             RoutineThread.Join();
                         }
@@ -200,37 +205,37 @@ namespace Evo20.Controllers.EvoControllers
 
         private void PowerOnCamera(bool value)
         {
-            CommandHandler.AddCommandToQueue(new PowerOnTemperatureCamera(value));
+            CommandHandler.SendCommand(new PowerOnTemperatureCamera(value));
         }
 
         private void PowerOnAxis(Axis axis, bool value)
         {
-            CommandHandler.AddCommandToQueue(new AxisPower(axis, value));
+            CommandHandler.SendCommand(new AxisPower(axis, value));
         }
 
         private void SetAxisRate(Axis axis, double speedOfRate)
         {
-            CommandHandler.AddCommandToQueue(new AxisRate(axis, speedOfRate));
+            CommandHandler.SendCommand(new AxisRate(axis, speedOfRate));
         }
 
         private void FindZeroIndex(Axis axis)
         {
-            CommandHandler.AddCommandToQueue(new ZeroIndexSearch(axis));
+            CommandHandler.SendCommand(new ZeroIndexSearch(axis));
         }
 
         private void SetAxisMode(ModeParam param, Axis axis)
         {
-            CommandHandler.AddCommandToQueue(new Mode(param, axis));
+            CommandHandler.SendCommand(new Mode(param, axis));
         }
 
         public void StopAxis(Axis axis)
         {
-            CommandHandler.AddCommandToQueue(new StopAxis(axis));
+            CommandHandler.SendCommand(new StopAxis(axis));
         }
 
         private void SetAxisPosition(Axis axis, double degree)
         {
-            StopAxis(axis);
+            StopAxis(Axis.All);
             switch (axis)
             {
                 case Axis.First:
@@ -240,22 +245,22 @@ namespace Evo20.Controllers.EvoControllers
                     degree += EvoData.Instance.Y.Correction;
                     break;
             }
-            CommandHandler.AddCommandToQueue(new AxisPosition(axis, degree));
+            CommandHandler.SendCommand(new AxisPosition(axis, degree));
         }
 
         private void StartAxis(Axis axis)
         {
-            CommandHandler.AddCommandToQueue(new StartAxis(axis));    
+            CommandHandler.SendCommand(new StartAxis(axis));
         }
 
         private void SetTemperatureChangeSpeed(double slope)
         {
-            CommandHandler.AddCommandToQueue(new TemperatureSlopeSetPoint(slope));
+            CommandHandler.SendCommand(new TemperatureSlopeSetPoint(slope));
         }
 
         public void SetTemperature(double temperature)
         {
-            CommandHandler.AddCommandToQueue(new TemperatureSetPoint(temperature));
+            CommandHandler.SendCommand(new TemperatureSetPoint(temperature));
         }
 
         public void SetPosition(ProfilePart position)
