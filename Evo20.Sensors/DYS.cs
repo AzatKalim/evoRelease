@@ -32,83 +32,83 @@ namespace Evo20.Sensors
             PacketsCollectedEvent = new AutoResetEvent(false);
         }
 
-        //private ProfilePart[] GetCalibrationProfileOld()
+        //private Position[] GetCalibrationProfileOld()
         //{
-        //    ProfilePart[] profile = new ProfilePart[INDEXES[INDEXES.Length - 1]];
+        //    Position[] profile = new Position[INDEXES[INDEXES.Length - 1]];
 
-        //    profile[0] = new ProfilePart(0, 0, 0, 0);
+        //    profile[0] = new Position(0, 0, 0, 0);
 
         //    for (int i = INDEXES[1]; i < INDEXES[2]; i++)
         //    {
-        //        profile[i] = new ProfilePart(0, 0, 0, COLL_SPEED[i - INDEXES[1]]);
+        //        profile[i] = new Position(0, 0, 0, COLL_SPEED[i - INDEXES[1]]);
         //    }
         //    for (int i = INDEXES[2]; i < INDEXES[3]; i++)
         //    {
-        //        profile[i] = new ProfilePart(0, 0, 0, -COLL_SPEED[i - INDEXES[2]]);
+        //        profile[i] = new Position(0, 0, 0, -COLL_SPEED[i - INDEXES[2]]);
         //    }
 
-        //    profile[INDEXES[3]] = new ProfilePart(0, 0, 0, 0);
+        //    profile[INDEXES[3]] = new Position(0, 0, 0, 0);
 
         //    for (int i = INDEXES[4]; i < INDEXES[5]; i++)
         //    {
-        //        profile[i] = new ProfilePart(0, 0, -COLL_SPEED[i - INDEXES[4]], 0);
+        //        profile[i] = new Position(0, 0, -COLL_SPEED[i - INDEXES[4]], 0);
         //    }
 
         //    for (int i = INDEXES[5]; i < INDEXES[6]; i++)
         //    {
-        //        profile[i] = new ProfilePart(0, 0, COLL_SPEED[i - INDEXES[5]], 0);
+        //        profile[i] = new Position(0, 0, COLL_SPEED[i - INDEXES[5]], 0);
         //    }
 
-        //    profile[INDEXES[6]] = new ProfilePart(0, 90, 0, 0);
+        //    profile[INDEXES[6]] = new Position(0, 90, 0, 0);
 
         //    for (int i = INDEXES[7]; i < INDEXES[8]; i++)
         //    {
-        //        profile[i] = new ProfilePart(0, 90, COLL_SPEED[i - INDEXES[7]], 0);
+        //        profile[i] = new Position(0, 90, COLL_SPEED[i - INDEXES[7]], 0);
         //    }
         //    for (int i = INDEXES[8]; i < INDEXES[9]; i++)
         //    {
-        //        profile[i] = new ProfilePart(0, 90, -COLL_SPEED[i - INDEXES[8]], 0);
+        //        profile[i] = new Position(0, 90, -COLL_SPEED[i - INDEXES[8]], 0);
         //    }
 
         //    return profile;
         //}
 
-        protected override ProfilePart[] GetCheckProfile()
+        protected override Position[] GetCheckProfile()
         {
-            ProfilePart[] profile = new ProfilePart[Indexes[Indexes.Length - 1]];
+            Position[] profile = new Position[Indexes[Indexes.Length - 1]];
 
-            profile[0] = new ProfilePart(0, 0, 0, 0);
+            profile[0] = new Position(0, 0, 0, 0);
 
             for (int i = Indexes[1]; i < Indexes[2]; i++)
             {
-                profile[i] = new ProfilePart(0, 0, 0, CheckSpeed[i - Indexes[1]]);
+                profile[i] = new Position(0, 0, 0, CheckSpeed[i - Indexes[1]]);
             }
             for (int i = Indexes[2]; i < Indexes[3]; i++)
             {
-                profile[i] = new ProfilePart(0, 0, 0, -CheckSpeed[i - Indexes[2]]);
+                profile[i] = new Position(0, 0, 0, -CheckSpeed[i - Indexes[2]]);
             }
 
-            profile[Indexes[3]] = new ProfilePart(0, 0, 0, 0);
+            profile[Indexes[3]] = new Position(0, 0, 0, 0);
 
             for (int i = Indexes[4]; i < Indexes[5]; i++)
             {
-                profile[i] = new ProfilePart(0, 0, -CheckSpeed[i - Indexes[4]], 0);
+                profile[i] = new Position(0, 0, -CheckSpeed[i - Indexes[4]], 0);
             }
 
             for (int i = Indexes[5]; i < Indexes[6]; i++)
             {
-                profile[i] = new ProfilePart(0, 0, CheckSpeed[i - Indexes[5]], 0);
+                profile[i] = new Position(0, 0, CheckSpeed[i - Indexes[5]], 0);
             }
 
-            profile[Indexes[6]] = new ProfilePart(0, 90, 0, 0);
+            profile[Indexes[6]] = new Position(0, 90, 0, 0);
 
             for (int i = Indexes[7]; i < Indexes[8]; i++)
             {
-                profile[i] = new ProfilePart(0, 0, CheckSpeed[i - Indexes[7]], 0);
+                profile[i] = new Position(0, 0, CheckSpeed[i - Indexes[7]], 0);
             }
             for (int i = Indexes[8]; i < Indexes[9]; i++)
             {
-                profile[i] = new ProfilePart(0, 0, -CheckSpeed[i - Indexes[8]], 0);
+                profile[i] = new Position(0, 0, -CheckSpeed[i - Indexes[8]], 0);
             }
             return profile;
         }

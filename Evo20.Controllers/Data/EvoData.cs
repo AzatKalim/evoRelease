@@ -1,13 +1,16 @@
 ﻿using System;
+using System.CodeDom;
 using System.IO;
 using System.Threading;
 using Evo20.Commands.Abstract;
 using Evo20.Commands.AnswerCommands;
+using Evo20.Sensors;
 
 namespace Evo20.Controllers.Data
 {
     public class EvoData : AbstractData, IDisposable
     {
+       
         public struct AxisData
         {
             public bool IsPositionReached;
@@ -69,6 +72,23 @@ namespace Evo20.Controllers.Data
             }
         }
 
+        public Position NextPosition;
+
+        private Position _currentPosition;
+
+        public Position CurrentPosition
+        {
+            get { return _currentPosition; }
+            set
+            {
+                _currentPosition = value;
+                if (value.Equals(NextPosition))
+                {
+                    PositionReachedEvent?.Set();
+                }
+            }
+        }
+
         public bool IsCameraPowerOn;
 
         public bool IsTemperatureReached;
@@ -76,6 +96,8 @@ namespace Evo20.Controllers.Data
         public readonly ManualResetEvent TemperatureReachedEvent;
 
         public readonly ManualResetEvent MovementEndedEvent;
+
+        public readonly ManualResetEvent PositionReachedEvent;
 
         private static EvoData _current;
 
@@ -90,6 +112,7 @@ namespace Evo20.Controllers.Data
             _nextTemperature = 0;
             TemperatureReachedEvent = new ManualResetEvent(false);
             MovementEndedEvent = new ManualResetEvent(false);
+            PositionReachedEvent = new ManualResetEvent(false);
         }
 
         #region Methods gets information from evo commands
@@ -129,17 +152,35 @@ namespace Evo20.Controllers.Data
         public void GetCommandInfo(AxisPositionQueryAnswer cmd)
         {
             if (cmd.Axis == Axis.First)
+            {
                 X.Position = cmd.Position;
+                CurrentPosition.FirstPosition = (int)cmd.Position;
+            }
+
             if (cmd.Axis == Axis.Second)
+            {
                 Y.Position = cmd.Position;
+                CurrentPosition.SecondPosition = (int)cmd.Position;
+            }
+            if(CurrentPosition.Equals(NextPosition))
+                PositionReachedEvent?.Set();
         }
 
         public void GetCommandInfo(AxisRateQueryAnswer cmd)
         {
             if (cmd.Axis == Axis.First)
+            {
                 X.SpeedOfRate = cmd.SpeedOfRate;
+                CurrentPosition.SpeedFirst = (int)cmd.SpeedOfRate;
+            }
+
             if (cmd.Axis == Axis.Second)
+            {
                 Y.SpeedOfRate = cmd.SpeedOfRate;
+                CurrentPosition.SpeedSecond = (int)cmd.SpeedOfRate;
+            }
+            if (CurrentPosition.Equals(NextPosition))
+                PositionReachedEvent?.Set();
         }
 
         public void GetCommandInfo(RequestedAxisPositionReachedAnswer cmd)

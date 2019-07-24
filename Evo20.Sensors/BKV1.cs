@@ -14,9 +14,9 @@ namespace Evo20.Sensors
 
         #region Private Fields
 
-        private ProfilePart[] _calibrationProfile;
+        private Position[] _calibrationProfile;
 
-        private ProfilePart[] _checkProfile;
+        private Position[] _checkProfile;
 
         #endregion
 
@@ -28,9 +28,9 @@ namespace Evo20.Sensors
             get;
         }
 
-        public ProfilePart[] CalibrationProfile => _calibrationProfile ?? (_calibrationProfile = GetCalibrationProfile());
+        public Position[] CalibrationProfile => _calibrationProfile ?? (_calibrationProfile = GetCalibrationProfile());
 
-        public ProfilePart[] CheckProfile => _checkProfile ?? (_checkProfile = GetCheckProfile());
+        public Position[] CheckProfile => _checkProfile ?? (_checkProfile = GetCheckProfile());
 
         public List<PacketsCollection> CalibrationPacketsCollection {set;get;}
 
@@ -42,12 +42,12 @@ namespace Evo20.Sensors
 
         #region Public Methods
 
-        protected virtual ProfilePart[] GetCalibrationProfileTest()
+        protected virtual Position[] GetCalibrationProfileTest()
         {
-            var profile = new List<ProfilePart>();
+            var profile = new List<Position>();
             for (int i = 0; i < 2; i++)
             {
-                profile.Add(new ProfilePart(i * 15, 0));
+                profile.Add(new Position(i * 15, 0));
             }
             return profile.ToArray();
         }
@@ -133,7 +133,7 @@ namespace Evo20.Sensors
             return true;
         }
 
-        public ProfilePart[] GetCalibrationProfile()
+        public Position[] GetCalibrationProfile()
         {
             var filename = $"{Config.Instance.ProfileFolder}{Name}.txt";
             if(!File.Exists(filename))
@@ -144,14 +144,14 @@ namespace Evo20.Sensors
             var str = file.ReadToEnd();
             var profile = JsonConvert.DeserializeObject<Profile>(str);
             Log.Instance.Info(str);
-            return profile.ProfilePartArray;
+            return profile.PositionArray;
         }
 
 #endregion
 
         #region Abstract Methods
 
-        protected abstract ProfilePart[] GetCheckProfile();
+        protected abstract Position[] GetCheckProfile();
 
         public abstract double[][,] GetCalibrationAdcCodes();
 

@@ -235,7 +235,7 @@ namespace Evo20.Controllers.EvoControllers
 
         private void SetAxisPosition(Axis axis, double degree)
         {
-            StopAxis(Axis.All);
+            //StopAxis(Axis.All);
             switch (axis)
             {
                 case Axis.First:
@@ -263,8 +263,10 @@ namespace Evo20.Controllers.EvoControllers
             CommandHandler.SendCommand(new TemperatureSetPoint(temperature));
         }
 
-        public void SetPosition(ProfilePart position)
+        public void SetPosition(Position position)
         {
+            EvoData.Instance.NextPosition = position;
+            EvoData.Instance.PositionReachedEvent.Reset();
             Log.Instance.Info(
                 $"Задание положения осей: X {position.FirstPosition}:{position.SpeedFirst}. Y {position.SecondPosition}:{position.SpeedSecond}");
             if (position.SpeedFirst != 0)

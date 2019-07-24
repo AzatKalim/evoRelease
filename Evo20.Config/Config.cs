@@ -79,9 +79,13 @@ namespace Evo20.Utils
         public string DefaultSettingsFileName => _defaultSettingsFileName ?? (_defaultSettingsFileName =
                                                      ConfigurationManager.AppSettings.Get("DefaultSettingsFileName"));
 
-        public static readonly bool IsFakeEvo = Convert.ToBoolean(ConfigurationManager.AppSettings.Get("FakeEvo"));
+        public readonly bool IsFakeEvo = Convert.ToBoolean(ConfigurationManager.AppSettings.Get("FakeEvo"));
 
         public readonly bool FindEvo = Convert.ToBoolean(ConfigurationManager.AppSettings.Get("FindEvo"));
+
+        public readonly int AxisDeviation = int.Parse(ConfigurationManager.AppSettings.Get("AxisDeviation"));
+
+        public readonly int SpeedDeviation = int.Parse(ConfigurationManager.AppSettings.Get("SpeedDeviation"));
 
     }
 }

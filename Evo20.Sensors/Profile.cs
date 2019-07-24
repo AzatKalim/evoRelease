@@ -2,11 +2,11 @@
 {
     public class Profile
     {
-        public ProfilePart[] ProfilePartArray { get; set; }
+        public Position[] PositionArray { get; set; }
 
-        public Profile(ProfilePart[] profile)
+        public Profile(Position[] profile)
         {
-            ProfilePartArray = profile;
+            PositionArray = profile;
         }
     }
 }

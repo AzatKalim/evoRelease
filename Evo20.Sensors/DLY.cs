@@ -37,20 +37,20 @@ namespace Evo20.Sensors
         ///// Возврашщает профиль колибровки датчика ДЛУ
         ///// </summary>
         ///// <returns>Профиль</returns>
-        //private ProfilePart[] GetCalibrationProfileOld()
+        //private Position[] GetCalibrationProfileOld()
         //{
-        //    ProfilePart[] profile = new ProfilePart[INDEXES[INDEXES.Length - 1]];
+        //    Position[] profile = new Position[INDEXES[INDEXES.Length - 1]];
         //    for (int i = 0; i < INDEXES[0]; i++)
         //    {
-        //        profile[i] = new ProfilePart(i * 15, 0);
+        //        profile[i] = new Position(i * 15, 0);
         //    }
         //    for (int i = INDEXES[0]; i < INDEXES[1]; i++)
         //    {
-        //        profile[i] = new ProfilePart((i - 24) * 15, 90);
+        //        profile[i] = new Position((i - 24) * 15, 90);
         //    }
         //    for (int i = INDEXES[1]; i < profile.Length; i++)
         //    {
-        //        profile[i] = new ProfilePart(-90, (i - 54) * 15);
+        //        profile[i] = new Position(-90, (i - 54) * 15);
         //    }
         //    return profile;
         //}
@@ -59,20 +59,20 @@ namespace Evo20.Sensors
         /// Возврашщает профиль проверки датчика ДЛУ
         /// </summary>
         /// <returns>Профиль</returns>
-        protected override ProfilePart[] GetCheckProfile()
+        protected override Position[] GetCheckProfile()
         {
-            ProfilePart[] profile = new ProfilePart[Indexes[Indexes.Length - 1]];
+            Position[] profile = new Position[Indexes[Indexes.Length - 1]];
             for (int i = 0; i < Indexes[0]; i++)
             {
-                profile[i] = new ProfilePart(i * 15, 45,0,0);
+                profile[i] = new Position(i * 15, 45,0,0);
             }
             for (int i = Indexes[0]; i < Indexes[1]; i++)
             {
-                profile[i] = new ProfilePart((i - 24) * 15, -45);
+                profile[i] = new Position((i - 24) * 15, -45);
             }
             for (int i = Indexes[1]; i < profile.Length; i++)
             {
-                profile[i] = new ProfilePart(-45, (i - 54) * 15);
+                profile[i] = new Position(-45, (i - 54) * 15);
             }
             return profile;
         }

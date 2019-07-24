@@ -86,7 +86,7 @@ namespace Evo20.EvoConnections
 
         public bool SendCommand(Command command)
         {
-            if (Config.IsFakeEvo)
+            if (Config.Instance.IsFakeEvo)
                 return true;
             if (command is CommandWithAnswer)
                 Log.Instance.Debug("Отправлена команда:{0}", command);

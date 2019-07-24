@@ -98,7 +98,7 @@ namespace Evo20.EvoConnections
             Sender = new UdpClient(Config.Instance.LocalPortNumber);
             //#if !DEBUG
             var endPoint = new IPEndPoint(RemoteIpAddress, Config.Instance.RemotePortNumber);
-            if (!Config.IsFakeEvo)
+            if (!Config.Instance.IsFakeEvo)
                 Sender.Connect(endPoint);
             //#endif
             //switch (Config.Instance.EvoType)
@@ -200,7 +200,7 @@ namespace Evo20.EvoConnections
         /// <returns>результат </returns>
         protected bool SendMessage(string message)
         {
-            if(Config.IsFakeEvo)
+            if(Config.Instance.IsFakeEvo)
                 return true;
             try
             {

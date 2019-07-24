@@ -72,7 +72,7 @@
   <ItemGroup>
     <Compile Include="BKV1.cs" />
     <Compile Include="Profile.cs" />
-    <Compile Include="ProfilePart.cs" />
+    <Compile Include="Position.cs" />
     <Compile Include="DLY.cs" />
     <Compile Include="DYS.cs" />
     <Compile Include="ISensor.cs" />

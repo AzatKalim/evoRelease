@@ -23,12 +23,12 @@ namespace Evo20.Sensors
             get;
         }
         
-        ProfilePart[] CalibrationProfile
+        Position[] CalibrationProfile
         {
             get;
         }
 
-        ProfilePart[] CheckProfile
+        Position[] CheckProfile
         {
             get;
         }

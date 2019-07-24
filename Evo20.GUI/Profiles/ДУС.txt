@@ -1,5 +1,5 @@
 {
-  "ProfilePartArray": [
+  "PositionArray": [
     {
       "FirstPosition": 0,
       "SecondPosition": 0,

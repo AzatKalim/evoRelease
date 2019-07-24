@@ -243,7 +243,7 @@ namespace Evo20.Controllers
         private void Cycle(List<int> temperatures)
         {
             //профили датчиков
-            var profiles = new List<ProfilePart[]>();
+            var profiles = new List<Position[]>();
             switch (Mode)
             {
                 case WorkMode.CalibrationMode:
@@ -273,16 +273,14 @@ namespace Evo20.Controllers
                 Log.Instance.Info("Установлена температура камеры " + temperatures[i] + " скорость набора температtуры " + Config.Instance.SpeedOfTemperatureChange);
                 //Ожидание достижения температуры
 //#if !DEBUG
-                if (!Config.IsFakeEvo)
+                if (!Config.Instance.IsFakeEvo)
                     EvoData.Instance.TemperatureReachedEvent.WaitOne();
 //#endif
                 EvoData.Instance.TemperatureReachedEvent.Reset();
                 Log.Instance.Info("Температура  " + temperatures[i] + " достигнута");
                 TemperatureStabilized?.Invoke(this, new BoolEventArgs(false));
                 Log.Instance.Info("Начало стабилизации температуры.Время стабилизации {0}", StabilizationTime);
-//#if !DEBUG
                 var waitingStartTime = DateTime.Now;
-//#endif
                 if (i != CycleData.Instance.StartTemperatureIndex)
                 {
                     writePacketsTask?.Wait();
@@ -291,13 +289,9 @@ namespace Evo20.Controllers
                 writePacketsTask = new Task(CycleTemperatureEnd);
                 CycleData.Instance.TemperutureIndex = i;
                 SensorController.SensorController.Instance.TemperatureIndex = i;
-//#if !DEBUG
-
-
-                if (!Config.IsFakeEvo)
+                if (!Config.Instance.IsFakeEvo)
                     //ожидание стабилизации температуры
                     Thread.Sleep(StabilizationTime -(DateTime.Now- waitingStartTime).Milliseconds);
-//#endif
                 Log.Instance.Info("Стабилизация температуры завершена");
                 SensorController.SensorController.Instance.TemperatureOfCollect = temperatures[i];
                 TemperatureStabilized?.Invoke(this, new BoolEventArgs(true));
@@ -329,7 +323,7 @@ namespace Evo20.Controllers
         /// </summary>
         /// <param name="profile">профиль положений</param>
         /// <returns>результат</returns>
-        private bool SensorCyclePart(ProfilePart[] profile)
+        private bool SensorCyclePart(Position[] profile)
         {
             int j = 0;
             try
@@ -337,21 +331,22 @@ namespace Evo20.Controllers
                 for (; j < profile.Length; j++)
                 {
                     Log.Instance.Info("Новое положение {0} для датчика {1}", j, SensorController.SensorController.Instance.CurrentSensor.Name);
-                    ControllerEvo.Instance.StopAxis(Axis.All);
-//#if !DEBUG
-                    if(!Config.IsFakeEvo)
-                    {
-                        EvoData.Instance.MovementEndedEvent.WaitOne(THREADS_SLEEP_TIME);
-                        EvoData.Instance.MovementEndedEvent.Reset();
-                    }
-//#endif
+                    //ControllerEvo.Instance.StopAxis(Axis.All);
+                    //if(!Config.Instance.IsFakeEvo)
+                    //{
+                    //    EvoData.Instance.MovementEndedEvent.WaitOne(THREADS_SLEEP_TIME);
+                    //    EvoData.Instance.MovementEndedEvent.Reset();
+                    //}
                     SensorController.SensorController.Instance.CurrentPositionNumber = j;
-                    ControllerEvo.Instance.SetPosition(profile[j]);                  
-//#if !DEBUG
-                    if (!Config.IsFakeEvo)
+                    ControllerEvo.Instance.SetPosition(profile[j]);
+
+                    if (!Config.Instance.IsFakeEvo)
+                    {
                         //ожидаем пока установятся позиции
-                        Thread.Sleep(THREADS_SLEEP_TIME);
-//#endif
+                        //Thread.Sleep(THREADS_SLEEP_TIME);
+                        EvoData.Instance.PositionReachedEvent.WaitOne();
+                    }
+
                     //ожидание сбора пакетов
                     SensorController.SensorController.Instance.CanCollect = true;
                     SensorController.SensorController.Instance.CurrentSensor.PacketsCollectedEvent.WaitOne();
