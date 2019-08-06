@@ -16,18 +16,18 @@ namespace Evo20.Sensors
 
         public int SpeedSecond { set; get; }
         [JsonConstructor]
-        public Position(int firstPosition, int secondPosition, int speedFirst, int speedSecond)
+        public Position(int firstPosition = 0, int secondPosition = 0, int speedFirst = 0, int speedSecond = 0)
         {
            FirstPosition = firstPosition;
            SecondPosition = secondPosition;
            SpeedFirst = speedFirst;
            SpeedSecond = speedSecond;
         }
-        public Position(int firstPosition, int secondPosition)
-            : this(firstPosition, secondPosition, 0, 0) { }
 
         public bool Equals(Position other)
         {
+            if (other as object == null)
+                return false;
             return Math.Abs(FirstPosition - other.FirstPosition) <= Config.Instance.AxisDeviation &&
                    Math.Abs(SecondPosition - other.SecondPosition) <= Config.Instance.AxisDeviation &&
                    Math.Abs(SpeedFirst - other.SpeedFirst) <= Config.Instance.SpeedDeviation &&

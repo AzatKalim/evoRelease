@@ -113,6 +113,8 @@ namespace Evo20.Controllers.Data
             TemperatureReachedEvent = new ManualResetEvent(false);
             MovementEndedEvent = new ManualResetEvent(false);
             PositionReachedEvent = new ManualResetEvent(false);
+            _currentPosition = new Position();
+
         }
 
         #region Methods gets information from evo commands
