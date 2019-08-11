@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.Globalization;
 
 namespace Evo20.Utils
 {
@@ -80,12 +81,10 @@ namespace Evo20.Utils
                                                      ConfigurationManager.AppSettings.Get("DefaultSettingsFileName"));
 
         public readonly bool IsFakeEvo = Convert.ToBoolean(ConfigurationManager.AppSettings.Get("FakeEvo"));
+     
+        public readonly double AxisDeviation = double.Parse(ConfigurationManager.AppSettings.Get("AxisDeviation"), CultureInfo.InvariantCulture);
 
-        public readonly bool FindEvo = Convert.ToBoolean(ConfigurationManager.AppSettings.Get("FindEvo"));
-
-        public readonly int AxisDeviation = int.Parse(ConfigurationManager.AppSettings.Get("AxisDeviation"));
-
-        public readonly int SpeedDeviation = int.Parse(ConfigurationManager.AppSettings.Get("SpeedDeviation"));
+        public readonly double SpeedDeviation = double.Parse(ConfigurationManager.AppSettings.Get("SpeedDeviation"), CultureInfo.InvariantCulture);
 
     }
 }

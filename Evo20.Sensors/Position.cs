@@ -28,10 +28,10 @@ namespace Evo20.Sensors
         {
             if (other as object == null)
                 return false;
-            return Math.Abs(FirstPosition - other.FirstPosition) <= Config.Instance.AxisDeviation &&
-                   Math.Abs(SecondPosition - other.SecondPosition) <= Config.Instance.AxisDeviation &&
-                   Math.Abs(SpeedFirst - other.SpeedFirst) <= Config.Instance.SpeedDeviation &&
-                   Math.Abs(SpeedSecond - other.SpeedSecond) <= Config.Instance.SpeedDeviation;
+            return (Math.Abs(FirstPosition - other.FirstPosition) <= Config.Instance.AxisDeviation &&
+                   Math.Abs(SecondPosition - other.SecondPosition) <= Config.Instance.AxisDeviation) ||
+                   (Math.Abs(SpeedFirst - other.SpeedFirst) <= Config.Instance.SpeedDeviation &&
+                   Math.Abs(SpeedSecond - other.SpeedSecond) <= Config.Instance.SpeedDeviation);
         }
 
         public override int GetHashCode()
@@ -44,6 +44,12 @@ namespace Evo20.Sensors
                 hashCode = (hashCode * 397) ^ SpeedSecond;
                 return hashCode;
             }
+        }
+
+        public override string ToString()
+        {
+            return $"{FirstPosition} {SecondPosition} {SpeedFirst} {SpeedSecond}";
+
         }
     }
 }

@@ -61,5 +61,13 @@ namespace Evo20.Connections.Tests
             test = new AxisRateQuery(Axis.Second) + "=" + "F2C22A3B\0";
             Assert.IsInstanceOfType(CommandHandler.RecognizeCommand(test), typeof(AxisRateQueryAnswer));
         }
+        [TestMethod]
+        public void TestRecognazeCommandReturnsAxisRateQueryAnswer2()
+        {
+            string test = "AXE.TELL.VIT 1=+064.001\0";
+            var command = CommandHandler.RecognizeCommand(test);
+            Assert.IsInstanceOfType(command, typeof(AxisRateQueryAnswer));          
+            Assert.AreEqual((int)(command as AxisRateQueryAnswer).SpeedOfRate,64);
+        }
     }
 }

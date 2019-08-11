@@ -5,6 +5,7 @@ using System.Threading;
 using Evo20.Commands.Abstract;
 using Evo20.Commands.AnswerCommands;
 using Evo20.Sensors;
+using Evo20.Utils;
 
 namespace Evo20.Controllers.Data
 {
@@ -164,8 +165,11 @@ namespace Evo20.Controllers.Data
                 Y.Position = cmd.Position;
                 CurrentPosition.SecondPosition = (int)cmd.Position;
             }
-            if(CurrentPosition.Equals(NextPosition))
+            if (CurrentPosition.Equals(NextPosition))
+            {
+                Log.Instance.Info("Температура достигнута текущая:{0}, следующая {0}", CurrentPosition, NextPosition);
                 PositionReachedEvent?.Set();
+            }
         }
 
         public void GetCommandInfo(AxisRateQueryAnswer cmd)
@@ -181,8 +185,12 @@ namespace Evo20.Controllers.Data
                 Y.SpeedOfRate = cmd.SpeedOfRate;
                 CurrentPosition.SpeedSecond = (int)cmd.SpeedOfRate;
             }
+
             if (CurrentPosition.Equals(NextPosition))
+            {
+                Log.Instance.Info("Температура достигнута текущая:{0}, следующая {0}",CurrentPosition,NextPosition);
                 PositionReachedEvent?.Set();
+            }
         }
 
         public void GetCommandInfo(RequestedAxisPositionReachedAnswer cmd)

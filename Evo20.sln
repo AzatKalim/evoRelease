@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.Connections.Tests", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.Math.Tests", "Evo20.Math.Tests\Evo20.Math.Tests.csproj", "{C00BADF7-242B-4889-987D-1CDA3E738707}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.Controllers.Tests", "Evo20.Controllers.Tests\Evo20.Controllers.Tests.csproj", "{3ADB2BBA-D985-44A7-9555-4711645BF31A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,6 +87,10 @@ Global
 		{C00BADF7-242B-4889-987D-1CDA3E738707}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C00BADF7-242B-4889-987D-1CDA3E738707}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C00BADF7-242B-4889-987D-1CDA3E738707}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3ADB2BBA-D985-44A7-9555-4711645BF31A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3ADB2BBA-D985-44A7-9555-4711645BF31A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3ADB2BBA-D985-44A7-9555-4711645BF31A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3ADB2BBA-D985-44A7-9555-4711645BF31A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,5 +100,6 @@ Global
 		{98FECF22-765F-4B26-A9C8-01C94027F236} = {CEBDB753-A445-48F5-B326-81FFC18A80CE}
 		{E0BCF641-6BBC-4835-B1B2-2DFD88430973} = {CEBDB753-A445-48F5-B326-81FFC18A80CE}
 		{C00BADF7-242B-4889-987D-1CDA3E738707} = {CEBDB753-A445-48F5-B326-81FFC18A80CE}
+		{3ADB2BBA-D985-44A7-9555-4711645BF31A} = {CEBDB753-A445-48F5-B326-81FFC18A80CE}
 	EndGlobalSection
 EndGlobal
