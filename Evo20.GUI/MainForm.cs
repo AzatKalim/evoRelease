@@ -9,7 +9,6 @@ using Evo20.Controllers;
 using Evo20.Controllers.Data;
 using Evo20.Controllers.EvoControllers;
 using Evo20.Controllers.FileWork;
-using Evo20.Controllers.SensorController;
 using Evo20.Utils.EventArguments;
 using Evo20.Utils;
 

@@ -6,7 +6,7 @@ using Evo20.Sensors;
 using Evo20.SensorsConnection;
 using Evo20.Utils;
 
-namespace Evo20.Controllers.SensorController
+namespace Evo20.Controllers
 { 
     public sealed class SensorController : IDisposable
     {

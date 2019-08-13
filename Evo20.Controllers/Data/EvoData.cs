@@ -167,7 +167,7 @@ namespace Evo20.Controllers.Data
             }
             if (CurrentPosition.Equals(NextPosition))
             {
-                Log.Instance.Info("Температура достигнута текущая:{0}, следующая {0}", CurrentPosition, NextPosition);
+                Log.Instance.Info("Позиция достигнута текущая:{0}, следующая {0}", CurrentPosition, NextPosition);
                 PositionReachedEvent?.Set();
             }
         }

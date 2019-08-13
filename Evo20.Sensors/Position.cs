@@ -1,11 +1,9 @@
 ﻿using System;
-using System.CodeDom;
 using Evo20.Utils;
 using Newtonsoft.Json;
 
 namespace Evo20.Sensors
 {
-
     public class Position
     {
         public int FirstPosition { set; get; }
@@ -26,12 +24,13 @@ namespace Evo20.Sensors
 
         public bool Equals(Position other)
         {
-            if (other as object == null)
-                return false;
+            if (other as object == null) return false;
             return (Math.Abs(FirstPosition - other.FirstPosition) <= Config.Instance.AxisDeviation &&
-                   Math.Abs(SecondPosition - other.SecondPosition) <= Config.Instance.AxisDeviation) ||
+                    Math.Abs(SecondPosition - other.SecondPosition) <= Config.Instance.AxisDeviation &&
+                    other.SpeedFirst == 0 && other.SpeedSecond == 0) ||
                    (Math.Abs(SpeedFirst - other.SpeedFirst) <= Config.Instance.SpeedDeviation &&
-                   Math.Abs(SpeedSecond - other.SpeedSecond) <= Config.Instance.SpeedDeviation);
+                    Math.Abs(SpeedSecond - other.SpeedSecond) <= Config.Instance.SpeedDeviation &&
+                    other.FirstPosition == 0 && other.SecondPosition == 0);
         }
 
         public override int GetHashCode()
@@ -49,7 +48,6 @@ namespace Evo20.Sensors
         public override string ToString()
         {
             return $"{FirstPosition} {SecondPosition} {SpeedFirst} {SpeedSecond}";
-
         }
     }
 }

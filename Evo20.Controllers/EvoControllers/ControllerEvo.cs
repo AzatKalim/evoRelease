@@ -111,26 +111,19 @@ namespace Evo20.Controllers.EvoControllers
             foreach (var command in commands)
             {
                 var answer = command as AxisStatusAnswer;
-                if (answer != null)
-                    EvoData.Instance.GetCommandInfo(answer);
+                if (answer != null) EvoData.Instance.GetCommandInfo(answer);
                 var statusAnswer = command as TemperatureStatusAnswer;
-                if (statusAnswer != null)
-                    EvoData.Instance.GetCommandInfo(statusAnswer);
+                if (statusAnswer != null) EvoData.Instance.GetCommandInfo(statusAnswer);
                 var queryAnswer = command as RotaryJointTemperatureQueryAnswer;
-                if (queryAnswer != null)
-                    EvoData.Instance.GetCommandInfo(queryAnswer);
+                if (queryAnswer != null) EvoData.Instance.GetCommandInfo(queryAnswer);
                 var positionQueryAnswer = command as AxisPositionQueryAnswer;
-                if (positionQueryAnswer != null)
-                    EvoData.Instance.GetCommandInfo(positionQueryAnswer);
+                if (positionQueryAnswer != null) EvoData.Instance.GetCommandInfo(positionQueryAnswer);
                 var rateQueryAnswer = command as AxisRateQueryAnswer;
-                if (rateQueryAnswer != null)
-                    EvoData.Instance.GetCommandInfo(rateQueryAnswer);
+                if (rateQueryAnswer != null) EvoData.Instance.GetCommandInfo(rateQueryAnswer);
                 var temperatureQueryAnswer = command as ActualTemperatureQueryAnswer;
-                if (temperatureQueryAnswer != null)
-                    EvoData.Instance.GetCommandInfo(temperatureQueryAnswer);
+                if (temperatureQueryAnswer != null) EvoData.Instance.GetCommandInfo(temperatureQueryAnswer);
                 var reachedAnswer = command as RequestedAxisPositionReachedAnswer;
-                if (reachedAnswer != null)
-                    EvoData.Instance.GetCommandInfo(reachedAnswer);
+                if (reachedAnswer != null) EvoData.Instance.GetCommandInfo(reachedAnswer);
             }
         }
 
@@ -260,6 +253,9 @@ namespace Evo20.Controllers.EvoControllers
 
         public void SetTemperature(double temperature)
         {
+            Log.Instance.Info("Установлена температура камеры " + temperature + " скорость набора температtуры " + Config.Instance.SpeedOfTemperatureChange);
+            lock (EvoData.Instance)
+                EvoData.Instance.NextTemperature = temperature;
             CommandHandler.SendCommand(new TemperatureSetPoint(temperature));
         }
 
