@@ -4,6 +4,7 @@
 *.userosscache
 *.sln.docstates
 *.exe
+*.dll
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -36,13 +37,15 @@ TestResult.xml
 # Build Results of an ATL Project
 [Dd]ebugPS/
 [Rr]eleasePS/
-dlldata.cEvo20.GUI/bin/Debug
+dlldata.c
+Evo20.GUI/bin/Debug
 
-Evo20.Config/bin/Debug
-Evo20.Controller/bin/Debug
-Evo20.EvoCommandsLib/bin/Debug
-Evo20.EvoConnections/bin/Debug
+Evo20.Config\bin\Debug
+Evo20.Controller\bin\Debug
+Evo20.EvoCommandsLib\bin\Debug
+Evo20.EvoConnections\bin\Debug
 Evo20.Math/bin/Debug
 Evo20.PacketsLib/bin/Debug
 Evo20.Math.Tests/bin/Debug
+bin\Release
 bin/Release

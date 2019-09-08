@@ -30,7 +30,7 @@ namespace Evo20.Sensors
                     other.SpeedFirst == 0 && other.SpeedSecond == 0) ||
                    (Math.Abs(SpeedFirst - other.SpeedFirst) <= Config.Instance.SpeedDeviation &&
                     Math.Abs(SpeedSecond - other.SpeedSecond) <= Config.Instance.SpeedDeviation &&
-                    other.FirstPosition == 0 && other.SecondPosition == 0);
+                    (other.SpeedFirst != 0 || other.SpeedSecond != 0));
         }
 
         public override int GetHashCode()
