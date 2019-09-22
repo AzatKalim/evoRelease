@@ -23,8 +23,7 @@ namespace Evo20.Controllers.EvoControllers
             {
                 lock (this)
                 {
-                    if (_EvoConnectionChanged != null && _EvoConnectionChanged.GetInvocationList().Length < 1)
-                        _EvoConnectionChanged += value;
+                    _EvoConnectionChanged += value;
                 }
             }
             remove { _EvoConnectionChanged -= value; }

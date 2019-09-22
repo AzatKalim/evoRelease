@@ -552,8 +552,8 @@ namespace Evo20.GUI
         {
             double x = (DateTime.Now - _startTime).TotalMinutes;
             double y = ControllerEvo.Instance.CurrentTemperature;
-            double[] tempX = new double[] { _prevX, x };
-            double[] tempY = new double[] { _prevY, y };
+            double[] tempX = { _prevX, x };
+            double[] tempY = { _prevY, y };
             graph.GraphPane.AddCurve("", tempX, tempY, Color.Red, SymbolType.None);
             graph.AxisChange();
             graph.Invalidate();

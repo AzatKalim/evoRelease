@@ -28,9 +28,43 @@ namespace Evo20.Sensors
             get;
         }
 
-        public Position[] CalibrationProfile => _calibrationProfile ?? (_calibrationProfile = GetCalibrationProfile());
+        private object locker = new object();
 
-        public Position[] CheckProfile => _checkProfile ?? (_checkProfile = GetCheckProfile());
+        public Position[] CalibrationProfile
+        {
+            get
+            {
+                if (_calibrationProfile == null)
+                {
+                    lock (locker)
+                    {
+                        if (_calibrationProfile == null)
+                        {
+                            _calibrationProfile = GetCalibrationProfile();
+                        }
+                    }
+                }
+                return _calibrationProfile;
+            }
+        }
+
+        public Position[] CheckProfile
+        {
+            get
+            {
+                if (_checkProfile == null)
+                {
+                    lock (locker)
+                    {
+                        if (_checkProfile == null)
+                        {
+                            _checkProfile = GetCheckProfile();
+                        }
+                    }
+                }
+                return _checkProfile;
+            }
+        } 
 
         public List<PacketsCollection> CalibrationPacketsCollection {set;get;}
 

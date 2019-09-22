@@ -38,8 +38,7 @@ namespace Evo20.Controllers
             {
                 lock (this)
                 {
-                    if (_CycleEndedEvent != null && _CycleEndedEvent.GetInvocationList().Length < 1)
-                        _CycleEndedEvent += value;
+                    _CycleEndedEvent += value;
                 }
             }
             remove { _CycleEndedEvent -= value; }
@@ -343,6 +342,7 @@ namespace Evo20.Controllers
             _sensorsList = SensorController.Instance.SensorsList;
             return FileController.Instance.ReadDataFromFile(ref _sensorsList);
         }
+
         public bool ComputeCoefficents(StreamWriter file)
         {
             var result = false;
@@ -357,7 +357,6 @@ namespace Evo20.Controllers
 
             return result;
         }        
-        #endregion
 
         private void WritePackets()
         {
@@ -375,6 +374,8 @@ namespace Evo20.Controllers
             {
                 Log.Instance.Exception(exception);
             }
-        }     
+        }
+        
+#endregion
     }
 }

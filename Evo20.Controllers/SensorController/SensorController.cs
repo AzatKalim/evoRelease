@@ -62,9 +62,9 @@ namespace Evo20.Controllers
             {
                 if (CurrentSensor == null)
                     return 0;
-                if (Controller.Instance.Mode == WorkMode.CalibrationMode)
+                if (Controller.Instance.Mode == WorkMode.CalibrationMode && CurrentSensor.CalibrationProfile != null)
                     return CurrentSensor.CalibrationProfile.Length;
-                if (Controller.Instance.Mode == WorkMode.CheckMode)
+                if (Controller.Instance.Mode == WorkMode.CheckMode && CurrentSensor.CheckProfile!= null)
                     return CurrentSensor.CheckProfile.Length;
                 return 0;
             }
