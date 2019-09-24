@@ -71,7 +71,8 @@ namespace Evo20.GUI
             graph.GraphPane.XAxis.Title = @"Время";
             graph.GraphPane.YAxis.Title = @"Температура";
             graph.GraphPane.Title = @"График температуры от времени";
-            lblVersion.Text = @"Версия: " + Application.ProductVersion;
+            lblVersion.Text = $"Версия: {Application.ProductVersion}";
+            Log.Instance.Info($"Версия: {Application.ProductVersion}");
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)

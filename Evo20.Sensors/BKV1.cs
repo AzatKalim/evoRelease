@@ -42,6 +42,10 @@ namespace Evo20.Sensors
                         {
                             _calibrationProfile = GetCalibrationProfile();
                         }
+                        if (_calibrationProfile == null)
+                        {
+                            throw new ApplicationException("Cannot read calibration Profile");
+                        }
                     }
                 }
                 return _calibrationProfile;
@@ -59,6 +63,10 @@ namespace Evo20.Sensors
                         if (_checkProfile == null)
                         {
                             _checkProfile = GetCheckProfile();
+                            if (_checkProfile == null)
+                            {
+                                throw  new ApplicationException("Cannot read check Profile");
+                            }
                         }
                     }
                 }
@@ -169,15 +177,29 @@ namespace Evo20.Sensors
 
         public Position[] GetCalibrationProfile()
         {
+            
             var filename = $"{Config.Instance.ProfileFolder}{Name}.txt";
-            if(!File.Exists(filename))
+            Log.Instance.Info($"Try to get colibration profile from file {filename}");
+            if (!File.Exists(filename))
             {
+                Log.Instance.Error($"{filename} not exists !");
                 return null;
             }
-            var file = new StreamReader($"{Config.Instance.ProfileFolder}{Name}.txt");
+            var file = new StreamReader(filename);
             var str = file.ReadToEnd();
-            var profile = JsonConvert.DeserializeObject<Profile>(str);
             Log.Instance.Info(str);
+            Profile profile;
+            try
+            {
+                profile = JsonConvert.DeserializeObject<Profile>(str);
+            }
+            catch (Exception e)
+            {
+                Log.Instance.Error($"Deserialization error");
+                Log.Instance.Exception(e);
+                throw;
+            }
+            Log.Instance.Info($"Deserialized profile {profile}");
             return profile.PositionArray;
         }
 

@@ -13,7 +13,7 @@ namespace Evo20.Sensors
 
         #region Properties 
      
-        public override string Name => "ДУС";
+        public override string Name => "DYS";
 
         #endregion
 
