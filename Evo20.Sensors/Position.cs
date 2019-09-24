@@ -6,15 +6,15 @@ namespace Evo20.Sensors
 {
     public class Position
     {
-        public int FirstPosition { set; get; }
+        public double FirstPosition { set; get; }
 
-        public int SecondPosition { set; get; }
+        public double SecondPosition { set; get; }
 
-        public int SpeedFirst { set; get; }
+        public double SpeedFirst { set; get; }
 
-        public int SpeedSecond { set; get; }
+        public double SpeedSecond { set; get; }
         [JsonConstructor]
-        public Position(int firstPosition = 0, int secondPosition = 0, int speedFirst = 0, int speedSecond = 0)
+        public Position(double firstPosition = 0, double secondPosition = 0, double speedFirst = 0, double speedSecond = 0)
         {
            FirstPosition = firstPosition;
            SecondPosition = secondPosition;
@@ -31,18 +31,6 @@ namespace Evo20.Sensors
                    (Math.Abs(SpeedFirst - other.SpeedFirst) <= Config.Instance.SpeedDeviation &&
                     Math.Abs(SpeedSecond - other.SpeedSecond) <= Config.Instance.SpeedDeviation &&
                     (other.SpeedFirst != 0 || other.SpeedSecond != 0));
-        }
-
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                var hashCode = FirstPosition;
-                hashCode = (hashCode * 397) ^ SecondPosition;
-                hashCode = (hashCode * 397) ^ SpeedFirst;
-                hashCode = (hashCode * 397) ^ SpeedSecond;
-                return hashCode;
-            }
         }
 
         public override string ToString()

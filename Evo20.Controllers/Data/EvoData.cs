@@ -157,13 +157,13 @@ namespace Evo20.Controllers.Data
             if (cmd.Axis == Axis.First)
             {
                 X.Position = cmd.Position;
-                CurrentPosition.FirstPosition = (int)cmd.Position;
+                CurrentPosition.FirstPosition = cmd.Position;
             }
 
             if (cmd.Axis == Axis.Second)
             {
                 Y.Position = cmd.Position;
-                CurrentPosition.SecondPosition = (int)cmd.Position;
+                CurrentPosition.SecondPosition = cmd.Position;
             }
             if (CurrentPosition.Equals(NextPosition))
             {
@@ -177,13 +177,13 @@ namespace Evo20.Controllers.Data
             if (cmd.Axis == Axis.First)
             {
                 X.SpeedOfRate = cmd.SpeedOfRate;
-                CurrentPosition.SpeedFirst = (int)cmd.SpeedOfRate;
+                CurrentPosition.SpeedFirst = cmd.SpeedOfRate;
             }
 
             if (cmd.Axis == Axis.Second)
             {
                 Y.SpeedOfRate = cmd.SpeedOfRate;
-                CurrentPosition.SpeedSecond = (int)cmd.SpeedOfRate;
+                CurrentPosition.SpeedSecond = cmd.SpeedOfRate;
             }
 
             if (CurrentPosition.Equals(NextPosition))

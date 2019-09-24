@@ -298,6 +298,7 @@ namespace Evo20.Controllers.EvoControllers
         {
             StopAxis(Axis.All);
             SetAxisRate(Axis.All, Config.Instance.BaseMoveSpeed);
+            SetAxisMode(ModeParam.Position, Axis.All);
             SetAxisPosition(Axis.All, 0);
             StartAxis(Axis.All);
             SetTemperatureChangeSpeed(Config.Instance.SpeedOfTemperatureChange);
