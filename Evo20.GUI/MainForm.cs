@@ -587,9 +587,10 @@ namespace Evo20.GUI
             StreamWriter file = new StreamWriter(fileName);
             if (!Controller.Instance.ComputeCoefficents(file))
             {
-                MessageBox.Show(@"Проблемы с файлом", @"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Проблемы с файлом", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             file.Close();
+            MessageBox.Show("Рассчет окончен", "Цикл завершен !", MessageBoxButtons.OK);
         }
 
         private void ShowSensorParams()
@@ -653,5 +654,11 @@ namespace Evo20.GUI
         }
 
         #endregion
+
+        private void ReadAndComputeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            getDataFromFileToolStripMenuItem_Click(sender, e);
+            ComputeCoefficents();
+        }
     }
 }

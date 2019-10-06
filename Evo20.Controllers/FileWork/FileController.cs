@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Text;
 using Evo20.Controllers.Data;
@@ -14,6 +13,11 @@ namespace Evo20.Controllers.FileWork
     {
         private static FileController _fileController;
 
+        private readonly CycleData _cycleData = CycleData.Instance;
+
+        private readonly SensorData _sensorData = SensorData.Instance;
+
+
         public static string FilesPath;
 
         public static FileController Instance => _fileController ?? (_fileController = new FileController());
@@ -24,7 +28,6 @@ namespace Evo20.Controllers.FileWork
         /// <param name="sensorsList"></param>
         /// <param name="file">файл для записи результатов</param>
         /// <returns>true- выполнено успешно,false-возникла ошибка </returns>
-        [SuppressMessage("ReSharper", "UnusedMember.Global")]
         public bool ComputeCoefficent(List<ISensor> sensorsList, StreamWriter file)
         {
             bool result=false;
@@ -57,23 +60,42 @@ namespace Evo20.Controllers.FileWork
             {
                 sensor.CalibrationPacketsCollection.Clear();
             }
-            for (int temperature = 0; temperature < CycleData.Instance.CalibrationTemperatures.Count; temperature++)
+
+            for (var temperature = 0; temperature < _cycleData.CalibrationTemperatures.Count; temperature++)
             {
-                var fileName= Path.Combine(FilesPath,temperature+".txt");
-                if(!File.Exists(fileName))
+                var fileName = Path.Combine(FilesPath, $"{temperature}mean.txt");
+                if (File.Exists(fileName))
                 {
-                    Log.Instance.Warning("Файл {0} не существует!", fileName);
-                    return true;
+                    Log.Instance.Info($"Чтение файла {fileName}");
+                    using (var reader = new StreamReader(fileName))
+                    {
+                        var result = _sensorData.ReadMeanDataFromFile(sensorsList, reader, temperature);
+                        if (result)
+                            _cycleData.StartTemperatureIndex = sensorsList[0].CalibrationPacketsCollection.Count;
+                        else
+                            return false;
+                    }
                 }
-                using (var reader = new StreamReader(fileName))
+                else
+                if (File.Exists(fileName = Path.Combine(FilesPath, $"{temperature}.txt")))
                 {
-                    var result = SensorData.Instance.ReadDataFromFile(sensorsList,reader,temperature);
-                    if (result)
-                        CycleData.Instance.StartTemperatureIndex = sensorsList[0].CalibrationPacketsCollection.Count;
-                    else
-                        return false;
+                    Log.Instance.Info($"Чтение файла {fileName}");
+                    using (var reader = new StreamReader(fileName))
+                    {
+                        var result = _sensorData.ReadDataFromFile(sensorsList, reader, temperature);
+                        if (result)
+                            _cycleData.StartTemperatureIndex = sensorsList[0].CalibrationPacketsCollection.Count;
+                        else
+                            return false;
+                    }
                 }
+                else
+                {
+                    Log.Instance.Warning($"Файлы для  {temperature} не существует!");
+                    return false;
+                }       
             }
+
             return true;
         }
 
@@ -82,9 +104,9 @@ namespace Evo20.Controllers.FileWork
             try
             {
                 var file = new StreamReader(fileName, Encoding.GetEncoding(1251));
-                if (!CycleData.Instance.ReadSettings(ref file))
+                if (!_cycleData.ReadSettings(ref file))
                     return false;
-                if (!SensorData.Instance.ReadSettings(ref file))
+                if (!_sensorData.ReadSettings(ref file))
                     return false;
                 file.Close();
             }
@@ -103,7 +125,7 @@ namespace Evo20.Controllers.FileWork
             Log.Instance.Info("Запись всех пакетов в файл {0}", fileName);
             using( var file = new StreamWriter(fileName))
             {
-                SensorData.Instance.WriteForCurrentTemperture(sensorsList.ToArray(),
+                _sensorData.WriteForCurrentTemperture(sensorsList.ToArray(),
                     file,temperatureNumber);
             }
             Log.Instance.Info("Запись всех пакетов в файл {0} завершена", fileName);
@@ -111,11 +133,11 @@ namespace Evo20.Controllers.FileWork
 
         public void WriteMeanParams(List<ISensor> sensorsList, int temperatureNumber)
         {
-            var fileName = Path.Combine(FilesPath, temperatureNumber + "mean.txt");
+            var fileName = Path.Combine(FilesPath, $"{temperatureNumber}mean.txt");
             using (var file = new StreamWriter(fileName))
             {
                 Log.Instance.Info("Запись всех пакетов в файл {0}", fileName);
-                SensorData.Instance.WriteMeanForCurrentTemperture(sensorsList.ToArray(),
+                _sensorData.WriteMeanForCurrentTemperture(sensorsList.ToArray(),
                     file, temperatureNumber);
             }
             Log.Instance.Info("Запись всех пакетов в файл {0} завершена", fileName);
@@ -123,7 +145,7 @@ namespace Evo20.Controllers.FileWork
 
         public bool WritePackets(List<ISensor> sensorsList, StreamWriter file)
         {
-            return SensorData.Instance.WriteAllPackets(sensorsList.ToArray(), file);
+            return _sensorData.WriteAllPackets(sensorsList.ToArray(), file);
         }
     }
 }

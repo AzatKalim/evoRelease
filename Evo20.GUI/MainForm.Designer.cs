@@ -115,6 +115,7 @@
             this.cycleSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CommonSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblVersion = new System.Windows.Forms.Label();
+            this.считатьФайлыИВыполнитьРассчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.Evo_control_page.SuspendLayout();
             this.EvoParamsGroupBox.SuspendLayout();
@@ -924,7 +925,8 @@
             // FileToolStripMenuItem
             // 
             this.FileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.getDataFromFileToolStripMenuItem});
+            this.getDataFromFileToolStripMenuItem,
+            this.считатьФайлыИВыполнитьРассчетыToolStripMenuItem});
             this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
             this.FileToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.FileToolStripMenuItem.Text = "Файл";
@@ -932,7 +934,7 @@
             // getDataFromFileToolStripMenuItem
             // 
             this.getDataFromFileToolStripMenuItem.Name = "getDataFromFileToolStripMenuItem";
-            this.getDataFromFileToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.getDataFromFileToolStripMenuItem.Size = new System.Drawing.Size(288, 22);
             this.getDataFromFileToolStripMenuItem.Text = "Получить данные из файла ";
             this.getDataFromFileToolStripMenuItem.Click += new System.EventHandler(this.getDataFromFileToolStripMenuItem_Click);
             // 
@@ -967,6 +969,13 @@
             this.lblVersion.Size = new System.Drawing.Size(47, 13);
             this.lblVersion.TabIndex = 14;
             this.lblVersion.Text = "Версия:";
+            // 
+            // считатьФайлыИВыполнитьРассчетыToolStripMenuItem
+            // 
+            this.считатьФайлыИВыполнитьРассчетыToolStripMenuItem.Name = "считатьФайлыИВыполнитьРассчетыToolStripMenuItem";
+            this.считатьФайлыИВыполнитьРассчетыToolStripMenuItem.Size = new System.Drawing.Size(288, 22);
+            this.считатьФайлыИВыполнитьРассчетыToolStripMenuItem.Text = "Считать файлы и выполнить рассчеты";
+            this.считатьФайлыИВыполнитьРассчетыToolStripMenuItem.Click += new System.EventHandler(this.ReadAndComputeToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -1105,6 +1114,7 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.TextBox RemotePortTextBox;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.ToolStripMenuItem считатьФайлыИВыполнитьРассчетыToolStripMenuItem;
     }
 }
 

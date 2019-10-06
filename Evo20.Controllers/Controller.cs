@@ -51,6 +51,18 @@ namespace Evo20.Controllers
 
         private Thread _cycleThread;
 
+        private readonly SensorController _sensorController;
+
+        private readonly CycleData _cycleData;
+
+        private readonly ControllerEvo _controllerEvo;
+
+        private readonly EvoData _evoData;
+
+        private readonly FileController _fileController;
+
+        private readonly MathController.MathController _mathController = MathController.MathController.Instance;
+
         #endregion
 
         #region Properties
@@ -61,11 +73,11 @@ namespace Evo20.Controllers
             {
                 if (Mode == WorkMode.CalibrationMode)
                 {
-                    return CycleData.Instance.CalibrationStabTime;
+                    return _cycleData.CalibrationStabTime;
                 }
                 if (Mode ==WorkMode.CheckMode)
                 {
-                    return CycleData.Instance.CheckStabTime;
+                    return _cycleData.CheckStabTime;
                 }
                 return 0;
             }
@@ -76,9 +88,9 @@ namespace Evo20.Controllers
             get
             {
                 if(Mode == WorkMode.CalibrationMode)
-                    return CycleData.Instance.CalibrationTemperatures.Count;
+                    return _cycleData.CalibrationTemperatures.Count;
                 if(Mode == WorkMode.CheckMode)
-                    return CycleData.Instance.CheckTemperatures.Count;
+                    return _cycleData.CheckTemperatures.Count;
                 return 0;
             }
         }
@@ -111,28 +123,33 @@ namespace Evo20.Controllers
         {           
             Mode = WorkMode.NoMode;
             _sensorsList = new List<ISensor>();
+            _sensorController = SensorController.Instance;
+            _cycleData = CycleData.Instance;
+            _controllerEvo = ControllerEvo.Instance;
+            _evoData = EvoData.Instance;
+            _fileController = FileController.Instance;
         }
 
-        #endregion
+    #endregion
 
-        #region Start Stop Pause Methods
+    #region Start Stop Pause Methods
 
-        /// <summary>
-        /// Запуск работы 
-        /// </summary>
-        /// <param name="comPortName">имя порта для соединения с датчиком</param>
-        /// <param name="mode">режим работы</param>
-        /// <returns>true-запуск прошел успешно,false-ошибка</returns>
-        public bool Start(string comPortName,WorkMode mode)
+    /// <summary>
+    /// Запуск работы 
+    /// </summary>
+    /// <param name="comPortName">имя порта для соединения с датчиком</param>
+    /// <param name="mode">режим работы</param>
+    /// <returns>true-запуск прошел успешно,false-ошибка</returns>
+    public bool Start(string comPortName,WorkMode mode)
         {
             if (_cycleThread != null && _cycleThread.IsAlive)
                 return false;
-            _sensorsList = SensorController.Instance.SensorsList;
+            _sensorsList = _sensorController.SensorsList;
            
-            bool resultEvoStart = ControllerEvo.Instance.StartEvoConnection();
+            bool resultEvoStart = _controllerEvo.StartEvoConnection();
             if (!resultEvoStart)
                 return false;
-            bool resultComPortStart = SensorController.Instance.StartComPortConnection(comPortName);
+            bool resultComPortStart = _sensorController.StartComPortConnection(comPortName);
             if (!resultComPortStart)
                 return false;
             switch (mode)
@@ -159,8 +176,8 @@ namespace Evo20.Controllers
                 if (_cycleThread != null && _cycleThread.IsAlive && _cycleThread.ThreadState!=ThreadState.Aborted
                     && _cycleThread.ThreadState != ThreadState.AbortRequested && (_cycleThread.ThreadState==ThreadState.Running || _cycleThread.ThreadState == ThreadState.WaitSleepJoin))
                     _cycleThread.Abort();
-                SensorController.Instance.StopComPortConnection();
-                ControllerEvo.Instance.StopEvoConnection();
+                _sensorController.StopComPortConnection();
+                _controllerEvo.StopEvoConnection();
             }
             catch (Exception exception)
             {
@@ -196,7 +213,7 @@ namespace Evo20.Controllers
             try
             {
                 Mode = WorkMode.CalibrationMode;
-                Cycle(CycleData.Instance.CalibrationTemperatures);
+                Cycle(_cycleData.CalibrationTemperatures);
                 Mode = WorkMode.NoMode;
             }
             catch (ThreadAbortException)
@@ -215,7 +232,7 @@ namespace Evo20.Controllers
         private void CheckCycle()
         {
             Mode = WorkMode.CheckMode;
-            Cycle(CycleData.Instance.CheckTemperatures);
+            Cycle(_cycleData.CheckTemperatures);
             Mode = WorkMode.NoMode;
         }
 
@@ -230,48 +247,50 @@ namespace Evo20.Controllers
             {
                 case WorkMode.CalibrationMode:
                 {
-                    foreach (var sensor in _sensorsList) profiles.Add(sensor.CalibrationProfile);
+                    foreach (var sensor in _sensorsList)
+                        profiles.Add(sensor.CalibrationProfile);
                 }
                     break;
                 case WorkMode.CheckMode:
-                    foreach (var sensor in _sensorsList) profiles.Add(sensor.CheckProfile);
+                    foreach (var sensor in _sensorsList)
+                        profiles.Add(sensor.CheckProfile);
                     break;
                 default:
                     Log.Instance.Error("Ошибка:перед запуском цикла. Режим работы не установлен!");
                     _CycleEndedEvent?.Invoke(this, new BoolEventArgs(false));
                     return;
             }
-            ControllerEvo.Instance.InitEvo();
+            _controllerEvo.InitEvo();
             Task writePacketsTask = null;
             //цикл по температурам
             Log.Instance.Info($"Начало цикла по температурам {temperatures.Count}");
-            for (int i = CycleData.Instance.StartTemperatureIndex; i < temperatures.Count; i++)
+            for (int i = _cycleData.StartTemperatureIndex; i < temperatures.Count; i++)
             {
-                ControllerEvo.Instance.SetStartPosition();
-                ControllerEvo.Instance.SetTemperature(temperatures[i]);             
+                _controllerEvo.SetStartPosition();
+                _controllerEvo.SetTemperature(temperatures[i]);             
                 //Ожидание достижения температуры
                 if (!Config.Instance.IsFakeEvo)
-                    EvoData.Instance.TemperatureReachedEvent.WaitOne();
-                EvoData.Instance.TemperatureReachedEvent.Reset();
+                    _evoData.TemperatureReachedEvent.WaitOne();
+                _evoData.TemperatureReachedEvent.Reset();
                 Log.Instance.Info("Температура  " + temperatures[i] + " достигнута");
                 TemperatureStabilized?.Invoke(this, new BoolEventArgs(false));
                 Log.Instance.Info("Начало стабилизации температуры.Время стабилизации {0}", StabilizationTime);
                 var waitingStartTime = DateTime.Now;
-                if (i != CycleData.Instance.StartTemperatureIndex)
+                if (i != _cycleData.StartTemperatureIndex)
                     writePacketsTask?.Wait();
                 writePacketsTask = new Task(WritePackets);
-                CycleData.Instance.TemperutureIndex = i;
-                SensorController.Instance.TemperatureIndex = i;
+                _cycleData.TemperutureIndex = i;
+                _sensorController.TemperatureIndex = i;
                 if (!Config.Instance.IsFakeEvo)
                     Thread.Sleep(StabilizationTime -(DateTime.Now- waitingStartTime).Milliseconds);
                 Log.Instance.Info("Стабилизация температуры завершена");
-                SensorController.Instance.TemperatureOfCollect = temperatures[i];
+                _sensorController.TemperatureOfCollect = temperatures[i];
                 TemperatureStabilized?.Invoke(this, new BoolEventArgs(true));
 
                 for (int j = 0; j < _sensorsList.Count; j++)
 			    {
-                    SensorController.Instance.CurrentSensor = _sensorsList[j];
-                    Log.Instance.Info("Запуск подцикла датчика {0}",SensorController.Instance.CurrentSensor.Name);
+                    _sensorController.CurrentSensor = _sensorsList[j];
+                    Log.Instance.Info("Запуск подцикла датчика {0}",_sensorController.CurrentSensor.Name);
                     bool isCyclePartSuccess = SensorCyclePart(profiles[j]);
                     if (!isCyclePartSuccess)
                     {
@@ -279,13 +298,13 @@ namespace Evo20.Controllers
                         _CycleEndedEvent?.Invoke(this, new BoolEventArgs(false));
                         return;
                     }
-                    Log.Instance.Info("Подцикл датчика завершен {0}", SensorController.Instance.CurrentSensor.Name);
+                    Log.Instance.Info("Подцикл датчика завершен {0}", _sensorController.CurrentSensor.Name);
                 }
-                SensorController.Instance.TemperatureIndex = -1;
+                _sensorController.TemperatureIndex = -1;
                 writePacketsTask.Start();
             }
             Log.Instance.Info($"Цикл по температурам завершен");
-            ControllerEvo.Instance.SetStartPosition();
+            _controllerEvo.SetStartPosition();
             writePacketsTask?.Wait();
             _CycleEndedEvent?.Invoke(this, new BoolEventArgs(true));
 
@@ -302,34 +321,34 @@ namespace Evo20.Controllers
             {
                 for (; j < profile.Length; j++)
                 {
-                    Log.Instance.Info("Новое положение {0} для датчика {1}", j, SensorController.Instance.CurrentSensor.Name);
-                    SensorController.Instance.CurrentPositionNumber = j;
-                    ControllerEvo.Instance.SetPosition(profile[j]);
+                    Log.Instance.Info("Новое положение {0} для датчика {1}", j, _sensorController.CurrentSensor.Name);
+                    _sensorController.CurrentPositionNumber = j;
+                    _controllerEvo.SetPosition(profile[j]);
                     if (!Config.Instance.IsFakeEvo)
-                        EvoData.Instance.PositionReachedEvent.WaitOne();
+                        _evoData.PositionReachedEvent.WaitOne();
 
-                    SensorController.Instance.CanCollect = true;
-                    SensorController.Instance.CurrentSensor.PacketsCollectedEvent.WaitOne();
-                    SensorController.Instance.CanCollect = false;
-                    Log.Instance.Info("Пакеты в положении {0} собраны", SensorController.Instance.CurrentPositionNumber);
+                    _sensorController.CanCollect = true;
+                    _sensorController.CurrentSensor.PacketsCollectedEvent.WaitOne();
+                    _sensorController.CanCollect = false;
+                    Log.Instance.Info("Пакеты в положении {0} собраны", _sensorController.CurrentPositionNumber);
                 }
 
             }
             catch (ThreadAbortException)
             {
-                Log.Instance.Info("Поток цикла был прерван при датчике:{0} ,при шаге {1}", SensorController.Instance.CurrentSensor.Name, j);
+                Log.Instance.Info("Поток цикла был прерван при датчике:{0} ,при шаге {1}", _sensorController.CurrentSensor.Name, j);
                 return false;
             }
             catch (Exception exception)
             {
                 Log.Instance.Error(
-                    $"Возникло исключение цикла при датчике:{SensorController.Instance.CurrentSensor.Name} ,при шаге {j}");
+                    $"Возникло исключение цикла при датчике:{_sensorController.CurrentSensor.Name} ,при шаге {j}");
                 Log.Instance.Exception(exception);
                 ControllerExceptionEvent?.Invoke(this, new ExceptionEventArgs(exception));
                 return false;
             }
-            SensorController.Instance.CurrentSensor = null;
-            SensorController.Instance.CurrentPositionNumber = 0;
+            _sensorController.CurrentSensor = null;
+            _sensorController.CurrentPositionNumber = 0;
             return true;
         }
 
@@ -339,8 +358,8 @@ namespace Evo20.Controllers
 
         public bool ReadDataFromFile()
         {
-            _sensorsList = SensorController.Instance.SensorsList;
-            return FileController.Instance.ReadDataFromFile(ref _sensorsList);
+            _sensorsList = _sensorController.SensorsList;
+            return _fileController.ReadDataFromFile(ref _sensorsList);
         }
 
         public bool ComputeCoefficents(StreamWriter file)
@@ -348,7 +367,7 @@ namespace Evo20.Controllers
             var result = false;
             try
             {
-                result= MathController.MathController.Instance.ComputeCoefficents(_sensorsList, file);
+                result= _mathController.ComputeCoefficents(_sensorsList, file);
             }
             catch (Exception ex)
             {
@@ -362,12 +381,12 @@ namespace Evo20.Controllers
         {
             try
             {
-                lock (SensorController.Instance)
+                lock (_sensorController)
                 {
                     Log.Instance.Info("Начало запиcи пакетов");
-                    FileController.Instance.WriteRedPackets(SensorsList, CycleData.Instance.TemperutureIndex);
-                    FileController.Instance.WriteMeanParams(SensorsList, CycleData.Instance.TemperutureIndex);
-                    SensorController.Instance.ClearData(CycleData.Instance.TemperutureIndex, Mode);
+                    _fileController.WriteRedPackets(SensorsList, _cycleData.TemperutureIndex);
+                    _fileController.WriteMeanParams(SensorsList, _cycleData.TemperutureIndex);
+                    _sensorController.ClearData(_cycleData.TemperutureIndex, Mode);
                 }
             }
             catch (Exception exception)

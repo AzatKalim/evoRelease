@@ -157,10 +157,37 @@ namespace Evo20.Controllers.Data
             return true;
         }
 
+        private bool ReadMeanDataFromFile(StreamReader file, List<PacketsCollection> collection, int temperature)
+        {
+            try
+            {
+                var packetsCollection = new PacketsCollection(file, temperature, true);
+                collection.Add(packetsCollection);
+            }
+            catch (Exception exception)
+            {
+                Log.Instance.Error("Ошибка: Чтение файла данных пакетов");
+                Log.Instance.Exception(exception);
+                return false;
+            }
+            return true;
+        }
+
         public bool ReadDataFromFile(List<ISensor> sensors,StreamReader file,int temperature)
         {
             foreach (var sensor in sensors)
                 if (!ReadDataFromFile(file, sensor.CalibrationPacketsCollection, temperature))
+                    return false;
+            //foreach (var sensor in sensors)
+            //    if (!ReadDataFromFile(file, sensor.CheckPacketsCollection))
+            //        return false; 
+            return true;
+        }
+
+        public bool ReadMeanDataFromFile(List<ISensor> sensors, StreamReader file, int temperature)
+        {
+            foreach (var sensor in sensors)
+                if (!ReadMeanDataFromFile(file, sensor.CalibrationPacketsCollection, temperature))
                     return false;
             //foreach (var sensor in sensors)
             //    if (!ReadDataFromFile(file, sensor.CheckPacketsCollection))
