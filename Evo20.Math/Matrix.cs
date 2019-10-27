@@ -1,27 +1,12 @@
-﻿// ReSharper disable CompareOfFloatsByEqualityOperator
-
-using MathNet.Numerics.LinearAlgebra.Double;
+﻿using MathNet.Numerics.LinearAlgebra.Double;
 
 namespace Evo20.Math
 {
     public static class  Matrix
     {
-        public static double[][] Inverse1(this double[][] matrix)
-        {
-            double[,] a = matrix.ToArray();
-            int info;
-            alglib.matinvreport rep;
-            alglib.rmatrixinverse(ref a, out info, out rep);
-            //var temp = DenseMatrix.OfArray(matrix.ToArray());
-            //var temp = DenseMatrix.OfRowArrays(matrix);
-             //var res= temp.Inverse();
-            return a.ToRowsArray();
-        }
-
         public static double[][] Inverse(this double[][] matrix)
         {
             var temp = DenseMatrix.OfArray(matrix.ToArray());
-            //var temp = DenseMatrix.OfRowArrays(matrix);
             var res= temp.Inverse();
             return res.ToColumnArrays();
         }

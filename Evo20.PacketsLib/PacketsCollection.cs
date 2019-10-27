@@ -28,7 +28,7 @@ namespace Evo20.Packets
 
             private double[] ReadParams(string line)
             {
-                return line.Split(':', ' ').Skip(1).Select(x => Convert.ToDouble(x, CultureInfo.InvariantCulture)).ToArray();
+                return line.Split(':', ' ').Skip(1).Select(x => double.Parse(x, CultureInfo.InvariantCulture)).ToArray();
             }
             public MeanParametres()
             {

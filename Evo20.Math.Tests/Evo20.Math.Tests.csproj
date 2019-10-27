@@ -59,6 +59,10 @@
       <Project>{290D2C14-4B1F-4110-970A-8572E5C905B8}</Project>
       <Name>Evo20.Math</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Evo20.Sensors\Evo20.Sensors.csproj">
+      <Project>{4E9C9D86-5565-4A04-8490-85EBED2E8886}</Project>
+      <Name>Evo20.Sensors</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
