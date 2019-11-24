@@ -19,7 +19,6 @@ namespace Evo20.Sensors
         /// </summary>
         AutoResetEvent PacketsCollectedEvent
         {
-            set;
             get;
         }
         
@@ -35,13 +34,11 @@ namespace Evo20.Sensors
 
         List<PacketsCollection> CalibrationPacketsCollection
         {
-            set;
             get;
         }
 
         List<PacketsCollection> CheckPacketsCollection
         {
-            set;
             get;
         }
 

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text;
 using Evo20.Utils;
 using Evo20.Sensors;
 
@@ -76,7 +78,7 @@ namespace Evo20.Math
                 for (var j = 0; j < KCount; j++)
                 {
                     a[i][j] = new double[4];
-                    var meanA = dly.CalibrationPacketsCollection[0].MeanA(j);
+                    var meanA = dly.CalibrationPacketsCollection[i].MeanA(j);
                     a[i][j][0] = 1;
                     a[i][j][1] = meanA[0];
                     a[i][j][2] = meanA[1];
@@ -212,7 +214,10 @@ namespace Evo20.Math
             {
                 for (int j = 0; j < matrix[i].Length; j++)
                 {
-                    file.Write(matrix[i][j] + " ");
+                    string str = matrix[i][j].ToString(CultureInfo.InvariantCulture);
+                    file.Write(str);
+                    if (str.Length < 20)
+                        file.Write(new string(' ', 20 - str.Length));
                 }
 
                 file.Write(Environment.NewLine);
@@ -221,17 +226,29 @@ namespace Evo20.Math
 
         private static void WriteMatrix(double[][][] matrix, ref StreamWriter file)
         {
-            for (var i = 0; i < matrix.Length; i++)
+            try
             {
-                file.WriteLine(i);
-                for (var j = 0; j < matrix[0][0].Length; j++)
+                for (var i = 0; i < matrix.Length; i++)
                 {
-                    for (var k = 0; k < matrix[0].Length; k++)
+                    file.WriteLine(i);
+                    for (var j = 0; j < matrix[0].Length; j++)
                     {
-                        file.WriteLine("Vector [{0},{1}]: {2}",j+1, k, matrix[i][k][j]);
+                        var buffer = new StringBuilder();
+                        for (var k = 0; k < matrix[0][0].Length; k++)
+                        {
+                            string str = matrix[i][j][k].ToString(CultureInfo.InvariantCulture);
+                            buffer.Append(str);
+                            if (str.Length < 20)
+                                buffer.Append(new string(' ', 20 - str.Length));
+                            
+                        }
+                        file.WriteLine(buffer);
                     }
-                    file.Write(Environment.NewLine);
                 }
+            }
+            catch (Exception ex)
+            {
+                Log.Instance.Exception(ex);
             }
         }
 

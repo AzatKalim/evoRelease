@@ -61,10 +61,10 @@ namespace Evo20.Sensors
         /// <returns>Профиль</returns>
         protected override Position[] GetCheckProfile()
         {
-            Position[] profile = new Position[Indexes[Indexes.Length - 1]];
+            var profile = new Position[Indexes[Indexes.Length - 1]];
             for (int i = 0; i < Indexes[0]; i++)
             {
-                profile[i] = new Position(i * 15, 45,0,0);
+                profile[i] = new Position(i * 15, 45);
             }
             for (int i = Indexes[0]; i < Indexes[1]; i++)
             {

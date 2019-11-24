@@ -28,7 +28,7 @@ namespace Evo20.Sensors
             get;
         }
 
-        private object locker = new object();
+        private readonly object locker = new object();
 
         public Position[] CalibrationProfile
         {
@@ -84,12 +84,12 @@ namespace Evo20.Sensors
 
         #region Public Methods
 
-        protected virtual Position[] GetCalibrationProfileTest()
+        protected Position[] GetCalibrationProfileTest()
         {
             var profile = new List<Position>();
             for (int i = 0; i < 2; i++)
             {
-                profile.Add(new Position(i * 15, 0));
+                profile.Add(new Position(i * 15));
             }
             return profile.ToArray();
         }
@@ -175,7 +175,7 @@ namespace Evo20.Sensors
             return true;
         }
 
-        public Position[] GetCalibrationProfile()
+        private Position[] GetCalibrationProfile()
         {
             
             var filename = $"{Config.Instance.ProfileFolder}{Name}.txt";
@@ -195,7 +195,7 @@ namespace Evo20.Sensors
             }
             catch (Exception e)
             {
-                Log.Instance.Error($"Deserialization error");
+                Log.Instance.Error("Deserialization error");
                 Log.Instance.Exception(e);
                 throw;
             }
