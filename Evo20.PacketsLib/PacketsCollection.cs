@@ -28,12 +28,15 @@ namespace Evo20.Packets
 
             private double[] ReadParams(string line)
             {
-                return line.Split(':', ' ').Skip(1).Select(x => double.Parse(x, CultureInfo.InvariantCulture)).ToArray();
+                return line.Split(':', ' ').Skip(1).Select(x => double.Parse(x, CultureInfo.InvariantCulture))
+                    .ToArray();
             }
+
             public MeanParametres()
             {
             }
         }
+
         #region Private Fields
 
         readonly int _maxPacketsCount;
@@ -44,7 +47,7 @@ namespace Evo20.Packets
 
         private MeanParametres[] ComputedMeanParams => _meanParams ?? (_meanParams = new MeanParametres[PositionCount]);
 
-        #endregion 
+        #endregion
 
         #region Constructors
 
@@ -58,12 +61,12 @@ namespace Evo20.Packets
             _maxPacketsCount = packetsCount;
         }
 
-        public PacketsCollection(StreamReader file,int temperature, bool IsMeanFile = false)
+        public PacketsCollection(StreamReader file, int temperature, bool IsMeanFile = false)
         {
             Temperature = temperature;
             try
             {
-                Temperature = Convert.ToInt32(file.ReadLine());               
+                Temperature = Convert.ToInt32(file.ReadLine());
             }
             catch (Exception)
             {
@@ -75,7 +78,7 @@ namespace Evo20.Packets
             {
                 try
                 {
-                     int positionCount = Convert.ToInt32(file.ReadLine());
+                    int positionCount = Convert.ToInt32(file.ReadLine());
                     _positionPackets = new List<PacketsData>[positionCount];
                     for (int i = 0; i < positionCount; i++)
                     {
@@ -105,7 +108,8 @@ namespace Evo20.Packets
                         file.ReadLine();
                         means.Add(new MeanParametres(file));
                     }
-                    _meanParams = means.ToArray();                 
+
+                    _meanParams = means.ToArray();
                 }
                 catch (Exception)
                 {
@@ -117,15 +121,24 @@ namespace Evo20.Packets
             }
         }
 
-        #endregion 
+        #endregion
 
         #region Properties
 
-        public int Temperature{ get; }
+        public int Temperature { get; }
 
-        public int PositionCount => _positionPackets?.Length ?? 0;
+        public int PositionCount
+        {
+            get
+            {
+                if (_positionPackets?.Length != 0)
+                    if (_positionPackets?.Length != null)
+                        return (int) _positionPackets?.Length;
+                return _meanParams.Length;
+            }
+        }
 
-        public List<PacketsData> this[int index] => _positionPackets[index];
+    public List<PacketsData> this[int index] => _positionPackets[index];
 
         #endregion 
 

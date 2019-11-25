@@ -10,72 +10,19 @@ namespace Evo20.Math
 {
     public static class CalculatorCoefficients
     {
-        #region Constants
 
-        private const int KCount = 72;
-        private const int SCount = 3;
-        private const int NdlyCount = 72;
-        private const int RCount = 39;
         private const double Factor = 9.807;
-
-        #region DYS 
-
-        public static readonly double[][] DYS_MATRIX =
-        {
-            new double[] {0, 0, 0},
-            new double[] {0, 2, 0},
-            new double[] {0, 8, 0},
-            new double[] {0, 16, 0},
-            new double[] {0, 64, 0},
-            new double[] {0, 112, 0},
-            new double[] {0, 128, 0},
-            new double[] {0, -2, 0},
-            new double[] {0, -8, 0},
-            new double[] {0, -16, 0},
-            new double[] {0, -64, 0},
-            new double[] {0, -112, 0},
-            new double[] {0, -128, 0},
-            new double[] {0, 0, 0},
-            new double[] {0, 0, -2},
-            new double[] {0, 0, -8},
-            new double[] {0, 0, -16},
-            new double[] {0, 0, -64},
-            new double[] {0, 0, -112},
-            new double[] {0, 0, -128},
-            new double[] {0, 0, 2},
-            new double[] {0, 0, 8},
-            new double[] {0, 0, 16},
-            new double[] {0, 0, 64},
-            new double[] {0, 0, 112},
-            new double[] {0, 0, 128},
-            new double[] {0, 0, 0},
-            new double[] {2, 0, 0},
-            new double[] {8, 0, 0},
-            new double[] {16, 0, 0},
-            new double[] {64, 0, 0},
-            new double[] {112, 0, 0},
-            new double[] {128, 0, 0},
-            new double[] {-2, 0, 0},
-            new double[] {-8, 0, 0},
-            new double[] {-16, 0, 0},
-            new double[] {-64, 0, 0},
-            new double[] {-112, 0, 0},
-            new double[] {-128, 0, 0}
-        };
-        #endregion
-
-        #endregion
 
         #region DLY coefficients
 
         private static double[][][] ComputeCalibrationCoefficentsDLY(ISensor dly)
         {
             Log.Instance.Info("Рассчет ДЛУ");
-            var a = new double[8][][];
-            for (var i = 0; i < 8; i++)
+            var a = new double[dly.CalibrationPacketsCollection.Count][][];
+            for (var i = 0; i < a.Length; i++)
             {
-                a[i] = new double[KCount][];
-                for (var j = 0; j < KCount; j++)
+                a[i] = new double[dly.CalibrationPacketsCollection[i].PositionCount][];
+                for (var j = 0; j < dly.CalibrationPacketsCollection[i].PositionCount; j++)
                 {
                     a[i][j] = new double[4];
                     var meanA = dly.CalibrationPacketsCollection[i].MeanA(j);
@@ -94,15 +41,11 @@ namespace Evo20.Math
         {
             Log.Instance.Info("Эталонные вектора ДЛУ");
 
-            double[][] b = new double[NdlyCount][];
-            for (int i = 0; i < b.Length; i++)
-            {
-                b[i] = new double[SCount];
-            }
-
+            double[][] b = new double[profile.Length][];
             var dlyMatrix = ProfileToPositionArray(profile);
-            for (int n = 0; n < NdlyCount; n++)
+            for (int n = 0; n < profile.Length; n++)
             {
+                b[n] = new double[3];
                 b[n][0] = -Factor * System.Math.Sin(dlyMatrix[n][1] * System.Math.PI / 180) *
                           System.Math.Cos(dlyMatrix[n][0] * System.Math.PI / 180);
                 b[n][1] = Factor * System.Math.Cos(dlyMatrix[n][1] * System.Math.PI / 180);
@@ -120,14 +63,27 @@ namespace Evo20.Math
         {
             Log.Instance.Info("Рассчет ДУС");
             var a = ComputeAMatrix(dys);
-            var b = DYS_MATRIX;
+            var b = GetModelDYS(dys.CalibrationProfile);
             return ComputeCalibrationCoefficents(a, b);
         }
 
+        private static double[][] GetModelDYS(Position[] dysProfile)
+        {
+            var result = new double[dysProfile.Length][];
+            for (int i = 0; i < dysProfile.Length; i++)
+            {
+                result[i] = new double[3];
+                result[i][0] = dysProfile[i].SecondPosition == 90 ? dysProfile[i].SpeedFirst : 0;
+                result[i][1] = dysProfile[i].SpeedSecond;
+                result[i][2] = dysProfile[i].SecondPosition == 90 ? 0 : dysProfile[i].SpeedFirst;
+            }
+
+            return result;
+        }
         private static double[][][] ComputeCalibrationCoefficents(double[][][] a, double[][] b)
         {
-            var result = new double[8][][];
-            for (var i = 0; i < 8; i++)
+            var result = new double[a.Length][][];
+            for (var i = 0; i < result.Length; i++)
             {
                 result[i] = OneCompute(a[i], b);
             }
@@ -148,13 +104,11 @@ namespace Evo20.Math
         {
             Log.Instance.Info("Вычисление матрицы А ДУС");
 
-            var a = new double[8][][];
-            for (var i = 0; i < a.Length; i++)
-                a[i] = new double[RCount][];
-
+            var a = new double[dys.CalibrationPacketsCollection.Count][][];
             for (var i = 0; i < a.Length; i++)
             {
-                for (var j = 0; j < RCount;j++)
+                a[i] = new double[dys.CalibrationPacketsCollection[i].PositionCount][];
+                for (var j = 0; j < dys.CalibrationPacketsCollection[i].PositionCount; j++)
                 {
                     a[i][j]= new double[13];
                     var w = dys.CalibrationPacketsCollection[i].MeanW(j);
@@ -179,10 +133,10 @@ namespace Evo20.Math
             Log.Instance.Info("CalculateCoefficients");
 
             var coefficentsDly = ComputeCalibrationCoefficentsDLY(dly);
-            var temperatureCoefficentsDly = ComputeTemperatureCalibrationCoefficents(dly,KCount);
+            var temperatureCoefficentsDly = ComputeTemperatureCalibrationCoefficents(dly, dly.CalibrationProfile.Length);
 
             var coefficentsDys = ComputeCalibrationCoefficentsDYS(dys);
-            var temperatureCoefficentsDys = ComputeTemperatureCalibrationCoefficents(dys,RCount);
+            var temperatureCoefficentsDys = ComputeTemperatureCalibrationCoefficents(dys, dys.CalibrationProfile.Length);
 
             file.WriteLine("коэффициенты ДЛУ по ускорениям");
             WriteMatrix(coefficentsDly, ref file);
@@ -198,9 +152,9 @@ namespace Evo20.Math
 
         private static double[][] ComputeTemperatureCalibrationCoefficents(ISensor sensor,int posCount)
         {
-            Log.Instance.Info("Рассчет векторов {0} по температурам",sensor.Name);
-            var mean = new double[8][];
-            for (var i = 0; i < 8; i++)
+            Log.Instance.Info("Рассчет векторов {0} по температурам", sensor.Name);
+            var mean = new double[sensor.CalibrationPacketsCollection.Count][];
+            for (var i = 0; i < mean.Length; i++)
                 for (var j = 0; j < posCount; j++)
                     mean[i] = sensor.CalibrationPacketsCollection[i].MeanUa(j);
             return mean;

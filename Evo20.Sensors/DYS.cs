@@ -4,12 +4,10 @@ using Evo20.Packets;
 
 namespace Evo20.Sensors
 {
-
     public class Dys : BKV1
     {
         static readonly int[] Indexes = { 0, 1, 7, 13, 14, 20, 26, 27, 33, 39 };
         static readonly int[] CheckSpeed = { 1, 5, 21, 43, 75, 115 };
-        private const int CountOfPositions = 39;
 
         #region Properties 
      
@@ -23,55 +21,14 @@ namespace Evo20.Sensors
             CheckPacketsCollection = new List<PacketsCollection>();
             foreach (var temperature in colibrationTemperatures)
             {
-                CalibrationPacketsCollection.Add(new PacketsCollection(temperature, CountOfPositions, calibrationMaxPacketsCount));
+                CalibrationPacketsCollection.Add(new PacketsCollection(temperature, CalibrationProfile.Length, calibrationMaxPacketsCount));
             }
             foreach (var temperature in checkTemperatures)
             {
-                CheckPacketsCollection.Add(new PacketsCollection(temperature, CountOfPositions, checkMaxPacketsCount));
+                CheckPacketsCollection.Add(new PacketsCollection(temperature, CalibrationProfile.Length, checkMaxPacketsCount));
             }
             PacketsCollectedEvent = new AutoResetEvent(false);
         }
-
-        //private Position[] GetCalibrationProfileOld()
-        //{
-        //    Position[] profile = new Position[INDEXES[INDEXES.Length - 1]];
-
-        //    profile[0] = new Position(0, 0, 0, 0);
-
-        //    for (int i = INDEXES[1]; i < INDEXES[2]; i++)
-        //    {
-        //        profile[i] = new Position(0, 0, 0, COLL_SPEED[i - INDEXES[1]]);
-        //    }
-        //    for (int i = INDEXES[2]; i < INDEXES[3]; i++)
-        //    {
-        //        profile[i] = new Position(0, 0, 0, -COLL_SPEED[i - INDEXES[2]]);
-        //    }
-
-        //    profile[INDEXES[3]] = new Position(0, 0, 0, 0);
-
-        //    for (int i = INDEXES[4]; i < INDEXES[5]; i++)
-        //    {
-        //        profile[i] = new Position(0, 0, -COLL_SPEED[i - INDEXES[4]], 0);
-        //    }
-
-        //    for (int i = INDEXES[5]; i < INDEXES[6]; i++)
-        //    {
-        //        profile[i] = new Position(0, 0, COLL_SPEED[i - INDEXES[5]], 0);
-        //    }
-
-        //    profile[INDEXES[6]] = new Position(0, 90, 0, 0);
-
-        //    for (int i = INDEXES[7]; i < INDEXES[8]; i++)
-        //    {
-        //        profile[i] = new Position(0, 90, COLL_SPEED[i - INDEXES[7]], 0);
-        //    }
-        //    for (int i = INDEXES[8]; i < INDEXES[9]; i++)
-        //    {
-        //        profile[i] = new Position(0, 90, -COLL_SPEED[i - INDEXES[8]], 0);
-        //    }
-
-        //    return profile;
-        //}
 
         protected override Position[] GetCheckProfile()
         {

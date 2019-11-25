@@ -203,7 +203,7 @@ namespace Evo20.Sensors
             return profile.PositionArray;
         }
 
-#endregion
+        #endregion
 
         #region Abstract Methods
 

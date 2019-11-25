@@ -11,8 +11,6 @@ namespace Evo20.Sensors
     {
         static readonly int[] Indexes = { 24, 48, 72 };
 
-        private const int CountOfPositions = 72;
-
         public override string Name => "DLY";
 
         public DLY(List<int> colibrationTemperatures,
@@ -24,36 +22,14 @@ namespace Evo20.Sensors
             CheckPacketsCollection = new List<PacketsCollection>();
             foreach (var temperture in colibrationTemperatures)
             {
-                CalibrationPacketsCollection.Add(new PacketsCollection(temperture, CountOfPositions, calibrationMaxPacketsCount));
+                CalibrationPacketsCollection.Add(new PacketsCollection(temperture, CalibrationProfile.Length, calibrationMaxPacketsCount));
             }
             foreach (var temperture in checkTemperatures)
             {
-                CheckPacketsCollection.Add(new PacketsCollection(temperture, CountOfPositions, checkMaxPacketsCount));
+                CheckPacketsCollection.Add(new PacketsCollection(temperture, CalibrationProfile.Length, checkMaxPacketsCount));
             }
             PacketsCollectedEvent = new AutoResetEvent(false);
         }
-
-        ///// <summary>
-        ///// Возврашщает профиль колибровки датчика ДЛУ
-        ///// </summary>
-        ///// <returns>Профиль</returns>
-        //private Position[] GetCalibrationProfileOld()
-        //{
-        //    Position[] profile = new Position[INDEXES[INDEXES.Length - 1]];
-        //    for (int i = 0; i < INDEXES[0]; i++)
-        //    {
-        //        profile[i] = new Position(i * 15, 0);
-        //    }
-        //    for (int i = INDEXES[0]; i < INDEXES[1]; i++)
-        //    {
-        //        profile[i] = new Position((i - 24) * 15, 90);
-        //    }
-        //    for (int i = INDEXES[1]; i < profile.Length; i++)
-        //    {
-        //        profile[i] = new Position(-90, (i - 54) * 15);
-        //    }
-        //    return profile;
-        //}
 
         /// <summary>
         /// Возврашщает профиль проверки датчика ДЛУ
