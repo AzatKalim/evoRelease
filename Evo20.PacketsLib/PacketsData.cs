@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-// ReSharper disable InconsistentlySynchronizedField
+using Evo20.Utils;
 
 namespace Evo20.Packets
 {
@@ -27,9 +27,10 @@ namespace Evo20.Packets
                     Packets.Add(new Packet(packetLine));
                 }
             }
-            catch (FormatException)
+            catch (FormatException ex)
             {
                 Packets = null;
+                Log.Instance.Warning($"Format ex {ex}");
                 throw;
             }
         }
@@ -65,11 +66,17 @@ namespace Evo20.Packets
                     return _meanW;
                 _meanW = new double[AxisCount];
                 double sum = 0;
-                for (int i = 0; i < _meanW.Length; i++)
+                for (var i = 0; i < _meanW.Length; i++)
                 {
+                    var goodPacketsCount = 0;
                     foreach (var packet in Packets)
+                    {
+                        if (packet.BadPacket) continue;
                         sum += packet.W[i];
-                    _meanW[i] += sum / Packets.Count;
+                        goodPacketsCount++;
+                    }
+
+                    _meanW[i] += sum / goodPacketsCount;
                     sum = 0;
                 }
                 return _meanW;
@@ -87,12 +94,14 @@ namespace Evo20.Packets
                     double sum = 0;
                     for (int i = 0; i < _meanA.Length; i++)
                     {
-
+                        var goodPacketsCount = 0;
                         foreach (var packet in Packets)
                         {
+                            if (packet.BadPacket) continue;
                             sum += packet.A[i];
+                            goodPacketsCount++;
                         }
-                        _meanA[i] += sum / Packets.Count;
+                        _meanA[i] += sum / goodPacketsCount;
                         sum = 0;
                     }
                 }
@@ -110,10 +119,19 @@ namespace Evo20.Packets
                 _meanUw = new double[AxisCount];
                 double sum = 0;
                 for (var i = 0; i < _meanUw.Length; i++)
-                {                   
-                    sum += Packets[0].U[i];
-                    sum += Packets[2].U[i];
-                    _meanUw[i] += sum / 2;
+                {
+                    var count = 0;
+                    if (!Packets[0].BadPacket)
+                    {
+                        sum += Packets[0].U[i];
+                        count++;
+                    }
+                    if (!Packets[2].BadPacket)
+                    {
+                        sum += Packets[2].U[i];
+                        count++;
+                    }
+                    _meanUw[i] += sum / count;
                     sum = 0;
                 }
                 return _meanUw;
@@ -129,11 +147,20 @@ namespace Evo20.Packets
                 if (_meanUa != null) return _meanUa;
                 _meanUa = new double[AxisCount];
                 double sum = 0;
-                for (int i = 0; i < _meanUa.Length; i++)
+                for (var i = 0; i < _meanUw.Length; i++)
                 {
-                    sum += Packets[1].U[i];
-                    sum += Packets[3].U[i];
-                    _meanUa[i] += sum / 2;
+                    var count = 0;
+                    if (!Packets[1].BadPacket)
+                    {
+                        sum += Packets[1].U[i];
+                        count++;
+                    }
+                    if (!Packets[3].BadPacket)
+                    {
+                        sum += Packets[3].U[i];
+                        count++;
+                    }
+                    _meanUa[i] += sum / count;
                     sum = 0;
                 }
                 return _meanUa;
@@ -165,24 +192,19 @@ namespace Evo20.Packets
             if (packets == null || packets.Count == 0)
                 return null;
             // проверка id пакетов 
-            for (int i = 0; i < PacketsCount && packets.Count > i; i++)
+            for (var i = 0; i < PacketsCount && packets.Count > i; i++)
             {
-                if (packets[i].Id != i + 1)
+                if (packets[i].Id == i + 1) continue;
+                for (var j = 0; j < i && j<packets.Count; j++)
                 {
-                    for (int j = 0; j < i && j<packets.Count; j++)
+                    lock (packets)
                     {
-                        lock (packets)
-                        {
-                            packets.RemoveAt(j);
-                        }
+                        packets.RemoveAt(j);
                     }
-                    i = 0;
                 }
+                i = 0;
             }
-            if (packets.Count < PacketsCount)
-                return null;
-
-            return new PacketsData(ref packets);
+            return packets.Count < PacketsCount ? null : new PacketsData(ref packets);
         }
     }
 }

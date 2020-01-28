@@ -325,12 +325,14 @@ namespace Evo20.Controllers
                     _sensorController.CurrentPositionNumber = j;
                     _controllerEvo.SetPosition(profile[j]);
                     if (!Config.Instance.IsFakeEvo)
+                    {
                         _evoData.PositionReachedEvent.WaitOne();
-
+                    }
+                    Log.Instance.Info($"Старт сбора пакетов для позиции {_sensorController.CurrentPositionNumber}");
                     _sensorController.CanCollect = true;
                     _sensorController.CurrentSensor.PacketsCollectedEvent.WaitOne();
                     _sensorController.CanCollect = false;
-                    Log.Instance.Info("Пакеты в положении {0} собраны", _sensorController.CurrentPositionNumber);
+                    Log.Instance.Info($"Пакеты в положении {_sensorController.CurrentPositionNumber} собраны, пакетов {_sensorController.PacketsCollectedCount}");
                 }
 
             }

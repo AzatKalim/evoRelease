@@ -28,7 +28,19 @@
       "FirstPosition": 0,
       "SecondPosition": 0,
       "SpeedFirst": 0,
+      "SpeedSecond": 32
+    },
+    {
+      "FirstPosition": 0,
+      "SecondPosition": 0,
+      "SpeedFirst": 0,
       "SpeedSecond": 64
+    },
+    {
+      "FirstPosition": 0,
+      "SecondPosition": 0,
+      "SpeedFirst": 0,
+      "SpeedSecond": 80
     },
     {
       "FirstPosition": 0,
@@ -64,7 +76,19 @@
       "FirstPosition": 0,
       "SecondPosition": 0,
       "SpeedFirst": 0,
+      "SpeedSecond": -32
+    },
+    {
+      "FirstPosition": 0,
+      "SecondPosition": 0,
+      "SpeedFirst": 0,
       "SpeedSecond": -64
+    },
+    {
+      "FirstPosition": 0,
+      "SecondPosition": 0,
+      "SpeedFirst": 0,
+      "SpeedSecond": -80
     },
     {
       "FirstPosition": 0,
@@ -105,7 +129,19 @@
     {
       "FirstPosition": 0,
       "SecondPosition": 0,
+      "SpeedFirst": -32,
+      "SpeedSecond": 0
+    },
+    {
+      "FirstPosition": 0,
+      "SecondPosition": 0,
       "SpeedFirst": -64,
+      "SpeedSecond": 0
+    },
+    {
+      "FirstPosition": 0,
+      "SecondPosition": 0,
+      "SpeedFirst": -80,
       "SpeedSecond": 0
     },
     {
@@ -141,7 +177,19 @@
     {
       "FirstPosition": 0,
       "SecondPosition": 0,
+      "SpeedFirst": 32,
+      "SpeedSecond": 0
+    },
+    {
+      "FirstPosition": 0,
+      "SecondPosition": 0,
       "SpeedFirst": 64,
+      "SpeedSecond": 0
+    },
+    {
+      "FirstPosition": 0,
+      "SecondPosition": 0,
+      "SpeedFirst": 80,
       "SpeedSecond": 0
     },
     {
@@ -183,7 +231,19 @@
     {
       "FirstPosition": 0,
       "SecondPosition": 90,
+      "SpeedFirst": 32,
+      "SpeedSecond": 0
+    },
+    {
+      "FirstPosition": 0,
+      "SecondPosition": 90,
       "SpeedFirst": 64,
+      "SpeedSecond": 0
+    },
+    {
+      "FirstPosition": 0,
+      "SecondPosition": 90,
+      "SpeedFirst": 80,
       "SpeedSecond": 0
     },
     {
@@ -219,7 +279,19 @@
     {
       "FirstPosition": 0,
       "SecondPosition": 90,
+      "SpeedFirst": -32,
+      "SpeedSecond": 0
+    },
+    {
+      "FirstPosition": 0,
+      "SecondPosition": 90,
       "SpeedFirst": -64,
+      "SpeedSecond": 0
+    },
+    {
+      "FirstPosition": 0,
+      "SecondPosition": 90,
+      "SpeedFirst": -80,
       "SpeedSecond": 0
     },
     {

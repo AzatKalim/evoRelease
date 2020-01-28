@@ -125,7 +125,7 @@ namespace Evo20.Packets
 
         #region Properties
 
-        public int Temperature { get; }
+        private int Temperature { get; }
 
         public int PositionCount
         {
@@ -191,8 +191,11 @@ namespace Evo20.Packets
                 for (int i = 0; i < sum.Length; i++)
                     sum[i]+= tmp[i];
             }
+
             for (int i = 0; i < a.Length; i++)
+            {
                 a[i] = sum[i] / packetsList.Count;
+            }
 
             ComputedMeanParams[positionNumber].MeanA = a;
             ComputedMeanParams[positionNumber].PacketsCount = packetsList.Count;
@@ -304,10 +307,8 @@ namespace Evo20.Packets
                 _positionPackets[positionNumber].Add(packetData);
                 return true;
             }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
 
         public void ToFile(StreamWriter file)
@@ -325,7 +326,7 @@ namespace Evo20.Packets
         public void MeanToFile(StreamWriter file)
         {
             file.WriteLine(Temperature);
-            for (int i = 0; i <  _positionPackets.Length; i++)
+            for (var i = 0; i <  _positionPackets.Length; i++)
             {
                 file.WriteLine($"Позиция {i}");
                 var a = MeanA(i);

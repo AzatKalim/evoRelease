@@ -68,7 +68,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CRC16.cs" />
-    <Compile Include="IPacketData.cs" />
     <Compile Include="Packet.cs" />
     <Compile Include="PacketsCollection.cs" />
     <Compile Include="PacketsData.cs" />
