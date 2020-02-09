@@ -125,7 +125,7 @@ namespace Evo20.Packets
 
         #region Properties
 
-        private int Temperature { get; }
+        public int Temperature { get; }
 
         public int PositionCount
         {

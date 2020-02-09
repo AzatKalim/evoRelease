@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Evo20.Packets;
 using Evo20.Utils;
 using Evo20.Sensors;
 
@@ -15,24 +17,26 @@ namespace Evo20.Math
 
         #region DLY coefficients
 
-        private static double[][][] ComputeCalibrationCoefficentsDLY(ISensor dly)
+        private static double[][][] ComputeCalibrationCoefficentsDLY(IList<PacketsCollection> packetsCollection,
+            Position[] profile)
         {
             Log.Instance.Info("Рассчет ДЛУ");
-            var a = new double[dly.CalibrationPacketsCollection.Count][][];
+            var a = new double[packetsCollection.Count][][];
             for (var i = 0; i < a.Length; i++)
             {
-                a[i] = new double[dly.CalibrationPacketsCollection[i].PositionCount][];
-                for (var j = 0; j < dly.CalibrationPacketsCollection[i].PositionCount; j++)
+                a[i] = new double[packetsCollection[i].PositionCount][];
+                for (var j = 0; j < packetsCollection[i].PositionCount; j++)
                 {
                     a[i][j] = new double[4];
-                    var meanA = dly.CalibrationPacketsCollection[i].MeanA(j);
+                    var meanA = packetsCollection[i].MeanA(j);
                     a[i][j][0] = 1;
                     a[i][j][1] = meanA[0];
                     a[i][j][2] = meanA[1];
                     a[i][j][3] = meanA[2];
                 }
-            }      
-            var b = DLYModelVectors(dly.CalibrationProfile);
+            }
+
+            var b = DLYModelVectors(profile);
             return ComputeCalibrationCoefficents(a, b);
         }
 
@@ -59,11 +63,11 @@ namespace Evo20.Math
 
         #region DYS coefficents
 
-        private static double[][][] ComputeCalibrationCoefficentsDYS(ISensor dys)
+        private static double[][][] ComputeCalibrationCoefficentsDYS(List<PacketsCollection> packetsCollections, Position[] profiles)
         {
             Log.Instance.Info("Рассчет ДУС");
-            var a = ComputeAMatrix(dys);
-            var b = GetModelDYS(dys.CalibrationProfile);
+            var a = ComputeAMatrix(packetsCollections);
+            var b = GetModelDYS(profiles);
             return ComputeCalibrationCoefficents(a, b);
         }
 
@@ -100,18 +104,18 @@ namespace Evo20.Math
             return Matrix.Multiply(step2, step3);
         }
 
-        private static double[][][] ComputeAMatrix(ISensor dys)
+        private static double[][][] ComputeAMatrix(List<PacketsCollection> packetsCollections)
         {
             Log.Instance.Info("Вычисление матрицы А ДУС");
 
-            var a = new double[dys.CalibrationPacketsCollection.Count][][];
+            var a = new double[packetsCollections.Count][][];
             for (var i = 0; i < a.Length; i++)
             {
-                a[i] = new double[dys.CalibrationPacketsCollection[i].PositionCount][];
-                for (var j = 0; j < dys.CalibrationPacketsCollection[i].PositionCount; j++)
+                a[i] = new double[packetsCollections[i].PositionCount][];
+                for (var j = 0; j < packetsCollections[i].PositionCount; j++)
                 {
                     a[i][j]= new double[13];
-                    var w = dys.CalibrationPacketsCollection[i].MeanW(j);
+                    var w = packetsCollections[i].MeanW(j);
                     a[i][j][0] = 1;
                     var counter = 0;
                     for (var k = 1; k < 5; k++)
@@ -132,11 +136,17 @@ namespace Evo20.Math
         {
             Log.Instance.Info("CalculateCoefficients");
 
-            var coefficentsDly = ComputeCalibrationCoefficentsDLY(dly);
-            var temperatureCoefficentsDly = ComputeTemperatureCalibrationCoefficents(dly, dly.CalibrationProfile.Length);
+            var dlyPacketsCollections = UnionByTemperature(dly.CalibrationPacketsCollection);
+            var coefficentsDly = ComputeCalibrationCoefficentsDLY(dlyPacketsCollections, dly.CalibrationProfile);
+            Log.Instance.Info($"Рассчет векторов {dly.Name} по температурам");
+            var temperatureCoefficentsDly =
+                ComputeTemperatureCalibrationCoefficents(dlyPacketsCollections, dly.CalibrationProfile.Length);
 
-            var coefficentsDys = ComputeCalibrationCoefficentsDYS(dys);
-            var temperatureCoefficentsDys = ComputeTemperatureCalibrationCoefficents(dys, dys.CalibrationProfile.Length);
+            var dysPacketsCollections = UnionByTemperature(dys.CalibrationPacketsCollection);
+            var coefficentsDys = ComputeCalibrationCoefficentsDYS(dysPacketsCollections, dys.CalibrationProfile);
+            Log.Instance.Info($"Рассчет векторов {dys.Name} по температурам");
+            var temperatureCoefficentsDys =
+                ComputeTemperatureCalibrationCoefficents(dysPacketsCollections, dys.CalibrationProfile.Length);
 
             file.WriteLine("коэффициенты ДЛУ по ускорениям");
             WriteMatrix(coefficentsDly, ref file);
@@ -150,13 +160,12 @@ namespace Evo20.Math
             return true; 
         }
 
-        private static double[][] ComputeTemperatureCalibrationCoefficents(ISensor sensor,int posCount)
+        private static double[][] ComputeTemperatureCalibrationCoefficents(List<PacketsCollection> packetsCollection, int positionCount)
         {
-            Log.Instance.Info("Рассчет векторов {0} по температурам", sensor.Name);
-            var mean = new double[sensor.CalibrationPacketsCollection.Count][];
+            var mean = new double[packetsCollection.Count][];
             for (var i = 0; i < mean.Length; i++)
-                for (var j = 0; j < posCount; j++)
-                    mean[i] = sensor.CalibrationPacketsCollection[i].MeanUa(j);
+                for (var j = 0; j < positionCount; j++)
+                    mean[i] = packetsCollection[i].MeanUa(j);
             return mean;
         }
 
@@ -168,13 +177,8 @@ namespace Evo20.Math
             {
                 for (int j = 0; j < matrix[i].Length; j++)
                 {
-                    string str = matrix[i][j].ToString(CultureInfo.InvariantCulture);
-                    file.Write(str);
-                    if (str.Length < 20)
-                        file.Write(new string(' ', 20 - str.Length));
+                    file.WriteLine(matrix[i][j].ToString(CultureInfo.InvariantCulture));
                 }
-
-                file.Write(Environment.NewLine);
             }
         }
 
@@ -187,16 +191,10 @@ namespace Evo20.Math
                     file.WriteLine(i);
                     for (var j = 0; j < matrix[0].Length; j++)
                     {
-                        var buffer = new StringBuilder();
                         for (var k = 0; k < matrix[0][0].Length; k++)
                         {
-                            string str = matrix[i][j][k].ToString(CultureInfo.InvariantCulture);
-                            buffer.Append(str);
-                            if (str.Length < 20)
-                                buffer.Append(new string(' ', 20 - str.Length));
-                            
+                            file.WriteLine(matrix[i][j][k].ToString(CultureInfo.InvariantCulture));
                         }
-                        file.WriteLine(buffer);
                     }
                 }
             }
@@ -210,6 +208,39 @@ namespace Evo20.Math
         {
             return profile.Select(position => new[] {(int) position.SecondPosition, (int) position.FirstPosition})
                 .ToArray();
+        }
+
+        private static List<PacketsCollection> UnionByTemperature(List<PacketsCollection> packetsCollections)
+        {
+            if (packetsCollections == null)
+                throw new ArgumentNullException(nameof(packetsCollections));
+            var temperaturesDictionary = new Dictionary<int, PacketsCollection>();
+            foreach (var packetsCollection in packetsCollections)
+            {
+                if (!temperaturesDictionary.ContainsKey(packetsCollection.Temperature))
+                {
+                    temperaturesDictionary.Add(packetsCollection.Temperature, packetsCollection);
+                }
+                else
+                {
+                    var existedCollection = temperaturesDictionary[packetsCollection.Temperature];
+                    for (int i = 0; i < packetsCollection.PositionCount; i++)
+                    {  
+                        for (int j = 0; j < packetsCollection.MeanA(i).Length; j++)
+                        {
+                            existedCollection.MeanA(i)[j] =
+                                (existedCollection.MeanA(i)[j] + packetsCollection.MeanA(i)[j]) / 2;
+                            existedCollection.MeanW(i)[j] =
+                                (existedCollection.MeanW(i)[j] + packetsCollection.MeanW(i)[j]) / 2;
+                            existedCollection.MeanUa(i)[j] =
+                                (existedCollection.MeanUa(i)[j] + packetsCollection.MeanUa(i)[j]) / 2;
+                            existedCollection.MeanUw(i)[j] =
+                                (existedCollection.MeanUw(i)[j] + packetsCollection.MeanUw(i)[j]) / 2;
+                        }
+                    }
+                }
+            }
+            return temperaturesDictionary.Values.ToList();
         }
         #endregion
     }
