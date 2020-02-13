@@ -147,7 +147,7 @@ namespace Evo20.Packets
                 if (_meanUa != null) return _meanUa;
                 _meanUa = new double[AxisCount];
                 double sum = 0;
-                for (var i = 0; i < _meanUw.Length; i++)
+                for (var i = 0; i < _meanUa.Length; i++)
                 {
                     var count = 0;
                     if (!Packets[1].BadPacket)

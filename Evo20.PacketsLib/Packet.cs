@@ -13,7 +13,7 @@ namespace Evo20.Packets
         private const int AStringNumber = 4;
         private const int UStringNumber = 7;
 
-        private static readonly double mul = 0.5 / Math.Pow(2, 28);
+        private static readonly double mul = 1 / Math.Pow(2, Config.Instance.NormalizationExponent);
 
         #endregion
 

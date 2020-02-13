@@ -86,5 +86,6 @@ namespace Evo20.Utils
 
         public readonly double SpeedDeviation = double.Parse(ConfigurationManager.AppSettings.Get("SpeedDeviation"), CultureInfo.InvariantCulture);
 
+        public readonly int NormalizationExponent = int.Parse(ConfigurationManager.AppSettings.Get("NormalizationExponent"), CultureInfo.InvariantCulture);
     }
 }
