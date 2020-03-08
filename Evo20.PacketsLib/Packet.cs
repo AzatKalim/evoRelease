@@ -210,11 +210,9 @@ namespace Evo20.Packets
         }
 
         private static double ConvertParam(byte[] bytes, ref bool rangeFlag, ref bool dataFlag)
-        {
-            //bool sign = true;          
+        {          
             var res = BitConverter.ToInt32(bytes, 0);
-            //if ((res & int.MinValue) == int.MinValue)
-            //    sign = false;
+
             if ((res & 3) == 2 || (res & 3) == 1) rangeFlag = true;
             if ((res & 3) == 3) dataFlag = true;
 

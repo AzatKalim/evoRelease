@@ -140,13 +140,13 @@ namespace Evo20.Math
             var coefficentsDly = ComputeCalibrationCoefficentsDLY(dlyPacketsCollections, dly.CalibrationProfile);
             Log.Instance.Info($"Рассчет векторов {dly.Name} по температурам");
             var temperatureCoefficentsDly =
-                ComputeTemperatureCalibrationCoefficents(dlyPacketsCollections, dly.CalibrationProfile.Length);
+                ComputeTemperatureCalibrationCoefficentsDly(dlyPacketsCollections, dly.CalibrationProfile.Length);
 
             var dysPacketsCollections = UnionByTemperature(dys.CalibrationPacketsCollection);
             var coefficentsDys = ComputeCalibrationCoefficentsDYS(dysPacketsCollections, dys.CalibrationProfile);
             Log.Instance.Info($"Рассчет векторов {dys.Name} по температурам");
             var temperatureCoefficentsDys =
-                ComputeTemperatureCalibrationCoefficents(dysPacketsCollections, dys.CalibrationProfile.Length);
+                ComputeTemperatureCalibrationCoefficentsDys(dysPacketsCollections, dys.CalibrationProfile.Length);
 
             file.WriteLine("коэффициенты ДЛУ по ускорениям");
             WriteMatrix(coefficentsDly, ref file);
@@ -160,12 +160,21 @@ namespace Evo20.Math
             return true; 
         }
 
-        private static double[][] ComputeTemperatureCalibrationCoefficents(List<PacketsCollection> packetsCollection, int positionCount)
+        private static double[][] ComputeTemperatureCalibrationCoefficentsDly(List<PacketsCollection> packetsCollection, int positionCount)
         {
             var mean = new double[packetsCollection.Count][];
             for (var i = 0; i < mean.Length; i++)
                 for (var j = 0; j < positionCount; j++)
                     mean[i] = packetsCollection[i].MeanUa(j);
+            return mean;
+        }
+
+        private static double[][] ComputeTemperatureCalibrationCoefficentsDys(List<PacketsCollection> packetsCollection, int positionCount)
+        {
+            var mean = new double[packetsCollection.Count][];
+            for (var i = 0; i < mean.Length; i++)
+            for (var j = 0; j < positionCount; j++)
+                mean[i] = packetsCollection[i].MeanUw(j);
             return mean;
         }
 
