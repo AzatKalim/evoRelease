@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Evo20.Sensors;
 
 namespace Evo20.Math.Tests
@@ -269,6 +270,124 @@ namespace Evo20.Math.Tests
             Assert.AreEqual(testResult.Length, etalonDoubles.Length);
             MatrixTests.AssertEquals(testResult, etalonDoubles, 5);
         }
+
+        [TestMethod]
+        public void DYSModelVectors_CorrectVectors()
+        {
+            var etalonDoubles = new[]
+            {
+                new double[] {0, 0, 0},
+                new double[] {0, 2, 0},
+                new double[] {0, 8, 0},
+                new double[] {0, 16, 0},
+                new double[] {0, 32, 0},
+                new double[] {0, 64, 0},
+                new double[] {0, 80, 0},
+                new double[] {0, 112, 0},
+                new double[] {0, 128, 0},
+                new double[] {0, -2, 0},
+                new double[] {0, -8, 0},
+                new double[] {0, -16, 0},
+                new double[] {0, -32, 0},
+                new double[] {0, -64, 0},
+                new double[] {0, -80, 0},
+                new double[] {0, -112, 0},
+                new double[] {0, -128, 0},
+                new double[] {0, 0, 0},
+                new double[] {0, 0, 2},
+                new double[] {0, 0, 8},
+                new double[] {0, 0, 16},
+                new double[] {0, 0, 32},
+                new double[] {0, 0, 64},
+                new double[] {0, 0, 80},
+                new double[] {0, 0, 112},
+                new double[] {0, 0, 128},
+                new double[] {0, 0, -2},
+                new double[] {0, 0, -8},
+                new double[] {0, 0, -16},
+                new double[] {0, 0, -32},
+                new double[] {0, 0, -64},
+                new double[] {0, 0, -80},
+                new double[] {0, 0, -112},
+                new double[] {0, 0, -128},
+                new double[] {0, 0, 0},
+                new double[] {2, 0, 0},
+                new double[] {8, 0, 0},
+                new double[] {16, 0, 0},
+                new double[] {32, 0, 0},
+                new double[] {64, 0, 0},
+                new double[] {80, 0, 0},
+                new double[] {112, 0, 0},
+                new double[] {128, 0, 0},
+                new double[] {-2, 0, 0},
+                new double[] {-8, 0, 0},
+                new double[] {-16, 0, 0},
+                new double[] {-32, 0, 0},
+                new double[] {-64, 0, 0},
+                new double[] {-80, 0, 0},
+                new double[] {-112, 0, 0},
+                new double[] {-128, 0, 0},
+            };
+
+            var profile = new[]
+            {
+                new Position(0, 0, 0, 0),
+                new Position(0, 0, 0, 2),
+                new Position(0, 0, 0, 8),
+                new Position(0, 0, 0, 16),
+                new Position(0, 0, 0, 32),
+                new Position(0, 0, 0, 64),
+                new Position(0, 0, 0, 80),
+                new Position(0, 0, 0, 112),
+                new Position(0, 0, 0, 128),
+                new Position(0, 0, 0, -2),
+                new Position(0, 0, 0, -8),
+                new Position(0, 0, 0, -16),
+                new Position(0, 0, 0, -32),
+                new Position(0, 0, 0, -64),
+                new Position(0, 0, 0, -80),
+                new Position(0, 0, 0, -112),
+                new Position(0, 0, 0, -128),
+                new Position(0, 0, 0, 0),
+                new Position(0, 0, 2),
+                new Position(0, 0, 8),
+                new Position(0, 0, 16),
+                new Position(0, 0, 32),
+                new Position(0, 0, 64),
+                new Position(0, 0, 80),
+                new Position(0, 0, 112),
+                new Position(0, 0, 128),
+                new Position(0, 0, -2),
+                new Position(0, 0, -8),
+                new Position(0, 0, -16),
+                new Position(0, 0, -32),
+                new Position(0, 0, -64),
+                new Position(0, 0, -80),
+                new Position(0, 0, -112),
+                new Position(0, 0, -128),
+                new Position(0, -90, 0, 0),
+                new Position(0, -90, 2),
+                new Position(0, -90, 8),
+                new Position(0, -90, 16),
+                new Position(0, -90, 32),
+                new Position(0, -90, 64),
+                new Position(0, -90, 80),
+                new Position(0, -90, 112),
+                new Position(0, -90, 128),
+                new Position(0, -90, -2),
+                new Position(0, -90, -8),
+                new Position(0, -90, -16),
+                new Position(0, -90, -32),
+                new Position(0, -90, -64),
+                new Position(0, -90, -80),
+                new Position(0, -90, -112),
+                new Position(0, -90, -128)
+            };
+            var testResult = CalculatorCoefficients.GetModelDYS(profile);
+            Assert.AreEqual(testResult.Length, etalonDoubles.Length);
+            MatrixTests.AssertEquals(testResult, etalonDoubles, 5);
+        }
+
 
         [TestMethod]
         public void OneCompute_CorrectAnswer()

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 
 namespace Evo20.Packets
 {
@@ -30,7 +31,7 @@ namespace Evo20.Packets
                 if (_w == null && !BadPacket) PacketHandle();
                 return _w;
             }
-            private set { _w = value; }
+            set { _w = value; }
         }
 
         public double[] A
@@ -40,7 +41,7 @@ namespace Evo20.Packets
                 if (_a == null && !BadPacket) PacketHandle();
                 return _a;
             }
-            private set { _a = value; }
+            set { _a = value; }
         }
 
         public double[] U
@@ -50,7 +51,7 @@ namespace Evo20.Packets
                 if (_u == null && !BadPacket) PacketHandle();
                 return _u;
             }
-            internal set { _u = value; }
+            set { _u = value; }
         }
 
         public int Id { get; }
@@ -103,7 +104,11 @@ namespace Evo20.Packets
             }
         }
 
-        private void PacketHandle()
+        public Packet(int id)
+        {
+            Id = id;
+        }
+        public void PacketHandle()
         {
             try
             {
@@ -209,14 +214,14 @@ namespace Evo20.Packets
             }
         }
 
-        private static double ConvertParam(byte[] bytes, ref bool rangeFlag, ref bool dataFlag)
+        public static double ConvertParam(byte[] bytes, ref bool rangeFlag, ref bool dataFlag)
         {          
             var res = BitConverter.ToInt32(bytes, 0);
 
             if ((res & 3) == 2 || (res & 3) == 1) rangeFlag = true;
             if ((res & 3) == 3) dataFlag = true;
 
-            return (res >> 2) * mul;
+            return (res >> 2)* mul;
         }
 
         public static bool FindPacketBegin(ref List<byte> buffer)
@@ -253,6 +258,14 @@ namespace Evo20.Packets
             }
 
             return true;
+        }
+
+        public override bool Equals(object obj)
+        {
+            var packet = (Packet) obj;
+            return packet != null && !A.Except(packet.A).Any() &&
+                   !W.Except(packet.W).Any() &&
+                !U.Except(packet.U).Any();
         }
     }
 }

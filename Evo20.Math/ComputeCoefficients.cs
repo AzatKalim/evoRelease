@@ -71,15 +71,15 @@ namespace Evo20.Math
             return ComputeCalibrationCoefficents(a, b);
         }
 
-        private static double[][] GetModelDYS(Position[] dysProfile)
+        public static double[][] GetModelDYS(Position[] dysProfile)
         {
             var result = new double[dysProfile.Length][];
             for (int i = 0; i < dysProfile.Length; i++)
             {
                 result[i] = new double[3];
-                result[i][0] = dysProfile[i].SecondPosition == 90 ? dysProfile[i].SpeedFirst : 0;
+                result[i][0] = dysProfile[i].SecondPosition == 90 || dysProfile[i].SecondPosition == -90 ? dysProfile[i].SpeedFirst : 0;
                 result[i][1] = dysProfile[i].SpeedSecond;
-                result[i][2] = dysProfile[i].SecondPosition == 90 ? 0 : dysProfile[i].SpeedFirst;
+                result[i][2] = dysProfile[i].SecondPosition == 90 || dysProfile[i].SecondPosition == -90 ? 0 : dysProfile[i].SpeedFirst;
             }
 
             return result;
@@ -148,14 +148,10 @@ namespace Evo20.Math
             var temperatureCoefficentsDys =
                 ComputeTemperatureCalibrationCoefficentsDys(dysPacketsCollections, dys.CalibrationProfile.Length);
 
-            file.WriteLine("коэффициенты ДЛУ по ускорениям");
             WriteMatrix(coefficentsDly, ref file);
-            file.WriteLine("коэффициенты ДУС по угловым скоростям");
             WriteMatrix(coefficentsDys, ref file);
 
-            file.WriteLine("коэффициенты ДЛУ по температуре ");
             WriteMatrix(temperatureCoefficentsDly, ref file);
-            file.WriteLine("коэффициенты ДУC по температуре ");
             WriteMatrix(temperatureCoefficentsDys, ref file);
             return true; 
         }
@@ -197,12 +193,11 @@ namespace Evo20.Math
             {
                 for (var i = 0; i < matrix.Length; i++)
                 {
-                    file.WriteLine(i);
-                    for (var j = 0; j < matrix[0].Length; j++)
+                    for (var j = 0; j < matrix[0][0].Length; j++)
                     {
-                        for (var k = 0; k < matrix[0][0].Length; k++)
+                        for (var k = 0; k < matrix[0].Length; k++)
                         {
-                            file.WriteLine(matrix[i][j][k].ToString(CultureInfo.InvariantCulture));
+                            file.WriteLine(matrix[i][k][j].ToString(CultureInfo.InvariantCulture));
                         }
                     }
                 }

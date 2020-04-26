@@ -492,6 +492,7 @@ namespace Evo20.Math.Tests
             //var testResult = Matrix.Multiply(a.Transpose(), CalculatorCoefficients.DYS_MATRIX);
             //AssertEquals(testResult, etalonDoubles, 3);
         }
+
         public static void AssertEquals(double[][] testResult, double[][] etalonDoubles,int numbersCount=0)
         {
             Assert.AreEqual(testResult.Length, etalonDoubles.Length);

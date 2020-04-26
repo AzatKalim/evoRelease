@@ -50,49 +50,49 @@
     },
     {
       "FirstPosition": 0,
-      "SecondPosition": 90,
+      "SecondPosition": -90,
       "SpeedFirst": 0,
       "SpeedSecond": 0
     },
     {
       "FirstPosition": 45,
-      "SecondPosition": 90,
+      "SecondPosition": -90,
       "SpeedFirst": 0,
       "SpeedSecond": 0
     },
     {
       "FirstPosition": 90,
-      "SecondPosition": 90,
+      "SecondPosition": -90,
       "SpeedFirst": 0,
       "SpeedSecond": 0
     },
     {
       "FirstPosition": 135,
-      "SecondPosition": 90,
+      "SecondPosition": -90,
       "SpeedFirst": 0,
       "SpeedSecond": 0
     },
     {
       "FirstPosition": 180,
-      "SecondPosition": 90,
+      "SecondPosition": -90,
       "SpeedFirst": 0,
       "SpeedSecond": 0
     },
     {
       "FirstPosition": 225,
-      "SecondPosition": 90,
+      "SecondPosition": -90,
       "SpeedFirst": 0,
       "SpeedSecond": 0
     },
     {
       "FirstPosition": 270,
-      "SecondPosition": 90,
+      "SecondPosition": -90,
       "SpeedFirst": 0,
       "SpeedSecond": 0
     },
     {
       "FirstPosition": 315,
-      "SecondPosition": 90,
+      "SecondPosition": -90,
       "SpeedFirst": 0,
       "SpeedSecond": 0
     },
