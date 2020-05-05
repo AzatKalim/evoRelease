@@ -33,7 +33,7 @@ namespace Evo20.Controllers.FileWork
             bool result=false;
             try
             {
-                result = CalculatorCoefficients.CalculateCoefficients(sensorsList[0],
+                result = new CoefficentCalculator().CalculateCoefficients(sensorsList[0],
                     sensorsList[1],
                     file);
             }

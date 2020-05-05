@@ -81,7 +81,9 @@ namespace Evo20.Utils
                                                      ConfigurationManager.AppSettings.Get("DefaultSettingsFileName"));
 
         public readonly bool IsFakeEvo = Convert.ToBoolean(ConfigurationManager.AppSettings.Get("FakeEvo"));
-     
+
+        public readonly bool ZeroSearchEnabled = Convert.ToBoolean(ConfigurationManager.AppSettings.Get("ZeroSearch"));
+
         public readonly double AxisDeviation = double.Parse(ConfigurationManager.AppSettings.Get("AxisDeviation"), CultureInfo.InvariantCulture);
 
         public readonly double SpeedDeviation = double.Parse(ConfigurationManager.AppSettings.Get("SpeedDeviation"), CultureInfo.InvariantCulture);

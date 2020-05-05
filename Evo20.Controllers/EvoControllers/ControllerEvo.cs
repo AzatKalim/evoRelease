@@ -212,7 +212,7 @@ namespace Evo20.Controllers.EvoControllers
 
         private void FindZeroIndex(Axis axis)
         {
-            CommandHandler.SendCommand(new ZeroIndexSearch(axis));
+            if (Config.Instance.ZeroSearchEnabled) CommandHandler.SendCommand(new ZeroIndexSearch(axis));
         }
 
         private void SetAxisMode(ModeParam param, Axis axis)
