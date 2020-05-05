@@ -45,17 +45,9 @@
             this.ySpeedOfRateLabel = new System.Windows.Forms.Label();
             this.CurrentTemperatureLabel = new System.Windows.Forms.Label();
             this.identifieGoupBox = new System.Windows.Forms.GroupBox();
-            this.temperatureReachedIndic = new System.Windows.Forms.PictureBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.powerCameraIndic = new System.Windows.Forms.PictureBox();
-            this.yMoveIndic = new System.Windows.Forms.PictureBox();
-            this.xMoveIndic = new System.Windows.Forms.PictureBox();
-            this.yPowerIndic = new System.Windows.Forms.PictureBox();
-            this.xPowerIndic = new System.Windows.Forms.PictureBox();
-            this.yZeroFindedIndic = new System.Windows.Forms.PictureBox();
-            this.xZeroFindedIndic = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -69,10 +61,6 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.graph = new ZedGraph.ZedGraphControl();
-            this.evoStopButton = new System.Windows.Forms.Button();
-            this.evoStartButton = new System.Windows.Forms.Button();
-            this.evoPauseButton = new System.Windows.Forms.Button();
             this.Sensor_control_page = new System.Windows.Forms.TabPage();
             this.sensorGroupBox = new System.Windows.Forms.GroupBox();
             this.currentPositionNumberLbl = new System.Windows.Forms.Label();
@@ -90,9 +78,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.comPortComboBox = new System.Windows.Forms.ComboBox();
-            this.sensorStopButton = new System.Windows.Forms.Button();
-            this.sensorPauseButton = new System.Windows.Forms.Button();
-            this.sensorStartButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.modeComboBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -104,22 +89,42 @@
             this.timeLeftlabel = new System.Windows.Forms.Label();
             this.workTimer = new System.Windows.Forms.Timer(this.components);
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.stopButton = new System.Windows.Forms.Button();
-            this.pauseButton = new System.Windows.Forms.Button();
             this.SensorTimer = new System.Windows.Forms.Timer(this.components);
-            this.startButton = new System.Windows.Forms.Button();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.getDataFromFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.считатьФайлыИВыполнитьРассчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cycleSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CommonSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblVersion = new System.Windows.Forms.Label();
-            this.считатьФайлыИВыполнитьРассчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stopButton = new System.Windows.Forms.Button();
+            this.pauseButton = new System.Windows.Forms.Button();
+            this.startButton = new System.Windows.Forms.Button();
+            this.temperatureReachedIndic = new System.Windows.Forms.PictureBox();
+            this.powerCameraIndic = new System.Windows.Forms.PictureBox();
+            this.yMoveIndic = new System.Windows.Forms.PictureBox();
+            this.xMoveIndic = new System.Windows.Forms.PictureBox();
+            this.yPowerIndic = new System.Windows.Forms.PictureBox();
+            this.xPowerIndic = new System.Windows.Forms.PictureBox();
+            this.yZeroFindedIndic = new System.Windows.Forms.PictureBox();
+            this.xZeroFindedIndic = new System.Windows.Forms.PictureBox();
+            this.graph = new ZedGraph.ZedGraphControl();
+            this.evoStopButton = new System.Windows.Forms.Button();
+            this.evoStartButton = new System.Windows.Forms.Button();
+            this.evoPauseButton = new System.Windows.Forms.Button();
+            this.sensorStopButton = new System.Windows.Forms.Button();
+            this.sensorPauseButton = new System.Windows.Forms.Button();
+            this.sensorStartButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.Evo_control_page.SuspendLayout();
             this.EvoParamsGroupBox.SuspendLayout();
             this.identifieGoupBox.SuspendLayout();
+            this.Sensor_control_page.SuspendLayout();
+            this.sensorGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SensorDataGridView)).BeginInit();
+            this.parameGroupBox.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.temperatureReachedIndic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.powerCameraIndic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.yMoveIndic)).BeginInit();
@@ -128,11 +133,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.xPowerIndic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.yZeroFindedIndic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xZeroFindedIndic)).BeginInit();
-            this.Sensor_control_page.SuspendLayout();
-            this.sensorGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SensorDataGridView)).BeginInit();
-            this.parameGroupBox.SuspendLayout();
-            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -312,15 +312,6 @@
             this.identifieGoupBox.TabStop = false;
             this.identifieGoupBox.Text = "Идентификаторы";
             // 
-            // temperatureReachedIndic
-            // 
-            this.temperatureReachedIndic.BackColor = System.Drawing.Color.Red;
-            this.temperatureReachedIndic.Location = new System.Drawing.Point(186, 60);
-            this.temperatureReachedIndic.Name = "temperatureReachedIndic";
-            this.temperatureReachedIndic.Size = new System.Drawing.Size(12, 10);
-            this.temperatureReachedIndic.TabIndex = 22;
-            this.temperatureReachedIndic.TabStop = false;
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -348,69 +339,6 @@
             this.label11.TabIndex = 19;
             this.label11.Text = "X";
             // 
-            // powerCameraIndic
-            // 
-            this.powerCameraIndic.BackColor = System.Drawing.Color.Red;
-            this.powerCameraIndic.Location = new System.Drawing.Point(186, 30);
-            this.powerCameraIndic.Name = "powerCameraIndic";
-            this.powerCameraIndic.Size = new System.Drawing.Size(12, 10);
-            this.powerCameraIndic.TabIndex = 17;
-            this.powerCameraIndic.TabStop = false;
-            // 
-            // yMoveIndic
-            // 
-            this.yMoveIndic.BackColor = System.Drawing.Color.Red;
-            this.yMoveIndic.Location = new System.Drawing.Point(189, 149);
-            this.yMoveIndic.Name = "yMoveIndic";
-            this.yMoveIndic.Size = new System.Drawing.Size(12, 10);
-            this.yMoveIndic.TabIndex = 16;
-            this.yMoveIndic.TabStop = false;
-            // 
-            // xMoveIndic
-            // 
-            this.xMoveIndic.BackColor = System.Drawing.Color.Red;
-            this.xMoveIndic.Location = new System.Drawing.Point(171, 149);
-            this.xMoveIndic.Name = "xMoveIndic";
-            this.xMoveIndic.Size = new System.Drawing.Size(12, 10);
-            this.xMoveIndic.TabIndex = 15;
-            this.xMoveIndic.TabStop = false;
-            // 
-            // yPowerIndic
-            // 
-            this.yPowerIndic.BackColor = System.Drawing.Color.Red;
-            this.yPowerIndic.Location = new System.Drawing.Point(189, 122);
-            this.yPowerIndic.Name = "yPowerIndic";
-            this.yPowerIndic.Size = new System.Drawing.Size(12, 10);
-            this.yPowerIndic.TabIndex = 14;
-            this.yPowerIndic.TabStop = false;
-            // 
-            // xPowerIndic
-            // 
-            this.xPowerIndic.BackColor = System.Drawing.Color.Red;
-            this.xPowerIndic.Location = new System.Drawing.Point(171, 122);
-            this.xPowerIndic.Name = "xPowerIndic";
-            this.xPowerIndic.Size = new System.Drawing.Size(12, 10);
-            this.xPowerIndic.TabIndex = 13;
-            this.xPowerIndic.TabStop = false;
-            // 
-            // yZeroFindedIndic
-            // 
-            this.yZeroFindedIndic.BackColor = System.Drawing.Color.Red;
-            this.yZeroFindedIndic.Location = new System.Drawing.Point(189, 96);
-            this.yZeroFindedIndic.Name = "yZeroFindedIndic";
-            this.yZeroFindedIndic.Size = new System.Drawing.Size(12, 10);
-            this.yZeroFindedIndic.TabIndex = 12;
-            this.yZeroFindedIndic.TabStop = false;
-            // 
-            // xZeroFindedIndic
-            // 
-            this.xZeroFindedIndic.BackColor = System.Drawing.Color.Red;
-            this.xZeroFindedIndic.Location = new System.Drawing.Point(171, 96);
-            this.xZeroFindedIndic.Name = "xZeroFindedIndic";
-            this.xZeroFindedIndic.Size = new System.Drawing.Size(12, 10);
-            this.xZeroFindedIndic.TabIndex = 4;
-            this.xZeroFindedIndic.TabStop = false;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -434,18 +362,18 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(8, 32);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(130, 13);
+            this.label10.Size = new System.Drawing.Size(124, 13);
             this.label10.TabIndex = 3;
-            this.label10.Text = "Питаение термокамеры";
+            this.label10.Text = "Питание термокамеры";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(16, 96);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(100, 13);
+            this.label7.Size = new System.Drawing.Size(94, 13);
             this.label7.TabIndex = 0;
-            this.label7.Text = "Каллибровка нуля";
+            this.label7.Text = "Калибровка нуля";
             // 
             // xSpeedOfRateLabel
             // 
@@ -527,49 +455,6 @@
             this.label14.Size = new System.Drawing.Size(140, 13);
             this.label14.TabIndex = 0;
             this.label14.Text = "Текущая угловая позиция";
-            // 
-            // graph
-            // 
-            this.graph.IsShowPointValues = false;
-            this.graph.Location = new System.Drawing.Point(428, 0);
-            this.graph.Name = "graph";
-            this.graph.PointValueFormat = "G";
-            this.graph.Size = new System.Drawing.Size(741, 454);
-            this.graph.TabIndex = 8;
-            // 
-            // evoStopButton
-            // 
-            this.evoStopButton.Enabled = false;
-            this.evoStopButton.Image = global::Evo20.GUI.Properties.Resources.stop;
-            this.evoStopButton.Location = new System.Drawing.Point(95, 7);
-            this.evoStopButton.Name = "evoStopButton";
-            this.evoStopButton.Size = new System.Drawing.Size(44, 41);
-            this.evoStopButton.TabIndex = 7;
-            this.evoStopButton.UseVisualStyleBackColor = true;
-            this.evoStopButton.Click += new System.EventHandler(this.evoStopButton_Click);
-            // 
-            // evoStartButton
-            // 
-            this.evoStartButton.Cursor = System.Windows.Forms.Cursors.AppStarting;
-            this.evoStartButton.Image = global::Evo20.GUI.Properties.Resources.play;
-            this.evoStartButton.Location = new System.Drawing.Point(18, 7);
-            this.evoStartButton.Name = "evoStartButton";
-            this.evoStartButton.Size = new System.Drawing.Size(44, 41);
-            this.evoStartButton.TabIndex = 0;
-            this.evoStartButton.UseVisualStyleBackColor = false;
-            this.evoStartButton.Click += new System.EventHandler(this.evoStartButton_Click);
-            // 
-            // evoPauseButton
-            // 
-            this.evoPauseButton.Cursor = System.Windows.Forms.Cursors.No;
-            this.evoPauseButton.Enabled = false;
-            this.evoPauseButton.Image = global::Evo20.GUI.Properties.Resources.pauseImg;
-            this.evoPauseButton.Location = new System.Drawing.Point(56, 7);
-            this.evoPauseButton.Name = "evoPauseButton";
-            this.evoPauseButton.Size = new System.Drawing.Size(44, 41);
-            this.evoPauseButton.TabIndex = 6;
-            this.evoPauseButton.UseVisualStyleBackColor = true;
-            this.evoPauseButton.Click += new System.EventHandler(this.evoPauseButton_Click);
             // 
             // Sensor_control_page
             // 
@@ -742,38 +627,6 @@
             this.comPortComboBox.Size = new System.Drawing.Size(117, 21);
             this.comPortComboBox.TabIndex = 1;
             // 
-            // sensorStopButton
-            // 
-            this.sensorStopButton.Enabled = false;
-            this.sensorStopButton.Image = global::Evo20.GUI.Properties.Resources.stop;
-            this.sensorStopButton.Location = new System.Drawing.Point(325, 8);
-            this.sensorStopButton.Name = "sensorStopButton";
-            this.sensorStopButton.Size = new System.Drawing.Size(43, 41);
-            this.sensorStopButton.TabIndex = 4;
-            this.sensorStopButton.UseVisualStyleBackColor = true;
-            this.sensorStopButton.Click += new System.EventHandler(this.sensorStopButton_Click);
-            // 
-            // sensorPauseButton
-            // 
-            this.sensorPauseButton.Enabled = false;
-            this.sensorPauseButton.Image = global::Evo20.GUI.Properties.Resources.pauseImg;
-            this.sensorPauseButton.Location = new System.Drawing.Point(288, 8);
-            this.sensorPauseButton.Name = "sensorPauseButton";
-            this.sensorPauseButton.Size = new System.Drawing.Size(40, 41);
-            this.sensorPauseButton.TabIndex = 3;
-            this.sensorPauseButton.UseVisualStyleBackColor = true;
-            this.sensorPauseButton.Click += new System.EventHandler(this.sensorPauseButton_Click);
-            // 
-            // sensorStartButton
-            // 
-            this.sensorStartButton.Image = global::Evo20.GUI.Properties.Resources.play;
-            this.sensorStartButton.Location = new System.Drawing.Point(248, 8);
-            this.sensorStartButton.Name = "sensorStartButton";
-            this.sensorStartButton.Size = new System.Drawing.Size(44, 41);
-            this.sensorStartButton.TabIndex = 0;
-            this.sensorStartButton.UseVisualStyleBackColor = true;
-            this.sensorStartButton.Click += new System.EventHandler(this.sensorStartButton_Click);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -873,42 +726,10 @@
             this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // stopButton
-            // 
-            this.stopButton.Enabled = false;
-            this.stopButton.Image = global::Evo20.GUI.Properties.Resources.stop;
-            this.stopButton.Location = new System.Drawing.Point(342, 24);
-            this.stopButton.Name = "stopButton";
-            this.stopButton.Size = new System.Drawing.Size(44, 41);
-            this.stopButton.TabIndex = 8;
-            this.stopButton.UseVisualStyleBackColor = true;
-            this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
-            // 
-            // pauseButton
-            // 
-            this.pauseButton.Enabled = false;
-            this.pauseButton.Image = global::Evo20.GUI.Properties.Resources.pauseImg;
-            this.pauseButton.Location = new System.Drawing.Point(408, 24);
-            this.pauseButton.Name = "pauseButton";
-            this.pauseButton.Size = new System.Drawing.Size(44, 41);
-            this.pauseButton.TabIndex = 7;
-            this.pauseButton.UseVisualStyleBackColor = true;
-            this.pauseButton.Visible = false;
-            // 
             // SensorTimer
             // 
             this.SensorTimer.Interval = 1000;
             this.SensorTimer.Tick += new System.EventHandler(this.SensorTimer_Tick);
-            // 
-            // startButton
-            // 
-            this.startButton.Image = global::Evo20.GUI.Properties.Resources.play;
-            this.startButton.Location = new System.Drawing.Point(302, 24);
-            this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(44, 41);
-            this.startButton.TabIndex = 3;
-            this.startButton.UseVisualStyleBackColor = true;
-            this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
             // menuStrip
             // 
@@ -934,9 +755,16 @@
             // getDataFromFileToolStripMenuItem
             // 
             this.getDataFromFileToolStripMenuItem.Name = "getDataFromFileToolStripMenuItem";
-            this.getDataFromFileToolStripMenuItem.Size = new System.Drawing.Size(288, 22);
+            this.getDataFromFileToolStripMenuItem.Size = new System.Drawing.Size(282, 22);
             this.getDataFromFileToolStripMenuItem.Text = "Получить данные из файла ";
             this.getDataFromFileToolStripMenuItem.Click += new System.EventHandler(this.getDataFromFileToolStripMenuItem_Click);
+            // 
+            // считатьФайлыИВыполнитьРассчетыToolStripMenuItem
+            // 
+            this.считатьФайлыИВыполнитьРассчетыToolStripMenuItem.Name = "считатьФайлыИВыполнитьРассчетыToolStripMenuItem";
+            this.считатьФайлыИВыполнитьРассчетыToolStripMenuItem.Size = new System.Drawing.Size(282, 22);
+            this.считатьФайлыИВыполнитьРассчетыToolStripMenuItem.Text = "Считать файлы и выполнить расчеты";
+            this.считатьФайлыИВыполнитьРассчетыToolStripMenuItem.Click += new System.EventHandler(this.ReadAndComputeToolStripMenuItem_Click);
             // 
             // SettingsToolStripMenuItem
             // 
@@ -950,14 +778,14 @@
             // cycleSettingsToolStripMenuItem
             // 
             this.cycleSettingsToolStripMenuItem.Name = "cycleSettingsToolStripMenuItem";
-            this.cycleSettingsToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
-            this.cycleSettingsToolStripMenuItem.Text = "Настройки температур проверки";
+            this.cycleSettingsToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.cycleSettingsToolStripMenuItem.Text = "Настройки температур";
             this.cycleSettingsToolStripMenuItem.Click += new System.EventHandler(this.cycleSettingsToolStripMenuItem_Click);
             // 
             // CommonSettingsToolStripMenuItem
             // 
             this.CommonSettingsToolStripMenuItem.Name = "CommonSettingsToolStripMenuItem";
-            this.CommonSettingsToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
+            this.CommonSettingsToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.CommonSettingsToolStripMenuItem.Text = "Общие настройки";
             this.CommonSettingsToolStripMenuItem.Click += new System.EventHandler(this.CommonSettingsToolStripMenuItem_Click);
             // 
@@ -970,12 +798,184 @@
             this.lblVersion.TabIndex = 14;
             this.lblVersion.Text = "Версия:";
             // 
-            // считатьФайлыИВыполнитьРассчетыToolStripMenuItem
+            // stopButton
             // 
-            this.считатьФайлыИВыполнитьРассчетыToolStripMenuItem.Name = "считатьФайлыИВыполнитьРассчетыToolStripMenuItem";
-            this.считатьФайлыИВыполнитьРассчетыToolStripMenuItem.Size = new System.Drawing.Size(288, 22);
-            this.считатьФайлыИВыполнитьРассчетыToolStripMenuItem.Text = "Считать файлы и выполнить рассчеты";
-            this.считатьФайлыИВыполнитьРассчетыToolStripMenuItem.Click += new System.EventHandler(this.ReadAndComputeToolStripMenuItem_Click);
+            this.stopButton.Enabled = false;
+            this.stopButton.Image = global::Evo20.GUI.Properties.Resources.stop;
+            this.stopButton.Location = new System.Drawing.Point(342, 24);
+            this.stopButton.Name = "stopButton";
+            this.stopButton.Size = new System.Drawing.Size(44, 41);
+            this.stopButton.TabIndex = 8;
+            this.stopButton.UseVisualStyleBackColor = true;
+            this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
+            // 
+            // pauseButton
+            // 
+            this.pauseButton.Enabled = false;
+            this.pauseButton.Image = global::Evo20.GUI.Properties.Resources.pauseImg;
+            this.pauseButton.Location = new System.Drawing.Point(408, 24);
+            this.pauseButton.Name = "pauseButton";
+            this.pauseButton.Size = new System.Drawing.Size(44, 41);
+            this.pauseButton.TabIndex = 7;
+            this.pauseButton.UseVisualStyleBackColor = true;
+            this.pauseButton.Visible = false;
+            // 
+            // startButton
+            // 
+            this.startButton.Image = global::Evo20.GUI.Properties.Resources.play;
+            this.startButton.Location = new System.Drawing.Point(302, 24);
+            this.startButton.Name = "startButton";
+            this.startButton.Size = new System.Drawing.Size(44, 41);
+            this.startButton.TabIndex = 3;
+            this.startButton.UseVisualStyleBackColor = true;
+            this.startButton.Click += new System.EventHandler(this.startButton_Click);
+            // 
+            // temperatureReachedIndic
+            // 
+            this.temperatureReachedIndic.BackColor = System.Drawing.Color.Red;
+            this.temperatureReachedIndic.Location = new System.Drawing.Point(186, 60);
+            this.temperatureReachedIndic.Name = "temperatureReachedIndic";
+            this.temperatureReachedIndic.Size = new System.Drawing.Size(12, 10);
+            this.temperatureReachedIndic.TabIndex = 22;
+            this.temperatureReachedIndic.TabStop = false;
+            // 
+            // powerCameraIndic
+            // 
+            this.powerCameraIndic.BackColor = System.Drawing.Color.Red;
+            this.powerCameraIndic.Location = new System.Drawing.Point(186, 30);
+            this.powerCameraIndic.Name = "powerCameraIndic";
+            this.powerCameraIndic.Size = new System.Drawing.Size(12, 10);
+            this.powerCameraIndic.TabIndex = 17;
+            this.powerCameraIndic.TabStop = false;
+            // 
+            // yMoveIndic
+            // 
+            this.yMoveIndic.BackColor = System.Drawing.Color.Red;
+            this.yMoveIndic.Location = new System.Drawing.Point(189, 149);
+            this.yMoveIndic.Name = "yMoveIndic";
+            this.yMoveIndic.Size = new System.Drawing.Size(12, 10);
+            this.yMoveIndic.TabIndex = 16;
+            this.yMoveIndic.TabStop = false;
+            // 
+            // xMoveIndic
+            // 
+            this.xMoveIndic.BackColor = System.Drawing.Color.Red;
+            this.xMoveIndic.Location = new System.Drawing.Point(171, 149);
+            this.xMoveIndic.Name = "xMoveIndic";
+            this.xMoveIndic.Size = new System.Drawing.Size(12, 10);
+            this.xMoveIndic.TabIndex = 15;
+            this.xMoveIndic.TabStop = false;
+            // 
+            // yPowerIndic
+            // 
+            this.yPowerIndic.BackColor = System.Drawing.Color.Red;
+            this.yPowerIndic.Location = new System.Drawing.Point(189, 122);
+            this.yPowerIndic.Name = "yPowerIndic";
+            this.yPowerIndic.Size = new System.Drawing.Size(12, 10);
+            this.yPowerIndic.TabIndex = 14;
+            this.yPowerIndic.TabStop = false;
+            // 
+            // xPowerIndic
+            // 
+            this.xPowerIndic.BackColor = System.Drawing.Color.Red;
+            this.xPowerIndic.Location = new System.Drawing.Point(171, 122);
+            this.xPowerIndic.Name = "xPowerIndic";
+            this.xPowerIndic.Size = new System.Drawing.Size(12, 10);
+            this.xPowerIndic.TabIndex = 13;
+            this.xPowerIndic.TabStop = false;
+            // 
+            // yZeroFindedIndic
+            // 
+            this.yZeroFindedIndic.BackColor = System.Drawing.Color.Red;
+            this.yZeroFindedIndic.Location = new System.Drawing.Point(189, 96);
+            this.yZeroFindedIndic.Name = "yZeroFindedIndic";
+            this.yZeroFindedIndic.Size = new System.Drawing.Size(12, 10);
+            this.yZeroFindedIndic.TabIndex = 12;
+            this.yZeroFindedIndic.TabStop = false;
+            // 
+            // xZeroFindedIndic
+            // 
+            this.xZeroFindedIndic.BackColor = System.Drawing.Color.Red;
+            this.xZeroFindedIndic.Location = new System.Drawing.Point(171, 96);
+            this.xZeroFindedIndic.Name = "xZeroFindedIndic";
+            this.xZeroFindedIndic.Size = new System.Drawing.Size(12, 10);
+            this.xZeroFindedIndic.TabIndex = 4;
+            this.xZeroFindedIndic.TabStop = false;
+            // 
+            // graph
+            // 
+            this.graph.IsShowPointValues = false;
+            this.graph.Location = new System.Drawing.Point(428, 0);
+            this.graph.Name = "graph";
+            this.graph.PointValueFormat = "G";
+            this.graph.Size = new System.Drawing.Size(741, 454);
+            this.graph.TabIndex = 8;
+            // 
+            // evoStopButton
+            // 
+            this.evoStopButton.Enabled = false;
+            this.evoStopButton.Image = global::Evo20.GUI.Properties.Resources.stop;
+            this.evoStopButton.Location = new System.Drawing.Point(95, 7);
+            this.evoStopButton.Name = "evoStopButton";
+            this.evoStopButton.Size = new System.Drawing.Size(44, 41);
+            this.evoStopButton.TabIndex = 7;
+            this.evoStopButton.UseVisualStyleBackColor = true;
+            this.evoStopButton.Click += new System.EventHandler(this.evoStopButton_Click);
+            // 
+            // evoStartButton
+            // 
+            this.evoStartButton.Cursor = System.Windows.Forms.Cursors.AppStarting;
+            this.evoStartButton.Image = global::Evo20.GUI.Properties.Resources.startevo;
+            this.evoStartButton.Location = new System.Drawing.Point(18, 7);
+            this.evoStartButton.Name = "evoStartButton";
+            this.evoStartButton.Size = new System.Drawing.Size(44, 41);
+            this.evoStartButton.TabIndex = 0;
+            this.evoStartButton.UseVisualStyleBackColor = false;
+            this.evoStartButton.Click += new System.EventHandler(this.evoStartButton_Click);
+            // 
+            // evoPauseButton
+            // 
+            this.evoPauseButton.Cursor = System.Windows.Forms.Cursors.No;
+            this.evoPauseButton.Enabled = false;
+            this.evoPauseButton.Image = global::Evo20.GUI.Properties.Resources.pauseImg;
+            this.evoPauseButton.Location = new System.Drawing.Point(56, 7);
+            this.evoPauseButton.Name = "evoPauseButton";
+            this.evoPauseButton.Size = new System.Drawing.Size(44, 41);
+            this.evoPauseButton.TabIndex = 6;
+            this.evoPauseButton.UseVisualStyleBackColor = true;
+            this.evoPauseButton.Click += new System.EventHandler(this.evoPauseButton_Click);
+            // 
+            // sensorStopButton
+            // 
+            this.sensorStopButton.Enabled = false;
+            this.sensorStopButton.Image = global::Evo20.GUI.Properties.Resources.stop;
+            this.sensorStopButton.Location = new System.Drawing.Point(325, 8);
+            this.sensorStopButton.Name = "sensorStopButton";
+            this.sensorStopButton.Size = new System.Drawing.Size(43, 41);
+            this.sensorStopButton.TabIndex = 4;
+            this.sensorStopButton.UseVisualStyleBackColor = true;
+            this.sensorStopButton.Click += new System.EventHandler(this.sensorStopButton_Click);
+            // 
+            // sensorPauseButton
+            // 
+            this.sensorPauseButton.Enabled = false;
+            this.sensorPauseButton.Image = global::Evo20.GUI.Properties.Resources.pauseImg;
+            this.sensorPauseButton.Location = new System.Drawing.Point(288, 8);
+            this.sensorPauseButton.Name = "sensorPauseButton";
+            this.sensorPauseButton.Size = new System.Drawing.Size(40, 41);
+            this.sensorPauseButton.TabIndex = 3;
+            this.sensorPauseButton.UseVisualStyleBackColor = true;
+            this.sensorPauseButton.Click += new System.EventHandler(this.sensorPauseButton_Click);
+            // 
+            // sensorStartButton
+            // 
+            this.sensorStartButton.Image = global::Evo20.GUI.Properties.Resources.startsensor;
+            this.sensorStartButton.Location = new System.Drawing.Point(248, 8);
+            this.sensorStartButton.Name = "sensorStartButton";
+            this.sensorStartButton.Size = new System.Drawing.Size(44, 41);
+            this.sensorStartButton.TabIndex = 0;
+            this.sensorStartButton.UseVisualStyleBackColor = true;
+            this.sensorStartButton.Click += new System.EventHandler(this.sensorStartButton_Click);
             // 
             // MainForm
             // 
@@ -1005,14 +1005,6 @@
             this.EvoParamsGroupBox.PerformLayout();
             this.identifieGoupBox.ResumeLayout(false);
             this.identifieGoupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.temperatureReachedIndic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.powerCameraIndic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yMoveIndic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xMoveIndic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yPowerIndic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xPowerIndic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yZeroFindedIndic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xZeroFindedIndic)).EndInit();
             this.Sensor_control_page.ResumeLayout(false);
             this.Sensor_control_page.PerformLayout();
             this.sensorGroupBox.ResumeLayout(false);
@@ -1022,6 +1014,14 @@
             this.parameGroupBox.PerformLayout();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.temperatureReachedIndic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.powerCameraIndic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.yMoveIndic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xMoveIndic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.yPowerIndic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xPowerIndic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.yZeroFindedIndic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xZeroFindedIndic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

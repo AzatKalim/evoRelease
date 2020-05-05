@@ -87,5 +87,9 @@ namespace Evo20.Utils
         public readonly double SpeedDeviation = double.Parse(ConfigurationManager.AppSettings.Get("SpeedDeviation"), CultureInfo.InvariantCulture);
 
         public readonly int NormalizationExponent = int.Parse(ConfigurationManager.AppSettings.Get("NormalizationExponent"), CultureInfo.InvariantCulture);
+
+        public readonly int DLYComputeDegree = int.Parse(ConfigurationManager.AppSettings.Get("DLYComputeDegree"), CultureInfo.InvariantCulture);
+
+        public readonly int DYSComputeDegree = int.Parse(ConfigurationManager.AppSettings.Get("DYSComputeDegree"), CultureInfo.InvariantCulture);
     }
 }

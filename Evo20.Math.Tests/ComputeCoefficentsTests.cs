@@ -1,4 +1,5 @@
 ﻿using System;
+using Evo20.Math.Calculators;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Evo20.Sensors;
 
@@ -162,7 +163,8 @@ namespace Evo20.Math.Tests
 
 
             };
-            var testResult = CalculatorCoefficients.DLYModelVectors(profile);
+            var calculator = new DLYCalculator();
+            var testResult = calculator.GetModelVectors(profile);
 
             Assert.AreEqual(testResult.Length, etalonDoubles.Length);
             MatrixTests.AssertEquals(testResult, etalonDoubles, 5);
@@ -266,7 +268,8 @@ namespace Evo20.Math.Tests
                 new Position(-90, 165), new Position(-90, 180), new Position(-90, 195), new Position(-90, 210),
                 new Position(-90, 225), new Position(-90, 240), new Position(-90, 255),
             };
-            var testResult = CalculatorCoefficients.DLYModelVectors(profile);
+            var calculator = new DLYCalculator();
+            var testResult = calculator.GetModelVectors(profile);
             Assert.AreEqual(testResult.Length, etalonDoubles.Length);
             MatrixTests.AssertEquals(testResult, etalonDoubles, 5);
         }
@@ -383,7 +386,8 @@ namespace Evo20.Math.Tests
                 new Position(0, -90, -112),
                 new Position(0, -90, -128)
             };
-            var testResult = CalculatorCoefficients.GetModelDYS(profile);
+            var calculator = new DYSCalculator();
+            var testResult = calculator.GetModelVectors(profile);
             Assert.AreEqual(testResult.Length, etalonDoubles.Length);
             MatrixTests.AssertEquals(testResult, etalonDoubles, 5);
         }
@@ -497,8 +501,9 @@ namespace Evo20.Math.Tests
                 new Position(-90, 165), new Position(-90, 180), new Position(-90, 195), new Position(-90, 210),
                 new Position(-90, 225), new Position(-90, 240), new Position(-90, 255),
             };
-            var b = CalculatorCoefficients.DLYModelVectors(profile);
-            var testResult = CalculatorCoefficients.OneCompute(a, b);
+            var calculator = new DLYCalculator();
+            var b = calculator.GetModelVectors(profile);
+            var testResult = calculator.OneCompute(a, b);
 
             Assert.AreEqual(testResult.Length, etalonDoubles.Length);
             MatrixTests.AssertEquals(testResult, etalonDoubles, 4);
@@ -723,7 +728,7 @@ namespace Evo20.Math.Tests
                 },
             };
 
-            //var testResult = CalculatorCoefficients.OneCompute(a, CalculatorCoefficients.DYS_MATRIX);
+            //var testResult = CoefficentCalculatorOldDegree.OneCompute(a, CoefficentCalculatorOldDegree.DYS_MATRIX);
             //Assert.AreEqual(testResult.Length, etalonDoubles.Length);
             //MatrixTests.AssertEquals(testResult, etalonDoubles, 1);
         }
@@ -835,8 +840,9 @@ namespace Evo20.Math.Tests
                 new Position(-90, 165), new Position(-90, 180), new Position(-90, 195), new Position(-90, 210),
                 new Position(-90, 225), new Position(-90, 240), new Position(-90, 255),
             };
-            var b = CalculatorCoefficients.DLYModelVectors(profile);
-            var testResult = CalculatorCoefficients.OneCompute(a, b);
+            var calculator = new DLYCalculator();
+            var b = calculator.GetModelVectors(profile);
+            var testResult = calculator.OneCompute(a, b);
 
             Assert.AreEqual(testResult.Length, etalonDoubles.Length);
             MatrixTests.AssertEquals(testResult, etalonDoubles, 3);
@@ -949,8 +955,9 @@ namespace Evo20.Math.Tests
                 new Position(-90, 165), new Position(-90, 180), new Position(-90, 195), new Position(-90, 210),
                 new Position(-90, 225), new Position(-90, 240), new Position(-90, 255),
             };
-            var b = CalculatorCoefficients.DLYModelVectors(profile);
-            var testResult = CalculatorCoefficients.OneCompute(a, b);
+            var calculator = new DLYCalculator();
+            var b = calculator.GetModelVectors(profile);
+            var testResult = calculator.OneCompute(a, b);
 
             Assert.AreEqual(testResult.Length, etalonDoubles.Length);
             MatrixTests.AssertEquals(testResult, etalonDoubles, 3);

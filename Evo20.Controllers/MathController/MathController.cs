@@ -20,7 +20,7 @@ namespace Evo20.Controllers.MathController
         /// <returns>true- выполнено успешно,false-возникла ошибка </returns>
         public bool ComputeCoefficents(List<ISensor> sensorsList, StreamWriter file)
         {
-            bool result = CalculatorCoefficients.CalculateCoefficients(sensorsList[0],
+            bool result = new CoefficentCalculator().CalculateCoefficients(sensorsList[0],
                 sensorsList[1],
                 file);
             if (!result)

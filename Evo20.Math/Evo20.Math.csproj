@@ -73,8 +73,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ComputeCoefficients.cs" />
+    <Compile Include="Calculators\BaseCalculator.cs" />
+    <Compile Include="CoefficentCalculator.cs" />
     <Compile Include="ComputeErrors.cs" />
+    <Compile Include="Calculators\DLYCalculator.cs" />
+    <Compile Include="Calculators\DYSCalculator.cs" />
     <Compile Include="Matrix.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
