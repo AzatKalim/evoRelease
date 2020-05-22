@@ -60,19 +60,20 @@ namespace Evo20.SensorsConnection
             {
                 SerialPort.PortName = portName;
             }
+
             try
             {
                 SerialPort.Open();
             }
             catch (UnauthorizedAccessException exeption)
             {
-                Log.Instance.Error("Указанный порт занят {0}",SerialPort.PortName);
+                Log.Instance.Error("Указанный порт занят {0}", SerialPort.PortName);
                 Log.Instance.Exception(exeption);
                 ConnectionStatus = ConnectionStatus.Error;
                 EventHandlerListForExeptions?.Invoke(this, new ExceptionEventArgs(exeption));
                 return false;
             }
-            catch (ThreadAbortException )
+            catch (ThreadAbortException)
             {
                 Log.Instance.Warning("Поток чтения Com порта закрыт");
                 return false;
@@ -82,6 +83,11 @@ namespace Evo20.SensorsConnection
                 Log.Instance.Error("Порт уже открыт");
                 Log.Instance.Exception(exeption);
                 EventHandlerListForExeptions?.Invoke(this, new ExceptionEventArgs(exeption));
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Log.Instance.Error("unknown error", ex);
                 return false;
             }
 

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.CodeDom;
 using System.IO;
 using System.Threading;
 using Evo20.Commands.Abstract;
@@ -79,7 +78,7 @@ namespace Evo20.Controllers.Data
 
         public Position CurrentPosition
         {
-            get { return _currentPosition; }
+            private get { return _currentPosition; }
             set
             {
                 _currentPosition = value;
@@ -96,7 +95,7 @@ namespace Evo20.Controllers.Data
 
         public readonly ManualResetEvent TemperatureReachedEvent;
 
-        public readonly ManualResetEvent MovementEndedEvent;
+        private readonly ManualResetEvent MovementEndedEvent;
 
         public readonly ManualResetEvent PositionReachedEvent;
 

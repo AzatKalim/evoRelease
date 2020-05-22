@@ -129,9 +129,9 @@ namespace Evo20.EvoConnections
         {
             if (ConnectionStatus == ConnectionStatus.Connected)
             {
-				if(WorkThread!=null && WorkThread.IsAlive && WorkThread.ThreadState!=ThreadState.Aborted
+                if(WorkThread!=null && WorkThread.IsAlive && WorkThread.ThreadState!=ThreadState.Aborted
                     && WorkThread.ThreadState != ThreadState.AbortRequested && WorkThread.ThreadState==ThreadState.Running)
-					WorkThread.Abort();
+                    WorkThread.Abort();
                 ConnectionStatus = ConnectionStatus.Pause;
                 Log.Instance.Info("Соединение c Evo 20 приостановлено");
                 return true;

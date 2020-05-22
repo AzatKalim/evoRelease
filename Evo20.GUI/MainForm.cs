@@ -4,29 +4,27 @@ using System.Globalization;
 using System.IO;
 using System.IO.Ports;
 using System.Windows.Forms;
-using ZedGraph;
 using Evo20.Controllers;
 using Evo20.Controllers.Data;
 using Evo20.Controllers.EvoControllers;
 using Evo20.Controllers.FileWork;
 using Evo20.Utils.EventArguments;
 using Evo20.Utils;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace Evo20.GUI
 {
     public partial class MainForm : Form
     {
-        DateTime _startTime;
-        double _prevX;
-        double _prevY;
+        private DateTime _startTime;
 
-        bool _isStabilized = true;
+        private bool _isStabilized = true;
 
-        DateTime _stabilizationStartTime;
+        private DateTime _stabilizationStartTime;
 
-        bool _isSettingsEntered;
+        private bool _isSettingsEntered;
 
-        bool IsStabilized
+        private bool IsStabilized
         {
             set
             {
@@ -68,9 +66,6 @@ namespace Evo20.GUI
             SensorController.Instance.SensorConnectionChanged += SensorConnectionChangeHandler;
             Controller.Instance.TemperatureStabilized += TemperatureStabilizationHandler;
             _startTime = DateTime.Now;
-            graph.GraphPane.XAxis.Title = @"Время";
-            graph.GraphPane.YAxis.Title = @"Температура";
-            graph.GraphPane.Title = @"График температуры от времени";
             lblVersion.Text = $"Версия: {Application.ProductVersion}";
             Log.Instance.Info($"Версия: {Application.ProductVersion}");
         }
@@ -91,89 +86,96 @@ namespace Evo20.GUI
 
         #region Evo buttons
 
+        private bool _isEvoStarted;
+
         private void evoStartButton_Click(object sender, EventArgs e)
         {
-            try
+            if (!_isEvoStarted)
             {
-                if (!ReadSettings())
+                ((Button) sender).Image = Image.FromFile(".//Resources//stopevo.png");
+                try
                 {
-                    return;
+                    if (!ReadSettings())
+                    {
+                        return;
+                    }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(@"Проблемы с файлом: возникло исключение" + ex, @"Открыть файл настроек ?",
+                        MessageBoxButtons.YesNo);
+                }
+
+                if (ControllerEvo.Instance.StartEvoConnection())
+                {
+                    _isEvoStarted = true;
+                }
+                _startTime = DateTime.Now;
+                workTimer.Start();
+                timer.Start();
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(@"Проблемы с файлом: возникло исключение" + ex, @"Открыть файл настроек ?", MessageBoxButtons.YesNo);
+                ((Button)sender).Image = Image.FromFile(".//Resources//startevo.png");
+                _isEvoStarted = false;
+                ControllerEvo.Instance.StopEvoConnection();
             }
-            ControllerEvo.Instance.StartEvoConnection();
-            _startTime = DateTime.Now;
-            workTimer.Start();
-            timer.Start();
-            evoStopButton.Enabled = true;
-            evoPauseButton.Enabled = true;
         }
 
         private void evoPauseButton_Click(object sender, EventArgs e)
         {
             ControllerEvo.Instance.PauseEvoConnection();
-            evoPauseButton.Enabled = false;
-            evoStartButton.Enabled = true;
-        }
-
-        private void evoStopButton_Click(object sender, EventArgs e)
-        {
-            ControllerEvo.Instance.StopEvoConnection();
-            evoStopButton.Enabled = false;
-            evoPauseButton.Enabled = false;
             evoStartButton.Enabled = true;
         }
 
         #endregion
 
         #region Sensor buttons
-
+        private  bool _isSensorStarted;
         private void sensorStartButton_Click(object sender, EventArgs e)
         {
-            bool result;
-            if (comPortComboBox.SelectedItem != null)
+            if (!_isSensorStarted)
             {
-                result = SensorController.Instance.StartComPortConnection(comPortComboBox.SelectedItem.ToString());
+                ((Button)sender).Image = Image.FromFile(".//Resources//stopsensor.png");
+                if (comPortComboBox.SelectedItem != null)
+                {
+                    _isSensorStarted = SensorController.Instance.StartComPortConnection(comPortComboBox.SelectedItem.ToString());
+                }
+                else
+                {
+                    string caption = "OK";
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    string message = "Порт не выбран!";
+                    MessageBox.Show(message, caption, buttons);
+                    return;
+                }
+
+                SensorDataGridView.Rows.Clear();
+                if (!_isSensorStarted)
+                {
+                    MessageBox.Show(@"Проблемы с com портом", @"Не удалось запустить соединение!",
+                        MessageBoxButtons.OK);
+                    return;
+                }
+
+                SensorDataGridView.Visible = true;
+                SensorDataGridView.Rows.Add("Гироскопы", "0", "0", "0");
+                SensorDataGridView.Rows.Add("Температуры гироскопов", "0", "0", "0");
+                SensorDataGridView.Rows.Add("Акселерометры", "0", "0", "0");
+                SensorDataGridView.Rows.Add("Температуры акселерометров", "0", "0", "0");
+                SensorTimer.Start();
             }
             else
             {
-                string caption = "OK";
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                string message = "Порт не выбран!";
-                MessageBox.Show(message, caption, buttons);
-                return;
+                ((Button)sender).Image = Image.FromFile(".//Resources//startsensor.png");
+                _isSensorStarted = false;
+                SensorController.Instance.StopComPortConnection();
             }
-            SensorDataGridView.Rows.Clear();
-            if (!result)
-            {
-                MessageBox.Show(@"Проблемы с com портом", @"Не удалось запустить соединение!", MessageBoxButtons.OK);
-                return;
-            }
-            SensorDataGridView.Visible = true;
-            SensorDataGridView.Rows.Add("Гироскопы", "0", "0", "0");
-            SensorDataGridView.Rows.Add("Температуры гироскопов", "0", "0", "0");
-            SensorDataGridView.Rows.Add("Акселерометры", "0", "0", "0");
-            SensorDataGridView.Rows.Add("Температуры акселерометров", "0", "0", "0");
-            sensorStopButton.Enabled = true;
-            sensorPauseButton.Enabled = true;
-            SensorTimer.Start();
         }
 
         private void sensorPauseButton_Click(object sender, EventArgs e)
         {
             SensorController.Instance.PauseComPortConnection();
-            sensorStartButton.Enabled = true;
-            sensorPauseButton.Enabled = false;
-        }
-
-        private void sensorStopButton_Click(object sender, EventArgs e)
-        {
-            SensorController.Instance.StopComPortConnection();
-            sensorStopButton.Enabled = false;
-            sensorPauseButton.Enabled = false;
             sensorStartButton.Enabled = true;
         }
 
@@ -197,38 +199,26 @@ namespace Evo20.GUI
                 MessageBox.Show(@"Ошибка: Com порт не выбран!", @"Выбирете один из портов для соединения !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (modeComboBox.SelectedItem == null)
-            {
-                MessageBox.Show(@"Ошибка: не выбран режим работы ", @"Небходимо выбрать режим работы перед нажатием пуск !", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            WorkMode workMode = WorkMode.NoMode;
-            switch (modeComboBox.SelectedIndex)
-            {
-                case 0:
-                    workMode = WorkMode.CalibrationMode;
-                    break;
-                case 1:
-                    workMode = WorkMode.CheckMode;
-                    break;
-            }
+            var workMode = WorkMode.CalibrationMode;
 
-            using (var fbd = new FolderBrowserDialog())
+            using (var dialog = new CommonOpenFileDialog
             {
-                var result = fbd.ShowDialog();
-                if (result == DialogResult.OK && !string.IsNullOrEmpty(fbd.SelectedPath))
+                IsFolderPicker = true
+            })
+            {
+                if (dialog.ShowDialog() == CommonFileDialogResult.Ok && !string.IsNullOrEmpty(dialog.FileName))
                 {
-                     FileController.FilesPath= fbd.SelectedPath;
-                     Log.Instance.Info(@"Выбрана папка {0}", fbd.SelectedPath);
+                    FileController.FilesPath = dialog.FileName;
+                    Log.Instance.Info(@"Выбрана папка {0}", dialog.FileName);
                 }
                 else
                 {
                     Log.Instance.Error("Папка не выбрана");
-                    MessageBox.Show(@"Ошибка: не выбрана папка ",@"Небходимо выбрать папку для сохранения файлов !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(@"Ошибка: не выбрана папка ", @"Небходимо выбрать папку для сохранения файлов !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
-
+ 
             try
             {
                 ControllerEvo.Instance.EvoConnectionChanged += EvoConnectionChangeHandler;
@@ -264,14 +254,11 @@ namespace Evo20.GUI
             startButton.Enabled = false;
             pauseButton.Enabled = true;
             stopButton.Enabled = true;
+            _isEvoStarted = true;
+            evoStartButton.Image = Image.FromFile(".//Resources//stopevo.png");
 
-            evoStartButton.Enabled = false;
-            evoPauseButton.Enabled = true;
-            evoStopButton.Enabled = true;
-
-            sensorStartButton.Enabled = false;
-            sensorPauseButton.Enabled = true;
-            sensorStopButton.Enabled = true;
+            _isSensorStarted = true;
+            sensorStartButton.Image = Image.FromFile(".//Resources//stopsensor.png");
         }
 
         //private void pauseButton_Click(object sender, EventArgs e)
@@ -306,22 +293,23 @@ namespace Evo20.GUI
         {
             if (!ReadSettings())            
                 return;
-            using (var fbd = new FolderBrowserDialog())
+            using (var dialog = new CommonOpenFileDialog
             {
-                fbd.Description = @"Выберете папку с файлами пакетов";
-                DialogResult result = fbd.ShowDialog();
-
-                if (result == DialogResult.OK && !string.IsNullOrEmpty(fbd.SelectedPath))
+                IsFolderPicker = true,
+                Title = @"Выберете папку с файлами пакетов"
+            })
+            {
+                if (dialog.ShowDialog() == CommonFileDialogResult.Ok && !string.IsNullOrEmpty(dialog.FileName))
                 {
-                    FileController.FilesPath = fbd.SelectedPath;
-                    Log.Instance.Info("Выбрана папка для загрузки {0}", fbd.SelectedPath);
+                    FileController.FilesPath = dialog.FileName;
+                    Log.Instance.Info("Выбрана папка для загрузки {0}", dialog.FileName);
                 }
                 else
                 {
                     Log.Instance.Error("Папка не выбрана");                 
                     return;
                 }
-            }      
+            }
             try
             {
                 if (!Controller.Instance.ReadDataFromFile())
@@ -364,7 +352,6 @@ namespace Evo20.GUI
             yPositionLabel.Text = EvoData.Instance.Y.Position.ToString(CultureInfo.InvariantCulture);
             xSpeedOfRateLabel.Text = EvoData.Instance.X.SpeedOfRate.ToString(CultureInfo.InvariantCulture);
             ySpeedOfRateLabel.Text = EvoData.Instance.Y.SpeedOfRate.ToString(CultureInfo.InvariantCulture);
-            DrawGrapfic();
 
             if (!IsStabilized)
             {
@@ -503,12 +490,8 @@ namespace Evo20.GUI
             stopButton.Enabled = false; 
 
             evoStartButton.Enabled = true;
-            evoPauseButton.Enabled = false; 
-            evoStopButton.Enabled = false; 
 
             sensorStartButton.Enabled = true; 
-            sensorPauseButton.Enabled = false; 
-            sensorStopButton.Enabled = false;
 
             sensorTypeLabel.Text = @"нет данных";
             currentPositionNumberLbl.Text = @"нет данных";
@@ -517,7 +500,12 @@ namespace Evo20.GUI
             //SensorDataGridView.Rows.Clear(); 
             SensorDataGridView.Visible = false;
             FileToolStripMenuItem.Enabled = true;
-            SettingsToolStripMenuItem.Enabled = true; 
+            SettingsToolStripMenuItem.Enabled = true;
+            _isEvoStarted = false;
+            evoStartButton.Image = Image.FromFile(".//Resources//startevo.png");
+
+            _isSensorStarted = false;
+            sensorStartButton.Image = Image.FromFile(".//Resources//startsensor.png");
         }
         private void CycleEndedHandler(object sender,EventArgs e)// bool result)
         {
@@ -547,23 +535,6 @@ namespace Evo20.GUI
 
                 ResetForm();
             }
-        }
-
-        private void DrawGrapfic()
-        {
-            double x = (DateTime.Now - _startTime).TotalMinutes;
-            double y = ControllerEvo.Instance.CurrentTemperature;
-            double[] tempX = { _prevX, x };
-            double[] tempY = { _prevY, y };
-            graph.GraphPane.AddCurve("", tempX, tempY, Color.Red, SymbolType.None);
-            graph.AxisChange();
-            graph.Invalidate();
-            if (graph.GraphPane.CurveList.Count > 100)
-            {
-                graph.GraphPane.CurveList.RemoveAt(0);
-            }
-            _prevX = x;
-            _prevY = y;
         }
 
         private void CheckParam(bool param, PictureBox picture)
@@ -616,8 +587,6 @@ namespace Evo20.GUI
 
         private bool ReadSettings()
         {
-            Config.Instance.RemoteIpAdress = IPTextBox.Text;
-            Config.Instance.RemotePortNumber = Convert.ToInt32(RemotePortTextBox.Text);
             if (_isSettingsEntered)
             {
                 return true;

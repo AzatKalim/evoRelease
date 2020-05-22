@@ -3,7 +3,7 @@ using Evo20.Packets;
 using Evo20.Sensors;
 using Evo20.Utils;
 
-namespace Evo20.Math
+namespace Evo20.Math.Calculators
 {
     public abstract class BaseCalculator
     {

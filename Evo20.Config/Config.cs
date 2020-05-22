@@ -37,17 +37,18 @@ namespace Evo20.Utils
         //номер удаленного порта 
         public int RemotePortNumber
         {
-            set { _remotePortNumber = value; }
-            get { return _remotePortNumber == -1 ? 531 : _remotePortNumber; }
+            get
+            {
+                if (_remotePortNumber == -1)
+                    _remotePortNumber = Convert.ToInt32(ConfigurationManager.AppSettings.Get("RemotePortNumber"));
+                return _remotePortNumber;
+
+            }
         }
 
         private string _remoteIpAdress;
         //ip адресс удаленного компьютера
-        public string RemoteIpAdress
-        {
-            set { _remoteIpAdress = value;}
-            get { return _remoteIpAdress ?? "192.168.0.1"; }
-        }
+        public string RemoteIpAdress { get; } = ConfigurationManager.AppSettings.Get("RemoteIpAdress");
 
         private int _speedOfTemperatureChange = -1;
         //номер удаленного порта 

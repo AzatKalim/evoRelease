@@ -90,11 +90,15 @@ namespace Evo20.Controllers
             {
                 if (CurrentSensor == null)
                     return 0;
-                if (Controller.Instance.Mode == WorkMode.CalibrationMode)
-                    return CurrentSensor.PacketsArivedCountCalibration(TemperatureIndex, CurrentPositionNumber);
-                if (Controller.Instance.Mode == WorkMode.CheckMode)
-                    return CurrentSensor.PacketsArivedCountCheck(TemperatureIndex,CurrentPositionNumber);
-                return 0;
+                switch (Controller.Instance.Mode)
+                {
+                    case WorkMode.CalibrationMode:
+                        return CurrentSensor.PacketsArivedCountCalibration(TemperatureIndex, CurrentPositionNumber);
+                    case WorkMode.CheckMode:
+                        return CurrentSensor.PacketsArivedCountCheck(TemperatureIndex,CurrentPositionNumber);
+                    default:
+                        return 0;
+                }
             }
         }
         private void NewPacketDataHandler(object sender,EventArgs e)

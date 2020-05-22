@@ -212,7 +212,8 @@ namespace Evo20.Controllers.EvoControllers
 
         private void FindZeroIndex(Axis axis)
         {
-            if (Config.Instance.ZeroSearchEnabled) CommandHandler.SendCommand(new ZeroIndexSearch(axis));
+            if (Config.Instance.ZeroSearchEnabled)
+                CommandHandler.SendCommand(new ZeroIndexSearch(axis));
         }
 
         private void SetAxisMode(ModeParam param, Axis axis)
@@ -291,7 +292,8 @@ namespace Evo20.Controllers.EvoControllers
         {
             PowerOnCamera(true);
             PowerOnAxis(Axis.All, true);
-            FindZeroIndex(Axis.All);
+            if (Config.Instance.ZeroSearchEnabled)
+                FindZeroIndex(Axis.All);
         }
 
         public void SetStartPosition()
@@ -299,7 +301,8 @@ namespace Evo20.Controllers.EvoControllers
             StopAxis(Axis.All);
             SetAxisRate(Axis.All, Config.Instance.BaseMoveSpeed);
             SetAxisMode(ModeParam.Position, Axis.All);
-            SetAxisPosition(Axis.All, 0);
+            if (Config.Instance.ZeroSearchEnabled)
+                SetAxisPosition(Axis.All, 0);
             StartAxis(Axis.All);
             SetTemperatureChangeSpeed(Config.Instance.SpeedOfTemperatureChange);
         }

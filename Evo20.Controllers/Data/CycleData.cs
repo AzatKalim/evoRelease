@@ -5,9 +5,9 @@ namespace Evo20.Controllers.Data
 {
     public class CycleData : AbstractData
     {
-        public List<int> CalibrationTemperatures {get;set;}
+        public List<int> CalibrationTemperatures {get; private set;}
 
-        public List<int> CheckTemperatures {get;set;}
+        public List<int> CheckTemperatures {get; private set;}
 
         public int TemperutureIndex { get; set; }
 
@@ -15,7 +15,7 @@ namespace Evo20.Controllers.Data
 
         public int CheckStabTime;
 
-        public int MaxTemperatureFromSettings;
+        private int MaxTemperatureFromSettings;
 
         public int StartTemperatureIndex = 0;
 
@@ -50,19 +50,6 @@ namespace Evo20.Controllers.Data
                 return false;
             //Перевод минут в миллисекунды 
             CalibrationStabTime = (int)temp*60 * 1000;
-            int checkTemperatureCount = 0;
-            isSuccess = ReadParamFromFile(ref file, "Число температур проверки", ref  checkTemperatureCount);
-            if (!isSuccess)
-                return false;
-            for (int i = 0; i < checkTemperatureCount; i++)
-            {
-                int temperature=0;
-                isSuccess = ReadParamFromFile(ref file, "Температура проверки №" + (i + 1), ref  temperature);   
-                if (!isSuccess)
-                    return false;
-                CheckTemperatures.Add(temperature);
- 
-            }
             temp = 0;
             isSuccess = ReadParamFromFile(ref file, "Время стабилизации температуры в режиме проверка", ref temp);
             if (!isSuccess)

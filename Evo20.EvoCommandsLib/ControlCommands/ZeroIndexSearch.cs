@@ -4,7 +4,7 @@ namespace Evo20.Commands.ControlCommands
 {
     public class ZeroIndexSearch : ControlCommand
     {
-        readonly Axis _axis;
+        private readonly Axis _axis;
 
         public ZeroIndexSearch(Axis axis)
         {

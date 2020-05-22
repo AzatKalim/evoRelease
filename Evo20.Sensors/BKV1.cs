@@ -143,11 +143,13 @@ namespace Evo20.Sensors
             {
                 return false;
             }
+
             bool isSuccess = CheckPacketsCollection[index].AddPacketData(currentPositionNumber, packetData);
             if (!isSuccess)
             {
                 PacketsCollectedEvent.Set();
             }
+
             return true;
         }
 
@@ -156,7 +158,10 @@ namespace Evo20.Sensors
             if (index == -1)
                 return 0;
 
-            return CalibrationPacketsCollection[index].PositionCount > numberOfPosition ? CalibrationPacketsCollection[index][numberOfPosition]==null?0: CalibrationPacketsCollection[index][numberOfPosition].Count: 0;
+            return CalibrationPacketsCollection[index].PositionCount > numberOfPosition
+                ? CalibrationPacketsCollection[index][numberOfPosition] == null ? 0 :
+                CalibrationPacketsCollection[index][numberOfPosition].Count
+                : 0;
           
         }
 

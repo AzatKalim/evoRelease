@@ -37,19 +37,7 @@ namespace Evo20.Controllers.Data
             isSuccess = ReadParamFromFile(ref file,
                 "Количество пакетов для расчета средних кодов АЦП ДУС в режиме калибровка",
                 ref  CalibrationDysMaxPacketsCount);
-            if (!isSuccess)
-                return false;
-            isSuccess = ReadParamFromFile(ref file,
-                "Количество пакетов для расчета средних кодов АЦП ДЛУ в режиме проверка",
-                ref  CheckDlyMaxPacketsCount);
-            if (!isSuccess)
-                return false;
-            isSuccess = ReadParamFromFile(ref file,
-                "Количество пакетов для расчета средних кодов АЦП ДУС в режиме проверка",
-                ref  CheckDysMaxPacketsCount);
-            if (!isSuccess)
-                return false;
-            return true;
+            return isSuccess;
         }
 
         private void WritePackets(StreamWriter file, PacketsCollection[] data)
