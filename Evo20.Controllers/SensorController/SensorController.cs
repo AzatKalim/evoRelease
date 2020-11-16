@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Timers;
 using Evo20.Controllers.Data;
 using Evo20.Packets;
 using Evo20.Sensors;
 using Evo20.SensorsConnection;
 using Evo20.Utils;
+using Evo20.Utils.Extensions;
 
 namespace Evo20.Controllers
 { 
@@ -14,15 +16,21 @@ namespace Evo20.Controllers
 
         public event ConnectionChangeHandler SensorConnectionChanged;
 
+        public event PacketReceiveTimeoutHandler OnPacketReceiveTimeout;
+
         public delegate void ConnectionChangeHandler(object sender, EventArgs e);
 
         public delegate void ControllerExceptions(object sender, EventArgs e);
+
+        public delegate void PacketReceiveTimeoutHandler(object sender, EventArgs e);
 
         private static SensorController _sensorController;
 
         public static SensorController Instance => _sensorController ?? (_sensorController = new SensorController());
 
         readonly SensorHandler _sensorHandler;
+
+        readonly Timer packetReceiveTimer = new Timer(TimeSpan.FromMinutes(Config.Instance.PacketReceiveTimeout).TotalMilliseconds);
 
         bool _canCollect;
 
@@ -90,11 +98,13 @@ namespace Evo20.Controllers
             Log.Instance.Info($"{nameof(StartCollect)}");
             _currentSensor.PacketsCollectedEvent.Reset();
             CanCollect = true;
+            packetReceiveTimer.Start();
         }
         public void StopCollect()
         {
             Log.Instance.Info($"{nameof(StopCollect)}");
             CanCollect = false;
+            packetReceiveTimer.Stop();
         }
         public int PacketsCollectedCount
         {
@@ -113,6 +123,18 @@ namespace Evo20.Controllers
                 }
             }
         }
+
+        private void OnPacketReceiveTimer(object sender, EventArgs e)
+        {
+            packetReceiveTimer.Stop();
+            OnPacketReceiveTimeout.Invoke(sender, e);
+        }
+
+        public void ResetPacketReceiveTimer()
+        {
+            packetReceiveTimer.Reset();
+        }
+
         private void NewPacketDataHandler(object sender,EventArgs e)
         {
             var newPacketsData = _sensorHandler.DataHandle();
@@ -120,6 +142,8 @@ namespace Evo20.Controllers
             {
                 return;
             }
+
+            packetReceiveTimer.Reset();
             LastPacket = newPacketsData;
             if (Controller.Instance.Mode == WorkMode.CalibrationMode && _canCollect)
             {
@@ -184,6 +208,7 @@ namespace Evo20.Controllers
             _sensorHandler.PacketDataCollected += NewPacketDataHandler;
             _sensorHandler.EventHandlerListForStateChange += SensorHandlerStatusChanged;
             _sensorHandler.EventHandlerListForExeptions += SensorExeptionHandler;
+            packetReceiveTimer.Elapsed += OnPacketReceiveTimer;
         }
 
         public bool StartComPortConnection(string portName)

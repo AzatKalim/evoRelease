@@ -63,7 +63,9 @@ namespace Evo20.GUI
             Controller.Instance.ControllerExceptionEvent += ControllerExсeptoinsHandler;
             SensorController.Instance.SensorControllerException += ControllerExсeptoinsHandler;
             SensorController.Instance.SensorConnectionChanged += SensorConnectionChangeHandler;
+            SensorController.Instance.OnPacketReceiveTimeout += OnPacketReceiveTimeoutHandler;
             Controller.Instance.TemperatureStabilized += TemperatureStabilizationHandler;
+
             _startTime = DateTime.Now;
             lblVersion.Text = $"Версия: {Application.ProductVersion}";
             Log.Instance.Info($"Версия: {Application.ProductVersion}");
@@ -424,6 +426,21 @@ namespace Evo20.GUI
             if (args == null)
                 return;
             IsStabilized = args.Result;
+        }
+
+        private void OnPacketReceiveTimeoutHandler(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("Необходимо проверить установку для продолжения работы",
+                $"Таймаут { Config.Instance.PacketReceiveTimeout } минут на получение пакетов истек", MessageBoxButtons.OK, MessageBoxIcon.Error) ;
+            
+            if(result == DialogResult.OK)
+                SensorController.Instance.ResetPacketReceiveTimer();
+            else
+            {
+                Controller.Instance.Stop();
+            }
+
+            ResetForm();
         }
 
         #endregion

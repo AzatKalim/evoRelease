@@ -29,5 +29,7 @@ namespace Evo20.Utils
         public int YAxisNumber = Convert.ToInt32(ConfigurationManager.AppSettings.Get("Y_AXIS_NUMBER"));
         public int ZAxisNumber = Convert.ToInt32(ConfigurationManager.AppSettings.Get("Z_AXIS_NUMBER"));
         public int AllAxisNumber = Convert.ToInt32(ConfigurationManager.AppSettings.Get("ALL_AXIS_NUMBER"));
+
+        public int PacketReceiveTimeout = Convert.ToInt32(ConfigurationManager.AppSettings.Get("PacketReceiveTimeout"));
     }
 }

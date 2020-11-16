@@ -75,6 +75,7 @@
     <Compile Include="EventArguments\ConnectionStatusEventArgs.cs" />
     <Compile Include="EventArguments\ExceptionEventArgs.cs" />
     <Compile Include="EventArguments\WorkModeEventArgs.cs" />
+    <Compile Include="Extensions\TimerExtensions.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WorkModeOperations.cs" />
