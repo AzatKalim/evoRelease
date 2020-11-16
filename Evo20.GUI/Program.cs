@@ -11,7 +11,7 @@ namespace Evo20.GUI
         [STAThread]
         static void Main()
         {
-            WriteFileToLog("app.config");
+            WriteFileToLog("Evo20.GUI.exe.config");
             WriteFileToLog("settings.txt");
             try
             {

@@ -43,14 +43,14 @@ namespace Evo20.Math.Calculators
                 for (var j = 0; j < packetsCollections[i].PositionCount; j++)
                 {
                     a[i][j] = new double[1 + 3 * degree];
-                    var meanA = packetsCollections[i].MeanW(j);
+                    var meanW = packetsCollections[i].MeanW(j);
                     var counter = 0;
                     a[i][j][0] = 1;
                     for (var k = 1; k < degree + 1; k++)
                     {
-                        a[i][j][++counter] = System.Math.Pow(meanA[0], k);
-                        a[i][j][++counter] = System.Math.Pow(meanA[1], k);
-                        a[i][j][++counter] = System.Math.Pow(meanA[2], k);
+                        a[i][j][++counter] = System.Math.Pow(meanW[0], k);
+                        a[i][j][++counter] = System.Math.Pow(meanW[1], k);
+                        a[i][j][++counter] = System.Math.Pow(meanW[2], k);
                     }
                 }
             }

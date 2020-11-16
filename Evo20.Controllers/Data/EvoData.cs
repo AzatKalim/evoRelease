@@ -9,8 +9,7 @@ using Evo20.Utils;
 namespace Evo20.Controllers.Data
 {
     public class EvoData : AbstractData, IDisposable
-    {
-       
+    {    
         public struct AxisData
         {
             public bool IsPositionReached;
@@ -72,7 +71,7 @@ namespace Evo20.Controllers.Data
             }
         }
 
-        public Position NextPosition;
+        public Position NextPosition { get; set; }
 
         private Position _currentPosition;
 

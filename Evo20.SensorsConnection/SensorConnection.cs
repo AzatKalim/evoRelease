@@ -54,8 +54,12 @@ namespace Evo20.SensorsConnection
 
         readonly object _bufferLocker = new object();
 
+        private bool _isStarted;
+
         public virtual bool StartConnection(string portName)
         {
+            if (_isStarted)
+                return true;
             if (!SerialPort.IsOpen)
             {
                 SerialPort.PortName = portName;
@@ -100,6 +104,7 @@ namespace Evo20.SensorsConnection
                 }
                 ConnectionStatus = ConnectionStatus.Connected;
                 Log.Instance.Info("Соединение c датчиком установленно");
+                _isStarted = true;
                 return true;
             }
             else
@@ -144,6 +149,9 @@ namespace Evo20.SensorsConnection
 
         public virtual bool StopConnection()
         {
+            if (!_isStarted)
+                return true;
+
             if (ReadThread != null && ReadThread.IsAlive && ReadThread.ThreadState != ThreadState.Aborted
                 && ReadThread.ThreadState != ThreadState.AbortRequested && ReadThread.ThreadState == ThreadState.Running)
             {
@@ -155,6 +163,7 @@ namespace Evo20.SensorsConnection
             }
             ConnectionStatus = ConnectionStatus.Disconnected;
             Log.Instance.Info("Соединение c датчиком прервано");
+            _isStarted = false;
             return true;
         }
 

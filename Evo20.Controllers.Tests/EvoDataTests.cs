@@ -24,8 +24,8 @@ namespace Evo20.Controllers.Tests
         public void TestGetCommandInfoCheckPositionReachedEvent2()
         {
             EvoData.Instance.PositionReachedEvent.Reset();
-            EvoData.Instance.CurrentPosition = new Position(0, 0, 25);
-            EvoData.Instance.NextPosition = new Position(0, 0, 64);
+            EvoData.Instance.CurrentPosition = new Position(-0.0001, 90, -17.365, 0);
+            EvoData.Instance.NextPosition = new Position(0, 90, 0, 0);
             var command = new AxisRateQueryAnswer("+063.001", Axis.First);
             EvoData.Instance.GetCommandInfo(command);
             Assert.IsTrue(EvoData.Instance.PositionReachedEvent.WaitOne(100));

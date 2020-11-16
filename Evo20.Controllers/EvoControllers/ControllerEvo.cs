@@ -126,8 +126,13 @@ namespace Evo20.Controllers.EvoControllers
             }
         }
 
+        private bool _isStarted;
+
         public bool StartEvoConnection()
         {
+            if (_isStarted)
+                return true;
+            _isStarted = true;
             var result = CommandHandler.StartConnection();
             if (!result)
                 return false;
@@ -139,18 +144,29 @@ namespace Evo20.Controllers.EvoControllers
 
         public void PauseEvoConnection()
         {
-            CommandHandler.PauseConnection();
             if (RoutineThread != null && RoutineThread.IsAlive && RoutineThread.ThreadState != ThreadState.Aborted
-                    && RoutineThread.ThreadState != ThreadState.AbortRequested && RoutineThread.ThreadState == ThreadState.Running)
+                    && RoutineThread.ThreadState != ThreadState.AbortRequested && RoutineThread.ThreadState == ThreadState.Background)
                 RoutineThread.Abort();
+            CommandHandler.PauseConnection();
         }
 
         public void StopEvoConnection()
         {
-            CommandHandler.StopConnection();
-            if (RoutineThread != null && RoutineThread.IsAlive && RoutineThread.ThreadState != ThreadState.Aborted
-                    && RoutineThread.ThreadState != ThreadState.AbortRequested && RoutineThread.ThreadState == ThreadState.Running)
-                RoutineThread.Abort();
+            if (!_isStarted)
+                return;
+            _isStarted = false;
+            lock (CommandHandler)
+            {
+                if (RoutineThread != null && RoutineThread.IsAlive && RoutineThread.ThreadState != ThreadState.Aborted
+                    && RoutineThread.ThreadState != ThreadState.AbortRequested &&
+                    RoutineThread.ThreadState == ThreadState.Background)
+                {
+                    RoutineThread.Abort();
+                    RoutineThread.Join();
+                }
+
+                CommandHandler.StopConnection();
+            }
         }
 
         private void ConnectionStateChangedHandler(object sender, EventArgs e)
@@ -163,7 +179,7 @@ namespace Evo20.Controllers.EvoControllers
                 case ConnectionStatus.Disconnected:
                     {
                         if (RoutineThread != null && RoutineThread.IsAlive && RoutineThread.ThreadState != ThreadState.Aborted
-                            && RoutineThread.ThreadState != ThreadState.AbortRequested && RoutineThread.ThreadState == ThreadState.Running)
+                            && RoutineThread.ThreadState != ThreadState.AbortRequested && RoutineThread.ThreadState == ThreadState.Background)
                         {
                             RoutineThread.Abort();
                             RoutineThread.Join();
@@ -174,7 +190,7 @@ namespace Evo20.Controllers.EvoControllers
                 case ConnectionStatus.Error:
                     {
                         if (RoutineThread != null && RoutineThread.IsAlive && RoutineThread.ThreadState != ThreadState.Aborted
-                            && RoutineThread.ThreadState != ThreadState.AbortRequested && RoutineThread.ThreadState == ThreadState.Running)
+                            && RoutineThread.ThreadState != ThreadState.AbortRequested && RoutineThread.ThreadState == ThreadState.Background)
                         {
                             RoutineThread.Abort();
                             RoutineThread.Join();

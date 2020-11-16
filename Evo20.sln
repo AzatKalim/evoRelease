@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.GUI", "Evo20.GUI\Evo20.GUI.csproj", "{0FCF9503-EBD4-4E91-9114-8F5AD4320A34}"
 EndProject
@@ -34,6 +34,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.Controllers.Tests", "Evo20.Controllers.Tests\Evo20.Controllers.Tests.csproj", "{3ADB2BBA-D985-44A7-9555-4711645BF31A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.Packets.Tests", "Evo20.Packets.Tests\Evo20.Packets.Tests.csproj", "{91D7BB4C-C97F-46E1-9B63-7372FF27582E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evo20.Sensors.Test", "Evo20.Sensors.Test\Evo20.Sensors.Test.csproj", "{BCFA9F39-F0C7-463C-8ADD-0DADC2A6DEFB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -97,6 +99,10 @@ Global
 		{91D7BB4C-C97F-46E1-9B63-7372FF27582E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91D7BB4C-C97F-46E1-9B63-7372FF27582E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91D7BB4C-C97F-46E1-9B63-7372FF27582E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCFA9F39-F0C7-463C-8ADD-0DADC2A6DEFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCFA9F39-F0C7-463C-8ADD-0DADC2A6DEFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCFA9F39-F0C7-463C-8ADD-0DADC2A6DEFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCFA9F39-F0C7-463C-8ADD-0DADC2A6DEFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -108,5 +114,9 @@ Global
 		{C00BADF7-242B-4889-987D-1CDA3E738707} = {CEBDB753-A445-48F5-B326-81FFC18A80CE}
 		{3ADB2BBA-D985-44A7-9555-4711645BF31A} = {CEBDB753-A445-48F5-B326-81FFC18A80CE}
 		{91D7BB4C-C97F-46E1-9B63-7372FF27582E} = {CEBDB753-A445-48F5-B326-81FFC18A80CE}
+		{BCFA9F39-F0C7-463C-8ADD-0DADC2A6DEFB} = {CEBDB753-A445-48F5-B326-81FFC18A80CE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {596BADEC-C77C-4B36-A481-FDA4D68A0EE8}
 	EndGlobalSection
 EndGlobal

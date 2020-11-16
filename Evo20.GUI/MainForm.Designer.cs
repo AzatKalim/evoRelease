@@ -102,6 +102,8 @@
             this.label18 = new System.Windows.Forms.Label();
             this.packetsArrivedLbl = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.StopEvoButton = new System.Windows.Forms.Button();
+            this.sensorStopButton = new System.Windows.Forms.Button();
             this.EvoParamsGroupBox.SuspendLayout();
             this.identifieGoupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.temperatureReachedIndic)).BeginInit();
@@ -120,6 +122,7 @@
             // 
             // EvoParamsGroupBox
             // 
+            this.EvoParamsGroupBox.Controls.Add(this.StopEvoButton);
             this.EvoParamsGroupBox.Controls.Add(this.temperatureStabLabel);
             this.EvoParamsGroupBox.Controls.Add(this.label23);
             this.EvoParamsGroupBox.Controls.Add(this.connectionStateLabel);
@@ -669,6 +672,7 @@
             // 
             // sensorGroupBox
             // 
+            this.sensorGroupBox.Controls.Add(this.sensorStopButton);
             this.sensorGroupBox.Controls.Add(this.currentPositionNumberLbl);
             this.sensorGroupBox.Controls.Add(this.label25);
             this.sensorGroupBox.Controls.Add(this.sensorConnectionStateLabel);
@@ -807,6 +811,29 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Получено пакетов ";
             // 
+            // StopEvoButton
+            // 
+            this.StopEvoButton.Cursor = System.Windows.Forms.Cursors.AppStarting;
+            this.StopEvoButton.Image = global::Evo20.GUI.Properties.Resources.stopevo;
+            this.StopEvoButton.Location = new System.Drawing.Point(29, 19);
+            this.StopEvoButton.Name = "StopEvoButton";
+            this.StopEvoButton.Size = new System.Drawing.Size(44, 41);
+            this.StopEvoButton.TabIndex = 15;
+            this.StopEvoButton.UseVisualStyleBackColor = false;
+            this.StopEvoButton.Visible = false;
+            this.StopEvoButton.Click += new System.EventHandler(this.StopEvoButton_Click);
+            // 
+            // sensorStopButton
+            // 
+            this.sensorStopButton.Image = global::Evo20.GUI.Properties.Resources.stopsensor;
+            this.sensorStopButton.Location = new System.Drawing.Point(47, 19);
+            this.sensorStopButton.Name = "sensorStopButton";
+            this.sensorStopButton.Size = new System.Drawing.Size(44, 41);
+            this.sensorStopButton.TabIndex = 9;
+            this.sensorStopButton.UseVisualStyleBackColor = true;
+            this.sensorStopButton.Visible = false;
+            this.sensorStopButton.Click += new System.EventHandler(this.sensorStopButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -925,6 +952,8 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label packetsArrivedLbl;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button StopEvoButton;
+        private System.Windows.Forms.Button sensorStopButton;
     }
 }
 

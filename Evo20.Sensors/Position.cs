@@ -24,13 +24,20 @@ namespace Evo20.Sensors
 
         public bool Equals(Position other)
         {
-            if (other as object == null) return false;
-            return (Math.Abs(FirstPosition - other.FirstPosition) <= Config.Instance.AxisDeviation &&
-                    Math.Abs(SecondPosition - other.SecondPosition) <= Config.Instance.AxisDeviation &&
-                    other.SpeedFirst == 0 && other.SpeedSecond == 0) ||
-                   (Math.Abs(SpeedFirst - other.SpeedFirst) <= Config.Instance.SpeedDeviation &&
-                    Math.Abs(SpeedSecond - other.SpeedSecond) <= Config.Instance.SpeedDeviation &&
-                    (other.SpeedFirst != 0 || other.SpeedSecond != 0));
+            if (other as object == null)
+                return false;
+
+            bool firstAxisEqual = (Math.Abs(FirstPosition - other.FirstPosition) <= Config.Instance.AxisDeviation &&
+                SpeedFirst == 0 && other.SpeedFirst == 0) ||
+                (Math.Abs(SpeedFirst - other.SpeedFirst) <= Config.Instance.SpeedDeviation
+                && SpeedFirst != 0 && other.SpeedFirst != 0);
+
+            bool secondAxisEqual = (Math.Abs(SecondPosition - other.SecondPosition) <= Config.Instance.AxisDeviation &&
+                    SpeedSecond == 0 && other.SpeedSecond == 0) ||
+                    (Math.Abs(SpeedSecond - other.SpeedSecond) <= Config.Instance.SpeedDeviation
+                    && SpeedSecond != 0 && other.SpeedSecond != 0);
+
+            return firstAxisEqual && secondAxisEqual;          
         }
 
         public override string ToString()

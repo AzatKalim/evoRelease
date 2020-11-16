@@ -168,12 +168,17 @@ namespace Evo20.EvoConnections
         /// <returns></returns>
         public void StopConnection()
         {
+            ReceivingUdpClient?.Close();
             if (WorkThread != null && WorkThread.IsAlive && WorkThread.ThreadState != ThreadState.Aborted
-                      && WorkThread.ThreadState != ThreadState.AbortRequested && WorkThread.ThreadState == ThreadState.Running)
+                && WorkThread.ThreadState != ThreadState.AbortRequested &&
+                WorkThread.ThreadState == ThreadState.Running)
+            {
                 WorkThread.Abort();
+            }
 
             ConnectionStatus = ConnectionStatus.Disconnected;
-            ReceivingUdpClient?.Close();
+
+            Sender.Close();
             Log.Instance.Info("Соединение c Evo 20 прервано");
         }
 

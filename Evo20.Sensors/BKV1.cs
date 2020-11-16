@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using Newtonsoft.Json;
 using System.IO;
+using System.Windows.Forms;
 using Evo20.Packets;
 using Evo20.Utils;
 
@@ -128,7 +129,8 @@ namespace Evo20.Sensors
         {
             if (index == -1)
                 return false;
-            if (!CalibrationPacketsCollection[index].AddPacketData(currentPositionNumber, packetData))
+            if (!CalibrationPacketsCollection[index].AddPacketData(currentPositionNumber, packetData)
+                && PacketsArivedCountCalibration(index, currentPositionNumber)!= 0)
             {
                 PacketsCollectedEvent.Set();
             }
@@ -182,13 +184,30 @@ namespace Evo20.Sensors
 
         private Position[] GetCalibrationProfile()
         {
-            
-            var filename = $"{Config.Instance.ProfileFolder}{Name}.txt";
+            var filename = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), $"{Name}.txt");//$"{Config.Instance.ProfileFolder}{Name}.txt";
             Log.Instance.Info($"Try to get colibration profile from file {filename}");
             if (!File.Exists(filename))
             {
-                Log.Instance.Error($"{filename} not exists !");
-                return null;
+                Log.Instance.Warning($"{filename} not exists !");
+                using (var dialog = new OpenFileDialog
+                {
+                    ValidateNames = false,
+                    CheckFileExists = true,
+                    Title = $"Файл с профилями не найден! Необходимо выбрать файл с профилем для {Name}"
+                })
+                {
+                    if (dialog.ShowDialog() == DialogResult.OK && !string.IsNullOrEmpty(dialog.FileName))
+                    {
+                        filename = dialog.FileName;
+                        Log.Instance.Info($"Выбран файл профиля { dialog.FileName}");
+                    }
+                    else
+                    {
+                        Log.Instance.Error("Папка не выбрана");
+                        MessageBox.Show(@"Ошибка: не выбрана папка ", @"Небходимо выбрать папку для сохранения файлов !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return null;
+                    }
+                }
             }
             var file = new StreamReader(filename);
             var str = file.ReadToEnd();

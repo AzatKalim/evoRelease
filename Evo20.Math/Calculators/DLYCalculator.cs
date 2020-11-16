@@ -44,6 +44,7 @@ namespace Evo20.Math.Calculators
 
         protected override double[][][] GetAMatrix(List<PacketsCollection> packetsCollections, int degree)
         {
+            Log.Instance.Info($"{nameof(GetAMatrix)} degree: {degree}");
             var a = new double[packetsCollections.Count][][];
             for (var i = 0; i < a.Length; i++)
             {

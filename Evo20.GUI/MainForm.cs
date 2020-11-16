@@ -10,7 +10,6 @@ using Evo20.Controllers.EvoControllers;
 using Evo20.Controllers.FileWork;
 using Evo20.Utils.EventArguments;
 using Evo20.Utils;
-using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace Evo20.GUI
 {
@@ -90,36 +89,29 @@ namespace Evo20.GUI
 
         private void evoStartButton_Click(object sender, EventArgs e)
         {
-            if (!_isEvoStarted)
+            evoStartButton.Visible = false;
+            StopEvoButton.Visible = true;
+            try
             {
-                ((Button) sender).Image = Image.FromFile(".//Resources//stopevo.png");
-                try
+                if (!ReadSettings())
                 {
-                    if (!ReadSettings())
-                    {
-                        return;
-                    }
+                    return;
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(@"Проблемы с файлом: возникло исключение" + ex, @"Открыть файл настроек ?",
-                        MessageBoxButtons.YesNo);
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"Проблемы с файлом: возникло исключение" + ex, @"Открыть файл настроек ?",
+                    MessageBoxButtons.YesNo);
+            }
 
-                if (ControllerEvo.Instance.StartEvoConnection())
-                {
-                    _isEvoStarted = true;
-                }
-                _startTime = DateTime.Now;
-                workTimer.Start();
-                timer.Start();
-            }
-            else
+            if (ControllerEvo.Instance.StartEvoConnection())
             {
-                ((Button)sender).Image = Image.FromFile(".//Resources//startevo.png");
-                _isEvoStarted = false;
-                ControllerEvo.Instance.StopEvoConnection();
+                _isEvoStarted = true;
             }
+
+            _startTime = DateTime.Now;
+            workTimer.Start();
+            timer.Start();
         }
 
         private void evoPauseButton_Click(object sender, EventArgs e)
@@ -134,9 +126,9 @@ namespace Evo20.GUI
         private  bool _isSensorStarted;
         private void sensorStartButton_Click(object sender, EventArgs e)
         {
-            if (!_isSensorStarted)
-            {
-                ((Button)sender).Image = Image.FromFile(".//Resources//stopsensor.png");
+
+                sensorStartButton.Visible = false;
+                sensorStopButton.Visible = true;
                 if (comPortComboBox.SelectedItem != null)
                 {
                     _isSensorStarted = SensorController.Instance.StartComPortConnection(comPortComboBox.SelectedItem.ToString());
@@ -164,13 +156,7 @@ namespace Evo20.GUI
                 SensorDataGridView.Rows.Add("Акселерометры", "0", "0", "0");
                 SensorDataGridView.Rows.Add("Температуры акселерометров", "0", "0", "0");
                 SensorTimer.Start();
-            }
-            else
-            {
-                ((Button)sender).Image = Image.FromFile(".//Resources//startsensor.png");
-                _isSensorStarted = false;
-                SensorController.Instance.StopComPortConnection();
-            }
+            
         }
 
         private void sensorPauseButton_Click(object sender, EventArgs e)
@@ -201,15 +187,13 @@ namespace Evo20.GUI
             }
             var workMode = WorkMode.CalibrationMode;
 
-            using (var dialog = new CommonOpenFileDialog
+            using (var fbd = new FolderBrowserDialog())
             {
-                IsFolderPicker = true
-            })
-            {
-                if (dialog.ShowDialog() == CommonFileDialogResult.Ok && !string.IsNullOrEmpty(dialog.FileName))
+                var result = fbd.ShowDialog();
+                if (result == DialogResult.OK && !string.IsNullOrEmpty(fbd.SelectedPath))
                 {
-                    FileController.FilesPath = dialog.FileName;
-                    Log.Instance.Info(@"Выбрана папка {0}", dialog.FileName);
+                    FileController.FilesPath = fbd.SelectedPath;
+                    Log.Instance.Info(@"Выбрана папка {0}", fbd.SelectedPath);
                 }
                 else
                 {
@@ -218,7 +202,7 @@ namespace Evo20.GUI
                     return;
                 }
             }
- 
+
             try
             {
                 ControllerEvo.Instance.EvoConnectionChanged += EvoConnectionChangeHandler;
@@ -255,10 +239,12 @@ namespace Evo20.GUI
             pauseButton.Enabled = true;
             stopButton.Enabled = true;
             _isEvoStarted = true;
-            evoStartButton.Image = Image.FromFile(".//Resources//stopevo.png");
+            evoStartButton.Visible = false;
+            StopEvoButton.Visible = true;
 
             _isSensorStarted = true;
-            sensorStartButton.Image = Image.FromFile(".//Resources//stopsensor.png");
+            sensorStartButton.Visible = false;
+            sensorStopButton.Visible = true;
         }
 
         //private void pauseButton_Click(object sender, EventArgs e)
@@ -293,20 +279,19 @@ namespace Evo20.GUI
         {
             if (!ReadSettings())            
                 return;
-            using (var dialog = new CommonOpenFileDialog
+            using (var fbd = new FolderBrowserDialog())
             {
-                IsFolderPicker = true,
-                Title = @"Выберете папку с файлами пакетов"
-            })
-            {
-                if (dialog.ShowDialog() == CommonFileDialogResult.Ok && !string.IsNullOrEmpty(dialog.FileName))
+                fbd.Description = @"Выберете папку с файлами пакетов";
+                DialogResult result = fbd.ShowDialog();
+
+                if (result == DialogResult.OK && !string.IsNullOrEmpty(fbd.SelectedPath))
                 {
-                    FileController.FilesPath = dialog.FileName;
-                    Log.Instance.Info("Выбрана папка для загрузки {0}", dialog.FileName);
+                    FileController.FilesPath = fbd.SelectedPath;
+                    Log.Instance.Info("Выбрана папка для загрузки {0}", fbd.SelectedPath);
                 }
                 else
                 {
-                    Log.Instance.Error("Папка не выбрана");                 
+                    Log.Instance.Error("Папка не выбрана");
                     return;
                 }
             }
@@ -502,10 +487,12 @@ namespace Evo20.GUI
             FileToolStripMenuItem.Enabled = true;
             SettingsToolStripMenuItem.Enabled = true;
             _isEvoStarted = false;
-            evoStartButton.Image = Image.FromFile(".//Resources//startevo.png");
+            evoStartButton.Visible = true;
+            StopEvoButton.Visible = false;
 
             _isSensorStarted = false;
-            sensorStartButton.Image = Image.FromFile(".//Resources//startsensor.png");
+            sensorStartButton.Visible = true;
+            sensorStopButton.Visible = false;
         }
         private void CycleEndedHandler(object sender,EventArgs e)// bool result)
         {
@@ -628,6 +615,22 @@ namespace Evo20.GUI
         {
             getDataFromFileToolStripMenuItem_Click(sender, e);
             ComputeCoefficents();
+        }
+
+        private void StopEvoButton_Click(object sender, EventArgs e)
+        {
+            evoStartButton.Visible = true;
+            StopEvoButton.Visible = false;
+            _isEvoStarted = false;
+            ControllerEvo.Instance.StopEvoConnection();
+        }
+
+        private void sensorStopButton_Click(object sender, EventArgs e)
+        {
+            sensorStartButton.Visible = true;
+            sensorStopButton.Visible = false;
+            _isSensorStarted = false;
+            SensorController.Instance.StopComPortConnection();
         }
     }
 }

@@ -343,9 +343,9 @@ namespace Evo20.Controllers
                     }
 
                     Log.Instance.Info($"Старт сбора пакетов для позиции {_sensorController.CurrentPositionNumber}");
-                    _sensorController.CanCollect = true;
+                    _sensorController.StartCollect();
                     _sensorController.CurrentSensor.PacketsCollectedEvent.WaitOne();
-                    _sensorController.CanCollect = false;
+                    _sensorController.StopCollect();
                     Log.Instance.Info(
                         $"Пакеты в положении {_sensorController.CurrentPositionNumber} собраны, пакетов {_sensorController.PacketsCollectedCount}");
                 }

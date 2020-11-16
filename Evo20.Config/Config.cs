@@ -74,8 +74,8 @@ namespace Evo20.Utils
             }
         }
 
-        private string _profileFolder;
-        public string ProfileFolder => _profileFolder ?? (_profileFolder = ConfigurationManager.AppSettings.Get("ProfileFolder"));
+        //private string _profileFolder;
+        //public string ProfileFolder => _profileFolder ?? (_profileFolder = ConfigurationManager.AppSettings.Get("ProfileFolder"));
 
         private string _defaultSettingsFileName;
         public string DefaultSettingsFileName => _defaultSettingsFileName ?? (_defaultSettingsFileName =

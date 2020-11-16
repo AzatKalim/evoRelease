@@ -43,7 +43,6 @@ namespace Evo20.Math
 
             WriteMatrix(coefficentsDly, ref file);
             WriteMatrix(coefficentsDys, ref file);
-
             WriteMatrix(temperatureCoefficentsDly, ref file);
             WriteMatrix(temperatureCoefficentsDys, ref file);
             return true;

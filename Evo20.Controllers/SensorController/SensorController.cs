@@ -26,6 +26,7 @@ namespace Evo20.Controllers
 
         bool _canCollect;
 
+        object _locker = new object();
         public bool CanCollect
         {
             get { return _canCollect; }
@@ -84,6 +85,17 @@ namespace Evo20.Controllers
                 SensorData.Instance.CheckDysMaxPacketsCount)
         });
 
+        public void StartCollect()
+        {           
+            Log.Instance.Info($"{nameof(StartCollect)}");
+            _currentSensor.PacketsCollectedEvent.Reset();
+            CanCollect = true;
+        }
+        public void StopCollect()
+        {
+            Log.Instance.Info($"{nameof(StopCollect)}");
+            CanCollect = false;
+        }
         public int PacketsCollectedCount
         {
             get
