@@ -10,6 +10,7 @@ using Evo20.Controllers.EvoControllers;
 using Evo20.Controllers.FileWork;
 using Evo20.Utils.EventArguments;
 using Evo20.Utils;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace Evo20.GUI
 {
@@ -182,20 +183,18 @@ namespace Evo20.GUI
             {
                 MessageBox.Show(@"Проблемы с файлом: возникло исключение " + ex.Message, @"Открыть файл настроек ?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             }
-            if (comPortComboBox.SelectedItem == null)
+            using (var fbd = new CommonOpenFileDialog()
             {
-                MessageBox.Show(@"Ошибка: Com порт не выбран!", @"Выбирете один из портов для соединения !", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            var workMode = WorkMode.CalibrationMode;
+                IsFolderPicker = true,
+                Title = "Выберите папку для записи результатов"
 
-            using (var fbd = new FolderBrowserDialog())
+            })
             {
                 var result = fbd.ShowDialog();
-                if (result == DialogResult.OK && !string.IsNullOrEmpty(fbd.SelectedPath))
+                if (result == CommonFileDialogResult.Ok && !string.IsNullOrEmpty(fbd.FileName))
                 {
-                    FileController.FilesPath = fbd.SelectedPath;
-                    Log.Instance.Info(@"Выбрана папка {0}", fbd.SelectedPath);
+                    FileController.FilesPath = fbd.FileName;
+                    Log.Instance.Info(@"Выбрана папка {0}", fbd.FileName);
                 }
                 else
                 {
@@ -205,6 +204,14 @@ namespace Evo20.GUI
                 }
             }
 
+        
+            if (comPortComboBox.SelectedItem == null)
+            {
+                MessageBox.Show(@"Выбирете один из портов для соединения !", @"Ошибка: Com порт не выбран!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            var workMode = WorkMode.CalibrationMode;
+                      
             try
             {
                 ControllerEvo.Instance.EvoConnectionChanged += EvoConnectionChangeHandler;
@@ -281,15 +288,19 @@ namespace Evo20.GUI
         {
             if (!ReadSettings())            
                 return;
-            using (var fbd = new FolderBrowserDialog())
+            using (var fbd = new CommonOpenFileDialog()
             {
-                fbd.Description = @"Выберете папку с файлами пакетов";
-                DialogResult result = fbd.ShowDialog();
+                IsFolderPicker = true,
+                Title = "Выберите папку с файлами пакетов"
 
-                if (result == DialogResult.OK && !string.IsNullOrEmpty(fbd.SelectedPath))
+            }) 
+            { 
+                var result = fbd.ShowDialog();
+
+                if (result == CommonFileDialogResult.Ok && !string.IsNullOrEmpty(fbd.FileName))
                 {
-                    FileController.FilesPath = fbd.SelectedPath;
-                    Log.Instance.Info("Выбрана папка для загрузки {0}", fbd.SelectedPath);
+                    FileController.FilesPath = fbd.FileName;
+                    Log.Instance.Info("Выбрана папка для загрузки {0}", fbd.FileName);
                 }
                 else
                 {

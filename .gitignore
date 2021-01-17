@@ -38,14 +38,14 @@ TestResult.xml
 [Dd]ebugPS/
 [Rr]eleasePS/
 dlldata.c
-Evo20.GUI/bin/Debug
+Evo20.GUI/bin/Debug*
 
-Evo20.Config\bin\Debug
+Evo20.Config\bin\Debug/*
 Evo20.Controller\bin\Debug
 Evo20.EvoCommandsLib\bin\Debug
 Evo20.EvoConnections\bin\Debug
 Evo20.Math/bin/Debug
 Evo20.PacketsLib/bin/Debug
 Evo20.Math.Tests/bin/Debug
-bin\Release
-bin/Release
+bin\Release/*
+bin/*

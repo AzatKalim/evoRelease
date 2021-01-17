@@ -98,13 +98,11 @@ namespace Evo20.Controllers
             Log.Instance.Info($"{nameof(StartCollect)}");
             _currentSensor.PacketsCollectedEvent.Reset();
             CanCollect = true;
-            packetReceiveTimer.Start();
         }
         public void StopCollect()
         {
             Log.Instance.Info($"{nameof(StopCollect)}");
             CanCollect = false;
-            packetReceiveTimer.Stop();
         }
         public int PacketsCollectedCount
         {
@@ -213,6 +211,7 @@ namespace Evo20.Controllers
 
         public bool StartComPortConnection(string portName)
         {
+            packetReceiveTimer.Start();
             return _sensorHandler.StartConnection(portName);
         }
 
@@ -223,6 +222,7 @@ namespace Evo20.Controllers
 
         public void StopComPortConnection()
         {
+            packetReceiveTimer.Stop();
             _sensorHandler.StopConnection();
         }
 
